@@ -14,8 +14,13 @@ jobs:
     name: "Lint & Build & Test "
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v2
         with:
           node-version: 15
 
@@ -49,8 +54,13 @@ jobs:
     needs: "test"
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v2
         with:
           node-version: 15
 
@@ -59,7 +69,7 @@ jobs:
         with:
           useRollingCache: true
 
-      - name: "semantic-release"
+      - name: "Release"
         run: yarn semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
