@@ -5,9 +5,20 @@
     "lib": [
       "ESNext",
       "DOM"
-    ]
+    ],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "**.js",
+    "**.ts",
+    "src/*/**/*.js",
+    "src/*/**/*.ts",
+    "test/*/**/*.js",
+    "test/*/**/*.ts"
   ]
 }
