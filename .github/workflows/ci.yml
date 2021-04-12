@@ -1,0 +1,66 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: "Lint & Build & Test "
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 15
+
+      - name: "Install dependencies"
+        uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+
+      #      - name: "Lint"
+      #        run: yarn lint
+
+      - name: "Build"
+        run: yarn build
+
+      - name: "Test"
+        run: yarn test
+
+  dependabot-merge:
+    name: "Dependabot automerge"
+    runs-on: ubuntu-latest
+    needs: "test"
+    if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v2.0.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+
+  semantic-release:
+    name: "semantic-release"
+    runs-on: ubuntu-latest
+    needs: "test"
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 15
+
+      - name: "Install dependencies"
+        uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+
+      - name: "semantic-release"
+        run: yarn semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
