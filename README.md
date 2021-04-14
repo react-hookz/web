@@ -1,3 +1,3 @@
-# @use-react/hooks
+# @react-hookz/web
 
 WIP

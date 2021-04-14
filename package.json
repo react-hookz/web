@@ -1,13 +1,13 @@
 {
-  "name": "@use-react/hooks",
+  "name": "@react-hookz/web",
   "version": "1.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/use-react/hooks.git"
+    "url": "https://github.com/react-hookz/web.git"
   },
   "bugs": {
-    "url": "https://github.com/use-react/hooks/issues"
+    "url": "https://github.com/react-hookz/web/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -20,7 +20,7 @@
     "build:cleanup": "rimraf ./dist",
     "build:tsc": "tsc -p ./tsconfig.build.json",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "yarn test -- --coverage"
   },
   "peerDependencies": {
     "react": "^16.8 || ^17",
