@@ -11,13 +11,9 @@ module.exports = {
   ignorePatterns: ['dist'],
 
   extends: [
-    'eslint-config-airbnb-base/rules/best-practices',
-    'eslint-config-airbnb-base/rules/errors',
-    'eslint-config-airbnb-base/rules/node',
-    'eslint-config-airbnb-base/rules/style',
-    'eslint-config-airbnb-base/rules/variables',
-    'eslint-config-airbnb-base/rules/es6',
-    'airbnb-typescript/base',
+    'airbnb',
+    'airbnb/hooks',
+    'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
