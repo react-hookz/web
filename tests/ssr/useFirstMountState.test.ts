@@ -6,5 +6,5 @@ describe('useFirstMountState', () => {
     const { result } = renderHook(() => useFirstMountState());
 
     expect(result.current).toBe(true);
-  })
+  });
 });

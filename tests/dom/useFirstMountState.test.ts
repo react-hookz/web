@@ -6,17 +6,17 @@ describe('useFirstMountState', () => {
     const { result } = renderHook(() => useFirstMountState());
 
     expect(result.current).toBe(true);
-  })
+  });
 
   it('should return false on second and next renders', () => {
     const { result, rerender } = renderHook(() => useFirstMountState());
 
     expect(result.current).toBe(true);
 
-    rerender()
+    rerender();
     expect(result.current).toBe(false);
 
-    rerender()
+    rerender();
     expect(result.current).toBe(false);
   });
 });

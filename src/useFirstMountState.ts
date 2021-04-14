@@ -5,7 +5,7 @@ export function useFirstMountState(): boolean {
 
   useEffect(() => {
     isFirstMount.current = false;
-  }, [])
+  }, []);
 
-  return isFirstMount.current
+  return isFirstMount.current;
 }

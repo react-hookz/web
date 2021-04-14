@@ -3,17 +3,13 @@ module.exports = {
     {
       displayName: 'dom',
       preset: 'ts-jest',
-      testMatch: [
-        "<rootDir>/tests/dom/**/*.[jt]s?(x)"
-      ]
+      testMatch: ['<rootDir>/tests/dom/**/*.[jt]s?(x)'],
     },
     {
       displayName: 'ssr',
       preset: 'ts-jest',
-      testMatch: [
-        "<rootDir>/tests/ssr/**/*.[jt]s?(x)"
-      ]
-    }
+      testMatch: ['<rootDir>/tests/ssr/**/*.[jt]s?(x)'],
+    },
   ],
   coverageDirectory: './coverage',
   collectCoverage: false,

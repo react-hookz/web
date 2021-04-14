@@ -29,8 +29,8 @@ jobs:
         with:
           useRollingCache: true
 
-      #      - name: "Lint"
-      #        run: yarn lint
+      - name: "Lint"
+        run: yarn lint
 
       - name: "Build"
         run: yarn build
