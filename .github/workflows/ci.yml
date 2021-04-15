@@ -103,7 +103,5 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./lcov.info
-          directory: ./coverage
-          fail_ci_if_error: false
-          verbose: true
+          files: coverage/lcov.info
+          fail_ci_if_error: true
