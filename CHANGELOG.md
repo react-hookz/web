@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/react-hookz/web/compare/v1.1.0...v1.2.0) (2021-04-15)
+
+
+### Features
+
+* add codecov coverage reporting ([3254871](https://github.com/react-hookz/web/commit/325487121b3fb8a27ab129e31a0cec3bcf7cce1f))
+
 # [1.1.0](https://github.com/react-hookz/web/compare/v1.0.0...v1.1.0) (2021-04-15)
 
 
