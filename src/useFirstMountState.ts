@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react';
 
+/**
+ * Returns boolean that is `true` only on first render
+ */
 export function useFirstMountState(): boolean {
   const isFirstMount = useRef(true);
 
