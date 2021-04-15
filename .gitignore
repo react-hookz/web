@@ -1,4 +1,4 @@
-.idea
+/.idea
 node_modules
-coverage
+/coverage
 /dist

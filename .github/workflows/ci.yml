@@ -70,15 +70,15 @@ jobs:
           useRollingCache: true
 
       - name: "Release"
-        run: yarn semantic-release
+        uses: codfish/semantic-release-action@v1
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   coverage-send:
     name: "Codecov Coverage"
     needs: "semantic-release"
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: needs.semantic-release.outputs.new-release-published == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
