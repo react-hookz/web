@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/react-hookz/web/compare/v1.2.1...v1.2.2) (2021-04-15)
+
+
+### Bug Fixes
+
+* attempt to make codecov push only occur on release publish ([ac5c221](https://github.com/react-hookz/web/commit/ac5c221659ce8173268c88d9da385411a07009f3))
+
 ## [1.2.1](https://github.com/react-hookz/web/compare/v1.2.0...v1.2.1) (2021-04-15)
 
 
