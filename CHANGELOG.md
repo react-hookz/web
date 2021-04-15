@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/react-hookz/web/compare/v1.0.0...v1.1.0) (2021-04-15)
+
+
+### Features
+
+* implement useMountEffect and useUnmountEffect hooks ([98ec434](https://github.com/react-hookz/web/commit/98ec434d3b9b9e56ebb92ce4bf047a2ef9d19c8f))
+
 # 1.0.0 (2021-04-14)
 
 
