@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/react-hookz/web/compare/v1.2.2...v1.2.3) (2021-04-16)
+
+
+### Bug Fixes
+
+* properly name useMountEffect and useUnmountEffect parameter ([5218bfc](https://github.com/react-hookz/web/commit/5218bfcc359b34fe61a46a635c41fb093182a56e))
+
 ## [1.2.2](https://github.com/react-hookz/web/compare/v1.2.1...v1.2.2) (2021-04-15)
 
 
