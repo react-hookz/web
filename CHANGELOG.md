@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/react-hookz/web/compare/v1.4.0...v1.4.1) (2021-04-16)
+
+
+### Bug Fixes
+
+* add types field to package json and tweak build ([8d64b9a](https://github.com/react-hookz/web/commit/8d64b9a1e240df938f177f565c0427b9bedfe934))
+
 # [1.4.0](https://github.com/react-hookz/web/compare/v1.3.0...v1.4.0) (2021-04-16)
 
 
