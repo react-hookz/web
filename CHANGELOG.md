@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/react-hookz/web/compare/v1.2.3...v1.3.0) (2021-04-16)
+
+
+### Features
+
+* useUpdateEffect hook ([bc3a655](https://github.com/react-hookz/web/commit/bc3a655f5cbfe3b4edb94c6084f62e95806ea6de))
+
 ## [1.2.3](https://github.com/react-hookz/web/compare/v1.2.2...v1.2.3) (2021-04-16)
 
 
