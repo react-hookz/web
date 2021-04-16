@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
+import { EffectCallback, useEffect } from 'react';
 
 /**
  * Run effect only when component is unmounted.
  *
- * @param fn effector to run on unmount
+ * @param effect effector to run on unmount
  */
-export function useUnmountEffect(fn: () => void): void {
+export function useUnmountEffect(effect: EffectCallback): void {
   useEffect(
     () => () => {
-      fn();
+      effect();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
