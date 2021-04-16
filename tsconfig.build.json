@@ -7,6 +7,9 @@
   "compilerOptions": {
     "outDir": "./dist",
     "declaration": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "target": "ES5",
+    "module": "CommonJS",
+    "moduleResolution": "Node"
   }
 }

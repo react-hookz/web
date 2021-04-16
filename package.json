@@ -16,6 +16,7 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "yarn build:cleanup && yarn build:tsc",
     "build:cleanup": "rimraf ./dist",
