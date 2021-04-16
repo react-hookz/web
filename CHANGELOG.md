@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/react-hookz/web/compare/v1.3.0...v1.4.0) (2021-04-16)
+
+
+### Features
+
+* add main file and reexport new hooks ([e2ea1cb](https://github.com/react-hookz/web/commit/e2ea1cbf6b5de909945fadde15eafd5ab70cea9f))
+
 # [1.3.0](https://github.com/react-hookz/web/compare/v1.2.3...v1.3.0) (2021-04-16)
 
 
