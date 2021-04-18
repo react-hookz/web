@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/react-hookz/web/compare/v1.4.1...v1.4.2) (2021-04-18)
+
+
+### Bug Fixes
+
+* add @semantic-release/github plugin ([9f7e1b3](https://github.com/react-hookz/web/commit/9f7e1b3a441674c03ab29af3682f9619fc668806))
+
 ## [1.4.1](https://github.com/react-hookz/web/compare/v1.4.0...v1.4.1) (2021-04-16)
 
 
