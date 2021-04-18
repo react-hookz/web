@@ -3,7 +3,7 @@ import { EffectCallback, useEffect } from 'react';
 /**
  * Run effect only when component is first mounted.
  *
- * @param effect effector to run on nmount
+ * @param effect effector to run on mount
  */
 export function useMountEffect(effect: EffectCallback): void {
   useEffect(() => {
