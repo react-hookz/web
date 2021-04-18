@@ -1,4 +1,4 @@
-import { EffectCallback, useEffect } from "react";
+import { EffectCallback, useEffect } from 'react';
 
 /**
  * Run effect only when component is first mounted.
