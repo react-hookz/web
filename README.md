@@ -1,5 +1,5 @@
 <div align="center">
-  <h1><img src="./logo.png" alt="@react-hookz/web"></h1>
+  <h1><img src=".github/logo.png" alt="@react-hookz/web"></h1>
   <p>
     <a href="https://www.npmjs.com/package/@react-hookz/web">
       <img src="https://flat.badgen.net/npm/v/@react-hookz/web" alt="NPM Version">

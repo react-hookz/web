@@ -66,12 +66,7 @@ module.exports = {
       },
       {
         selector: 'variable',
-        format: ['camelCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
-      },
-      {
-        selector: 'parameter',
-        format: ['camelCase'],
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
         leadingUnderscore: 'allow',
       },
       {
@@ -81,4 +76,14 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['stories/**/*'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/no-default-export': 'off',
+        'react/button-has-type': 'off',
+      },
+    },
+  ],
 };
