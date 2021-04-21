@@ -8,7 +8,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
 
-  ignorePatterns: ['dist'],
+  ignorePatterns: ['dist', 'node_modules', 'coverage', 'storybook-build'],
 
   extends: [
     'airbnb',
@@ -78,11 +78,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['stories/**/*'],
+      files: ['stories/**/*', '.storybook/**/*'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
         'import/no-default-export': 'off',
         'react/button-has-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'react/prop-types': 'off',
       },
     },
   ],

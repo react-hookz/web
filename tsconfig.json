@@ -13,7 +13,9 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "coverage",
+    "storybook-build"
   ],
   "include": [
     "**.js",
@@ -23,6 +25,6 @@
     "tests/**/*.js",
     "tests/**/*.ts",
     "stories/**/*.tsx",
-    ".storybook/**/*.js"
+    ".storybook/*.js"
   ]
 }

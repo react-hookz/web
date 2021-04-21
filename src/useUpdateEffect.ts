@@ -2,7 +2,7 @@ import { DependencyList, EffectCallback, useEffect } from 'react';
 import { useFirstMountState } from './useFirstMountState';
 
 /**
- * Effect hook that ignores the first invocation (e.g. on mount)
+ * Effect hook that ignores the first invocation (not invoked on mount)
  *
  * @param effect Effector to run on updates
  * @param deps Dependencies list, as for `useEffect` hook
