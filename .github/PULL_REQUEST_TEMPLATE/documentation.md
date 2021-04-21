@@ -1,9 +1,3 @@
----
-name: "\U0001F4D3 Documentation Fix"
-about: Fixing a problem in docs
-labels: 'documentation'
----
-
 ## What is the problem?
 
 ## What changes does this PR make to fix the problem?

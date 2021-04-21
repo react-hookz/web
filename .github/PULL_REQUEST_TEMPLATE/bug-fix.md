@@ -1,9 +1,3 @@
----
-name: "\U0001F41B Bug Fix"
-about: "Fixing a problem about `node-beanstalk`"
-labels: 'bug fix'
----
-
 ### What is the current behavior, and the steps to reproduce the issue?
 
 ### What is the expected behavior?

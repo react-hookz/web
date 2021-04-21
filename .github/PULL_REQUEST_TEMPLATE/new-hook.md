@@ -1,8 +1,3 @@
----
-name: "\U0001F44D New Hook"
-about: "Add new hook"
-labels: 'new hook'
----
 ## What new hook does?
 
 ## Checklist
