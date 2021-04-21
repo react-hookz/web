@@ -25,8 +25,7 @@
     "test:coverage": "yarn test --coverage",
     "lint": "eslint . --ext ts,js,tsx,jsx",
     "lint:fix": "yarn lint --fix",
-    "prepare": "husky install",
-    "prepublishOnly": "yarn lint && yarn build && yarn test"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.[tj]s?x": "eslint --fix"
