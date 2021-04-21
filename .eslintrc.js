@@ -48,6 +48,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-plusplus': 'off',
     'no-console': 'off',
+    'no-param-reassign': 'off',
 
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',

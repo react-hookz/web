@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
+import { useRef } from 'react';
 import { useToggle } from '../../src';
 
 describe('useToggle', () => {
@@ -34,6 +35,26 @@ describe('useToggle', () => {
       result.current[1](undefined);
     });
     expect(result.current[0]).toBe(false);
+  });
+
+  it('should not rerender when toggler called with same value', () => {
+    const { result } = renderHook(() => {
+      const cnt = useRef(0);
+
+      return [...useToggle(), ++cnt.current] as const;
+    });
+    expect(result.current[0]).toBe(false);
+    expect(result.current[2]).toBe(1);
+
+    act(() => {
+      result.current[1](false);
+    });
+    expect(result.current[2]).toBe(1);
+
+    act(() => {
+      result.current[1](false);
+    });
+    expect(result.current[2]).toBe(1);
   });
 
   it('should change state to one that passed to toggler', () => {

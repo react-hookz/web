@@ -1,6 +1,13 @@
 import { useCallback, useState } from 'react';
 import { IInitialState, INewState, resolveHookState } from './util/resolveHookState';
 
+/**
+ * Like `useState`, but can only become `true` or `false`.
+ *
+ * State setter, in case called without arguments, will change the state to opposite.
+ *
+ * @param initialState Initial toggle state, defaults to false.
+ */
 export function useToggle(
   initialState: IInitialState<boolean> = false
 ): [boolean, (nextState?: INewState<boolean>) => void] {
