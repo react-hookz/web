@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/react-hookz/web/compare/v1.5.0...v1.6.0) (2021-04-21)
+
+
+### Features
+
+* useToggle hook ([#3](https://github.com/react-hookz/web/issues/3)) ([3a51779](https://github.com/react-hookz/web/commit/3a51779e21c83c51994a3da59aaf88d729ecc43f))
+
 # [1.5.0](https://github.com/react-hookz/web/compare/v1.4.3...v1.5.0) (2021-04-21)
 
 
