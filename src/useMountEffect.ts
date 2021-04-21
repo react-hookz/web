@@ -1,11 +1,11 @@
-import { EffectCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 /**
  * Run effect only when component is first mounted.
  *
  * @param effect effector to run on mount
  */
-export function useMountEffect(effect: EffectCallback): void {
+export function useMountEffect(effect: CallableFunction): void {
   useEffect(() => {
     effect();
     // eslint-disable-next-line react-hooks/exhaustive-deps

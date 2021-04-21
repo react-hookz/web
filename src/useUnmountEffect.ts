@@ -1,11 +1,11 @@
-import { EffectCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 /**
  * Run effect only when component is unmounted.
  *
  * @param effect effector to run on unmount
  */
-export function useUnmountEffect(effect: EffectCallback): void {
+export function useUnmountEffect(effect: CallableFunction): void {
   useEffect(
     () => () => {
       effect();
