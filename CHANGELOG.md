@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/react-hookz/web/compare/v1.6.0...v1.6.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* useUnmountEffect and useMountEffect typings fix ([32ec0c7](https://github.com/react-hookz/web/commit/32ec0c7f7b63c8d8941b95f5f8e5c369e5e87f1a))
+
 # [1.6.0](https://github.com/react-hookz/web/compare/v1.5.0...v1.6.0) (2021-04-21)
 
 
