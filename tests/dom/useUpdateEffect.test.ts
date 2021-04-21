@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useUpdateEffect } from '../../src/useUpdateEffect';
+import { useUpdateEffect } from '../../src';
 
 describe('useUpdateEffect', () => {
   it('should call effector only on updates (after first render)', () => {

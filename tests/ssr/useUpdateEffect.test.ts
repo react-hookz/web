@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useUpdateEffect } from '../../src/useUpdateEffect';
+import { useUpdateEffect } from '../../src';
 
 describe('useUpdateEffect', () => {
   it('should not call effector on mount', () => {
