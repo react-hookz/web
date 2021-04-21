@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/react-hookz/web/compare/v1.4.2...v1.4.3) (2021-04-21)
+
+
+### Bug Fixes
+
+* dist package returned to bundle ([e92bd18](https://github.com/react-hookz/web/commit/e92bd18a2feafe9ae1770b992d723d31027c72d9))
+
 ## [1.4.2](https://github.com/react-hookz/web/compare/v1.4.1...v1.4.2) (2021-04-18)
 
 
