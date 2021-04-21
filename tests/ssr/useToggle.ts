@@ -23,39 +23,16 @@ describe('useToggle', () => {
     expect(result.current[0]).toBe(false);
   });
 
-  it('should change state to the opposite when toggler called without args or undefined', () => {
+  it('should not change if toggler called', () => {
     const { result } = renderHook(() => useToggle());
     act(() => {
       result.current[1]();
-    });
-    expect(result.current[0]).toBe(true);
-
-    act(() => {
-      result.current[1](undefined);
-    });
-    expect(result.current[0]).toBe(false);
-  });
-
-  it('should change state to one that passed to toggler', () => {
-    const { result } = renderHook(() => useToggle());
-    act(() => {
-      result.current[1](false);
     });
     expect(result.current[0]).toBe(false);
 
     act(() => {
       result.current[1](true);
     });
-    expect(result.current[0]).toBe(true);
-
-    act(() => {
-      result.current[1](() => false);
-    });
     expect(result.current[0]).toBe(false);
-
-    act(() => {
-      result.current[1](() => true);
-    });
-    expect(result.current[0]).toBe(true);
   });
 });
