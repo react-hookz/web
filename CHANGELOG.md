@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/react-hookz/web/compare/v1.4.3...v1.5.0) (2021-04-21)
+
+
+### Features
+
+* make tests import hooks from the index ([3210650](https://github.com/react-hookz/web/commit/3210650220f6e685d91bb7921c725596199eec84))
+
 ## [1.4.3](https://github.com/react-hookz/web/compare/v1.4.2...v1.4.3) (2021-04-21)
 
 
