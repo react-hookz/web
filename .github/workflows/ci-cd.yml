@@ -78,6 +78,9 @@ jobs:
         with:
           useRollingCache: true
 
+      - name: "Build package"
+        run: yarn build
+
       - name: "Release"
         id: "release"
         uses: codfish/semantic-release-action@v1
