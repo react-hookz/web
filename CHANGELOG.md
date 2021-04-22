@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/react-hookz/web/compare/v1.6.1...v1.7.0) (2021-04-22)
+
+
+### Features
+
+* add storybook docs with deploy to gh-pages ([84de312](https://github.com/react-hookz/web/commit/84de312a607f202c8957ae3f6d32c453cffe134a))
+
 ## [1.6.1](https://github.com/react-hookz/web/compare/v1.6.0...v1.6.1) (2021-04-21)
 
 
