@@ -25,9 +25,7 @@ jobs:
           node-version: 15
 
       - name: "Install dependencies"
-        uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
+        run: yarn install --frozen-lockfile
 
       - name: "Lint"
         run: yarn lint
@@ -74,9 +72,7 @@ jobs:
           node-version: 15
 
       - name: "Install dependencies"
-        uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
+        run: yarn install --frozen-lockfile
 
       - name: "Build package"
         run: yarn build
@@ -105,9 +101,7 @@ jobs:
           node-version: 15
 
       - name: "Install dependencies"
-        uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
+        run: yarn install --frozen-lockfile
 
       - name: "Deploy storybook"
         run: yarn storybook:deploy --ci
