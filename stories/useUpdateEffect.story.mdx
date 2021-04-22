@@ -10,3 +10,16 @@ Effect hook that ignores the first render (not invoked on mount)
 <Canvas>
   <Story story={Example} />
 </Canvas>
+
+## Reference
+
+```ts
+function useUpdateEffect(effect: React.EffectCallback, deps?: React.DependencyList): void;
+```
+
+#### Arguments
+
+| Argument Name | Type | Default | Description |
+| :-- | :-: | :- | :- |
+| _**`effect`**_ | `React.EffectCallback` | | Effect callback like for `React.useEffect` hook |
+| _**`deps`**_ | `React.DependencyList` | `undefined` | Dependencies list as for `React.useEffect` hook |
