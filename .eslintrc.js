@@ -2,26 +2,9 @@ const PRINT_WIDTH = 100;
 
 module.exports = {
   root: true,
-
-  parserOptions: {
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
-  },
-
   ignorePatterns: ['dist', 'node_modules', 'coverage', 'storybook-build'],
 
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'airbnb-typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'prettier',
-  ],
-
-  plugins: ['prettier', 'import'],
+  plugins: ['prettier'],
 
   rules: {
     'max-len': [
@@ -44,39 +27,58 @@ module.exports = {
         endOfLine: 'lf',
       },
     ],
-
-    'no-underscore-dangle': 'off',
-    'no-plusplus': 'off',
-    'no-console': 'off',
-    'no-param-reassign': 'off',
-
-    'import/prefer-default-export': 'off',
-    'import/no-default-export': 'error',
-
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: ['interface', 'typeAlias'],
-        format: ['PascalCase'],
-        prefix: ['I'],
-      },
-      {
-        selector: 'function',
-        format: ['camelCase'],
-      },
-      {
-        selector: 'variable',
-        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
-      },
-      {
-        selector: 'parameter',
-        format: ['camelCase'],
-        leadingUnderscore: 'allow',
-      },
-    ],
   },
   overrides: [
+    {
+      files: ['*.js', '*.ts', '*.jsx', '*.tsx'],
+      extends: [
+        'airbnb',
+        'airbnb/hooks',
+        'airbnb-typescript',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/errors',
+        'plugin:import/warnings',
+        'plugin:import/typescript',
+        'prettier',
+      ],
+      plugins: ['import'],
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        'no-underscore-dangle': 'off',
+        'no-plusplus': 'off',
+        'no-console': 'off',
+        'no-param-reassign': 'off',
+
+        'import/prefer-default-export': 'off',
+        'import/no-default-export': 'error',
+
+        '@typescript-eslint/naming-convention': [
+          'error',
+          {
+            selector: ['interface', 'typeAlias'],
+            format: ['PascalCase'],
+            prefix: ['I'],
+          },
+          {
+            selector: 'function',
+            format: ['camelCase'],
+          },
+          {
+            selector: 'variable',
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: 'parameter',
+            format: ['camelCase'],
+            leadingUnderscore: 'allow',
+          },
+        ],
+      },
+    },
     {
       files: ['stories/**/*', '.storybook/**/*'],
       rules: {
@@ -85,6 +87,32 @@ module.exports = {
         'react/button-has-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'react/prop-types': 'off',
+      },
+    },
+    {
+      files: ['*.md'],
+      extends: ['plugin:mdx/recommended', 'prettier'],
+      rules: {
+        'prettier/prettier': [
+          2,
+          {
+            // unnecessary if you're not using `eslint-plugin-prettier`, but required if you are
+            parser: 'markdown',
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.mdx'],
+
+      extends: ['plugin:mdx/recommended', 'prettier'],
+      parserOptions: {
+        ecmaVersion: 6,
+        sourceType: 'module',
+        ecmaFeatures: {
+          modules: true,
+          jsx: true,
+        },
       },
     },
   ],

@@ -13,7 +13,10 @@ export const Example: React.FC<{ initialCount: number }> = ({ initialCount = 5 }
 
   return (
     <div>
-      <div>Is counter updated: {isUpdated ? 'yes' : 'no'}</div>
+      <div>
+        Is counter updated:
+        {isUpdated ? 'yes' : 'no'}
+      </div>
       <button
         onClick={() => {
           setCount((i) => i + 1);

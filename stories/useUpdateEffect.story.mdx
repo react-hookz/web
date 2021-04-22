@@ -1,11 +1,13 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Example } from './useUpdateEffect.stories';
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useUpdateEffect.stories";
 
 <Meta title="Lifecycle/useUpdateEffect" component={Example} />
 
 # useUpdateEffect
 
 Effect hook that ignores the first render (not invoked on mount)
+
+#### Example
 
 <Canvas>
   <Story story={Example} />
@@ -19,7 +21,7 @@ function useUpdateEffect(effect: React.EffectCallback, deps?: React.DependencyLi
 
 #### Arguments
 
-| Argument Name | Type | Default | Description |
-| :-- | :-: | :- | :- |
-| _**`effect`**_ | `React.EffectCallback` | | Effect callback like for `React.useEffect` hook |
-| _**`deps`**_ | `React.DependencyList` | `undefined` | Dependencies list as for `React.useEffect` hook |
+| Argument Name  |          Type          | Default     | Description                                     |
+| :------------- | :--------------------: | :---------- | :---------------------------------------------- |
+| _**`effect`**_ | `React.EffectCallback` |             | Effect callback like for `React.useEffect` hook |
+| _**`deps`**_   | `React.DependencyList` | `undefined` | Dependencies list as for `React.useEffect` hook |

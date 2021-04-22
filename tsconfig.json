@@ -20,11 +20,12 @@
   "include": [
     "**.js",
     "**.ts",
+    "**.md",
+    ".storybook/*.js",
     "src/**/*.js",
     "src/**/*.ts",
     "tests/**/*.js",
     "tests/**/*.ts",
-    "stories/**/*.tsx",
-    ".storybook/*.js"
+    "stories/**/*.tsx"
   ]
 }
