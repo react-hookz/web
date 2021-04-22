@@ -25,4 +25,5 @@
   </p>
 </div>
 
-WIP
+- #### Lifecycle hooks
+  - `useUpdateEffect` - Effect hook that ignores the first render (not invoked on mount).
