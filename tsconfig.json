@@ -8,11 +8,14 @@
       "DOM"
     ],
     "allowJs": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react"
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "coverage",
+    "storybook-build"
   ],
   "include": [
     "**.js",
@@ -20,6 +23,8 @@
     "src/**/*.js",
     "src/**/*.ts",
     "tests/**/*.js",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "stories/**/*.tsx",
+    ".storybook/*.js"
   ]
 }

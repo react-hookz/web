@@ -23,12 +23,15 @@
     "build:tsc": "tsc -p ./tsconfig.build.json",
     "test": "jest",
     "test:coverage": "yarn test --coverage",
-    "lint": "eslint . --ext ts,js,tsx,jsx",
+    "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx",
     "lint:fix": "yarn lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook:watch": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -o ./storybook-build",
+    "storybook:deploy": "storybook-to-ghpages -s storybook:build"
   },
   "lint-staged": {
-    "*.[tj]s?x": "eslint --fix"
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "commitlint": {
     "extends": [
@@ -54,14 +57,22 @@
     "react-dom": "^16.8 || ^17"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.16",
     "@commitlint/config-conventional": "^12.1.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.2.1",
+    "@storybook/addon-essentials": "^6.2.8",
+    "@storybook/addon-links": "^6.2.8",
+    "@storybook/addons": "^6.2.8",
+    "@storybook/react": "^6.2.8",
+    "@storybook/storybook-deployer": "^2.8.7",
+    "@storybook/theming": "^6.2.8",
     "@testing-library/react-hooks": "^5.1.1",
     "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "babel-loader": "^8.2.2",
     "commitlint": "^12.1.1",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
