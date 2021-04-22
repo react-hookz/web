@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/react-hookz/web/compare/v1.6.1...v1.6.2) (2021-04-22)
+
+
+### Bug Fixes
+
+* add hook link to README.md ([368f1d9](https://github.com/react-hookz/web/commit/368f1d9b595eec113cadffa217ef01041a6a4c72))
+
 # [1.7.0](https://github.com/react-hookz/web/compare/v1.6.1...v1.7.0) (2021-04-22)
 
 
