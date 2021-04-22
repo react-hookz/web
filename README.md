@@ -28,4 +28,4 @@
 - #### Lifecycle hooks
   - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
     — Effect hook that ignores the first render (not invoked on mount).
-    [![](https://flat.badgen.net/badge/Demo/%F0%9F%9A%80/cyan)](https://react-hookz.github.io/web/?path=/story/lifecycle-useupdateeffect--example)
+    [![](https://img.shields.io/badge/DEMO-%F0%9F%9A%80-blueviolet?style=flat-square)](https://react-hookz.github.io/web/?path=/story/lifecycle-useupdateeffect--example)
