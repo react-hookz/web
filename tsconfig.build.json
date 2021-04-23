@@ -5,9 +5,7 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
-    "outDir": "./dist",
-    "declaration": true,
-    "sourceMap": true,
+    "outDir": "./cjs",
     "target": "ES5",
     "module": "CommonJS",
     "moduleResolution": "Node"

@@ -1,2 +1,5 @@
 *
-!/dist
+!/cjs
+!/esm
+!/esnext
+!/types

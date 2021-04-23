@@ -1,29 +1,21 @@
-<div align="center">
-  <h1><img src=".github/logo.png" alt="@react-hookz/web"></h1>
-  <p>
-    <a href="https://www.npmjs.com/package/@react-hookz/web">
-      <img src="https://flat.badgen.net/npm/v/@react-hookz/web" alt="NPM Version">
-    </a>
-    <a href="https://www.npmjs.com/package/@react-hookz/web">
-      <img src="https://flat.badgen.net/npm/dm/@react-hookz/web" alt="NPM Downloads">
-    </a>
-    <a href="https://www.npmjs.com/package/@react-hookz/web">
-      <img src="https://flat.badgen.net/npm/dependents/@react-hookz/web" alt="NPM Dependents">
-    </a>
-    <a href="https://github.com/react-hookz/web/actions">
-      <img src="https://img.shields.io/github/workflow/status/react-hookz/web/CI?style=flat-square" alt="Build">
-    </a>
-    <a href="https://app.codecov.io/gh/react-hookz/web">
-      <img src="https://flat.badgen.net/codecov/c/github/react-hookz/web" alt="Coverage">
-    </a>
-    <a href="https://bundlephobia.com/result?p=@react-hookz/web">
-      <img src="https://flat.badgen.net/bundlephobia/minzip/@react-hookz/web" alt="Minified bundle size">
-    </a>
-    <a href="https://bundlephobia.com/result?p=@react-hookz/web">
-      <img src="https://flat.badgen.net/bundlephobia/tree-shaking/@react-hookz/web" alt="Tree shaking">
-    </a>
-  </p>
-</div>
+# ![@react-hookz/web](.github/logo.png)
+
+React hooks done right, for browser and SSR.
+
+[![NPM Version](https://flat.badgen.net/npm/v/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
+[![NPM Downloads](https://flat.badgen.net/npm/dm/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
+[![NPM Dependents](https://flat.badgen.net/npm/dependents/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
+[![Build](https://img.shields.io/github/workflow/status/react-hookz/web/CI?style=flat-square)](https://github.com/react-hookz/web/actions)
+[![Coverage](https://flat.badgen.net/codecov/c/github/react-hookz/web)](https://app.codecov.io/gh/react-hookz/web)
+
+`@react-hookz/web` is a library of general-purpose React hooks built with care and SSR compatibility
+in mind.
+
+This package provides three levels of compilation:
+
+1. **Main**, the `/cjs` folder — CommonJS modules, with ES5 lang level.
+2. **ESM**, the `/esm` folder — it is ES modules, with ES5 lang level.
+3. **ESNext**, the `/esnext` folder — it is ES modules, with ESNext lang level.
 
 - #### Lifecycle hooks
   - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
