@@ -26,8 +26,8 @@
     "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md,mdx",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install",
-    "storybook:watch": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -o ./storybook-build",
+    "storybook:watch": "start-storybook -p 6006 --docs",
+    "storybook:build": "build-storybook --docs -o ./storybook-build",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build"
   },
   "lint-staged": {
