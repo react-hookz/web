@@ -30,7 +30,14 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: "Lint"
-        run: yarn lint:fix
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: true
+          eslint_args: "./.storybook"
+          eslint_extensions: "ts,js,tsx,jsx,md,mdx"
+          auto_fix: true
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          commit_message: 'fix: lint issues auto-fix with ${linter}'
 
       - name: "Build"
         run: yarn build

@@ -2,7 +2,17 @@ const PRINT_WIDTH = 100;
 
 module.exports = {
   root: true,
-  ignorePatterns: ['node_modules', 'coverage', 'storybook-build', 'cjs', 'esm', 'esnext', 'types'],
+
+  ignorePatterns: [
+    'node_modules',
+    'coverage',
+    'storybook-build',
+    'cjs',
+    'esm',
+    'esnext',
+    'types',
+    '.github/workflows',
+  ],
 
   plugins: ['prettier'],
 
