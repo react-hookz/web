@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/react-hookz/web/compare/v1.7.0...v1.7.1) (2021-04-23)
+
+
+### Bug Fixes
+
+* add ci yarn caching layer ([5aa8ae1](https://github.com/react-hookz/web/commit/5aa8ae199e72a88d17809cf5cc5023c7344ed025))
+
 # [1.7.0](https://github.com/react-hookz/web/compare/v1.6.2...v1.7.0) (2021-04-23)
 
 
