@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useFirstMountState.stories";
+
+<Meta title="Lifecycle/useFirstMountState" component={Example} />
+
+# useFirstMountState
+
+Return boolean that is `true` only on first render.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+function useFirstMountState(): boolean;
+```
