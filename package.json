@@ -62,7 +62,7 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.2.1",
-    "@storybook/addon-essentials": "^6.2.8",
+    "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@storybook/addons": "^6.2.8",
     "@storybook/react": "^6.2.8",
