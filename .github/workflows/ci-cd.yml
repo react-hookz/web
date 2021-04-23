@@ -73,7 +73,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: "master"
 
       - uses: c-hive/gha-yarn-cache@v1
 
