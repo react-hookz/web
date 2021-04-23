@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/react-hookz/web/compare/v1.6.2...v1.7.0) (2021-04-23)
+
+
+### Features
+
+* package now has /cjs, /esm, /esnext distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
+
 ## [1.6.2](https://github.com/react-hookz/web/compare/v1.6.1...v1.6.2) (2021-04-22)
 
 ### Bug Fixes
