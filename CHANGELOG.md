@@ -1,23 +1,20 @@
 ## [1.7.1](https://github.com/react-hookz/web/compare/v1.7.0...v1.7.1) (2021-04-23)
 
-
 ### Bug Fixes
 
-* add ci yarn caching layer ([5aa8ae1](https://github.com/react-hookz/web/commit/5aa8ae199e72a88d17809cf5cc5023c7344ed025))
+- add ci yarn caching layer ([5aa8ae1](https://github.com/react-hookz/web/commit/5aa8ae199e72a88d17809cf5cc5023c7344ed025))
 
 # [1.7.0](https://github.com/react-hookz/web/compare/v1.6.2...v1.7.0) (2021-04-23)
 
-
 ### Bug Fixes
 
-* add `md` and `mdx` files to lint-staged hook glob ([d1d3d72](https://github.com/react-hookz/web/commit/d1d3d7200313c023f874e74720f9d787a9321d78))
-* add readme clarification about different lang level usages ([0632992](https://github.com/react-hookz/web/commit/0632992a39f18e99ca4bd9929d6bdcdb236e9182))
-* exclude new distributed directories from eslint and tsconfig ([058960e](https://github.com/react-hookz/web/commit/058960e9eb60893ce94504a3aac68d4ec1e131a4))
-
+- add `md` and `mdx` files to lint-staged hook glob ([d1d3d72](https://github.com/react-hookz/web/commit/d1d3d7200313c023f874e74720f9d787a9321d78))
+- add readme clarification about different lang level usages ([0632992](https://github.com/react-hookz/web/commit/0632992a39f18e99ca4bd9929d6bdcdb236e9182))
+- exclude new distributed directories from eslint and tsconfig ([058960e](https://github.com/react-hookz/web/commit/058960e9eb60893ce94504a3aac68d4ec1e131a4))
 
 ### Features
 
-* package now has /cjs, /esm, /esnext distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
+- package now has /cjs, /esm, /esnext distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
 
 # [1.7.0](https://github.com/react-hookz/web/compare/v1.6.2...v1.7.0) (2021-04-23)
 
