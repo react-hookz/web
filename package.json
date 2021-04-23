@@ -45,7 +45,7 @@
     "storybook:deploy": "storybook-to-ghpages -s storybook:build"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "*.{js,jsx,ts,tsx,md,mdx}": "eslint --fix"
   },
   "commitlint": {
     "extends": [
