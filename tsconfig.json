@@ -13,7 +13,10 @@
   },
   "exclude": [
     "node_modules",
-    "dist",
+    "cjs",
+    "esm",
+    "esnext",
+    "types",
     "coverage",
     "storybook-build"
   ],

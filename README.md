@@ -40,11 +40,11 @@ actually there is more, but in common it is three):
 
 ```ts
 // in case you need cjs modules
-import { useMountEffect } from '@react-hookz/web';
+import { useMountEffect } from "@react-hookz/web";
 // in case you need esm modules
-import { useMountEffect } from '@react-hookz/web/esm';
+import { useMountEffect } from "@react-hookz/web/esm";
 // in case you want all the recent ES features
-import { useMountEffect } from '@react-hookz/web/esnext';
+import { useMountEffect } from "@react-hookz/web/esnext";
 ```
 
 ## Hooks list
