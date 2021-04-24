@@ -10,7 +10,6 @@ module.exports = {
     'cjs',
     'esm',
     'esnext',
-    'types',
     '.github/workflows',
     '.husky',
   ],

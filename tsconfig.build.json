@@ -6,6 +6,7 @@
   ],
   "compilerOptions": {
     "outDir": "./cjs",
+    "declaration": true,
     "target": "ES5",
     "module": "CommonJS",
     "moduleResolution": "Node"

@@ -23,8 +23,7 @@
   "files": [
     "cjs",
     "esm",
-    "esnext",
-    "types"
+    "esnext"
   ],
   "main": "cjs/index.js",
   "types": "types/index.d.ts",
@@ -34,7 +33,7 @@
     "build:cleanup": "rimraf ./cjs ./esm ./esnext ./types",
     "build:cjs": "tsc -p ./tsconfig.build.json --module CommonJS --target ES5 --outDir ./cjs",
     "build:esm": "tsc -p ./tsconfig.build.json --module ES6 --target ES5 --outDir ./esm",
-    "build:esnext": "tsc -p ./tsconfig.build.json --module ESNext --target ESNext --outDir ./esnext --declaration --declarationDir ./types",
+    "build:esnext": "tsc -p ./tsconfig.build.json --module ESNext --target ESNext --outDir ./esnext",
     "test": "jest",
     "test:coverage": "yarn test --coverage",
     "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md,mdx",

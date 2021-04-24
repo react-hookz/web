@@ -16,7 +16,6 @@
     "cjs",
     "esm",
     "esnext",
-    "types",
     "coverage",
     "storybook-build"
   ],
