@@ -6,7 +6,3 @@ node_modules
 /esm
 /esnext
 /types
-
-# husky ruins linting autofixes wince it is always touching /.husky/.gitignore on preinstall
-/.husky/.gitignore
-/.husky/_
