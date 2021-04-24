@@ -1,3 +1,11 @@
+## [1.7.2](https://github.com/react-hookz/web/compare/v1.7.1...v1.7.2) (2021-04-24)
+
+
+### Bug Fixes
+
+* lint issues auto-fix with ESLint ([11b9a07](https://github.com/react-hookz/web/commit/11b9a07fe6f23a305a0581d0e05bf93f55ca53a2))
+* replace husky v6 with husky v4 as v5+ ruins CI lint autofix ([a50955a](https://github.com/react-hookz/web/commit/a50955a44d9fe0d7a90cc481f7d0f2855f708d9a))
+
 ## [1.7.1](https://github.com/react-hookz/web/compare/v1.7.0...v1.7.1) (2021-04-23)
 
 ### Bug Fixes
