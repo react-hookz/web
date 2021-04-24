@@ -1,3 +1,11 @@
+## [1.7.3](https://github.com/react-hookz/web/compare/v1.7.2...v1.7.3) (2021-04-24)
+
+
+### Bug Fixes
+
+* better not to split declarations from files ([c6a2d92](https://github.com/react-hookz/web/commit/c6a2d9210e7886f490973994da12c3bb88c09020))
+* lint issues auto-fix with ESLint ([63bf8e2](https://github.com/react-hookz/web/commit/63bf8e26878a705e632c185f3bf6a2232633be19))
+
 ## [1.7.2](https://github.com/react-hookz/web/compare/v1.7.1...v1.7.2) (2021-04-24)
 
 ### Bug Fixes
