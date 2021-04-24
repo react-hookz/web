@@ -12,6 +12,7 @@ module.exports = {
     'esnext',
     'types',
     '.github/workflows',
+    '.husky',
   ],
 
   plugins: ['prettier'],
