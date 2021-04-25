@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/react-hookz/web/compare/v1.7.3...v1.7.4) (2021-04-25)
+
+
+### Bug Fixes
+
+* lint issues auto-fix with ESLint ([9f9e53e](https://github.com/react-hookz/web/commit/9f9e53edb87065b9a2bbbc2d851d9f5d1ed67aa3))
+
 ## [1.7.3](https://github.com/react-hookz/web/compare/v1.7.2...v1.7.3) (2021-04-24)
 
 ### Bug Fixes
