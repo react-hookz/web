@@ -22,9 +22,9 @@ npm i @react-hookz/web
 yarn add @react-hookz/web
 ```
 
-As hooks been introduced to the world in React 16.8 `@react-hookz/web` has requires, you gessed
-it, `react` and `react-dom` 16.8+.  
-Also, as React does not support IE, `@react-hookz/web` does not do that either. You'll have to
+As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you gessed
+it - `react` and `react-dom` 16.8+.  
+Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
 transpile your `node-modules` in order to run in IE.
 
 ## Usage
@@ -35,8 +35,8 @@ This package provides three levels of compilation:
 2. **ESM**, the `/esm` folder — it is ES modules, with ES5 lang level.
 3. **ESNext**, the `/esnext` folder — it is ES modules, with ESNext lang level.
 
-So, if you need `useMountEffect` hook, depending on your needs, you can import in three ways (
-actually there is more, but in common it is three):
+So, if you need the `useMountEffect` hook, depending on your needs, you can import in three ways
+(there are actually more, but these are the three most common):
 
 ```ts
 // in case you need cjs modules
