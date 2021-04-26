@@ -35,7 +35,7 @@ jobs:
           eslint: true
           eslint_args: "./.storybook"
           eslint_extensions: "ts,js,tsx,jsx,md,mdx"
-          auto_fix: true
+          auto_fix: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
           github_token: ${{secrets.GITHUB_TOKEN}}
           commit_message: 'fix: lint issues auto-fix with ${linter}'
 
