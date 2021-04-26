@@ -1,0 +1,27 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useMountEffect.stories";
+
+<Meta title="Lifecycle/useMountEffect" component={Example} />
+
+# useMountEffect
+
+Run effect only when component is first mounted.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+function useMountEffect(effect: React.EffectCallback): void;
+```
+
+#### Arguments
+
+| Argument Name  |          Type          | Default     | Description                                     |
+| :------------- | :--------------------: | :---------- | :---------------------------------------------- |
+| _**`effect`**_ | `React.EffectCallback` |             | Effect callback like for `React.useEffect` hook |
+
