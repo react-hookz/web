@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useRef } from 'react';
 import { useRerender } from '../src';
 
-export const Example: React.FC<{ initialCount: number }> = () => {
+export const Example: React.FC = () => {
   const count = useRef(0);
   const rerender = useRerender();
 

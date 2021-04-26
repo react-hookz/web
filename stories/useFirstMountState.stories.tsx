@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useFirstMountState, useRerender } from '../src';
 
-export const Example: React.FC<{ initialCount: number }> = () => {
+export const Example: React.FC = () => {
   const isFirstMount = useFirstMountState();
   const rerender = useRerender();
 

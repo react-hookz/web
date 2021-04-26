@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useUnmountEffect.stories";
+
+<Meta title="Lifecycle/useUnmountEffect" component={Example} />
+
+# useUnmountEffect
+
+Run effect only when component is unmounted.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+function useUnmountEffect(effect: CallableFunction): void;
+```
+
+#### Arguments
+
+| Argument Name  |        Type        | Default | Description                |
+| :------------- | :----------------: | :------ | :------------------------- |
+| _**`effect`**_ | `CallableFunction` |         | Effector to run on unmount |
