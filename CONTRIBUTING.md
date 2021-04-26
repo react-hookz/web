@@ -57,9 +57,9 @@ first.
    - Components representing hook functionality should be placed in file named after the hook
      with `.stories` suffix.  
      4ex: `useFirstMountState.stories.tsx`.
-   - Preferred format to write the docs is MDX.
-   - Add docs link and hook summary to the `README.md`.
-5. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our standards.
+   - Preferred format to write the docs is MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction).
+5. Add docs link and hook summary to the `README.md`.
+6. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our standards.
 
 ## Committing
 

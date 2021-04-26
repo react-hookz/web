@@ -5,7 +5,7 @@ import { Example } from "./useRerender.stories";
 
 # useRerender
 
-Return callback that re-renders component.
+Return callback function that re-renders component.
 
 #### Example
 
@@ -16,5 +16,9 @@ Return callback that re-renders component.
 ## Reference
 
 ```ts
-function useRerender(effect: React.EffectCallback): function;
+function useRerender(): () => void;
 ```
+
+#### Return
+
+Function that re-renders component when called.

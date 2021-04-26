@@ -21,6 +21,5 @@ function useMountEffect(effect: CallableFunction): void;
 
 #### Arguments
 
-| Argument Name  |        Type        | Default | Description                                     |
-| :------------- | :----------------: | :------ | :---------------------------------------------- |
-| _**`effect`**_ | `CallableFunction` |         | Effect callback like for `React.useEffect` hook |
+- _**effect**_ _`CallableFunction`_ - Effector to call when component mounted. Can be a function returning any value.
+  In case the need of cleanup action - use common `useEffect` with empty deps array.

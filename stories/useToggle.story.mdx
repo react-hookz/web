@@ -23,6 +23,12 @@ function useToggle(
 
 #### Arguments
 
-| Argument Name        |           Type           | Default | Description          |
-| :------------------- | :----------------------: | :------ | :------------------- |
-| _**`initialState`**_ | `IInitialState<boolean>` | false   | Initial toggle state |
+- _**initialState**_ _`IInitialState<boolean>`_ - initial state or initial state setter as for `useState`
+
+#### Return
+
+Returns array alike `useState` does.
+
+- _**[0]**_ _`boolean`_ - current state
+- _**[1]**_ _`(nextState?: INewState<boolean>) => void`_ - state setter as for `useState`.  
+  In case called without arguments will change state to opposite.
