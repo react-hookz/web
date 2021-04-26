@@ -16,12 +16,11 @@ Run effect only when component is first mounted.
 ## Reference
 
 ```ts
-function useMountEffect(effect: React.EffectCallback): void;
+function useMountEffect(effect: CallableFunction): void;
 ```
 
 #### Arguments
 
-| Argument Name  |          Type          | Default     | Description                                     |
-| :------------- | :--------------------: | :---------- | :---------------------------------------------- |
-| _**`effect`**_ | `React.EffectCallback` |             | Effect callback like for `React.useEffect` hook |
-
+| Argument Name  |        Type        | Default | Description                                     |
+| :------------- | :----------------: | :------ | :---------------------------------------------- |
+| _**`effect`**_ | `CallableFunction` |         | Effect callback like for `React.useEffect` hook |
