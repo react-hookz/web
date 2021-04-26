@@ -38,8 +38,8 @@
     "test:coverage": "yarn test --coverage",
     "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md,mdx",
     "lint:fix": "yarn lint --fix",
-    "storybook:watch": "start-storybook -p 6006 --docs",
-    "storybook:build": "build-storybook --docs -o ./storybook-build",
+    "storybook:watch": "start-storybook -p 6006 --docs -s ./.storybook/public --no-manager-cache",
+    "storybook:build": "build-storybook --docs -o ./storybook-build -s ./.storybook/public",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build"
   },
   "husky": {
