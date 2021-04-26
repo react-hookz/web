@@ -10,7 +10,7 @@ Like `useState`, but can only become `true` or `false`.
 #### Example
 
 <Canvas>
-  <Story story={Example} />
+  <Story story={Example} inline />
 </Canvas>
 
 ## Reference
@@ -30,5 +30,5 @@ function useToggle(
 Returns array alike `useState` does.
 
 - _**[0]**_ _`boolean`_ - current state
-- _**[1]**_ _`(nextState?: INewState<boolean>) => void`_ - state setter as for `useState`.  
+- _**[1]**_ _`(nextState?: INewState<boolean>) => void`_ - state setter as for `useState`.
   In case called without arguments will change state to opposite.
