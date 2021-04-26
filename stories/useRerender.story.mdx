@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useRerender.stories";
+
+<Meta title="Lifecycle/useRerender" component={Example} />
+
+# useRerender
+
+Return callback that re-renders component.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+function useRerender(effect: React.EffectCallback): function;
+```
