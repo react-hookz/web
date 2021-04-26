@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { useFirstMountState, useRerender } from '../src';
+import { useState } from 'react';
+import { useRerender, useMountEffect } from '../src';
 
 export const Example: React.FC = () => {
-  const isFirstMount = useFirstMountState();
+  const [count, setCount] = useState(0);
   const rerender = useRerender();
+
+  useMountEffect(() => {
+    setCount((i) => i + 1);
+  });
 
   return (
     <div>
-      <div>
-        {isFirstMount
-          ? 'This component just mounted'
-          : 'Not first mount, component already been updated'}
-      </div>
+      <div>useMountEffect has run {count} time(s)</div>
       <button
         onClick={() => {
           rerender();

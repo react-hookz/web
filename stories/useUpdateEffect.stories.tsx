@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useRerender, useUpdateEffect } from '../src';
 
-export const Example: React.FC<{ initialCount: number }> = () => {
+export const Example: React.FC = () => {
   const [count, setCount] = useState(1);
   const [isUpdated, setUpdated] = useState(false);
   const rerender = useRerender();

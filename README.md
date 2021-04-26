@@ -52,5 +52,13 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 - #### Lifecycle hooks
   - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
     — Return boolean that is `true` only on first render.
+  - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect)
+    — Run effect only when component is first mounted.
+  - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender)
+    — Return callback that re-renders component.
+  - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle)
+    — Like `useState`, but can only become `true` or `false`.
+  - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect)
+    — Run effect only when component is unmounted.
   - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect)
     — Effect hook that ignores the first render (not invoked on mount).
