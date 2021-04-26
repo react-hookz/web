@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useToggle.stories";
+
+<Meta title="Lifecycle/useToggle" component={Example} />
+
+# useToggle
+
+Like `useState`, but can only become `true` or `false`.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+function useToggle(
+  initialState: IInitialState<boolean> = false
+): [boolean, (nextState?: INewState<boolean>) => void];
+```
+
+#### Arguments
+
+| Argument Name        |           Type           | Default | Description          |
+| :------------------- | :----------------------: | :------ | :------------------- |
+| _**`initialState`**_ | `IInitialState<boolean>` | false   | Initial toggle state |
