@@ -1,8 +1,17 @@
 version: 2
 updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "00:00"
+      timezone: "Etc/UTC"
+
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: daily
-    open-pull-requests-limit: 10
+      time: "00:00"
+      timezone: "Etc/UTC"
+    rebase-strategy: 'auto'
 
