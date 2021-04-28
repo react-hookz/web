@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/react-hookz/web/compare/v1.9.0...v1.9.1) (2021-04-28)
+
+
+### Bug Fixes
+
+* default useUnmountEffect example to false ([#27](https://github.com/react-hookz/web/issues/27)) ([2ed0aa3](https://github.com/react-hookz/web/commit/2ed0aa382f2e6f597192ad323b1ba24121b10ab2))
+
 # [1.9.0](https://github.com/react-hookz/web/compare/v1.8.0...v1.9.0) (2021-04-28)
 
 
