@@ -74,7 +74,12 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: "Test"
-        run: yarn test:coverage
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          test-command: yarn test:coverage
+          coverage-comment: false
 
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v1

@@ -1,9 +1,3 @@
-const reporters = ['default'];
-
-if ((process.env.CI ?? null) === 'true') {
-  reporters.push('jest-github-actions-reporter');
-}
-
 module.exports = {
   projects: [
     {
@@ -22,5 +16,4 @@ module.exports = {
   coverageDirectory: './coverage',
   collectCoverage: false,
   collectCoverageFrom: ['src/**/*.ts'],
-  reporters,
 };
