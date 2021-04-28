@@ -63,3 +63,5 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 - #### State
   - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle)
     — Like `useState`, but can only become `true` or `false`.
+  - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious)
+    — Returns the value passed to the hook on previous render.
