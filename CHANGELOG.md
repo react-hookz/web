@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/react-hookz/web/compare/v1.9.1...v1.10.0) (2021-04-28)
+
+
+### Features
+
+* new hooks, useConditionalEffect and useConditionalUpdateEffect ([#26](https://github.com/react-hookz/web/issues/26)) ([eb7f0a5](https://github.com/react-hookz/web/commit/eb7f0a525d00e9b66955177599a4a77ae1647867))
+
 ## [1.9.1](https://github.com/react-hookz/web/compare/v1.9.0...v1.9.1) (2021-04-28)
 
 
