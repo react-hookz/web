@@ -6,6 +6,7 @@
 
 ## Checklist
 
+- [ ] Have you read [contribution guideline](../../CONTRIBUTING.md)?
 - [ ] Have you added an explanation of what your changes do and why you'd like us to include them?
 - [ ] Is there an existing issue for this PR?
   - _link issue here_

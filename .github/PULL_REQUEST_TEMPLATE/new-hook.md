@@ -2,6 +2,7 @@
 
 ## Checklist
 
+- [ ] Have you read [contribution guideline](../../CONTRIBUTING.md)?
 - [ ] Does the code have comments in hard-to-understand areas?
 - [ ] Is there an existing issue for this PR?
   - _link issue here_
