@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/react-hookz/web/compare/v1.7.5...v1.8.0) (2021-04-28)
+
+
+### Features
+
+* new hook usePrevious ([#25](https://github.com/react-hookz/web/issues/25)) ([132032a](https://github.com/react-hookz/web/commit/132032a6193a71e793f320233774d46d9613bc36))
+
 ## [1.7.5](https://github.com/react-hookz/web/compare/v1.7.4...v1.7.5) (2021-04-28)
 
 
