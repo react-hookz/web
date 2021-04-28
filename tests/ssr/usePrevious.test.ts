@@ -15,19 +15,4 @@ describe('usePrevious', () => {
 
     expect(result.current).toBeUndefined();
   });
-
-  it('should return previously passed value on rerender', () => {
-    const { result, rerender } = renderHook(({ state }) => usePrevious(state), {
-      initialProps: { state: 0 },
-    });
-
-    expect(result.current).toBeUndefined();
-    rerender({ state: 1 });
-    expect(result.current).toBe(0);
-    rerender({ state: 5 });
-    expect(result.current).toBe(1);
-    rerender({ state: 10 });
-    expect(result.current).toBe(5);
-    rerender({ state: 25 });
-  });
 });
