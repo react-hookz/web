@@ -63,9 +63,9 @@ import { useMountEffect } from "@react-hookz/web/esnext";
   - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect)
     — Effect hook that ignores the first render (not invoked on mount).
   - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect)
-    — Alike `useEffect` but callback invoked only if conditions match predicate.
+    — Like `useEffect` but callback invoked only if conditions match predicate.
   - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect)
-    — Alike `useUpdateEffect` but callback invoked only if conditions match predicate.
+    — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
 - #### State
   - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle)
     — Like `useState`, but can only become `true` or `false`.

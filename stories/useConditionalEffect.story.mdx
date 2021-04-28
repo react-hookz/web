@@ -5,10 +5,10 @@ import { Example } from "./useConditionalEffect.stories";
 
 # useConditionalEffect
 
-Alike `useEffect` but callback invoked only if conditions match predicate. By default, predicate
+Like `useEffect` but callback invoked only if conditions match predicate. By default, predicate
 matches if all conditions are truthy.
 
-As `useEffect`, it performs conditions match on first mount.
+Like `useEffect`, it performs conditions match on first mount.
 
 #### Example
 
@@ -33,6 +33,6 @@ function useConditionalEffect<T extends ReadonlyArray<any>>(
 #### Arguments
 
 - _**callback**_ _`React.EffectCallback`_ - Effect callback like for `React.useEffect` hook
-- _**conditions**_ _`ReadonlyArray<any>`_ - Conditions that matched against predicate
+- _**conditions**_ _`ReadonlyArray<any>`_ - Conditions that are matched against predicate
 - _**predicate**_ _`IUseConditionalEffectPredicate<ReadonlyArray<any>>`_ - Predicate that matches conditions.
   By default, it is all-truthy provision, meaning that all conditions should be truthy.

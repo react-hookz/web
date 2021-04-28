@@ -7,7 +7,7 @@ export type IUseConditionalEffectPredicate<Cond extends ReadonlyArray<any>> = (
 ) => boolean;
 
 /**
- * Alike `useEffect` but callback invoked only if conditions match predicate.
+ * Like `useEffect` but callback invoked only if conditions match predicate.
  *
  * @param callback Callback to invoke
  * @param conditions Conditions array
@@ -30,7 +30,7 @@ export function useConditionalEffect<T extends ReadonlyArray<any>>(
     deps.current = {};
   }
 
-  // we cant avoid on-mount invocations so slip noop callback for the cases we dont need invocation
+  // we can't avoid on-mount invocations so slip noop callback for the cases we dont need invocation
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(shouldInvoke ? callback : noop, [deps.current]);
 }
