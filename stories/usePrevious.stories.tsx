@@ -7,7 +7,7 @@ export const Example: React.FC = () => {
 
   return (
     <div>
-      <span>Curren value: {val}</span>{' '}
+      <span>Current value: {val}</span>{' '}
       <button
         onClick={() => {
           setVal((v) => v + 1);
