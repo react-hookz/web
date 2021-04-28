@@ -29,5 +29,6 @@ describe('usePrevious', () => {
     rerender({ state: 10 });
     expect(result.current).toBe(5);
     rerender({ state: 25 });
+    expect(result.current).toBe(10);
   });
 });
