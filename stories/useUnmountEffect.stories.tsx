@@ -9,7 +9,7 @@ const ToggledComponent: React.FC = () => {
 };
 
 export const Example: React.FC = () => {
-  const [isToggled, toggle] = useToggle(true);
+  const [isToggled, toggle] = useToggle(false);
 
   return (
     <div>
