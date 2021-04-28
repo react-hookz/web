@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/react-hookz/web/compare/v1.7.4...v1.7.5) (2021-04-28)
+
+
+### Bug Fixes
+
+* rollback husky version and add it to dependabot ignore ([099ea5b](https://github.com/react-hookz/web/commit/099ea5bb95208951e98ea6c894ce135a7b149668))
+
 ## [1.7.4](https://github.com/react-hookz/web/compare/v1.7.3...v1.7.4) (2021-04-25)
 
 
