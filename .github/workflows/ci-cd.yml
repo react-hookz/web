@@ -54,6 +54,28 @@ jobs:
       - name: "Build"
         run: yarn build
 
+  storybook-build:
+    name: "Storybook Build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: c-hive/gha-yarn-cache@v1
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15
+
+      - name: "Install dependencies"
+        run: yarn install --frozen-lockfile
+
+      - name: "Storybook Build"
+        run: yarn storybook:build
+
   test:
     name: "Test"
     runs-on: ubuntu-latest
@@ -134,7 +156,7 @@ jobs:
   deploy-gh-pages:
     name: "Deploy GH Pages"
     runs-on: ubuntu-latest
-    needs: "semantic-release"
+    needs: [ "semantic-release", "storybook-build" ]
     if: needs.semantic-release.outputs.new-release-published == 'true' || github.event_name == 'workflow_dispatch'
     steps:
       - name: "Checkout"
