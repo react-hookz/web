@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef } from 'react';
  * is handy for the cases when you have to detect component mount state within
  * async effects.
  */
-export function useMountedGetter(): () => boolean {
+export function useIsMounted(): () => boolean {
   const isMounted = useRef(false);
   const get = useCallback(() => isMounted.current, []);
 

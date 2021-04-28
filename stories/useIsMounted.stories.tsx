@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useMountedGetter, useMountEffect, useToggle } from '../src';
+import { useIsMounted, useMountEffect, useToggle } from '../src';
 
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(true);
 
   const ToggledComponent: React.FC = () => {
-    const isMounted = useMountedGetter();
+    const isMounted = useIsMounted();
 
     // As you can see, below effect has no dependencies, it will be executed
     // anyway, but alert will be displayed only in case component persist mounted

@@ -1,20 +1,20 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useMountedGetter } from '../../src';
+import { useIsMounted } from '../../src';
 
 describe('useMountedGetter', () => {
   it('should be defined', () => {
-    expect(useMountedGetter).toBeDefined();
+    expect(useIsMounted).toBeDefined();
   });
 
   it('should return a function', () => {
-    const { result } = renderHook(() => useMountedGetter());
+    const { result } = renderHook(() => useIsMounted());
 
     expect(result.current).toBeInstanceOf(Function);
   });
 
   it('should return false within first render', () => {
     const { result } = renderHook(() => {
-      const isMounted = useMountedGetter();
+      const isMounted = useIsMounted();
       return isMounted();
     });
 
@@ -22,13 +22,13 @@ describe('useMountedGetter', () => {
   });
 
   it('should return true after mount', () => {
-    const { result } = renderHook(() => useMountedGetter());
+    const { result } = renderHook(() => useIsMounted());
 
     expect(result.current()).toBe(true);
   });
 
   it('should return same function on each render', () => {
-    const { result, rerender } = renderHook(() => useMountedGetter());
+    const { result, rerender } = renderHook(() => useIsMounted());
 
     const fn1 = result.current;
     rerender();
@@ -41,7 +41,7 @@ describe('useMountedGetter', () => {
   });
 
   it('should return false after component unmount', () => {
-    const { result, unmount } = renderHook(() => useMountedGetter());
+    const { result, unmount } = renderHook(() => useIsMounted());
 
     expect(result.current()).toBe(true);
 
