@@ -1,5 +1,6 @@
 import { DependencyList, EffectCallback, useEffect } from 'react';
 import { useFirstMountState } from './useFirstMountState';
+import { noop } from './util/const';
 
 /**
  * Effect hook that ignores the first render (not invoked on mount).
@@ -10,11 +11,6 @@ import { useFirstMountState } from './useFirstMountState';
 export function useUpdateEffect(effect: EffectCallback, deps?: DependencyList): void {
   const isFirstMount = useFirstMountState();
 
-  // eslint-disable-next-line consistent-return
-  useEffect(() => {
-    if (!isFirstMount) {
-      return effect();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(isFirstMount ? noop : effect, deps);
 }

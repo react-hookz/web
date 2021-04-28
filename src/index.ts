@@ -6,3 +6,5 @@ export { useToggle } from './useToggle';
 export { useRerender } from './useRerender';
 export { usePrevious } from './usePrevious';
 export { useIsMounted } from './useIsMounted';
+export { useConditionalEffect } from './useConditionalEffect';
+export { useConditionalUpdateEffect } from './useConditionalUpdateEffect';
