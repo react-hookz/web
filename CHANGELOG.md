@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/react-hookz/web/compare/v1.8.0...v1.9.0) (2021-04-28)
+
+
+### Features
+
+* new hook useIsMounted ([#24](https://github.com/react-hookz/web/issues/24)) ([7ad0d7e](https://github.com/react-hookz/web/commit/7ad0d7ed044463ef82987c44ae72f34ec4cd717a))
+
 # [1.8.0](https://github.com/react-hookz/web/compare/v1.7.5...v1.8.0) (2021-04-28)
 
 
