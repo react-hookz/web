@@ -1,0 +1,25 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Example } from "./useIsMounted.stories";
+
+<Meta title="Lifecycle/useIsMounted" component={Example} />
+
+# useMountedGetter
+
+Returns function that yields current mount state.
+This hook is handy for the cases when you have to detect component mount state within async effects.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useIsMounted(): () => boolean;
+```
+
+#### Return
+
+Function that yields `true` only in case component is mounted.

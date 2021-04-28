@@ -54,6 +54,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Return boolean that is `true` only on first render.
   - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect)
     — Run effect only when component is first mounted.
+  - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted)
+    — Returns function that yields current mount state.
   - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender)
     — Return callback that re-renders component.
   - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect)
