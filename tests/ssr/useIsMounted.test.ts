@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks/server';
 import { useIsMounted } from '../../src';
 
-describe('useMountedGetter', () => {
+describe('useIsMounted', () => {
   it('should be defined', () => {
     expect(useIsMounted).toBeDefined();
   });
