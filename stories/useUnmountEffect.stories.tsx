@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useUnmountEffect, useToggle } from '../src';
-
-const ToggledComponent: React.FC = () => {
-  // eslint-disable-next-line no-alert
-  useUnmountEffect(() => alert('UNMOUNTED'));
-
-  return <p>Unmount me</p>;
-};
+import { useToggle, useUnmountEffect } from '../src';
 
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(false);
+
+  const ToggledComponent: React.FC = () => {
+    // eslint-disable-next-line no-alert
+    useUnmountEffect(() => alert('UNMOUNTED'));
+
+    return <p>Unmount me</p>;
+  };
 
   return (
     <div>

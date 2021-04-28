@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useIsMounted, useMountEffect, useToggle } from '../src';
 
 export const Example: React.FC = () => {
-  const [isToggled, toggle] = useToggle(true);
+  const [isToggled, toggle] = useToggle(false);
 
   const ToggledComponent: React.FC = () => {
     const isMounted = useIsMounted();
@@ -29,6 +29,11 @@ export const Example: React.FC = () => {
 
   return (
     <div>
+      {!isToggled && (
+        <div>
+          As example component displays alert without interaction - it is initially unmounted.
+        </div>
+      )}
       <button
         onClick={() => {
           toggle();
