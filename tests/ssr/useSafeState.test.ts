@@ -1,0 +1,18 @@
+import { renderHook } from '@testing-library/react-hooks/server';
+import { useSafeState } from '../../src';
+
+describe('useSafeState', () => {
+  it('should be defined', () => {
+    expect(useSafeState).toBeDefined();
+  });
+
+  it('should render', () => {
+    renderHook(() => useSafeState());
+  });
+
+  it('should not call ', () => {
+    const { result } = renderHook(() => useSafeState(1));
+    expect(result.current[1]).toBeInstanceOf(Function);
+    expect(result.current[0]).toBe(1);
+  });
+});

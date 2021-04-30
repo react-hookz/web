@@ -8,3 +8,4 @@ export { usePrevious } from './usePrevious';
 export { useIsMounted } from './useIsMounted';
 export { useConditionalEffect } from './useConditionalEffect';
 export { useConditionalUpdateEffect } from './useConditionalUpdateEffect';
+export { useSafeState } from './useSafeState';

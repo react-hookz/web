@@ -22,10 +22,11 @@ npm i @react-hookz/web
 yarn add @react-hookz/web
 ```
 
-As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you gessed
-it - `react` and `react-dom` 16.8+.  
-Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
-transpile your `node-modules` in order to run in IE.
+As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you gessed it
+
+- `react` and `react-dom` 16.8+.  
+  Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
+  transpile your `node-modules` in order to run in IE.
 
 ## Usage
 
@@ -71,3 +72,5 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Like `useState`, but can only become `true` or `false`.
   - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious)
     — Returns the value passed to the hook on previous render.
+  - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate)
+    — Like `useState` but its state setter is guarded against sets on unmounted component.

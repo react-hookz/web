@@ -125,6 +125,18 @@ module.exports = {
           jsx: true,
         },
       },
+      rules: {
+        'prettier/prettier': [
+          'error',
+          {
+            PRINT_WIDTH,
+            singleQuote: true,
+            jsxBracketSameLine: true,
+            trailingComma: 'es5',
+            endOfLine: 'lf',
+          },
+        ],
+      },
     },
   ],
 };
