@@ -12,13 +12,13 @@ export function useSafeState<S = undefined>(): [
   Dispatch<SetStateAction<S | undefined>>
 ];
 export function useSafeState<S>(initialState?: S | (() => S)): [S, Dispatch<SetStateAction<S>>] {
-  const [state, _setState] = useState(initialState);
+  const [state, setState] = useState(initialState);
   const isMounted = useIsMounted();
 
   return [
     state,
     useCallback((value) => {
-      if (isMounted()) _setState(value);
+      if (isMounted()) setState(value);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []) as Dispatch<SetStateAction<S>>,
   ];
