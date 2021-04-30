@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/react-hookz/web/compare/v1.10.0...v1.11.0) (2021-04-30)
+
+
+### Features
+
+* new hook `useSafeState` ([#31](https://github.com/react-hookz/web/issues/31)) ([0718afe](https://github.com/react-hookz/web/commit/0718afe1569d2b900147bc9756ba3fba0a1bdde5))
+
 # [1.10.0](https://github.com/react-hookz/web/compare/v1.9.1...v1.10.0) (2021-04-28)
 
 
