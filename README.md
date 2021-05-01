@@ -73,6 +73,6 @@ import { useMountEffect } from "@react-hookz/web/esnext";
   - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious)
     — Returns the value passed to the hook on previous render.
   - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate)
-    — Like `useState` but its state setter is guarded against sets on unmounted component.
+    — Like `useState`, but its state setter is guarded against sets on unmounted component.
   - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate)
-    — Like `useState`, but every value set is passed through mediator function.
+    — Like `useState`, but every value set is passed through a mediator function.

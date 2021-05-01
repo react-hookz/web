@@ -3,7 +3,7 @@ import { resolveHookState } from './util/resolveHookState';
 import { useSafeState } from './useSafeState';
 
 /**
- * Like `useState`, but every value set is passed through mediator function.
+ * Like `useState`, but every value set is passed through a mediator function.
  */
 export function useMediatedState<S>(
   initialState?: S | (() => S)
@@ -19,7 +19,7 @@ export function useMediatedState<S, R>(
   const [state, setState] = useSafeState<S>(initialState);
   const mediatorRef = useRef(mediator);
 
-  // this required to make API stable
+  // this is required to make API stable
   mediatorRef.current = mediator;
 
   return [
