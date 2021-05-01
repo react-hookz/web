@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/react-hookz/web/compare/v1.11.0...v1.12.0) (2021-05-01)
+
+
+### Features
+
+* new hook useMediatedState ([#32](https://github.com/react-hookz/web/issues/32)) ([9c99e61](https://github.com/react-hookz/web/commit/9c99e61bdcb6abf6f285d676d24de74cd5048c17))
+
 # [1.11.0](https://github.com/react-hookz/web/compare/v1.10.0...v1.11.0) (2021-04-30)
 
 
