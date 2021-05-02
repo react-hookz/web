@@ -1,5 +1,5 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {Example} from './useMediatedState.stories';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './useMediatedState.stories';
 
 <Meta title="State/useMediatedState" component={Example} />
 
@@ -23,5 +23,5 @@ Like `useState`, but every value set is passed through mediator function.
 function useMediatedState<S, R>(
   initialState?: S | (() => S),
   mediator?: (state: R) => S
-): [S, (value: R | ((prevState: S) => R)) => void]
+): [S, (value: R | ((prevState: S) => R)) => void];
 ```

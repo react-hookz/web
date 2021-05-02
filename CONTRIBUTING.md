@@ -15,7 +15,8 @@ first.
 4. Install dependencies: `yarn`
 5. Make sure everything builds and tests: `yarn build && yarn test`
 6. Create the branch for your PR, like: `git checkout -b pr/my-awesome-hook`
-   - in case you are adding a new hook - it is better to name your branch by the hook: `pr/useUpdateEffect`
+   - in case you are adding a new hook - it is better to name your branch by the
+     hook: `pr/useUpdateEffect`
    - in case your change fixes an issue - it is better to name branch by the issue
      id: `pr/fix-12345`
 7. Follow the directions below
@@ -40,14 +41,14 @@ first.
    - In case hook has some custom types as arguments or return values - it should also be exported.
    - All types and interfaces should be `I` prefixed.
    - Hook should be developed with SSR in mind.
-   - In case hook is stateful and exposes `setState` method it should use `useSafeState` instead of
-     `useState`, since `useSafeState`.
+   - In case hook is stateful and exposes `setState` method, or is has async callbacks (that can
+     resolve aster component unmount), it should use `useSafeState` instead of `useState`.
 2. Reexport hook implementation and all custom types in `src/index.ts`.
 3. Write complete tests for your hook, tests should consist of both DOM and SSR parts.
    - Hook's test should be placed in `tests` folder and named after the hook.  
      4ex: `test/dom/useFirstMountState.test.ts` and `test/ssr/useFirstMountState.test.ts`.
-   - Ideally your hook should have 100% test coverage. For cases where that is impossible,
-     you should comment above the code exactly why it is impossible to have 100% coverage.
+   - Ideally your hook should have 100% test coverage. For cases where that is impossible, you
+     should comment above the code exactly why it is impossible to have 100% coverage.
    - Each hook should have at least 'should be defined' and 'should render' tests in `SSR`
      environment.
    - All utility functions should also be tested.
@@ -59,9 +60,12 @@ first.
    - Components representing hook functionality should be placed in file named after the hook
      with `.stories` suffix.  
      4ex: `useFirstMountState.stories.tsx`.
-   - Preferred format to write the docs is MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction).
+   - Preferred format to write the docs is
+     MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction)
+     .
 5. Add docs link and hook summary to the `README.md`.
-6. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our standards.
+6. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our
+   standards.
 
 ## Committing
 
