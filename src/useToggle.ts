@@ -1,8 +1,9 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { IInitialState, INewState, resolveHookState } from './util/resolveHookState';
+import { useSafeState } from './useSafeState';
 
 /**
- * Like `useState`, but can only become `true` or `false`.
+ * Like `useSafeState`, but can only become `true` or `false`.
  *
  * State setter, in case called without arguments, will change the state to opposite.
  *
@@ -15,7 +16,7 @@ export function useToggle(
   // action does not provide functional updates feature.
   // Therefore we have to create and expose our own state setter with
   // toggle logic.
-  const [state, _setState] = useState(initialState);
+  const [state, _setState] = useSafeState(initialState);
 
   return [
     state,
@@ -27,6 +28,7 @@ export function useToggle(
 
         return Boolean(resolveHookState(nextState, prevState));
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
   ];
 }

@@ -40,6 +40,8 @@ first.
    - In case hook has some custom types as arguments or return values - it should also be exported.
    - All types and interfaces should be `I` prefixed.
    - Hook should be developed with SSR in mind.
+   - In case hook is stateful and exposes `setState` method it should use `useSafeState` instead of
+     `useState`, since `useSafeState`.
 2. Reexport hook implementation and all custom types in `src/index.ts`.
 3. Write complete tests for your hook, tests should consist of both DOM and SSR parts.
    - Hook's test should be placed in `tests` folder and named after the hook.  
