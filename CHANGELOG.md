@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/react-hookz/web/compare/v1.12.0...v1.13.0) (2021-05-02)
+
+
+### Features
+
+* make stateful hooks use `useSafeState` ([d181c7f](https://github.com/react-hookz/web/commit/d181c7f56c5abab1c6e2b7064425a10bec668062))
+
 # [1.12.0](https://github.com/react-hookz/web/compare/v1.11.0...v1.12.0) (2021-05-01)
 
 
