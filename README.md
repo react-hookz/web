@@ -51,30 +51,35 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 ## Hooks list
 
 - #### Lifecycle
-  - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect)
+
+  - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
     — Like `useEffect` but callback invoked only if conditions match predicate.
-  - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect)
+  - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect--example)
     — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
-  - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
+  - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
     — Return boolean that is `true` only on first render.
-  - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted)
+  - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
     — Returns function that yields current mount state.
-  - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect)
+  - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
     — Run effect only when component is first mounted.
-  - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender)
+  - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)
     — Return callback that re-renders component.
-  - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect)
+  - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect--example)
     — Run effect only when component is unmounted.
-  - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect)
+  - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
     — Effect hook that ignores the first render (not invoked on mount).
 
 - #### State
-  - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate)
+
+  - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate--example)
     — Like `useState`, but every value set is passed through a mediator function.
-  - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious)
+  - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious--example)
     — Returns the value passed to the hook on previous render.
-  - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate)
+  - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate--example)
     — Like `useState`, but its state setter is guarded against sets on unmounted component.
-  - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle)
+  - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle--example)
     — Like `useState`, but can only become `true` or `false`.
 
+- ### Sensor
+  - [`useNetworkState`](http://localhost:6006/?path=/docs/sensor-usenetwork--example)
+    — Tracks the state of browser's network connection.
