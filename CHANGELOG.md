@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/react-hookz/web/compare/v1.13.0...v1.14.0) (2021-05-03)
+
+
+### Features
+
+* new hook, useNetworkState ([#35](https://github.com/react-hookz/web/issues/35)) ([b5b082c](https://github.com/react-hookz/web/commit/b5b082cc67820fcf87f6fd529bf5cbaad91d9aff))
+
 # [1.13.0](https://github.com/react-hookz/web/compare/v1.12.0...v1.13.0) (2021-05-02)
 
 
