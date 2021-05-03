@@ -1,4 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { act, renderHook } from '@testing-library/react-hooks/dom';
+import { useRef } from 'react';
 import { useNetworkState } from '../../src/useNetworkState';
 
 describe(`useNetworkState`, () => {
@@ -24,5 +25,24 @@ describe(`useNetworkState`, () => {
       'saveData',
       'type',
     ]);
+  });
+
+  it('should rerender in case of online or offline events emitted on window', () => {
+    const hook = renderHook(
+      () => {
+        const renderCount = useRef(0);
+        return [useNetworkState(), ++renderCount.current];
+      },
+      { initialProps: false }
+    );
+
+    expect(hook.result.current[1]).toBe(1);
+    const prevNWState = hook.result.current[0];
+
+    act(() => {
+      window.dispatchEvent(new Event('online'));
+    });
+    expect(hook.result.current[1]).toBe(2);
+    expect(hook.result.current[0]).not.toBe(prevNWState);
   });
 });

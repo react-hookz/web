@@ -117,6 +117,8 @@ export const useNetworkState: typeof navigator.connection extends undefined
         on(window, 'online', handleStateChange, { passive: true });
         on(window, 'offline', handleStateChange, { passive: true });
 
+        // it is quite hard to test it in jsdom environment maybe will be improved in future
+        /* istanbul ignore next */
         if (conn) {
           on(conn, 'change', handleStateChange, { passive: true });
         }
@@ -125,6 +127,7 @@ export const useNetworkState: typeof navigator.connection extends undefined
           off(window, 'online', handleStateChange);
           off(window, 'offline', handleStateChange);
 
+          /* istanbul ignore next */
           if (conn) {
             off(conn, 'change', handleStateChange);
           }
