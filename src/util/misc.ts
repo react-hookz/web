@@ -1,4 +1,4 @@
-export function on<T extends Window | Document | HTMLElement | EventTarget>(
+export function on<T extends EventTarget>(
   obj: T | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...args: Parameters<T['addEventListener']> | [string, CallableFunction | null, ...any]
@@ -8,7 +8,7 @@ export function on<T extends Window | Document | HTMLElement | EventTarget>(
   }
 }
 
-export function off<T extends Window | Document | HTMLElement | EventTarget>(
+export function off<T extends EventTarget>(
   obj: T | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...args: Parameters<T['removeEventListener']> | [string, CallableFunction | null, ...any]
