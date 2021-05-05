@@ -1,0 +1,58 @@
+import {Example} from "./useLocalStorageValue.stories";
+import {ArgsTable, Canvas, Meta, Story} from "@storybook/addon-docs/blocks";
+
+<Meta title="Web API/useLocalStorageValue" component={Example} argTypes={{
+  key: {control: {type: 'text'}},
+}} />
+
+# useLocalStorageValue
+
+Manages a single LocalStorage key.
+
+> By default, tracks window's `storage` event and automatically updates state.
+
+> While using SSR, To avoid hydration mismatch, consider setting `initializeWithStorageValue` option to
+`false`, this will yield `undefined` state on first render and defer value fetch to effects
+execution stage.
+
+#### Example
+
+<Canvas isColumn>
+  <Story name="Example" story={Example} />
+</Canvas>
+
+<ArgsTable story="Example" />
+
+## Reference
+
+```ts
+function useLocalStorageValue<T>(
+  key: string,
+  defaultValue: T | null = null,
+  options: IUseLocalStorageValueOptions<T> = {}
+): IHookReturn<T, typeof defaultValue, typeof options>
+```
+
+#### Arguments
+
+- **key** _`string`_ -  LocalStorage key to manage.
+- **defaultValue** _`T | null`_ _(default: null)_ - Default value to return in case key not 
+presented in LocalStorage.
+- **options** _`object`_ - Hook options:
+  - **syncTabs** _`boolean`_ _(default: true)_ - Synchronize values between browser tabs.
+  - **raw** _`boolean`_ _(default: false)_ - do not serialize and deserialize values, it restricts 
+  value type to string only.
+  - **storeDefaultValue** _`boolean`_ _(default: false)_ - store default value.
+  - **initializeWithStorageValue** _`boolean`_ _(default: true)_ - fetch storage value on first 
+  render. If set to `false` will make hook to yield `undefined` state on first render and defer 
+  value fetch to effects execution stage.
+  - **serializer** _`(value: T) => string`_ _(default: JSON.stringify)_ - Serializer to use in non-raw 
+  mode.
+  - **deserializer** _`(str: string) => T`_ _(default: JSON.parse)_ - Deserializer to use in non-raw 
+  mode. 
+
+#### Return
+
+0. **state** - LocalStorage item value or default value in case of item absence.
+1. **setValue** - Method to set new item value.
+2. **removeValue** - Method to remove item from storage.

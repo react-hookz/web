@@ -51,7 +51,7 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Callback
   
-  - [`useDebounceCallback`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncecallback--example)
+  - [`useDebounceCallback`](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback--example)
     — Makes passed function debounced, otherwise acts like `useCallback`.
 
 - #### Lifecycle
@@ -77,21 +77,26 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### State
 
-    - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate--example)
+    - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate--example)
       — Like `useState`, but every value set is passed through a mediator function.
-    - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious--example)
+    - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/state-useprevious--example)
       — Returns the value passed to the hook on previous render.
-    - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate--page)
+    - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page)
       — Like `useState`, but its state setter is guarded against sets on unmounted component.
-    - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle--example)
+    - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example)
       — Like `useState`, but can only become `true` or `false`.
 
 - #### Navigator
 
-    - [`useNetworkState`](http://react-hookz.github.io/?path=/docs/sensor-usenetwork--example)
+    - [`useNetworkState`](http://react-hookz.github.io/?path=/docs/navigator-usenetwork--example)
       — Tracks the state of browser's network connection.
 
 - #### Miscellaneous
 
     - [`useSyncedRef`](http://react-hookz.github.io/?path=/docs/miscellaneous-usesyncedref--example)
       — Like `useRef`, but it returns immutable ref that contains actual value.
+
+- #### Web API
+    
+    - [`useLocalStorageValue`](http://react-hookz.github.io/?path=/docs/web-api-uselocalstoragevalue--example)
+      — 
