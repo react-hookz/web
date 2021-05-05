@@ -42,7 +42,7 @@ first.
    - All types and interfaces should be `I` prefixed.
    - Hook should be developed with SSR in mind.
    - In case hook is stateful and exposes `setState` method, or is has async callbacks (that can
-     resolve aster component unmount), it should use `useSafeState` instead of `useState`.
+     resolve after component unmount), it should use `useSafeState` instead of `useState`.
 2. Reexport hook implementation and all custom types in `src/index.ts`.
 3. Write complete tests for your hook, tests should consist of both DOM and SSR parts.
    - Hook's test should be placed in `tests` folder and named after the hook.  
