@@ -52,35 +52,37 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Lifecycle
 
-  - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
-    — Like `useEffect` but callback invoked only if conditions match predicate.
-  - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect--example)
-    — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
-  - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
-    — Return boolean that is `true` only on first render.
-  - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
-    — Returns function that yields current mount state.
-  - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
-    — Run effect only when component is first mounted.
-  - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)
-    — Return callback that re-renders component.
-  - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect--example)
-    — Run effect only when component is unmounted.
-  - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
-    — Effect hook that ignores the first render (not invoked on mount).
+    - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
+      — Like `useEffect` but callback invoked only if conditions match predicate.
+    - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect--example)
+      — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
+    - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
+      — Return boolean that is `true` only on first render.
+    - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
+      — Returns function that yields current mount state.
+    - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
+      — Run effect only when component is first mounted.
+    - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)
+      — Return callback that re-renders component.
+    - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect--example)
+      — Run effect only when component is unmounted.
+    - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
+      — Effect hook that ignores the first render (not invoked on mount).
+    - [`useIsomorphicLayoutEffect`](http://react-hookz.github.io/?path=/docs/lifecycle-useisomorphiclayouteffect--page)
+      — `useLayoutEffect` for browser with fallback to `useEffect` for SSR.
 
 - #### State
 
-  - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate--example)
-    — Like `useState`, but every value set is passed through a mediator function.
-  - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious--example)
-    — Returns the value passed to the hook on previous render.
-  - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate--example)
-    — Like `useState`, but its state setter is guarded against sets on unmounted component.
-  - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle--example)
-    — Like `useState`, but can only become `true` or `false`.
+    - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate--example)
+      — Like `useState`, but every value set is passed through a mediator function.
+    - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useprevious--example)
+      — Returns the value passed to the hook on previous render.
+    - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usesafestate--page)
+      — Like `useState`, but its state setter is guarded against sets on unmounted component.
+    - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle--example)
+      — Like `useState`, but can only become `true` or `false`.
 
-- ### Navigator
+- #### Navigator
 
-  - [`useNetworkState`](http://localhost:6006/?path=/docs/navigator-usenetwork--example)
-    — Tracks the state of browser's network connection.
+    - [`useNetworkState`](http://react-hookz.github.io/?path=/docs/sensor-usenetwork--example)
+      — Tracks the state of browser's network connection.
