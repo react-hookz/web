@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useConditionalUpdateEffect } from '../src';
+import { useConditionalUpdateEffect } from '../../src';
 
 export const Example: React.FC = () => {
   const [state1, setState1] = useState(2);

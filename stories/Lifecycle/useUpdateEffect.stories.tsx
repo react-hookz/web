@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useRerender, useUpdateEffect } from '../src';
+import { useRerender, useUpdateEffect } from '../../src';
 
 export const Example: React.FC = () => {
   const [count, setCount] = useState(1);

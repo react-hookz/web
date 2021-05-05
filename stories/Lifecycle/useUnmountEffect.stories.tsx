@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToggle, useUnmountEffect } from '../src';
+import { useToggle, useUnmountEffect } from '../../src';
 
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(false);

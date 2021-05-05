@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMediatedState } from '../src';
+import { useMediatedState } from '../../src';
 
 export const Example: React.FC = () => {
   const nonLetterRe = /[^a-z]+/gi;

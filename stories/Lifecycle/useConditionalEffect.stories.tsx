@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useConditionalEffect, useToggle } from '../src';
+import { useConditionalEffect, useToggle } from '../../src';
 
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(false);

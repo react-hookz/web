@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToggle } from '../src';
+import { useToggle } from '../../src';
 
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(true);

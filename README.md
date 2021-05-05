@@ -80,6 +80,7 @@ import { useMountEffect } from "@react-hookz/web/esnext";
   - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetoggle--example)
     — Like `useState`, but can only become `true` or `false`.
 
-- ### Sensor
-  - [`useNetworkState`](http://localhost:6006/?path=/docs/sensor-usenetwork--example)
+- ### Navigator
+  
+  - [`useNetworkState`](http://localhost:6006/?path=/docs/navigator-usenetwork--example)
     — Tracks the state of browser's network connection.
