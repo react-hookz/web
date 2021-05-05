@@ -9,6 +9,12 @@
     "declaration": true,
     "target": "ES5",
     "module": "CommonJS",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "plugins": [
+      {
+        "transform": "./ts-transformer-js-ext.ts",
+        "after": true,
+      }
+    ]
   }
 }
