@@ -33,8 +33,8 @@ As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires 
 This package provides three levels of compilation:
 
 1. **Main**, the `/cjs` folder — CommonJS modules, with ES5 lang level.
-2. **ESM**, the `/esm` folder — it is ES modules, with ES5 lang level.
-3. **ESNext**, the `/esnext` folder — it is ES modules, with ESNext lang level.
+2. **ESM**, the `/esm` folder — it is ES modules (browser compatible), with ES5 lang level.
+3. **ESNext**, the `/esnext` folder — it is ES modules (browser compatible), with ESNext lang level.
 
 So, if you need the `useMountEffect` hook, depending on your needs, you can import in three ways
 (there are actually more, but these are the three most common):
@@ -81,6 +81,6 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Like `useState`, but can only become `true` or `false`.
 
 - ### Navigator
-  
+
   - [`useNetworkState`](http://localhost:6006/?path=/docs/navigator-usenetwork--example)
     — Tracks the state of browser's network connection.

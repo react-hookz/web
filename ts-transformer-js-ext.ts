@@ -21,6 +21,7 @@ function shouldUpdateImportDeclaration(
   return path.extname(node.moduleSpecifier.text) === '';
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function transformer(_: ts.Program): ts.TransformerFactory<ts.SourceFile> {
   return (context) => (sourceFile) => {
     const fac = context.factory;
