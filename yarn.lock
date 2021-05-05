@@ -1404,6 +1404,14 @@
   dependencies:
     "@actions/core" "^1.2.6"
 
+"@jamesacarr/jest-reporter-github-actions@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@jamesacarr/jest-reporter-github-actions/-/jest-reporter-github-actions-0.0.4.tgz#471684cdacffaa78766c20653634797d356d3b40"
+  integrity sha512-2lfpqWt19PAAVgHNUPQEvqDMQfdiDpyFPDol7FgrKoZ9x7/GrUmpXGQZNdhFAssDdG7hJFd4yoLfUrkZEKl29g==
+  dependencies:
+    "@actions/core" "^1.2.6"
+    "@jest/reporters" "^26.6.2"
+
 "@jest/console@^26.6.2":
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-26.6.2.tgz#4e04bc464014358b03ab4937805ee36a0aeb98f2"
