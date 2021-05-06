@@ -12,3 +12,4 @@ export { useSafeState } from './useSafeState';
 export { useMediatedState } from './useMediatedState';
 export { useDebounceCallback } from './useDebounceCallback';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+export { useSyncedRef } from './useSyncedRef';

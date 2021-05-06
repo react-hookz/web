@@ -1,0 +1,27 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
+import {Example} from './useSyncedRef.stories';
+
+<Meta title="Miscellaneous/useSyncedRef" component={Example} />
+
+# useSyncedRef
+
+Like `useRef`, but it returns immutable ref that contains actual value.
+
+> `useSyncedRef` returns frozen object, therefore any attempt to modify returned ref will end up
+exception throw.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useSyncedRef<T>(value: T): { readonly current: T };
+```
+
+#### Arguments
+
+- **value** _`any`_ - actual ref value.
