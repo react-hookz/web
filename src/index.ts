@@ -14,4 +14,5 @@ export { useDebounceCallback } from './useDebounceCallback';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { useSyncedRef } from './useSyncedRef';
 export { useLocalStorageValue } from './useLocalStorageValue';
+export { useSessionStorageValue } from './useSessionStorageValue';
 export { useStorageValue } from './useStorageValue';

@@ -22,7 +22,7 @@ npm i @react-hookz/web
 yarn add @react-hookz/web
 ```
 
-As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you guessed it - 
+As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you guessed it -
 `react` and `react-dom` 16.8+.  
 Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
 transpile your `node-modules` in order to run in IE.
@@ -50,53 +50,58 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 ## Hooks list
 
 - #### Callback
-  
-  - [`useDebounceCallback`](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback--example)
-    — Makes passed function debounced, otherwise acts like `useCallback`.
+
+    - [`useDebounceCallback`](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback)
+      — Makes passed function debounced, otherwise acts like `useCallback`.
 
 - #### Lifecycle
 
-    - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
+    - [`useConditionalEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect)
       — Like `useEffect` but callback invoked only if conditions match predicate.
-    - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect--example)
+    - [`useConditionalUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect)
       — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
-    - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
+    - [`useFirstMountState`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
       — Return boolean that is `true` only on first render.
-    - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
+    - [`useIsMounted`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted)
       — Returns function that yields current mount state.
-    - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
+    - [`useMountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect)
       — Run effect only when component is first mounted.
-    - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)
+    - [`useRerender`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender)
       — Return callback that re-renders component.
-    - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect--example)
+    - [`useUnmountEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect)
       — Run effect only when component is unmounted.
-    - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
+    - [`useUpdateEffect`](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect)
       — Effect hook that ignores the first render (not invoked on mount).
-    - [`useIsomorphicLayoutEffect`](http://react-hookz.github.io/?path=/docs/lifecycle-useisomorphiclayouteffect--page)
+    - [`useIsomorphicLayoutEffect`](https://react-hookz.github.io/?path=/docs/lifecycle-useisomorphiclayouteffect)
       — `useLayoutEffect` for browser with fallback to `useEffect` for SSR.
 
 - #### State
 
-    - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate--example)
+    - [`useMediatedState`](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate)
       — Like `useState`, but every value set is passed through a mediator function.
-    - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/state-useprevious--example)
+    - [`usePrevious`](https://react-hookz.github.io/web/?path=/docs/state-useprevious)
       — Returns the value passed to the hook on previous render.
-    - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page)
+    - [`useSafeState`](https://react-hookz.github.io/web/?path=/docs/state-usesafestate)
       — Like `useState`, but its state setter is guarded against sets on unmounted component.
-    - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example)
+    - [`useToggle`](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
       — Like `useState`, but can only become `true` or `false`.
 
 - #### Navigator
 
-    - [`useNetworkState`](http://react-hookz.github.io/?path=/docs/navigator-usenetwork--example)
+    - [`useNetworkState`](https://react-hookz.github.io/?path=/docs/navigator-usenetwork)
       — Tracks the state of browser's network connection.
 
 - #### Miscellaneous
 
-    - [`useSyncedRef`](http://react-hookz.github.io/?path=/docs/miscellaneous-usesyncedref--example)
+    - [`useSyncedRef`](https://react-hookz.github.io/?path=/docs/miscellaneous-usesyncedref)
       — Like `useRef`, but it returns immutable ref that contains actual value.
 
-- #### Web API
-    
-    - [`useLocalStorageValue`](http://react-hookz.github.io/?path=/docs/web-api-uselocalstoragevalue--example)
-      — 
+- #### Side-effects
+
+    - [`useLocalStorageValue`](https://react-hookz.github.io/?path=/docs/side-effects-uselocalstoragevalue)
+      — Manages a single LocalStorage key.
+    - [`useSessionStorageValue`](https://react-hookz.github.io/?path=/docs/side-effects-usesessionstoragevalue)
+      — Manages a single SessionStorage key.
+    - [`useStorageValue`](https://react-hookz.github.io/?path=/docs/side-effects-usestoragevalue)
+      — Manages a single storage key. General-purpose hook for string key-value storages, that used
+      in `useLocalStorageValue` and `useSessionStorageValue`.

@@ -5,7 +5,7 @@ import { isBrowser } from './util/const';
 import { INextState } from './util/resolveHookState';
 import { useSyncedRef } from './useSyncedRef';
 
-export type IUseLocalStorageValueOptions<
+export type IUseSessionStorageValueOptions<
   T,
   Raw extends boolean | undefined = boolean | undefined,
   InitializeWithValue extends boolean | undefined = boolean | undefined
@@ -33,110 +33,109 @@ type INewState<T, O, S = O extends { raw: true } ? string : T> = INextState<S>;
 
 type IHookReturn<T, D, O> = [IReturnState<T, D, O>, (val: INewState<T, O>) => void, () => void];
 
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue?: null
-): IHookReturn<T, typeof defaultValue, IUseLocalStorageValueOptions<T, false, true>>;
-export function useLocalStorageValue<T = unknown>(
+): IHookReturn<T, typeof defaultValue, IUseSessionStorageValueOptions<T, false, true>>;
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, false | undefined>
+  options: IUseSessionStorageValueOptions<T, false | undefined>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, false | undefined, true | undefined>
+  options: IUseSessionStorageValueOptions<T, false | undefined, true | undefined>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, false | undefined, false>
+  options: IUseSessionStorageValueOptions<T, false | undefined, false>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, true>
+  options: IUseSessionStorageValueOptions<T, true>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, true, true | undefined>
+  options: IUseSessionStorageValueOptions<T, true, true | undefined>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, true, false>
+  options: IUseSessionStorageValueOptions<T, true, false>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
 
-export function useLocalStorageValue<T>(
+export function useSessionStorageValue<T>(
   key: string,
   defaultValue: T
-): IHookReturn<T, typeof defaultValue, IUseLocalStorageValueOptions<T, false, true>>;
+): IHookReturn<T, typeof defaultValue, IUseSessionStorageValueOptions<T, false, true>>;
 
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: null,
-  options: IUseLocalStorageValueOptions<T, false | undefined>
+  options: IUseSessionStorageValueOptions<T, false | undefined>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: T,
-  options: IUseLocalStorageValueOptions<T, false | undefined, true | undefined>
+  options: IUseSessionStorageValueOptions<T, false | undefined, true | undefined>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: T,
-  options: IUseLocalStorageValueOptions<T, false | undefined, false>
+  options: IUseSessionStorageValueOptions<T, false | undefined, false>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: T,
-  options: IUseLocalStorageValueOptions<T, true>
+  options: IUseSessionStorageValueOptions<T, true>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: T,
-  options: IUseLocalStorageValueOptions<T, true, true | undefined>
+  options: IUseSessionStorageValueOptions<T, true, true | undefined>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
-export function useLocalStorageValue<T = unknown>(
+export function useSessionStorageValue<T = unknown>(
   key: string,
   defaultValue: T,
-  options: IUseLocalStorageValueOptions<T, true, false>
+  options: IUseSessionStorageValueOptions<T, true, false>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
 
-export function useLocalStorageValue<T>(
+export function useSessionStorageValue<T>(
   key: string,
   defaultValue?: T | null,
-  options?: IUseLocalStorageValueOptions<T>
+  options?: IUseSessionStorageValueOptions<T>
 ): IHookReturn<T, typeof defaultValue, typeof options>;
 
 /**
- * Manages a single LocalStorage key.
+ * Manages a single SessionStorage key.
  *
- * @param key LocalStorage key to manage
- * @param defaultValue Default value to return in case key not presented in LocalStorage
+ * @param key SessionStorage key to manage
+ * @param defaultValue Default value to return in case key not presented in SessionStorage
  * @param options
  */
-export function useLocalStorageValue<T>(
+export function useSessionStorageValue<T>(
   key: string,
   defaultValue: T | null = null,
-  options: IUseLocalStorageValueOptions<T> = {}
+  options: IUseSessionStorageValueOptions<T> = {}
 ): IHookReturn<T, typeof defaultValue, typeof options> {
   const { handleStorageEvent = true, ...storageOptions } = options;
   const [value, setValue, removeValue, fetchValue] = useStorageValue(
-    localStorage,
+    sessionStorage,
     key,
     defaultValue,
     storageOptions
   );
-
   const keyRef = useSyncedRef(key);
 
   useEffect(() => {
     if (!isBrowser || !handleStorageEvent) return;
 
     const storageHandler = (ev: StorageEvent) => {
-      if (ev.storageArea !== localStorage) return;
+      if (ev.storageArea !== sessionStorage) return;
       if (ev.key !== keyRef.current) return;
 
       fetchValue();

@@ -1,9 +1,7 @@
 import {Example} from "./useLocalStorageValue.stories";
 import {ArgsTable, Canvas, Meta, Story} from "@storybook/addon-docs/blocks";
 
-<Meta title="Web API/useLocalStorageValue" component={Example} argTypes={{
-  key: {control: {type: 'text'}},
-}} />
+<Meta title="Side-effects/useLocalStorageValue" component={Example} />
 
 # useLocalStorageValue
 
@@ -39,7 +37,7 @@ function useLocalStorageValue<T>(
 - **defaultValue** _`T | null`_ _(default: null)_ - Default value to return in case key not 
 presented in LocalStorage.
 - **options** _`object`_ - Hook options:
-  - **syncTabs** _`boolean`_ _(default: true)_ - Synchronize values between browser tabs.
+  - **handleStorageEvent** _`boolean`_ _(default: true)_ - Subscribe to window's `storage` event.
   - **raw** _`boolean`_ _(default: false)_ - do not serialize and deserialize values, it restricts 
   value type to string only.
   - **storeDefaultValue** _`boolean`_ _(default: false)_ - store default value.
@@ -49,7 +47,7 @@ presented in LocalStorage.
   - **serializer** _`(value: T) => string`_ _(default: JSON.stringify)_ - Serializer to use in non-raw 
   mode.
   - **deserializer** _`(str: string) => T`_ _(default: JSON.parse)_ - Deserializer to use in non-raw 
-  mode. 
+  mode.
 
 #### Return
 
