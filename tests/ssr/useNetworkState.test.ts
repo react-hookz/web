@@ -10,8 +10,18 @@ describe(`useNetworkState`, () => {
   });
 
   it('should have undefined state', () => {
-    const hook = renderHook(() => useNetworkState(), { initialProps: false });
+    const hook = renderHook(() => useNetworkState());
 
-    expect(hook.result.current).toBeUndefined();
+    expect(hook.result.current).toStrictEqual({
+      downlink: undefined,
+      downlinkMax: undefined,
+      effectiveType: undefined,
+      online: undefined,
+      previous: undefined,
+      rtt: undefined,
+      saveData: undefined,
+      since: undefined,
+      type: undefined,
+    });
   });
 });

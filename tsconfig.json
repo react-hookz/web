@@ -9,7 +9,9 @@
     ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react"
+    "jsx": "react",
+    "strict": true,
+    "strictNullChecks": true,
   },
   "exclude": [
     "node_modules",

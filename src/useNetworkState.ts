@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isBrowser, noop } from './util/const';
+import { isBrowser } from './util/const';
 import { IInitialState } from './util/resolveHookState';
 import { useSafeState } from './useSafeState';
 import { off, on } from './util/misc';
@@ -103,38 +103,34 @@ function getConnectionState(previousState?: IUseNetworkState): IUseNetworkState 
 /**
  * Tracks the state of browser's network connection.
  */
-export const useNetworkState: typeof navigator.connection extends undefined
-  ? undefined
-  : (initialState?: IInitialState<IUseNetworkState>) => IUseNetworkState = isBrowser
-  ? function useNetworkState(initialState?: IInitialState<IUseNetworkState>): IUseNetworkState {
-      const [state, setState] = useSafeState(initialState ?? getConnectionState);
+export function useNetworkState(initialState?: IInitialState<IUseNetworkState>): IUseNetworkState {
+  const [state, setState] = useSafeState(initialState ?? getConnectionState);
 
-      useEffect(() => {
-        const handleStateChange = () => {
-          setState(getConnectionState);
-        };
+  useEffect(() => {
+    const handleStateChange = () => {
+      setState(getConnectionState);
+    };
 
-        on(window, 'online', handleStateChange, { passive: true });
-        on(window, 'offline', handleStateChange, { passive: true });
+    on(window, 'online', handleStateChange, { passive: true });
+    on(window, 'offline', handleStateChange, { passive: true });
 
-        // it is quite hard to test it in jsdom environment maybe will be improved in future
-        /* istanbul ignore next */
-        if (conn) {
-          on(conn, 'change', handleStateChange, { passive: true });
-        }
-
-        return () => {
-          off(window, 'online', handleStateChange);
-          off(window, 'offline', handleStateChange);
-
-          /* istanbul ignore next */
-          if (conn) {
-            off(conn, 'change', handleStateChange);
-          }
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, []);
-
-      return state;
+    // it is quite hard to test it in jsdom environment maybe will be improved in future
+    /* istanbul ignore next */
+    if (conn) {
+      on(conn, 'change', handleStateChange, { passive: true });
     }
-  : (noop as () => undefined);
+
+    return () => {
+      off(window, 'online', handleStateChange);
+      off(window, 'offline', handleStateChange);
+
+      /* istanbul ignore next */
+      if (conn) {
+        off(conn, 'change', handleStateChange);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return state;
+}

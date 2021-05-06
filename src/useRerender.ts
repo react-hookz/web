@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useSafeState } from './useSafeState';
 
-const stateChanger = (state) => !state;
+const stateChanger = (state: boolean) => !state;
 
 /**
  * Return callback function that re-renders component.

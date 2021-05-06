@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { IInitialState, INewState, resolveHookState } from './util/resolveHookState';
+import { IInitialState, INextState, resolveHookState } from './util/resolveHookState';
 import { useSafeState } from './useSafeState';
 
 /**
@@ -11,7 +11,7 @@ import { useSafeState } from './useSafeState';
  */
 export function useToggle(
   initialState: IInitialState<boolean> = false
-): [boolean, (nextState?: INewState<boolean>) => void] {
+): [boolean, (nextState?: INextState<boolean>) => void] {
   // We dont use useReducer (which would end up with less code), because exposed
   // action does not provide functional updates feature.
   // Therefore we have to create and expose our own state setter with

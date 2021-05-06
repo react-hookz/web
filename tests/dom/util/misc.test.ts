@@ -11,8 +11,9 @@ describe('misc', () => {
       on((obj as unknown) as EventTarget, 'evtName', cb);
       expect(obj.addEventListener).toBeCalledWith('evtName', cb);
     });
-    it("should not throw in case 'undefined' passed", () => {
+    it("should not throw in case 'undefined' element passed", () => {
       expect(() => {
+        // @ts-expect-error testing inappropriate usage
         on(undefined, 'evtName', () => {});
       }).not.toThrow();
     });
@@ -29,8 +30,9 @@ describe('misc', () => {
       expect(obj.removeEventListener).toBeCalledWith('evtName', cb);
     });
 
-    it("should not throw in case 'undefined' passed", () => {
+    it("should not throw in case 'undefined' element passed", () => {
       expect(() => {
+        // @ts-expect-error testing inappropriate usage
         off(undefined, 'evtName', () => {});
       }).not.toThrow();
     });

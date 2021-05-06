@@ -1,9 +1,15 @@
-export type IInitialState<S> = S | (() => S);
-export type INewState<S> = S | ((prevState: S) => S);
+export type IInitialState<State> = State | (() => State);
+export type INextState<State, PrevState = State> = State | ((prevState: PrevState) => State);
 
-export function resolveHookState<S>(nextState: IInitialState<S>): S;
-export function resolveHookState<S>(nextState: INewState<S>, prevState: S): S;
-export function resolveHookState<S>(nextState: IInitialState<S> | INewState<S>, prevState?: S): S {
+export function resolveHookState<State>(nextState: IInitialState<State>): State;
+export function resolveHookState<State, PrevState = State>(
+  nextState: INextState<State, PrevState>,
+  prevState: PrevState
+): State;
+export function resolveHookState<State, PrevState = State>(
+  nextState: IInitialState<State> | INextState<State, PrevState>,
+  prevState?: PrevState
+): State {
   if (typeof nextState === 'function') return (nextState as CallableFunction)(prevState);
 
   return nextState;

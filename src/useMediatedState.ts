@@ -1,23 +1,23 @@
-import { useCallback, useRef } from 'react';
-import { resolveHookState } from './util/resolveHookState';
+import { Dispatch, useCallback, useRef } from 'react';
+import { IInitialState, INextState, resolveHookState } from './util/resolveHookState';
 import { useSafeState } from './useSafeState';
 
-export function useMediatedState<S>(
-  initialState?: S | (() => S)
-): [S, (value: S | (() => S)) => void];
-export function useMediatedState<S, R>(
-  initialState?: S | (() => S),
-  mediator?: (state: R) => S
-): [S, (value: R | ((prevState: S) => S)) => void];
+export function useMediatedState<State>(
+  initialState?: IInitialState<State>
+): [State, Dispatch<State>];
+export function useMediatedState<State, RawState>(
+  initialState: IInitialState<State>,
+  mediator?: (state: RawState) => State
+): [State, Dispatch<INextState<RawState, State>>];
 
 /**
  * Like `useState`, but every value set is passed through a mediator function.
  */
-export function useMediatedState<S, R>(
-  initialState?: S | (() => S),
-  mediator?: (state: R) => S
-): [S, (value: R | ((prevState: S) => R)) => void] {
-  const [state, setState] = useSafeState<S>(initialState);
+export function useMediatedState<State, RawState>(
+  initialState?: IInitialState<State>,
+  mediator?: (state: RawState | undefined) => State
+): [State | undefined, Dispatch<INextState<RawState, State | undefined>>] {
+  const [state, setState] = useSafeState(initialState);
   const mediatorRef = useRef(mediator);
 
   // this is required to make API stable
@@ -25,13 +25,13 @@ export function useMediatedState<S, R>(
 
   return [
     state,
-    useCallback((value: R) => {
-      if (mediator) {
-        setState((prevState) =>
-          mediatorRef.current(resolveHookState(value, (prevState as unknown) as R))
-        );
+    useCallback((value) => {
+      const m = mediatorRef.current;
+
+      if (m) {
+        setState((prevState) => m(resolveHookState<RawState, State | undefined>(value, prevState)));
       } else {
-        setState((value as unknown) as S);
+        setState((value as unknown) as State);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
