@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/react-hookz/web/compare/v1.17.0...v1.18.0) (2021-05-06)
+
+
+### Features
+
+* new hook `useSyncedRef` ([#42](https://github.com/react-hookz/web/issues/42)) ([49810a0](https://github.com/react-hookz/web/commit/49810a0d4c1e9055db8bcbc614768707837224d8))
+
 # [1.17.0](https://github.com/react-hookz/web/compare/v1.16.0...v1.17.0) (2021-05-06)
 
 
