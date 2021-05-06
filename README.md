@@ -22,11 +22,10 @@ npm i @react-hookz/web
 yarn add @react-hookz/web
 ```
 
-As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you gessed it
-
-- `react` and `react-dom` 16.8+.  
-  Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
-  transpile your `node-modules` in order to run in IE.
+As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you guessed it - 
+`react` and `react-dom` 16.8+.  
+Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
+transpile your `node-modules` in order to run in IE.
 
 ## Usage
 
@@ -49,6 +48,11 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 ```
 
 ## Hooks list
+
+- #### Callback
+  
+  - [`useDebounceCallback`](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncecallback--example)
+    — Makes passed function debounced, otherwise acts like `useCallback`.
 
 - #### Lifecycle
 

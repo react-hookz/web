@@ -10,4 +10,5 @@ export { useConditionalEffect } from './useConditionalEffect';
 export { useConditionalUpdateEffect } from './useConditionalUpdateEffect';
 export { useSafeState } from './useSafeState';
 export { useMediatedState } from './useMediatedState';
+export { useDebounceCallback } from './useDebounceCallback';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
