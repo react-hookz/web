@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/react-hookz/web/compare/v1.15.0...v1.16.0) (2021-05-06)
+
+
+### Features
+
+* new hook `useDebounceCallback` ([#40](https://github.com/react-hookz/web/issues/40)) ([8018be1](https://github.com/react-hookz/web/commit/8018be1acbcdaef69f283444c7f6b38249734c65))
+
 # [1.15.0](https://github.com/react-hookz/web/compare/v1.14.0...v1.15.0) (2021-05-06)
 
 
