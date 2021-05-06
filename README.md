@@ -90,3 +90,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
     - [`useNetworkState`](http://react-hookz.github.io/?path=/docs/sensor-usenetwork--example)
       — Tracks the state of browser's network connection.
+
+- #### Miscellaneous
+
+    - [`useSyncedRef`](http://react-hookz.github.io/?path=/docs/miscellaneous-usesyncedref--example)
+      — Like `useRef`, but it returns immutable ref that contains actual value.
