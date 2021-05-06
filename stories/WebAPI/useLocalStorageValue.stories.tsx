@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocalStorageValue } from '../../src/useLocalStorageValue';
+import { useLocalStorageValue } from '../../src';
 
 interface IExampleProps {
   /**

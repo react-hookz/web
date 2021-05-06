@@ -5,6 +5,7 @@ import { INextState, resolveHookState } from './util/resolveHookState';
 import { useUpdateEffect } from './useUpdateEffect';
 import { useMountEffect } from './useMountEffect';
 import { useSyncedRef } from './useSyncedRef';
+import { isBrowser } from './util/const';
 
 export type IUseStorageValueAdapter = {
   getItem(key: string): string | null;
@@ -189,8 +190,13 @@ export function useStorageValue<T>(
   defaultValue: T | null = null,
   options: IUseStorageValueOptions<T> = {}
 ): IHookReturn<T, typeof defaultValue, typeof options> {
-  const { deserializer = JSON.parse, serializer = JSON.stringify } = options;
-  const { raw, initializeWithStorageValue = true, storeDefaultValue } = options;
+  const {
+    deserializer = JSON.parse,
+    serializer = JSON.stringify,
+    raw,
+    initializeWithStorageValue = true,
+    storeDefaultValue,
+  } = options;
 
   const methods = useSyncedRef({
     getVal: () => {
@@ -225,13 +231,13 @@ export function useStorageValue<T>(
   });
 
   const [state, setState] = useSafeState<T | null | string | undefined>(
-    initializeWithStorageValue ? methods.current.getVal() : undefined
+    initializeWithStorageValue && isBrowser ? methods.current.getVal() : undefined
   );
   const stateRef = useSyncedRef(state);
 
   // fetch value on mount for the case `initializeWithStorageValue` is false
   useMountEffect(() => {
-    if (!initializeWithStorageValue) {
+    if (!initializeWithStorageValue || !isBrowser) {
       methods.current.fetchVal();
     }
   });
