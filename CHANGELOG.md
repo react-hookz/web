@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/react-hookz/web/compare/v1.14.0...v1.15.0) (2021-05-06)
+
+
+### Features
+
+* new hook `useIsomorphicLayoutEffect` ([#41](https://github.com/react-hookz/web/issues/41)) ([8e17b3c](https://github.com/react-hookz/web/commit/8e17b3c3390ece7ab39e989cfd81d80f5130d321))
+
 # [1.14.0](https://github.com/react-hookz/web/compare/v1.13.0...v1.14.0) (2021-05-03)
 
 
