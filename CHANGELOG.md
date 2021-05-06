@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/react-hookz/web/compare/v1.16.0...v1.17.0) (2021-05-06)
+
+
+### Features
+
+* use stricter TS config and fix issues caused by this ([6af7867](https://github.com/react-hookz/web/commit/6af786767f4d68c64b4116eb2e92f1343100aaf8))
+
 # [1.16.0](https://github.com/react-hookz/web/compare/v1.15.0...v1.16.0) (2021-05-06)
 
 
