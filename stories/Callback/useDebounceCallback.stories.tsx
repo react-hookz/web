@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDebounceCallback } from '../src';
+import { useDebounceCallback } from '../../src';
 
 export const Example: React.FC = () => {
   const [state, setState] = useState('');
@@ -14,7 +14,7 @@ export const Example: React.FC = () => {
 
   return (
     <div>
-      <div>Below state will update within 500ms after last change</div>
+      <div>Below state will update 500ms after last change</div>
       <br />
       <div>The input`s value is: {state}</div>
       <input type="text" onChange={handleChange} />
