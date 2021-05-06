@@ -1,6 +1,7 @@
-import { Dispatch, useCallback, useRef } from 'react';
+import { Dispatch, useCallback } from 'react';
 import { IInitialState, INextState, resolveHookState } from './util/resolveHookState';
 import { useSafeState } from './useSafeState';
+import { useSyncedRef } from './useSyncedRef';
 
 export function useMediatedState<State>(
   initialState?: IInitialState<State>
@@ -18,18 +19,15 @@ export function useMediatedState<State, RawState>(
   mediator?: (state: RawState | undefined) => State
 ): [State | undefined, Dispatch<INextState<RawState, State | undefined>>] {
   const [state, setState] = useSafeState(initialState);
-  const mediatorRef = useRef(mediator);
-
-  // this is required to make API stable
-  mediatorRef.current = mediator;
+  const mediatorRef = useSyncedRef(mediator);
 
   return [
     state,
     useCallback((value) => {
-      const m = mediatorRef.current;
-
-      if (m) {
-        setState((prevState) => m(resolveHookState<RawState, State | undefined>(value, prevState)));
+      if (mediatorRef.current) {
+        setState((prevState) =>
+          mediatorRef.current?.(resolveHookState<RawState, State | undefined>(value, prevState))
+        );
       } else {
         setState((value as unknown) as State);
       }
