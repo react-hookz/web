@@ -10,3 +10,4 @@ export { useConditionalEffect } from './useConditionalEffect';
 export { useConditionalUpdateEffect } from './useConditionalUpdateEffect';
 export { useSafeState } from './useSafeState';
 export { useMediatedState } from './useMediatedState';
+export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
