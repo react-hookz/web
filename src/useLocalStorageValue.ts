@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
+import { useEffect, useMemo } from 'react';
 import { IUseStorageValueOptions, useStorageValue } from './useStorageValue';
 import { off, on } from './util/misc';
-import { isBrowser } from './util/const';
+import { isBrowser, noop } from './util/const';
 import { INextState } from './util/resolveHookState';
 import { useSyncedRef } from './useSyncedRef';
 
@@ -154,5 +156,58 @@ export function useLocalStorageValue<T>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleStorageEvent]);
 
-  return [value, setValue, removeValue];
+  // keep actual key in hooks registry
+  useEffect(() => {
+    if (!usedStorageKeys.has(key)) {
+      usedStorageKeys.set(key, []);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const fetchers = usedStorageKeys.get(key)!;
+
+    fetchers.push(fetchValue);
+
+    return () => {
+      const idx = fetchers.indexOf(fetchValue);
+      if (idx !== -1) {
+        fetchers.splice(idx, 1);
+      }
+
+      if (!fetchers.length) usedStorageKeys.delete(key);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
+  // wrapped methods call others hooks `fetchValue` to synchronise state
+  const wrappedMethods = useMemo(
+    () => ({
+      setValue: ((val) => {
+        setValue(val);
+
+        usedStorageKeys.get(keyRef.current)?.forEach((fetcher) => {
+          if (fetcher === fetchValue) return;
+
+          fetcher();
+        });
+      }) as typeof setValue,
+      removeValue: (() => {
+        removeValue();
+
+        usedStorageKeys.get(keyRef.current)?.forEach((fetcher) => {
+          if (fetcher === fetchValue) return;
+
+          fetcher();
+        });
+      }) as typeof removeValue,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  // SSR version should literally do nothing to avoid requests to local storage
+  if (!isBrowser) return [undefined, noop, noop];
+
+  return [value, wrappedMethods.setValue, wrappedMethods.removeValue];
 }
+
+const usedStorageKeys = new Map<string, (() => void)[]>();
