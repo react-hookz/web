@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useStorageValue } from '../../src';
 
 describe('useStorageValue', () => {
@@ -22,11 +22,15 @@ describe('useStorageValue', () => {
     renderHook(() => useStorageValue(adapter, 'foo'));
   });
 
-  it('should fetch value from storage on init', () => {
+  it('should fetch value from storage only on init', () => {
     adapter.getItem.mockImplementationOnce((key) => `"${key}"`);
-    const { result } = renderHook(() => useStorageValue(adapter, 'foo'));
+    const { result, rerender } = renderHook(() => useStorageValue(adapter, 'foo'));
     expect(result.current[0]).toBe('foo');
     expect(adapter.getItem).toHaveBeenCalledWith('foo');
+    rerender();
+    rerender();
+    rerender();
+    expect(adapter.getItem).toHaveBeenCalledTimes(1);
   });
 
   it('should pass value through JSON.parse during fetch in on-raw mode', () => {
@@ -73,5 +77,119 @@ describe('useStorageValue', () => {
     expect(result.all[0][0]).toBe(undefined);
     // @ts-expect-error invalid typings of testing library
     expect(result.all[1][0]).toBe('bar');
+  });
+
+  it('should set storage value on setState call', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo', null));
+
+    expect(result.current[0]).toBe(null);
+    act(() => {
+      result.current[1]('bar');
+    });
+    expect(result.current[0]).toBe('bar');
+
+    const spySetter = jest.fn(() => 'baz');
+    act(() => {
+      result.current[1](spySetter);
+    });
+    expect(result.current[0]).toBe('baz');
+    expect(spySetter).toHaveBeenCalledWith('bar');
+  });
+
+  it('should call JSON.stringify on setState call in non-raw mode', () => {
+    const JSONStringifySpy = jest.spyOn(JSON, 'stringify');
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo', null));
+
+    expect(result.current[0]).toBe(null);
+    act(() => {
+      result.current[1]('bar');
+    });
+    expect(result.current[0]).toBe('bar');
+    expect(JSONStringifySpy).toHaveBeenCalledWith('bar');
+    JSONStringifySpy.mockRestore();
+  });
+
+  it('should call provided serializer on setState call in non-raw mode', () => {
+    const serializerSpy = jest.fn((v) => JSON.stringify(v));
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', null, { serializer: serializerSpy })
+    );
+
+    expect(result.current[0]).toBe(null);
+    act(() => {
+      result.current[1]('bar');
+    });
+    expect(result.current[0]).toBe('bar');
+    expect(serializerSpy).toHaveBeenCalledWith('bar');
+  });
+
+  it('should throw in case non-string value been set in raw mode', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', null, { raw: true })
+    );
+
+    expect(() => {
+      act(() => {
+        // @ts-expect-error testing inappropriate usage
+        result.current[1](123);
+      });
+    }).toThrow(
+      new TypeError('value has to be a string, define serializer or cast it to string manually')
+    );
+  });
+
+  it('should call storage`s removeItem on item remove', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo', null));
+
+    act(() => {
+      result.current[2]();
+    });
+    expect(adapter.removeItem).toHaveBeenCalledWith('foo');
+  });
+
+  it('should set state to default value on item remove', () => {
+    adapter.getItem.mockImplementationOnce(() => 'bar');
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', 'default value', { raw: true })
+    );
+
+    expect(result.current[0]).toBe('bar');
+    act(() => {
+      result.current[2]();
+    });
+    expect(result.current[0]).toBe('default value');
+  });
+
+  it('should refetch value from store on fetchItem call', () => {
+    adapter.getItem.mockImplementationOnce(() => 'bar');
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', 'default value', { raw: true })
+    );
+
+    expect(adapter.getItem).toHaveBeenCalledTimes(1);
+    expect(result.current[0]).toBe('bar');
+    adapter.getItem.mockImplementationOnce(() => 'baz');
+    act(() => {
+      result.current[3]();
+    });
+    expect(adapter.getItem).toHaveBeenCalledTimes(2);
+    expect(result.current[0]).toBe('baz');
+  });
+
+  it('should refetch value on key change', () => {
+    adapter.getItem.mockImplementation((key) => key);
+    const { result, rerender } = renderHook(
+      ({ key }) => useStorageValue<string>(adapter, key, 'default value', { raw: true }),
+      { initialProps: { key: 'foo' } }
+    );
+
+    expect(result.current[0]).toBe('foo');
+    rerender({ key: 'bar' });
+    expect(result.current[0]).toBe('bar');
   });
 });

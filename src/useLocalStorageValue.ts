@@ -29,9 +29,12 @@ type IReturnState<
   U = O extends { initializeWithStorageValue: false } ? undefined | N : N
 > = U;
 
-type INewState<T, O, S = O extends { raw: true } ? string : T> = INextState<S>;
+type INewState<T, D, O, S = O extends { raw: true } ? string : T> = INextState<
+  S,
+  IReturnState<T, D, O>
+>;
 
-type IHookReturn<T, D, O> = [IReturnState<T, D, O>, (val: INewState<T, O>) => void, () => void];
+type IHookReturn<T, D, O> = [IReturnState<T, D, O>, (val: INewState<T, D, O>) => void, () => void];
 
 export function useLocalStorageValue<T = unknown>(
   key: string,

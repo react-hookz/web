@@ -6,6 +6,7 @@ import { useUpdateEffect } from './useUpdateEffect';
 import { useMountEffect } from './useMountEffect';
 import { useSyncedRef } from './useSyncedRef';
 import { isBrowser } from './util/const';
+import { useFirstMountState } from './useFirstMountState';
 
 export type IUseStorageValueAdapter = {
   getItem(key: string): string | null;
@@ -76,11 +77,14 @@ type IReturnState<
   U = O extends { initializeWithStorageValue: false } ? undefined | N : N
 > = U;
 
-type INewState<T, O, S = O extends { raw: true } ? string : T> = INextState<S>;
+type INewState<T, D, O, S = O extends { raw: true } ? string : T> = INextState<
+  S,
+  IReturnState<T, D, O>
+>;
 
 type IHookReturn<T, D, O> = [
   IReturnState<T, D, O>,
-  (val: INewState<T, O>) => void,
+  (val: INewState<T, D, O>) => void,
   () => void,
   () => void
 ];
@@ -213,11 +217,11 @@ export function useStorageValue<T>(
             'value has to be a string, define serializer or cast it to string manually'
           );
         }
-
-        adapter.setItem(key, val as string);
+      } else {
+        val = serializer(val as T);
       }
 
-      adapter.setItem(key, serializer(val as T));
+      adapter.setItem(key, val);
     },
     fetchVal: () => {
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -230,8 +234,9 @@ export function useStorageValue<T>(
     },
   });
 
+  const isFirstMount = useFirstMountState();
   const [state, setState] = useSafeState<T | null | string | undefined>(
-    initializeWithStorageValue && isBrowser ? methods.current.getVal() : undefined
+    initializeWithStorageValue && isBrowser && isFirstMount ? methods.current.getVal() : undefined
   );
   const stateRef = useSyncedRef(state);
 
