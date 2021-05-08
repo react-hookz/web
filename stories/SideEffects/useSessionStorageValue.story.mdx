@@ -9,7 +9,7 @@ Manages a single SessionStorage key.
 
 > By default, tracks window's `storage` event and automatically updates state.
 
-> While using SSR, To avoid hydration mismatch, consider setting `initializeWithStorageValue` option to
+> While using SSR, to avoid hydration mismatch, consider setting `initializeWithStorageValue` option to
 `false`, this will yield `undefined` state on first render and defer value fetch to effects
 execution stage.
 
