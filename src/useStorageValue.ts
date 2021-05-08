@@ -7,6 +7,7 @@ import { useMountEffect } from './useMountEffect';
 import { useSyncedRef } from './useSyncedRef';
 import { isBrowser } from './util/const';
 import { useFirstMountState } from './useFirstMountState';
+import { usePrevious } from './usePrevious';
 
 export type IUseStorageValueAdapter = {
   getItem(key: string): string | null;
@@ -238,6 +239,7 @@ export function useStorageValue<T>(
   const [state, setState] = useSafeState<T | null | string | undefined>(
     initializeWithStorageValue && isBrowser && isFirstMount ? methods.current.getVal() : undefined
   );
+  const prevState = usePrevious(state);
   const stateRef = useSyncedRef(state);
 
   // fetch value on mount for the case `initializeWithStorageValue` is false
@@ -250,7 +252,7 @@ export function useStorageValue<T>(
   // store default value if it is not null and options configured to store default value
   useConditionalEffect(() => {
     methods.current.setVal(defaultValue as T);
-  }, [state === null && defaultValue !== null && storeDefaultValue]);
+  }, [prevState !== state, state === defaultValue && defaultValue !== null && storeDefaultValue]);
 
   // refetch value when key changed
   useUpdateEffect(() => {

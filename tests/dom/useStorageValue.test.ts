@@ -192,4 +192,67 @@ describe('useStorageValue', () => {
     rerender({ key: 'bar' });
     expect(result.current[0]).toBe('bar');
   });
+
+  it('should store initially default value to storage if configured', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', 'default value', {
+        raw: true,
+        storeDefaultValue: true,
+      })
+    );
+
+    expect(result.current[0]).toBe('default value');
+    expect(adapter.setItem).toHaveBeenCalledWith('foo', 'default value');
+  });
+
+  it('should store default value if it became default after initial render', () => {
+    adapter.getItem.mockImplementationOnce(() => 'bar');
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', 'default value', {
+        raw: true,
+        storeDefaultValue: true,
+      })
+    );
+    adapter.getItem.mockImplementationOnce(() => null);
+
+    expect(result.current[0]).toBe('bar');
+    expect(adapter.setItem).not.toHaveBeenCalled();
+
+    act(() => {
+      result.current[2]();
+    });
+
+    expect(result.current[0]).toBe('default value');
+    expect(adapter.setItem).toHaveBeenCalledWith('foo', 'default value');
+  });
+
+  it('should not store default value on rerenders with persisted state', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result, rerender } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', 'default value', {
+        raw: true,
+        storeDefaultValue: true,
+      })
+    );
+
+    expect(result.current[0]).toBe('default value');
+    expect(adapter.setItem).toHaveBeenCalledWith('foo', 'default value');
+    rerender();
+    rerender();
+    rerender();
+    expect(adapter.setItem).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not store null default value to store', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', null, {
+        raw: true,
+        storeDefaultValue: true,
+      })
+    );
+
+    expect(adapter.setItem).not.toHaveBeenCalled();
+  });
 });
