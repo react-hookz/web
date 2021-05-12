@@ -143,7 +143,7 @@ jobs:
 
       - name: "Release"
         id: "release"
-        uses: codfish/semantic-release-action@v1
+        uses: codfish/semantic-release-action@v1.9.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
