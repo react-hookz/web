@@ -2648,9 +2648,9 @@
     regenerator-runtime "^0.13.7"
 
 "@storybook/storybook-deployer@^2.8.7":
-  version "2.8.7"
-  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.7.tgz#c1eed33d03bd9267f884c60eea8e03dc3261ec11"
-  integrity sha512-O0hKHV6hg93fPMvKGC5M/sd7KTL473+SzMKm+WZNVEyLEfXXcVU+Ts9/VL1IhmC1P2A8Bg9oBnkcPqAqjAN46w==
+  version "2.8.8"
+  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.8.tgz#680a46de7c5b78ac3f4b319f30a358aab0bd1907"
+  integrity sha512-nRdK7llDJR1ayWt1354lLsrPuKzVmLPk9kxOzMo2EirumMkyUNIdZH+voHdntUKkh+KuSOm7Q0OOoqlHZkY0vA==
   dependencies:
     git-url-parse "^11.1.2"
     glob "^7.1.3"
