@@ -7,6 +7,8 @@ describe('useLocalStorageValue', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useLocalStorageValue('foo'));
+    renderHook(() => {
+      useLocalStorageValue('foo');
+    });
   });
 });

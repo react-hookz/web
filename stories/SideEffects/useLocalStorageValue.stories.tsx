@@ -14,15 +14,21 @@ interface IExampleProps {
    * Subscribe to window's `storage` event.
    */
   handleStorageEvent: boolean;
+  /**
+   * Isolate hook from others on page - it will not receive updates from other hooks managing same key.
+   */
+  isolated: boolean;
 }
 
 export const Example: React.FC<IExampleProps> = ({
   key = 'react-hookz-ls-test',
   defaultValue = '@react-hookz is awesome',
   handleStorageEvent = true,
+  isolated = false,
 }) => {
   const [value, setValue, removeValue] = useLocalStorageValue(key, defaultValue, {
     handleStorageEvent,
+    isolated,
   });
 
   return (

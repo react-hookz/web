@@ -1,21 +1,24 @@
-import { renderHook, act } from '@testing-library/react-hooks/server';
-import { useStorageValue } from '../../src';
+import { act, renderHook } from '@testing-library/react-hooks/server';
+import { useStorageValue } from '../../src/useStorageValue';
+import Mocked = jest.Mocked;
 
 describe('useStorageValue', () => {
   it('should be defined', () => {
     expect(useStorageValue).toBeDefined();
   });
 
-  const adapter = {
-    getItem: jest.fn(),
-    setItem: jest.fn(),
-    removeItem: jest.fn(),
-  };
+  const adapter = ({
+    getItem: jest.fn(() => null),
+
+    setItem: jest.fn(() => {}),
+
+    removeItem: jest.fn(() => {}),
+  } as unknown) as Mocked<Storage>;
 
   beforeEach(() => {
-    adapter.getItem.mockReset();
-    adapter.setItem.mockReset();
-    adapter.removeItem.mockReset();
+    adapter.getItem.mockClear().mockImplementation(() => null);
+    adapter.setItem.mockClear();
+    adapter.removeItem.mockClear();
   });
 
   it('should render', () => {
@@ -28,37 +31,65 @@ describe('useStorageValue', () => {
     expect(adapter.getItem).not.toHaveBeenCalled();
   });
 
-  it('should throw in case non-string value been set in raw mode', () => {
-    adapter.getItem.mockImplementationOnce(() => null);
-    const { result } = renderHook(() =>
-      useStorageValue<string>(adapter, 'foo', null, { raw: true })
-    );
+  it('should not set storage value on setState call', () => {
+    const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo'));
 
-    expect(() => {
-      act(() => {
-        // @ts-expect-error testing inappropriate usage
-        result.current[1](123);
-      });
-    }).toThrow(
-      new TypeError('value has to be a string, define serializer or cast it to string manually')
-    );
+    expect(result.current[0]).toBe(undefined);
+    act(() => {
+      result.current[1]('bar');
+    });
+    expect(result.current[0]).toBe(undefined);
+    expect(adapter.setItem).not.toHaveBeenCalled();
   });
 
-  it('should call storage`s removeItem on item remove', () => {
+  it('should not call storage`s removeItem on item remove', () => {
     adapter.getItem.mockImplementationOnce(() => null);
     const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo', null));
 
     act(() => {
       result.current[2]();
     });
-    expect(adapter.removeItem).toHaveBeenCalledWith('foo');
+    expect(adapter.removeItem).not.toHaveBeenCalled();
+  });
+
+  it('should not set state to default value on item remove', () => {
+    adapter.getItem.mockImplementationOnce(() => '"bar"');
+    const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo', 'default value'));
+
+    expect(result.current[0]).toBe(undefined);
+    act(() => {
+      result.current[2]();
+    });
+    expect(result.current[0]).toBe(undefined);
+  });
+
+  it('should not re-fetch value from store on fetchItem call', () => {
+    adapter.getItem.mockImplementationOnce(() => '"bar"');
+    const { result } = renderHook(() => useStorageValue<string>(adapter, 'foo', 'default value'));
+
+    expect(adapter.getItem).not.toHaveBeenCalled();
+    act(() => {
+      result.current[3]();
+    });
+    expect(adapter.getItem).not.toHaveBeenCalled();
+  });
+
+  it('should not store initially default value to storage if configured', () => {
+    adapter.getItem.mockImplementationOnce(() => null);
+    const { result } = renderHook(() =>
+      useStorageValue<string>(adapter, 'foo', 'default value', {
+        storeDefaultValue: true,
+      })
+    );
+
+    expect(result.current[0]).toBe(undefined);
+    expect(adapter.setItem).not.toHaveBeenCalled();
   });
 
   it('should not store null default value to store', () => {
     adapter.getItem.mockImplementationOnce(() => null);
     renderHook(() =>
       useStorageValue<string>(adapter, 'foo', null, {
-        raw: true,
         storeDefaultValue: true,
       })
     );
