@@ -102,6 +102,3 @@ import { useMountEffect } from "@react-hookz/web/esnext";
       — Manages a single LocalStorage key.
     - [`useSessionStorageValue`](https://react-hookz.github.io/?path=/docs/side-effects-usesessionstoragevalue)
       — Manages a single SessionStorage key.
-    - [`useStorageValue`](https://react-hookz.github.io/?path=/docs/side-effects-usestoragevalue)
-      — Manages a single storage key. General-purpose hook for string key-value storages, that used
-      in `useLocalStorageValue` and `useSessionStorageValue`.
