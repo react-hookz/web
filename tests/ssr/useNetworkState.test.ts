@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useNetworkState } from '../../src/useNetworkState';
+import { useNetworkState } from '../../src';
 
 describe(`useNetworkState`, () => {
   it('should be defined', () => {

@@ -88,6 +88,13 @@ module.exports = {
             leadingUnderscore: 'allow',
           },
         ],
+
+        'react-hooks/exhaustive-deps': [
+          'warn',
+          {
+            additionalHooks: '(useSyncedRef)',
+          },
+        ],
       },
     },
     {

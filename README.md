@@ -61,6 +61,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
   - [`useDebounceCallback`](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback)
     — Makes passed function debounced, otherwise acts like `useCallback`.
+  - [`useRafCallback`](https://react-hookz.github.io/web/?path=/docs/callback-userafcallback)
+    — Makes passed function to be called within next animation frame.
 
 - #### Lifecycle
 
