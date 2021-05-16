@@ -31,3 +31,6 @@ export { useSyncedRef } from './useSyncedRef';
 // SideEffect
 export { useLocalStorageValue } from './useLocalStorageValue';
 export { useSessionStorageValue } from './useSessionStorageValue';
+
+// Sensor
+export { useResizeObserver, IUseResizeObserverCallback } from './useResizeObserver';
