@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/react-hookz/web/compare/v1.18.0...v1.19.0) (2021-05-16)
+
+
+### Features
+
+* new hooks `useLocalStorageValue` and `useSessionStorageValue` ([#43](https://github.com/react-hookz/web/issues/43)) ([f02e8ea](https://github.com/react-hookz/web/commit/f02e8ea61adffe8626d4e4b31073b24996802479))
+
 # [1.18.0](https://github.com/react-hookz/web/compare/v1.17.0...v1.18.0) (2021-05-06)
 
 
