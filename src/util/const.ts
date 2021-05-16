@@ -1,7 +1,5 @@
 export const noop = (): void => {};
 
-export const bypass = <T>(v: T): T => v;
-
 export const isBrowser =
   typeof window !== 'undefined' &&
   typeof navigator !== 'undefined' &&
