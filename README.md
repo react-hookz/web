@@ -9,8 +9,6 @@
 [![Coverage](https://flat.badgen.net/codecov/c/github/react-hookz/web)](https://app.codecov.io/gh/react-hookz/web)
 [![Types](https://flat.badgen.net/npm/types/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 
-<br/>
-
 × **[DOCS](https://react-hookz.github.io/web/)**
 × **[DISCORD](https://discord.gg/Fjwphtu65f)**
 × **[CHANGELOG](https://github.com/react-hookz/web/blob/master/CHANGELOG.md)** ×
