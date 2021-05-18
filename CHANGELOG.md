@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/react-hookz/web/compare/v1.19.0...v1.20.0) (2021-05-18)
+
+
+### Features
+
+* new hook `useRafCallback` ([#66](https://github.com/react-hookz/web/issues/66)) ([9e2255e](https://github.com/react-hookz/web/commit/9e2255eadfb184b081ee65d70608ed0b9c60f511))
+
 # [1.19.0](https://github.com/react-hookz/web/compare/v1.18.0...v1.19.0) (2021-05-16)
 
 
