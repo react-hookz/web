@@ -88,7 +88,7 @@
     "@storybook/react": "^6.2.9",
     "@storybook/storybook-deployer": "^2.8.7",
     "@storybook/theming": "^6.2.9",
-    "@testing-library/react-hooks": "^5.1.2",
+    "@testing-library/react-hooks": "^6.0.0",
     "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
