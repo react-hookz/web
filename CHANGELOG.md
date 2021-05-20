@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/react-hookz/web/compare/v1.20.0...v1.20.1) (2021-05-20)
+
+
+### Bug Fixes
+
+* remove `types` field in package.json ([#75](https://github.com/react-hookz/web/issues/75)) ([340e7d7](https://github.com/react-hookz/web/commit/340e7d765bad760737b477c3139e55a218d2a3b0))
+
 # [1.20.0](https://github.com/react-hookz/web/compare/v1.19.0...v1.20.0) (2021-05-18)
 
 
