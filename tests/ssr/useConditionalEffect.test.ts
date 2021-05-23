@@ -7,7 +7,8 @@ describe('useConditionalEffect', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useConditionalEffect(() => {}, []));
+    const { result } = renderHook(() => useConditionalEffect(() => {}, []));
+    expect(result.error).toBeUndefined();
   });
 
   it('should not invoke effect, but should invoke predicate', () => {

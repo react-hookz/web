@@ -7,7 +7,8 @@ describe('useConditionalUpdateEffect', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useConditionalUpdateEffect(() => {}, []));
+    const { result } = renderHook(() => useConditionalUpdateEffect(() => {}, []));
+    expect(result.error).toBeUndefined();
   });
 
   it('nor callback neither predicate should not be called on mount', () => {

@@ -29,7 +29,7 @@ export function useMediatedState<State, RawState>(
           mediatorRef.current?.(resolveHookState<RawState, State | undefined>(value, prevState))
         );
       } else {
-        setState((value as unknown) as State);
+        setState(value as unknown as State);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),

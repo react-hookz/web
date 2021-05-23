@@ -6,7 +6,8 @@ describe(`useNetworkState`, () => {
     expect(useNetworkState).toBeDefined();
   });
   it('should render', () => {
-    renderHook(() => useNetworkState());
+    const { result } = renderHook(() => useNetworkState());
+    expect(result.error).toBeUndefined();
   });
 
   it('should have undefined state', () => {

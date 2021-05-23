@@ -7,7 +7,8 @@ describe('useMediatedState', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useMediatedState());
+    const { result } = renderHook(() => useMediatedState());
+    expect(result.error).toBeUndefined();
   });
 
   it('should return initial state on first mount', () => {

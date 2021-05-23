@@ -7,7 +7,8 @@ describe('useConditionalEffect', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useConditionalEffect(() => {}, []));
+    const { result } = renderHook(() => useConditionalEffect(() => {}, []));
+    expect(result.error).toBeUndefined();
   });
 
   it('by default should invoke effect only in case all conditions are truthy', () => {

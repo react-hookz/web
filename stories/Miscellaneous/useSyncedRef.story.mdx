@@ -1,5 +1,5 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {Example} from './useSyncedRef.stories';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './useSyncedRef.stories';
 
 <Meta title="Miscellaneous/useSyncedRef" component={Example} />
 
@@ -8,17 +8,18 @@ import {Example} from './useSyncedRef.stories';
 Like `useRef`, but it returns immutable ref that contains actual value.
 
 > `useSyncedRef` returns frozen object, therefore any attempt to modify returned ref will end up
-exception throw.
+> exception throw.
 
->This hook initially designed to simplify creation of stable APIs, which, alternatively, would 
-require to write a lot of code like below:
->```ts
-// before
-const someRef1 = React.useRef<()=>void>();
-someRef1.current = ()=>{};
-// after
-const someRef = useSyncedRef(()=>{});
->```
+> This hook initially designed to simplify creation of stable APIs, which, alternatively, would
+> require to write a lot of code like below:
+>
+> ```ts
+> // before
+> const someRef1 = React.useRef<() => void>();
+> someRef1.current = () => {};
+> // after
+> const someRef = useSyncedRef(() => {});
+> ```
 
 #### Example
 
