@@ -7,8 +7,9 @@ describe('useSessionStorageValue', () => {
   });
 
   it('should render', () => {
-    renderHook(() => {
+    const { result } = renderHook(() => {
       useSessionStorageValue('foo');
     });
+    expect(result.error).toBeUndefined();
   });
 });

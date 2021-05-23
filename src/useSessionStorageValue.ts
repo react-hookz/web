@@ -1,4 +1,5 @@
 import { IHookReturn, IUseStorageValueOptions, useStorageValue } from './useStorageValue';
+import { isBrowser } from './util/const';
 
 export function useSessionStorageValue<T = unknown>(
   key: string,
@@ -40,5 +41,5 @@ export function useSessionStorageValue<T>(
   defaultValue: T | null = null,
   options: IUseStorageValueOptions = {}
 ): IHookReturn<T, typeof defaultValue, typeof options> {
-  return useStorageValue(localStorage, key, defaultValue, options);
+  return useStorageValue(isBrowser ? sessionStorage : ({} as Storage), key, defaultValue, options);
 }
