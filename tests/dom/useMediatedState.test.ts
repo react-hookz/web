@@ -7,7 +7,8 @@ describe('useMediatedState', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useMediatedState());
+    const { result } = renderHook(() => useMediatedState());
+    expect(result.error).toBeUndefined();
   });
 
   it('should act like useState if mediator not passed', () => {

@@ -7,7 +7,8 @@ describe('useSyncedRef', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useSyncedRef(1));
+    const { result } = renderHook(() => useSyncedRef(1));
+    expect(result.error).toBeUndefined();
   });
 
   it('should return ref object', () => {

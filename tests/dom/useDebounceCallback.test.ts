@@ -15,9 +15,10 @@ describe('useDebounceCallback', () => {
   });
 
   it('should render', () => {
-    renderHook(() => {
+    const { result } = renderHook(() => {
       useDebounceCallback(() => {}, 200, []);
     });
+    expect(result.error).toBeUndefined();
   });
 
   it('should return new callback if delay is changed', () => {

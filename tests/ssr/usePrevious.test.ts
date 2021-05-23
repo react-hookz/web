@@ -7,7 +7,8 @@ describe('usePrevious', () => {
   });
 
   it('should render', () => {
-    renderHook(() => usePrevious());
+    const { result } = renderHook(() => usePrevious());
+    expect(result.error).toBeUndefined();
   });
 
   it('should return undefined on first render', () => {

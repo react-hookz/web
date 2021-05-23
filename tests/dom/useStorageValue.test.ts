@@ -7,13 +7,13 @@ describe('useStorageValue', () => {
     expect(useStorageValue).toBeDefined();
   });
 
-  const adapter = ({
+  const adapter = {
     getItem: jest.fn(() => null),
 
     setItem: jest.fn(() => {}),
 
     removeItem: jest.fn(() => {}),
-  } as unknown) as Mocked<Storage>;
+  } as unknown as Mocked<Storage>;
 
   beforeEach(() => {
     adapter.getItem.mockClear().mockImplementation(() => null);
@@ -22,7 +22,8 @@ describe('useStorageValue', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useStorageValue(adapter, 'foo'));
+    const { result } = renderHook(() => useStorageValue(adapter, 'foo'));
+    expect(result.error).toBeUndefined();
   });
 
   it('should fetch value from storage only on init', () => {

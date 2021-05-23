@@ -8,7 +8,7 @@ describe('misc', () => {
       };
 
       const cb = () => {};
-      on((obj as unknown) as EventTarget, 'evtName', cb);
+      on(obj as unknown as EventTarget, 'evtName', cb);
       expect(obj.addEventListener).toBeCalledWith('evtName', cb);
     });
     it("should not throw in case 'undefined' element passed", () => {
@@ -26,7 +26,7 @@ describe('misc', () => {
       };
 
       const cb = () => {};
-      off((obj as unknown) as EventTarget, 'evtName', cb);
+      off(obj as unknown as EventTarget, 'evtName', cb);
       expect(obj.removeEventListener).toBeCalledWith('evtName', cb);
     });
 

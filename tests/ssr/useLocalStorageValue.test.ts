@@ -7,8 +7,9 @@ describe('useLocalStorageValue', () => {
   });
 
   it('should render', () => {
-    renderHook(() => {
+    const { result } = renderHook(() => {
       useLocalStorageValue('foo');
     });
+    expect(result.error).toBeUndefined();
   });
 });
