@@ -1,3 +1,10 @@
+## [1.20.3](https://github.com/react-hookz/web/compare/v1.20.2...v1.20.3) (2021-05-24)
+
+
+### Bug Fixes
+
+* mark package as side-effects free ([74d6f1c](https://github.com/react-hookz/web/commit/74d6f1ce4e1073171b24d69b3657131b3cd0afcc))
+
 ## [1.20.2](https://github.com/react-hookz/web/compare/v1.20.1...v1.20.2) (2021-05-24)
 
 
