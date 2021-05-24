@@ -37,12 +37,14 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
 
       // as Set is duplicate-safe - simply add callback on each call
       cbs.add(callback);
-
-      observer.observe(target);
     },
     unsubscribe: (target, callback) => {
       const cbs = callbacks.get(target);
 
+      // else branch should never occur in case of normal execution
+      // because callbacks map is hidden in closure - it is impossible to
+      // simulate situation with non-existent `cbs` Set
+      /* istanbul ignore else */
       if (cbs) {
         // remove current observer
         cbs.delete(callback);
@@ -73,6 +75,9 @@ export function useResizeObserver<T extends Element>(
   const cb = useSyncedRef(callback);
 
   useEffect(() => {
+    // quite difficult to cover with tests, but the 'if' branch  is pretty
+    // straightforward: do nothing, it is safe to exclude from LOC
+    /* istanbul ignore if */
     if (!ro) return;
 
     // as unsubscription in internals of our ResizeObserver abstraction can
@@ -84,7 +89,12 @@ export function useResizeObserver<T extends Element>(
     if (!tgt) return;
 
     const handler: IUseResizeObserverCallback = (...args) => {
-      if (subscribed) cb.current(...args);
+      // it is reinsurance for the highly asynchronous invocations, almost
+      // impossible to achieve in tests, thus excluding from LOC
+      /* istanbul ignore else */
+      if (subscribed) {
+        cb.current(...args);
+      }
     };
 
     ro.subscribe(tgt, handler);
