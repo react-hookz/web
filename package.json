@@ -28,6 +28,7 @@
   "main": "cjs/index.js",
   "esnext": "esnext/index.js",
   "types": "cjs/index.d.ts",
+  "module": "esm/index.js",
   "sideEffects": false,
   "scripts": {
     "build": "yarn build:cleanup && concurrently yarn:build:cjs yarn:build:esm yarn:build:esnext --kill-others-on-fail",
