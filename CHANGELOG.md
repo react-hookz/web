@@ -1,3 +1,10 @@
+## [1.20.4](https://github.com/react-hookz/web/compare/v1.20.3...v1.20.4) (2021-05-24)
+
+
+### Bug Fixes
+
+* add `module` field to package.json so bundlers use proper version ([b0119ce](https://github.com/react-hookz/web/commit/b0119ce2a68af5cb2a40a224074425525bc0f73b))
+
 ## [1.20.3](https://github.com/react-hookz/web/compare/v1.20.2...v1.20.3) (2021-05-24)
 
 
