@@ -2,9 +2,7 @@ name: "Discord"
 
 on:
   release:
-    types:
-      - published
-  workflow_dispatch:
+    types: [ published ]
 
 jobs:
   notify:
