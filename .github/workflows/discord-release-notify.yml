@@ -1,0 +1,25 @@
+name: "Discord"
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  notify:
+    name: "Notify"
+    runs-on: ubuntu-latest
+    steps:
+      - id: rhw-release
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: react-hookz
+          repo: web
+          excludes: prerelease, draft
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "🆕 New release published\n\n{{ EVENT_PAYLOAD.release.name }}\n{{ EVENT_PAYLOAD.release.body }}\n\n{{ EVENT_PAYLOAD.release.url }}"
