@@ -1,0 +1,31 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './useMeasure.stories';
+
+<Meta title="Sensor/useMeasure" />
+
+# useMeasure
+
+Uses ResizeObserver to track element dimensions and re-render component when they change.
+
+- It's ResizeObserver callback uses RAF debouncing, therefore it is pretty performant.
+- SSR friendly, returns `undefined` on initial mount.
+- Automatically creates ref for you, that you can easily pass to needed element.
+
+#### Example
+
+<Canvas isColumn>
+  <Story name="Example" story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+function useMeasure<T extends Element>(): [DOMRectReadOnly | undefined, RefObject<T>];
+```
+
+#### Return
+
+Array of two elements:
+
+- **0** _`DOMRectReadOnly | undefined`_ - Current element rect, received from ResizeObserver;
+- **1** _`RefObject<T>`_ - Ref objet that should be passed to tracked element;

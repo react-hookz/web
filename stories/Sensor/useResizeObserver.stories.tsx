@@ -18,8 +18,9 @@ export const Example: React.FC = () => {
           resize: 'both',
           overflow: 'auto',
           background: 'red',
-        }}
-      />
+        }}>
+        resize me UwU
+      </div>
     </div>
   );
 };
@@ -43,8 +44,9 @@ export const ExampleDebounced: React.FC = () => {
           resize: 'both',
           overflow: 'auto',
           background: 'red',
-        }}
-      />
+        }}>
+        resize me UwU
+      </div>
     </div>
   );
 };
