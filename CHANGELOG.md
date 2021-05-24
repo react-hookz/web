@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/react-hookz/web/compare/v1.20.1...v1.20.2) (2021-05-24)
+
+
+### Bug Fixes
+
+* proper 'types' and 'esnext' fields values ([069ae24](https://github.com/react-hookz/web/commit/069ae249301ae4d0529d43f1e643a7d4acfa2ee9))
+
 ## [1.20.1](https://github.com/react-hookz/web/compare/v1.20.0...v1.20.1) (2021-05-20)
 
 
