@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/react-hookz/web/compare/v1.20.4...v1.21.0) (2021-05-25)
+
+
+### Features
+
+* new hook `useResizeObserver` ([#67](https://github.com/react-hookz/web/issues/67)) ([ccf2c26](https://github.com/react-hookz/web/commit/ccf2c268636f66194f96ef8f232a1fb46b6af056))
+
 ## [1.20.4](https://github.com/react-hookz/web/compare/v1.20.3...v1.20.4) (2021-05-24)
 
 
