@@ -34,3 +34,6 @@ export { useSessionStorageValue } from './useSessionStorageValue';
 
 // Sensor
 export { useResizeObserver, IUseResizeObserverCallback } from './useResizeObserver';
+
+// Dom
+export { useTitle, IUseTitleOptions } from './useTitle';
