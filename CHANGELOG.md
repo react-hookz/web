@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/react-hookz/web/compare/v1.21.0...v1.22.0) (2021-05-25)
+
+
+### Features
+
+* new hook `useMeasure` ([#80](https://github.com/react-hookz/web/issues/80)) ([354efc6](https://github.com/react-hookz/web/commit/354efc61883e8ffc7aeb468b9367197c63da170c))
+
 # [1.21.0](https://github.com/react-hookz/web/compare/v1.20.4...v1.21.0) (2021-05-25)
 
 
