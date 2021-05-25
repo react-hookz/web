@@ -15,9 +15,6 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
           args: |
-            🎊 New release published 🎊
-
-            ${{ github.event.release.name }}
-            ${{ github.event.release.body }}
+            🎊 New release published: **${{ github.event.release.name }}**
 
             ${{ github.event.release.html_url }}"
