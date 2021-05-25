@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useMeasure } from '../../src/useMeasure';
 
 export const Example: React.FC = () => {
-  const [measure, ref] = useMeasure<HTMLDivElement>();
+  const [measurements, ref] = useMeasure<HTMLDivElement>();
 
   return (
     <div>
-      <pre>{JSON.stringify(measure)}</pre>
+      <pre>{JSON.stringify(measurements)}</pre>
       <div
         ref={ref}
         style={{
