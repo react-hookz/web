@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/react-hookz/web/compare/v1.22.0...v1.23.0) (2021-05-25)
+
+
+### Features
+
+* new hook `useTitle` ([#68](https://github.com/react-hookz/web/issues/68)) ([84e4cbf](https://github.com/react-hookz/web/commit/84e4cbf5d966b11a0e637937e4cc975360602f7e))
+
 # [1.22.0](https://github.com/react-hookz/web/compare/v1.21.0...v1.22.0) (2021-05-25)
 
 
