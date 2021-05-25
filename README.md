@@ -106,9 +106,14 @@ import { useMountEffect } from "@react-hookz/web/esnext";
   - [**`useSyncedRef`**](https://react-hookz.github.io/?path=/docs/miscellaneous-usesyncedref)
     — Like `useRef`, but it returns immutable ref that contains actual value.
 
-- #### Side-effects
+- #### Side-effect
 
-  - [**`useLocalStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effects-uselocalstoragevalue)
+  - [**`useLocalStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-uselocalstoragevalue)
     — Manages a single LocalStorage key.
-  - [**`useSessionStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effects-usesessionstoragevalue)
+  - [**`useSessionStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-usesessionstoragevalue)
     — Manages a single SessionStorage key.
+
+- #### Sensor
+
+  - [**`useResizeObserver`**](https://react-hookz.github.io/?path=/docs/sensor-useresizeobserver)
+    — Invokes a callback whenever ResizeObserver detects a change to target's size.
