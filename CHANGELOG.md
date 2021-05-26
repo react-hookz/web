@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/react-hookz/web/compare/v1.23.0...v1.24.0) (2021-05-26)
+
+
+### Features
+
+* `useTitle` -> `useDocumentTitle` ([24daf77](https://github.com/react-hookz/web/commit/24daf778815564185fd0c7c34c19011dea8b1e37))
+
 # [1.23.0](https://github.com/react-hookz/web/compare/v1.22.0...v1.23.0) (2021-05-25)
 
 
