@@ -36,4 +36,4 @@ export { useSessionStorageValue } from './useSessionStorageValue';
 export { useResizeObserver, IUseResizeObserverCallback } from './useResizeObserver';
 
 // Dom
-export { useTitle, IUseTitleOptions } from './useTitle';
+export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle';

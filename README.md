@@ -119,3 +119,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Invokes a callback whenever ResizeObserver detects a change to target's size.
   - [**`useMeasure`**](https://react-hookz.github.io/?path=/docs/sensor-usemeasure)
     — Uses ResizeObserver to track element dimensions and re-render component when they change.
+
+- #### Dom
+
+  - [**`useDocumentTitle`**](https://react-hookz.github.io/?path=/docs/dom-usedocumenttitle)
+    — Sets title of the page.

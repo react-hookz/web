@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTitle, useToggle } from '../../src';
+import { useDocumentTitle, useToggle } from '../../src';
 
 export const Example: React.FC = () => {
   const [mounted, toggleMounted] = useToggle(false);
@@ -7,7 +7,7 @@ export const Example: React.FC = () => {
   const titleWrapper = (title: string) => `@react-hookz/web is ${title}`;
 
   const ChildComponent: React.FC = () => {
-    useTitle('awesome!', {
+    useDocumentTitle('awesome!', {
       wrapper: titleWrapper,
       restoreOnUnmount: true,
     });

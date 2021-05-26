@@ -1,19 +1,19 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useTitle } from '../../src';
+import { useDocumentTitle } from '../../src';
 
-describe('useTitle', () => {
+describe('useDocumentTitle', () => {
   it('should be defined', () => {
-    expect(useTitle).toBeDefined();
+    expect(useDocumentTitle).toBeDefined();
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useTitle('some title'));
+    const { result } = renderHook(() => useDocumentTitle('some title'));
     expect(result.error).toBeUndefined();
   });
 
   it('should unmount without errors', () => {
     const { unmount, result } = renderHook(() =>
-      useTitle('some title', { restoreOnUnmount: true })
+      useDocumentTitle('some title', { restoreOnUnmount: true })
     );
 
     unmount();
@@ -21,19 +21,19 @@ describe('useTitle', () => {
   });
 
   it('should set given string to the document title', () => {
-    renderHook(() => useTitle('foo'));
+    renderHook(() => useDocumentTitle('foo'));
     expect(document.title).toBe('foo');
   });
 
   it('should pass title through wrapper', () => {
     const wrapper = (str: string) => `${str} bar`;
-    renderHook(() => useTitle('foo', { wrapper }));
+    renderHook(() => useDocumentTitle('foo', { wrapper }));
     expect(document.title).toBe('foo bar');
   });
 
   it('should update title if title or wrapper changed', () => {
     let wrapperSpy = (str: string) => `${str} bar`;
-    const { rerender } = renderHook(({ title, wrapper }) => useTitle(title, { wrapper }), {
+    const { rerender } = renderHook(({ title, wrapper }) => useDocumentTitle(title, { wrapper }), {
       initialProps: { title: 'foo', wrapper: wrapperSpy },
     });
     expect(document.title).toBe('foo bar');
@@ -48,7 +48,7 @@ describe('useTitle', () => {
 
   it('should set previous title in case `restoreOnUnmount` options is truthy', () => {
     document.title = 'bar';
-    const { unmount } = renderHook(() => useTitle('foo', { restoreOnUnmount: true }));
+    const { unmount } = renderHook(() => useDocumentTitle('foo', { restoreOnUnmount: true }));
     expect(document.title).toBe('foo');
 
     unmount();

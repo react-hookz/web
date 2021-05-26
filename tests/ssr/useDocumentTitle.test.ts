@@ -1,19 +1,19 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useTitle } from '../../src';
+import { useDocumentTitle } from '../../src';
 
-describe('useTitle', () => {
+describe('useDocumentTitle', () => {
   it('should be defined', () => {
-    expect(useTitle).toBeDefined();
+    expect(useDocumentTitle).toBeDefined();
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useTitle('some title'));
+    const { result } = renderHook(() => useDocumentTitle('some title'));
     expect(result.error).toBeUndefined();
   });
 
   it('should unmount without errors', () => {
     const { unmount, result } = renderHook(() =>
-      useTitle('some title', { restoreOnUnmount: true })
+      useDocumentTitle('some title', { restoreOnUnmount: true })
     );
 
     unmount();

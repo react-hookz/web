@@ -3,7 +3,7 @@ import { isBrowser } from './util/const';
 import { useUnmountEffect } from './useUnmountEffect';
 import { useSyncedRef } from './useSyncedRef';
 
-export interface IUseTitleOptions {
+export interface IUseDocumentTitleOptions {
   /**
    * Function that processes title, useful to prefix or suffix the title.
    * @param title
@@ -22,7 +22,10 @@ export interface IUseTitleOptions {
  * @param title Title to set, if wrapper option is set, it will be passed through wrapper function.
  * @param options Options object.
  */
-export function useTitle(title: string, options: Partial<IUseTitleOptions> = {}): void {
+export function useDocumentTitle(
+  title: string,
+  options: Partial<IUseDocumentTitleOptions> = {}
+): void {
   const titleRef = useRef(isBrowser ? document.title : '');
   const optionsRef = useSyncedRef(options);
 
