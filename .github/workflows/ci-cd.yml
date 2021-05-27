@@ -111,7 +111,7 @@ jobs:
     needs: [ "test", "build", "lint" ]
     if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
     steps:
-      - uses: fastify/github-action-merge-dependabot@v2.0.0
+      - uses: fastify/github-action-merge-dependabot@v2.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
