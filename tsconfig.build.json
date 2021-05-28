@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "src/**/*.js",
-    "src/**/*.ts"
+    "src/index.ts"
   ],
   "compilerOptions": {
     "outDir": "./cjs",
@@ -13,7 +12,7 @@
     "plugins": [
       {
         "transform": "./ts-transformer-js-ext.ts",
-        "after": true,
+        "after": true
       }
     ]
   }

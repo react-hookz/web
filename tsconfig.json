@@ -28,8 +28,6 @@
     ".storybook/*.js",
     "src/**/*.js",
     "src/**/*.ts",
-    "tests/**/*.js",
-    "tests/**/*.ts",
     "stories/**/*.tsx"
   ]
 }

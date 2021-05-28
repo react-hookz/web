@@ -34,7 +34,7 @@ first.
 ## Development
 
 1. Implement the hook in `src` folder.
-    - File should be named after the hook.
+    - File should be named after the hook and placed in subdirectory also named after the hook.
     - Hook should have return types explicitly defined.
     - Hook should have JSDoc containing hook description and an overview of its arguments.
     - Hook should be exported by name, not default exported.
@@ -42,7 +42,8 @@ first.
     - All types and interfaces should be `I` prefixed.
     - Hook should be developed with SSR in mind.
     - In case hook is stateful and exposes `setState` method, or is has async callbacks (that can
-      resolve after component unmount), it should use `useSafeState` instead of `useState`.
+      theoretically be resolved after component unmount), it should use `useSafeState` instead
+      of `useState`.
 2. Reexport hook implementation and all custom types in `src/index.ts`.
 3. Write complete tests for your hook, tests should consist of both DOM and SSR parts.
     - Hook's test should be placed in `__tests__` sub-folder, near the source file, `dom.ts` for DOM
