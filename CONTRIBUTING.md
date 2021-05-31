@@ -55,16 +55,15 @@ first.
      environment.
    - All utility functions should also be tested.
 4. Write docs for your hook.
-   - Docs should be placed in `stories` folder and named after the hook.  
-     4ex: `stories/useUpdateEffect.story.mdx`.
+   - Docs should be placed in `__docs__` sub-folder, near the source file.  
+     4ex: `src/useFirstMountState/__docs__/story.mdx`.
    - Docs are built with storybook, to help you during writing docs - start webserver
      with `yarn storybook:watch`.
-   - Components representing hook functionality should be placed in file named after the hook
-     with `.stories` suffix.  
-     4ex: `useFirstMountState.stories.tsx`.
+   - Components representing hook functionality should be placed next to story file, within
+     `__docs__` folder.  
+     4ex: `src/useFirstMountState/__docs__/example.tsx`.
    - Preferred format to write the docs is
-     MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction)
-     .
+     MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction).
 5. Add docs link and hook summary to the `README.md`.
 6. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our
    standards.
