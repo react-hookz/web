@@ -15,5 +15,4 @@ module.exports = {
   ],
   coverageDirectory: './coverage',
   collectCoverage: false,
-  collectCoverageFrom: ['src/**/*.ts'],
 };
