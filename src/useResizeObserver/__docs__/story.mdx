@@ -1,0 +1,42 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example, ExampleDebounced } from './example';
+
+<Meta title="Sensor/useResizeObserver" />
+
+# useResizeObserver
+
+Invokes a callback whenever ResizeObserver detects a change to target's size.
+
+- Uses a singe ResizeObserver for all hook instances, as it is more effective than using per-hook
+  observers.
+- No need to wrap callback with `useCallback`, because hook manages callback mutation internally.
+- Does not apply any throttle or debounce mechanism - it is on end-developer side.
+- Does not produce references for you.
+- SSR friendly.
+- Provides access to `ResizeObserverEntry`
+
+#### Example
+
+<Canvas isColumn>
+  Below component uses direct invocation so it is not so optimal in terms of CPU usage, but it gains
+  most recent data.
+  <Story name="Example" story={Example} />
+  As `useResizeObserver` does not apply any debounce or throttle mechanisms to received callback -
+  it is up to developer to do so if needed passed callback. Below example is almost same as previous
+  but state is updated within 500ms debounce.
+  <Story name="ExampleDebounced" story={ExampleDebounced} />
+</Canvas>
+
+## Reference
+
+```ts
+export function useResizeObserver<T extends Element>(
+  target: RefObject<T> | T | null,
+  callback: (entry: ResizeObserverEntry) => void
+): void;
+```
+
+#### Arguments
+
+- **target** _`RefObject<Element> | Element | null`_ - element to track.
+- **callback** _`(entry: ResizeObserverEntry) => void`_ - Callback that will be invoked on resize.
