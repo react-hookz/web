@@ -11,7 +11,7 @@
     "moduleResolution": "Node",
     "plugins": [
       {
-        "transform": "./ts-transformer-js-ext.ts",
+        "transform": "./utility/ts-transformer-js-ext.ts",
         "after": true
       }
     ]

@@ -36,6 +36,7 @@
     "build:cjs": "ttsc -p ./tsconfig.build.json --module CommonJS --target ES5 --outDir ./cjs",
     "build:esm": "ttsc -p ./tsconfig.build.json --module ES6 --target ES5 --outDir ./esm",
     "build:esnext": "ttsc -p ./tsconfig.build.json --module ESNext --target ESNext --outDir ./esnext",
+    "new-hook": "node ./utility/add-new-hook.js",
     "test": "jest",
     "test:coverage": "yarn test --coverage",
     "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md,mdx",
