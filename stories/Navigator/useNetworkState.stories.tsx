@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNetworkState } from '../../src/useNetworkState';
+import { useNetworkState } from '../../src';
 
 export const Example: React.FC = () => {
   const onlineState = useNetworkState();
