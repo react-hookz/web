@@ -67,6 +67,7 @@ first.
 5. Add docs link and hook summary to the `README.md`.
 6. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our
    standards.
+7. Command `yarn new-hook myAwesomeHook` will help you create proper file structure for new hook.
 
 ## Committing
 
