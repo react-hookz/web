@@ -44,3 +44,11 @@ export { useMeasure } from './useMeasure/useMeasure';
 
 // Dom
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
+
+export {
+  useValidator,
+  IValidatorImmediate,
+  IValidatorDeferred,
+  IValidator,
+  IValidityState,
+} from './useValidator/useValidator';

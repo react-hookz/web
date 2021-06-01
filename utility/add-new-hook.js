@@ -37,7 +37,7 @@ const fs = require('fs/promises');
 
   await fs.mkdir(path.resolve(hookDir, `__docs__`));
   await fs.writeFile(
-    path.resolve(hookDir, `__docs__/example.tsx`),
+    path.resolve(hookDir, `__docs__/example.stories.tsx`),
     `import * as React from 'react';
 import { ${hookName} } from '../..';
 
@@ -48,7 +48,7 @@ export const Example: React.FC = () => {
   await fs.writeFile(
     path.resolve(hookDir, `__docs__/story.mdx`),
     `import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Example } from './example';
+import { Example } from './example.stories';
 
 <Meta title="New Hook/${hookName}" component={Example} />
 

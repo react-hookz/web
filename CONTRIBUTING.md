@@ -59,9 +59,10 @@ first.
      4ex: `src/useFirstMountState/__docs__/story.mdx`.
    - Docs are built with storybook, to help you during writing docs - start webserver
      with `yarn storybook:watch`.
-   - Components representing hook functionality should be placed next to story file, within
-     `__docs__` folder.  
-     4ex: `src/useFirstMountState/__docs__/example.tsx`.
+   - Components representing hook functionality should be placed in `example.stories.tsx` within
+     `__docs__` folder. In case file name will be missing `.stories.tsx` part - code preview won't
+     work.  
+     4ex: `src/useFirstMountState/__docs__/example.stories.tsx`.
    - Preferred format to write the docs is
      MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction).
 5. Add docs link and hook summary to the `README.md`.
