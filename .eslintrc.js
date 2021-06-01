@@ -108,6 +108,13 @@ module.exports = {
       },
     },
     {
+      files: ['src/**/__tests__/*.ts'],
+      rules: {
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+      },
+    },
+    {
       files: ['*.md'],
       extends: ['plugin:mdx/recommended', 'prettier'],
       rules: {

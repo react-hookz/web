@@ -21,6 +21,22 @@ describe('useDebounceCallback', () => {
     expect(result.error).toBeUndefined();
   });
 
+  it('should return function same length and wrapped name', () => {
+    let { result } = renderHook(() =>
+      useDebounceCallback((_a: any, _b: any, _c: any) => {}, 200, [])
+    );
+
+    expect(result.current.length).toBe(3);
+    expect(result.current.name).toBe(`anonymous__debounced__200`);
+
+    function testFn(_a: any, _b: any, _c: any) {}
+
+    result = renderHook(() => useDebounceCallback(testFn, 100, [])).result;
+
+    expect(result.current.length).toBe(3);
+    expect(result.current.name).toBe(`testFn__debounced__100`);
+  });
+
   it('should return new callback if delay is changed', () => {
     const { result, rerender } = renderHook(
       ({ delay }) => useDebounceCallback(() => {}, delay, []),
