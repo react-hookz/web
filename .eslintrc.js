@@ -54,7 +54,7 @@ module.exports = {
       ],
       plugins: ['import'],
       parserOptions: {
-        project: './tsconfig.json',
+        project: './tsconfig.eslint.json',
         tsconfigRootDir: __dirname,
       },
       rules: {
@@ -98,7 +98,7 @@ module.exports = {
       },
     },
     {
-      files: ['stories/**/*', '.storybook/**/*'],
+      files: ['src/**/__docs__/*.tsx', '.storybook/*.js'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
         'import/no-default-export': 'off',
@@ -114,7 +114,6 @@ module.exports = {
         'prettier/prettier': [
           2,
           {
-            // unnecessary if you're not using `eslint-plugin-prettier`, but required if you are
             parser: 'markdown',
           },
         ],

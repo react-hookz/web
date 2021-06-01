@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example';
+
+<Meta title="Callback/useDebounceCallback" component={Example} />
+
+# useDebounceCallback
+
+The third argument is a list of dependencies, as for `useCallback`.
+
+> The third argument is dependencies list on `useEffect` manner, passed function will be re-wrapped
+> when delay or dependencies has changed. Changed debounce callbacks still has same timeout, meaning
+> that calling new debounced function will abort previously scheduled invocation.
+
+> Debounced function is always a void function since original callback invoked later.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useDebounceCallback<T extends unknown[]>(
+  cb: (...args: T) => unknown,
+  delay: number,
+  deps: React.DependencyList
+): (...args: T) => void;
+```
+
+- **cb** _`(...args: T) => unknown`_ - function that will be debounced.
+- **delay** _`number`_ - debounce delay.
+- **deps** _`React.DependencyList`_ - dependencies list when to update callback.

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "alwaysStrict": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "target": "ESNext",
@@ -8,28 +9,13 @@
       "ESNext",
       "DOM"
     ],
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react",
     "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "noEmit": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
-    "node_modules",
-    "cjs",
-    "esm",
-    "esnext",
-    "coverage",
-    "storybook-build"
-  ],
-  "include": [
-    "**.js",
-    "**.ts",
-    "**.md",
-    ".storybook/*.js",
-    "src/**/*.js",
-    "src/**/*.ts",
-    "tests/**/*.js",
-    "tests/**/*.ts",
-    "stories/**/*.tsx"
+    "node_modules"
   ]
 }

@@ -34,7 +34,7 @@ first.
 ## Development
 
 1. Implement the hook in `src` folder.
-   - File should be named after the hook.
+   - File should be named after the hook and placed in subdirectory also named after the hook.
    - Hook should have return types explicitly defined.
    - Hook should have JSDoc containing hook description and an overview of its arguments.
    - Hook should be exported by name, not default exported.
@@ -42,30 +42,32 @@ first.
    - All types and interfaces should be `I` prefixed.
    - Hook should be developed with SSR in mind.
    - In case hook is stateful and exposes `setState` method, or is has async callbacks (that can
-     resolve after component unmount), it should use `useSafeState` instead of `useState`.
+     theoretically be resolved after component unmount), it should use `useSafeState` instead
+     of `useState`.
 2. Reexport hook implementation and all custom types in `src/index.ts`.
 3. Write complete tests for your hook, tests should consist of both DOM and SSR parts.
-   - Hook's test should be placed in `tests` folder and named after the hook.  
-     4ex: `test/dom/useFirstMountState.test.ts` and `test/ssr/useFirstMountState.test.ts`.
+   - Hook's test should be placed in `__tests__` sub-folder, near the source file, `dom.ts` for DOM
+     environment, `ssr.ts` for SSR environment.  
+     4ex: `src/useFirstMountState/__tests__/dom.ts` and `src/useFirstMountState/__tests__/ssr.ts`.
    - Ideally your hook should have 100% test coverage. For cases where that is impossible, you
      should comment above the code exactly why it is impossible to have 100% coverage.
    - Each hook should have at least 'should be defined' and 'should render' tests in `SSR`
      environment.
    - All utility functions should also be tested.
 4. Write docs for your hook.
-   - Docs should be placed in `stories` folder and named after the hook.  
-     4ex: `stories/useUpdateEffect.story.mdx`.
+   - Docs should be placed in `__docs__` sub-folder, near the source file.  
+     4ex: `src/useFirstMountState/__docs__/story.mdx`.
    - Docs are built with storybook, to help you during writing docs - start webserver
      with `yarn storybook:watch`.
-   - Components representing hook functionality should be placed in file named after the hook
-     with `.stories` suffix.  
-     4ex: `useFirstMountState.stories.tsx`.
+   - Components representing hook functionality should be placed next to story file, within
+     `__docs__` folder.  
+     4ex: `src/useFirstMountState/__docs__/example.tsx`.
    - Preferred format to write the docs is
-     MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction)
-     .
+     MDX. [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction).
 5. Add docs link and hook summary to the `README.md`.
 6. After all above steps are done - run `yarn lint:fix` and ensure that everything is styled by our
    standards.
+7. Command `yarn new-hook myAwesomeHook` will help you create proper file structure for new hook.
 
 ## Committing
 

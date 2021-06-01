@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example';
+
+<Meta title="Lifecycle/useRerender" component={Example} />
+
+# useRerender
+
+Return callback function that re-renders component.
+
+> **_This hook provides stable API, meaning returned methods does not change between renders_**
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useRerender(): () => void;
+```
+
+#### Return
+
+Function that re-renders component when called.

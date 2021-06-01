@@ -5,7 +5,7 @@ addons.setConfig({
   theme: {
     ...themes.light,
     brandTitle: '@react-hookz/web',
-    brandImage: '/logo.png',
+    brandImage: './logo.png',
     fontBase: '"Manrope", sans-serif',
   },
 });
