@@ -96,6 +96,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Like `useState`, but its state setter is guarded against sets on unmounted component.
   - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
     — Like `useState`, but can only become `true` or `false`.
+  - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator)
+    — Performs validation when any of provided dependencies has changed.
 
 - #### Navigator
 

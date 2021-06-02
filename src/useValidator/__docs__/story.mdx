@@ -1,0 +1,57 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ExampleStories } from './example.stories';
+
+<Meta title="State/useValidator" component={ExampleStories} />
+
+# useValidator
+
+Performs validation when any of provided dependencies has changed.
+
+- Does _not_ perform re-validation on validator change.
+- SSR-friendly.
+- Supports deferred validators.
+
+> **_This hook provides stable API, meaning returned methods does not change between renders_**
+
+> This hook uses `useSafeState` underneath, so it is safe to use its `setState` in async hooks.
+
+#### Example
+
+<Canvas>
+  <Story story={ExampleStories} inline />
+</Canvas>
+
+## Reference
+
+```ts
+interface IValidityState extends Record<any, any> { isValid: boolean | undefined; }
+type IValidatorImmediate<V extends IValidityState = IValidityState> = () => V;
+type IValidatorDeferred<V extends IValidityState = IValidityState> = (done: Dispatch<INextState<V>>) => any;
+type IValidator<V extends IValidityState = IValidityState> = IValidatorImmediate<V> | IValidatorDeferred<V>;
+type IUseValidatorReturn<V extends IValidityState> = [V, () => void];
+
+function useValidator<V extends IValidityState>(
+  validator: IValidator<V>,
+  deps: DependencyList,
+  initialValidity: IInitialState<V> = { isValid: undefined } as V
+) => IUseValidatorReturn<V>;
+```
+
+#### Arguments
+
+- **validator** _`IValidator<V>`_ - the function that performs validation, it can be of two types:
+  - _immediate validator_ - performs validation on the go and returns validity state as a function
+    result, expects 0 arguments.
+  - _deferred validator_ - performs any king of asynchronous validation, expects 1 argument which
+    is the validity state setter.
+    > TypeScript warning: deferred validators are unable to infer the validity type, therefore it
+    > requires explicit validity state type definition, as it is shown in example.
+- **deps** _`DependencyList`_ - dependencies list that will trigger automatic revalidation, as
+  for `useEffect` hook.
+- **initialValidity** _`IInitialState<V>`_ _(default: `{ isValid: undefined }`)_ - initial validity state, that is set before mount
+  validation.
+
+#### Return
+
+0. **validity state** - current validity state returned by validator or initial validity.
+1. **revalidate** - Method to perform revalidation by hand.
