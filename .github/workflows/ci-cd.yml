@@ -54,6 +54,9 @@ jobs:
       - name: "Build"
         run: yarn build
 
+      - name: "Tests against build"
+        run: yarn jest --selectProjects dom-cjs dom-package
+
   storybook-build:
     name: "Storybook Build"
     runs-on: ubuntu-latest
