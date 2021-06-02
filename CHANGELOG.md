@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/react-hookz/web/compare/v1.24.1...v1.25.0) (2021-06-02)
+
+
+### Features
+
+* new hook `useValidator` ([#101](https://github.com/react-hookz/web/issues/101)) ([8c517e0](https://github.com/react-hookz/web/commit/8c517e097ba26bccc4ffdc18dd700799b73b0dc0))
+
 ## [1.24.1](https://github.com/react-hookz/web/compare/v1.24.0...v1.24.1) (2021-06-02)
 
 
