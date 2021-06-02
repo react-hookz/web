@@ -1,3 +1,12 @@
+## [1.24.1](https://github.com/react-hookz/web/compare/v1.24.0...v1.24.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* make `useDebounceCallback` and `useRafCallback` return proper fns ([#100](https://github.com/react-hookz/web/issues/100)) ([906d6e4](https://github.com/react-hookz/web/commit/906d6e46410a044522176168f2753781926e80d8))
+* make `useDebounceCallback` and `useRafCallback` return proper fns ([#100](https://github.com/react-hookz/web/issues/100)) ([2495e53](https://github.com/react-hookz/web/commit/2495e537563462250e9ba5fc17c16f3a29e916c4))
+* make `useDebounceCallback` and `useRafCallback` return proper fns ([#100](https://github.com/react-hookz/web/issues/100)) ([1dcb083](https://github.com/react-hookz/web/commit/1dcb083931f00f1b0569790a10fb2423fa9c26e3))
+
 # [1.24.0](https://github.com/react-hookz/web/compare/v1.23.0...v1.24.0) (2021-05-26)
 
 
