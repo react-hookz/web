@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/react-hookz/web/compare/v1.25.0...v1.25.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* tsconfig.build.json missconfig ([ba92152](https://github.com/react-hookz/web/commit/ba921522169d9c64495e6c5b0467eb12a355821e)), closes [#102](https://github.com/react-hookz/web/issues/102)
+
 # [1.25.0](https://github.com/react-hookz/web/compare/v1.24.1...v1.25.0) (2021-06-02)
 
 
