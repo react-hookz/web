@@ -14,10 +14,10 @@ export function useDebounceCallback<T extends (...args: any[]) => any>(
   deps: DependencyList
 ): (...args: Parameters<T>) => void {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
-
   return useMemo(
-    () =>
-      (...args: Parameters<T>): void => {
+    () => {
+      // eslint-disable-next-line func-names
+      const debounced = function (...args: Parameters<T>): void {
         if (timeout.current) clearTimeout(timeout.current);
 
         timeout.current = setTimeout(() => {
@@ -25,7 +25,15 @@ export function useDebounceCallback<T extends (...args: any[]) => any>(
 
           cb(...args);
         }, delay);
-      },
+      };
+
+      Object.defineProperties(debounced, {
+        length: { value: cb.length },
+        name: { value: `${cb.name || 'anonymous'}__debounced__${delay}` },
+      });
+
+      return debounced;
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [delay, ...deps]
   );

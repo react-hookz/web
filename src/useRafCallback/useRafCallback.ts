@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { isBrowser } from '../util/const';
 import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
@@ -29,17 +29,27 @@ export function useRafCallback<T extends (...args: any[]) => any>(
   useUnmountEffect(cancel);
 
   return [
-    useCallback((...args) => {
-      if (!isBrowser) return;
+    useMemo(() => {
+      const wrapped = (...args: Parameters<T>) => {
+        if (!isBrowser) return;
 
-      cancel();
+        cancel();
 
-      frame.current = requestAnimationFrame(() => {
-        cbRef.current(...args);
-        frame.current = 0;
+        frame.current = requestAnimationFrame(() => {
+          cbRef.current(...args);
+          frame.current = 0;
+        });
+      };
+
+      Object.defineProperties(wrapped, {
+        length: { value: cb.length },
+        name: { value: `${cb.name || 'anonymous'}__raf` },
       });
+
+      return wrapped;
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
+
     cancel,
   ];
 }

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useRafCallback } from '../..';
+import { useDebounceCallback, useRafCallback } from '../..';
 
 describe('useRafCallback', () => {
   const raf = global.requestAnimationFrame;
@@ -25,6 +25,20 @@ describe('useRafCallback', () => {
 
   it('should render', () => {
     renderHook(() => useRafCallback(() => {}));
+  });
+
+  it('should return function same length and wrapped name', () => {
+    let { result } = renderHook(() => useRafCallback((_a: any, _b: any, _c: any) => {}));
+
+    expect(result.current[0].length).toBe(3);
+    expect(result.current[0].name).toBe(`anonymous__raf`);
+
+    function testFn(_a: any, _b: any, _c: any) {}
+
+    result = renderHook(() => useRafCallback(testFn)).result;
+
+    expect(result.current[0].length).toBe(3);
+    expect(result.current[0].name).toBe(`testFn__raf`);
   });
 
   it('should return array of functions', () => {
