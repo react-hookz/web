@@ -29,10 +29,7 @@ export const ExampleStories: React.FC = () => {
 
   return (
     <div>
-      <div>
-        In case below input has an odd number of characters - it is valid, otherwise, the error
-        message is shown
-      </div>
+      <div>The input below is only valid if it has an odd number of characters</div>
       <br />
 
       {validity.isValid === false && <div style={{ color: 'red' }}>{validity.error?.message}</div>}
