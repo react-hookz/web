@@ -24,6 +24,13 @@ export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { useSafeState } from './useSafeState/useSafeState';
 export { useToggle } from './useToggle/useToggle';
+export {
+  useValidator,
+  IValidatorImmediate,
+  IValidatorDeferred,
+  IValidator,
+  IValidityState,
+} from './useValidator/useValidator';
 
 // Navigator
 export { useNetworkState } from './useNetworkState/useNetworkState';
@@ -42,15 +49,7 @@ export {
 } from './useResizeObserver/useResizeObserver';
 export { useMeasure } from './useMeasure/useMeasure';
 
+export { useMediaQuery } from './useMediaQuery/useMediaQuery';
+
 // Dom
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
-
-export {
-  useValidator,
-  IValidatorImmediate,
-  IValidatorDeferred,
-  IValidator,
-  IValidityState,
-} from './useValidator/useValidator';
-
-export { useMediaQuery } from './useMediaQuery/useMediaQuery';
