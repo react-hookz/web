@@ -93,19 +93,14 @@ describe('useMediaQuery', () => {
   });
 
   it('should unsubscribe from previous mql when query changed', () => {
-    const { result: result1, unmount: unmount1 } = renderHook(() =>
-      useMediaQuery('max-width : 768px')
+    const { result: result1 } = renderHook(() => useMediaQuery('max-width : 768px'));
+    const { result: result2 } = renderHook(() => useMediaQuery('max-width : 768px'));
+    const { result: result3, rerender: rerender3 } = renderHook(
+      ({ query }) => useMediaQuery(query),
+      {
+        initialProps: { query: 'max-width : 768px' },
+      }
     );
-    const { result: result2, unmount: unmount2 } = renderHook(() =>
-      useMediaQuery('max-width : 768px')
-    );
-    const {
-      result: result3,
-      unmount: unmount3,
-      rerender: rerender3,
-    } = renderHook(({ query }) => useMediaQuery(query), {
-      initialProps: { query: 'max-width : 768px' },
-    });
     expect(result1.current).toBe(false);
     expect(result2.current).toBe(false);
     expect(result3.current).toBe(false);
