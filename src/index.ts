@@ -52,3 +52,5 @@ export {
   IValidator,
   IValidityState,
 } from './useValidator/useValidator';
+
+export { useMediaQuery } from './useMediaQuery/useMediaQuery';
