@@ -27,7 +27,7 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
   const setters = cookiesSetters.get(key);
 
   // almost impossible to test in normal situation
-  /* istanbul ignore if */
+  /* istanbul ignore next */
   if (!setters) return;
 
   setters.delete(setter);
@@ -45,7 +45,7 @@ const invokeRegisteredSetters = (
   const setters = cookiesSetters.get(key);
 
   // almost impossible to test in normal situation
-  /* istanbul ignore if */
+  /* istanbul ignore next */
   if (!setters) return;
 
   setters.forEach((s) => {
@@ -61,7 +61,7 @@ const invokeRegisteredSetters = (
  */
 export function useCookie(key: string, options?: Cookies.CookieAttributes): IUseCookieReturn {
   // no need to test it, dev-only notification about 3rd party library requirement
-  /* istanbul ignore if */
+  /* istanbul ignore next */
   if (process.env.NODE_ENV === 'development' && typeof Cookies === 'undefined') {
     throw ReferenceError(
       'Dependency `js-cookies` is not installed, it is required for `useCookie` work.'
