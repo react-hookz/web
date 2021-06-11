@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/react-hookz/web/compare/v1.26.0...v1.27.0) (2021-06-11)
+
+
+### Features
+
+* new hook `useCookie` ([#117](https://github.com/react-hookz/web/issues/117)) ([faae68b](https://github.com/react-hookz/web/commit/faae68b6826916b8b2bb5ddff3b9cccabbb9219e))
+
 # [1.26.0](https://github.com/react-hookz/web/compare/v1.25.1...v1.26.0) (2021-06-11)
 
 
