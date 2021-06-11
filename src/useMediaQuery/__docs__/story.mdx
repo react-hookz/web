@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="Sensor/useMediaQuery" component={Example} />
+
+# useMediaQuery
+
+Tracks the state of CSS media query.
+
+- Tracks the changes in media query.
+- Automatically updates on media query status change.
+- Performant, uses only single `matchMedia` entry to update all hooks using same key.
+- SSR-friendly.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useMediaQuery(query: string): boolean | undefined;
+```
+
+#### Arguments
+
+- **query** _`string`_ - CSS media query to track.
+
+#### Return
+
+`boolean` - `true` in case document matches media query, `false` otherwise.
