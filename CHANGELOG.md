@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/react-hookz/web/compare/v1.25.1...v1.26.0) (2021-06-11)
+
+
+### Features
+
+* new hook `useMediaQuery` ([#116](https://github.com/react-hookz/web/issues/116)) ([be6fff9](https://github.com/react-hookz/web/commit/be6fff9a4752b59a59e7e0f5b02aa6e05fbea62c))
+
 ## [1.25.1](https://github.com/react-hookz/web/compare/v1.25.0...v1.25.1) (2021-06-02)
 
 
