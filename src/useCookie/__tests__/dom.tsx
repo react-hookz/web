@@ -116,4 +116,16 @@ describe('useCookie', () => {
     expect(res1.current[0]).toBe(null);
     expect(res2.current[0]).toBe(null);
   });
+
+  it('should return stable methods', () => {
+    const { result, rerender } = renderHook(() => useCookie('react-hookz'));
+
+    const res1 = result.current;
+
+    rerender();
+
+    expect(res1[1]).toBe(result.current[1]);
+    expect(res1[2]).toBe(result.current[2]);
+    expect(res1[3]).toBe(result.current[3]);
+  });
 });

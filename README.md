@@ -115,6 +115,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Manages a single LocalStorage key.
   - [**`useSessionStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-usesessionstoragevalue)
     — Manages a single SessionStorage key.
+  - [**`useCookie`**](https://react-hookz.github.io/?path=/docs/side-effect-usecookie)
+    — Manages a single cookie.
 
 - #### Sensor
 

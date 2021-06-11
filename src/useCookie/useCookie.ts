@@ -53,6 +53,12 @@ const invokeRegisteredSetters = (
   });
 };
 
+/**
+ * Manages a single cookie.
+ *
+ * @param key Cookie name to manage.
+ * @param options Cookie options that will be used during cookie set and delete.
+ */
 export function useCookie(key: string, options?: Cookies.CookieAttributes): IUseCookieReturn {
   // no need to test it, dev-only notification about 3rd party library requirement
   /* istanbul ignore if */
