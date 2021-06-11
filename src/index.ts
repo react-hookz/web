@@ -30,6 +30,7 @@ export {
   IValidatorDeferred,
   IValidator,
   IValidityState,
+  IUseValidatorReturn,
 } from './useValidator/useValidator';
 
 // Navigator
