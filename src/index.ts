@@ -34,7 +34,11 @@ export {
 } from './useValidator/useValidator';
 
 // Navigator
-export { useNetworkState } from './useNetworkState/useNetworkState';
+export {
+  useNetworkState,
+  IUseNetworkState,
+  INetworkInformation,
+} from './useNetworkState/useNetworkState';
 
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';
