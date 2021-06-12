@@ -59,3 +59,5 @@ export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 
 // Dom
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
+
+export { useAsync } from './useAsync/useAsync';
