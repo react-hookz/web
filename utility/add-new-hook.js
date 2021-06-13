@@ -59,6 +59,16 @@ import { Example } from './example.stories';
 <Canvas>
   <Story story={Example} inline />
 </Canvas>
+
+## Reference
+
+\`\`\`ts
+
+\`\`\`
+
+#### Arguments
+
+#### Return
 `
   );
 

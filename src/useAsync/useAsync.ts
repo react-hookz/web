@@ -55,7 +55,13 @@ export interface IUseAsyncActions<Result, Args extends unknown[] = unknown[]> {
 }
 
 export interface IUseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
+  /**
+   * Recent promise returned from async function.
+   */
   promise: Promise<Result> | undefined;
+  /**
+   * List of arguments applied to recent async function invocation.
+   */
   lastArgs: Args | undefined;
 }
 

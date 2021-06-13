@@ -321,4 +321,20 @@ describe('useAsync', () => {
       });
     });
   });
+
+  it('should not change methods between renders', () => {
+    const spy = jest.fn(async () => {});
+    const { rerender, result } = renderHook(() =>
+      useAsync(spy, [], {
+        skipUpdate: true,
+        skipMount: true,
+      })
+    );
+
+    const res1 = result.current;
+    rerender();
+
+    expect(res1[1].execute).toBe(result.current[1].execute);
+    expect(res1[1].reset).toBe(result.current[1].reset);
+  });
 });
