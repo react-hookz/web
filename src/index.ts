@@ -47,6 +47,14 @@ export { useSyncedRef } from './useSyncedRef/useSyncedRef';
 export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValue';
 export { useSessionStorageValue } from './useSessionStorageValue/useSessionStorageValue';
 export { useCookie, IUseCookieReturn } from './useCookie/useCookie';
+export {
+  useAsync,
+  IAsyncState,
+  IAsyncStatus,
+  IUseAsyncActions,
+  IUseAsyncMeta,
+  IUseAsyncOptions,
+} from './useAsync/useAsync';
 
 // Sensor
 export {
@@ -59,5 +67,3 @@ export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 
 // Dom
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
-
-export { useAsync } from './useAsync/useAsync';

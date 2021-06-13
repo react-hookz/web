@@ -78,14 +78,14 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
     result: options?.initialValue,
   });
   const isFirstMount = useFirstMountState();
-  const asyncFnRef = useSyncedRef(asyncFn);
   const promiseRef = useRef<Promise<Result>>();
   const argsRef = useRef<Args>();
 
   const methods = useSyncedRef({
     execute: (...params: Args) => {
       argsRef.current = params;
-      promiseRef.current = asyncFn(...params);
+      const promise = asyncFn(...params);
+      promiseRef.current = promise;
 
       setState((s) => ({ ...s, status: 'loading' }));
 
@@ -93,14 +93,14 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
         (result) => {
           // we dont want to handle result/error of non-latest function
           // this approach helps to avoid race conditions
-          if (asyncFn === asyncFnRef.current) {
+          if (promise === promiseRef.current) {
             setState((s) => ({ ...s, status: 'success', error: undefined, result }));
           }
         },
         (error) => {
           // we dont want to handle result/error of non-latest function
           // this approach helps to avoid race conditions
-          if (asyncFn === asyncFnRef.current) {
+          if (promise === promiseRef.current) {
             setState((s) => ({ ...s, status: 'error', error }));
           }
         }
@@ -120,7 +120,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
   });
 
   useEffect(() => {
-    if ((isFirstMount && !options?.skipMount) || !options?.skipUpdate) {
+    if ((isFirstMount && !options?.skipMount) || (!isFirstMount && !options?.skipUpdate)) {
       methods.current.execute(...args);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
