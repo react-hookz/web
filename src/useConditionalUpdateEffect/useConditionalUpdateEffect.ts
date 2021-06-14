@@ -1,6 +1,6 @@
 import { EffectCallback, useEffect, useRef } from 'react';
 import { noop, truthyArrayItemsPredicate } from '../util/const';
-import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
+import { useFirstMountState } from '..';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type IUseConditionalUpdateEffectPredicate<Cond extends ReadonlyArray<any>> = (

@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from 'react';
-import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useSyncedRef } from '..';
 import { isBrowser } from '../util/const';
 
 export type IUseResizeObserverCallback = (entry: ResizeObserverEntry) => void;

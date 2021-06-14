@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { IInitialState, INextState, resolveHookState } from '../util/resolveHookState';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { useSafeState } from '..';
 
 /**
  * Like `useSafeState`, but can only become `true` or `false`.

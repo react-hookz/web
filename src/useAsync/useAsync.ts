@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
-import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
-import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useSafeState, useFirstMountState, useSyncedRef } from '..';
 
 export type IAsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 

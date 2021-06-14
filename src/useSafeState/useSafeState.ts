@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-import { useIsMounted } from '../useIsMounted/useIsMounted';
+import { useIsMounted } from '..';
 
 export function useSafeState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 export function useSafeState<S = undefined>(): [
@@ -21,7 +21,7 @@ export function useSafeState<S>(
   return [
     state,
     useCallback((value) => {
-      if (isMounted()) setState(value as typeof state);
+      if (isMounted()) setState(value as S);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []) as Dispatch<SetStateAction<S>>,
   ];

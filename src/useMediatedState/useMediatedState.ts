@@ -1,7 +1,6 @@
 import { Dispatch, useCallback } from 'react';
 import { IInitialState, INextState, resolveHookState } from '../util/resolveHookState';
-import { useSafeState } from '../useSafeState/useSafeState';
-import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useSafeState, useSyncedRef } from '..';
 
 export function useMediatedState<State>(
   initialState?: IInitialState<State>

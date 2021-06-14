@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { isBrowser } from '../util/const';
-import { IInitialState } from '../util/resolveHookState';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { useSafeState } from '..';
 import { off, on } from '../util/misc';
+import { IInitialState } from '../util/resolveHookState';
 
 export interface INetworkInformation extends EventTarget {
   readonly downlink: number;

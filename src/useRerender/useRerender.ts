@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { useSafeState } from '..';
 
 const stateChanger = (state: boolean) => !state;
 

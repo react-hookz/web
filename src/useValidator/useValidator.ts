@@ -1,7 +1,6 @@
 import { DependencyList, Dispatch, useCallback, useEffect } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { useSafeState, useSyncedRef } from '..';
 import { IInitialState, INextState } from '../util/resolveHookState';
-import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IValidityState extends Record<any, any> {

@@ -1,5 +1,5 @@
 import { Dispatch, useEffect } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { useSafeState } from '..';
 
 const queriesMap = new Map<
   string,

@@ -1,10 +1,5 @@
 import { RefObject, useRef } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
-import {
-  IUseResizeObserverCallback,
-  useResizeObserver,
-} from '../useResizeObserver/useResizeObserver';
-import { useRafCallback } from '../useRafCallback/useRafCallback';
+import { useSafeState, IUseResizeObserverCallback, useResizeObserver, useRafCallback } from '..';
 
 /**
  * Uses ResizeObserver to track element dimensions and re-render component when they change.
