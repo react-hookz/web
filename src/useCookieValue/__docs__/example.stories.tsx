@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useCookie } from '../..';
+import { useCookieValue } from '../..';
 
 export const Example: React.FC = () => {
-  const [cookie, set, remove] = useCookie('react-hookz', { expires: 3600 });
+  const [cookie, set, remove] = useCookieValue('react-hookz', { expires: 3600 });
 
   return (
     <div>

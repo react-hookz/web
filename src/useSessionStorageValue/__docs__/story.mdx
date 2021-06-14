@@ -20,7 +20,7 @@ Manages a single SessionStorage key.
 > impossible to separate null value fom 'no such value' API result which is also `null`.
 
 > While using SSR, to avoid hydration mismatch, consider setting `initializeWithStorageValue` option to
-> `false`, this will yield `undefined` state on first render and defer value fetch to effects
+> `false`, this will yield `undefined` state on first render and defer value fetch till effects
 > execution stage.
 
 #### Example
