@@ -75,16 +75,16 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Return boolean that is `true` only on first render.
   - [**`useIsMounted`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted)
     — Returns function that yields current mount state.
+  - [**`useIsomorphicLayoutEffect`**](https://react-hookz.github.io/?path=/docs/lifecycle-useisomorphiclayouteffect)
+    — `useLayoutEffect` for browser with fallback to `useEffect` for SSR.
   - [**`useMountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect)
-    — Run effect only when component is first mounted.
+    — Run effect only when component first-mounted.
   - [**`useRerender`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender)
     — Return callback that re-renders component.
   - [**`useUnmountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect)
-    — Run effect only when component is unmounted.
+    — Run effect only when component unmounted.
   - [**`useUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect)
     — Effect hook that ignores the first render (not invoked on mount).
-  - [**`useIsomorphicLayoutEffect`**](https://react-hookz.github.io/?path=/docs/lifecycle-useisomorphiclayouteffect)
-    — `useLayoutEffect` for browser with fallback to `useEffect` for SSR.
 
 - #### State
 
@@ -111,6 +111,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Side-effect
 
+  - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/callback-useasync)
+    — Executes provided async function and tracks its result and error.
   - [**`useLocalStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-uselocalstoragevalue)
     — Manages a single LocalStorage key.
   - [**`useSessionStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-usesessionstoragevalue)
@@ -120,12 +122,12 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Sensor
 
-  - [**`useResizeObserver`**](https://react-hookz.github.io/?path=/docs/sensor-useresizeobserver)
-    — Invokes a callback whenever ResizeObserver detects a change to target's size.
   - [**`useMeasure`**](https://react-hookz.github.io/?path=/docs/sensor-usemeasure)
     — Uses ResizeObserver to track element dimensions and re-render component when they change.
   - [**`useMediaQuery`**](https://react-hookz.github.io/?path=/docs/sensor-usemediaquery)
     — Tracks the state of CSS media query.
+  - [**`useResizeObserver`**](https://react-hookz.github.io/?path=/docs/sensor-useresizeobserver)
+    — Invokes a callback whenever ResizeObserver detects a change to target's size.
 
 - #### Dom
 
