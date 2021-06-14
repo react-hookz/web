@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/react-hookz/web/compare/v2.0.0...v2.1.0) (2021-06-14)
+
+
+### Features
+
+* import reused hooks from the index file instead of its definition ([f4bd609](https://github.com/react-hookz/web/commit/f4bd60984472c90d2a06cc8c21439f69fc490b12))
+
 # [2.0.0](https://github.com/react-hookz/web/compare/v1.28.0...v2.0.0) (2021-06-14)
 
 
