@@ -64,6 +64,7 @@ module.exports = {
         'no-param-reassign': 'off',
 
         'import/prefer-default-export': 'off',
+        'import/no-cycle': 'off',
         'import/no-default-export': 'error',
 
         '@typescript-eslint/naming-convention': [
