@@ -113,12 +113,12 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
   - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/callback-useasync)
     — Executes provided async function and tracks its result and error.
+  - [**`useCookie`**](https://react-hookz.github.io/?path=/docs/side-effect-usecookie)
+    — Manages a single cookie.
   - [**`useLocalStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-uselocalstoragevalue)
     — Manages a single LocalStorage key.
   - [**`useSessionStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-usesessionstoragevalue)
     — Manages a single SessionStorage key.
-  - [**`useCookie`**](https://react-hookz.github.io/?path=/docs/side-effect-usecookie)
-    — Manages a single cookie.
 
 - #### Sensor
 
