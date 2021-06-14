@@ -1,18 +1,18 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useCookie } from '../..';
+import { useCookieValue } from '../..';
 
-describe('useCookie', () => {
+describe('useCookieValue', () => {
   it('should be defined', () => {
-    expect(useCookie).toBeDefined();
+    expect(useCookieValue).toBeDefined();
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.error).toBeUndefined();
   });
 
   it('should return undefined ', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.current[0]).toBeUndefined();
   });
 });

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import * as Cookies from 'js-cookie';
-import { IUseCookieReturn, useCookie } from '../..';
+import { IUseCookieValueReturn, useCookieValue } from '../..';
 import SpyInstance = jest.SpyInstance;
 
-describe('useCookie', () => {
+describe('useCookieValue', () => {
   let getSpy: SpyInstance<{ [p: string]: string }, []>;
   let setSpy: SpyInstance<
     string | undefined,
@@ -35,39 +35,50 @@ describe('useCookie', () => {
   });
 
   it('should be defined', () => {
-    expect(useCookie).toBeDefined();
+    expect(useCookieValue).toBeDefined();
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.error).toBeUndefined();
   });
 
-  it('should return undefined on first render', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
-    expect((result.all[0] as IUseCookieReturn)[0]).toBeUndefined();
+  it('should return cookie value on first render', () => {
+    Cookies.set('react-hookz', 'awesome');
+
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
+    expect((result.all[0] as IUseCookieValueReturn)[0]).toBe('awesome');
+
+    Cookies.remove('react-hookz');
+  });
+
+  it('should return undefined on first render if `initializeWithValue` set to false', () => {
+    const { result } = renderHook(() =>
+      useCookieValue('react-hookz', { initializeWithValue: false })
+    );
+    expect((result.all[0] as IUseCookieValueReturn)[0]).toBeUndefined();
   });
 
   it('should return null if cookie not exists', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.current[0]).toBe(null);
     expect(getSpy).toBeCalledWith('react-hookz');
   });
 
   it('should set the cookie value on call to `set`', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
 
     expect(result.current[0]).toBe(null);
     act(() => {
       result.current[1]('awesome');
     });
     expect(result.current[0]).toBe('awesome');
-    expect(setSpy).toBeCalledWith('react-hookz', 'awesome', undefined);
+    expect(setSpy).toBeCalledWith('react-hookz', 'awesome', {});
     Cookies.remove('react-hookz');
   });
 
   it('should remove cookie value on call to `remove`', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
 
     expect(result.current[0]).toBe(null);
     act(() => {
@@ -79,12 +90,12 @@ describe('useCookie', () => {
       result.current[2]();
     });
     expect(result.current[0]).toBe(null);
-    expect(removeSpy).toBeCalledWith('react-hookz', undefined);
+    expect(removeSpy).toBeCalledWith('react-hookz', {});
     Cookies.remove('react-hookz');
   });
 
   it('should re-fetch cookie value on call to `fetch`', () => {
-    const { result } = renderHook(() => useCookie('react-hookz'));
+    const { result } = renderHook(() => useCookieValue('react-hookz'));
 
     Cookies.set('react-hookz', 'rulez');
     expect(result.current[0]).toBe(null);
@@ -97,8 +108,8 @@ describe('useCookie', () => {
   });
 
   it('should be synchronized between several hooks managing same key', () => {
-    const { result: res1 } = renderHook(() => useCookie('react-hookz'));
-    const { result: res2 } = renderHook(() => useCookie('react-hookz'));
+    const { result: res1 } = renderHook(() => useCookieValue('react-hookz'));
+    const { result: res2 } = renderHook(() => useCookieValue('react-hookz'));
 
     expect(res1.current[0]).toBe(null);
     expect(res2.current[0]).toBe(null);
@@ -119,7 +130,7 @@ describe('useCookie', () => {
   });
 
   it('should return stable methods', () => {
-    const { result, rerender } = renderHook(() => useCookie('react-hookz'));
+    const { result, rerender } = renderHook(() => useCookieValue('react-hookz'));
 
     const res1 = result.current;
 

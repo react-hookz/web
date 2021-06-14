@@ -37,7 +37,7 @@ export type IUseStorageValueOptions<
 } & (InitializeWithValue extends undefined
   ? {
       /**
-       * Whether to perform value fetch from storage or initialize with `undefined` state.
+       * Whether to initialize state with storage value or initialize with `undefined` state.
        *
        * Default to false during SSR
        *
