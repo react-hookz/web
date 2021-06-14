@@ -74,7 +74,7 @@ import { Example } from './example.stories';
 
   await fs.mkdir(path.resolve(hookDir, `__tests__`));
   await fs.writeFile(
-    path.resolve(hookDir, `__tests__/dom.tsx`),
+    path.resolve(hookDir, `__tests__/dom.ts`),
     `import { renderHook } from '@testing-library/react-hooks/dom';
 import { ${hookName} } from '../..';
 
@@ -91,7 +91,7 @@ describe('${hookName}', () => {
 `
   );
   await fs.writeFile(
-    path.resolve(hookDir, `__tests__/ssr.tsx`),
+    path.resolve(hookDir, `__tests__/ssr.ts`),
     `import { renderHook } from '@testing-library/react-hooks/server';
 import { ${hookName} } from '../..';
 
