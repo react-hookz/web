@@ -75,7 +75,7 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Return boolean that is `true` only on first render.
   - [**`useIsMounted`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted)
     — Returns function that yields current mount state.
-  - [**`useIsomorphicLayoutEffect`**](https://react-hookz.github.io/?path=/docs/lifecycle-useisomorphiclayouteffect)
+  - [**`useIsomorphicLayoutEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useisomorphiclayouteffect)
     — `useLayoutEffect` for browser with fallback to `useEffect` for SSR.
   - [**`useMountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect)
     — Run effect only when component first-mounted.
@@ -101,35 +101,35 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Navigator
 
-  - [**`useNetworkState`**](https://react-hookz.github.io/?path=/docs/navigator-usenetwork)
+  - [**`useNetworkState`**](https://react-hookz.github.io/web/?path=/docs/navigator-usenetwork)
     — Tracks the state of browser's network connection.
 
 - #### Miscellaneous
 
-  - [**`useSyncedRef`**](https://react-hookz.github.io/?path=/docs/miscellaneous-usesyncedref)
+  - [**`useSyncedRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usesyncedref)
     — Like `useRef`, but it returns immutable ref that contains actual value.
 
 - #### Side-effect
 
-  - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/callback-useasync)
+  - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
     — Executes provided async function and tracks its result and error.
-  - [**`useCookie`**](https://react-hookz.github.io/?path=/docs/side-effect-usecookie)
+  - [**`useCookie`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookie)
     — Manages a single cookie.
-  - [**`useLocalStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-uselocalstoragevalue)
+  - [**`useLocalStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue)
     — Manages a single LocalStorage key.
-  - [**`useSessionStorageValue`**](https://react-hookz.github.io/?path=/docs/side-effect-usesessionstoragevalue)
+  - [**`useSessionStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue)
     — Manages a single SessionStorage key.
 
 - #### Sensor
 
-  - [**`useMeasure`**](https://react-hookz.github.io/?path=/docs/sensor-usemeasure)
+  - [**`useMeasure`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure)
     — Uses ResizeObserver to track element dimensions and re-render component when they change.
-  - [**`useMediaQuery`**](https://react-hookz.github.io/?path=/docs/sensor-usemediaquery)
+  - [**`useMediaQuery`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery)
     — Tracks the state of CSS media query.
-  - [**`useResizeObserver`**](https://react-hookz.github.io/?path=/docs/sensor-useresizeobserver)
+  - [**`useResizeObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useresizeobserver)
     — Invokes a callback whenever ResizeObserver detects a change to target's size.
 
 - #### Dom
 
-  - [**`useDocumentTitle`**](https://react-hookz.github.io/?path=/docs/dom-usedocumenttitle)
+  - [**`useDocumentTitle`**](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle)
     — Sets title of the page.
