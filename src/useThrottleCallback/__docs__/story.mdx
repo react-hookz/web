@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="Callback/useThrottleCallback" component={Example} />
+
+# useThrottleCallback
+
+Makes passed function throttled, otherwise acts like `useCallback`.  
+[\[What is throttling?\]](https://css-tricks.com/debouncing-throttling-explained-examples/#throttle)
+
+> The third argument is dependencies list in `useEffect` manner, passed function will be re-wrapped
+> when delay or dependencies has changed. Changed throttle callbacks still have same timeout, meaning
+> that calling new throttled function will abort previously scheduled invocation.
+
+> Throttled function is always a void function since original callback invoked later.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useThrottleCallback<T extends unknown[]>(
+  cb: (...args: T) => unknown,
+  delay: number,
+  deps: React.DependencyList
+): (...args: T) => void;
+```
+
+- **cb** _`(...args: T) => unknown`_ - function that will be throttled.
+- **delay** _`number`_ - throttle delay.
+- **deps** _`React.DependencyList`_ - dependencies list when to update callback.
+- **noTrailing** _`boolean`_ _(default: false)_ - if noTrailing is true, callback will only execute
+  every `delay` milliseconds, otherwise, callback will be executed once, after the last call.
