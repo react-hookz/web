@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/react-hookz/web/compare/v1.28.0...v2.0.0) (2021-06-14)
+
+
+### Features
+
+* add `initializeWithValue` option to `useCookie` hook ([#120](https://github.com/react-hookz/web/issues/120)) ([17c9543](https://github.com/react-hookz/web/commit/17c9543926bf870ddf8c2c161f987a03841fc6d2))
+
+
+### BREAKING CHANGES
+
+* `useCookie` renamed to `useCookieValue`
+* `useCookieValue` default behaviour for browsers
+changed to fetch cookie value on state initialisation.
+
+SSR remains untouched, but requires implicit setting of
+`initializeWithValue` option to false, to avoid hydration mismatch.
+
 # [1.28.0](https://github.com/react-hookz/web/compare/v1.27.0...v1.28.0) (2021-06-14)
 
 
