@@ -1,0 +1,57 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="Side-effect/useAsync" component={Example} />
+
+# useAsync
+
+Executes provided async function and tracks its result and error.
+
+- Handles any async functions.
+- Safe - no worries about updating the state of unmounted component.
+- Stable - returned methods do not change between renders.
+- Handles race conditions - only latest results are stored in state.
+- SSR-friendly, no requests performed on the server.
+- Provides methods to manually trigger fetch.
+- Options to customize behaviour.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useAsync<Result, Args extends unknown[] = unknown[]>(
+  asyncFn: (...params: Args) => Promise<Result>,
+  args: Args,
+  options?: IUseAsyncOptions<Result>
+): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
+```
+
+#### Arguments
+
+- **asyncFn** _`(...params: Args) => Promise<Result>`_ - Function that returns a promise.
+- **args** _`Args`_ - Arguments list that will be passed to async function. Acts as dependencies
+  list for underlying `useEffect` hook.
+- **options** - Hook options:
+  - **initialValue** _`Result`_ _(default: `undefined`)_ - Value that will be set on initialisation,
+    before the async function is executed.
+  - **skipMount** _`boolean`_ _(default: `false`)_ - Skip mount async function execution.
+  - **skipUpdate** _`boolean`_ _(default: `false`)_ - Skip update async function execution.
+
+#### Return
+
+0. **state**
+   - **status** _`'loading' | 'success' | 'error' | 'not-executed'`_ - latest promise status.
+   - **result** _`Result | undefined`_ - promise result if promise fulfilled.
+   - **error** _`Error | undefined`_ - promise error if promise rejected.
+1. **methods**
+   - **reset** _`() => void`_- Reset state to initial, when async function haven't been executed.
+   - **execute** _`(...args: Args) => Promise<Result>`_- Execute async function manually.
+2. **meta**
+   - **promise** _`Promise<Result> | undefined`_- Recent promise returned from async function.
+   - **lastArgs** _`Args | undefined`_ - List of arguments applied to recent async function
+     invocation.
