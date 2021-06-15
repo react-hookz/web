@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/react-hookz/web/compare/v2.1.0...v2.2.0) (2021-06-15)
+
+
+### Features
+
+* new hook useThrottleCallback ([#118](https://github.com/react-hookz/web/issues/118)) ([afec60b](https://github.com/react-hookz/web/commit/afec60b8ca945872ca24f86fc854abb39cddfb9e))
+
 # [2.1.0](https://github.com/react-hookz/web/compare/v2.0.0...v2.1.0) (2021-06-14)
 
 
