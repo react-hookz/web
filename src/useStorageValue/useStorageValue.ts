@@ -7,14 +7,10 @@ import {
   useSyncedRef,
   useFirstMountState,
   usePrevious,
+  useMountEffect,
 } from '..';
-
 import { INextState, resolveHookState } from '../util/resolveHookState';
-
-import { useMountEffect } from '../useMountEffect/useMountEffect';
-
 import { isBrowser } from '../util/const';
-
 import { off, on } from '../util/misc';
 
 export type IUseStorageValueOptions<
