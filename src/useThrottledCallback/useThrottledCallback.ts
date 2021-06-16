@@ -10,16 +10,16 @@ export interface IThrottledFunction<Args extends any[], This> {
  * Makes passed function throttled, otherwise acts like `useCallback`.
  *
  * @param callback Function that will be throttled.
- * @param delay Throttle delay.
  * @param deps Dependencies list when to update callback.
+ * @param delay Throttle delay.
  * @param noTrailing If noTrailing is true, callback will only execute every
  * `delay` milliseconds, otherwise, callback will be executed one final time
  * after the last throttled-function call.
  */
 export function useThrottledCallback<Args extends any[], This>(
   callback: (this: This, ...args: Args) => any,
-  delay: number,
   deps: DependencyList,
+  delay: number,
   noTrailing = false
 ): IThrottledFunction<Args, This> {
   const timeout = useRef<ReturnType<typeof setTimeout>>();

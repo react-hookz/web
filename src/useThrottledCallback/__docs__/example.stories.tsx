@@ -8,8 +8,8 @@ export const Example: React.FC = () => {
     (ev) => {
       setState(ev.target.value);
     },
-    500,
-    []
+    [],
+    500
   );
 
   return (

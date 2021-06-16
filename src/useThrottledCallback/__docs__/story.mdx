@@ -23,15 +23,16 @@ Makes passed function throttled, otherwise acts like `useCallback`.
 ## Reference
 
 ```ts
-function useThrottledCallback<T extends unknown[]>(
-  cb: (...args: T) => unknown,
+export function useThrottledCallback<Args extends any[], This>(
+  callback: (this: This, ...args: Args) => any,
+  deps: DependencyList,
   delay: number,
-  deps: React.DependencyList
-): (...args: T) => void;
+  noTrailing = false
+): IThrottledFunction<Args, This>;
 ```
 
 - **cb** _`(...args: T) => unknown`_ - function that will be throttled.
-- **delay** _`number`_ - throttle delay.
 - **deps** _`React.DependencyList`_ - dependencies list when to update callback.
+- **delay** _`number`_ - throttle delay.
 - **noTrailing** _`boolean`_ _(default: false)_ - if noTrailing is true, callback will only execute
   every `delay` milliseconds, otherwise, callback will be executed once, after the last call.

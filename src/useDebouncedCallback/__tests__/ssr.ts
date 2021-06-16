@@ -16,14 +16,14 @@ describe('useDebouncedCallback', () => {
 
   it('should render', () => {
     const { result } = renderHook(() => {
-      useDebouncedCallback(() => {}, 200, []);
+      useDebouncedCallback(() => {}, [], 200);
     });
     expect(result.error).toBeUndefined();
   });
 
   it('should run given callback only after specified delay since last call', () => {
     const cb = jest.fn();
-    const { result } = renderHook(() => useDebouncedCallback(cb, 200, []));
+    const { result } = renderHook(() => useDebouncedCallback(cb, [], 200));
 
     result.current();
     expect(cb).not.toHaveBeenCalled();
@@ -41,7 +41,7 @@ describe('useDebouncedCallback', () => {
   it('should pass parameters to callback', () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const cb = jest.fn((_a: number, _c: string) => {});
-    const { result } = renderHook(() => useDebouncedCallback(cb, 200, []));
+    const { result } = renderHook(() => useDebouncedCallback(cb, [], 200));
 
     result.current(1, 'abc');
     jest.advanceTimersByTime(200);

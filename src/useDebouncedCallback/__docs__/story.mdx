@@ -26,14 +26,14 @@ The third argument is a list of dependencies, as for `useCallback`.
 ```ts
 export function useDebouncedCallback<Args extends any[], This>(
   callback: (this: This, ...args: Args) => any,
-  delay: number,
   deps: DependencyList,
+  delay: number,
   maxWait = 0
 ): IDebouncedFunction<Args, This>;
 ```
 
 - **callback** _`(...args: T) => unknown`_ - function that will be debounced.
-- **delay** _`number`_ - debounce delay.
 - **deps** _`React.DependencyList`_ - dependencies list when to update callback.
+- **delay** _`number`_ - debounce delay.
 - **maxWait** _`number`_ _(default: `0`)_ - The maximum time `callback` is allowed to be delayed
   before it's invoked. `0` means no max wait.
