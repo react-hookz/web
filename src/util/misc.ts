@@ -17,3 +17,6 @@ export function off<T extends EventTarget>(
     obj.removeEventListener(...(args as Parameters<HTMLElement['removeEventListener']>));
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type PartialRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;

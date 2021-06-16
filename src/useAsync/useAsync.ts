@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useSafeState, useFirstMountState, useSyncedRef } from '..';
+import { PartialRequired } from '../util/misc';
 
 export type IAsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 
@@ -7,7 +8,7 @@ export type IAsyncState<Result> =
   | {
       status: 'not-executed';
       error: undefined;
-      result: Result | undefined;
+      result: Result;
     }
   | {
       status: 'success';
@@ -17,12 +18,12 @@ export type IAsyncState<Result> =
   | {
       status: 'error';
       error: Error;
-      result: Result | undefined;
+      result: Result;
     }
   | {
       status: IAsyncStatus;
       error: Error | undefined;
-      result: Result | undefined;
+      result: Result;
     };
 
 export interface IUseAsyncOptions<Result> {
@@ -63,6 +64,17 @@ export interface IUseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
   lastArgs: Args | undefined;
 }
 
+export function useAsync<Result, Args extends unknown[] = unknown[]>(
+  asyncFn: (...params: Args) => Promise<Result>,
+  args: Args,
+  options: PartialRequired<IUseAsyncOptions<Result>, 'initialValue'>
+): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
+export function useAsync<Result, Args extends unknown[] = unknown[]>(
+  asyncFn: (...params: Args) => Promise<Result>,
+  args: Args,
+  options?: IUseAsyncOptions<Result>
+): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
+
 /**
  * Executes provided async function and tracks its result and error.
  *
@@ -75,8 +87,8 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
   args: Args,
   options?: IUseAsyncOptions<Result>
-): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>] {
-  const [state, setState] = useSafeState<IAsyncState<Result>>({
+): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>] {
+  const [state, setState] = useSafeState<IAsyncState<Result | undefined>>({
     status: 'not-executed',
     error: undefined,
     result: options?.initialValue,
