@@ -1,3 +1,26 @@
+# [3.0.0](https://github.com/react-hookz/web/compare/v2.2.0...v3.0.0) (2021-06-16)
+
+
+### Bug Fixes
+
+* rename useThrottleCallback and useDebounceCallback ([#130](https://github.com/react-hookz/web/issues/130)) ([77f66d7](https://github.com/react-hookz/web/commit/77f66d7be8e985e19db4ca4d19b5f05efdc6019e)), closes [#129](https://github.com/react-hookz/web/issues/129)
+
+
+### Features
+
+* add `maxWait` parameter to `useDebouncedCallback` hook ([#131](https://github.com/react-hookz/web/issues/131)) ([600baa8](https://github.com/react-hookz/web/commit/600baa89831fa5d41e001612d1e2d2d256bdcc90))
+* change args for `useThrottledCallback` and `useDebouncedCallback` ([#132](https://github.com/react-hookz/web/issues/132)) ([131d98e](https://github.com/react-hookz/web/commit/131d98eb254bf78084c8cf2d996e29d6ecb35bf1))
+* new hooks `useDebouncedEffect` and `useDebouncedState` ([#133](https://github.com/react-hookz/web/issues/133)) ([1d164ff](https://github.com/react-hookz/web/commit/1d164ffd9226fbee919d9cc768df35208d65db2b))
+
+
+### BREAKING CHANGES
+
+* `delay` and `deps` arguments are swapped position for
+`useThrottledCallback` and `useDebouncedCallback` hooks to be aligned
+with `useCallback` signature.
+* `useDebounceCallback` renamed to `useDebouncedCallback`
+`useThrottleCallback` renamed to `useThrottledCallback`
+
 # [2.2.0](https://github.com/react-hookz/web/compare/v2.1.0...v2.2.0) (2021-06-15)
 
 
