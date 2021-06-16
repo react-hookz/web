@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/react-hookz/web/compare/v3.0.0...v3.0.1) (2021-06-16)
+
+
+### Bug Fixes
+
+* improve `useAsync` typings ([#135](https://github.com/react-hookz/web/issues/135)) ([73b42ff](https://github.com/react-hookz/web/commit/73b42ffd2442b56f1e2f1c98e2d2215fe966b533)), closes [#134](https://github.com/react-hookz/web/issues/134)
+
 # [3.0.0](https://github.com/react-hookz/web/compare/v2.2.0...v3.0.0) (2021-06-16)
 
 
