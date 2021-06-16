@@ -68,3 +68,7 @@ export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 
 // Dom
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
+
+export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
+
+export { useDebouncedState } from './useDebouncedState/useDebouncedState';
