@@ -13,6 +13,8 @@ The third argument is a list of dependencies, as for `useCallback`.
 
 > Debounced function is always a void function since original callback invoked later.
 
+> Deferred execution automatically cancelled on component unmount.
+
 #### Example
 
 <Canvas>
@@ -22,13 +24,16 @@ The third argument is a list of dependencies, as for `useCallback`.
 ## Reference
 
 ```ts
-function useDebouncedCallback<T extends unknown[]>(
-  cb: (...args: T) => unknown,
+export function useDebouncedCallback<Args extends any[], This>(
+  callback: (this: This, ...args: Args) => any,
   delay: number,
-  deps: React.DependencyList
-): (...args: T) => void;
+  deps: DependencyList,
+  maxWait = 0
+): IDebouncedFunction<Args, This>;
 ```
 
-- **cb** _`(...args: T) => unknown`_ - function that will be debounced.
+- **callback** _`(...args: T) => unknown`_ - function that will be debounced.
 - **delay** _`number`_ - debounce delay.
 - **deps** _`React.DependencyList`_ - dependencies list when to update callback.
+- **maxWait** _`number`_ _(default: `0`)_ - The maximum time `callback` is allowed to be delayed
+  before it's invoked. `0` means no max wait.
