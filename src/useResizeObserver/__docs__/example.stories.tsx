@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRef, useState } from 'react';
-import { IUseResizeObserverCallback, useDebounceCallback, useResizeObserver } from '../..';
+import { IUseResizeObserverCallback, useDebouncedCallback, useResizeObserver } from '../..';
 
 export const Example: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -28,7 +28,7 @@ export const Example: React.FC = () => {
 export const ExampleDebounced: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [rect, setRect] = useState<DOMRectReadOnly>();
-  const cb = useDebounceCallback<IUseResizeObserverCallback>((e) => setRect(e.contentRect), 500, [
+  const cb = useDebouncedCallback<IUseResizeObserverCallback>((e) => setRect(e.contentRect), 500, [
     setRect,
   ]);
   useResizeObserver(ref, cb);

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useThrottleCallback } from '../..';
+import { useThrottledCallback } from '../..';
 
 export const Example: React.FC = () => {
   const [state, setState] = useState('');
 
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useThrottleCallback(
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useThrottledCallback(
     (ev) => {
       setState(ev.target.value);
     },

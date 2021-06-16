@@ -1,9 +1,9 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
 
-<Meta title="Callback/useThrottleCallback" component={Example} />
+<Meta title="Callback/useThrottledCallback" component={Example} />
 
-# useThrottleCallback
+# useThrottledCallback
 
 Makes passed function throttled, otherwise acts like `useCallback`.  
 [\[What is throttling?\]](https://css-tricks.com/debouncing-throttling-explained-examples/#throttle)
@@ -23,7 +23,7 @@ Makes passed function throttled, otherwise acts like `useCallback`.
 ## Reference
 
 ```ts
-function useThrottleCallback<T extends unknown[]>(
+function useThrottledCallback<T extends unknown[]>(
   cb: (...args: T) => unknown,
   delay: number,
   deps: React.DependencyList

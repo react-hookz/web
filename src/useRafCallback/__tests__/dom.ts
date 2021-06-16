@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDebounceCallback, useRafCallback } from '../..';
+import { useDebouncedCallback, useRafCallback } from '../..';
 
 describe('useRafCallback', () => {
   const raf = global.requestAnimationFrame;

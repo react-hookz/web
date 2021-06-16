@@ -1,7 +1,7 @@
 // Callback
-export { useDebounceCallback } from './useDebounceCallback/useDebounceCallback';
+export { useDebouncedCallback } from './useDebouncedCallback/useDebouncedCallback';
 export { useRafCallback } from './useRafCallback/useRafCallback';
-export { useThrottleCallback } from './useThrottleCallback/useThrottleCallback';
+export { useThrottledCallback } from './useThrottledCallback/useThrottledCallback';
 
 // Livecycle
 export {
