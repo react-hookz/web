@@ -16,7 +16,7 @@ export interface IThrottledFunction<Args extends any[], This> {
  * `delay` milliseconds, otherwise, callback will be executed one final time
  * after the last throttled-function call.
  */
-export function useThrottleCallback<Args extends any[], This>(
+export function useThrottledCallback<Args extends any[], This>(
   callback: (this: This, ...args: Args) => any,
   delay: number,
   deps: DependencyList,

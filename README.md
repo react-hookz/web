@@ -60,11 +60,11 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Callback
 
-  - [**`useDebounceCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback)
+  - [**`useDebouncedCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncedcallback)
     — Makes passed function debounced, otherwise acts like `useCallback`.
   - [**`useRafCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-userafcallback)
     — Makes passed function to be called within next animation frame.
-  - [**`useThrottleCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-usethrottlecallback)
+  - [**`useThrottledCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-usethrottledcallback)
     — Makes passed function throttled, otherwise acts like `useCallback`.
 
 - #### Lifecycle

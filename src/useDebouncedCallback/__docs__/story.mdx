@@ -1,9 +1,9 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
 
-<Meta title="Callback/useDebounceCallback" component={Example} />
+<Meta title="Callback/useDebouncedCallback" component={Example} />
 
-# useDebounceCallback
+# useDebouncedCallback
 
 The third argument is a list of dependencies, as for `useCallback`.
 
@@ -22,7 +22,7 @@ The third argument is a list of dependencies, as for `useCallback`.
 ## Reference
 
 ```ts
-function useDebounceCallback<T extends unknown[]>(
+function useDebouncedCallback<T extends unknown[]>(
   cb: (...args: T) => unknown,
   delay: number,
   deps: React.DependencyList

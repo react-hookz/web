@@ -8,7 +8,7 @@ import { DependencyList, useMemo, useRef } from 'react';
  * @param delay Debounce delay.
  * @param deps Dependencies list when to update callback.
  */
-export function useDebounceCallback<T extends (...args: any[]) => any>(
+export function useDebouncedCallback<T extends (...args: any[]) => any>(
   cb: T,
   delay: number,
   deps: DependencyList

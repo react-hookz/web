@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { IValidatorDeferred, useDebounceCallback, useValidator } from '../..';
+import { IValidatorDeferred, useDebouncedCallback, useValidator } from '../..';
 
 export const ExampleStories: React.FC = () => {
   const [text, setText] = useState('');
@@ -11,7 +11,7 @@ export const ExampleStories: React.FC = () => {
 
   // debounced callback is deferred callback so we should use deferred type
   // of validator (the one that receives dispatcher as an argument)
-  const validator = useDebounceCallback<IValidatorDeferred<ITextValidityState>>(
+  const validator = useDebouncedCallback<IValidatorDeferred<ITextValidityState>>(
     (d) => {
       const isValid = !text.length || text.length % 2 === 1;
 

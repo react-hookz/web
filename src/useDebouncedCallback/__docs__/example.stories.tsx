@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useDebounceCallback } from '../..';
+import { useDebouncedCallback } from '../..';
 
 export const Example: React.FC = () => {
   const [state, setState] = useState('');
 
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useDebounceCallback(
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useDebouncedCallback(
     (ev) => {
       setState(ev.target.value);
     },
