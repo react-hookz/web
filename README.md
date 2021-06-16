@@ -73,6 +73,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Like `useEffect` but callback invoked only if conditions match predicate.
   - [**`useConditionalUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect)
     — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
+  - [**`useDebouncedEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncedeffect)
+    — Like `useEffect`, but passed function is debounced.
   - [**`useFirstMountState`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
     — Return boolean that is `true` only on first render.
   - [**`useIsMounted`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted)
@@ -90,6 +92,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### State
 
+  - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate)
+    — Lise `useSafeState` but its state setter is debounced.
   - [**`useMediatedState`**](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate)
     — Like `useState`, but every value set is passed through a mediator function.
   - [**`usePrevious`**](https://react-hookz.github.io/web/?path=/docs/state-useprevious)
