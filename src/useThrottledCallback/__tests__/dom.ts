@@ -16,14 +16,14 @@ describe('useThrottledCallback', () => {
 
   it('should render', () => {
     const { result } = renderHook(() => {
-      useThrottledCallback(() => {}, 200, []);
+      useThrottledCallback(() => {}, [], 200);
     });
     expect(result.error).toBeUndefined();
   });
 
   it('should return function same length and wrapped name', () => {
     let { result } = renderHook(() =>
-      useThrottledCallback((_a: any, _b: any, _c: any) => {}, 200, [])
+      useThrottledCallback((_a: any, _b: any, _c: any) => {}, [], 200)
     );
 
     expect(result.current.length).toBe(3);
@@ -31,7 +31,7 @@ describe('useThrottledCallback', () => {
 
     function testFn(_a: any, _b: any, _c: any) {}
 
-    result = renderHook(() => useThrottledCallback(testFn, 100, [])).result;
+    result = renderHook(() => useThrottledCallback(testFn, [], 100)).result;
 
     expect(result.current.length).toBe(3);
     expect(result.current.name).toBe(`testFn__throttled__100`);
@@ -39,7 +39,7 @@ describe('useThrottledCallback', () => {
 
   it('should return new callback if delay is changed', () => {
     const { result, rerender } = renderHook(
-      ({ delay }) => useThrottledCallback(() => {}, delay, []),
+      ({ delay }) => useThrottledCallback(() => {}, [], delay),
       {
         initialProps: { delay: 200 },
       }
@@ -53,7 +53,7 @@ describe('useThrottledCallback', () => {
 
   it('should invoke given callback immediately', () => {
     const cb = jest.fn();
-    const { result } = renderHook(() => useThrottledCallback(cb, 200, []));
+    const { result } = renderHook(() => useThrottledCallback(cb, [], 200));
 
     result.current();
     expect(cb).toHaveBeenCalledTimes(1);
@@ -62,7 +62,7 @@ describe('useThrottledCallback', () => {
   it('should pass parameters to callback', () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const cb = jest.fn((_a: number, _c: string) => {});
-    const { result } = renderHook(() => useThrottledCallback(cb, 200, []));
+    const { result } = renderHook(() => useThrottledCallback(cb, [], 200));
 
     result.current(1, 'abc');
     expect(cb).toHaveBeenCalledWith(1, 'abc');
@@ -70,7 +70,7 @@ describe('useThrottledCallback', () => {
 
   it('should ignore consequential calls occurred within delay, but execute last call after delay is passed', () => {
     const cb = jest.fn();
-    const { result } = renderHook(() => useThrottledCallback(cb, 200, []));
+    const { result } = renderHook(() => useThrottledCallback(cb, [], 200));
 
     result.current();
     result.current();
@@ -90,7 +90,7 @@ describe('useThrottledCallback', () => {
 
   it('should drop trailing execution if `noTrailing is set to true`', () => {
     const cb = jest.fn();
-    const { result } = renderHook(() => useThrottledCallback(cb, 200, [], true));
+    const { result } = renderHook(() => useThrottledCallback(cb, [], 200, true));
 
     result.current();
     result.current();

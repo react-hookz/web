@@ -10,15 +10,15 @@ export interface IDebouncedFunction<Args extends any[], This> {
  * Makes passed function debounced, otherwise acts like `useCallback`.
  *
  * @param callback Function that will be debounced.
- * @param delay Debounce delay.
  * @param deps Dependencies list when to update callback.
+ * @param delay Debounce delay.
  * @param maxWait The maximum time `callback` is allowed to be delayed before
  * it's invoked. 0 means no max wait.
  */
 export function useDebouncedCallback<Args extends any[], This>(
   callback: (this: This, ...args: Args) => any,
-  delay: number,
   deps: DependencyList,
+  delay: number,
   maxWait = 0
 ): IDebouncedFunction<Args, This> {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
