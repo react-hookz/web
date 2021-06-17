@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/react-hookz/web/compare/v3.0.1...v3.1.0) (2021-06-17)
+
+
+### Features
+
+* new hooks `useThrottledEffect` and `useThrottledState` ([#137](https://github.com/react-hookz/web/issues/137)) ([1cc6677](https://github.com/react-hookz/web/commit/1cc66777c847c166e760f47ce4526350f54217a3))
+
 ## [3.0.1](https://github.com/react-hookz/web/compare/v3.0.0...v3.0.1) (2021-06-16)
 
 
