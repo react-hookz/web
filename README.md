@@ -105,6 +105,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
   - [**`useNetworkState`**](https://react-hookz.github.io/web/?path=/docs/navigator-usenetwork)
     — Tracks the state of browser's network connection.
+  - [**`usePermission`**](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission)
+    — Tracks a permission state.
 
 - #### Miscellaneous
 
