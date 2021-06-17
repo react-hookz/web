@@ -18,7 +18,7 @@ export const Example: React.FC = () => {
 
   return (
     <div>
-      <div>Digit check will be performed no more than one every 200ms</div>
+      <div>Digit check will be performed no more than once every 200ms</div>
       <br />
       <div>{hasNumbers ? 'Input has digits' : 'No digits found in input'}</div>
       <input

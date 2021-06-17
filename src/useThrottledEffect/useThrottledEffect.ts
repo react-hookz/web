@@ -9,7 +9,7 @@ import { useThrottledCallback } from '..';
  * @param deps Dependencies list that will be passed to underlying `useEffect`
  * and `useThrottledCallback`.
  * @param delay Throttle delay.
- * @param noTrailing If noTrailing is true, callback will only execute every
+ * @param noTrailing If `noTrailing` is true, callback will only execute every
  * `delay` milliseconds, otherwise, callback will be executed one final time
  * after the last throttled-function call.
  */

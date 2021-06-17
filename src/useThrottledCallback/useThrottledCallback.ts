@@ -12,7 +12,7 @@ export interface IThrottledFunction<Args extends any[], This> {
  * @param callback Function that will be throttled.
  * @param deps Dependencies list when to update callback.
  * @param delay Throttle delay.
- * @param noTrailing If noTrailing is true, callback will only execute every
+ * @param noTrailing If `noTrailing` is true, callback will only execute every
  * `delay` milliseconds, otherwise, callback will be executed one final time
  * after the last throttled-function call.
  */
