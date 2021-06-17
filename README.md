@@ -85,6 +85,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Run effect only when component first-mounted.
   - [**`useRerender`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender)
     — Return callback that re-renders component.
+  - [**`useThrottledEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usethrottledeffect)
+    — Like `useEffect`, but passed function is throttled.
   - [**`useUnmountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect)
     — Run effect only when component unmounted.
   - [**`useUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect)
@@ -102,6 +104,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Like `useState`, but its state setter is guarded against sets on unmounted component.
   - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
     — Like `useState`, but can only become `true` or `false`.
+  - [**`useThrottledState`**](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate)
+    — Like `useSafeState` but its state setter is throttled.
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator)
     — Performs validation when any of provided dependencies has changed.
 

@@ -31,7 +31,9 @@ export function useThrottledCallback<Args extends any[], This>(
 ): IThrottledFunction<Args, This>;
 ```
 
-- **cb** _`(...args: T) => unknown`_ - function that will be throttled.
+#### Arguments
+
+- **callback** _`(...args: T) => unknown`_ - function that will be throttled.
 - **deps** _`React.DependencyList`_ - dependencies list when to update callback.
 - **delay** _`number`_ - throttle delay.
 - **noTrailing** _`boolean`_ _(default: false)_ - if noTrailing is true, callback will only execute
