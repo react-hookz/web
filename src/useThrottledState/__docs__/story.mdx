@@ -1,5 +1,5 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {Example} from './example.stories';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
 
 <Meta title="State/useThrottledState" component={Example} />
 
@@ -28,10 +28,9 @@ export function useThrottledState<S>(
 - **initialState** _`S | (() => S)`_ - Initial state to pass to underlying `useSafeState`.
 - **delay** _`number`_ - Throttle delay.
 - **noTrailing** _`boolean`_ _(default: false)_ - If `noTrailing` is true, callback will only execute
-every `delay` milliseconds, otherwise, callback will be executed once, after the last call.
+  every `delay` milliseconds, otherwise, callback will be executed once, after the last call.
 
 #### Return
 
 0. **state** - current state.
 1. **setState** - throttled state setter.
-

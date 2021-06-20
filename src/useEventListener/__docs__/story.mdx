@@ -1,0 +1,36 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="Dom/useEventListener" component={Example} />
+
+# useEventListener
+
+Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
+
+- Automatically unsubscribes on component unmount.
+- Properly handle event listener objects.
+- SSR-friendly.
+- Full TypeScript support for any target type.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useEventListener<T extends EventTarget>(
+  target: ITargetOrTargetRef<T>,
+  ...params:
+    | Parameters<T['addEventListener']>
+    | [string, EventListenerOrEventListenerObject, ...any]
+): void;
+```
+
+#### Arguments
+
+- **target** _`ITargetOrTargetRef`_ - Element ref object or element itself.
+- **params** - Parameters specific for target's `addEventListener`. In common, it is
+  `[eventName, listener, options]`.
