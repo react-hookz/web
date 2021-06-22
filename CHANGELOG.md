@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/react-hookz/web/compare/v3.2.0...v3.3.0) (2021-06-22)
+
+
+### Features
+
+* new hook `useEventListener` ([#140](https://github.com/react-hookz/web/issues/140)) ([9c5dce3](https://github.com/react-hookz/web/commit/9c5dce34d04584fba9990cde76b144e2eb19818c))
+
 # [3.2.0](https://github.com/react-hookz/web/compare/v3.1.0...v3.2.0) (2021-06-22)
 
 
