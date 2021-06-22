@@ -29,7 +29,7 @@ export const Example: React.FC = () => {
       </div>
 
       <br />
-      <div>{state ? `last resize performed: ${state}` : 'browser window not resized yet'}</div>
+      <div>{state ? `mouse last moved: ${state}` : 'mouse not moved yet'}</div>
 
       <br />
       <div>

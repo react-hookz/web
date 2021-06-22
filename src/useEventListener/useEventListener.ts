@@ -10,7 +10,7 @@ type ITargetOrTargetRef<T extends EventTarget> = T | null | RefObject<T> | Mutab
  *  it on unmount.
  *
  * @param target Element ref object or element itself.
- * @param params Parameters specific for target's `addEventListener`. In common,
+ * @param params Parameters specific for target's `addEventListener`. Commonly,
  * it is `[eventName, listener, options]`.
  */
 export function useEventListener<T extends EventTarget>(
