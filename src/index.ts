@@ -76,3 +76,4 @@ export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 
 // Dom
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
+export { useEventListener } from './useEventListener/useEventListener';

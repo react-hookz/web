@@ -145,3 +145,5 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
   - [**`useDocumentTitle`**](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle)
     — Sets title of the page.
+  - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener)
+    — Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
