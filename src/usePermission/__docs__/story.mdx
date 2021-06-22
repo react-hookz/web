@@ -1,0 +1,35 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="Navigator/usePermission" component={Example} />
+
+# usePermission
+
+Tracks a permission state.
+
+- SSR-compatible
+- Automatically updates on permission state change.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function usePermission(descriptor: IAnyPermissionDescriptor): IUsePermissionState;
+```
+
+#### Arguments
+
+#### Return
+
+0. **state** - Permission state, can be one of the following strings:
+   - **`not-requested`** - State not requested yet, yielded only on mount, before permission
+     state requested.
+   - **`requested`** - State requested, but request promise is pending yet.
+   - **`prompt`** - Permission not requested from user, and can be requested via target API.
+   - **`denied`** - User denied permission.
+   - **`granted`** - User granted permission.

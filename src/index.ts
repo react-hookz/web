@@ -44,6 +44,11 @@ export {
   IUseNetworkState,
   INetworkInformation,
 } from './useNetworkState/useNetworkState';
+export {
+  usePermission,
+  IAnyPermissionDescriptor,
+  IUsePermissionState,
+} from './usePermission/usePermission';
 
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';
@@ -67,7 +72,6 @@ export {
   IUseResizeObserverCallback,
 } from './useResizeObserver/useResizeObserver';
 export { useMeasure } from './useMeasure/useMeasure';
-
 export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 
 // Dom
