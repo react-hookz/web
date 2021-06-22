@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/react-hookz/web/compare/v3.1.0...v3.2.0) (2021-06-22)
+
+
+### Features
+
+* new hook `usePermission` ([#143](https://github.com/react-hookz/web/issues/143)) ([9eb06f4](https://github.com/react-hookz/web/commit/9eb06f455338b034b89d1b8137a45beac16029df))
+
 # [3.1.0](https://github.com/react-hookz/web/compare/v3.0.1...v3.1.0) (2021-06-17)
 
 
