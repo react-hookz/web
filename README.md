@@ -102,6 +102,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
     — Returns the value passed to the hook on previous render.
   - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate)
     — Like `useState`, but its state setter is guarded against sets on unmounted component.
+  - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset)
+    — Tracks the state of a `Set`.
   - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
     — Like `useState`, but can only become `true` or `false`.
   - [**`useThrottledState`**](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate)
