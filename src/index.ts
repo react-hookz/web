@@ -75,5 +75,6 @@ export { useMeasure } from './useMeasure/useMeasure';
 export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 
 // Dom
+export { useClickOutside } from './useClickOutside/useClickOutside';
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
 export { useEventListener } from './useEventListener/useEventListener';
