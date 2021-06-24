@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="State/useSet" component={Example} />
+
+# useSet
+
+Tracks the state of a `Set`.
+
+- Returned set does not change between renders.
+- 1-to-1 signature with common `Set` object, but it's 'changing' methods are wrapped, to cause
+  component rerender.  
+  Otherwise, it is a regular `Set`.
+- SSR-friendly.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useSet<T = any>(values?: readonly T[] | null): Set<T>;
+```
+
+#### Arguments
+
+- **values** _`Iterable`_ - Initial values iterator for underlying `Set` constructor.
+
+#### Return
+
+- `Set` instance.

@@ -27,6 +27,7 @@ export { useDebouncedState } from './useDebouncedState/useDebouncedState';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { useSafeState } from './useSafeState/useSafeState';
+export { useSet } from './useSet/useSet';
 export { useToggle } from './useToggle/useToggle';
 export { useThrottledState } from './useThrottledState/useThrottledState';
 export {
