@@ -1,3 +1,11 @@
+# [3.4.0](https://github.com/react-hookz/web/compare/v3.3.0...v3.4.0) (2021-06-24)
+
+
+### Features
+
+* new hook `useClickOutside` ([#147](https://github.com/react-hookz/web/issues/147)) ([3dece07](https://github.com/react-hookz/web/commit/3dece073a5444d6f5f5acfe7c67dbff2781ce1b3))
+* new hook `useSet` ([#154](https://github.com/react-hookz/web/issues/154)) ([f1d781c](https://github.com/react-hookz/web/commit/f1d781cef81b6664699d8a4d648af918117aff6d))
+
 # [3.3.0](https://github.com/react-hookz/web/compare/v3.2.0...v3.3.0) (2021-06-22)
 
 
