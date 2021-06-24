@@ -143,6 +143,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Dom
 
+  - [**`useClickOutside`**](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside)
+    — Triggers callback when user clicks outside the target element.
   - [**`useDocumentTitle`**](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle)
     — Sets title of the page.
   - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener)
