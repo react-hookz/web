@@ -96,6 +96,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
   - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate)
     — Lise `useSafeState` but its state setter is debounced.
+  - [**`useMap`**](https://react-hookz.github.io/web/?path=/docs/state-usemap)
+    — Tracks the state of a `Map`.
   - [**`useMediatedState`**](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate)
     — Like `useState`, but every value set is passed through a mediator function.
   - [**`usePrevious`**](https://react-hookz.github.io/web/?path=/docs/state-useprevious)
