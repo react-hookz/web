@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/react-hookz/web/compare/v3.4.0...v3.5.0) (2021-06-24)
+
+
+### Features
+
+* new hook `useMap` ([#155](https://github.com/react-hookz/web/issues/155)) ([523dd81](https://github.com/react-hookz/web/commit/523dd818b2a99b0996654b49416b0499d27d0063))
+
 # [3.4.0](https://github.com/react-hookz/web/compare/v3.3.0...v3.4.0) (2021-06-24)
 
 
