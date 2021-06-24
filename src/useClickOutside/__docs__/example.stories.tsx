@@ -39,10 +39,10 @@ export const Example: React.FC = () => {
 
   return (
     <div>
-      <div>Lets try some reverse psychology =)</div>
+      <div>Let&apos;s try some reverse psychology =)</div>
       <br />
 
-      {!toggled && <button onClick={() => toggle()}>lets try!</button>}
+      {!toggled && <button onClick={() => toggle()}>Let&apos;s try!</button>}
       {toggled && <ToggledComponent />}
     </div>
   );
