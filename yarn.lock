@@ -2181,15 +2181,15 @@
     ts-dedent "^2.0.0"
 
 "@storybook/addon-links@^6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.2.9.tgz#3399d14b0fc587bccdaa602f6294bc8b249c09f0"
-  integrity sha512-pBiL6EUZI3c9qtCqnGx3RXF46kAxGMdo4xDC2y3mM132W//DzxkzLZRe4ZhxxGwaLzTNlNrypZ6Li6WyIaPZ/w==
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.0.tgz#09a1cb42ee23613e32c0e6b0a2eabe401912a154"
+  integrity sha512-Q5rGj5lMhjB3LK/fvXwFS3o184hYzSUFC+99dbM1zeAhVIfFDUuETCckEsTI7gc9lt/5vWOjHF98KNk77PvhiA==
   dependencies:
-    "@storybook/addons" "6.2.9"
-    "@storybook/client-logger" "6.2.9"
-    "@storybook/core-events" "6.2.9"
+    "@storybook/addons" "6.3.0"
+    "@storybook/client-logger" "6.3.0"
+    "@storybook/core-events" "6.3.0"
     "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.2.9"
+    "@storybook/router" "6.3.0"
     "@types/qs" "^6.9.5"
     core-js "^3.8.2"
     global "^4.4.0"
