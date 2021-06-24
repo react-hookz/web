@@ -24,6 +24,7 @@ export { useUpdateEffect } from './useUpdateEffect/useUpdateEffect';
 
 // State
 export { useDebouncedState } from './useDebouncedState/useDebouncedState';
+export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { useSafeState } from './useSafeState/useSafeState';
