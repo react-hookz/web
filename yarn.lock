@@ -2233,21 +2233,6 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.2.9.tgz#b7ba2b9f0e15b852c7d6b57d04fb0a493c57477c"
-  integrity sha512-GnmEKbJwiN1jncN9NSA8CuR1i2XAlasPcl/Zn0jkfV9WitQeczVcJCPw86SGH84AD+tTBCyF2i9UC0KaOV1YBQ==
-  dependencies:
-    "@storybook/api" "6.2.9"
-    "@storybook/channels" "6.2.9"
-    "@storybook/client-logger" "6.2.9"
-    "@storybook/core-events" "6.2.9"
-    "@storybook/router" "6.2.9"
-    "@storybook/theming" "6.2.9"
-    core-js "^3.8.2"
-    global "^4.4.0"
-    regenerator-runtime "^0.13.7"
-
 "@storybook/addons@6.3.0", "@storybook/addons@^6.2.8", "@storybook/addons@^6.3.0-beta.6":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.0.tgz#a86849f46a654d2d78b91fad0088264a32d4e58e"
@@ -2262,32 +2247,6 @@
     core-js "^3.8.2"
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
-
-"@storybook/api@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.2.9.tgz#a9b46569192ad5d8da6435c9d63dc4b0c8463b51"
-  integrity sha512-okkA3HAScE9tGnYBrjTOcgzT+L1lRHNoEh3ZfGgh1u/XNEyHGNkj4grvkd6nX7BzRcYQ/l2VkcKCqmOjUnSkVQ==
-  dependencies:
-    "@reach/router" "^1.3.4"
-    "@storybook/channels" "6.2.9"
-    "@storybook/client-logger" "6.2.9"
-    "@storybook/core-events" "6.2.9"
-    "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.2.9"
-    "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.2.9"
-    "@types/reach__router" "^1.3.7"
-    core-js "^3.8.2"
-    fast-deep-equal "^3.1.3"
-    global "^4.4.0"
-    lodash "^4.17.20"
-    memoizerific "^1.11.3"
-    qs "^6.10.0"
-    regenerator-runtime "^0.13.7"
-    store2 "^2.12.0"
-    telejson "^5.1.0"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
 
 "@storybook/api@6.3.0", "@storybook/api@^6.3.0-beta.6":
   version "6.3.0"
@@ -2404,15 +2363,6 @@
     qs "^6.10.0"
     telejson "^5.3.2"
 
-"@storybook/channels@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.2.9.tgz#a9fd7f25102cbec15fb56f76abf891b7b214e9de"
-  integrity sha512-6dC8Fb2ipNyOQXnUZMDeEUaJGH5DMLzyHlGLhVyDtrO5WR6bO8mQdkzf4+5dSKXgCBNX0BSkssXth4pDjn18rg==
-  dependencies:
-    core-js "^3.8.2"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
-
 "@storybook/channels@6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.3.0.tgz#f378c6ee03e0c72a2ee9263c8dfdfa4a7a1bcf51"
@@ -2445,14 +2395,6 @@
     store2 "^2.12.0"
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
-
-"@storybook/client-logger@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.2.9.tgz#77c1ea39684ad2a2cf6836051b381fc5b354e132"
-  integrity sha512-IfOQZuvpjh66qBInQCJOb9S0dTGpzZ/Cxlcvokp+PYt95KztaWN3mPm+HaDQCeRsrWNe0Bpm1zuickcJ6dBOXg==
-  dependencies:
-    core-js "^3.8.2"
-    global "^4.4.0"
 
 "@storybook/client-logger@6.3.0":
   version "6.3.0"
@@ -2568,13 +2510,6 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
     webpack "4"
-
-"@storybook/core-events@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.2.9.tgz#4f12947cd15d1eb3c4109923657c012feef521cd"
-  integrity sha512-xQmbX/oYQK1QsAGN8hriXX5SUKOoTUe3L4dVaVHxJqy7MReRWJpprJmCpbAPJzWS6WCbDFfCM5kVEexHLOzJlQ==
-  dependencies:
-    core-js "^3.8.2"
 
 "@storybook/core-events@6.3.0", "@storybook/core-events@^6.3.0-beta.6":
   version "6.3.0"
@@ -2760,22 +2695,6 @@
     ts-dedent "^2.0.0"
     webpack "4"
 
-"@storybook/router@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-6.2.9.tgz#547543031dd8330870bb6b473dcf7e51982e841c"
-  integrity sha512-7Bn1OFoItCl8whXRT8N1qp1Lky7kzXJ3aslWp5E8HcM8rxh4OYXfbaeiyJEJxBTGC5zxgY+tAEXHFjsAviFROg==
-  dependencies:
-    "@reach/router" "^1.3.4"
-    "@storybook/client-logger" "6.2.9"
-    "@types/reach__router" "^1.3.7"
-    core-js "^3.8.2"
-    fast-deep-equal "^3.1.3"
-    global "^4.4.0"
-    lodash "^4.17.20"
-    memoizerific "^1.11.3"
-    qs "^6.10.0"
-    ts-dedent "^2.0.0"
-
 "@storybook/router@6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/router/-/router-6.3.0.tgz#8b63773f11fe4c6749ccfda5d725c94275f0a459"
@@ -2826,24 +2745,6 @@
     parse-repo "^1.0.4"
     shelljs "^0.8.1"
     yargs "^15.0.0"
-
-"@storybook/theming@6.2.9":
-  version "6.2.9"
-  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.2.9.tgz#16bf40180861f222c7ed1d80abd5d1e3cb315660"
-  integrity sha512-183oJW7AD7Fhqg5NT4ct3GJntwteAb9jZnQ6yhf9JSdY+fk8OhxRbPf7ov0au2gYACcGrWDd9K5pYQsvWlP5gA==
-  dependencies:
-    "@emotion/core" "^10.1.1"
-    "@emotion/is-prop-valid" "^0.8.6"
-    "@emotion/styled" "^10.0.27"
-    "@storybook/client-logger" "6.2.9"
-    core-js "^3.8.2"
-    deep-object-diff "^1.1.0"
-    emotion-theming "^10.0.27"
-    global "^4.4.0"
-    memoizerific "^1.11.3"
-    polished "^4.0.5"
-    resolve-from "^5.0.0"
-    ts-dedent "^2.0.0"
 
 "@storybook/theming@6.3.0", "@storybook/theming@^6.2.9":
   version "6.3.0"
@@ -11082,9 +10983,9 @@ prettier-linter-helpers@^1.0.0:
     fast-diff "^1.1.2"
 
 prettier@^2.2.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.1.tgz#76903c3f8c4449bc9ac597acefa24dc5ad4cbea6"
-  integrity sha512-p+vNbgpLjif/+D+DwAZAbndtRrR0md0MwfmOVN9N+2RgyACMT+7tfaRnT+WDPkqnuVwleyuBIG2XBxKDme3hPA==
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
+  integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
 
 prettier@~2.2.1:
   version "2.2.1"
@@ -13081,7 +12982,7 @@ tar@^6.0.2, tar@^6.1.0:
     mkdirp "^1.0.3"
     yallist "^4.0.0"
 
-telejson@^5.1.0, telejson@^5.3.2:
+telejson@^5.3.2:
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/telejson/-/telejson-5.3.3.tgz#fa8ca84543e336576d8734123876a9f02bf41d2e"
   integrity sha512-PjqkJZpzEggA9TBpVtJi1LVptP7tYtXB6rEubwlHap76AMjzvOdKX41CxyaW7ahhzDU1aftXnMCx5kAPDZTQBA==
