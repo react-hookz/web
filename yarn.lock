@@ -3125,17 +3125,17 @@
     tslib "^2.0.0"
 
 "@storybook/react@^6.2.9":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.3.0.tgz#e86ef1976fba2f0f80925278f196fb709df55eb4"
-  integrity sha512-GxK88Si9WQa16uUsUBhe6kRhSEZUrR/1ljP6QvLY+C5MyYJZ89DZPAbWnVo47SJCXhAlvJW83nSTSxnobn8RWA==
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.3.1.tgz#99e31dd3dcfd548d74ac90abd6b0932974827ef9"
+  integrity sha512-P3neN04YWpIyJ0kLq5UWo390wwM9HG6hVOJUi1uw9lMFbZoy/oVM77ot+77Mtfq3S58Rv51iohFF9DAkxPFNzA==
   dependencies:
     "@babel/preset-flow" "^7.12.1"
     "@babel/preset-react" "^7.12.10"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.4.3"
-    "@storybook/addons" "6.3.0"
-    "@storybook/core" "6.3.0"
-    "@storybook/core-common" "6.3.0"
-    "@storybook/node-logger" "6.3.0"
+    "@storybook/addons" "6.3.1"
+    "@storybook/core" "6.3.1"
+    "@storybook/core-common" "6.3.1"
+    "@storybook/node-logger" "6.3.1"
     "@storybook/react-docgen-typescript-plugin" "1.0.2-canary.3c70e01.0"
     "@storybook/semver" "^7.3.2"
     "@types/webpack-env" "^1.16.0"
