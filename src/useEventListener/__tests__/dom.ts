@@ -38,8 +38,9 @@ describe('useEventListener', () => {
     const addSpy = jest.spyOn(div, 'addEventListener');
     const removeSpy = jest.spyOn(div, 'removeEventListener');
 
+    const ref = { current: div };
     const { rerender, unmount } = renderHook(() =>
-      useEventListener({ current: div }, 'resize', () => {}, { passive: true })
+      useEventListener(ref, 'resize', () => {}, { passive: true })
     );
 
     expect(addSpy).toHaveBeenCalledTimes(1);

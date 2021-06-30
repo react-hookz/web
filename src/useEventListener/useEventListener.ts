@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MutableRefObject, RefObject, useEffect, useMemo } from 'react';
+import { RefObject, useEffect, useMemo } from 'react';
+import { useIsMounted, useSyncedRef } from '..';
 import { hasOwnProperty } from '../util/misc';
-import { useSyncedRef, useIsMounted } from '..';
-
-type ITargetOrTargetRef<T extends EventTarget> = T | null | RefObject<T> | MutableRefObject<T>;
 
 /**
  *  Subscribes an event listener to the target, and automatically unsubscribes
@@ -14,16 +12,11 @@ type ITargetOrTargetRef<T extends EventTarget> = T | null | RefObject<T> | Mutab
  * it is `[eventName, listener, options]`.
  */
 export function useEventListener<T extends EventTarget>(
-  target: ITargetOrTargetRef<T>,
+  target: RefObject<T> | T | null,
   ...params:
     | Parameters<T['addEventListener']>
     | [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
 ): void {
-  // extract current target from ref object
-  const tgt: T =
-    target && hasOwnProperty(target, 'current')
-      ? (target as MutableRefObject<T>).current
-      : (target as T);
   const isMounted = useIsMounted();
 
   // create static event listener
@@ -53,6 +46,7 @@ export function useEventListener<T extends EventTarget>(
   );
 
   useEffect(() => {
+    const tgt = target && hasOwnProperty(target, 'current') ? target.current : target;
     if (!tgt) return undefined;
 
     const restParams = params.slice(2);
@@ -61,5 +55,5 @@ export function useEventListener<T extends EventTarget>(
 
     return () => tgt.removeEventListener(params[0], eventListener, ...restParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tgt, params[0]]);
+  }, [target, params[0]]);
 }
