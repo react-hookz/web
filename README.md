@@ -138,6 +138,8 @@ import { useMountEffect } from "@react-hookz/web/esnext";
 
 - #### Sensor
 
+  - [**`useIntersectionObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useintersectionobserver)
+    — Observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
   - [**`useMeasure`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure)
     — Uses ResizeObserver to track element dimensions and re-render component when they change.
   - [**`useMediaQuery`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery)

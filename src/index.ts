@@ -70,6 +70,10 @@ export {
 
 // Sensor
 export {
+  useIntersectionObserver,
+  IUseIntersectionObserverOptions,
+} from './useIntersectionObserver/useIntersectionObserver';
+export {
   useResizeObserver,
   IUseResizeObserverCallback,
 } from './useResizeObserver/useResizeObserver';
