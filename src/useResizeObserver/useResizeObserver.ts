@@ -20,7 +20,9 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
   const callbacks = new Map<Element, Set<IUseResizeObserverCallback>>();
 
   const observer = new ResizeObserver((entries) => {
-    entries.forEach((entry) => callbacks.get(entry.target)?.forEach((cb) => cb(entry)));
+    entries.forEach((entry) =>
+      callbacks.get(entry.target)?.forEach((cb) => setTimeout(() => cb(entry), 0))
+    );
   });
 
   observerSingleton = {

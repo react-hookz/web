@@ -18,6 +18,7 @@ describe('useResizeObserver', () => {
     }));
 
     global.ResizeObserver = ResizeObserverSpy;
+    jest.useFakeTimers();
   });
 
   beforeEach(() => {
@@ -28,6 +29,7 @@ describe('useResizeObserver', () => {
 
   afterAll(() => {
     global.ResizeObserver = initialRO;
+    jest.useRealTimers();
   });
 
   it('should be defined', () => {
@@ -49,7 +51,7 @@ describe('useResizeObserver', () => {
     expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should invoke each callback listening same element', () => {
+  it('should invoke each callback listening same element asynchronously using setTimeout0', () => {
     const div = document.createElement('div');
     const spy1 = jest.fn();
     const spy2 = jest.fn();
@@ -67,6 +69,11 @@ describe('useResizeObserver', () => {
     } as unknown as ResizeObserverEntry;
 
     ResizeObserverSpy.mock.calls[0][0]([entry]);
+
+    expect(spy1).not.toHaveBeenCalledWith(entry);
+    expect(spy2).not.toHaveBeenCalledWith(entry);
+
+    jest.advanceTimersByTime(1);
 
     expect(spy1).toHaveBeenCalledWith(entry);
     expect(spy2).toHaveBeenCalledWith(entry);
@@ -97,6 +104,11 @@ describe('useResizeObserver', () => {
     } as unknown as ResizeObserverEntry;
 
     ResizeObserverSpy.mock.calls[0][0]([entry1, entry2]);
+
+    expect(spy1).not.toHaveBeenCalledWith(entry1);
+    expect(spy2).not.toHaveBeenCalledWith(entry2);
+
+    jest.advanceTimersByTime(1);
 
     expect(spy1).toHaveBeenCalledWith(entry1);
     expect(spy2).toHaveBeenCalledWith(entry2);
