@@ -28,9 +28,11 @@ export const Example: React.FC = () => {
 export const ExampleDebounced: React.FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [rect, setRect] = useState<DOMRectReadOnly>();
-  const cb = useDebouncedCallback<IUseResizeObserverCallback>((e) => setRect(e.contentRect), 500, [
-    setRect,
-  ]);
+  const cb = useDebouncedCallback(
+    ((e) => setRect(e.contentRect)) as IUseResizeObserverCallback,
+    [setRect],
+    500
+  );
   useResizeObserver(ref, cb);
 
   return (
