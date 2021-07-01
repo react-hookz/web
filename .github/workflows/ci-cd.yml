@@ -22,7 +22,7 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v2
 
       - name: "Setup Node.js"
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: 15
 
@@ -44,7 +44,7 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v2
 
       - name: "Setup Node.js"
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: 15
 
@@ -69,7 +69,7 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v2
 
       - name: "Setup Node.js"
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: 15
 
@@ -91,7 +91,7 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v2
 
       - name: "Setup Node.js"
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: 15
 
@@ -134,7 +134,7 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v2
 
       - name: "Setup Node.js"
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: 15
 
