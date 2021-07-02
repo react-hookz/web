@@ -2228,21 +2228,6 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.1.tgz#c72bf216d0ae7ff3901fc3c4d7b71a6837b51b76"
-  integrity sha512-wDDqhd/jOXo752LQmNFdWlQOdzk/ZcsnOELXUpGY8QWzS9uasR1rZzCR78sFzsUTRyyMDAeiVHmKUlD2n4EL0g==
-  dependencies:
-    "@storybook/api" "6.3.1"
-    "@storybook/channels" "6.3.1"
-    "@storybook/client-logger" "6.3.1"
-    "@storybook/core-events" "6.3.1"
-    "@storybook/router" "6.3.1"
-    "@storybook/theming" "6.3.1"
-    core-js "^3.8.2"
-    global "^4.4.0"
-    regenerator-runtime "^0.13.7"
-
 "@storybook/addons@6.3.2", "@storybook/addons@^6.2.8", "@storybook/addons@^6.3.0":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.2.tgz#a116f71e07e2ca17f2c59accff8aebd0d01e3a3e"
@@ -2257,32 +2242,6 @@
     core-js "^3.8.2"
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
-
-"@storybook/api@6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.3.1.tgz#17b0a50208212666992fac5da74cc56de66078d2"
-  integrity sha512-70T9xaKWMP9xE4zOLLQiqmmWbsYk3nAFfwSnCu8oGb2Iq5bwfGDnm///n1/84OkObYv4OzVoRbIyLD+Xsx1Fnw==
-  dependencies:
-    "@reach/router" "^1.3.4"
-    "@storybook/channels" "6.3.1"
-    "@storybook/client-logger" "6.3.1"
-    "@storybook/core-events" "6.3.1"
-    "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.3.1"
-    "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.3.1"
-    "@types/reach__router" "^1.3.7"
-    core-js "^3.8.2"
-    fast-deep-equal "^3.1.3"
-    global "^4.4.0"
-    lodash "^4.17.20"
-    memoizerific "^1.11.3"
-    qs "^6.10.0"
-    regenerator-runtime "^0.13.7"
-    store2 "^2.12.0"
-    telejson "^5.3.2"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
 
 "@storybook/api@6.3.2", "@storybook/api@^6.3.0":
   version "6.3.2"
@@ -2398,15 +2357,6 @@
     global "^4.4.0"
     qs "^6.10.0"
     telejson "^5.3.2"
-
-"@storybook/channels@6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.3.1.tgz#5316e55e2d68a6ca82c6e75486d5e09590009c40"
-  integrity sha512-mMOQmXylE9yTHNp2uOdEg70Wb5KsPxV5mEHcYzYE54UM8HsYzeFu5UwG/CSA7FAkCHgCZfNiCW0LhikRN4bNbQ==
-  dependencies:
-    core-js "^3.8.2"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
 
 "@storybook/channels@6.3.2":
   version "6.3.2"
@@ -2594,13 +2544,6 @@
     util-deprecate "^1.0.2"
     webpack "4"
 
-"@storybook/core-events@6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.3.1.tgz#dc66466955364505acc4e6c0b2e4d8e9bc5148d1"
-  integrity sha512-W+0eRG955kd0HlD+8gGNeXogEnxEugfjDr9g316vawYlz9qnPoBxad8LoLPys5RawboK+1erOEfI2owGqDiKHw==
-  dependencies:
-    core-js "^3.8.2"
-
 "@storybook/core-events@6.3.2", "@storybook/core-events@^6.3.0":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.3.2.tgz#7d1eb4f889b809d851e48d2daed5fbf43244d624"
@@ -2784,22 +2727,6 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
     webpack "4"
-
-"@storybook/router@6.3.1":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-6.3.1.tgz#4ab6942e4ff86ddeb83c2fe7121ded81a482c95e"
-  integrity sha512-7YZlXdkWTttvK5OvqCjP8V8KdYx3FfTG0aKIo0koTsq1O09pPvM8aoNUZ0bNeEq9yE+1CLPiickaBtA9A29q2Q==
-  dependencies:
-    "@reach/router" "^1.3.4"
-    "@storybook/client-logger" "6.3.1"
-    "@types/reach__router" "^1.3.7"
-    core-js "^3.8.2"
-    fast-deep-equal "^3.1.3"
-    global "^4.4.0"
-    lodash "^4.17.20"
-    memoizerific "^1.11.3"
-    qs "^6.10.0"
-    ts-dedent "^2.0.0"
 
 "@storybook/router@6.3.2":
   version "6.3.2"
@@ -3191,9 +3118,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@>=16.9.0", "@types/react@^17.0.3":
-  version "17.0.11"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
-  integrity sha512-yFRQbD+whVonItSk7ZzP/L+gPTJVBkL/7shLEF+i9GC/1cV3JmUxEQz6+9ylhUpWSDuqo1N9qEvqS6vTj4USUA==
+  version "17.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.13.tgz#6b7c9a8f2868586ad87d941c02337c6888fb874f"
+  integrity sha512-D/G3PiuqTfE3IMNjLn/DCp6umjVCSvtZTPdtAFy5+Ved6CsdRvivfKeCzw79W4AatShtU4nGqgvOv5Gro534vQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
