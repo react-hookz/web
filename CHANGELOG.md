@@ -1,3 +1,10 @@
+# [3.6.0](https://github.com/react-hookz/web/compare/v3.5.0...v3.6.0) (2021-07-03)
+
+
+### Features
+
+* improve `useResizeObserver` ([#168](https://github.com/react-hookz/web/issues/168)) ([f6fa33a](https://github.com/react-hookz/web/commit/f6fa33a7d135f85a75c5e12bb9b0cc8a4d412fb1))
+
 # [3.5.0](https://github.com/react-hookz/web/compare/v3.4.0...v3.5.0) (2021-06-24)
 
 
