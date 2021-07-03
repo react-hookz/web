@@ -27,7 +27,7 @@ export const Example: React.FC = () => {
             background: (intersection?.intersectionRatio ?? 0) >= 0.5 ? 'green' : 'red',
             width: '10vw',
             height: '10vw',
-            margin: '50vh auto',
+            margin: '39vh auto',
           }}
         />
       </div>
