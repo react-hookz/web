@@ -32,7 +32,7 @@ export function useIntersectionObserver<T extends Element>(
 - **target** _`RefObject<T> | T | null`_ - React reference or Element to track.
 - **options** - Like `IntersectionObserver` options but `root` can also be react reference.
   - **threshold** _`RefObject<Element | Document> | Element | Document | null`_
-    _(default: `document`)_ - An `Element` or `Document` object (or it's react reference) which is
+    _(default: `document`)_ - An `Element` or `Document` object (or its react reference) which is
     an ancestor of the intended target, whose bounding rectangle will be considered the viewport.
     Any part of the target not visible in the visible area of the root is not considered visible.
   - **rootMargin** _`string`_ _(default: `0px`)_ - A string which specifies a set of offsets to add

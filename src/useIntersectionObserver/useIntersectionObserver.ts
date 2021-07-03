@@ -96,7 +96,7 @@ const getObserverEntry = (options: IntersectionObserverInit): IObserverEntry => 
 
 export interface IUseIntersectionObserverOptions {
   /**
-   * An Element or Document object (or it's react reference) which is an
+   * An Element or Document object (or its react reference) which is an
    * ancestor of the intended target, whose bounding rectangle will be
    * considered the viewport. Any part of the target not visible in the visible
    * area of the root is not considered visible.
