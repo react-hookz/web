@@ -1,3 +1,10 @@
+# [3.7.0](https://github.com/react-hookz/web/compare/v3.6.0...v3.7.0) (2021-07-03)
+
+
+### Features
+
+* improve `useEventListener` ([#169](https://github.com/react-hookz/web/issues/169)) ([d016ea9](https://github.com/react-hookz/web/commit/d016ea9f0d1ab42712695e886c2b3794fdb629de))
+
 # [3.6.0](https://github.com/react-hookz/web/compare/v3.5.0...v3.6.0) (2021-07-03)
 
 
