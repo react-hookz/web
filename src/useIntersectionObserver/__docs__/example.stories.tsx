@@ -10,8 +10,8 @@ export const Example: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <div style={{ width: '100%', marginBottom: '16px' }}>
-        Below scrollable container holds the rectangle that turns green when ot visible by 50% or
-        more.
+        Below scrollable container holds a rectangle that turns green when 50% or more of it is
+        visible.
       </div>
 
       <div
