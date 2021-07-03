@@ -1,3 +1,10 @@
+# [3.8.0](https://github.com/react-hookz/web/compare/v3.7.0...v3.8.0) (2021-07-03)
+
+
+### Features
+
+* new hook useIntersectionObserver ([#170](https://github.com/react-hookz/web/issues/170)) ([e97c163](https://github.com/react-hookz/web/commit/e97c16317b8113d957a7eb8fd6856c405956cb67))
+
 # [3.7.0](https://github.com/react-hookz/web/compare/v3.6.0...v3.7.0) (2021-07-03)
 
 
