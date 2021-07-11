@@ -15,6 +15,7 @@ export const Example: React.FC = () => {
         alert('COUNTERS VALUES ARE EVEN');
       },
       [state1, state2],
+      [state1, state2],
       (conditions) => conditions.every((i) => i && i % 2 === 0)
     );
 

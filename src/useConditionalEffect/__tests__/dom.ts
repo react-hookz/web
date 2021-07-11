@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useConditionalEffect } from '../..';
+import { truthyOrArrayPredicate, useConditionalEffect } from '../..';
 
 describe('useConditionalEffect', () => {
   it('should be defined', () => {
@@ -36,12 +36,41 @@ describe('useConditionalEffect', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
+  it('should invoke callback only if deps are changed and conditions match predicate', () => {
+    const spy = jest.fn();
+    const { rerender } = renderHook(({ cond, deps }) => useConditionalEffect(spy, cond, deps), {
+      initialProps: { cond: [false] as unknown[], deps: [1] as any[] },
+    });
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    rerender({ cond: [false], deps: [2] });
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    rerender({ cond: [true], deps: [2] });
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    rerender({ cond: [true], deps: [3] });
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ cond: [true], deps: [3] });
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ cond: [true], deps: [4] });
+    expect(spy).toHaveBeenCalledTimes(2);
+
+    rerender({ cond: [false], deps: [5] });
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
+
   it('should apply custom predicate', () => {
     const spy = jest.fn();
-    const predicateSpy = jest.fn((arr: unknown[]) => arr.some((i) => Boolean(i)));
-    const { rerender } = renderHook(({ cond }) => useConditionalEffect(spy, cond, predicateSpy), {
-      initialProps: { cond: [null] as unknown[] },
-    });
+    const predicateSpy = jest.fn((conditions) => truthyOrArrayPredicate(conditions));
+    const { rerender } = renderHook(
+      ({ cond }) => useConditionalEffect(spy, cond, undefined, predicateSpy),
+      {
+        initialProps: { cond: [null] as unknown[] },
+      }
+    );
     expect(predicateSpy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledTimes(0);
 

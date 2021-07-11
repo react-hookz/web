@@ -11,11 +11,11 @@ describe('useConditionalEffect', () => {
     expect(result.error).toBeUndefined();
   });
 
-  it('should not invoke effect, but should invoke predicate', () => {
+  it('should not invoke nor effect nor predicate', () => {
     const spy = jest.fn();
     const predicateSpy = jest.fn((arr: unknown[]) => arr.some((i) => Boolean(i)));
-    renderHook(() => useConditionalEffect(spy, [true], predicateSpy));
-    expect(predicateSpy).toHaveBeenCalledTimes(1);
+    renderHook(() => useConditionalEffect(spy, [true], undefined, predicateSpy));
+    expect(predicateSpy).toHaveBeenCalledTimes(0);
     expect(spy).toHaveBeenCalledTimes(0);
   });
 });
