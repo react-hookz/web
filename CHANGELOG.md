@@ -1,3 +1,16 @@
+# [4.0.0](https://github.com/react-hookz/web/compare/v3.8.0...v4.0.0) (2021-07-16)
+
+
+### Features
+
+* deps for `useConditionalUpdateEffect` and `useConditionalEffect` ([#201](https://github.com/react-hookz/web/issues/201)) ([bd56af3](https://github.com/react-hookz/web/commit/bd56af3c775123450867931aa07a33eaf08415e7))
+
+
+### BREAKING CHANGES
+
+* `useConditionalUpdateEffect` and `useConditionalEffect`
+now has changed call signature (new argument).
+
 # [3.8.0](https://github.com/react-hookz/web/compare/v3.7.0...v3.8.0) (2021-07-03)
 
 
