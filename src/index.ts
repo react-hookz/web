@@ -84,3 +84,5 @@ export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 export { useClickOutside } from './useClickOutside/useClickOutside';
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
 export { useEventListener } from './useEventListener/useEventListener';
+
+export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';

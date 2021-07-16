@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useConditionalUpdateEffect } from '../..';
+import { useConditionalEffect, useConditionalUpdateEffect } from '../..';
 
 describe('useConditionalUpdateEffect', () => {
   it('should be defined', () => {
@@ -28,10 +28,36 @@ describe('useConditionalUpdateEffect', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
+  it('should invoke callback only if deps are changed and conditions match predicate', () => {
+    const spy = jest.fn();
+    const { rerender } = renderHook(({ cond, deps }) => useConditionalEffect(spy, cond, deps), {
+      initialProps: { cond: [false] as unknown[], deps: [1] as any[] },
+    });
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    rerender({ cond: [false], deps: [2] });
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    rerender({ cond: [true], deps: [2] });
+    expect(spy).toHaveBeenCalledTimes(0);
+
+    rerender({ cond: [true], deps: [3] });
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ cond: [true], deps: [3] });
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ cond: [true], deps: [4] });
+    expect(spy).toHaveBeenCalledTimes(2);
+
+    rerender({ cond: [false], deps: [5] });
+    expect(spy).toHaveBeenCalledTimes(2);
+  });
+
   it('nor callback neither predicate should not be called on mount', () => {
     const spy = jest.fn();
     const predicateSpy = jest.fn(() => true);
-    renderHook(() => useConditionalUpdateEffect(spy, [true], predicateSpy));
+    renderHook(() => useConditionalUpdateEffect(spy, [true], undefined, predicateSpy));
     expect(predicateSpy).toHaveBeenCalledTimes(0);
     expect(spy).toHaveBeenCalledTimes(0);
   });
@@ -40,7 +66,7 @@ describe('useConditionalUpdateEffect', () => {
     const spy = jest.fn();
     const predicateSpy = jest.fn((arr: unknown[]) => arr.some((i) => Boolean(i)));
     const { rerender } = renderHook(
-      ({ cond }) => useConditionalUpdateEffect(spy, cond, predicateSpy),
+      ({ cond }) => useConditionalUpdateEffect(spy, cond, undefined, predicateSpy),
       {
         initialProps: { cond: [null] as unknown[] },
       }

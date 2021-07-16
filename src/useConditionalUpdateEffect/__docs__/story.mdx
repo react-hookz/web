@@ -26,6 +26,7 @@ type IUseConditionalUpdateEffectPredicate<Cond extends ReadonlyArray<any>> = (
 function useConditionalUpdateEffect<T extends ReadonlyArray<any>>(
   callback: React.EffectCallback,
   conditions: T,
+  deps?: React.DependencyList,
   predicate?: IUseConditionalUpdateEffectPredicate<T>
 ): void;
 ```
@@ -34,5 +35,8 @@ function useConditionalUpdateEffect<T extends ReadonlyArray<any>>(
 
 - _**callback**_ _`React.EffectCallback`_ - Effect callback like for `React.useEffect` hook
 - _**conditions**_ _`ReadonlyArray<any>`_ - Conditions that are matched against predicate
-- _**predicate**_ _`IUseConditionalUpdateEffectPredicate<ReadonlyArray<any>>`_ - Predicate that matches conditions.
+- **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If set - effect will
+  be triggered when deps changed AND conditions are satisfying predicate.
+- _**predicate**_ _`IUseConditionalUpdateEffectPredicate<ReadonlyArray<any>>`_ - Predicate that
+  matches conditions.
   By default, it is all-truthy provision, meaning that all conditions should be truthy.

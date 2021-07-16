@@ -1,5 +1,5 @@
-import { EffectCallback, useEffect, useRef } from 'react';
-import { noop, truthyArrayItemsPredicate } from '../util/const';
+import { DependencyList, EffectCallback, useEffect } from 'react';
+import { truthyAndArrayPredicate } from '..';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type IUseConditionalEffectPredicate<Cond extends ReadonlyArray<any>> = (
@@ -11,26 +11,23 @@ export type IUseConditionalEffectPredicate<Cond extends ReadonlyArray<any>> = (
  *
  * @param callback Callback to invoke
  * @param conditions Conditions array
+ * @param deps Dependencies list like for `useEffect`. If set - effect will be
+ * triggered when deps changed AND conditions are satisfying predicate.
  * @param predicate Predicate that defines whether conditions satisfying certain
  * provision. By default, it is all-truthy provision, meaning that all
  * conditions should be truthy.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useConditionalEffect<T extends ReadonlyArray<any>>(
+export function useConditionalEffect<T extends ReadonlyArray<unknown>>(
   callback: EffectCallback,
   conditions: T,
-  predicate: IUseConditionalEffectPredicate<T> = truthyArrayItemsPredicate
+  deps?: DependencyList,
+  predicate: IUseConditionalEffectPredicate<T> = truthyAndArrayPredicate
 ): void {
-  const shouldInvoke = predicate(conditions);
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  const deps = useRef<{}>();
-
-  // we want callback invocation only in case all conditions matches predicate
-  if (shouldInvoke) {
-    deps.current = {};
-  }
-
-  // we can't avoid on-mount invocations so slip noop callback for the cases we dont need invocation
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(shouldInvoke ? callback : noop, [deps.current]);
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (predicate(conditions)) {
+      return callback();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 }
