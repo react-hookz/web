@@ -277,7 +277,7 @@ remove();
 NOTES:
 
 - `js-cookies` needs installed separately from `@react-hookz/web` to use `useCookie`
-- `useCookie` instances with the same key on same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
+- `useCookie` instances with the same key on the same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
 
 #### useCopyToClipboard
 
@@ -473,6 +473,36 @@ Implemented as [useMap](https://react-hookz.github.io/web/?path=/docs/state-usem
 
 Implemented as [useSet](https://react-hookz.github.io/web/?path=/docs/state-useset)
 
+OLD in `react-use`:
+
+```javascript
+const [set, { add, reset, remove, has, toggle }] = useSet(new Set(["hello", "world"]));
+
+console.log(JSON.stringify(Array.from(set), null, 2));
+add(String(Date.now()));
+reset();
+remove("hello");
+has("hello");
+toggle("hello");
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const set = useSet(new Set(["hello", "world"]));
+
+console.log(JSON.stringify(Array.from(set), null, 2));
+set.add(String(Date.now()));
+set.clear();
+set.delete("hello");
+set.has("hello");
+// There is no native `toggle` method on `Set`s, but we can create our own easily
+const toggle = (value) => (set.has(value) ? set.delete(value) : set.add(value));
+toggle("hello");
+```
+
+NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Set` object, but its methods are wrapped to cause componentf to rerender with changes.
+
 #### useQueue
 
 Not implemented yet
@@ -493,9 +523,29 @@ Not implemented yet
 
 Implemented as [useMediatedState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate)
 
+OLD in `react-use`:
+
+```javascript
+const [state, setState] = useMediatedState((value) => value, "");
+
+console.log(state);
+setState("Hello world!");
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [state, setState] = useMediatedState("", (value) => value);
+
+console.log(state);
+setState("Hello world!");
+```
+
 #### useFirstMountState
 
 Implemented as [useFirstMountState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
+
+No API changes.
 
 #### useRendersCount
 
