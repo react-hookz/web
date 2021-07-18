@@ -49,7 +49,11 @@ See [our README](https://github.com/react-hookz/web).
 - [ ] [useWindowSize](https://github.com/streamich/react-use/blob/master/docs/useWindowSize.md) — tracks Window dimensions.
 - [x] [useMeasure](https://github.com/streamich/react-use/blob/master/docs/useMeasure.md) — tracks an HTML element's dimensions. (implemented as [useMeasure](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure))
 - [ ] [useSize](https://github.com/streamich/react-use/blob/master/docs/useSize.md) — tracks an HTML element's dimensions.
-- [ ] ~~[createBreakpoint](https://github.com/streamich/react-use/blob/master/docs/createBreakpoint.md) — tracks innerWidth~~ (Not planning to implement)
+
+#### createBreakpoint
+
+No plans to implement
+
 - [ ] [useScrollbarWidth](https://github.com/streamich/react-use/blob/master/docs/useScrollbarWidth.md) — detects browser's native scrollbars width.
 
 ### UI
@@ -91,15 +95,26 @@ See [our README](https://github.com/react-hookz/web).
 - [ ] [useRafLoop](https://github.com/streamich/react-use/blob/master/docs/useRafLoop.md) — calls given function inside the RAF loop.
 - [x] [useSessionStorage](https://github.com/streamich/react-use/blob/master/docs/useSessionStorage.md) — manages a value in sessionStorage. (Implemented as [useSessionStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue))
 - [x] [useThrottle](https://github.com/streamich/react-use/blob/master/docs/useThrottle.md) — throttles a function.
-- [ ] ~~[useThrottleFn](https://github.com/streamich/react-use/blob/master/docs/useThrottleFn.md) — throttles a function.~~
+
+#### useThrottleFn
+
+No plans to implement
+
 - [x] [useTitle](https://github.com/streamich/react-use/blob/master/docs/useTitle.md) — sets title of the page. (Implemented as [useDocumentTitle](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle))
 - [x] [usePermission](https://github.com/streamich/react-use/blob/master/docs/usePermission.md) — query permission status for browser APIs. (Implemented as [usePermission](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission))
 
 ### Lifecycles
 
-- [ ] ~~[useEffectOnce](https://github.com/streamich/react-use/blob/master/docs/useEffectOnce.md) — a modified useEffect hook that only runs once.~~ (it's just an alias for `useMountEffect`)
+#### useEffectOnce
+
+No plans to implement
+
 - [x] [useEvent](https://github.com/streamich/react-use/blob/master/docs/useEvent.md) — subscribe to events. (Implemented as [useEventListener](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener))
-- [ ] ~~[useLifecycles](https://github.com/streamich/react-use/blob/master/docs/useLifecycles.md) — calls mount and unmount callbacks.~~ (no sense to port, has almost no benefit comparing to `useEffect`)
+
+#### useLifecycles
+
+No plans to implement
+
 - [x] [useMountedState](https://github.com/streamich/react-use/blob/master/docs/useMountedState.md) — track if component is mounted. (Implemented as [useIsMounted](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsMounted))
 - [ ] [useUnmountPromise](https://github.com/streamich/react-use/blob/master/docs/useUnmountPromise.md) — track if component is mounted.
 - [ ] [usePromise](https://github.com/streamich/react-use/blob/master/docs/usePromise.md) — resolves promise only while component is mounted.
@@ -114,10 +129,22 @@ See [our README](https://github.com/react-hookz/web).
 
 ### State
 
-- [ ] ~~[createMemo](https://github.com/streamich/react-use/blob/master/docs/createMemo.md) — factory of memoized hooks.~~ (Not planning to implement)
-- [ ] ~~[createReducer](https://github.com/streamich/react-use/blob/master/docs/createReducer.md) — factory of reducer hooks with custom middleware.~~ (Not planning to implement)
-- [ ] ~~[createReducerContext](https://github.com/streamich/react-use/blob/master/docs/createReducerContext.md) — factory of hooks for a sharing state between components.~~ (Not planning to implement)
-- [ ] ~~[createStateContext](https://github.com/streamich/react-use/blob/master/docs/createStateContext.md) — factory of hooks for a sharing state between components.~~ (Not planning to implement)
+#### createMemo
+
+No plans to implement
+
+#### createReducer
+
+No plans to implement
+
+#### createReducerContext
+
+No plans to implement
+
+#### createStateContext
+
+No plans to implement
+
 - [ ] [useDefault](https://github.com/streamich/react-use/blob/master/docs/useDefault.md) — returns the default value when state is null or undefined.
 - [ ] [useGetSet](https://github.com/streamich/react-use/blob/master/docs/useGetSet.md) — returns state getter get() instead of raw state.
 - [ ] [useGetSetState](https://github.com/streamich/react-use/blob/master/docs/useGetSetState.md) — as if useGetSet and useSetState had a baby.
@@ -143,7 +170,11 @@ See [our README](https://github.com/react-hookz/web).
 - [x] [useMediatedState](https://github.com/streamich/react-use/blob/master/docs/useMediatedState.md) — like the regular useState but with mediation by custom function. (Implemented as [useMediatedState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate))
 - [x] [useFirstMountState](https://github.com/streamich/react-use/blob/master/docs/useFirstMountState.md) — check if current render is first. (Implemented as [useFirstMountState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate))
 - [ ] [useRendersCount](https://github.com/streamich/react-use/blob/master/docs/useRendersCount.md) — count component renders.
-- [ ] ~~[createGlobalState](https://github.com/streamich/react-use/blob/master/docs/createGlobalState.md) — cross component shared state.~~ (Not planning to implement)
+
+#### createGlobalState
+
+No plans to implement
+
 - [ ] [useMethods](https://github.com/streamich/react-use/blob/master/docs/useMethods.md) — neat alternative to useReducer.
 
 ### Miscellaneous
