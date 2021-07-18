@@ -4,7 +4,7 @@ One of `@react-hookz/web`'s primary goals is to replace [react-use](https://gith
 
 ## A note on missing hooks
 
-Many of `react-use`'s hooks have already been ported to `@react-hookz/web`. You can track our work in [this issue](https://github.com/react-hookz/web/issues/33).
+The most common `react-use` hooks have already been ported to `@react-hookz/web`. You can track our progress porting the rest of `react-use`'s hooks in [this issue](https://github.com/react-hookz/web/issues/33).
 
 If there is a `react-use` hook you need that isn't ported yet, please comment there - or even better, make a PR!
 
@@ -74,7 +74,9 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useMedia](https://github.com/streamich/react-use/blob/master/docs/useMedia.md) — tracks state of a CSS media query. (implemented as [useMediaQuery](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery))
+#### useMedia
+
+Implemented as [useMediaQuery](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery)
 
 #### useMediaDevices
 
@@ -96,7 +98,9 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useNetworkState](https://github.com/streamich/react-use/blob/master/docs/useNetworkState.md) — tracks the state of browser's network connection. (implemented as [useNetwork](https://react-hookz.github.io/web/?path=/docs/navigator-usenetwork))
+#### useNetworkState
+
+Implemented as [useNetwork](https://react-hookz.github.io/web/?path=/docs/navigator-usenetwork)
 
 #### useOrientation
 
@@ -130,7 +134,9 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useMeasure](https://github.com/streamich/react-use/blob/master/docs/useMeasure.md) — tracks an HTML element's dimensions. (implemented as [useMeasure](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure))
+#### useMeasure
+
+Implemented as [useMeasure](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure)
 
 #### useSize
 
@@ -150,7 +156,9 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useClickAway](https://github.com/streamich/react-use/blob/master/docs/useClickAway.md) — triggers callback when user clicks outside target area. (Implmented as [useClickOutside](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside))
+#### useClickAway
+
+Implmented as [useClickOutside](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside))
 
 #### useCss
 
@@ -210,25 +218,41 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useUpdate](https://github.com/streamich/react-use/blob/master/docs/useUpdate.md) — returns a callback, which re-renders component when called. (Implemented as [useRerender](https://react-hookz.github.io/web/?path=/docs/lifecycle-useRerender))
+#### useUpdate
+
+Implemented as [useRerender](https://react-hookz.github.io/web/?path=/docs/lifecycle-useRerender)
 
 ### Side-effects
 
-- [x] [useAsync](https://github.com/streamich/react-use/blob/master/docs/useAsync.md) — resolves an async function. (implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync))
-- [x] [useAsyncFn](https://github.com/streamich/react-use/blob/master/docs/useAsyncFn.md) — resolves an async function. (implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync))
-- [x] [useAsyncRetry](https://github.com/streamich/react-use/blob/master/docs/useAsyncRetry.md) — resolves an async function. (implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync))
+#### useAsync
+
+Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
+
+#### useAsyncFn
+
+Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
+
+#### useAsyncRetry
+
+Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
 
 #### useBeforeUnload
 
 Not implemented yet
 
-- [x] [useCookie](https://github.com/streamich/react-use/blob/master/docs/useCookie.md) — provides way to read, update and delete a cookie. (implemented as [useCookie](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookie))
+#### useCookie
+
+Implemented as [useCookie](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookie)
 
 #### useCopyToClipboard
 
 Not implemented yet
 
-- [x] [useDebounce](https://github.com/streamich/react-use/blob/master/docs/useDebounce.md) — debounces a function. (Implemented as [useDebounceCallback](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback))
+#### useDebounce
+
+`@react-hookz/web` has three options for debouncing, which we feel are both more ergonomic and flexible than `react-use`'s implementation.
+
+Implemented as [useDebounceCallback](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback)
 
 #### useError
 
@@ -238,7 +262,9 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useLocalStorage](https://github.com/streamich/react-use/blob/master/docs/useLocalStorage.md) — manages a value in localStorage. (Implemented as [useLocalStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue))
+#### useLocalStorage
+
+Implemented as [useLocalStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue)
 
 #### useLockBodyScroll
 
@@ -248,15 +274,21 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useSessionStorage](https://github.com/streamich/react-use/blob/master/docs/useSessionStorage.md) — manages a value in sessionStorage. (Implemented as [useSessionStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue))
-- [x] [useThrottle](https://github.com/streamich/react-use/blob/master/docs/useThrottle.md) — throttles a function.
+#### useSessionStorage
 
-#### useThrottleFn
+Implemented as [useSessionStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue)
 
-No plans to implement
+#### useThrottle and useThrottleFn
 
-- [x] [useTitle](https://github.com/streamich/react-use/blob/master/docs/useTitle.md) — sets title of the page. (Implemented as [useDocumentTitle](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle))
-- [x] [usePermission](https://github.com/streamich/react-use/blob/master/docs/usePermission.md) — query permission status for browser APIs. (Implemented as [usePermission](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission))
+`@react-hookz/web` has three options for throttling, which we feel are both more ergonomic and flexible than `react-use`'s implementations.
+
+#### useTitle
+
+Implemented as [useDocumentTitle](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle)
+
+#### usePermission
+
+Implemented as [usePermission](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission)
 
 ### Lifecycles
 
@@ -264,13 +296,17 @@ No plans to implement
 
 No plans to implement
 
-- [x] [useEvent](https://github.com/streamich/react-use/blob/master/docs/useEvent.md) — subscribe to events. (Implemented as [useEventListener](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener))
+#### useEvent
+
+Implemented as [useEventListener](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener)
 
 #### useLifecycles
 
 No plans to implement
 
-- [x] [useMountedState](https://github.com/streamich/react-use/blob/master/docs/useMountedState.md) — track if component is mounted. (Implemented as [useIsMounted](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsMounted))
+#### useMountedState
+
+Implemented as [useIsMounted](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsMounted)
 
 #### useUnmountPromise
 
@@ -284,10 +320,21 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useMount](https://github.com/streamich/react-use/blob/master/docs/useMount.md) — calls mount callbacks. (Implemented as [useMountEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useMountEffect))
-- [x] [useUnmount](https://github.com/streamich/react-use/blob/master/docs/useUnmount.md) — calls unmount callbacks. (Implemented as [useUnmountEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useUnmountEffect))
-- [x] [useUpdateEffect](https://github.com/streamich/react-use/blob/master/docs/useUpdateEffect.md) — run an effect only on updates. (Implemented as [useUpdateEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useUpdateEffect))
-- [x] [useIsomorphicLayoutEffect](https://github.com/streamich/react-use/blob/master/docs/useIsomorphicLayoutEffect.md) — useLayoutEffect that does not show warning when server-side rendering. (Implemented as [useIsomorphicLayoutEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsomorphicLayoutEffect))
+#### useMount
+
+Implemented as [useMountEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useMountEffect)
+
+#### useUnmount
+
+Implemented as [useUnmountEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useUnmountEffect)
+
+#### useUpdateEffect
+
+Implemented as [useUpdateEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useUpdateEffect)
+
+#### useIsomorphicLayoutEffect
+
+Implemented as [useIsomorphicLayoutEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsomorphicLayoutEffect)
 
 #### useDeepCompareEffect
 
@@ -331,8 +378,13 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useLatest](https://github.com/streamich/react-use/blob/master/docs/useLatest.md) — returns the latest state or props (as useSynchedRef)
-- [x] [usePrevious](https://github.com/streamich/react-use/blob/master/docs/usePrevious.md) — returns the previous state or props. (Implemented as [usePrevious](https://react-hookz.github.io/web/?path=/docs/state-useprevious))
+#### useLatest
+
+Implemented as [useSynchedRef](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usesyncedref)
+
+#### usePrevious
+
+Implemented as [usePrevious](https://react-hookz.github.io/web/?path=/docs/state-useprevious)
 
 #### usePreviousDistinct
 
@@ -354,8 +406,13 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useToggle](https://github.com/streamich/react-use/blob/master/docs/useToggle.md) — tracks state of a boolean. (Implemented as [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle))
-- [x] [useBoolean](https://github.com/streamich/react-use/blob/master/docs/useBoolean.md) — tracks state of a boolean. (Implemented as [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle))
+#### useToggle
+
+Implemented as [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
+
+#### useBoolean
+
+Implemented as [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
 
 #### useCounter
 
@@ -373,14 +430,21 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useMap](https://github.com/streamich/react-use/blob/master/docs/useMap.md) — tracks state of an object. (Implemented as [useMap](https://react-hookz.github.io/web/?path=/docs/state-usemap))
-- [x] [useSet](https://github.com/streamich/react-use/blob/master/docs/useSet.md) — tracks state of a Set. (Implemented as [useSet](https://react-hookz.github.io/web/?path=/docs/state-useset))
+#### useMap
+
+Implemented as [useMap](https://react-hookz.github.io/web/?path=/docs/state-usemap)
+
+#### useSet
+
+Implemented as [useSet](https://react-hookz.github.io/web/?path=/docs/state-useset)
 
 #### useQueue
 
 Not implemented yet
 
-- [x] [useStateValidator](https://github.com/streamich/react-use/blob/master/docs/useStateValidator.md) — tracks state of an object.
+#### useStateValidator
+
+](https://github.com/streamich/react-use/blob/master/docs/useStateValidator.md) — tracks state of an object.
 
 #### useStateWithHistory
 
@@ -390,8 +454,13 @@ Not implemented yet
 
 Not implemented yet
 
-- [x] [useMediatedState](https://github.com/streamich/react-use/blob/master/docs/useMediatedState.md) — like the regular useState but with mediation by custom function. (Implemented as [useMediatedState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate))
-- [x] [useFirstMountState](https://github.com/streamich/react-use/blob/master/docs/useFirstMountState.md) — check if current render is first. (Implemented as [useFirstMountState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate))
+#### useMediatedState
+
+Implemented as [useMediatedState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemediatedstate)
+
+#### useFirstMountState
+
+Implemented as [useFirstMountState](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate)
 
 #### useRendersCount
 
