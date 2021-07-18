@@ -343,6 +343,8 @@ No plans to implement
 
 Implemented as [useIsMounted](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsMounted)
 
+No API change, besides name change.
+
 #### useUnmountPromise
 
 Not implemented yet
@@ -359,17 +361,25 @@ Not implemented yet
 
 Implemented as [useMountEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useMountEffect)
 
+No API change, besides name change.
+
 #### useUnmount
 
 Implemented as [useUnmountEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useUnmountEffect)
+
+No API change, besides name change.
 
 #### useUpdateEffect
 
 Implemented as [useUpdateEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useUpdateEffect)
 
+No API change.
+
 #### useIsomorphicLayoutEffect
 
 Implemented as [useIsomorphicLayoutEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-useIsomorphicLayoutEffect)
+
+No API changes.
 
 #### useDeepCompareEffect
 
@@ -417,9 +427,13 @@ Not implemented yet
 
 Implemented as [useSynchedRef](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usesyncedref)
 
+No API changes, besides name change.
+
 #### usePrevious
 
 Implemented as [usePrevious](https://react-hookz.github.io/web/?path=/docs/state-useprevious)
+
+No API changes.
 
 #### usePreviousDistinct
 
@@ -445,9 +459,11 @@ Not implemented yet
 
 Implemented as [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
 
+No API changes.
+
 #### useBoolean
 
-Implemented as [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle)
+Use [useToggle](https://react-hookz.github.io/web/?path=/docs/state-usetoggle) instead
 
 #### useCounter
 
@@ -469,6 +485,39 @@ Not implemented yet
 
 Implemented as [useMap](https://react-hookz.github.io/web/?path=/docs/state-usemap)
 
+OLD in `react-use`:
+
+```javascript
+const [map, { set, remove, reset, setAll }] = useMap({
+  hello: "there",
+});
+
+console.log(JSON.stringify(map, null, 2));
+set("some", "thing");
+remove("hello");
+reset();
+setAll({ hello: "there", some: "thing" });
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const map = useMap(new Map([['hello', 'there']]););
+
+console.log(JSON.stringify(Array.from(map), null, 2));
+map.set("some", "thing");
+map.delete("hello");
+map.clear();
+// There is no native `setAll` method on `Map`s, but we can create our own easily
+const setAll = (values) => {
+    map.clear();
+    valuePairs.forEach((valuePair) => map.set(valuePair[0], valuePair[1]));
+}
+setAll([['hello', 'there']]);
+```
+
+NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Map` object, but its methods are wrapped to cause components to rerender with changes.
+
 #### useSet
 
 Implemented as [useSet](https://react-hookz.github.io/web/?path=/docs/state-useset)
@@ -489,7 +538,7 @@ toggle("hello");
 NEW in `@react-hookz/web`:
 
 ```javascript
-const set = useSet(new Set(["hello", "world"]));
+const set = useSet(["hello", "world"]);
 
 console.log(JSON.stringify(Array.from(set), null, 2));
 set.add(String(Date.now()));
@@ -501,7 +550,7 @@ const toggle = (value) => (set.has(value) ? set.delete(value) : set.add(value));
 toggle("hello");
 ```
 
-NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Set` object, but its methods are wrapped to cause componentf to rerender with changes.
+NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Set` object, but its methods are wrapped to cause components to rerender with changes.
 
 #### useQueue
 
