@@ -444,7 +444,7 @@ Not implemented yet
 
 #### useStateValidator
 
-](https://github.com/streamich/react-use/blob/master/docs/useStateValidator.md) — tracks state of an object.
+// - UseValidator link is missing from the issue and the docs are broken
 
 #### useStateWithHistory
 
