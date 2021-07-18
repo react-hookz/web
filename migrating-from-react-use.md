@@ -78,6 +78,8 @@ Not implemented yet
 
 Implemented as [useMediaQuery](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery)
 
+No API changes, besides name change.
+
 #### useMediaDevices
 
 Not implemented yet
@@ -101,6 +103,8 @@ Not implemented yet
 #### useNetworkState
 
 Implemented as [useNetwork](https://react-hookz.github.io/web/?path=/docs/navigator-usenetwork)
+
+No API changes, besides name change.
 
 #### useOrientation
 
@@ -138,9 +142,11 @@ Not implemented yet
 
 Implemented as [useMeasure](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure)
 
+No API changes.
+
 #### useSize
 
-Not implemented yet
+Use [useMeasure](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure) instead.
 
 #### createBreakpoint
 
@@ -159,6 +165,8 @@ Not implemented yet
 #### useClickAway
 
 Implmented as [useClickOutside](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside))
+
+No API changes, besides name change.
 
 #### useCss
 
@@ -222,9 +230,11 @@ Not implemented yet
 
 Implemented as [useRerender](https://react-hookz.github.io/web/?path=/docs/lifecycle-useRerender)
 
+No API changes, besides name change.
+
 ### Side-effects
 
-#### useAsync
+#### useAsync and useAsyncFn and useAsyncRetry
 
 Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
 
@@ -242,7 +252,32 @@ Not implemented yet
 
 #### useCookie
 
-Implemented as [useCookie](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookie)
+Implemented as [useCookieValue](https://react-hookz.github.io/web/?path=/docs/side-effect-useCookieValue)
+
+OLD in `react-use`:
+
+```javascript
+const [value, set, remove] = useCookie("my-cookie");
+
+console.log(value);
+set("Hello world!", options);
+remove();
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [value, set, remove] = useCookieValue("react-hookz", options);
+
+console.log(value);
+set("Hello world!");
+remove();
+```
+
+NOTES:
+
+- `js-cookies` needs installed separately from `@react-hookz/web` to use `useCookie`
+- `useCookie` instances with the same key on same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
 
 #### useCopyToClipboard
 
