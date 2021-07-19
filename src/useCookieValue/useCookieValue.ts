@@ -105,7 +105,7 @@ export function useCookieValue(
     set: (value: string) => {
       setState(value);
       Cookies.set(key, value, cookiesOptions);
-      // update all other hooks managing the same key
+      // update all other hooks with the same key
       invokeRegisteredSetters(key, value, setState);
     },
     remove: () => {

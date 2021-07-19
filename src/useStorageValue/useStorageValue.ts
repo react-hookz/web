@@ -24,7 +24,7 @@ export type IUseStorageValueOptions<
   storeDefaultValue?: boolean;
 
   /**
-   * Disable synchronisation with other hook instances managing same key on same page.
+   * Disable synchronisation with other hook instances with the same key on the same page.
    *
    * @default false
    */

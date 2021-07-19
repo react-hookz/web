@@ -11,8 +11,8 @@ Manages a single cookie.
 
 - Uses `js-cookie` package underneath.
 - SSR-friendly.
-- Hooks that managing same key on same page - are synchronised. This synchronisation does not
-  involve cross-tabs sync or triggering on changes that performed by third-party code.
+- Hooks with the same key on the same page are synchronised. This synchronisation does not
+  work across tabs or on changes that are triggered by third-party code.
 
 > **_This hook provides stable API, meaning returned methods does not change between renders_**
 

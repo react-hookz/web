@@ -107,7 +107,7 @@ describe('useCookieValue', () => {
     Cookies.remove('react-hookz');
   });
 
-  it('should be synchronized between several hooks managing same key', () => {
+  it('should be synchronized between several hooks with the same key', () => {
     const { result: res1 } = renderHook(() => useCookieValue('react-hookz'));
     const { result: res2 } = renderHook(() => useCookieValue('react-hookz'));
 

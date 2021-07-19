@@ -9,7 +9,7 @@ Manages a single SessionStorage key.
 
 - Uses JSON serialisation to handle non-string values.
 - Tracks window's `storage` event.
-- Synchronized between all hooks on the page managing same key.
+- Synchronized between all hooks on the page with the same key.
 - SSR compatible.
 
 > **_This hook provides stable API, meaning returned methods does not change between renders_**
@@ -28,7 +28,7 @@ Manages a single SessionStorage key.
 <Canvas isColumn>
   <Story name="Example" story={Example} />
   <hr />
-  It also synchronised between hooks on same page
+  It is also synchronised between hooks on the same page
   <hr />
   <Story name="Example2" story={Example} />
 </Canvas>
@@ -52,7 +52,7 @@ function useSessionStorageValue<T>(
   presented in SessionStorage.
 - **options** _`object`_ - Hook options:
   - **isolated** _`boolean`_ _(default: false)_ - Disable synchronisation with other hook instances
-    managing same key on same page.
+    with the same key on same page.
   - **handleStorageEvent** _`boolean`_ _(default: true)_ - Subscribe to window's `storage` event.
   - **storeDefaultValue** _`boolean`_ _(default: false)_ - store default value.
   - **initializeWithStorageValue** _`boolean`_ _(default: true)_ - fetch storage value on first

@@ -15,7 +15,7 @@ interface IExampleProps {
    */
   handleStorageEvent: boolean;
   /**
-   * Isolate hook from others on page - it will not receive updates from other hooks managing same key.
+   * Isolate hook from others on page - it will not receive updates from other hooks with the same key.
    */
   isolated: boolean;
 }

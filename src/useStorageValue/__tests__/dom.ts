@@ -341,7 +341,7 @@ describe('useStorageValue', () => {
   });
 
   describe('synchronisation', () => {
-    it('should update state of all hooks managing same key in same storage', () => {
+    it('should update state of all hooks with the same key in same storage', () => {
       const { result: res } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
 
       const { result: res1 } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
