@@ -56,6 +56,10 @@ import { useMountEffect } from "@react-hookz/web/esm";
 import { useMountEffect } from "@react-hookz/web/esnext";
 ```
 
+## Migrating from react-use
+
+Coming from `react-use`? Check out our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use).
+
 ## Hooks list
 
 - #### Callback
