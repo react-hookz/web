@@ -234,17 +234,23 @@ No API changes, besides name change.
 
 ### Side-effects
 
-#### useAsync and useAsyncFn and useAsyncRetry
+#### useAsync
 
 Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
+
+// TODO
 
 #### useAsyncFn
 
 Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
 
+// TODO
+
 #### useAsyncRetry
 
 Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
+
+// TODO
 
 #### useBeforeUnload
 
@@ -287,7 +293,7 @@ Not implemented yet
 
 `@react-hookz/web` has three options for debouncing, which we feel are both more ergonomic and flexible than `react-use`'s implementation.
 
-Implemented as [useDebounceCallback](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback)
+Depending on your use case, [useDebouncedEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncedeffect), [useDebounceCallback](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncecallback), or [useDebouncedState](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate) may be more appropriate.
 
 #### useError
 
@@ -301,6 +307,10 @@ Not implemented yet
 
 Implemented as [useLocalStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue)
 
+Backwards compatiable API, minus the `raw` option.
+
+NOTE: `useLocalStorage` instances with the same key on the same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
+
 #### useLockBodyScroll
 
 Not implemented yet
@@ -313,17 +323,27 @@ Not implemented yet
 
 Implemented as [useSessionStorageValue](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue)
 
+Backwards compatiable API, minus the `raw` option.
+
+NOTE: `useSessionStorage` instances with the same key on the same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
+
 #### useThrottle and useThrottleFn
 
 `@react-hookz/web` has three options for throttling, which we feel are both more ergonomic and flexible than `react-use`'s implementations.
+
+Depending on your use case, [useThrottledEffect](https://react-hookz.github.io/web/?path=/docs/lifecycle-usethrottledeffect), [useThrottledCallback](https://react-hookz.github.io/web/?path=/docs/callback-usethrottledcallback), or [useThrottledState](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate) may be more appropriate.
 
 #### useTitle
 
 Implemented as [useDocumentTitle](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle)
 
+Backwards compatiable API.
+
 #### usePermission
 
 Implemented as [usePermission](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission)
+
+No API changes.
 
 ### Lifecycles
 
@@ -334,6 +354,32 @@ No plans to implement
 #### useEvent
 
 Implemented as [useEventListener](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener)
+
+OLD in `react-use`:
+
+```javascript
+useEvent(
+  "mousemove",
+  () => {
+    setState(new Date());
+  },
+  window,
+  { passive: true }
+);
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+useEventListener(
+  window,
+  "mousemove",
+  () => {
+    setState(new Date());
+  },
+  { passive: true }
+);
+```
 
 #### useLifecycles
 
