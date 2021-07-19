@@ -238,19 +238,93 @@ No API changes, besides name change.
 
 Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
 
-// TODO
+OLD in `react-use`:
+
+```javascript
+const { loading, value, error } = useAsync(async () => {
+  const response = await fetch(url);
+  const result = await response.text();
+  return result;
+}, [url]);
+
+console.log(loading);
+console.log(value);
+console.log(error.message);
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [{ status, result, error }] = useAsync(async () => {
+  const response = await fetch(url);
+  const result = await response.text();
+  return result;
+}, [url]);
+
+console.log(status === "loading");
+console.log(result);
+console.log(error.message);
+```
 
 #### useAsyncFn
 
-Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
+Implemented as part of [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
 
-// TODO
+OLD in `react-use`:
+
+```javascript
+const [{ loading, value, error }, doFetch] = useAsync(async () => {
+  const response = await fetch(url);
+  const result = await response.text();
+  return result;
+}, [url]);
+
+doFetch();
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [{ status, result, error }, { execute }] = useAsync(
+  async () => {
+    const response = await fetch(url);
+    const result = await response.text();
+    return result;
+  },
+  [url],
+  { skipMount: true, skipUpdate: true }
+);
+
+execute();
+```
 
 #### useAsyncRetry
 
-Implemented as [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
+Implemented as part of [useAsync](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
 
-// TODO
+OLD in `react-use`:
+
+```javascript
+const { loading, value, error, retry } = useAsync(async () => {
+  const response = await fetch(url);
+  const result = await response.text();
+  return result;
+}, [url]);
+
+retry();
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [{ status, result, error }, { execute }] = useAsync(async () => {
+  const response = await fetch(url);
+  const result = await response.text();
+  return result;
+}, [url]);
+
+execute();
+```
 
 #### useBeforeUnload
 
