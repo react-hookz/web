@@ -680,7 +680,53 @@ Not implemented yet
 
 #### useStateValidator
 
-// - UseValidator link is missing from the issue and the docs are broken
+Implemented as [useValidator](/docs/state-usevalidator--example-stories)
+
+OLD in `react-use`:
+
+```javascript
+// outside of React component
+const validator = (s) => {
+  const isValid = !text.length || text.length % 2 === 1;
+
+  const error = !isValid ? new Error("text length should be an odd length") : undefined,
+
+  return [isValid, error]
+};
+
+-----
+// inside of React component
+const [text, setText] = useState("");
+const [[isValid, error], revalidate] = useStateValidator(text, validator);
+
+console.log(isValid);
+console.log(error?.message);
+revalidate();
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [text, setText] = useState("");
+
+const validator =
+  (d) => {
+    const isValid = !text.length || text.length % 2 === 1;
+
+    const error = !isValid ? new Error("text length should be an odd length") : undefined,
+
+    d({
+      isValid,
+      error
+    });
+  }
+
+const [validity] = useValidator(validator, [text]);
+
+console.log(validity.isValid);
+console.log(validity.error?.message);
+// no manual revalidation needed
+```
 
 #### useStateWithHistory
 
@@ -688,7 +734,7 @@ Not implemented yet
 
 #### useMultiStateValidator
 
-Not implemented yet
+See [useValidator](/docs/state-usevalidator--example-stories)
 
 #### useMediatedState
 
