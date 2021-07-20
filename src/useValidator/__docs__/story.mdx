@@ -42,7 +42,7 @@ function useValidator<V extends IValidityState>(
 - **validator** _`IValidator<V>`_ - the function that performs validation, it can be of two types:
   - _immediate validator_ - performs validation on the go and returns validity state as a function
     result, expects 0 arguments.
-  - _deferred validator_ - performs any king of asynchronous validation, expects 1 argument which
+  - _deferred validator_ - performs any kind of asynchronous validation, expects 1 argument which
     is the validity state setter.
     > TypeScript warning: deferred validators are unable to infer the validity type, therefore it
     > requires explicit validity state type definition, as it is shown in example.

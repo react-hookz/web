@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Migrating from react-use" />
 
@@ -263,7 +263,7 @@ const [{ status, result, error }] = useAsync(async () => {
   return result;
 }, [url]);
 
-console.log(status === 'loading');
+console.log(status === "loading");
 console.log(result);
 console.log(error.message);
 ```
@@ -339,20 +339,20 @@ Implemented as [useCookieValue](/docs/side-effect-useCookieValue--example)
 OLD in `react-use`:
 
 ```javascript
-const [value, set, remove] = useCookie('my-cookie');
+const [value, set, remove] = useCookie("my-cookie");
 
 console.log(value);
-set('Hello world!', options);
+set("Hello world!", options);
 remove();
 ```
 
 NEW in `@react-hookz/web`:
 
 ```javascript
-const [value, set, remove] = useCookieValue('react-hookz', options);
+const [value, set, remove] = useCookieValue("react-hookz", options);
 
 console.log(value);
-set('Hello world!');
+set("Hello world!");
 remove();
 ```
 
@@ -435,7 +435,7 @@ OLD in `react-use`:
 
 ```javascript
 useEvent(
-  'mousemove',
+  "mousemove",
   () => {
     setState(new Date());
   },
@@ -449,7 +449,7 @@ NEW in `@react-hookz/web`:
 ```javascript
 useEventListener(
   window,
-  'mousemove',
+  "mousemove",
   () => {
     setState(new Date());
   },
@@ -611,14 +611,14 @@ OLD in `react-use`:
 
 ```javascript
 const [map, { set, remove, reset, setAll }] = useMap({
-  hello: 'there',
+  hello: "there",
 });
 
 console.log(JSON.stringify(map, null, 2));
-set('some', 'thing');
-remove('hello');
+set("some", "thing");
+remove("hello");
 reset();
-setAll({ hello: 'there', some: 'thing' });
+setAll({ hello: "there", some: "thing" });
 ```
 
 NEW in `@react-hookz/web`:
@@ -647,29 +647,29 @@ Implemented as [useSet](/docs/state-useset--example)
 OLD in `react-use`:
 
 ```javascript
-const [set, { add, reset, remove, has, toggle }] = useSet(new Set(['hello', 'world']));
+const [set, { add, reset, remove, has, toggle }] = useSet(new Set(["hello", "world"]));
 
 console.log(JSON.stringify(Array.from(set), null, 2));
 add(String(Date.now()));
 reset();
-remove('hello');
-has('hello');
-toggle('hello');
+remove("hello");
+has("hello");
+toggle("hello");
 ```
 
 NEW in `@react-hookz/web`:
 
 ```javascript
-const set = useSet(['hello', 'world']);
+const set = useSet(["hello", "world"]);
 
 console.log(JSON.stringify(Array.from(set), null, 2));
 set.add(String(Date.now()));
 set.clear();
-set.delete('hello');
-set.has('hello');
+set.delete("hello");
+set.has("hello");
 // There is no native `toggle` method on `Set`s, but we can create our own easily
 const toggle = (value) => (set.has(value) ? set.delete(value) : set.add(value));
-toggle('hello');
+toggle("hello");
 ```
 
 NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Set` object, but its methods are wrapped to cause components to rerender with changes.
@@ -680,7 +680,53 @@ Not implemented yet
 
 #### useStateValidator
 
-// - UseValidator link is missing from the issue and the docs are broken
+Implemented as [useValidator](/docs/state-usevalidator--example-stories)
+
+OLD in `react-use`:
+
+```javascript
+// outside of React component
+const validator = (s) => {
+  const isValid = !text.length || text.length % 2 === 1;
+
+  const error = !isValid ? new Error("text length should be an odd length") : undefined,
+
+  return [isValid, error]
+};
+
+-----
+// inside of React component
+const [text, setText] = useState("");
+const [[isValid, error], revalidate] = useStateValidator(text, validator);
+
+console.log(isValid);
+console.log(error?.message);
+revalidate();
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [text, setText] = useState("");
+
+const validator =
+  (d) => {
+    const isValid = !text.length || text.length % 2 === 1;
+
+    const error = !isValid ? new Error("text length should be an odd length") : undefined,
+
+    d({
+      isValid,
+      error
+    });
+  }
+
+const [validity] = useValidator(validator, [text]);
+
+console.log(validity.isValid);
+console.log(validity.error?.message);
+// no manual revalidation needed
+```
 
 #### useStateWithHistory
 
@@ -688,7 +734,7 @@ Not implemented yet
 
 #### useMultiStateValidator
 
-Not implemented yet
+See [useValidator](/docs/state-usevalidator--example-stories)
 
 #### useMediatedState
 
@@ -697,19 +743,19 @@ Implemented as [useMediatedState](/docs/lifecycle-usemediatedstate--example)
 OLD in `react-use`:
 
 ```javascript
-const [state, setState] = useMediatedState((value) => value, '');
+const [state, setState] = useMediatedState((value) => value, "");
 
 console.log(state);
-setState('Hello world!');
+setState("Hello world!");
 ```
 
 NEW in `@react-hookz/web`:
 
 ```javascript
-const [state, setState] = useMediatedState('', (value) => value);
+const [state, setState] = useMediatedState("", (value) => value);
 
 console.log(state);
-setState('Hello world!');
+setState("Hello world!");
 ```
 
 #### useFirstMountState
