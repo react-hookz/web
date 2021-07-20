@@ -1,18 +1,17 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
       interval: daily
-      time: "00:00"
-      timezone: "Etc/UTC"
+      time: 00:00
+      timezone: Etc/UTC
 
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: daily
-      time: "00:00"
-      timezone: "Etc/UTC"
-    rebase-strategy: 'auto'
-    ignore:
-      - dependency-name: "husky"
+      time: 00:00
+      timezone: Etc/UTC
+    rebase-strategy: auto
+    versioning-strategy: increase
