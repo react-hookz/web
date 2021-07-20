@@ -30,7 +30,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: "Lint"
-        run: yarn lint:fix -f @jamesacarr/github-actions
+        run: yarn lint -f @jamesacarr/github-actions
 
   build:
     name: "Build"
