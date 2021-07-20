@@ -1,3 +1,17 @@
+# [5.0.0](https://github.com/react-hookz/web/compare/v4.0.0...v5.0.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* improve `useThrottledCallback` and `useDebouncedCallback` types ([04e965a](https://github.com/react-hookz/web/commit/04e965a520a60fbd3d12e4de16ddc57c4d990112))
+
+
+### BREAKING CHANGES
+
+* types changed, now only one generic argument received
+by `useThrottledCallback` and `useDebouncedCallback` - the original
+function type.
+
 # [4.0.0](https://github.com/react-hookz/web/compare/v3.8.0...v4.0.0) (2021-07-16)
 
 
