@@ -6,6 +6,10 @@ describe('useDebouncedState', () => {
     jest.useFakeTimers();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   afterAll(() => {
     jest.useRealTimers();
   });
@@ -20,17 +24,19 @@ describe('useDebouncedState', () => {
   });
 
   it('should ', () => {
+    const { result } = renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
+
+    expect(result.current[0]).toBe(undefined);
+    result.current[1]('Hello world!');
+
     act(() => {
-      const { result } = renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
-
-      expect(result.current[0]).toBe(undefined);
-      result.current[1]('Hello world!');
-
       jest.advanceTimersByTime(199);
-      expect(result.current[0]).toBe(undefined);
-
-      jest.advanceTimersByTime(1);
-      expect(result.current[0]).toBe('Hello world!');
     });
+    expect(result.current[0]).toBe(undefined);
+
+    act(() => {
+      jest.advanceTimersByTime(1);
+    });
+    expect(result.current[0]).toBe('Hello world!');
   });
 });

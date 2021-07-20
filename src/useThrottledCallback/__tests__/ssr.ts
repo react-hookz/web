@@ -6,6 +6,10 @@ describe('useThrottledCallback', () => {
     jest.useFakeTimers();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   afterAll(() => {
     jest.useRealTimers();
   });

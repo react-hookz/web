@@ -6,6 +6,10 @@ describe('useDebouncedCallback', () => {
     jest.useFakeTimers();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   afterAll(() => {
     jest.useRealTimers();
   });

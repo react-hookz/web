@@ -16,7 +16,7 @@ describe('useMeasure', () => {
   beforeAll(() => {
     jest.useFakeTimers();
 
-    global.requestAnimationFrame = (cb) => setTimeout(cb);
+    global.requestAnimationFrame = (cb) => setTimeout(cb, 1);
     global.cancelAnimationFrame = (cb) => clearTimeout(cb);
 
     ResizeObserverSpy = jest.fn(() => ({
@@ -34,13 +34,17 @@ describe('useMeasure', () => {
     disconnectSpy.mockClear();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   afterAll(() => {
+    jest.useRealTimers();
+
     global.ResizeObserver = initialRO;
 
     global.requestAnimationFrame = raf;
     global.cancelAnimationFrame = caf;
-
-    jest.useRealTimers();
   });
 
   it('should be defined', () => {
@@ -86,7 +90,7 @@ describe('useMeasure', () => {
     expect(result.current[0]).toBeUndefined();
 
     act(() => {
-      jest.advanceTimersToNextTimer();
+      jest.advanceTimersByTime(1);
     });
 
     expect(result.current[1]).toStrictEqual({ current: div });

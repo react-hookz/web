@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDebouncedCallback, useRafCallback } from '../..';
+import { useRafCallback } from '../..';
 
 describe('useRafCallback', () => {
   const raf = global.requestAnimationFrame;
@@ -12,11 +12,15 @@ describe('useRafCallback', () => {
     global.cancelAnimationFrame = (cb) => clearTimeout(cb);
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   afterAll(() => {
+    jest.useRealTimers();
+
     global.requestAnimationFrame = raf;
     global.cancelAnimationFrame = caf;
-
-    jest.useRealTimers();
   });
 
   it('should be defined', () => {

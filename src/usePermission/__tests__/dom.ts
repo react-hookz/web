@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks/dom';
+import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { usePermission } from '../..';
 
 describe('usePermission', () => {
@@ -17,7 +17,7 @@ describe('usePermission', () => {
         })
     );
 
-    Object.defineProperty(navigator, 'permissions', { value: { query: querySpy } });
+    (global.navigator.permissions as any) = { query: querySpy };
   });
 
   afterEach(() => {
@@ -27,7 +27,7 @@ describe('usePermission', () => {
 
   afterAll(() => {
     jest.useRealTimers();
-    Object.defineProperty(navigator, 'permissions', { value: initialPermissions });
+    (global.navigator.permissions as any) = initialPermissions;
   });
 
   it('should be defined', () => {

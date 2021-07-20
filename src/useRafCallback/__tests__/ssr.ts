@@ -23,7 +23,6 @@ describe('useRafCallback', () => {
     const { result } = renderHook(() => useRafCallback(spy));
 
     result.current[0]();
-    jest.advanceTimersToNextTimer();
     result.current[1]();
 
     expect(spy).not.toHaveBeenCalled();

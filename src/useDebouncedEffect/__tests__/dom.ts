@@ -6,6 +6,10 @@ describe('useDebouncedEffect', () => {
     jest.useFakeTimers();
   });
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   afterAll(() => {
     jest.useRealTimers();
   });
