@@ -2,8 +2,8 @@
 import { DependencyList, useMemo, useRef } from 'react';
 import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
 
-export interface IDebouncedFunction<Args extends any[], This> {
-  (this: This, ...args: Args): void;
+export interface IDebouncedFunction<Fn extends (...args: any[]) => any> {
+  (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
 }
 
 /**
@@ -15,15 +15,15 @@ export interface IDebouncedFunction<Args extends any[], This> {
  * @param maxWait The maximum time `callback` is allowed to be delayed before
  * it's invoked. 0 means no max wait.
  */
-export function useDebouncedCallback<Args extends any[], This>(
-  callback: (this: This, ...args: Args) => any,
+export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
+  callback: Fn,
   deps: DependencyList,
   delay: number,
   maxWait = 0
-): IDebouncedFunction<Args, This> {
+): IDebouncedFunction<Fn> {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const waitTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const lastCall = useRef<{ args: Args; this: This }>();
+  const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
 
   const clear = () => {
     if (timeout.current) {
@@ -70,7 +70,7 @@ export function useDebouncedCallback<Args extends any[], This>(
         if (maxWait > 0 && !waitTimeout.current) {
           waitTimeout.current = setTimeout(execute, maxWait);
         }
-      } as IDebouncedFunction<Args, This>;
+      } as IDebouncedFunction<Fn>;
 
       Object.defineProperties(wrapped, {
         length: { value: callback.length },

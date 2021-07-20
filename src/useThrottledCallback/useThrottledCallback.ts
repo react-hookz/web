@@ -2,8 +2,8 @@
 import { DependencyList, useMemo, useRef } from 'react';
 import { useUnmountEffect } from '..';
 
-export interface IThrottledFunction<Args extends any[], This> {
-  (this: This, ...args: Args): void;
+export interface IThrottledFunction<Fn extends (...args: any[]) => any> {
+  (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
 }
 
 /**
@@ -16,14 +16,14 @@ export interface IThrottledFunction<Args extends any[], This> {
  * `delay` milliseconds, otherwise, callback will be executed one final time
  * after the last throttled-function call.
  */
-export function useThrottledCallback<Args extends any[], This>(
-  callback: (this: This, ...args: Args) => any,
+export function useThrottledCallback<Fn extends (...args: any[]) => any>(
+  callback: Fn,
   deps: DependencyList,
   delay: number,
   noTrailing = false
-): IThrottledFunction<Args, This> {
+): IThrottledFunction<Fn> {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
-  const lastCall = useRef<{ args: Args; this: This }>();
+  const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
 
   useUnmountEffect(() => {
     if (timeout.current) {
@@ -32,7 +32,7 @@ export function useThrottledCallback<Args extends any[], This>(
   });
 
   return useMemo(() => {
-    const execute = (context: This, args: Args) => {
+    const execute = (context: ThisParameterType<Fn>, args: Parameters<Fn>) => {
       lastCall.current = undefined;
       callback.apply(context, args);
 
@@ -60,7 +60,7 @@ export function useThrottledCallback<Args extends any[], This>(
       }
 
       execute(this, args);
-    } as IThrottledFunction<Args, This>;
+    } as IThrottledFunction<Fn>;
 
     Object.defineProperties(wrapped, {
       length: { value: callback.length },

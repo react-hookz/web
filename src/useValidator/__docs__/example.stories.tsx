@@ -20,8 +20,8 @@ export const ExampleStories: React.FC = () => {
         error: !isValid ? new Error('text length should be an odd length') : undefined,
       });
     },
-    150,
-    [text]
+    [text],
+    150
   );
 
   // validity state type if inferred from validator
