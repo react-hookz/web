@@ -4,14 +4,14 @@ updates:
     directory: /
     schedule:
       interval: daily
-      time: 00:00
-      timezone: Etc/UTC
+      time: "00:00"
+      timezone: "Etc/UTC"
 
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: daily
-      time: 00:00
-      timezone: Etc/UTC
+      time: "00:00"
+      timezone: "Etc/UTC"
     rebase-strategy: auto
     versioning-strategy: increase
