@@ -80,7 +80,7 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.14.8",
     "@commitlint/config-conventional": "^12.1.4",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
