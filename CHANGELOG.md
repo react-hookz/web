@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/react-hookz/web/compare/v5.0.0...v6.0.0) (2021-07-25)
+
+
+### Bug Fixes
+
+* remove `useCookieValue` from index ([#225](https://github.com/react-hookz/web/issues/225)) ([c3b708d](https://github.com/react-hookz/web/commit/c3b708d5b08680b36884e926aec62fed30062aed))
+
+
+### BREAKING CHANGES
+
+* `useCookieValue` is no more exported from index file.
+
 # [5.0.0](https://github.com/react-hookz/web/compare/v4.0.0...v5.0.0) (2021-07-20)
 
 
