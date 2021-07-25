@@ -58,7 +58,6 @@ export { useSyncedRef } from './useSyncedRef/useSyncedRef';
 // SideEffect
 export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValue';
 export { useSessionStorageValue } from './useSessionStorageValue/useSessionStorageValue';
-export { useCookieValue, IUseCookieValueReturn } from './useCookieValue/useCookieValue';
 export {
   useAsync,
   IAsyncState,
