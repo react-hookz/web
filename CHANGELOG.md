@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/react-hookz/web/compare/v6.0.0...v6.0.1) (2021-07-25)
+
+
+### Bug Fixes
+
+* make hooks that not listed in index.ts to be built too ([c119371](https://github.com/react-hookz/web/commit/c11937193d391da32c810eae63e4a6ea87edf679))
+
 # [6.0.0](https://github.com/react-hookz/web/compare/v5.0.0...v6.0.0) (2021-07-25)
 
 
