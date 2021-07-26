@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+
+<Meta title="DOM/useKeyboardEvent" component={Example} />
+
+# useKeyboardEvent
+
+React UI sensor hook that executes a handler when a keyboard key is used.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useKeyboardEvent<T extends EventTarget>(
+  keyOrPredicate: IKeyFilter,
+  callback: IHandler,
+  deps: DependencyList = keyOrPredicate,
+  options: IUseKeyOptions<T>
+): void;
+```
+
+#### Arguments
+
+- **keyOrPredicate** _`IKeyFilter`_ - Key filter can be `string` or callback function accept a KeyboardEvent and return a boolean.
+- **callback** listener in `addEventListener`.
+- **deps** DependencyList.
+- **options** some options passed to addEventListener, event can be `[keydown, keyup, keypress]`, target is the event target default `window`, eventOptions is the third parameter of `addEventListener`.

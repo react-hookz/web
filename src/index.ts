@@ -78,6 +78,13 @@ export {
 } from './useResizeObserver/useResizeObserver';
 export { useMeasure } from './useMeasure/useMeasure';
 export { useMediaQuery } from './useMediaQuery/useMediaQuery';
+export {
+  useKeyboardEvent,
+  IKeyboardEventPredicate,
+  IKeyboardEventFilter,
+  IKeyboardEventHandler,
+  IUseKeyboardEventOptions,
+} from './useKeyboardEvent/useKeyboardEvent';
 
 // Dom
 export { useClickOutside } from './useClickOutside/useClickOutside';
