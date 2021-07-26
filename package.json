@@ -81,7 +81,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
-    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/config-conventional": "^13.1.0",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
     "@semantic-release/changelog": "^5.0.1",
