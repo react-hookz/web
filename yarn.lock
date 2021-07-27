@@ -3175,18 +3175,18 @@
     react-docgen-typescript "^2.0.0"
     tslib "^2.0.0"
 
-"@storybook/react@^6.3.5":
-  version "6.3.5"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.3.5.tgz#9fb3cdfda5f333084cb4e9b3ef952855d9483e0c"
-  integrity sha512-6k9rnDZ8/L1rwvlJMiLTQY6vcIHOnysFIYTzxBO32Ud0+RUh7UTyjp4JYoHu1LPLz3z+q77y7YgAhCvVNuMGQg==
+"@storybook/react@^6.3.6":
+  version "6.3.6"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.3.6.tgz#593bc0743ad22ed5e6e072e6157c20c704864fc3"
+  integrity sha512-2c30XTe7WzKnvgHBGOp1dzBVlhcbc3oEX0SIeVE9ZYkLvRPF+J1jG948a26iqOCOgRAW13Bele37mG1gbl4tiw==
   dependencies:
     "@babel/preset-flow" "^7.12.1"
     "@babel/preset-react" "^7.12.10"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.4.3"
-    "@storybook/addons" "6.3.5"
-    "@storybook/core" "6.3.5"
-    "@storybook/core-common" "6.3.5"
-    "@storybook/node-logger" "6.3.5"
+    "@storybook/addons" "6.3.6"
+    "@storybook/core" "6.3.6"
+    "@storybook/core-common" "6.3.6"
+    "@storybook/node-logger" "6.3.6"
     "@storybook/react-docgen-typescript-plugin" "1.0.2-canary.253f8c1.0"
     "@storybook/semver" "^7.3.2"
     "@types/webpack-env" "^1.16.0"
