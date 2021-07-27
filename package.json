@@ -96,7 +96,7 @@
     "@storybook/theming": "^6.3.6",
     "@testing-library/react-hooks": "^7.0.1",
     "@types/jest": "^26.0.24",
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.4",
     "babel-loader": "^8.2.2",
     "commitlint": "^13.1.0",
