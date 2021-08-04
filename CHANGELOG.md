@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/react-hookz/web/compare/v6.0.1...v6.1.0) (2021-08-04)
+
+
+### Features
+
+* new hook `useKeyboardEvent` ([#240](https://github.com/react-hookz/web/issues/240)) ([8ca6713](https://github.com/react-hookz/web/commit/8ca6713123e090a92286071adf99783ef76147ac))
+
 ## [6.0.1](https://github.com/react-hookz/web/compare/v6.0.0...v6.0.1) (2021-07-25)
 
 
