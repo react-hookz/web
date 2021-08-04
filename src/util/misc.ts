@@ -34,3 +34,6 @@ export const hasOwnProperty = <
   obj: T,
   property: K
 ): obj is T & Record<K, unknown> => Object.prototype.hasOwnProperty.call(obj, property);
+
+export const yieldTrue = () => true as const;
+export const yieldFalse = () => false as const;
