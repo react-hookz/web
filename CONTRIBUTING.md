@@ -82,6 +82,16 @@ and [conventional commit messages](https://conventionalcommits.org) so prefix yo
 with `fix:`, `feat:`, etc., if you want your changes to appear
 in [release notes](https://github.com/react-hookz/web/blob/master/CHANGELOG.md).
 
+Also, there is a script that helps to properly format commit message:
+
+```shell
+git add .
+yarn commit
+```
+
+It will guide you through several prompts that will ease filling non-obvious and easy-to-forget
+parts.
+
 ### Git hooks
 
 There are git hooks set up with this project that are automatically enabled when you install
