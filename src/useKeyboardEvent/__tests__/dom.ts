@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useKeyboardEvent, IKeyboardEventFilter } from '../..';
+import { IKeyboardEventFilter, useKeyboardEvent } from '../..';
 
 describe('useKeyboardEvent', () => {
   it('should be defined', () => {
@@ -7,16 +7,8 @@ describe('useKeyboardEvent', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() =>
-      useKeyboardEvent(
-        () => true,
-        () => {}
-      )
-    );
+    const { result } = renderHook(() => useKeyboardEvent('a', () => {}));
     expect(result.error).toBeUndefined();
-
-    const { result: noopResult } = renderHook(() => useKeyboardEvent(() => true));
-    expect(noopResult.error).toBeUndefined();
   });
 
   it('should bind listener on mount and unbind on unmount', () => {
