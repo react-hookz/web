@@ -13,16 +13,7 @@ describe('useMediaQuery', () => {
     dispatchEvent: jest.Mock;
   };
 
-  const matchMediaMock = jest.fn().mockImplementation((query) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // Deprecated
-    removeListener: jest.fn(), // Deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  }));
+  const matchMediaMock = jest.fn();
   let initialMatchMedia: typeof window.matchMedia;
 
   beforeAll(() => {
@@ -35,6 +26,19 @@ describe('useMediaQuery', () => {
 
   afterAll(() => {
     window.matchMedia = initialMatchMedia;
+  });
+
+  beforeEach(() => {
+    matchMediaMock.mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // Deprecated
+      removeListener: jest.fn(), // Deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
   });
 
   afterEach(() => {
@@ -133,5 +137,24 @@ describe('useMediaQuery', () => {
     expect(mql.removeEventListener).not.toHaveBeenCalled();
     unmount1();
     expect(mql.removeEventListener).toHaveBeenCalledTimes(1);
+  });
+
+  it('should use addListener and removeListener in case of absence of modern methods', () => {
+    matchMediaMock.mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }));
+
+    const { unmount } = renderHook(() => useMediaQuery('max-width : 1024px'));
+
+    const mql = matchMediaMock.mock.results[0].value as IMutableMediaQueryList;
+    expect(mql.addListener).toHaveBeenCalledTimes(1);
+
+    unmount();
+    expect(mql.removeListener).toHaveBeenCalledTimes(1);
   });
 });

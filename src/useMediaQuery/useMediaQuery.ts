@@ -18,7 +18,8 @@ const querySubscribe = (query: string, dispatch: Dispatch<boolean>) => {
       });
     };
 
-    mql.addEventListener('change', listener, { passive: true });
+    if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
+    else mql.addListener(listener);
 
     entry = {
       mql,
@@ -43,7 +44,9 @@ const queryUnsubscribe = (query: string, dispatch: Dispatch<boolean>): void => {
 
     if (!dispatchers.size) {
       queriesMap.delete(query);
-      mql.removeEventListener('change', listener);
+
+      if (mql.removeEventListener) mql.removeEventListener('change', listener);
+      else mql.removeListener(listener);
     }
   }
 };
