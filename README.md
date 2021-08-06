@@ -159,3 +159,5 @@ Coming from `react-use`? Check out our [migration guide](https://react-hookz.git
     — Sets title of the page.
   - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener)
     — Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
+  - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent)
+    — Executes callback when keyboard event occurred on target.

@@ -4,24 +4,26 @@ import { useKeyboardEvent } from '../..';
 
 export const Example: React.FC = () => {
   const [list, setList] = useState<string[]>([]);
+
   useKeyboardEvent(
-    () => true,
+    true,
     (ev) => {
-      list.unshift(ev.key);
-      setList([...list]);
+      setList((l) => l.slice(-10).concat([ev.key]));
     },
     [],
-    { event: 'keydown', eventOptions: { passive: true } }
+    { eventOptions: { passive: true } }
   );
 
   return (
     <div>
+      <div>Press any keyboard keys and they will appear below.</div>
+
       <p>You have pressed</p>
       <ul>
-        {list.map((k, idx) => (
+        {list.map((k, i) => (
           // eslint-disable-next-line react/no-array-index-key
-          <li key={idx}>{k}</li>
-        ))}
+          <li key={`${i}_${k}`}>{k}</li>
+        ))}{' '}
       </ul>
     </div>
   );

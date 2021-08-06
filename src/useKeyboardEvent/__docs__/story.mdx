@@ -5,7 +5,7 @@ import { Example } from './example.stories';
 
 # useKeyboardEvent
 
-React UI sensor hook that executes a handler when a keyboard key is used.
+Executes callback when keyboard event occurred on target (window by default).
 
 #### Example
 
@@ -17,16 +17,19 @@ React UI sensor hook that executes a handler when a keyboard key is used.
 
 ```ts
 export function useKeyboardEvent<T extends EventTarget>(
-  keyOrPredicate: IKeyFilter,
-  callback: IHandler,
-  deps: DependencyList = keyOrPredicate,
-  options: IUseKeyOptions<T>
+  keyOrPredicate: IKeyboardEventFilter,
+  callback: IKeyboardEventHandler<T>,
+  deps?: DependencyList,
+  options: IUseKeyboardEventOptions<T> = {}
 ): void;
 ```
 
 #### Arguments
 
-- **keyOrPredicate** _`IKeyFilter`_ - Key filter can be `string` or callback function accept a KeyboardEvent and return a boolean.
-- **callback** listener in `addEventListener`.
-- **deps** DependencyList.
-- **options** some options passed to addEventListener, event can be `[keydown, keyup, keypress]`, target is the event target default `window`, eventOptions is the third parameter of `addEventListener`.
+- **keyOrPredicate** _`IKeyboardEventFilter`_ - Filters keypresses on which `callback` will be executed.
+- **callback** _`IKeyboardEventHandler`_ - Function to call when key is pressed and `keyOrPredicate` matches positive.
+- **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useMemo`.
+- **options** - Hook options:
+  - **event** _`'keydown' | 'keypress' | 'keyup'`_ (default: `keydown`) - Event name that triggers handler.
+  - **target** _`RefObject<T> | T | null`_ (default: `window`) - Target that should emit event.
+  - **eventOptions** _`boolean | AddEventListenerOptions`_ - Options that will be passed to underlying `useEventListener` hook.
