@@ -1,3 +1,20 @@
+# [7.0.0](https://github.com/react-hookz/web/compare/v6.1.0...v7.0.0) (2021-08-06)
+
+
+### Bug Fixes
+
+* **useMediaQuery:** add support for safari 13- that has obsolete `useMediaQuery` implementation ([#249](https://github.com/react-hookz/web/issues/249)) ([25c8599](https://github.com/react-hookz/web/commit/25c85991c7e3af1f474b67b3264d76b74744f768)), closes [#242](https://github.com/react-hookz/web/issues/242)
+
+
+### Code Refactoring
+
+* **useKeyboardEvent:** improve the code and change signature ([#248](https://github.com/react-hookz/web/issues/248)) ([a0e1b24](https://github.com/react-hookz/web/commit/a0e1b243f5ad899d5617ce50016902bfc775b5c2))
+
+
+### BREAKING CHANGES
+
+* **useKeyboardEvent:** hook call signature has changed.
+
 # [6.1.0](https://github.com/react-hookz/web/compare/v6.0.1...v6.1.0) (2021-08-04)
 
 
