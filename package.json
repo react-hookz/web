@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "@types/js-cookie": "^2.2.7",
-    "@types/react": "^17.0.15",
+    "@types/react": "^17.0.16",
     "@types/react-dom": "^17.0.9"
   },
   "peerDependencies": {
