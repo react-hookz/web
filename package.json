@@ -100,7 +100,7 @@
     "@testing-library/react-hooks": "^7.0.1",
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
-    "@typescript-eslint/parser": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.1",
     "babel-loader": "^8.2.2",
     "commitizen": "^4.2.4",
     "commitlint": "^13.1.0",
