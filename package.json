@@ -99,7 +99,7 @@
     "@storybook/theming": "^6.3.7",
     "@testing-library/react-hooks": "^7.0.1",
     "@types/jest": "^27.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "babel-loader": "^8.2.2",
     "commitizen": "^4.2.4",
