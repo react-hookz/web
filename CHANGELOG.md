@@ -1,3 +1,16 @@
+# [8.0.0](https://github.com/react-hookz/web/compare/v7.0.0...v8.0.0) (2021-08-30)
+
+
+### chore
+
+* **TS:** migrate to TypeScript 4.4 ([#295](https://github.com/react-hookz/web/issues/295)) ([91429f4](https://github.com/react-hookz/web/commit/91429f4723c370c32abc1bb4b6cf4ba72f3918ea))
+
+
+### BREAKING CHANGES
+
+* **TS:** `IAnyPermissionDescriptor` type removed in favor of
+built-in `PermissionDescriptor`.
+
 # [7.0.0](https://github.com/react-hookz/web/compare/v6.1.0...v7.0.0) (2021-08-06)
 
 
