@@ -1,3 +1,18 @@
+# [9.0.0](https://github.com/react-hookz/web/compare/v8.0.0...v9.0.0) (2021-08-30)
+
+
+### Documentation
+
+* fix error on `useCookieValue` page ([#296](https://github.com/react-hookz/web/issues/296)) ([a390f10](https://github.com/react-hookz/web/commit/a390f10fb657c24c893eeaaf13e7545ae87d1bb1))
+
+
+### BREAKING CHANGES
+
+* `IAnyPermissionDescriptor` type removed in favor of
+built-in `PermissionDescriptor`.
+
+* docs(useCookieValue): example been using old index import
+
 # [8.0.0](https://github.com/react-hookz/web/compare/v7.0.0...v8.0.0) (2021-08-30)
 
 
