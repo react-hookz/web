@@ -46,11 +46,7 @@ export {
   IUseNetworkState,
   INetworkInformation,
 } from './useNetworkState/useNetworkState';
-export {
-  usePermission,
-  IAnyPermissionDescriptor,
-  IUsePermissionState,
-} from './usePermission/usePermission';
+export { usePermission, IUsePermissionState } from './usePermission/usePermission';
 
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';

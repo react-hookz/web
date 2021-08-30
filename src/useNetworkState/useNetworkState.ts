@@ -75,10 +75,9 @@ export interface IUseNetworkState {
   type: INetworkInformation['type'] | undefined;
 }
 
-const navigator:
-  | (Navigator &
-      Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', INetworkInformation>>)
-  | undefined = isBrowser ? window.navigator : undefined;
+type INavigatorWithConnection = Navigator &
+  Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', INetworkInformation>>;
+const navigator = isBrowser ? (window.navigator as INavigatorWithConnection) : undefined;
 
 const conn: INetworkInformation | undefined =
   navigator && (navigator.connection || navigator.mozConnection || navigator.webkitConnection);
