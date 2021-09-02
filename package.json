@@ -71,7 +71,7 @@
     "@types/react-dom": "^17.0.9"
   },
   "peerDependencies": {
-    "js-cookie": "^3.0.0",
+    "js-cookie": "^3.0.1",
     "react": "^16.8 || ^17",
     "react-dom": "^16.8 || ^17"
   },
@@ -119,7 +119,7 @@
     "husky": "^7.0.2",
     "jest": "^27.1.0",
     "jest-github-actions-reporter": "^1.0.3",
-    "js-cookie": "^3.0.0",
+    "js-cookie": "^3.0.1",
     "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
