@@ -46,7 +46,27 @@ Not implemented yet
 
 #### useIntersection
 
-Not implemented yet
+Implemented as [useIntersectionObserver](/docs/sensor-useintersectionobserver--example)
+
+OLD in `react-use`:
+
+```javascript
+const intersection = useIntersection(elementRef, {
+  root: rootRef,
+  rootMargin: '0px',
+  threshold: 1,
+});
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const intersection = useIntersectionObserver(elementRef, {
+  root: rootRef,
+  rootMargin: '0px',
+  threshold: [0, 0.5],
+});
+```
 
 #### useKey
 
