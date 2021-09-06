@@ -2378,16 +2378,16 @@
     storybook-addon-outline "^1.4.1"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@^6.3.7":
-  version "6.3.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.7.tgz#f273abba6d056794a4aa920b2fa9639136e6747f"
-  integrity sha512-/8Gq18o1DejP3Om0ZOJRkMzW5FoHqoAmR0pFx4DipmNu5lYy7V3krLw4jW4qja1MuQkZ53MGh08FJOoAc2RZvQ==
+"@storybook/addon-links@^6.3.8":
+  version "6.3.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.8.tgz#0a76bbb20c8f322666e0ce3a9c96e6951db5280b"
+  integrity sha512-NDP9M+IXsN6CmgJXvAqtmJ4jfANd5VLrV9miAp0i2FHhZ1weKZxaRi0usYfq4k3kdjrQnMqMp2cf7KnB51ZNAQ==
   dependencies:
-    "@storybook/addons" "6.3.7"
-    "@storybook/client-logger" "6.3.7"
-    "@storybook/core-events" "6.3.7"
+    "@storybook/addons" "6.3.8"
+    "@storybook/client-logger" "6.3.8"
+    "@storybook/core-events" "6.3.8"
     "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.3.7"
+    "@storybook/router" "6.3.8"
     "@types/qs" "^6.9.5"
     core-js "^3.8.2"
     global "^4.4.0"
@@ -2987,14 +2987,14 @@
     util-deprecate "^1.0.2"
     webpack "4"
 
-"@storybook/core-events@6.3.7", "@storybook/core-events@^6.3.0":
+"@storybook/core-events@6.3.7":
   version "6.3.7"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.3.7.tgz#c5bc7cae7dc295de73b6b9f671ecbe582582e9bd"
   integrity sha512-l5Hlhe+C/dqxjobemZ6DWBhTOhQoFF3F1Y4kjFGE7pGZl/mas4M72I5I/FUcYCmbk2fbLfZX8hzKkUqS1hdyLA==
   dependencies:
     core-js "^3.8.2"
 
-"@storybook/core-events@6.3.8":
+"@storybook/core-events@6.3.8", "@storybook/core-events@^6.3.0":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.3.8.tgz#4c9a3deb9334b10116befbf2db5534d1319d2f39"
   integrity sha512-M3d2iX842YfopqmOHlXzL/Xy4fICzaRnet99GdfOqWjZhC2CVSemVk1b/vgfQv4MFYOQkSLsAjkbDH/kU8n9Aw==
