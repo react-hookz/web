@@ -5489,7 +5489,7 @@ cosmiconfig@^6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
-cosmiconfig@^7.0.0:
+cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.0.1.tgz#714d756522cace867867ccb4474c5d01bbae5d6d"
   integrity sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==
@@ -6413,17 +6413,17 @@ eslint-import-resolver-node@^0.3.6:
     debug "^3.2.7"
     resolve "^1.20.0"
 
-eslint-mdx@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.15.0.tgz#270de0a2ab27aad9350689d3b9b2112f94805239"
-  integrity sha512-0IGR9zH8RL5YDyL3SN3Vtc0u4uOTblGLrODMU9uhbiHJ8s48WZ24ruQthbUX221zFGf55+9A7cPeYi56xgI9pQ==
+eslint-mdx@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.15.1.tgz#985909c08b3612f7661d479c1df5509dcfb6291b"
+  integrity sha512-qrHpYPkdSVO3BIarGH+NVudmQ5ebrnEyzByWzTzN8S4tJA9OYQ58qbH0wEIpf+Pc9hXYsBdOUzO4Zg08CcREwg==
   dependencies:
-    cosmiconfig "^7.0.0"
+    cosmiconfig "^7.0.1"
     remark-mdx "^1.6.22"
     remark-parse "^8.0.3"
     remark-stringify "^8.1.1"
     tslib "^2.3.1"
-    unified "^9.2.1"
+    unified "^9.2.2"
 
 eslint-module-utils@^2.6.2:
   version "2.6.2"
@@ -6486,12 +6486,12 @@ eslint-plugin-markdown@^2.2.0:
   dependencies:
     mdast-util-from-markdown "^0.8.5"
 
-eslint-plugin-mdx@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.15.0.tgz#391e41b0025091f9912b6bd80897ce85b6d0cdd7"
-  integrity sha512-3NF/tp6MgdJL+28i+Qzg60loiHqgPWb35NUtDQvhocUOK2afRD0YR1+ep7JFUZ5mys2CTkpbd8Gc/GrXgsBVNA==
+eslint-plugin-mdx@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.15.1.tgz#e8f063f74fc51612e1874b2d69e83caf3bbd1fae"
+  integrity sha512-kaA4NcI9L4Zz9traOFXwVe13yihazNFMLHWs6KAkaUjailO+LM5glAJROdCQGpQsTGpjaWY0Sp/XyARRrqsb8Q==
   dependencies:
-    eslint-mdx "^1.15.0"
+    eslint-mdx "^1.15.1"
     eslint-plugin-markdown "^2.2.0"
     synckit "^0.3.4"
     tslib "^2.3.1"
@@ -14217,7 +14217,7 @@ unified@9.2.0:
     trough "^1.0.0"
     vfile "^4.0.0"
 
-unified@^9.2.1:
+unified@^9.2.2:
   version "9.2.2"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.2.tgz#67649a1abfc3ab85d2969502902775eb03146975"
   integrity sha512-Sg7j110mtefBD+qunSLO1lqOEKdrwBFBrR6Qd8f4uwkhWNlbkaqwHse6e7QvD3AP/MNoJdEDLaf8OxYyoWgorQ==
