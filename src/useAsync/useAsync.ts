@@ -25,22 +25,6 @@ export type IAsyncState<Result> =
       result: Result;
     };
 
-export interface IUseAsyncOptions<Result> {
-  /**
-   * Value that will be set on initialisation, before the async function is
-   * executed.
-   */
-  initialValue?: Result;
-  /**
-   * Skip mount async function execution.
-   */
-  skipMount?: boolean;
-  /**
-   * Skip update async function execution.
-   */
-  skipUpdate?: boolean;
-}
-
 export interface IUseAsyncActions<Result, Args extends unknown[] = unknown[]> {
   /**
    * Reset state to initial, when async function haven't been executed.

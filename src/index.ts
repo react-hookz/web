@@ -60,7 +60,6 @@ export {
   IAsyncStatus,
   IUseAsyncActions,
   IUseAsyncMeta,
-  IUseAsyncOptions,
 } from './useAsync/useAsync';
 
 // Sensor
