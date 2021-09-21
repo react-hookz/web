@@ -67,13 +67,13 @@
   },
   "dependencies": {
     "@types/js-cookie": "^2.2.7",
-    "@types/react": "^17.0.22",
+    "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9"
   },
   "peerDependencies": {
     "js-cookie": "^3.0.1",
-    "react": "^16.8 || ^17",
-    "react-dom": "^16.8 || ^17"
+    "react": "^16.8 || ^17 || ^18",
+    "react-dom": "^16.8 || ^17 || ^18"
   },
   "peerDependenciesMeta": {
     "js-cookie": {
@@ -88,17 +88,17 @@
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
     "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.1",
-    "@semantic-release/github": "^7.2.3",
-    "@storybook/addon-docs": "^6.3.6",
+    "@semantic-release/git": "^10.0.0",
+    "@semantic-release/github": "^8.0.0",
+    "@storybook/addon-docs": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
-    "@storybook/addons": "^6.3.4",
+    "@storybook/addons": "^6.3.8",
     "@storybook/react": "^6.3.8",
     "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/theming": "^6.3.8",
     "@testing-library/react-hooks": "^7.0.2",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "babel-loader": "^8.2.2",
@@ -114,7 +114,7 @@
     "eslint-plugin-mdx": "^1.15.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.3",
+    "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
     "jest": "^27.2.1",
@@ -125,7 +125,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
-    "semantic-release": "^17.4.7",
+    "semantic-release": "^18.0.0",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "ttypescript": "^1.5.12",
