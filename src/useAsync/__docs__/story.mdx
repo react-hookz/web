@@ -26,21 +26,15 @@ Executes provided async function and tracks its result and error.
 ```ts
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
-  args: Args,
-  options?: IUseAsyncOptions<Result>
+  initialValue?: Result
 ): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
 ```
 
 #### Arguments
 
 - **asyncFn** _`(...params: Args) => Promise<Result>`_ - Function that returns a promise.
-- **args** _`Args`_ - Arguments list that will be passed to async function. Acts as dependencies
-  list for underlying `useEffect` hook.
-- **options** - Hook options:
-  - **initialValue** _`Result`_ _(default: `undefined`)_ - Value that will be set on initialisation,
-    before the async function is executed.
-  - **skipMount** _`boolean`_ _(default: `false`)_ - Skip mount async function execution.
-  - **skipUpdate** _`boolean`_ _(default: `false`)_ - Skip update async function execution.
+- **initialValue** _`Result`_ _(default: `undefined`)_ - Value that will be set on initialisation,
+  before the async function is executed.
 
 #### Return
 

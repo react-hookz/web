@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { useSafeState, useFirstMountState, useSyncedRef } from '..';
-import { PartialRequired } from '../util/misc';
+import { useMemo, useRef } from 'react';
+import { useSafeState, useSyncedRef } from '..';
 
 export type IAsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 
@@ -66,34 +65,28 @@ export interface IUseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
 
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
-  args: Args,
-  options: PartialRequired<IUseAsyncOptions<Result>, 'initialValue'>
+  initialValue: Result
 ): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: Args) => Promise<Result>,
-  args: Args,
-  options?: IUseAsyncOptions<Result>
+  asyncFn: (...params: Args) => Promise<Result>
 ): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
 
 /**
  * Executes provided async function and tracks its result and error.
  *
  * @param asyncFn Function that returns a promise.
- * @param args Arguments list that will be passed to async function. Acts as
- *             dependencies list for underlying `useEffect` hook.
- * @param options Hook options.
+ * @param initialValue Value that will be set on initialisation, before the async function is
+ * executed.
  */
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
-  args: Args,
-  options?: IUseAsyncOptions<Result>
+  initialValue?: Result
 ): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>] {
   const [state, setState] = useSafeState<IAsyncState<Result | undefined>>({
     status: 'not-executed',
     error: undefined,
-    result: options?.initialValue,
+    result: initialValue,
   });
-  const isFirstMount = useFirstMountState();
   const promiseRef = useRef<Promise<Result>>();
   const argsRef = useRef<Args>();
 
@@ -128,19 +121,12 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
       setState({
         status: 'not-executed',
         error: undefined,
-        result: options?.initialValue,
+        result: initialValue,
       });
       promiseRef.current = undefined;
       argsRef.current = undefined;
     },
   });
-
-  useEffect(() => {
-    if ((isFirstMount && !options?.skipMount) || (!isFirstMount && !options?.skipUpdate)) {
-      methods.current.execute(...args);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, args);
 
   return [
     state,
