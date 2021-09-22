@@ -61,6 +61,12 @@ export {
   IUseAsyncActions,
   IUseAsyncMeta,
 } from './useAsync/useAsync';
+export {
+  useAsyncAbortable,
+  IUseAsyncAbortableActions,
+  IUseAsyncAbortableMeta,
+  IArgsWithAbortSignal,
+} from './useAsyncAbortable/useAsyncAbortable';
 
 // Sensor
 export {

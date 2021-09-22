@@ -24,7 +24,13 @@ export const Example: React.FC = () => {
       <div>current value: {state.result ?? 'undefined'}</div>
       <br />
       <div>
-        <button onClick={actions.reset}>reset</button>{' '}
+        <button
+          onClick={() => {
+            actions.reset();
+            actions.execute();
+          }}>
+          reset
+        </button>{' '}
         <button onClick={actions.execute}>execute</button>
       </div>
     </div>
