@@ -1,3 +1,18 @@
+# [10.0.0](https://github.com/react-hookz/web/compare/v9.0.0...v10.0.0) (2021-09-23)
+
+
+### Features
+
+* **useAsync:** remove effector behaviour from hook ([#339](https://github.com/react-hookz/web/issues/339)) ([0e47ff2](https://github.com/react-hookz/web/commit/0e47ff2c540b22b503f2dba31706d0c2d3cf5fee))
+
+
+### BREAKING CHANGES
+
+* **useAsync:** `useAsync` hook now has only 2 arguments, `asyncFn` and `initialValue`
+and do not execute provided function on its own.
+
+* chore(useAsync): remove unused `IUseAsyncOptions` interface
+
 # [9.0.0](https://github.com/react-hookz/web/compare/v8.0.0...v9.0.0) (2021-08-30)
 
 
