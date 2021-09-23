@@ -1,3 +1,10 @@
+# [10.1.0](https://github.com/react-hookz/web/compare/v10.0.0...v10.1.0) (2021-09-23)
+
+
+### Features
+
+* new hook `useAsyncAbortable` ([#340](https://github.com/react-hookz/web/issues/340)) ([5604d9c](https://github.com/react-hookz/web/commit/5604d9cd6bcf4d980af1b2281b0f9f6c51f30e04))
+
 # [10.0.0](https://github.com/react-hookz/web/compare/v9.0.0...v10.0.0) (2021-09-23)
 
 
