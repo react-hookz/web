@@ -7,7 +7,7 @@ describe('useAsync', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useAsync(async () => {}, []));
+    const { result } = renderHook(() => useAsync(async () => {}));
     expect(result.error).toBeUndefined();
   });
 });

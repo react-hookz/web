@@ -24,37 +24,21 @@ describe('useAsync', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useAsync(async () => {}, [], { skipMount: true }));
+    const { result } = renderHook(() => useAsync(async () => true));
     expect(result.error).toBeUndefined();
   });
 
   it('should not invoke async function on mount if `skipMount` option is passed', () => {
     const spy = jest.fn(async () => {});
-    renderHook(() => useAsync(spy, [], { skipMount: true }));
+    renderHook(() => useAsync(spy));
 
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should not invoke async function on args update if `skipUpdate` option is passed', () => {
-    const spy = jest.fn(async (_: number) => {});
-    const { rerender } = renderHook(
-      ({ args }) =>
-        useAsync(spy, args, {
-          skipUpdate: true,
-          skipMount: true,
-        }),
-      { initialProps: { args: [1] as [number] } }
-    );
-    expect(spy).not.toHaveBeenCalled();
-
-    rerender({ args: [2] });
-    expect(spy).not.toHaveBeenCalled();
-  });
-
-  it('should accept `initialValue` option', async () => {
+  it('should apply `initialValue` arg', async () => {
     await act(async () => {
       const [spy, resolve] = getControllableAsync<number, []>();
-      const { result } = renderHook(() => useAsync(spy, [], { initialValue: 3 }));
+      const { result } = renderHook(() => useAsync(spy, 3));
 
       expect((result.all[0] as ReturnType<typeof useAsync>)[0]).toStrictEqual({
         status: 'not-executed',
@@ -71,7 +55,7 @@ describe('useAsync', () => {
   it('should have `not-executed` status initially', async () => {
     await act(async () => {
       const [spy, resolve] = getControllableAsync<undefined, []>();
-      const { result } = renderHook(() => useAsync(spy, []));
+      const { result } = renderHook(() => useAsync(spy));
 
       expect(result.current[0]).toStrictEqual({
         status: 'not-executed',
@@ -85,251 +69,167 @@ describe('useAsync', () => {
     });
   });
 
-  it('should invoke received async function and set `loading` status on mount', async () => {
-    await act(async () => {
-      const [spy, resolve] = getControllableAsync<undefined, []>();
+  it('should have `loading` status while promise invoked but not resolved ', async () => {
+    const [spy, resolve] = getControllableAsync<undefined, []>();
+    const { result } = renderHook(() => useAsync(spy));
 
-      const { result, waitForNextUpdate } = renderHook(() => useAsync(spy, []));
-
-      await waitForNextUpdate();
-
-      expect(result.current[0]).toStrictEqual({
-        status: 'loading',
-        error: undefined,
-        result: undefined,
-      });
-      expect(spy).toHaveBeenCalledTimes(1);
-
-      if (resolve.current) {
-        resolve.current(undefined);
-      }
+    expect(result.current[0]).toStrictEqual({
+      status: 'not-executed',
+      error: undefined,
+      result: undefined,
     });
+
+    await act(async () => {
+      result.current[1].execute();
+    });
+
+    expect(result.current[0]).toStrictEqual({
+      status: 'loading',
+      error: undefined,
+      result: undefined,
+    });
+
+    if (resolve.current) {
+      resolve.current(undefined);
+    }
   });
 
   it('should set `success` status and store `result` state field on fulfill', async () => {
+    const [spy, resolve] = getControllableAsync<number, []>();
+    const { result } = renderHook(() => useAsync(spy));
+
+    expect(result.current[0]).toStrictEqual({
+      status: 'not-executed',
+      error: undefined,
+      result: undefined,
+    });
+
     await act(async () => {
-      const [spy, resolve] = getControllableAsync<number, []>();
+      result.current[1].execute();
 
-      const { result, waitForNextUpdate } = renderHook(() => useAsync(spy, []));
+      if (resolve.current) resolve.current(123);
+    });
 
-      await waitForNextUpdate();
-
-      if (resolve.current) {
-        resolve.current(123);
-      }
-
-      await waitForNextUpdate();
-
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 123,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'success',
+      error: undefined,
+      result: 123,
     });
   });
 
   it('should set `error` status and store `error` state field on reject', async () => {
-    await act(async () => {
-      const [spy, , reject] = getControllableAsync<number, []>();
+    const [spy, , reject] = getControllableAsync<number, []>();
+    const { result } = renderHook(() => useAsync(spy));
 
-      const { result, waitForNextUpdate } = renderHook(() => useAsync(spy, []));
-
-      await waitForNextUpdate();
-
-      const err = new Error('some error');
-      if (reject.current) {
-        reject.current(err);
-      }
-
-      await waitForNextUpdate();
-
-      expect(result.current[0]).toStrictEqual({
-        status: 'error',
-        error: err,
-        result: undefined,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'not-executed',
+      error: undefined,
+      result: undefined,
     });
-  });
 
-  it('should invoke async function on args change, should set `loading` state with untouched result', async () => {
+    const err = new Error('some error');
+
     await act(async () => {
-      const [spy, resolve] = getControllableAsync<number, [number]>();
+      result.current[1].execute();
 
-      const { result, waitForNextUpdate, rerender } = renderHook((args) => useAsync(spy, args), {
-        initialProps: [1] as [number],
-      });
+      if (reject.current) reject.current(err);
+    });
 
-      await waitForNextUpdate();
-      expect(spy).toHaveBeenCalledWith(1);
-
-      if (resolve.current) {
-        resolve.current(1);
-      }
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 1,
-      });
-
-      rerender([2]);
-      await waitForNextUpdate();
-      expect(spy).toHaveBeenCalledWith(2);
-      expect(result.current[0]).toStrictEqual({
-        status: 'loading',
-        error: undefined,
-        result: 1,
-      });
-
-      if (resolve.current) {
-        resolve.current(2);
-      }
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 2,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'error',
+      error: err,
+      result: undefined,
     });
   });
 
   it('should rollback state to initial on `reset` method call', async () => {
-    await act(async () => {
-      const [spy, resolve] = getControllableAsync<number, []>();
+    const [spy, resolve] = getControllableAsync<number, []>();
+    const { result } = renderHook(() => useAsync(spy, 42));
 
-      const { result, waitForNextUpdate, rerender } = renderHook(() =>
-        useAsync(spy, [], { initialValue: 42 })
-      );
-
-      await waitForNextUpdate();
-      if (resolve.current) {
-        resolve.current(1);
-      }
-
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 1,
-      });
-
-      result.current[1].reset();
-      expect(result.current[0]).toStrictEqual({
-        status: 'not-executed',
-        error: undefined,
-        result: 42,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'not-executed',
+      error: undefined,
+      result: 42,
     });
-  });
 
-  it('should execute async function on `execute` method call', async () => {
     await act(async () => {
-      const [spy, resolve] = getControllableAsync<number, []>();
-
-      const { result, waitForNextUpdate, rerender } = renderHook(() =>
-        useAsync(spy, [], { initialValue: 42 })
-      );
-
-      await waitForNextUpdate();
-      if (resolve.current) {
-        resolve.current(1);
-      }
-
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 1,
-      });
-
       result.current[1].execute();
-      expect(result.current[0]).toStrictEqual({
-        status: 'loading',
-        error: undefined,
-        result: 1,
-      });
 
-      if (resolve.current) {
-        resolve.current(42);
-      }
+      if (resolve.current) resolve.current(1);
+    });
 
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 42,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'success',
+      error: undefined,
+      result: 1,
+    });
+
+    await act(async () => {
+      result.current[1].reset();
+    });
+
+    expect(result.current[0]).toStrictEqual({
+      status: 'not-executed',
+      error: undefined,
+      result: 42,
     });
   });
 
   it('should not process results of promise if another was executed', async () => {
+    const [spy, resolve] = getControllableAsync<number, []>();
+    const { result } = renderHook(() => useAsync(spy, 42));
+
     await act(async () => {
-      const [spy, resolve] = getControllableAsync<number, []>();
-
-      const { result, waitForNextUpdate, rerender } = renderHook((fn) =>
-        useAsync(spy, [], { initialValue: 42 })
-      );
-
-      await waitForNextUpdate();
-
-      const resolve1 = resolve.current;
       result.current[1].execute();
+    });
+    const resolve1 = resolve.current;
 
-      if (resolve1) {
-        resolve1(1);
-      }
+    await act(async () => {
+      result.current[1].execute();
+    });
+    const resolve2 = resolve.current;
 
-      if (resolve.current) {
-        resolve.current(2);
-      }
+    await act(async () => {
+      if (resolve1) resolve1(1);
+      if (resolve2) resolve2(2);
+    });
 
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 2,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'success',
+      error: undefined,
+      result: 2,
     });
   });
 
   it('should not process error of promise if another was executed', async () => {
+    const [spy, resolve, reject] = getControllableAsync<number, []>();
+    const { result } = renderHook(() => useAsync(spy, 42));
+
     await act(async () => {
-      const [spy, resolve, reject] = getControllableAsync<number, []>();
-
-      const { result, waitForNextUpdate, rerender } = renderHook((fn) =>
-        useAsync(spy, [], { initialValue: 42 })
-      );
-
-      await waitForNextUpdate();
-
-      const reject1 = reject.current;
       result.current[1].execute();
+    });
+    const reject1 = reject.current;
 
-      if (reject1) {
-        reject1(new Error('42'));
-      }
+    await act(async () => {
+      result.current[1].execute();
+    });
+    const resolve2 = resolve.current;
 
-      if (resolve.current) {
-        resolve.current(2);
-      }
+    await act(async () => {
+      if (reject1) reject1(new Error('some err'));
+      if (resolve2) resolve2(2);
+    });
 
-      await waitForNextUpdate();
-      expect(result.current[0]).toStrictEqual({
-        status: 'success',
-        error: undefined,
-        result: 2,
-      });
+    expect(result.current[0]).toStrictEqual({
+      status: 'success',
+      error: undefined,
+      result: 2,
     });
   });
 
   it('should not change methods between renders', () => {
     const spy = jest.fn(async () => {});
-    const { rerender, result } = renderHook(() =>
-      useAsync(spy, [], {
-        skipUpdate: true,
-        skipMount: true,
-      })
-    );
+    const { rerender, result } = renderHook(() => useAsync(spy));
 
     const res1 = result.current;
     rerender();

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAsync } from '../..';
+import { useAsync, useMountEffect } from '../..';
 
 export const Example: React.FC = () => {
   const [state, actions] = useAsync(
@@ -9,8 +9,10 @@ export const Example: React.FC = () => {
           resolve('react-hookz is awesome!');
         }, 3000);
       }),
-    []
+    'react-hookz is'
   );
+
+  useMountEffect(actions.execute);
 
   return (
     <div>
