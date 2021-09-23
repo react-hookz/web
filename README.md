@@ -133,6 +133,8 @@ Coming from `react-use`? Check out our [migration guide](https://react-hookz.git
 
   - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync)
     — Executes provided async function and tracks its result and error.
+  - [**`useAsyncAbortable`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasyncabortable)
+    — Like `useAsync`, but also provides `AbortSignal` as first function argument to async function.
   - [**`useCookieValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookievalue)
     — Manages a single cookie.
   - [**`useLocalStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue)

@@ -52,11 +52,12 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
   initialValue: Result
 ): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: Args) => Promise<Result>
+  asyncFn: (...params: Args) => Promise<Result>,
+  initialValue?: Result
 ): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
 
 /**
- * Executes provided async function and tracks its result and error.
+ * Tracks result and error of provided async function and provides handles to execute and reset it.
  *
  * @param asyncFn Function that returns a promise.
  * @param initialValue Value that will be set on initialisation, before the async function is
@@ -82,7 +83,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 
       setState((s) => ({ ...s, status: 'loading' }));
 
-      promiseRef.current.then(
+      promise.then(
         (result) => {
           // we dont want to handle result/error of non-latest function
           // this approach helps to avoid race conditions
@@ -99,7 +100,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
         }
       );
 
-      return promiseRef.current;
+      return promise;
     },
     reset: () => {
       setState({

@@ -22,9 +22,6 @@ export function off<T extends EventTarget>(
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export type PartialRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const hasOwnProperty = <
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

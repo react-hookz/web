@@ -5,15 +5,13 @@ import { Example } from './example.stories';
 
 # useAsync
 
-Executes provided async function and tracks its result and error.
+Tracks result and error of provided async function and provides handles to execute and reset it.
 
 - Handles any async functions.
 - Safe - no worries about updating the state of unmounted component.
 - Stable - returned methods do not change between renders.
 - Handles race conditions - only latest results are stored in state.
-- SSR-friendly, no requests performed on the server.
-- Provides methods to manually trigger fetch.
-- Options to customize behaviour.
+- Provides methods to manually trigger execution or reset state to initial.
 
 #### Example
 
@@ -38,14 +36,19 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 
 #### Return
 
-0. **state**
+1. **state**
+
    - **status** _`'loading' | 'success' | 'error' | 'not-executed'`_ - latest promise status.
    - **result** _`Result | undefined`_ - promise result if promise fulfilled.
    - **error** _`Error | undefined`_ - promise error if promise rejected.
+
 1. **methods**
+
    - **reset** _`() => void`_- Reset state to initial, when async function haven't been executed.
    - **execute** _`(...args: Args) => Promise<Result>`_- Execute async function manually.
-2. **meta**
+
+1. **meta**
+
    - **promise** _`Promise<Result> | undefined`_- Recent promise returned from async function.
    - **lastArgs** _`Args | undefined`_ - List of arguments applied to recent async function
      invocation.
