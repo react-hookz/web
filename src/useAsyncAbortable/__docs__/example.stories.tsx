@@ -22,8 +22,8 @@ export const Example: React.FC = () => {
     <div>
       <div>
         <em>
-          Async function will resolve after 5 seconds of wait. In case of abort - promise will be
-          rejected.
+          Async function will resolve after 5 seconds. If the function is aborted, the promise will
+          be rejected.
         </em>
       </div>
       <br />
