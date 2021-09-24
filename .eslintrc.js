@@ -1,5 +1,13 @@
 const PRINT_WIDTH = 100;
 
+const prettierConfig = {
+  PRINT_WIDTH,
+  singleQuote: true,
+  bracketSameLine: true,
+  trailingComma: 'es5',
+  endOfLine: 'lf',
+};
+
 module.exports = {
   root: true,
 
@@ -28,16 +36,7 @@ module.exports = {
         ignoreComments: true,
       },
     ],
-    'prettier/prettier': [
-      'error',
-      {
-        PRINT_WIDTH,
-        singleQuote: true,
-        jsxBracketSameLine: true,
-        trailingComma: 'es5',
-        endOfLine: 'lf',
-      },
-    ],
+    'prettier/prettier': ['error', prettierConfig],
   },
   overrides: [
     {
@@ -140,16 +139,7 @@ module.exports = {
         },
       },
       rules: {
-        'prettier/prettier': [
-          'error',
-          {
-            PRINT_WIDTH,
-            singleQuote: true,
-            jsxBracketSameLine: true,
-            trailingComma: 'es5',
-            endOfLine: 'lf',
-          },
-        ],
+        'prettier/prettier': ['error', prettierConfig],
       },
     },
   ],
