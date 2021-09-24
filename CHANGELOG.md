@@ -1,3 +1,10 @@
+## [10.1.1](https://github.com/react-hookz/web/compare/v10.1.0...v10.1.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* fix the examples of useAsync ([#344](https://github.com/react-hookz/web/issues/344)) ([ee064ec](https://github.com/react-hookz/web/commit/ee064ec21bfe1ba5570f48b4c21daff717885680))
+
 # [10.1.0](https://github.com/react-hookz/web/compare/v10.0.0...v10.1.0) (2021-09-23)
 
 
