@@ -277,11 +277,13 @@ console.log(error.message);
 NEW in `@react-hookz/web`:
 
 ```javascript
-const [{ status, result, error }] = useAsync(async () => {
+const [{ status, result, error }, {execute}] = useAsync(async () => {
   const response = await fetch(url);
   const result = await response.text();
   return result;
 }, [url]);
+
+useMountEffect(execute);
 
 console.log(status === 'loading');
 console.log(result);
@@ -313,8 +315,7 @@ const [{ status, result, error }, { execute }] = useAsync(
     const result = await response.text();
     return result;
   },
-  [url],
-  { skipMount: true, skipUpdate: true }
+  [url]
 );
 
 execute();
