@@ -277,7 +277,7 @@ console.log(error.message);
 NEW in `@react-hookz/web`:
 
 ```javascript
-const [{ status, result, error }, {execute}] = useAsync(async () => {
+const [{ status, result, error }, { execute }] = useAsync(async () => {
   const response = await fetch(url);
   const result = await response.text();
   return result;
@@ -309,14 +309,11 @@ doFetch();
 NEW in `@react-hookz/web`:
 
 ```javascript
-const [{ status, result, error }, { execute }] = useAsync(
-  async () => {
-    const response = await fetch(url);
-    const result = await response.text();
-    return result;
-  },
-  [url]
-);
+const [{ status, result, error }, { execute }] = useAsync(async () => {
+  const response = await fetch(url);
+  const result = await response.text();
+  return result;
+}, [url]);
 
 execute();
 ```
