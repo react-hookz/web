@@ -9,6 +9,7 @@ export {
   IConditionsPredicate,
   IConditionsList,
 } from './useConditionalEffect/useConditionalEffect';
+export { useCustomCompareEffect } from './useCustomCompareEffect/useCustomCompareEffect';
 export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
 export { useFirstMountState } from './useFirstMountState/useFirstMountState';
 export { useIsMounted } from './useIsMounted/useIsMounted';
