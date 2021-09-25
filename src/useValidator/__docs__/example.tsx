@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { IValidatorDeferred, useDebouncedCallback, useValidator } from '../..';
 
-export const ExampleStories: React.FC = () => {
+export const Example: React.FC = () => {
   const [text, setText] = useState('');
 
   // as deferred validator is unable to infer the type of validity
