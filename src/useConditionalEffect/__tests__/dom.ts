@@ -1,5 +1,11 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { truthyOrArrayPredicate, useConditionalEffect } from '../..';
+import { DependencyList, EffectCallback } from 'react';
+import {
+  truthyAndArrayPredicate,
+  truthyOrArrayPredicate,
+  useConditionalEffect,
+  useUpdateEffect,
+} from '../..';
 
 describe('useConditionalEffect', () => {
   it('should be defined', () => {
@@ -85,5 +91,24 @@ describe('useConditionalEffect', () => {
     rerender({ cond: [undefined, false, 0, null] });
     expect(predicateSpy).toHaveBeenCalledTimes(4);
     expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should accept custom hooks and pass extra args to it', () => {
+    const callbackSpy = jest.fn();
+    const effectSpy = jest.fn(
+      (cb: EffectCallback, deps: DependencyList | undefined, _num: number) =>
+        useUpdateEffect(cb, deps)
+    );
+    const { rerender } = renderHook(() =>
+      useConditionalEffect(callbackSpy, undefined, [true], truthyAndArrayPredicate, effectSpy, 123)
+    );
+
+    expect(callbackSpy).not.toHaveBeenCalled();
+    expect(effectSpy).toHaveBeenCalledTimes(1);
+    expect(effectSpy.mock.calls[0][2]).toBe(123);
+
+    rerender();
+
+    expect(callbackSpy).toHaveBeenCalledTimes(1);
   });
 });

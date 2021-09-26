@@ -2,7 +2,10 @@ import { DependencyList, EffectCallback } from 'react';
 import { truthyAndArrayPredicate, useUpdateEffect } from '..';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type IUseConditionalUpdateEffectPredicate<Cond extends ReadonlyArray<any>> = (
+export type IConditionsList = ReadonlyArray<any>;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type IUseConditionalUpdateEffectPredicate<Cond extends IConditionsList> = (
   conditions: Cond
 ) => boolean;
 
@@ -17,10 +20,10 @@ export type IUseConditionalUpdateEffectPredicate<Cond extends ReadonlyArray<any>
  * provision. By default, it is all-truthy provision, meaning that all
  * conditions should be truthy.
  */
-export function useConditionalUpdateEffect<T extends ReadonlyArray<unknown>>(
+export function useConditionalUpdateEffect<T extends IConditionsList>(
   callback: EffectCallback,
+  deps: DependencyList,
   conditions: T,
-  deps?: DependencyList,
   predicate: IUseConditionalUpdateEffectPredicate<T> = truthyAndArrayPredicate
 ): void {
   // eslint-disable-next-line consistent-return
