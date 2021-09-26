@@ -7,13 +7,13 @@ describe('useConditionalEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useConditionalEffect(() => {}, []));
+    const { result } = renderHook(() => useConditionalEffect(() => {}, undefined, []));
     expect(result.error).toBeUndefined();
   });
 
   it('by default should invoke effect only in case all conditions are truthy', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ cond }) => useConditionalEffect(spy, cond), {
+    const { rerender } = renderHook(({ cond }) => useConditionalEffect(spy, undefined, cond), {
       initialProps: { cond: [1] as unknown[] },
     });
     expect(spy).toHaveBeenCalledTimes(1);
@@ -30,7 +30,7 @@ describe('useConditionalEffect', () => {
 
   it('should not be called on mount if conditions are falsy', () => {
     const spy = jest.fn();
-    renderHook(({ cond }) => useConditionalEffect(spy, cond), {
+    renderHook(({ cond }) => useConditionalEffect(spy, undefined, cond), {
       initialProps: { cond: [null] as unknown[] },
     });
     expect(spy).toHaveBeenCalledTimes(0);
@@ -38,7 +38,7 @@ describe('useConditionalEffect', () => {
 
   it('should invoke callback only if deps are changed and conditions match predicate', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ cond, deps }) => useConditionalEffect(spy, cond, deps), {
+    const { rerender } = renderHook(({ cond, deps }) => useConditionalEffect(spy, deps, cond), {
       initialProps: { cond: [false] as unknown[], deps: [1] as any[] },
     });
     expect(spy).toHaveBeenCalledTimes(0);
@@ -66,7 +66,7 @@ describe('useConditionalEffect', () => {
     const spy = jest.fn();
     const predicateSpy = jest.fn((conditions) => truthyOrArrayPredicate(conditions));
     const { rerender } = renderHook(
-      ({ cond }) => useConditionalEffect(spy, cond, undefined, predicateSpy),
+      ({ cond }) => useConditionalEffect(spy, undefined, cond, predicateSpy),
       {
         initialProps: { cond: [null] as unknown[] },
       }

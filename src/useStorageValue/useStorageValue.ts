@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { useCallback, useEffect } from 'react';
 import {
-  useSafeState,
   useConditionalEffect,
-  useUpdateEffect,
-  useSyncedRef,
   useFirstMountState,
-  usePrevious,
   useMountEffect,
+  usePrevious,
+  useSafeState,
+  useSyncedRef,
+  useUpdateEffect,
 } from '..';
 import { INextState, resolveHookState } from '../util/resolveHookState';
 import { isBrowser } from '../util/const';
@@ -171,9 +171,13 @@ export function useStorageValue<T>(
   });
 
   // store default value if it is not null and options configured to store default value
-  useConditionalEffect(() => {
-    methods.current.storeVal(defaultValue as T);
-  }, [prevState !== state, state === defaultValue && defaultValue !== null && storeDefaultValue]);
+  useConditionalEffect(
+    () => {
+      methods.current.storeVal(defaultValue as T);
+    },
+    undefined,
+    [prevState !== state, state === defaultValue && defaultValue !== null && storeDefaultValue]
+  );
 
   // refetch value when key changed
   useUpdateEffect(() => {
