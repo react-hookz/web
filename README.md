@@ -76,8 +76,6 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
 
   - [**`useConditionalEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
     — Like `useEffect` but callback invoked only if conditions match predicate.
-  - [**`useConditionalUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect--example)
-    — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
   - [**`useCustomCompareEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usecustomcompareeffect--example)
     — Like `useEffect` but uses provided comparator function to validate dependencies change.
   - [**`useDebouncedEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncedeffect--example)
