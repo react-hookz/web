@@ -1,3 +1,36 @@
+# [11.0.0](https://github.com/react-hookz/web/compare/v10.1.1...v11.0.0) (2021-09-28)
+
+
+### Bug Fixes
+
+* proper links in readme that don't break in firefox ([b406dc6](https://github.com/react-hookz/web/commit/b406dc69d0ad5a08d26ab85144d056b6916b18f7))
+
+
+### Features
+
+* improve `useConditionalEffect` and remove `useConditionalUpdateEffect` ([#345](https://github.com/react-hookz/web/issues/345)) ([4474cf7](https://github.com/react-hookz/web/commit/4474cf730f9e02599eb3c2674ac3304d9f33ec93))
+
+
+### BREAKING CHANGES
+
+* `useConditionalEffect` conditions and deps arguments now switched places.
+
+* feat(useConditionalEffect): added ability to wrap other effect hooks
+
+* feat: remove `useConditionalUpdateEffect`
+* `useConditionalUpdateEffect` removed in favor of
+composition with `useConditionalEffect`.
+
+Now you should simpy pass extra argument to achieve same functionality:
+`useConditionalEffect(()=>{}, undefined, [], truthyAndArrayPredicate,
+useUpdateEffect)`
+* Interface `IUseConditionalEffectPredicate` renamed to
+`IConditionsPredicate`
+
+* docs: cleanup, remove `useConditionalUpdateEffect` from readme
+
+Co-authored-by: Joe Duncko <JoeDuncko@users.noreply.github.com>
+
 ## [10.1.1](https://github.com/react-hookz/web/compare/v10.1.0...v10.1.1) (2021-09-24)
 
 
