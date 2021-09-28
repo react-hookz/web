@@ -6,12 +6,9 @@ export { useThrottledCallback } from './useThrottledCallback/useThrottledCallbac
 // Livecycle
 export {
   useConditionalEffect,
-  IUseConditionalEffectPredicate,
+  IConditionsPredicate,
+  IConditionsList,
 } from './useConditionalEffect/useConditionalEffect';
-export {
-  useConditionalUpdateEffect,
-  IUseConditionalUpdateEffectPredicate,
-} from './useConditionalUpdateEffect/useConditionalUpdateEffect';
 export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
 export { useFirstMountState } from './useFirstMountState/useFirstMountState';
 export { useIsMounted } from './useIsMounted/useIsMounted';
@@ -93,3 +90,5 @@ export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/u
 export { useEventListener } from './useEventListener/useEventListener';
 
 export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
+
+export { IEffectCallback, IEffectHook } from './util/misc';

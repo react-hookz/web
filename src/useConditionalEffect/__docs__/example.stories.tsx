@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useConditionalEffect, useToggle } from '../..';
+import { useConditionalEffect, useToggle, useUpdateEffect } from '../..';
 
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(false);
@@ -16,7 +16,8 @@ export const Example: React.FC = () => {
       },
       [state1, state2],
       [state1, state2],
-      (conditions) => conditions.every((i) => i && i % 2 === 0)
+      (conditions) => conditions.every((i) => i && i % 2 === 0),
+      useUpdateEffect
     );
 
     return (

@@ -8,7 +8,8 @@ import { Example } from './example.stories';
 Like `useEffect` but callback invoked only if conditions match predicate. By default, predicate
 matches if all conditions are truthy.
 
-Like `useEffect`, it performs conditions match on first mount.
+It also can make any effect hook that is compliant with `useEffect`'s call signature conditional by passing
+`effectHook` parameter. This way you can implement almost any effect logic via hooks "wrapping".
 
 #### Example
 
@@ -19,24 +20,33 @@ Like `useEffect`, it performs conditions match on first mount.
 ## Reference
 
 ```ts
-type IUseConditionalEffectPredicate<Cond extends ReadonlyArray<any>> = (
-  conditions: Cond
-) => boolean;
-
-function useConditionalEffect<T extends ReadonlyArray<any>>(
-  callback: React.EffectCallback,
-  conditions: T,
-  deps?: React.DependencyList,
-  predicate?: IUseConditionalEffectPredicate<T>
+export function useConditionalEffect<
+  Cond extends IConditionsList,
+  Callback extends IEffectCallback = IEffectCallback,
+  Deps extends DependencyList | undefined = DependencyList | undefined,
+  HookRestArgs extends any[] = any[],
+  R extends HookRestArgs = HookRestArgs
+>(
+  callback: Callback,
+  deps: Deps,
+  conditions: Cond,
+  predicate: IConditionsPredicate<Cond> = truthyAndArrayPredicate,
+  effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
+  ...effectHookRestArgs: R
 ): void;
 ```
 
 #### Arguments
 
-- **callback** _`React.EffectCallback`_ - Effect callback like for `React.useEffect` hook
-- **conditions** _`ReadonlyArray<any>`_ - Conditions that are matched against predicate
-- **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If set - effect will
-  be triggered when deps changed AND conditions are satisfying predicate.
-- **predicate** _`IUseConditionalEffectPredicate<ReadonlyArray<any>>`_ - Predicate that matches
-  conditions.
+- **callback** _`IEffectCallback`_ - Function that will be passed to underlying effect hook.
+- **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If not undefined -
+  effect will be triggered when deps changed AND conditions are satisfying predicate.
+- **conditions** _`IConditionsList`_ - Conditions array.
+- **predicate** _`IUseConditionalEffectPredicate<ReadonlyArray<any>>`_ - Predicate that defines
+  whether conditions satisfying certain provision.  
   By default, it is all-truthy provision, meaning that all conditions should be truthy.
+- **effectHook** _`IEffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
+  run callback. Must comply `useEffect` signature, meaning that callback should be placed as first
+  argument and dependencies list as second.
+- **...effectHookRestArgs** _`HookRestArgs`_ - Extra arguments that are passed to `effectHook`. Meaning
+  the arguments that are after 2nd argument.

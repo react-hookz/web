@@ -1,3 +1,5 @@
+import { IConditionsPredicate } from '..';
+
 export const noop = (): void => {};
 
 export const isBrowser =
@@ -5,10 +7,8 @@ export const isBrowser =
   typeof navigator !== 'undefined' &&
   typeof document !== 'undefined';
 
-export function truthyAndArrayPredicate(conditions: ReadonlyArray<unknown>): boolean {
-  return conditions.every((i) => Boolean(i));
-}
+export const truthyAndArrayPredicate: IConditionsPredicate = (conditions): boolean =>
+  conditions.every((i) => Boolean(i));
 
-export function truthyOrArrayPredicate(conditions: ReadonlyArray<unknown>): boolean {
-  return conditions.some((i) => Boolean(i));
-}
+export const truthyOrArrayPredicate: IConditionsPredicate = (conditions): boolean =>
+  conditions.some((i) => Boolean(i));

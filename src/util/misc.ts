@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { DependencyList } from 'react';
+
 export function on<T extends EventTarget>(
   obj: T | null,
   ...args:
@@ -34,3 +37,11 @@ export const hasOwnProperty = <
 
 export const yieldTrue = () => true as const;
 export const yieldFalse = () => false as const;
+
+export type IEffectCallback = (...args: any[]) => any;
+
+export type IEffectHook<
+  Callback extends IEffectCallback = IEffectCallback,
+  Deps extends DependencyList | undefined = DependencyList | undefined,
+  RestArgs extends any[] = any[]
+> = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);
