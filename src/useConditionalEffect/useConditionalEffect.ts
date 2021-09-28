@@ -11,17 +11,17 @@ export type IConditionsPredicate<Cond extends IConditionsList = IConditionsList>
 /**
  * Like `useEffect` but callback invoked only if conditions match predicate.
  *
- * @param callback Function that will be passed to underlying effect hook..
+ * @param callback Function that will be passed to underlying effect hook.
  * @param deps Dependencies list like for `useEffect`. If not undefined - effect will be
  * triggered when deps changed AND conditions are satisfying predicate.
- * @param conditions Conditions array
+ * @param conditions Conditions array.
  * @param predicate Predicate that defines whether conditions satisfying certain
  * provision. By default, it is all-truthy provision, meaning that all
  * conditions should be truthy.
  * @param effectHook Effect hook that will be used to run callback. Must comply `useEffect`
  * signature, meaning that callback should be placed as first argument and dependencies list
  * as second.
- * @param effectHookRestArgs Extra arguments that passed to effectHook.
+ * @param effectHookRestArgs Extra arguments that are passed to `effectHook`.
  */
 export function useConditionalEffect<
   Cond extends IConditionsList,

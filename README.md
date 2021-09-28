@@ -76,8 +76,6 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
 
   - [**`useConditionalEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
     — Like `useEffect` but callback invoked only if conditions match predicate.
-  - [**`useConditionalUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionalupdateeffect--example)
-    — Like `useUpdateEffect` but callback invoked only if conditions match predicate.
   - [**`useDebouncedEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncedeffect--example)
     — Like `useEffect`, but passed function is debounced.
   - [**`useFirstMountState`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
