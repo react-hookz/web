@@ -1,5 +1,5 @@
 import { resolveHookState } from '../resolveHookState';
-import { off, on } from '../misc';
+import { basicDepsComparator, off, on } from '../misc';
 
 describe('resolveHookState', () => {
   it('it should be defined', () => {
@@ -63,6 +63,25 @@ describe('misc', () => {
         // @ts-expect-error testing inappropriate usage
         off(undefined, 'evtName', () => {});
       }).not.toThrow();
+    });
+  });
+
+  describe('basicDepsComparator', () => {
+    it('should return true if both arrays ref-equal', () => {
+      const d1 = [1, 2, 3];
+      expect(basicDepsComparator(d1, d1)).toBe(true);
+    });
+
+    it('should return false in case array has different length', () => {
+      expect(basicDepsComparator([1], [1, 2])).toBe(false);
+    });
+
+    it('should return false in respective elements not equal', () => {
+      expect(basicDepsComparator([1, 2, 3], [1, 3, 2])).toBe(false);
+    });
+
+    it('should return true in case arrays are equal', () => {
+      expect(basicDepsComparator([1, 2, 3], [1, 2, 3])).toBe(true);
     });
   });
 });

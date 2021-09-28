@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList } from 'react';
 
+import { IDependenciesComparator } from '../useCustomCompareEffect/useCustomCompareEffect';
+
 export function on<T extends EventTarget>(
   obj: T | null,
   ...args:
@@ -37,6 +39,20 @@ export const hasOwnProperty = <
 
 export const yieldTrue = () => true as const;
 export const yieldFalse = () => false as const;
+
+export const basicDepsComparator: IDependenciesComparator = (d1, d2) => {
+  if (d1 === d2) return true;
+
+  if (d1.length !== d2.length) return false;
+
+  for (let i = 0; i < d1.length; i++) {
+    if (d1[i] !== d2[i]) {
+      return false;
+    }
+  }
+
+  return true;
+};
 
 export type IEffectCallback = (...args: any[]) => any;
 
