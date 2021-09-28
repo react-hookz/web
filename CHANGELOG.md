@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/react-hookz/web/compare/v11.0.0...v11.1.0) (2021-09-28)
+
+
+### Features
+
+* new hook `useCustomCompareEffect` ([#346](https://github.com/react-hookz/web/issues/346)) ([ef4248a](https://github.com/react-hookz/web/commit/ef4248a1ea2bcac86472675d07cd9928985419f3))
+
 # [11.0.0](https://github.com/react-hookz/web/compare/v10.1.1...v11.0.0) (2021-09-28)
 
 
