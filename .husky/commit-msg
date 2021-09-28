@@ -1,4 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn commitlint --edit $1
+if [ "$CI" = "true" ]
+then
+  # disable commitlint for CI environments
+   exit 0
+else
+   echo "Exists"
+fi
