@@ -281,7 +281,7 @@ const [{ status, result, error }, { execute }] = useAsync(async () => {
   const response = await fetch(url);
   const result = await response.text();
   return result;
-}, [url]);
+});
 
 useMountEffect(execute);
 
@@ -313,7 +313,7 @@ const [{ status, result, error }, { execute }] = useAsync(async () => {
   const response = await fetch(url);
   const result = await response.text();
   return result;
-}, [url]);
+});
 
 execute();
 ```
@@ -341,7 +341,7 @@ const [{ status, result, error }, { execute }] = useAsync(async () => {
   const response = await fetch(url);
   const result = await response.text();
   return result;
-}, [url]);
+});
 
 execute();
 ```
