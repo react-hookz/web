@@ -1,3 +1,16 @@
+# [12.0.0](https://github.com/react-hookz/web/compare/v11.1.0...v12.0.0) (2021-10-01)
+
+
+### Features
+
+* exclude `@types/react` and `@types/react-dom` from deps ([bcaca2e](https://github.com/react-hookz/web/commit/bcaca2e045136033cf587348a0cf791aa9065954)), closes [#353](https://github.com/react-hookz/web/issues/353)
+
+
+### BREAKING CHANGES
+
+* `@types/react` and `@types/react-dom` are no more
+presented in `dependencies`.
+
 # [11.1.0](https://github.com/react-hookz/web/compare/v11.0.0...v11.1.0) (2021-09-28)
 
 
