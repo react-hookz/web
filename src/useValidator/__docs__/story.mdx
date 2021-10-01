@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="State/useValidator" component={Example} />
 
@@ -36,6 +37,10 @@ function useValidator<V extends IValidityState>(
   initialValidity: IInitialState<V> = { isValid: undefined } as V
 ) => IUseValidatorReturn<V>;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

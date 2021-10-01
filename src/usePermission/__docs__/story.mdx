@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="Navigator/usePermission" component={Example} />
 
@@ -21,6 +22,10 @@ Tracks a permission state.
 ```ts
 export function usePermission(descriptor: IAnyPermissionDescriptor): IUsePermissionState;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

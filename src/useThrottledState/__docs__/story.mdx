@@ -1,11 +1,12 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="State/useThrottledState" component={Example} />
 
 # useThrottledState
 
-Lise `useSafeState` but its state setter is throttled.
+Like `useSafeState` but its state setter is throttled.
 
 #### Example
 
@@ -22,6 +23,10 @@ export function useThrottledState<S>(
   noTrailing = false
 ): [S, Dispatch<SetStateAction<S>>];
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

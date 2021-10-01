@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="State/useMediatedState" component={Example} />
 
@@ -27,3 +28,7 @@ function useMediatedState<S, R>(
   mediator?: (state: R) => S
 ): [S, (value: R | ((prevState: S) => R)) => void];
 ```
+
+#### Importing
+
+<ImportPath />

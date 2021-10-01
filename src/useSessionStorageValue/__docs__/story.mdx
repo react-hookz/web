@@ -1,4 +1,5 @@
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta title="Side-effect/useSessionStorageValue" component={Example} />
@@ -44,6 +45,10 @@ function useSessionStorageValue<T>(
   options: IUseStorageValueOptions<T> = {}
 ): IHookReturn<T, typeof defaultValue, typeof options>;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

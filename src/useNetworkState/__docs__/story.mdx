@@ -1,4 +1,5 @@
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta title={'Navigator/useNetworkState'} component={Example} />
@@ -42,6 +43,10 @@ export interface IUseNetworkState {
 
 export function useNetworkState(initialState?: IInitialState<IUseNetworkState>): IUseNetworkState;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

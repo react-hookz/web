@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { useDebouncedCallback, useSafeState } from '..';
 
 /**
- * Lise `useSafeState` but its state setter is debounced.
+ * Like `useSafeState` but its state setter is debounced.
  *
  * @param initialState Initial state to pass to underlying `useSafeState`.
  * @param delay Debounce delay.

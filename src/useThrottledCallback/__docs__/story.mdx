@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="Callback/useThrottledCallback" component={Example} />
 
@@ -30,6 +31,10 @@ export function useThrottledCallback<Args extends any[], This>(
   noTrailing = false
 ): IThrottledFunction<Args, This>;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

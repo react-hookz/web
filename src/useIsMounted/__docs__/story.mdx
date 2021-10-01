@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="Lifecycle/useIsMounted" component={Example} />
 
@@ -21,6 +22,10 @@ This hook is handy for the cases when you have to detect component mount state w
 ```ts
 function useIsMounted(): () => boolean;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Return
 
