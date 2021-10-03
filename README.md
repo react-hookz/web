@@ -100,7 +100,7 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
 - #### State
 
   - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate--example)
-    — Lise `useSafeState` but its state setter is debounced.
+    — Like `useSafeState` but its state setter is debounced.
   - [**`useMap`**](https://react-hookz.github.io/web/?path=/docs/state-usemap--example)
     — Tracks the state of a `Map`.
   - [**`useMediatedState`**](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate--example)

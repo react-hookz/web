@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="Lifecycle/useRerender" component={Example} />
 
@@ -20,6 +21,10 @@ Return callback function that re-renders component.
 ```ts
 function useRerender(): () => void;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Return
 

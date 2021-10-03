@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="Lifecycle/useCustomCompareEffect" component={Example} />
 
@@ -32,6 +33,10 @@ export function useCustomCompareEffect<
   ...effectHookRestArgs: R
 ): void;
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 

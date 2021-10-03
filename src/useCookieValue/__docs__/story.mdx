@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story, Source } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
 
 <Meta title="Side-effect/useCookieValue" component={Example} />
@@ -7,9 +7,10 @@ import { Example } from './example.stories';
 
 Manages a single cookie.
 
-> Requires installation of `js-cookie` package.
-> **Should be directly imported as it has optional dependency and therefore it is not exported from
-> index file**
+> **IMPORTANT**: Requires separate installation of `js-cookie` package.
+
+> **IMPORTANT**: This hook should be directly imported as it has optional dependency and therefore it is not exported from
+> index file. See [importing](#importing) section below.
 
 - Uses `js-cookie` package underneath.
 - SSR-friendly.
@@ -49,6 +50,17 @@ export type IUseCookieReturn = [
 
 export function useCookieValue(key: string, options: IUseCookieOptions = {}): IUseCookieReturn;
 ```
+
+#### Importing
+
+<Source
+  language="js"
+  code={`
+import { useCookieValue } from '@react-hookz/web/cjs/useCookieValue/useCookieValue'; // cjs
+import { useCookieValue } from '@react-hookz/web/esm/useCookieValue/useCookieValue'; // esm
+import { useCookieValue } from '@react-hookz/web/esnext/useCookieValue/useCookieValue' // esnext
+`}
+/>
 
 #### Arguments
 

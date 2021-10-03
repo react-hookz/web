@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="State/useToggle" component={Example} />
 
@@ -22,6 +23,10 @@ function useToggle(
   initialState: IInitialState<boolean> = false
 ): [boolean, (nextState?: INewState<boolean>) => void];
 ```
+
+#### Importing
+
+<ImportPath />
 
 #### Arguments
 
