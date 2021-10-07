@@ -2340,16 +2340,16 @@
     storybook-addon-outline "^1.4.1"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@^6.3.9":
-  version "6.3.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.9.tgz#a7342d80c26f81bc8d5fdab4906521786bc99343"
-  integrity sha512-n5Ox9x70gUSHZebbCYRUMMAXddmf1WW5raDP424dtdUzfKDnES+/v/dgyp3pnJshWO/muTEB1ytP4QV0J1+jVA==
+"@storybook/addon-links@^6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.3.10.tgz#0c4c95def9655a299f3e29aa6e1fe6cde8326ecf"
+  integrity sha512-/gp5+4+niwK7U+28trwvFAgbZat9m4v9xFd5W8jXo8HmPlyDUK5w9Zu14xH6PrAfufFMb+No9b8eZjzOgB5aOQ==
   dependencies:
-    "@storybook/addons" "6.3.9"
-    "@storybook/client-logger" "6.3.9"
-    "@storybook/core-events" "6.3.9"
+    "@storybook/addons" "6.3.10"
+    "@storybook/client-logger" "6.3.10"
+    "@storybook/core-events" "6.3.10"
     "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.3.9"
+    "@storybook/router" "6.3.10"
     "@types/qs" "^6.9.5"
     core-js "^3.8.2"
     global "^4.4.0"
@@ -2393,6 +2393,21 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
+"@storybook/addons@6.3.10", "@storybook/addons@^6.3.0", "@storybook/addons@^6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.10.tgz#a9fab13e6b81279f1dcdc54220dc4becac4b7a21"
+  integrity sha512-nrqyHPFGft6FhLXAB4xfebh3Xe/16574FSV3I96hyhcNwlxRs/ANLQriiDVElz3KfDqyFUIYMoskUBHZNRwWFA==
+  dependencies:
+    "@storybook/api" "6.3.10"
+    "@storybook/channels" "6.3.10"
+    "@storybook/client-logger" "6.3.10"
+    "@storybook/core-events" "6.3.10"
+    "@storybook/router" "6.3.10"
+    "@storybook/theming" "6.3.10"
+    core-js "^3.8.2"
+    global "^4.4.0"
+    regenerator-runtime "^0.13.7"
+
 "@storybook/addons@6.3.9":
   version "6.3.9"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.9.tgz#e12c8d4351b861d67cb6b8d64ed33b1f6b90994f"
@@ -2404,21 +2419,6 @@
     "@storybook/core-events" "6.3.9"
     "@storybook/router" "6.3.9"
     "@storybook/theming" "6.3.9"
-    core-js "^3.8.2"
-    global "^4.4.0"
-    regenerator-runtime "^0.13.7"
-
-"@storybook/addons@^6.3.0", "@storybook/addons@^6.3.10":
-  version "6.3.10"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.3.10.tgz#a9fab13e6b81279f1dcdc54220dc4becac4b7a21"
-  integrity sha512-nrqyHPFGft6FhLXAB4xfebh3Xe/16574FSV3I96hyhcNwlxRs/ANLQriiDVElz3KfDqyFUIYMoskUBHZNRwWFA==
-  dependencies:
-    "@storybook/api" "6.3.10"
-    "@storybook/channels" "6.3.10"
-    "@storybook/client-logger" "6.3.10"
-    "@storybook/core-events" "6.3.10"
-    "@storybook/router" "6.3.10"
-    "@storybook/theming" "6.3.10"
     core-js "^3.8.2"
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
