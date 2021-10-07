@@ -2270,7 +2270,7 @@
     core-js "^3.8.2"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@6.3.9", "@storybook/addon-docs@^6.3.9":
+"@storybook/addon-docs@6.3.9":
   version "6.3.9"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.3.9.tgz#34b87eb5c5059bb98bf09700b60470c8d35fbb58"
   integrity sha512-UgujxJei5xejFpAfW40TdoDJnnfeKUPrp6QWMjMRcMG3+uW69VWviw4p3qzS9phO5vQJsINpRT8Bu0aGz2TpJw==
@@ -2298,6 +2298,56 @@
     "@storybook/postinstall" "6.3.9"
     "@storybook/source-loader" "6.3.9"
     "@storybook/theming" "6.3.9"
+    acorn "^7.4.1"
+    acorn-jsx "^5.3.1"
+    acorn-walk "^7.2.0"
+    core-js "^3.8.2"
+    doctrine "^3.0.0"
+    escodegen "^2.0.0"
+    fast-deep-equal "^3.1.3"
+    global "^4.4.0"
+    html-tags "^3.1.0"
+    js-string-escape "^1.0.1"
+    loader-utils "^2.0.0"
+    lodash "^4.17.20"
+    p-limit "^3.1.0"
+    prettier "~2.2.1"
+    prop-types "^15.7.2"
+    react-element-to-jsx-string "^14.3.2"
+    regenerator-runtime "^0.13.7"
+    remark-external-links "^8.0.0"
+    remark-slug "^6.0.0"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/addon-docs@^6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.3.10.tgz#5aed33df5b6a6b719fb85b9b215372ce5fdd0a56"
+  integrity sha512-1JMl2E01sUwYlHgc2l+n1MDMSHbZNDPb4/DRpw2p4YZ8VSSOprA4Z4uHmFjabxyfnkv3Sz5isRVeaMqJzHMjdA==
+  dependencies:
+    "@babel/core" "^7.12.10"
+    "@babel/generator" "^7.12.11"
+    "@babel/parser" "^7.12.11"
+    "@babel/plugin-transform-react-jsx" "^7.12.12"
+    "@babel/preset-env" "^7.12.11"
+    "@jest/transform" "^26.6.2"
+    "@mdx-js/loader" "^1.6.22"
+    "@mdx-js/mdx" "^1.6.22"
+    "@mdx-js/react" "^1.6.22"
+    "@storybook/addons" "6.3.10"
+    "@storybook/api" "6.3.10"
+    "@storybook/builder-webpack4" "6.3.10"
+    "@storybook/client-api" "6.3.10"
+    "@storybook/client-logger" "6.3.10"
+    "@storybook/components" "6.3.10"
+    "@storybook/core" "6.3.10"
+    "@storybook/core-events" "6.3.10"
+    "@storybook/csf" "0.0.1"
+    "@storybook/csf-tools" "6.3.10"
+    "@storybook/node-logger" "6.3.10"
+    "@storybook/postinstall" "6.3.10"
+    "@storybook/source-loader" "6.3.10"
+    "@storybook/theming" "6.3.10"
     acorn "^7.4.1"
     acorn-jsx "^5.3.1"
     acorn-walk "^7.2.0"
@@ -2735,7 +2785,7 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.3.10":
+"@storybook/components@6.3.10", "@storybook/components@^6.3.0":
   version "6.3.10"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.10.tgz#27a2bc98280e9fba148a52a405fe2ed27f036099"
   integrity sha512-s9iOq0jT+h51hid4Vckmy84XAMm8aoZwD/QHpzWs4aRqrT5lqsen3jnlvqEEdEVUbMIoLPPNfOxOZsm4M/7zpQ==
@@ -2765,7 +2815,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@6.3.9", "@storybook/components@^6.3.0":
+"@storybook/components@6.3.9":
   version "6.3.9"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.3.9.tgz#3f3c56f0311e757e78705e3b495489da071d6891"
   integrity sha512-bArMbnzK9esdrgYHG/WAHC+NIMmEzgypvaTs0oEG4lK3q1LiBdrCrLRSCd31oR3RT5a8e06QXZ1rla3OhuZrfg==
@@ -3214,6 +3264,13 @@
     npmlog "^4.1.2"
     pretty-hrtime "^1.0.3"
 
+"@storybook/postinstall@6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/postinstall/-/postinstall-6.3.10.tgz#56c20cbf3ff895a17f1b72ed1c704d7bbba5a05c"
+  integrity sha512-uFaZTKh4d9FzYWxyc9K7AoFUrU8pA+tsDzXva4sAiB8MbGuq8knMtYkxhNrpV6MZuMXcmeN3PozixUM+tXj3YQ==
+  dependencies:
+    core-js "^3.8.2"
+
 "@storybook/postinstall@6.3.9":
   version "6.3.9"
   resolved "https://registry.yarnpkg.com/@storybook/postinstall/-/postinstall-6.3.9.tgz#ca44341bb0bd5f9162b683176fa38d97b1d4e492"
@@ -3302,6 +3359,22 @@
   dependencies:
     core-js "^3.6.5"
     find-up "^4.1.0"
+
+"@storybook/source-loader@6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.3.10.tgz#bb8a8356a8ebaea40358837d19d4269a673a26b1"
+  integrity sha512-I8wm8vkLB2S29iAHezkMZzzb1nvc1zZqVaWBlAqK5T2AuQojMIiKapU4Mohj9XORbcFfz7Kn7ULYgrx4cl5lZw==
+  dependencies:
+    "@storybook/addons" "6.3.10"
+    "@storybook/client-logger" "6.3.10"
+    "@storybook/csf" "0.0.1"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    global "^4.4.0"
+    loader-utils "^2.0.0"
+    lodash "^4.17.20"
+    prettier "~2.2.1"
+    regenerator-runtime "^0.13.7"
 
 "@storybook/source-loader@6.3.9":
   version "6.3.9"
