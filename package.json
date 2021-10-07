@@ -94,7 +94,7 @@
     "@storybook/addons": "^6.3.9",
     "@storybook/react": "^6.3.9",
     "@storybook/storybook-deployer": "^2.8.10",
-    "@storybook/theming": "^6.3.8",
+    "@storybook/theming": "^6.3.10",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.27",
