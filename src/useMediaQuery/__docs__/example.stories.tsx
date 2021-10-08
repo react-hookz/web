@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMediaQuery } from '../..';
 
 export const Example: React.FC = () => {
-  const isSmallDevise = useMediaQuery('only screen and (max-width : 768px)');
+  const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');
   const isMediumDevice = useMediaQuery(
     'only screen and (min-width : 769px) and (max-width : 992px)'
   );
@@ -17,7 +17,7 @@ export const Example: React.FC = () => {
       <br />
       <br />
       <div>
-        Small device (<code>max-width : 768px</code>): {isSmallDevise ? 'yes' : 'no'}
+        Small device (<code>max-width : 768px</code>): {isSmallDevice ? 'yes' : 'no'}
       </div>
       <div>
         Medium device (<code>max-width : 992px</code>): {isMediumDevice ? 'yes' : 'no'}
