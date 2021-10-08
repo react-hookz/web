@@ -3,7 +3,7 @@ export { useDebouncedCallback } from './useDebouncedCallback/useDebouncedCallbac
 export { useRafCallback } from './useRafCallback/useRafCallback';
 export { useThrottledCallback } from './useThrottledCallback/useThrottledCallback';
 
-// Livecycle
+// Lifecycle
 export {
   useConditionalEffect,
   IConditionsPredicate,
@@ -65,6 +65,7 @@ export {
   IUseAsyncAbortableMeta,
   IArgsWithAbortSignal,
 } from './useAsyncAbortable/useAsyncAbortable';
+export { useCookieValue } from './useCookieValue/useCookieValue';
 
 // Sensor
 export {
