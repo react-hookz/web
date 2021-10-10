@@ -7,13 +7,13 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 # useThrottledCallback
 
 Makes passed function throttled, otherwise acts like `useCallback`.  
-[\[What is throttling?\]](https://css-tricks.com/debouncing-throttling-explained-examples/#throttle)
+[What is throttling?](https://css-tricks.com/debouncing-throttling-explained-examples/#throttle)
 
-> The third argument is dependencies list in `useEffect` manner, passed function will be re-wrapped
-> when delay or dependencies has changed. Changed throttle callbacks still have same timeout, meaning
-> that calling new throttled function will abort previously scheduled invocation.
+The third argument is dependencies list in `useCallback` manner, passed function will be re-wrapped
+when delay or dependencies has changed. Changed throttle callbacks still have same timeout, meaning
+that calling new throttled function will abort previously scheduled invocation.
 
-> Throttled function is always a void function since original callback invoked later.
+Throttled function is always a void function since original callback invoked later.
 
 #### Example
 
