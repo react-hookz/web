@@ -12,6 +12,8 @@ export const useFavicon = (href: string): void => {
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';
     link.href = href;
-    document.getElementsByTagName('head')[0].appendChild(link);
+    if (link.parentElement === null) {
+      document.head.appendChild(link);
+    }
   }, [href]);
 };
