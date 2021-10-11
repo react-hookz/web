@@ -1136,14 +1136,14 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@commitlint/cli@^13.1.0", "@commitlint/cli@^13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-13.2.0.tgz#9e85756b0d0ee06c34b5635d7ef42d7a6c72bd6f"
-  integrity sha512-RqG0cxxiwaL9OgQbA2ZEfZaVIRJmbtsZgnj5G07AjN7///s/40grSN4/kDl8YjUgvAZskPfJRoGGYNvHJ4zHWA==
+"@commitlint/cli@^13.1.0", "@commitlint/cli@^13.2.1":
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-13.2.1.tgz#80ebd46beef6ceed3bb0c0842bcda8d02a3c91de"
+  integrity sha512-JGzYk2ay5JkRS5w+FLQzr0u/Kih52ds4HPpa3vnwVOQN8Q+S1VYr8Nk/6kRm6uNYsAcC1nejtuDxRdLcLh/9TA==
   dependencies:
     "@commitlint/format" "^13.2.0"
     "@commitlint/lint" "^13.2.0"
-    "@commitlint/load" "^13.2.0"
+    "@commitlint/load" "^13.2.1"
     "@commitlint/read" "^13.2.0"
     "@commitlint/types" "^13.2.0"
     lodash "^4.17.19"
@@ -1221,6 +1221,21 @@
     cosmiconfig "^7.0.0"
     lodash "^4.17.19"
     resolve-from "^5.0.0"
+
+"@commitlint/load@^13.2.1":
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-13.2.1.tgz#d5d926dbd05021c02837c438ff1057025b28b745"
+  integrity sha512-qlaJkj0hfa9gtWRfCfbgFBTK3GYQRmjZhba4l9mUu4wV9lEZ4ICFlrLtd/8kaLXf/8xbrPhkAPkVFOAqM0YwUQ==
+  dependencies:
+    "@commitlint/execute-rule" "^13.2.0"
+    "@commitlint/resolve-extends" "^13.2.0"
+    "@commitlint/types" "^13.2.0"
+    "@endemolshinegroup/cosmiconfig-typescript-loader" "^3.0.2"
+    chalk "^4.0.0"
+    cosmiconfig "^7.0.0"
+    lodash "^4.17.19"
+    resolve-from "^5.0.0"
+    typescript "^4.4.3"
 
 "@commitlint/message@^13.2.0":
   version "13.2.0"
@@ -5688,12 +5703,12 @@ commitizen@^4.0.3, commitizen@^4.2.4:
     strip-bom "4.0.0"
     strip-json-comments "3.0.1"
 
-commitlint@^13.1.0:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-13.2.0.tgz#a76565cfb9c6b4b4671871b55e3cd7ce523d2af0"
-  integrity sha512-gvjIeRkIdslbW+yAfpsHlCLYauoVlr2a9UfZKqQ4mwOT/EJ5k+uoEJ4Czu7hVAg0VnUsGAerJnkaej86ABuRrw==
+commitlint@^13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-13.2.1.tgz#99333fab4d7b3ece95fed915dd15daf9a11563e6"
+  integrity sha512-ZqmqXrObQ5MBzP+1d7OrmSweqiGm8EzjchcuaHktfj5wsuuqIIAYt3xkqwUeo37Do8DaUpCh+m9sEYIxuvbQ0g==
   dependencies:
-    "@commitlint/cli" "^13.2.0"
+    "@commitlint/cli" "^13.2.1"
     "@commitlint/types" "^13.2.0"
 
 common-ancestor-path@^1.0.1:
