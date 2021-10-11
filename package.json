@@ -82,7 +82,7 @@
     "@babel/core": "^7.15.8",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@commitlint/cz-commitlint": "^13.1.0",
+    "@commitlint/cz-commitlint": "^13.2.1",
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
     "@semantic-release/changelog": "^6.0.0",
