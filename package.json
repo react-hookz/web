@@ -89,7 +89,7 @@
     "@storybook/addon-docs": "^6.3.10",
     "@storybook/addon-essentials": "^6.3.10",
     "@storybook/addon-links": "^6.3.10",
-    "@storybook/addons": "^6.3.10",
+    "@storybook/addons": "^6.3.11",
     "@storybook/react": "^6.3.10",
     "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/theming": "^6.3.10",
@@ -108,7 +108,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.1",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-mdx": "^1.15.1",
     "eslint-plugin-node": "^11.1.0",
@@ -128,7 +128,7 @@
     "ts-jest": "^27.0.5",
     "ts-node": "^10.3.0",
     "ttypescript": "^1.5.12",
-    "typescript": "^4.4.3",
+    "typescript": "^4.4.4",
     "yarn": "^1.22.15"
   }
 }
