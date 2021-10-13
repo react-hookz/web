@@ -96,7 +96,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "@types/js-cookie": "^3.0.0",
-    "@types/react": "^17.0.27",
+    "@types/react": "^17.0.29",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
@@ -108,7 +108,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.1",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-mdx": "^1.15.1",
     "eslint-plugin-node": "^11.1.0",
@@ -128,7 +128,7 @@
     "ts-jest": "^27.0.5",
     "ts-node": "^10.3.0",
     "ttypescript": "^1.5.12",
-    "typescript": "^4.4.3",
+    "typescript": "^4.4.4",
     "yarn": "^1.22.15"
   }
 }
