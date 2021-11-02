@@ -102,7 +102,7 @@
     "@typescript-eslint/parser": "^5.3.0",
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
-    "commitlint": "^13.2.1",
+    "commitlint": "^14.1.0",
     "concurrently": "^6.3.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb": "^18.2.1",

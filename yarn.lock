@@ -5356,13 +5356,13 @@ commitizen@^4.0.3, commitizen@^4.2.4:
     strip-bom "4.0.0"
     strip-json-comments "3.0.1"
 
-commitlint@^13.2.1:
-  version "13.2.1"
-  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-13.2.1.tgz#99333fab4d7b3ece95fed915dd15daf9a11563e6"
-  integrity sha512-ZqmqXrObQ5MBzP+1d7OrmSweqiGm8EzjchcuaHktfj5wsuuqIIAYt3xkqwUeo37Do8DaUpCh+m9sEYIxuvbQ0g==
+commitlint@^14.1.0:
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-14.1.0.tgz#6a6b826f73b45d4c2506428508c69d50722977c3"
+  integrity sha512-kjqGpacjo9k/DWoeDtcYWcIXjFi7A1GDIsyXbE4xvEl3clhtrrVZ2JODmxEBgKCA/i7LaSucvQhKBEr6Aezhdw==
   dependencies:
-    "@commitlint/cli" "^13.2.1"
-    "@commitlint/types" "^13.2.0"
+    "@commitlint/cli" "^14.1.0"
+    "@commitlint/types" "^14.0.0"
 
 common-ancestor-path@^1.0.1:
   version "1.0.1"
