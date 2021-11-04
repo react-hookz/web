@@ -85,7 +85,7 @@
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^8.0.1",
+    "@semantic-release/github": "^8.0.2",
     "@storybook/addon-docs": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",

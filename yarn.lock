@@ -2229,10 +2229,10 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@semantic-release/github@^8.0.0", "@semantic-release/github@^8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-8.0.1.tgz#58d6bc5cdb4b4beaa0a106a9a9ad420318144e4f"
-  integrity sha512-T01lfh4yBZodAeo8t0U+W5hmPYR9BdnfwLDerXnGaYeLXm8+KMx4mQEBAf/UbRVlzmIKTqMx+/s9fY/mSQNV0A==
+"@semantic-release/github@^8.0.0", "@semantic-release/github@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-8.0.2.tgz#80114a41f6ec8ab6c0d38a436b48ff3f2223ab16"
+  integrity sha512-wIbfhOeuxlYzMTjtSAa2xgr54n7ZuPAS2gadyTWBpUt2PNAPgla7A6XxCXJnaKPgfVF0iFfSk3B+KlVKk6ByVg==
   dependencies:
     "@octokit/rest" "^18.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -2246,7 +2246,7 @@
     https-proxy-agent "^5.0.0"
     issue-parser "^6.0.0"
     lodash "^4.17.4"
-    mime "^2.4.3"
+    mime "^3.0.0"
     p-filter "^2.0.0"
     p-retry "^4.0.0"
     url-join "^4.0.0"
@@ -10315,10 +10315,15 @@ mime@1.6.0:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
-mime@^2.4.3, mime@^2.4.4:
+mime@^2.4.4:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/mime/-/mime-2.5.2.tgz#6e3dc6cc2b9510643830e5f19d5cb753da5eeabe"
   integrity sha512-tqkh47FzKeCPD2PUiPB6pkbMzsCasjxAfC62/Wap5qrUWcb+sFasXUC5I3gYM5iBM8v/Qpn4UK0x+j0iHyFPDg==
+
+mime@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-3.0.0.tgz#b374550dca3a0c18443b0c950a6a58f1931cf7a7"
+  integrity sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==
 
 mimic-fn@^1.0.0:
   version "1.2.0"
