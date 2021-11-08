@@ -106,7 +106,7 @@
     "concurrently": "^6.3.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.1",
+    "eslint-config-airbnb-typescript": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
