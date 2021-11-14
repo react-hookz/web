@@ -6,6 +6,7 @@ export const Example: React.FC = () => {
 
   const titleWrapper = (title: string) => `@react-hookz/web is ${title}`;
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ChildComponent: React.FC = () => {
     useDocumentTitle('awesome!', {
       wrapper: titleWrapper,

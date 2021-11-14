@@ -2,7 +2,7 @@
 import { DocsContext, Source } from '@storybook/addon-docs/blocks';
 import React, { useContext } from 'react';
 
-export const ImportPath = (): JSX.Element => {
+export const ImportPath = () => {
   const context = useContext(DocsContext);
   const componentName = context.kind?.split('/')[1];
 

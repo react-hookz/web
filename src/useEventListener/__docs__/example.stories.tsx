@@ -6,6 +6,7 @@ export const Example: React.FC = () => {
   const [state, setState] = useState<Date>();
   const [mounted, toggleMounted] = useToggle(true);
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ToggledComponent = () => {
     useEventListener(
       window,

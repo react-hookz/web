@@ -43,12 +43,12 @@ module.exports = {
       files: ['*.js', '*.ts', '*.jsx', '*.tsx'],
       extends: [
         'airbnb',
-        'airbnb/hooks',
         'airbnb-typescript',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
         'plugin:import/typescript',
+        'plugin:react-hooks/recommended',
         'prettier',
       ],
       plugins: ['import'],
@@ -95,6 +95,14 @@ module.exports = {
             additionalHooks: '(useSyncedRef)',
           },
         ],
+
+        'react/function-component-definition': [
+          'error',
+          {
+            namedComponents: 'arrow-function',
+            unnamedComponents: 'arrow-function',
+          },
+        ],
       },
     },
     {
@@ -105,6 +113,14 @@ module.exports = {
         'react/button-has-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'react/prop-types': 'off',
+
+        'react/function-component-definition': [
+          'error',
+          {
+            namedComponents: 'arrow-function',
+            unnamedComponents: 'arrow-function',
+          },
+        ],
       },
     },
     {
