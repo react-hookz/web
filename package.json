@@ -98,7 +98,7 @@
     "@types/js-cookie": "^3.0.1",
     "@types/react": "^17.0.35",
     "@types/react-dom": "^17.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
