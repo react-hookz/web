@@ -104,7 +104,7 @@
     "commitizen": "^4.2.4",
     "commitlint": "^15.0.0",
     "concurrently": "^6.4.0",
-    "eslint": "^8.2.0",
+    "eslint": "^8.3.0",
     "eslint-config-airbnb": "^19.0.0",
     "eslint-config-airbnb-typescript": "^16.0.0",
     "eslint-config-prettier": "^8.3.0",
