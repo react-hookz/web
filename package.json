@@ -116,7 +116,7 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.2",
+    "jest": "^27.4.3",
     "jest-github-actions-reporter": "^1.0.3",
     "js-cookie": "^3.0.1",
     "lint-staged": "^12.1.2",
