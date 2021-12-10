@@ -2,7 +2,7 @@ name: "GH Pages"
 
 on:
   release:
-    types: [ published ]
+    types: [published]
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
       - name: "Setup Node.js"
         uses: actions/setup-node@v2.5.0
         with:
-          node-version: 15
+          node-version: 16
 
       - name: "Install dependencies"
         run: yarn install --frozen-lockfile
