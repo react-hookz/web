@@ -26,6 +26,7 @@ export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { useSafeState } from './useSafeState/useSafeState';
+export { useGetSet } from './useGetSet/useGetSet';
 export { useSet } from './useSet/useSet';
 export { useToggle } from './useToggle/useToggle';
 export { useThrottledState } from './useThrottledState/useThrottledState';

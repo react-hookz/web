@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
+
+<Meta title="State/useGetSet" component={Example} />
+
+# useGetSet
+
+React state hook that returns state getter function instead of raw state itself, this prevents subtle bugs when state is used in nested functions.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useGetSet<S>(
+  initialState: IInitialState<S>
+): [get: () => S, set: (nextState: INextState<S>) => void];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- _**initialState**_ _`IInitialState<S>`_ - initial state or initial state setter as for `useState`
+
+#### Return
+
+Returns array alike `useState` does, but instead return a state value it return a getter function.
+
+- _**[0]**_ _`S`_ - getter of current state
+- _**[1]**_ _`(nextState?: INewState<S>) => void`_ - state setter as for `useState`.
