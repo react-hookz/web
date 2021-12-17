@@ -1,19 +1,13 @@
-import { useRef, useCallback } from 'react';
-import { IInitialState, INextState, resolveHookState } from '../util/resolveHookState';
-import { useRerender } from '../index';
+import { useCallback, Dispatch, SetStateAction } from 'react';
+import { IInitialState } from '../util/resolveHookState';
+import { useSafeState, useSyncedRef } from '../index';
 
 export function useGetSet<S>(
   initialState: IInitialState<S>
-): [get: () => S, set: (nextState: INextState<S>) => void] {
-  const rerender = useRerender();
-  const ref = useRef<S>(resolveHookState(initialState));
-  const get = useCallback(() => ref.current, []);
-  const set = useCallback(
-    (nextState: INextState<S>) => {
-      ref.current = resolveHookState(nextState, ref.current);
-      rerender();
-    },
-    [rerender]
-  );
-  return [get, set];
+): [get: () => S, set: Dispatch<SetStateAction<S>>] {
+  const [state, setState] = useSafeState(initialState);
+  const stateRef = useSyncedRef(state);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return [useCallback(() => stateRef.current, []), setState];
 }
