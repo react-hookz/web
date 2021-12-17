@@ -117,6 +117,8 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
     — Like `useSafeState` but its state setter is throttled.
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
     — Performs validation when any of provided dependencies has changed.
+  - [**`useGetSet`**](https://react-hookz.github.io/web/?path=/docs/state-usegetset--example)
+    - React state hook that returns state getter function instead of raw state itself, this prevents subtle bugs when state is used in nested functions.
 
 - #### Navigator
 
