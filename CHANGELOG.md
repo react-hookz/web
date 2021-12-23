@@ -1,3 +1,10 @@
+## [12.0.4](https://github.com/react-hookz/web/compare/v12.0.3...v12.0.4) (2021-12-23)
+
+
+### Bug Fixes
+
+* correct the way `js-cookie` imported ([91b2d05](https://github.com/react-hookz/web/commit/91b2d053a1f143af78e0f5536365d430546b13e3))
+
 ## [12.0.3](https://github.com/react-hookz/web/compare/v12.0.2...v12.0.3) (2021-12-23)
 
 
