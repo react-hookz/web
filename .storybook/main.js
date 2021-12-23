@@ -12,4 +12,8 @@ module.exports = {
   reactOptions: {
     fastRefresh: true,
   },
+  core: {
+    builder: 'webpack5',
+  },
+  staticDirs: ['./public'],
 };

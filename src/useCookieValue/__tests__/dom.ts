@@ -17,9 +17,9 @@ describe('useCookieValue', () => {
   let removeSpy: SpyInstance<void, [name: string, options?: Cookies.CookieAttributes | undefined]>;
 
   beforeAll(() => {
-    getSpy = jest.spyOn(Cookies, 'get');
-    setSpy = jest.spyOn(Cookies, 'set');
-    removeSpy = jest.spyOn(Cookies, 'remove');
+    getSpy = jest.spyOn(Cookies, 'get') as typeof getSpy;
+    setSpy = jest.spyOn(Cookies, 'set') as typeof setSpy;
+    removeSpy = jest.spyOn(Cookies, 'remove') as typeof removeSpy;
   });
 
   afterAll(() => {
