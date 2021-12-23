@@ -3,35 +3,47 @@ import {
   IUseStorageValueOptions,
   useStorageValue,
 } from '../useStorageValue/useStorageValue';
-import { isBrowser } from '../util/const';
+import { isBrowser, noop } from '../util/const';
 
-export function useSessionStorageValue<T = unknown>(
-  key: string,
-  defaultValue?: null,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, IUseStorageValueOptions<true | undefined>>;
-export function useSessionStorageValue<T = unknown>(
-  key: string,
-  defaultValue: null,
-  options: IUseStorageValueOptions<false>
-): IHookReturn<T, typeof defaultValue, typeof options>;
+let IS_SESSION_STORAGE_AVAILABLE = false;
 
-export function useSessionStorageValue<T>(
-  key: string,
-  defaultValue: T,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, IUseStorageValueOptions<true | undefined>>;
-export function useSessionStorageValue<T>(
-  key: string,
-  defaultValue: T,
-  options: IUseStorageValueOptions<false>
-): IHookReturn<T, typeof defaultValue, typeof options>;
+try {
+  IS_SESSION_STORAGE_AVAILABLE = isBrowser && !!window.sessionStorage;
+} catch {
+  IS_SESSION_STORAGE_AVAILABLE = false;
+}
 
-export function useSessionStorageValue<T>(
-  key: string,
-  defaultValue?: T | null,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, typeof options>;
+interface IUseSessionStorageValue {
+  <T = unknown>(key: string, defaultValue?: null, options?: IUseStorageValueOptions): IHookReturn<
+    T,
+    typeof defaultValue,
+    IUseStorageValueOptions<true | undefined>
+  >;
+
+  <T = unknown>(
+    key: string,
+    defaultValue: null,
+    options: IUseStorageValueOptions<false>
+  ): IHookReturn<T, typeof defaultValue, typeof options>;
+
+  <T>(key: string, defaultValue: T, options?: IUseStorageValueOptions): IHookReturn<
+    T,
+    typeof defaultValue,
+    IUseStorageValueOptions<true | undefined>
+  >;
+
+  <T>(key: string, defaultValue: T, options: IUseStorageValueOptions<false>): IHookReturn<
+    T,
+    typeof defaultValue,
+    typeof options
+  >;
+
+  <T>(key: string, defaultValue?: T | null, options?: IUseStorageValueOptions): IHookReturn<
+    T,
+    typeof defaultValue,
+    typeof options
+  >;
+}
 
 /**
  * Manages a single sessionStorage key.
@@ -40,10 +52,21 @@ export function useSessionStorageValue<T>(
  * @param defaultValue Default value to yield in case the key is not in storage
  * @param options
  */
-export function useSessionStorageValue<T>(
-  key: string,
-  defaultValue: T | null = null,
-  options: IUseStorageValueOptions = {}
-): IHookReturn<T, typeof defaultValue, typeof options> {
-  return useStorageValue(isBrowser ? sessionStorage : ({} as Storage), key, defaultValue, options);
-}
+export const useSessionStorageValue: IUseSessionStorageValue = IS_SESSION_STORAGE_AVAILABLE
+  ? <T>(
+      key: string,
+      defaultValue: T | null = null,
+      options: IUseStorageValueOptions = {}
+    ): IHookReturn<T, typeof defaultValue, typeof options> =>
+      useStorageValue(isBrowser ? sessionStorage : ({} as Storage), key, defaultValue, options)
+  : <T>(
+      key: string,
+      defaultValue: T | null = null,
+      options: IUseStorageValueOptions = {}
+    ): IHookReturn<T, typeof defaultValue, typeof options> => {
+      if (isBrowser && process.env.NODE_ENV === 'development') {
+        console.warn('SessionStorage is not available in this environment');
+      }
+
+      return [undefined, noop, noop, noop];
+    };
