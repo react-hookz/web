@@ -1,3 +1,10 @@
+## [12.0.3](https://github.com/react-hookz/web/compare/v12.0.2...v12.0.3) (2021-12-23)
+
+
+### Bug Fixes
+
+* **451:** attempt to fix issue [#451](https://github.com/react-hookz/web/issues/451) ([#539](https://github.com/react-hookz/web/issues/539)) ([c2f99da](https://github.com/react-hookz/web/commit/c2f99da82b88d78488c84ad793d3e4c99b4c2141))
+
 # [12.0.0](https://github.com/react-hookz/web/compare/v11.1.0...v12.0.0) (2021-10-01)
 
 
