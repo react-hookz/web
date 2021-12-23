@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import {
   useConditionalEffect,
   useFirstMountState,
+  useIsomorphicLayoutEffect,
   useMountEffect,
   usePrevious,
   useSafeState,
@@ -114,7 +115,11 @@ export function useStorageValue<T>(
   options: IUseStorageValueOptions = {}
 ): IHookReturn<T, typeof defaultValue, typeof options> {
   const { isolated } = options;
-  let { initializeWithStorageValue = true, handleStorageEvent = true, storeDefaultValue } = options;
+  let {
+    initializeWithStorageValue = true,
+    handleStorageEvent = true,
+    storeDefaultValue = false,
+  } = options;
 
   // avoid fetching data from storage during SSR
   if (!isBrowser) {
@@ -176,7 +181,7 @@ export function useStorageValue<T>(
       methods.current.storeVal(defaultValue as T);
     },
     undefined,
-    [prevState !== state, state === defaultValue && defaultValue !== null && storeDefaultValue]
+    [prevState !== state, storeDefaultValue && state === defaultValue && defaultValue !== null]
   );
 
   // refetch value when key changed
@@ -184,11 +189,8 @@ export function useStorageValue<T>(
     methods.current.fetchState();
   }, [key]);
 
-  // register hook for same-page synchronisation
-  useEffect(() => {}, [key]);
-
   // subscribe hook for storage events
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!handleStorageEvent) return;
 
     const storageHandler = (ev: StorageEvent) => {
@@ -207,7 +209,8 @@ export function useStorageValue<T>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleStorageEvent]);
 
-  useEffect(() => {
+  // register hook for same-page synchronisation
+  useIsomorphicLayoutEffect(() => {
     if (isolated) return;
 
     let storageKeys = storageKeysUsed.get(storage);
@@ -246,6 +249,7 @@ export function useStorageValue<T>(
           methods.current.setState(s);
 
           if (!isolatedRef.current) {
+            // update all other hooks state
             storageKeysUsed
               .get(storage)
               ?.get(keyRef.current)
@@ -321,6 +325,7 @@ const stringify = (data: unknown): string | null => {
     return null;
   }
 };
+
 const parse = (str: string | null, fallback: unknown): unknown => {
   if (str === null) return fallback;
 
