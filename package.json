@@ -103,7 +103,7 @@
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
     "commitlint": "^16.0.1",
-    "concurrently": "^6.5.1",
+    "concurrently": "^7.0.0",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.1.0",
