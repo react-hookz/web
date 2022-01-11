@@ -14,7 +14,8 @@ Invokes a callback whenever ResizeObserver detects a change to target's size.
 - Does not apply any throttle or debounce mechanism - it is on end-developer side.
 - Does not produce references for you.
 - SSR friendly.
-- Provides access to `ResizeObserverEntry`
+- Provides access to `ResizeObserverEntry`.
+- Allows to dynamically enable and disable observation.
 
 #### Example
 
@@ -33,7 +34,8 @@ Invokes a callback whenever ResizeObserver detects a change to target's size.
 ```ts
 export function useResizeObserver<T extends Element>(
   target: RefObject<T> | T | null,
-  callback: (entry: ResizeObserverEntry) => void
+  callback: (entry: ResizeObserverEntry) => void,
+  enabled = true
 ): void;
 ```
 
@@ -45,3 +47,4 @@ export function useResizeObserver<T extends Element>(
 
 - **target** _`RefObject<Element> | Element | null`_ - element to track.
 - **callback** _`(entry: ResizeObserverEntry) => void`_ - Callback that will be invoked on resize.
+- **enabled** _`boolean`_ _(default: `true`)_ - Whether resize observer is enabled or not.

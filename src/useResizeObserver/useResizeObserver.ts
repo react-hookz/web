@@ -68,18 +68,17 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
  *
  * @param target React reference or Element to track.
  * @param callback Callback that will be invoked on resize.
+ * @param enabled Whether resize observer is enabled or not.
  */
 export function useResizeObserver<T extends Element>(
   target: RefObject<T> | T | null,
-  callback: IUseResizeObserverCallback
+  callback: IUseResizeObserverCallback,
+  enabled = true
 ): void {
-  const ro = getResizeObserver();
+  const ro = enabled && getResizeObserver();
   const cb = useSyncedRef(callback);
 
   useEffect(() => {
-    // quite difficult to cover with tests, but the 'if' branch  is pretty
-    // straightforward: do nothing, it is safe to exclude from LOC
-    /* istanbul ignore if */
     if (!ro) return;
 
     // as unsubscription in internals of our ResizeObserver abstraction can
