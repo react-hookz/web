@@ -10,6 +10,8 @@ let IS_LOCAL_STORAGE_AVAILABLE = false;
 try {
   IS_LOCAL_STORAGE_AVAILABLE = isBrowser && !!window.localStorage;
 } catch {
+  // no need to test this flag leads to noop behaviour
+  /* istanbul ignore next */
   IS_LOCAL_STORAGE_AVAILABLE = false;
 }
 
@@ -64,6 +66,7 @@ export const useLocalStorageValue: IUseLocalStorageValue = IS_LOCAL_STORAGE_AVAI
       defaultValue: T | null = null,
       options: IUseStorageValueOptions = {}
     ): IHookReturn<T, typeof defaultValue, typeof options> => {
+      /* istanbul ignore next */
       if (isBrowser && process.env.NODE_ENV === 'development') {
         console.warn('LocalStorage is not available in this environment');
       }

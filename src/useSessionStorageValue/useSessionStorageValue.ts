@@ -10,6 +10,8 @@ let IS_SESSION_STORAGE_AVAILABLE = false;
 try {
   IS_SESSION_STORAGE_AVAILABLE = isBrowser && !!window.sessionStorage;
 } catch {
+  // no need to test this flag leads to noop behaviour
+  /* istanbul ignore next */
   IS_SESSION_STORAGE_AVAILABLE = false;
 }
 
@@ -64,6 +66,7 @@ export const useSessionStorageValue: IUseSessionStorageValue = IS_SESSION_STORAG
       defaultValue: T | null = null,
       options: IUseStorageValueOptions = {}
     ): IHookReturn<T, typeof defaultValue, typeof options> => {
+      /* istanbul ignore next */
       if (isBrowser && process.env.NODE_ENV === 'development') {
         console.warn('SessionStorage is not available in this environment');
       }
