@@ -89,7 +89,7 @@
     "@storybook/addon-docs": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
-    "@storybook/addons": "^6.4.9",
+    "@storybook/addons": "^6.4.10",
     "@storybook/react": "^6.4.9",
     "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/theming": "^6.4.9",
