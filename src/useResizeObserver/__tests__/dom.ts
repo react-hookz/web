@@ -129,4 +129,40 @@ describe('useResizeObserver', () => {
     expect(unobserveSpy).toHaveBeenCalledTimes(1);
     expect(unobserveSpy).toHaveBeenCalledWith(div);
   });
+
+  describe('disabled observer', () => {
+    it('should not subscribe in case observer is disabled', () => {
+      const div = document.createElement('div');
+      const div2 = document.createElement('div');
+      const spy1 = jest.fn();
+      const spy2 = jest.fn();
+
+      renderHook(() => useResizeObserver(div, spy1));
+      renderHook(() => useResizeObserver({ current: div2 }, spy2, false));
+
+      expect(observeSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should unsubscribe and resubscribe in case of observer toggling', () => {
+      const div = document.createElement('div');
+      const spy1 = jest.fn();
+
+      const { rerender } = renderHook(({ enabled }) => useResizeObserver(div, spy1, enabled), {
+        initialProps: { enabled: false },
+      });
+
+      expect(observeSpy).toHaveBeenCalledTimes(0);
+      expect(unobserveSpy).toHaveBeenCalledTimes(0);
+
+      rerender({ enabled: true });
+
+      expect(observeSpy).toHaveBeenCalledTimes(1);
+      expect(unobserveSpy).toHaveBeenCalledTimes(0);
+
+      rerender({ enabled: false });
+
+      expect(observeSpy).toHaveBeenCalledTimes(1);
+      expect(unobserveSpy).toHaveBeenCalledTimes(1);
+    });
+  });
 });
