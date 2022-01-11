@@ -1,3 +1,10 @@
+## [12.1.1](https://github.com/react-hookz/web/compare/v12.1.0...v12.1.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **`useLocalStorage`, `useSessionStorage`:** replace hook with noop in case of storage absence. ([#540](https://github.com/react-hookz/web/issues/540)) ([790b302](https://github.com/react-hookz/web/commit/790b30257a15e936f5c4d776917fc2dd6dcad931)), closes [#521](https://github.com/react-hookz/web/issues/521)
+
 # [12.1.0](https://github.com/react-hookz/web/compare/v12.0.3...v12.1.0) (2022-01-11)
 
 
