@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {Example, ExampleDebounced} from './example.stories';
-import {ImportPath} from '../../storybookUtil/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example, ExampleDebounced } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
 
 <Meta title="Sensor/useResizeObserver" />
 
@@ -9,7 +9,7 @@ import {ImportPath} from '../../storybookUtil/ImportPath';
 Invokes a callback whenever ResizeObserver detects a change to target's size.
 
 - Uses a singe ResizeObserver for all hook instances, as it is more effective than using per-hook
-observers.
+  observers.
 - No need to wrap callback with `useCallback`, because hook manages callback mutation internally.
 - Does not apply any throttle or debounce mechanism - it is on end-developer side.
 - Does not produce references for you.
