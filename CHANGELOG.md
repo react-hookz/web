@@ -1,3 +1,10 @@
+# [12.1.0](https://github.com/react-hookz/web/compare/v12.0.3...v12.1.0) (2022-01-11)
+
+
+### Features
+
+* **useMeasure,useResizeObserver:** ability yo disable observation ([#573](https://github.com/react-hookz/web/issues/573)) ([4c6f074](https://github.com/react-hookz/web/commit/4c6f074eca31604d0975a9c8de1262b2fa8bda48)), closes [#523](https://github.com/react-hookz/web/issues/523)
+
 ## [12.0.3](https://github.com/react-hookz/web/compare/v12.0.2...v12.0.3) (2021-12-23)
 
 
