@@ -99,7 +99,7 @@ describe('useIntersectionObserver', () => {
     const { result: res1 } = renderHook(() =>
       useIntersectionObserver(div1, { root: { current: div2 } })
     );
-    const { result: res2, unmount } = renderHook(() =>
+    const { result: res2 } = renderHook(() =>
       useIntersectionObserver(div1, { root: { current: div2 } })
     );
 

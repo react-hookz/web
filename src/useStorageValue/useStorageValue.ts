@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
 import { useCallback } from 'react';
 import {
   useConditionalEffect,
@@ -193,6 +193,7 @@ export function useStorageValue<T>(
   useIsomorphicLayoutEffect(() => {
     if (!handleStorageEvent) return;
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const storageHandler = (ev: StorageEvent) => {
       if (ev.storageArea !== storage) return;
       if (ev.key !== keyRef.current) return;
@@ -202,7 +203,6 @@ export function useStorageValue<T>(
 
     on(window, 'storage', storageHandler, { passive: true });
 
-    // eslint-disable-next-line consistent-return
     return () => {
       off(window, 'storage', storageHandler);
     };
@@ -230,7 +230,6 @@ export function useStorageValue<T>(
     const mSetState = methods.current.setState;
     keySetters.add(mSetState);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       keySetters?.delete(mSetState);
     };
@@ -288,18 +287,16 @@ export function useStorageValue<T>(
       if (!isBrowser) return;
 
       const newVal = methods.current.fetchState();
-      if (newVal !== null) {
-        if (!isolatedRef.current) {
-          // update all other hooks state
-          storageKeysUsed
-            .get(storage)
-            ?.get(keyRef.current)
-            ?.forEach((setter) => {
-              if (setter === methods.current.setState) return;
+      if (newVal !== null && !isolatedRef.current) {
+        // update all other hooks state
+        storageKeysUsed
+          .get(storage)
+          ?.get(keyRef.current)
+          ?.forEach((setter) => {
+            if (setter === methods.current.setState) return;
 
-              setter(newVal);
-            });
-        }
+            setter(newVal);
+          });
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
@@ -310,6 +307,7 @@ const storageKeysUsed = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
 const stringify = (data: unknown): string | null => {
   if (data === null) {
+    // eslint-disable-next-line no-console
     console.warn(
       `'null' is not a valid data for useStorageValue hook, this operation will take no effect`
     );
@@ -318,10 +316,11 @@ const stringify = (data: unknown): string | null => {
 
   try {
     return JSON.stringify(data);
-  } catch (e) /* istanbul ignore next */ {
+  } catch (error) /* istanbul ignore next */ {
     // i have absolutely no idea how to cover this, since modern JSON.stringify does not throw on
     // cyclic references anymore
-    console.warn(e);
+    // eslint-disable-next-line no-console
+    console.warn(error);
     return null;
   }
 };
@@ -331,8 +330,9 @@ const parse = (str: string | null, fallback: unknown): unknown => {
 
   try {
     return JSON.parse(str);
-  } catch (e) {
-    console.warn(e);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn(error);
     return fallback;
   }
 };

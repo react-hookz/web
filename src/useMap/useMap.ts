@@ -37,5 +37,5 @@ export function useMap<K = any, V = any>(entries?: readonly (readonly [K, V])[] 
     };
   }
 
-  return mapRef.current as Map<K, V>;
+  return mapRef.current;
 }

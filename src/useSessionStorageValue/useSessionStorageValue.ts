@@ -60,7 +60,7 @@ export const useSessionStorageValue: IUseSessionStorageValue = IS_SESSION_STORAG
       defaultValue: T | null = null,
       options: IUseStorageValueOptions = {}
     ): IHookReturn<T, typeof defaultValue, typeof options> =>
-      useStorageValue(isBrowser ? sessionStorage : ({} as Storage), key, defaultValue, options)
+      useStorageValue(sessionStorage, key, defaultValue, options)
   : <T>(
       key: string,
       defaultValue: T | null = null,
@@ -68,6 +68,7 @@ export const useSessionStorageValue: IUseSessionStorageValue = IS_SESSION_STORAG
     ): IHookReturn<T, typeof defaultValue, typeof options> => {
       /* istanbul ignore next */
       if (isBrowser && process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
         console.warn('SessionStorage is not available in this environment');
       }
 

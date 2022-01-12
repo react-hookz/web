@@ -11,9 +11,10 @@
     "target": "ES5",
     "module": "CommonJS",
     "moduleResolution": "Node",
+    "sourceMap": false,
     "plugins": [
       {
-        "transform": "./utility/ts-transformer-js-ext.ts",
+        "transform": "./utility/ts-transformer-js-extension.ts",
         "after": true
       }
     ]

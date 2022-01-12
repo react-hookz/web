@@ -37,5 +37,5 @@ export function useSet<T = any>(values?: readonly T[] | null): Set<T> {
     };
   }
 
-  return setRef.current as Set<T>;
+  return setRef.current;
 }

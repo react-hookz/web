@@ -11,7 +11,7 @@ describe('useCookieValue', () => {
     expect(result.error).toBeUndefined();
   });
 
-  it('should return undefined ', () => {
+  it('should return undefined', () => {
     const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.current[0]).toBeUndefined();
   });

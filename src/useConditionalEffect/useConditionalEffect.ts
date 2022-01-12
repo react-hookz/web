@@ -38,9 +38,9 @@ export function useConditionalEffect<
   ...effectHookRestArgs: R
 ): void {
   effectHook(
-    // eslint-disable-next-line consistent-return
     (() => {
       if (predicate(conditions)) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return callback();
       }
     }) as Callback,

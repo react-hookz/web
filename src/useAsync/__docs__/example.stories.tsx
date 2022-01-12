@@ -27,6 +27,7 @@ export const Example: React.FC = () => {
         <button
           onClick={() => {
             actions.reset();
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             actions.execute();
           }}>
           reset

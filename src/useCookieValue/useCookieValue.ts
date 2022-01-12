@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
 import { Dispatch, useCallback, useEffect } from 'react';
 import * as Cookies from 'js-cookie';
 import { useFirstMountState, useMountEffect, useSafeState, useSyncedRef } from '..';
@@ -89,7 +89,7 @@ export function useCookieValue(
   // no need to test it, dev-only notification about 3rd party library requirement
   /* istanbul ignore next */
   if (process.env.NODE_ENV === 'development' && typeof Cookies === 'undefined') {
-    throw ReferenceError(
+    throw new ReferenceError(
       'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.'
     );
   }

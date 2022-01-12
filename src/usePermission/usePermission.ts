@@ -17,18 +17,22 @@ export function usePermission(descriptor: PermissionDescriptor): IUsePermissionS
 
     setState('requested');
 
-    navigator.permissions.query(descriptor).then((status) => {
-      const handleChange = () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises,promise/catch-or-return
+    navigator.permissions
+      .query(descriptor)
+      // eslint-disable-next-line promise/always-return
+      .then((status): void => {
+        const handleChange = () => {
+          setState(status.state);
+        };
+
         setState(status.state);
-      };
+        on(status, 'change', handleChange, { passive: true });
 
-      setState(status.state);
-      on(status, 'change', handleChange, { passive: true });
-
-      unmount.current = () => {
-        off(status, 'change', handleChange);
-      };
-    });
+        unmount.current = () => {
+          off(status, 'change', handleChange);
+        };
+      });
 
     return () => {
       if (unmount.current) {

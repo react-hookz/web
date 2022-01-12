@@ -8,7 +8,7 @@ export const Example: React.FC = () => {
   useKeyboardEvent(
     true,
     (ev) => {
-      setList((l) => l.slice(-10).concat([ev.key]));
+      setList((l) => [...l.slice(-10), ev.key]);
     },
     [],
     { eventOptions: { passive: true } }

@@ -32,7 +32,7 @@ describe('useToggle', () => {
     expect(result.current[0]).toBe(true);
 
     act(() => {
-      result.current[1](undefined);
+      result.current[1]();
     });
     expect(result.current[0]).toBe(false);
   });

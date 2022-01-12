@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useAsync } from '../..';
 
@@ -8,7 +9,8 @@ describe('useAsync', () => {
 
     return [
       jest.fn(
-        (...args: Args) =>
+        (..._args: Args) =>
+          // eslint-disable-next-line promise/param-names
           new Promise<Res>((res, rej) => {
             resolve.current = res;
             reject.current = rej;
@@ -54,7 +56,7 @@ describe('useAsync', () => {
 
   it('should have `not-executed` status initially', async () => {
     await act(async () => {
-      const [spy, resolve] = getControllableAsync<undefined, []>();
+      const [spy, resolve] = getControllableAsync<undefined | null, []>();
       const { result } = renderHook(() => useAsync(spy));
 
       expect(result.current[0]).toStrictEqual({
@@ -64,13 +66,13 @@ describe('useAsync', () => {
       });
 
       if (resolve.current) {
-        resolve.current(undefined);
+        resolve.current(null);
       }
     });
   });
 
-  it('should have `loading` status while promise invoked but not resolved ', async () => {
-    const [spy, resolve] = getControllableAsync<undefined, []>();
+  it('should have `loading` status while promise invoked but not resolved', async () => {
+    const [spy, resolve] = getControllableAsync<undefined | null, []>();
     const { result } = renderHook(() => useAsync(spy));
 
     expect(result.current[0]).toStrictEqual({
@@ -80,6 +82,7 @@ describe('useAsync', () => {
     });
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
     });
 
@@ -89,9 +92,11 @@ describe('useAsync', () => {
       result: undefined,
     });
 
-    if (resolve.current) {
-      resolve.current(undefined);
-    }
+    await act(async () => {
+      if (resolve.current) {
+        resolve.current(null);
+      }
+    });
   });
 
   it('should set `success` status and store `result` state field on fulfill', async () => {
@@ -105,6 +110,7 @@ describe('useAsync', () => {
     });
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
 
       if (resolve.current) resolve.current(123);
@@ -130,6 +136,7 @@ describe('useAsync', () => {
     const err = new Error('some error');
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
 
       if (reject.current) reject.current(err);
@@ -153,6 +160,7 @@ describe('useAsync', () => {
     });
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
 
       if (resolve.current) resolve.current(1);
@@ -180,11 +188,13 @@ describe('useAsync', () => {
     const { result } = renderHook(() => useAsync(spy, 42));
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
     });
     const resolve1 = resolve.current;
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
     });
     const resolve2 = resolve.current;
@@ -206,11 +216,13 @@ describe('useAsync', () => {
     const { result } = renderHook(() => useAsync(spy, 42));
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
     });
     const reject1 = reject.current;
 
     await act(async () => {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       result.current[1].execute();
     });
     const resolve2 = resolve.current;

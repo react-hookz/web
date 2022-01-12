@@ -7,10 +7,11 @@ describe('useSafeState', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useSafeState());
+    const { result } = renderHook(() => useSafeState());
+    expect(result.error).toBeUndefined();
   });
 
-  it('should not call ', () => {
+  it('should not call', () => {
     const { result } = renderHook(() => useSafeState(1));
     expect(result.current[1]).toBeInstanceOf(Function);
     expect(result.current[0]).toBe(1);

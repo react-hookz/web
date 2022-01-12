@@ -47,12 +47,14 @@ export function useEventListener<T extends EventTarget>(
 
   useEffect(() => {
     const tgt = target && hasOwnProperty(target, 'current') ? target.current : target;
-    if (!tgt) return undefined;
+    if (!tgt) return;
 
     const restParams = params.slice(2);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     tgt.addEventListener(params[0], eventListener, ...restParams);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return () => tgt.removeEventListener(params[0], eventListener, ...restParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, params[0]]);

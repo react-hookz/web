@@ -100,7 +100,6 @@ export function useResizeObserver<T extends Element>(
 
     ro.subscribe(tgt, handler);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       subscribed = false;
       ro.unsubscribe(tgt, handler);

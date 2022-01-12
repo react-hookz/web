@@ -124,7 +124,7 @@ describe('useMediaQuery', () => {
     expect(result3.current).toBe(false);
   });
 
-  it('should unsubscribe from previous mql when query changed', () => {
+  it('should unsubscribe from mql only when no hooks are awaiting such value', () => {
     const { unmount: unmount1 } = renderHook(() => useMediaQuery('max-width : 768px'));
     const { unmount: unmount2 } = renderHook(() => useMediaQuery('max-width : 768px'));
     const { unmount: unmount3 } = renderHook(() => useMediaQuery('max-width : 768px'));

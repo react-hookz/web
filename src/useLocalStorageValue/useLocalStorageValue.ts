@@ -60,7 +60,7 @@ export const useLocalStorageValue: IUseLocalStorageValue = IS_LOCAL_STORAGE_AVAI
       defaultValue: T | null = null,
       options: IUseStorageValueOptions = {}
     ): IHookReturn<T, typeof defaultValue, typeof options> =>
-      useStorageValue(isBrowser ? localStorage : ({} as Storage), key, defaultValue, options)
+      useStorageValue(localStorage, key, defaultValue, options)
   : <T>(
       key: string,
       defaultValue: T | null = null,
@@ -68,6 +68,7 @@ export const useLocalStorageValue: IUseLocalStorageValue = IS_LOCAL_STORAGE_AVAI
     ): IHookReturn<T, typeof defaultValue, typeof options> => {
       /* istanbul ignore next */
       if (isBrowser && process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
         console.warn('LocalStorage is not available in this environment');
       }
 

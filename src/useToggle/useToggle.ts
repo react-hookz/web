@@ -16,12 +16,12 @@ export function useToggle(
   // action does not provide functional updates feature.
   // Therefore we have to create and expose our own state setter with
   // toggle logic.
-  const [state, _setState] = useSafeState(initialState);
+  const [state, setState] = useSafeState(initialState);
 
   return [
     state,
     useCallback((nextState) => {
-      _setState((prevState) => {
+      setState((prevState) => {
         if (typeof nextState === 'undefined') {
           return !prevState;
         }

@@ -10,6 +10,7 @@ export function resolveHookState<State, PrevState = State>(
   nextState: IInitialState<State> | INextState<State, PrevState>,
   prevState?: PrevState
 ): State {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   if (typeof nextState === 'function') return (nextState as CallableFunction)(prevState);
 
   return nextState;

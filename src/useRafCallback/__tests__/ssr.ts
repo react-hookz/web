@@ -7,7 +7,8 @@ describe('useRafCallback', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useRafCallback(() => {}));
+    const { result } = renderHook(() => useRafCallback(() => {}));
+    expect(result.error).toBeUndefined();
   });
 
   it('should return array of functions', () => {
