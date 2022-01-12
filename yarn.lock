@@ -2687,6 +2687,14 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
+"@storybook/client-logger@6.4.12":
+  version "6.4.12"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.4.12.tgz#e3841029df44ae3a71991720e2f4b7033422befd"
+  integrity sha512-OxGfjjJkfIHAGgtRalUIkTG5ECGgZIU8jxvtfnB6SQKKR7cO6ldYsf+UatqkY7+CtraoqGU9TMcv9BkXsdFnAw==
+  dependencies:
+    core-js "^3.8.2"
+    global "^4.4.0"
+
 "@storybook/components@6.4.10":
   version "6.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.10.tgz#d2bc210bd33e882e39f70c69b581fbaef8029170"
@@ -3090,7 +3098,7 @@
     shelljs "^0.8.1"
     yargs "^15.0.0"
 
-"@storybook/theming@6.4.10", "@storybook/theming@^6.4.10":
+"@storybook/theming@6.4.10":
   version "6.4.10"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.10.tgz#d89b919a46331ae0c303b00f7b7be28af0a2cc84"
   integrity sha512-OUsdZhW1brWrq7RdcJ23yrJSty45TRmOOTLFqWENm+3QebaV/weLUbV6aB1uopw96phQLOXIRBOjYvp/eGiB5A==
@@ -3099,6 +3107,24 @@
     "@emotion/is-prop-valid" "^0.8.6"
     "@emotion/styled" "^10.0.27"
     "@storybook/client-logger" "6.4.10"
+    core-js "^3.8.2"
+    deep-object-diff "^1.1.0"
+    emotion-theming "^10.0.27"
+    global "^4.4.0"
+    memoizerific "^1.11.3"
+    polished "^4.0.5"
+    resolve-from "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/theming@^6.4.12":
+  version "6.4.12"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.12.tgz#a6f15284ffe9c03d91335203903c38883855c8f3"
+  integrity sha512-f40OgKpI0ymnCiXaY2KeDqYUrHBVxxYYww1WfyQXMv8tv5Mx64nqD8IL/Vyf6t/Wdl5jLdgbgLITwqIij9WJPg==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "^0.8.6"
+    "@emotion/styled" "^10.0.27"
+    "@storybook/client-logger" "6.4.12"
     core-js "^3.8.2"
     deep-object-diff "^1.1.0"
     emotion-theming "^10.0.27"
