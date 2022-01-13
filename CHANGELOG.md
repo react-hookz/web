@@ -1,3 +1,10 @@
+## [12.1.2](https://github.com/react-hookz/web/compare/v12.1.1...v12.1.2) (2022-01-13)
+
+
+### Bug Fixes
+
+* move to stricter linting configuration ([#580](https://github.com/react-hookz/web/issues/580)) ([f455992](https://github.com/react-hookz/web/commit/f455992a60b06846fa86a4627d206053b279e96c))
+
 ## [12.1.1](https://github.com/react-hookz/web/compare/v12.1.0...v12.1.1) (2022-01-11)
 
 
