@@ -10,9 +10,8 @@
 [![Types](https://flat.badgen.net/npm/types/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 [![Tree Shaking](https://flat.badgen.net/bundlephobia/tree-shaking/@react-hookz/web)](https://bundlephobia.com/result?p=@react-hookz/web)
 
-× **[DOCS](https://react-hookz.github.io/web/)**
-× **[DISCORD](https://discord.gg/Fjwphtu65f)**
-× **[CHANGELOG](https://github.com/react-hookz/web/blob/master/CHANGELOG.md)** ×
+× **[DOCS](https://react-hookz.github.io/web/)** × **[DISCORD](https://discord.gg/Fjwphtu65f)** ×
+**[CHANGELOG](https://github.com/react-hookz/web/blob/master/CHANGELOG.md)** ×
 
 </div>
 
@@ -58,8 +57,8 @@ import { useMountEffect } from '@react-hookz/web/esnext';
 
 ## Migrating from react-use
 
-Coming from `react-use`? Check out
-our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).
+Coming from `react-use`? Check out our
+[migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).
 
 ## Hooks list
 
@@ -101,18 +100,18 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
 
   - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate--example)
     — Like `useSafeState` but its state setter is debounced.
-  - [**`useMap`**](https://react-hookz.github.io/web/?path=/docs/state-usemap--example)
-    — Tracks the state of a `Map`.
+  - [**`useMap`**](https://react-hookz.github.io/web/?path=/docs/state-usemap--example) — Tracks the
+    state of a `Map`.
   - [**`useMediatedState`**](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate--example)
     — Like `useState`, but every value set is passed through a mediator function.
-  - [**`usePrevious`**](https://react-hookz.github.io/web/?path=/docs/state-useprevious--example)
-    — Returns the value passed to the hook on previous render.
-  - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page)
-    — Like `useState`, but its state setter is guarded against sets on unmounted component.
-  - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example)
-    — Tracks the state of a `Set`.
-  - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example)
-    — Like `useState`, but can only become `true` or `false`.
+  - [**`usePrevious`**](https://react-hookz.github.io/web/?path=/docs/state-useprevious--example) —
+    Returns the value passed to the hook on previous render.
+  - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page) —
+    Like `useState`, but its state setter is guarded against sets on unmounted component.
+  - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
+    state of a `Set`.
+  - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example) — Like
+    `useState`, but can only become `true` or `false`.
   - [**`useThrottledState`**](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate--example)
     — Like `useSafeState` but its state setter is throttled.
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
@@ -132,11 +131,10 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
 
 - #### Side-effect
 
-  - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync--example)
-    — Executes provided async function and tracks its result and error.
+  - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync--example) —
+    Executes provided async function and tracks its result and error.
   - [**`useAsyncAbortable`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasyncabortable--example)
-    — Like `useAsync`, but also provides `AbortSignal` as first function argument to async
-    function.
+    — Like `useAsync`, but also provides `AbortSignal` as first function argument to async function.
   - [**`useCookieValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookievalue--example)
     — Manages a single cookie.
   - [**`useLocalStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue--example)
@@ -149,8 +147,8 @@ our [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-fr
   - [**`useIntersectionObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useintersectionobserver--example)
     — Observe changes in the intersection of a target element with an ancestor element or with a
     top-level document's viewport.
-  - [**`useMeasure`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure--example)
-    — Uses ResizeObserver to track element dimensions and re-render component when they change.
+  - [**`useMeasure`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure--example) —
+    Uses ResizeObserver to track element dimensions and re-render component when they change.
   - [**`useMediaQuery`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery--example)
     — Tracks the state of CSS media query.
   - [**`useResizeObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useresizeobserver--example)

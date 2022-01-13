@@ -31,10 +31,14 @@ export function useKeyboardEvent<T extends EventTarget>(
 
 #### Arguments
 
-- **keyOrPredicate** _`IKeyboardEventFilter`_ - Filters keypresses on which `callback` will be executed.
-- **callback** _`IKeyboardEventHandler`_ - Function to call when key is pressed and `keyOrPredicate` matches positive.
+- **keyOrPredicate** _`IKeyboardEventFilter`_ - Filters keypresses on which `callback` will be
+  executed.
+- **callback** _`IKeyboardEventHandler`_ - Function to call when key is pressed and `keyOrPredicate`
+  matches positive.
 - **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useMemo`.
 - **options** - Hook options:
-  - **event** _`'keydown' | 'keypress' | 'keyup'`_ (default: `keydown`) - Event name that triggers handler.
+  - **event** _`'keydown' | 'keypress' | 'keyup'`_ (default: `keydown`) - Event name that triggers
+    handler.
   - **target** _`RefObject<T> | T | null`_ (default: `window`) - Target that should emit event.
-  - **eventOptions** _`boolean | AddEventListenerOptions`_ - Options that will be passed to underlying `useEventListener` hook.
+  - **eventOptions** _`boolean | AddEventListenerOptions`_ - Options that will be passed to
+    underlying `useEventListener` hook.

@@ -9,21 +9,21 @@ Manages a single cookie.
 
 > **IMPORTANT**: Requires separate installation of `js-cookie` package.
 
-> **IMPORTANT**: This hook should be directly imported as it has optional dependency and therefore it is not exported from
-> index file. See [importing](#importing) section below.
+> **IMPORTANT**: This hook should be directly imported as it has optional dependency and therefore
+> it is not exported from index file. See [importing](#importing) section below.
 
 - Uses `js-cookie` package underneath.
 - SSR-friendly.
-- Hooks with the same key on the same page are synchronised. This synchronisation does not
-  work across tabs or on changes that are triggered by third-party code.
+- Hooks with the same key on the same page are synchronised. This synchronisation does not work
+  across tabs or on changes that are triggered by third-party code.
 
 > **_This hook provides stable API, meaning returned methods does not change between renders_**
 
 > Uses `null` values as indicator of cookie absence, `undefined` value means that cookie value
 > hasn't been fetched yet.
 
-> While using SSR, to avoid hydration mismatch, consider setting `initializeWithValue` option
-> to `false`, this will yield `undefined` state on first render and defer value fetch till effects
+> While using SSR, to avoid hydration mismatch, consider setting `initializeWithValue` option to
+> `false`, this will yield `undefined` state on first render and defer value fetch till effects
 > execution stage.
 
 #### Example
@@ -65,10 +65,10 @@ import { useCookieValue } from '@react-hookz/web/esnext/useCookieValue/useCookie
 #### Arguments
 
 - **key** _`string`_ - Cookie name to manage.
-- **options** _`IUseCookieOptions`_ _(default: {})_ - Cookie options that will be
-  used during cookie set and delete. Has only one extra option, that relates to the hook itself:
-  - **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with
-    cookie value or initialize with `undefined` state.  
+- **options** _`IUseCookieOptions`_ _(default: {})_ - Cookie options that will be used during cookie
+  set and delete. Has only one extra option, that relates to the hook itself:
+  - **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with cookie
+    value or initialize with `undefined` state.  
     _Default to `false` during SSR._
 
 #### Return

@@ -1,14 +1,19 @@
-import {Meta} from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Migrating from react-use" />
 
-One of `@react-hookz/web`'s primary goals is to replace [react-use](https://github.com/streamich/react-use), the no longer maintained project `@react-hookz/web` grew out of.
+One of `@react-hookz/web`'s primary goals is to replace
+[react-use](https://github.com/streamich/react-use), the no longer maintained project
+`@react-hookz/web` grew out of.
 
 ## A note on missing hooks
 
-The most common `react-use` hooks have already been ported to `@react-hookz/web`. You can track our progress porting the rest of `react-use`'s hooks in [this issue](https://github.com/react-hookz/web/issues/33).
+The most common `react-use` hooks have already been ported to `@react-hookz/web`. You can track our
+progress porting the rest of `react-use`'s hooks in
+[this issue](https://github.com/react-hookz/web/issues/33).
 
-If there is a `react-use` hook you need that isn't ported yet, please comment there - or even better, make a PR!
+If there is a `react-use` hook you need that isn't ported yet, please comment there - or even
+better, make a PR!
 
 In the mean time, **feel free to use both `@react-hookz/web` and `react-use` in tandem**.
 
@@ -377,7 +382,8 @@ remove();
 NOTES:
 
 - `js-cookies` needs installed separately from `@react-hookz/web` to use `useCookie`
-- `useCookie` instances with the same key on the same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
+- `useCookie` instances with the same key on the same page are synchronised. This synchronisation
+  does not work across tabs or on changes that are triggered by third-party code.
 
 #### useCopyToClipboard
 
@@ -385,9 +391,12 @@ Not implemented yet
 
 #### useDebounce
 
-`@react-hookz/web` has three options for debouncing, which we feel are both more ergonomic and flexible than `react-use`'s implementation.
+`@react-hookz/web` has three options for debouncing, which we feel are both more ergonomic and
+flexible than `react-use`'s implementation.
 
-Depending on your use case, [useDebouncedEffect](/docs/lifecycle-usedebouncedeffect--example), [useDebounceCallback](/docs/callback-usedebouncecallback--example), or [useDebouncedState](/docs/state-usedebouncedstate--example) may be more appropriate.
+Depending on your use case, [useDebouncedEffect](/docs/lifecycle-usedebouncedeffect--example),
+[useDebounceCallback](/docs/callback-usedebouncecallback--example), or
+[useDebouncedState](/docs/state-usedebouncedstate--example) may be more appropriate.
 
 #### useError
 
@@ -403,7 +412,8 @@ Implemented as [useLocalStorageValue](/docs/side-effect-uselocalstoragevalue--ex
 
 Backwards compatiable API, minus the `raw` option.
 
-NOTE: `useLocalStorage` instances with the same key on the same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
+NOTE: `useLocalStorage` instances with the same key on the same page are synchronised. This
+synchronisation does not work across tabs or on changes that are triggered by third-party code.
 
 #### useLockBodyScroll
 
@@ -419,13 +429,17 @@ Implemented as [useSessionStorageValue](/docs/side-effect-usesessionstoragevalue
 
 Backwards compatiable API, minus the `raw` option.
 
-NOTE: `useSessionStorage` instances with the same key on the same page are synchronised. This synchronisation does not work across tabs or on changes that are triggered by third-party code.
+NOTE: `useSessionStorage` instances with the same key on the same page are synchronised. This
+synchronisation does not work across tabs or on changes that are triggered by third-party code.
 
 #### useThrottle and useThrottleFn
 
-`@react-hookz/web` has three options for throttling, which we feel are both more ergonomic and flexible than `react-use`'s implementations.
+`@react-hookz/web` has three options for throttling, which we feel are both more ergonomic and
+flexible than `react-use`'s implementations.
 
-Depending on your use case, [useThrottledEffect](/docs/lifecycle-usethrottledeffect--example), [useThrottledCallback](/docs/callback-usethrottledcallback--example), or [useThrottledState](/docs/state-usethrottledstate--example) may be more appropriate.
+Depending on your use case, [useThrottledEffect](/docs/lifecycle-usethrottledeffect--example),
+[useThrottledCallback](/docs/callback-usethrottledcallback--example), or
+[useThrottledState](/docs/state-usethrottledstate--example) may be more appropriate.
 
 #### useTitle
 
@@ -656,7 +670,8 @@ const setAll = (values) => {
 setAll([['hello', 'there']]);
 ```
 
-NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Map` object, but its methods are wrapped to cause components to rerender with changes.
+NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Map` object, but its
+methods are wrapped to cause components to rerender with changes.
 
 #### useSet
 
@@ -690,7 +705,8 @@ const toggle = (value) => (set.has(value) ? set.delete(value) : set.add(value));
 toggle('hello');
 ```
 
-NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Set` object, but its methods are wrapped to cause components to rerender with changes.
+NOTES: `@react-hookz/web`'s implementation is the same signature as the native `Set` object, but its
+methods are wrapped to cause components to rerender with changes.
 
 #### useQueue
 
