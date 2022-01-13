@@ -20,6 +20,7 @@ export const Example: React.FC = () => {
         {status === 'prompt' && (
           <button
             onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-floating-promises
               Notification.requestPermission();
             }}>
             Request notifications permission

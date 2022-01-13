@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useThrottledEffect } from '../..';
 
-const HAS_DIGIT_REGEX = /[\d]/g;
+const HAS_DIGIT_REGEX = /\d/g;
 
 export const Example: React.FC = () => {
   const [state, setState] = useState('');

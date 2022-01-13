@@ -1,19 +1,17 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const fs = require('fs/promises');
 
-(async () => {
+// eslint-disable-next-line no-void
+void (async () => {
   const scriptPath = process.argv[1].trim();
   const hookName = process.argv[2]?.trim();
 
-  if (!hookName || !hookName.length) {
+  if (!hookName || hookName.length === 0) {
     throw new TypeError('hook name not defined');
   }
 
   const srcDir = path.resolve(scriptPath, '../../src');
   const hookDir = path.join(srcDir, hookName);
-
-  console.log(hookDir);
 
   if (
     await fs

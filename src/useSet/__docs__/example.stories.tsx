@@ -20,7 +20,7 @@ export const Example: React.FC = () => {
         remove 'is awesome'
       </button>
       <br />
-      <pre>{JSON.stringify(Array.from(set), null, 2)}</pre>
+      <pre>{JSON.stringify([...set], null, 2)}</pre>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useEffect, useRef } from 'react';
 import { isBrowser } from '../util/const';
+// eslint-disable-next-line import/no-cycle
 import { basicDepsComparator } from '../util/misc';
 
 export type IDependenciesComparator<Deps extends DependencyList = DependencyList> = (

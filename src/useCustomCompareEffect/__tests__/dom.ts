@@ -14,9 +14,7 @@ describe('useCustomCompareEffect', () => {
 
   it('should not call provided comparator on render', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(() =>
-      useCustomCompareEffect(() => {}, [], spy, useUpdateEffect)
-    );
+    renderHook(() => useCustomCompareEffect(() => {}, [], spy, useUpdateEffect));
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
@@ -56,10 +54,9 @@ describe('useCustomCompareEffect', () => {
     const spy = jest.fn((c: IEffectCallback, d: DependencyList, _n: number) =>
       useUpdateEffect(c, d)
     );
-    const { rerender } = renderHook(
-      ({ deps }) => useCustomCompareEffect(() => {}, deps, undefined, spy, 123),
-      { initialProps: { deps: [1, 2] } }
-    );
+    renderHook(({ deps }) => useCustomCompareEffect(() => {}, deps, undefined, spy, 123), {
+      initialProps: { deps: [1, 2] },
+    });
 
     expect(spy.mock.calls[0][2]).toBe(123);
   });

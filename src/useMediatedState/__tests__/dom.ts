@@ -22,7 +22,7 @@ describe('useMediatedState', () => {
   });
 
   it('should pass received sate through mediator', () => {
-    const spy = jest.fn((val: string) => parseInt(val, 10));
+    const spy = jest.fn((val: string) => Number.parseInt(val, 10));
     const { result } = renderHook(() => useMediatedState(123, spy));
 
     expect(result.current[0]).toBe(123);
@@ -36,7 +36,7 @@ describe('useMediatedState', () => {
 
   it('should return same setState method each render even if callback is changed', () => {
     const { result, rerender } = renderHook(() =>
-      useMediatedState(123, (val: string) => parseInt(val, 10))
+      useMediatedState(123, (val: string) => Number.parseInt(val, 10))
     );
 
     const f1 = result.current[1];

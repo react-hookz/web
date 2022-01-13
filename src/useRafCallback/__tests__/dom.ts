@@ -28,7 +28,8 @@ describe('useRafCallback', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useRafCallback(() => {}));
+    const { result } = renderHook(() => useRafCallback(() => {}));
+    expect(result.error).toBeUndefined();
   });
 
   it('should return function same length and wrapped name', () => {

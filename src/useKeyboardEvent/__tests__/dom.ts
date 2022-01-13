@@ -139,7 +139,6 @@ describe('useKeyboardEvent', () => {
 
   it('should fallback to boolean when key filter is not function or string', () => {
     const div = document.createElement('div');
-    let context: any;
     const spy = jest.fn();
 
     const { unmount } = renderHook(() =>
