@@ -18,7 +18,7 @@ export type IEffectHook<
 > = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);
 
 /**
- * Like `useEffect` but uses provided comparator function to validate dependencies change.
+ * Like `useEffect` but uses provided comparator function to validate dependency changes.
  *
  * @param callback Function that will be passed to underlying effect hook.
  * @param deps Dependencies list, like for `useEffect` hook.

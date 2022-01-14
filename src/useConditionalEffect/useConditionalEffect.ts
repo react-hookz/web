@@ -13,7 +13,7 @@ export type IConditionsPredicate<Cond extends IConditionsList = IConditionsList>
  *
  * @param callback Function that will be passed to underlying effect hook.
  * @param deps Dependencies list like for `useEffect`. If not undefined - effect will be
- * triggered when deps changed AND conditions are satisfying predicate.
+ * triggered when deps change AND conditions satisfy predicate.
  * @param conditions Conditions array.
  * @param predicate Predicate that defines whether conditions satisfying certain
  * provision. By default, it is all-truthy provision, meaning that all

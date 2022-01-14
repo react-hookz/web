@@ -2,11 +2,12 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
 import { ImportPath } from '../../storybookUtil/ImportPath';
 
-<Meta title="Lifecycle/useCustomCompareEffect" component={Example} />
+<Meta title="Lifecycle/useDeepCompareEffect" component={Example} />
 
-# useCustomCompareEffect
+# useDeepCompareEffect
 
-Like `useEffect` but uses provided comparator function to validate dependency changes.
+Like `useEffect` but uses `@react-hookz/deep-equal` comparator function to validate deep dependency
+changes.
 
 - SSR-friendly, meaning that comparator won't be called on the server.
 - Ability to change underlying effect hook (default to `useEffect`).
@@ -28,7 +29,6 @@ export function useCustomCompareEffect<
 >(
   callback: Callback,
   deps: Deps,
-  comparator: IDependenciesComparator<Deps> = basicDepsComparator,
   effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void;
@@ -43,8 +43,6 @@ export function useCustomCompareEffect<
 - **callback** _`IEffectCallback`_ - Function that will be passed to underlying effect hook.
 - **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If not undefined -
   effect will be triggered when deps change AND conditions satisfy predicate.
-- **comparator** _`IDependenciesComparator<Deps> `_ - Function that compares two dependencies
-  arrays, and returns true in case they're equal.
 - **effectHook** _`IEffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
   run callback. Must comply `useEffect` signature, meaning that callback should be placed as first
   argument and dependencies list as second.
