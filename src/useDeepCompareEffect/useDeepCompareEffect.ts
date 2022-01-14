@@ -8,7 +8,7 @@ import {
 
 /**
  * Like `useEffect` but uses `@react-hookz/deep-equal` comparator function to validate deep
- * dependencies change.
+ * dependency changes.
  *
  * @param callback Function that will be passed to underlying effect hook.
  * @param deps Dependencies list, like for `useEffect` hook.

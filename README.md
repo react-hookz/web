@@ -76,12 +76,12 @@ Coming from `react-use`? Check out our
   - [**`useConditionalEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
     — Like `useEffect` but callback invoked only if conditions match predicate.
   - [**`useCustomCompareEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usecustomcompareeffect--example)
-    — Like `useEffect` but uses provided comparator function to validate dependencies change.
+    — Like `useEffect` but uses provided comparator function to validate dependency changes.
   - [**`useDebouncedEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncedeffect--example)
     — Like `useEffect`, but passed function is debounced.
   - [**`useDeepCompareEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedeepcompareeffect--example)
     — Like `useEffect` but uses `@react-hookz/deep-equal` comparator function to validate deep
-    dependencies change.
+    dependency changes.
   - [**`useFirstMountState`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
     — Return boolean that is `true` only on first render.
   - [**`useIsMounted`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
