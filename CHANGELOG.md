@@ -1,3 +1,10 @@
+# [12.2.0](https://github.com/react-hookz/web/compare/v12.1.2...v12.2.0) (2022-01-14)
+
+
+### Features
+
+* new hook `useDeepCompareEffect` ([#581](https://github.com/react-hookz/web/issues/581)) ([3dfa7b5](https://github.com/react-hookz/web/commit/3dfa7b5664746fd5288d488fb477c23f8e765f43))
+
 ## [12.1.2](https://github.com/react-hookz/web/compare/v12.1.1...v12.1.2) (2022-01-13)
 
 
