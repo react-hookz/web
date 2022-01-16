@@ -1,0 +1,45 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
+
+<Meta title="State/usePreviousDistinct" component={Example} />
+
+# usePreviousDistinct
+
+Returns the most recent _distinct_ value passed to the hook on previous render. Distinct here means
+that the hook's return value will only update when the passed value updates. This is useful when
+other renders are involved potentially making multiple, irrelavant updates.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export type Predicate<T> = (prev: T | undefined, next: T) => boolean;
+
+const checkIfStrictlyEqual = <T>(prev: T | undefined, next: T) => prev === next;
+
+export function usePreviousDistinct<T>(
+  value: T,
+  compare: Predicate<T> = checkIfStrictlyEqual
+): T | undefined;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- _**value**_ _`T (any)`_ - the value that will be returned on next render
+- _**compare**_ _`Predicate<T> | undefined`_ - this comparison function will be called between renders to
+  determine if the value should be updated. If not provided, the value will be updated if it is
+  strictly equal (`===`) to the previous value.
+
+#### Return
+
+Returns previously passed value or `undefined` for the case of first render.
