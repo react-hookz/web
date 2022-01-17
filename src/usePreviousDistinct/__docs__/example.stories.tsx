@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { usePrevious } from '../..';
+import { usePreviousDistinct } from '../..';
 
 export const Example: React.FC = () => {
   const [value, setValue] = useState(0);
   const [unrelatedValue, setUnrelatedValue] = useState(0);
-  const previousValue = usePrevious(value);
+  const previousDistinctValue = usePreviousDistinct(value);
 
   const increment = () => setValue((v) => v + 1);
   const decrement = () => setValue((v) => v - 1);
@@ -25,7 +25,7 @@ export const Example: React.FC = () => {
         </button>
       </div>
 
-      <div>Previous value: &quot;{previousValue ?? 'undefined'}&quot;</div>
+      <div>Previous value: &quot;{previousDistinctValue ?? 'undefined'}&quot;</div>
     </div>
   );
 };
