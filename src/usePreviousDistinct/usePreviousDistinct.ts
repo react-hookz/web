@@ -1,7 +1,6 @@
-import { useRef } from 'react';
-import { useCustomCompareEffect, useUpdateEffect } from '..';
+import { useRef, useState } from 'react';
+import { useUpdateEffect } from '..';
 import { isStrictEqual } from '../util/const';
-import { basicDepsComparator } from '../util/misc';
 
 export type TPredicate = <T>(prev: T, next: any) => next is typeof prev;
 
@@ -20,20 +19,15 @@ export function usePreviousDistinct<T>(
   value: T,
   predicate: TPredicate = isStrictEqual
 ): T | undefined {
-  const previousRef = useRef<T>();
+  const [previousState, setPreviousState] = useState<T>();
   const currentRef = useRef<T>(value);
 
-  useCustomCompareEffect(
-    () => {
-      if (!predicate(currentRef.current, value)) {
-        previousRef.current = currentRef.current;
-        currentRef.current = value;
-      }
-    },
-    [value],
-    basicDepsComparator,
-    useUpdateEffect
-  );
+  useUpdateEffect(() => {
+    if (!predicate(currentRef.current, value)) {
+      setPreviousState(currentRef.current);
+      currentRef.current = value;
+    }
+  }, [value]);
 
-  return previousRef.current;
+  return previousState;
 }
