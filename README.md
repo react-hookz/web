@@ -109,6 +109,8 @@ Coming from `react-use`? Check out our
     — Like `useState`, but every value set is passed through a mediator function.
   - [**`usePrevious`**](https://react-hookz.github.io/web/?path=/docs/state-useprevious--example) —
     Returns the value passed to the hook on previous render.
+  - [**`usePreviousDistinct`**](https://react-hookz.github.io/web/?path=/docs/state-usepreviousdistinct--example) —
+    Returns the most recent distinct value passed to the hook on previous render.
   - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page) —
     Like `useState`, but its state setter is guarded against sets on unmounted component.
   - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
