@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { usePreviousDistinct } from '../..';
+import { isStrictEqual } from '../../util/const';
 
 describe('usePreviousDistinct', () => {
   it('should be defined', () => {
@@ -17,14 +18,14 @@ describe('usePreviousDistinct', () => {
   });
 
   it('should return undefined on first render with compare function passed', () => {
-    const { result } = renderHook(() => usePreviousDistinct(0, (a, b) => a === b));
+    const { result } = renderHook(() => usePreviousDistinct(0, isStrictEqual));
     expect(result.current).toBeUndefined();
   });
 
   it('should not invoke predicate on first render', () => {
     const mockedCompare = jest.fn();
 
-    const { result } = renderHook(() => usePreviousDistinct(0, mockedCompare));
+    const { result } = renderHook(() => usePreviousDistinct(0, mockedCompare as any));
     expect(result.current).toBeUndefined();
     expect(mockedCompare).not.toHaveBeenCalled();
   });
