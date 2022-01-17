@@ -19,7 +19,7 @@ other renders are involved potentially making multiple, irrelevant updates.
 ## Reference
 
 ```ts
-export type TPredicate<T> = (prev: T, next: any) => next is typeof prev;
+export type Predicate<T> = (prev: T, next: any) => next is typeof prev;
 
 const isStrictEqual = <T>(a: T, b: any): b is typeof a => a === b;
 
@@ -36,7 +36,7 @@ export function usePreviousDistinct<T>(
 #### Arguments
 
 - _**value**_ _`T (any)`_ - Value to yield on next render if it's different from the previous one.
-- _**predicate**_ _`TPredicate<T> | undefined`_ - Optional predicate to determine if the value is
+- _**predicate**_ _`Predicate<T> | undefined`_ - Optional predicate to determine if the value is
   distinct. If not provided, the value will be updated if it is strictly equal (`===`) to the
   previous value.
 
