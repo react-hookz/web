@@ -7,8 +7,7 @@ export const isBrowser =
   typeof navigator !== 'undefined' &&
   typeof document !== 'undefined';
 
-export const isStrictEqual: TPredicate = <T>(prev: T, next: any): next is typeof prev =>
-  prev === next;
+export const isStrictEqual: TPredicate = <T>(prev: T, next: any) => prev === next;
 
 export const truthyAndArrayPredicate: IConditionsPredicate = (conditions): boolean =>
   conditions.every((i) => Boolean(i));

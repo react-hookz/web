@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useUpdateEffect } from '..';
 import { isStrictEqual } from '../util/const';
 
-export type TPredicate = <T>(prev: T, next: any) => next is typeof prev;
+export type TPredicate = <T>(prev: T, next: any) => boolean;
 
 /**
  * Returns the most recent _distinct_ value passed to the hook on previous render. Distinct here
