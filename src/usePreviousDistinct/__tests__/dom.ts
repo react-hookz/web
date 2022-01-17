@@ -78,4 +78,21 @@ describe('usePreviousDistinct', () => {
     expect(result.current).toBeUndefined();
     rerender({ state: value });
   });
+
+  it('should update even when going between defined and undefined values', () => {
+    const { result, rerender } = renderHook(
+      ({ state }: { state: number | undefined }) => usePreviousDistinct(state),
+      {
+        initialProps: { state: 0 } as { state: number | undefined },
+      }
+    );
+
+    expect(result.current).toBeUndefined();
+    rerender({ state: 1 });
+    expect(result.current).toBe(0);
+    rerender({ state: undefined });
+    expect(result.current).toBe(1);
+    rerender({ state: 10 });
+    expect(result.current).toBeUndefined();
+  });
 });
