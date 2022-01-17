@@ -40,7 +40,8 @@ If you are contributing for the first time - we would recommend reading
    - Hook should have JSDoc containing hook description and an overview of its arguments.
    - Hook should be exported by name, not default exported.
    - In case hook has some custom types as arguments or return values - it should also be exported.
-   - All types and interfaces should be `I` prefixed.
+   - Types and interfaces should not have prefixes like `I` or `T` (it is only left in existing code
+     for compatibility reasons and will be removed).
    - Hook should be developed with SSR in mind.
    - In case hook is stateful and exposes `setState` method, or is has async callbacks (that can
      theoretically be resolved after component unmount), it should use `useSafeState` instead of
