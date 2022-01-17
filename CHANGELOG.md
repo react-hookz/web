@@ -1,3 +1,10 @@
+# [12.3.0](https://github.com/react-hookz/web/compare/v12.2.0...v12.3.0) (2022-01-17)
+
+
+### Features
+
+* new hook `usePreviousDistinct` ([#585](https://github.com/react-hookz/web/issues/585)) ([1bf69d6](https://github.com/react-hookz/web/commit/1bf69d66e951e8a09427aa5f9f652fb8be5d8229)), closes [#33](https://github.com/react-hookz/web/issues/33)
+
 # [12.2.0](https://github.com/react-hookz/web/compare/v12.1.2...v12.2.0) (2022-01-14)
 
 
