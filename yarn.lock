@@ -1172,10 +1172,10 @@
     "@commitlint/types" "^16.0.0"
     ajv "^6.12.6"
 
-"@commitlint/cz-commitlint@^16.0.0":
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-16.0.0.tgz#819ff3d548333531c1e49c8f1ecf849dd347f385"
-  integrity sha512-kUYfM4OyXtZubD3wrCbfpkUbFSudHTaHkY4jxt00RofsaKWtKDVrOdhjGqdQzp06KItyRU+1BuNoW/SJ3t+ytQ==
+"@commitlint/cz-commitlint@^16.0.3":
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-16.0.3.tgz#7172ebce4441eb6b9ede7e740098745c84b575b1"
+  integrity sha512-/jPNTFF3FN97s/l9wZts+2HKbkcUkOp+mTF6nKoo7Rwm3nGBtqCsb6LQ6w2FW4PBEZy53Ndxev4A4T1qUL7mfA==
   dependencies:
     "@commitlint/ensure" "^16.0.0"
     "@commitlint/load" "^16.0.0"
