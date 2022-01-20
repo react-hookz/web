@@ -5217,12 +5217,12 @@ commitizen@^4.0.3, commitizen@^4.2.4:
     strip-bom "4.0.0"
     strip-json-comments "3.0.1"
 
-commitlint@^16.0.2:
-  version "16.0.2"
-  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-16.0.2.tgz#55004513c6d1928e32f0989bc47a3a644776c771"
-  integrity sha512-2gs6RT5q7Z1ustssIXZ9pHXml47LkMvZhAmQcKtjEYzixkqKP8eH/ty3pUjlVcidGWRzw6K87U8PS9Nz1qKhuA==
+commitlint@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-16.0.3.tgz#36d13b98b8a961b5128fc18df085a3c564eeba48"
+  integrity sha512-IrfRcolSU8ccfeol5RX9wzzVGkSDMPoUUiC20byT02f6SPi+rjXNNWNCAEI8KgcqXXFSh3wh6aX0iVVulJM0CQ==
   dependencies:
-    "@commitlint/cli" "^16.0.2"
+    "@commitlint/cli" "^16.0.3"
     "@commitlint/types" "^16.0.0"
 
 common-ancestor-path@^1.0.1:
