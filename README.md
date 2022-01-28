@@ -124,7 +124,7 @@ Coming from `react-use`? Check out our
 
 - #### Navigator
 
-  - [**`useNetworkState`**](https://react-hookz.github.io/web/?path=/docs/navigator-usenetwork--example)
+  - [**`useNetworkState`**](https://react-hookz.github.io/web/?path=/docs/navigator-usenetworkstate--example)
     — Tracks the state of browser's network connection.
   - [**`usePermission`**](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission--example)
     — Tracks a permission state.
