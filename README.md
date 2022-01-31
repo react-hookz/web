@@ -169,3 +169,5 @@ Coming from `react-use`? Check out our
     — Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
     — Executes callback when keyboard event occurred on target.
+  - [**`useRaf`**](https://react-hookz.github.io/web/?path=/docs/dom-useraf--example)
+    — animation hook that forces component to re-render on each `requestAnimationFrame`

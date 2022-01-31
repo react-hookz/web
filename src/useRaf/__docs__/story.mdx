@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
+
+<Meta title="Dom/useRaf" component={Example} />
+
+# useRaf
+
+animation hook that forces component to re-render on each requestAnimationFrame, returns percentage of time elapsed
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useRaf(ms?: number, delay?: number): number;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **ms?** _number_ - milliseconds for how long to keep rendering component
+- **delay?** _number_ - delay in milliseconds after which to start re-rendering component
+
+#### Return
+
+- **elapsed** _number_ - percentage of time elapsed
