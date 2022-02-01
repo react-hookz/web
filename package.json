@@ -92,7 +92,7 @@
     "@storybook/addon-docs": "^6.4.14",
     "@storybook/addon-essentials": "^6.4.16",
     "@storybook/addon-links": "^6.4.16",
-    "@storybook/addons": "^6.4.14",
+    "@storybook/addons": "^6.4.17",
     "@storybook/react": "^6.4.16",
     "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/theming": "^6.4.17",
