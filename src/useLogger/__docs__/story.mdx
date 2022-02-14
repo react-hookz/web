@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
+
+<Meta title="Lifecycle/useLogger" component={Example} />
+
+# useLogger
+
+Console log
+
+> This hook does not provide any cleanup functionality, meaning that effect's return not passed to
+> underlying `useEffect`.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useEffectOnce(effect: CallableFunction): void;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- _**effect**_ _`CallableFunction`_ - Effector to call when only wanting effect to be called once.
+  Can be a function returning any value. In case the need of cleanup action - use common `useEffect`
+  with empty deps array.
