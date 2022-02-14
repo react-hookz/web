@@ -91,7 +91,7 @@
     "@semantic-release/github": "^8.0.2",
     "@storybook/addon-docs": "^6.4.14",
     "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-links": "^6.4.18",
+    "@storybook/addon-links": "^6.4.19",
     "@storybook/addons": "^6.4.17",
     "@storybook/react": "^6.4.18",
     "@storybook/storybook-deployer": "^2.8.10",
