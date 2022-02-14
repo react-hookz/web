@@ -15,7 +15,7 @@ describe('useLogger', () => {
   });
 
   it('should return `TestComponent updated` on second and next renders', () => {
-    const { result, rerender } = renderHook(() => useLogger('TestComponent'));
+    const { rerender } = renderHook(() => useLogger('TestComponent'));
 
     expect(console.log).toBeCalledWith('TestComponent mounted');
 

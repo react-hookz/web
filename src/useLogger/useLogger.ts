@@ -1,7 +1,7 @@
-import { useUpdateEffect, useEffectOnce } from '..';
+import { useUpdateEffect, useMountEffect } from '..';
 
 export function useLogger(componentName: string, ...rest: any): void {
-  useEffectOnce(() => {
+  useMountEffect(() => {
     console.log(`${componentName} mounted`, { ...rest });
     return () => console.log(`${componentName} unmounted`);
   });
