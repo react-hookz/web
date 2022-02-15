@@ -10,19 +10,19 @@ describe('useLogger', () => {
     console.log = originalLog; // restore original console.log after all tests
   });
   it('should return TestComponent mounted on first render', () => {
-    renderHook(() => useLogger('TestComponent'));
-    expect(console.log).toBeCalledWith('TestComponent mounted');
+    renderHook(() => useLogger('TestComponent', [], 'test'));
+    expect(console.log).toBeCalledWith('TestComponent mounted', { '0': 'test' });
   });
 
   it('should return `TestComponent updated` on second and next renders', () => {
     const { rerender } = renderHook(() => useLogger('TestComponent'));
 
-    expect(console.log).toBeCalledWith('TestComponent mounted');
+    expect(console.log).toBeCalledWith('TestComponent mounted', {});
 
     rerender();
-    expect(console.log).toBeCalledWith('TestComponent updated');
+    expect(console.log).toBeCalledWith('TestComponent updated', {});
 
     rerender();
-    expect(console.log).toBeCalledWith('TestComponent updated');
+    expect(console.log).toBeCalledWith('TestComponent updated', {});
   });
 });

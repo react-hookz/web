@@ -6,7 +6,7 @@ describe('useLogger', () => {
     expect(useLogger).toBeDefined();
   });
   it('should render', () => {
-    const { result } = renderHook(() => useLogger('TestComponent'));
+    const { result } = renderHook(() => useLogger('TestComponent', []));
     expect(result.error).toBeUndefined();
   });
 });

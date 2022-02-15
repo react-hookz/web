@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { useRerender, useLogger } from '../..';
+import { useRerender } from '../..';
+import { useLogger } from '../useLogger';
 
 export const Example: React.FC = () => {
   const rerender = useRerender();
 
-  useLogger('Demo', {});
+  useLogger('Demo', [], 'test');
 
   return (
     <div>

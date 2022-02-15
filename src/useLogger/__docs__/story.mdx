@@ -8,7 +8,7 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 
 Console log
 
-> This hook does not provide any cleanup functionality, meaning that effect's return not passed to
+> This hook provides a console log when the component mounts, updates and unmounts.
 > underlying `useEffect`.
 
 #### Example
@@ -20,7 +20,7 @@ Console log
 ## Reference
 
 ```ts
-function useEffectOnce(effect: CallableFunction): void;
+function useEffectOnce(effect: CallableFunction, deps: [], ...rest: any): void;
 ```
 
 #### Importing
@@ -29,6 +29,5 @@ function useEffectOnce(effect: CallableFunction): void;
 
 #### Arguments
 
-- _**effect**_ _`CallableFunction`_ - Effector to call when only wanting effect to be called once.
-  Can be a function returning any value. In case the need of cleanup action - use common `useEffect`
-  with empty deps array.
+- _**effect**_ _`CallableFunction`_ - Effector to call when wanting to log the lifecycle of the component.
+  Provide the string value to log the components name, a dependency array and other arguments are outputted in the console log.
