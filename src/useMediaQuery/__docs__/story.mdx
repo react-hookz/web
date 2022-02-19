@@ -22,7 +22,7 @@ Tracks the state of CSS media query.
 ## Reference
 
 ```ts
-export function useMediaQuery(query: string): boolean | undefined;
+export function useMediaQuery(query: string, matchOnMount?: boolean): boolean | undefined;
 ```
 
 #### Importing
@@ -32,7 +32,10 @@ export function useMediaQuery(query: string): boolean | undefined;
 #### Arguments
 
 - **query** _`string`_ - CSS media query to track.
+- **matchOnMount** _`boolean`_ - whether hook state should be fetched during effects stage instead
+  of synchronous fetch. _Set this parameter to `true` for SSR use-cases._
 
 #### Return
 
 `boolean` - `true` in case document matches media query, `false` otherwise.
+`undefined` - in case `matchOnMount` parameter set to `true` and effect stage is not done yet.
