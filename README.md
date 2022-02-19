@@ -158,6 +158,9 @@ Coming from `react-use`? Check out our
     — Tracks the state of CSS media query.
   - [**`useResizeObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useresizeobserver--example)
     — Invokes a callback whenever ResizeObserver detects a change to target's size.
+  - [**`useScreenOrientation`**](https://react-hookz.github.io/web/?path=/docs/sensor-usescreenorientation--example)
+    — Checks if screen is in `portrait` or `landscape` orientation and automatically re-renders on
+    orientation change.
 
 - #### Dom
 

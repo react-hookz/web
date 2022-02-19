@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useUpdateEffect } from '..';
 import { isStrictEqual } from '../util/const';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Predicate = (prev: any, next: any) => boolean;
 
 /**

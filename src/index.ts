@@ -88,6 +88,11 @@ export {
   IUseKeyboardEventOptions,
 } from './useKeyboardEvent/useKeyboardEvent';
 
+export {
+  ScreenOrientation,
+  useScreenOrientation,
+} from './useScreenOrientation/useScreenOrientation';
+
 // Dom
 export { useClickOutside } from './useClickOutside/useClickOutside';
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
