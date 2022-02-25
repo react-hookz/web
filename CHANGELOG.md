@@ -1,3 +1,20 @@
+# [13.0.0](https://github.com/react-hookz/web/compare/v12.3.0...v13.0.0) (2022-02-25)
+
+
+### Features
+
+* **`useMediaQuery`:** add synchronous mql state fetch ([0e0be56](https://github.com/react-hookz/web/commit/0e0be5626bbe3ab0815e25f9aef49dbb1be681b1))
+* implement new hook - `useScreenOrientation` ([107cc21](https://github.com/react-hookz/web/commit/107cc2116f09d44757495d688f41eeb5cad11760))
+
+
+### BREAKING CHANGES
+
+* **`useMediaQuery`:** `useMediaQuery` now does synchronous fetch, this means
+that in browser it will return final state on first render, while SSR
+mode still return `undefined`.
+SSR users should set second parameter of this hook to `true`, to
+postpone state fetch until effects phase.
+
 # [12.3.0](https://github.com/react-hookz/web/compare/v12.2.0...v12.3.0) (2022-01-17)
 
 
