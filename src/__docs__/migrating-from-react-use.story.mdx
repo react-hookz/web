@@ -603,7 +603,25 @@ Not implemented yet
 
 #### useSetState
 
-Not implemented yet
+`React.useState` maybe used to achieve the same with minimal changes.
+
+OLD in `react-use`:
+
+```javascript
+const [state, setState] = useSetState({});
+
+setState({ hello: 'world' });
+setState({ foo: 'bar' });
+```
+
+NEW in `@react-hookz/web`:
+
+```javascript
+const [state, setState] = useState({});
+
+setState((current) => { ...current, hello: 'world' });
+setState((current) => { ...current, foo: 'bar' });
+```
 
 #### useStateList
 
