@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 // Callback
 export { useDebouncedCallback } from './useDebouncedCallback/useDebouncedCallback';
+export { useRaf } from './useRaf/useRaf';
 export { useRafCallback } from './useRafCallback/useRafCallback';
 export { useThrottledCallback } from './useThrottledCallback/useThrottledCallback';
 
