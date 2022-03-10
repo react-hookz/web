@@ -17,17 +17,12 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.release.tag_name || 'master' }}
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3.0.0
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 16
-
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Lint"
         run: yarn lint -f @jamesacarr/github-actions
@@ -39,17 +34,12 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.release.tag_name || 'master' }}
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3.0.0
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 16
-
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Build"
         run: yarn build
@@ -64,17 +54,12 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.release.tag_name || 'master' }}
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3.0.0
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 16
-
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Storybook Build"
         run: yarn storybook:build
@@ -86,17 +71,12 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.release.tag_name || 'master' }}
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3.0.0
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 16
-
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Test"
         run: yarn test:coverage --testLocationInResults --reporters=default --reporters=@jamesacarr/jest-reporter-github-actions
@@ -132,17 +112,12 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          ref: "master"
+          ref: ${{ github.event.release.tag_name || 'master' }}
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3.0.0
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 16
-
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Build package"
         run: yarn build
