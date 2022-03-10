@@ -15,15 +15,10 @@ jobs:
         with:
           ref: ${{ github.event.release.tag_name || 'master' }}
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v3.0.0
+      - uses: bahmutov/npm-install@v1
         with:
-          node-version: 16
-
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Deploy storybook"
         run: yarn storybook:deploy --ci
