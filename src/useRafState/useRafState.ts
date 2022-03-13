@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useRafCallback, useSafeState, useUnmountEffect } from '../..';
+import { useRafCallback, useSafeState, useUnmountEffect } from '..';
 
 export function useRafState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 export function useRafState<S = undefined>(): [
@@ -13,7 +13,7 @@ export function useRafState<S = undefined>(): [
 export function useRafState<S>(
   initialState?: S | (() => S)
 ): [S | undefined, Dispatch<SetStateAction<S>>] {
-  const [state, innerSetState] = useSafeState(initialState);
+  const [state, innerSetState] = useSafeState<S | undefined>(initialState);
 
   const [setState, cancelRaf] = useRafCallback(innerSetState);
 

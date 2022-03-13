@@ -98,6 +98,7 @@ export {
 export { useClickOutside } from './useClickOutside/useClickOutside';
 export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
 export { useEventListener } from './useEventListener/useEventListener';
+export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 
 export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 

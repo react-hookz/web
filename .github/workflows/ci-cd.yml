@@ -17,7 +17,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.release.tag_name || 'master' }}
+          fetch-depth: 0
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.release.tag_name || 'master' }}
+          fetch-depth: 0
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -54,7 +54,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.release.tag_name || 'master' }}
+          fetch-depth: 0
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -71,7 +71,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.release.tag_name || 'master' }}
+          fetch-depth: 0
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -112,7 +112,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.release.tag_name || 'master' }}
+          fetch-depth: 0
 
       - uses: bahmutov/npm-install@v1
         with:
