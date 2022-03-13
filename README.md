@@ -174,3 +174,5 @@ Coming from `react-use`? Check out our
     — Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
     — Executes callback when keyboard event occurred on target.
+  - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
+    — Tracks window inner dimensions.
