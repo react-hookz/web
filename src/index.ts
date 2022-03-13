@@ -28,6 +28,7 @@ export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { usePreviousDistinct, Predicate } from './usePreviousDistinct/usePreviousDistinct';
+export { useRafState } from './useRafState/useRafState';
 export { useSafeState } from './useSafeState/useSafeState';
 export { useSet } from './useSet/useSet';
 export { useToggle } from './useToggle/useToggle';

@@ -111,6 +111,8 @@ Coming from `react-use`? Check out our
     Returns the value passed to the hook on previous render.
   - [**`usePreviousDistinct`**](https://react-hookz.github.io/web/?path=/docs/state-usepreviousdistinct--example) —
     Returns the most recent distinct value passed to the hook on previous render.
+  - [**`useRafState`**](https://react-hookz.github.io/web/?path=/docs/state-userafstate--example) —
+    Like `React.useState`, but state is only updated within animation frame.
   - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page) —
     Like `useState`, but its state setter is guarded against sets on unmounted component.
   - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
