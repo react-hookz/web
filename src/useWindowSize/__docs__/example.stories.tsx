@@ -9,8 +9,7 @@ export const Example: React.FC = () => {
       Window dimensions:
       <pre>{JSON.stringify(size, null, 2)}</pre>
       <blockquote>
-        Note: this hook is rendered within iframe which dimensions are smaller than your browser
-        window.
+        Note: this example is rendered within an iframe which is smaller than your browser window.
       </blockquote>
     </div>
   );
