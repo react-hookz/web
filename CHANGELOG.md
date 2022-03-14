@@ -1,3 +1,11 @@
+# [13.1.0](https://github.com/react-hookz/web/compare/v13.0.0...v13.1.0) (2022-03-14)
+
+
+### Features
+
+* implement `useRafState` hook ([6cd44ec](https://github.com/react-hookz/web/commit/6cd44ecead3864aa1f0ece8ab3f5e02ae4e42cbf))
+* implement `useWindowSize` hook ([81819cf](https://github.com/react-hookz/web/commit/81819cf63315564ee5f41174f5a036c158dad913))
+
 # [13.0.0](https://github.com/react-hookz/web/compare/v12.3.0...v13.0.0) (2022-02-25)
 
 
