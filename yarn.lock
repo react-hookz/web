@@ -3078,10 +3078,10 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/storybook-deployer@^2.8.10":
-  version "2.8.10"
-  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.10.tgz#3cf96aea823d424fbfce98e76fca108d07470ec2"
-  integrity sha512-2uleH0AFuI98sdTkbyHt1BgPa0kmLxhC3zwfwtacE8FB+2ffdRdqBlp6GYDZ7CZ+R4B4XuPYhsgUKWkB+zngyQ==
+"@storybook/storybook-deployer@^2.8.11":
+  version "2.8.11"
+  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.11.tgz#833531ee1f4fc0c808f69c4e85b6617482d5c301"
+  integrity sha512-0jaMvMzu1F0TwBSxWm+cpeybB/TSaeepHXDCf7eYilRw51Ijtq5XiwnOTNf1LoXmdeEMLkRnflfj2JWjeQYp/Q==
   dependencies:
     git-url-parse "^11.1.2"
     glob "^7.1.3"
