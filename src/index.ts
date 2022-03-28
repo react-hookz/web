@@ -17,6 +17,7 @@ export { useFirstMountState } from './useFirstMountState/useFirstMountState';
 export { useIsMounted } from './useIsMounted/useIsMounted';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect/useIsomorphicLayoutEffect';
 export { useMountEffect } from './useMountEffect/useMountEffect';
+export { useRafEffect } from './useRafEffect/useRafEffect';
 export { useRerender } from './useRerender/useRerender';
 export { useThrottledEffect } from './useThrottledEffect/useThrottledEffect';
 export { useUnmountEffect } from './useUnmountEffect/useUnmountEffect';
