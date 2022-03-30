@@ -31,7 +31,7 @@ yarn add @react-hookz/web
 ```
 
 As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you guessed it -
-`react` and `react-dom` 16.8+.  
+`react` and `react-dom` 16.8+.
 Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
 transpile your `node-modules` in order to run in IE.
 
@@ -90,6 +90,8 @@ Coming from `react-use`? Check out our
     — `useLayoutEffect` for browser with fallback to `useEffect` for SSR.
   - [**`useMountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
     — Run effect only when component first-mounted.
+  - [**`useRafEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useRafEffect--example)
+    — Like `React.useEffect`, but effect is only run within animation frame.
   - [**`useRerender`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)
     — Return callback that re-renders component.
   - [**`useThrottledEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usethrottledeffect--example)
