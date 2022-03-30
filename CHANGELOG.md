@@ -1,3 +1,10 @@
+# [13.2.0](https://github.com/react-hookz/web/compare/v13.1.0...v13.2.0) (2022-03-30)
+
+
+### Features
+
+* create `useRafEffect` ([#693](https://github.com/react-hookz/web/issues/693)) ([6548831](https://github.com/react-hookz/web/commit/65488314e7a0845a10f263e05026490171891bda))
+
 # [13.1.0](https://github.com/react-hookz/web/compare/v13.0.0...v13.1.0) (2022-03-14)
 
 
