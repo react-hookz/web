@@ -29,10 +29,12 @@ describe('useRerender', () => {
     });
 
     expect(result.current[1]).toBe(1);
+
     act(() => {
       result.current[0]();
     });
     expect(result.current[1]).toBe(2);
+
     act(() => {
       result.current[0]();
     });
