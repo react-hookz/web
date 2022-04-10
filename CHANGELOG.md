@@ -1,3 +1,10 @@
+## [13.2.1](https://github.com/react-hookz/web/compare/v13.2.0...v13.2.1) (2022-04-10)
+
+
+### Bug Fixes
+
+* make `useRerender` operate integer increment instead of bool switch ([#711](https://github.com/react-hookz/web/issues/711)) ([409a21f](https://github.com/react-hookz/web/commit/409a21f73d3250ad08e5a46da59cc2db88f29390)), closes [#691](https://github.com/react-hookz/web/issues/691)
+
 # [13.2.0](https://github.com/react-hookz/web/compare/v13.1.0...v13.2.0) (2022-03-30)
 
 
