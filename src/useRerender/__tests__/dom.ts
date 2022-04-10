@@ -31,11 +31,15 @@ describe('useRerender', () => {
     expect(result.current[1]).toBe(1);
 
     act(() => {
+      // https://github.com/react-hookz/web/issues/691
+      result.current[0]();
       result.current[0]();
     });
     expect(result.current[1]).toBe(2);
 
     act(() => {
+      result.current[0]();
+      result.current[0]();
       result.current[0]();
     });
     expect(result.current[1]).toBe(3);
