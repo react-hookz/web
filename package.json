@@ -96,7 +96,7 @@
     "@storybook/react": "^6.4.20",
     "@storybook/storybook-deployer": "^2.8.11",
     "@storybook/theming": "^6.4.19",
-    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.4.1",
     "@types/js-cookie": "^3.0.1",
     "@types/react": "^18.0.0",
