@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useRerender } from '../..';
-import { useLogger } from '../useLogger';
+import { useLifecycleLogger } from '../useLifecycleLogger';
 
 export const Example: React.FC = () => {
   const rerender = useRerender();
-
-  useLogger('Demo', [], 'test');
+  const dependency = 'test';
+  useLifecycleLogger('Demo', [dependency]);
 
   return (
     <div>
-      <div>Check your console for useLogger logs</div>
+      <div>Check your console for useLifecycleLogger logs</div>
       <button
         onClick={() => {
           rerender();

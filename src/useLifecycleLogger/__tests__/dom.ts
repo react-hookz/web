@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useLogger } from '../useLogger';
+import { useLifecycleLogger } from '../useLifecycleLogger';
 
-describe('useLogger', () => {
+describe('useLifecycleLogger', () => {
   const originalLog = console.log; // save original console.log function
   beforeEach(() => {
     console.log = jest.fn(); // create a new mock function for each test
@@ -10,12 +10,13 @@ describe('useLogger', () => {
     console.log = originalLog; // restore original console.log after all tests
   });
   it('should return TestComponent mounted on first render', () => {
-    renderHook(() => useLogger('TestComponent', [], 'test'));
+    const dep = 'test';
+    renderHook(() => useLifecycleLogger('TestComponent', [dep]));
     expect(console.log).toBeCalledWith('TestComponent mounted', { '0': 'test' });
   });
 
   it('should return `TestComponent updated` on second and next renders', () => {
-    const { rerender } = renderHook(() => useLogger('TestComponent'));
+    const { rerender } = renderHook(() => useLifecycleLogger('TestComponent'));
 
     expect(console.log).toBeCalledWith('TestComponent mounted', {});
 

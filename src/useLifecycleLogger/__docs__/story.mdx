@@ -2,9 +2,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
 import { ImportPath } from '../../storybookUtil/ImportPath';
 
-<Meta title="Lifecycle/useLogger" component={Example} />
+<Meta title="Lifecycle/useLifecycleLogger" component={Example} />
 
-# useLogger
+# useLifecycleLogger
 
 Console log
 
@@ -20,7 +20,7 @@ Console log
 ## Reference
 
 ```ts
-function useEffectOnce(effect: CallableFunction, deps: [], ...rest: any): void;
+function useEffectOnce(effect: CallableFunction, deps: []): void;
 ```
 
 #### Importing
