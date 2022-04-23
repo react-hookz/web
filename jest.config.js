@@ -5,6 +5,7 @@ module.exports = {
       preset: 'ts-jest',
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
+      setupFiles: ['./src/__tests__/setup.ts'],
     },
     {
       displayName: 'ssr',
@@ -19,6 +20,7 @@ module.exports = {
       preset: 'ts-jest',
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
+      setupFiles: ['./src/__tests__/setup.ts'],
       moduleNameMapper: {
         '^../..$': '<rootDir>/cjs',
       },
@@ -28,6 +30,7 @@ module.exports = {
       preset: 'ts-jest',
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
+      setupFiles: ['./src/__tests__/setup.ts'],
       moduleNameMapper: {
         '^../..$': '<rootDir>',
       },

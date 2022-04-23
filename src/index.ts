@@ -52,6 +52,7 @@ export {
   INetworkInformation,
 } from './useNetworkState/useNetworkState';
 export { usePermission, IUsePermissionState } from './usePermission/usePermission';
+export { useVibrate } from './useVibrate/useVibrate';
 
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';

@@ -134,6 +134,8 @@ Coming from `react-use`? Check out our
 
   - [**`useNetworkState`**](https://react-hookz.github.io/web/?path=/docs/navigator-usenetworkstate--example)
     — Tracks the state of browser's network connection.
+  - [**`useVibrate`**](https://react-hookz.github.io/web/?path=/docs/navigator-usevibrate--example)
+    — Provides vibration feedback using the Vibration API.
   - [**`usePermission`**](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission--example)
     — Tracks a permission state.
 
