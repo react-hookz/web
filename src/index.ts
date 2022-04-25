@@ -21,6 +21,7 @@ export { useRerender } from './useRerender/useRerender';
 export { useThrottledEffect } from './useThrottledEffect/useThrottledEffect';
 export { useUnmountEffect } from './useUnmountEffect/useUnmountEffect';
 export { useUpdateEffect } from './useUpdateEffect/useUpdateEffect';
+export { useLifecycleLogger } from './useLifecycleLogger/useLifecycleLogger';
 
 // State
 export { useDebouncedState } from './useDebouncedState/useDebouncedState';

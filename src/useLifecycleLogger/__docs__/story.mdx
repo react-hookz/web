@@ -20,7 +20,7 @@ Console log
 ## Reference
 
 ```ts
-function useEffectOnce(effect: CallableFunction, deps: []): void;
+function useLifecycleLogger(componentName: string, deps: []): void;
 ```
 
 #### Importing
@@ -29,5 +29,5 @@ function useEffectOnce(effect: CallableFunction, deps: []): void;
 
 #### Arguments
 
-- _**effect**_ _`CallableFunction`_ - Effector to call when wanting to log the lifecycle of the component.
-  Provide the string value to log the components name, a dependency array and other arguments are outputted in the console log.
+- _**componentName**_ _`ComponentName`_ - String value to log the components name when logging the lifecycle.
+- **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useEffect`.

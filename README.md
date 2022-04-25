@@ -98,6 +98,8 @@ Coming from `react-use`? Check out our
     — Run effect only when component unmounted.
   - [**`useUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
     — Effect hook that ignores the first render (not invoked on mount).
+  - [**`useLifecycleLogger`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-uselifecycleLogger--example)
+    — This hook provides a console log when the component mounts, updates and unmounts.
 
 - #### State
 
