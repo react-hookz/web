@@ -567,7 +567,18 @@ No plans to implement
 
 #### useDefault
 
-Not implemented yet
+No plans to implement, rather use [useMediatedState](/docs/state-useMediatedState--example) like
+so:
+
+```javascript
+const initialValue = 'world';
+const defaultValue = 'you';
+const [greeting, setGreeting] = useMediatedState(
+  initialValue,
+  (newValue) => newValue ?? defaultValue
+);
+console.log(`Hello ${greeting}`);
+```
 
 #### useGetSet
 
