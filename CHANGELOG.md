@@ -1,3 +1,10 @@
+# [13.3.0](https://github.com/react-hookz/web/compare/v13.2.1...v13.3.0) (2022-04-25)
+
+
+### Features
+
+* implement `useLifecycleEffect` hook ([#652](https://github.com/react-hookz/web/issues/652)) ([357b018](https://github.com/react-hookz/web/commit/357b01802ef2d98a17a36f653a3e6aa90ad5b4ef))
+
 ## [13.2.1](https://github.com/react-hookz/web/compare/v13.2.0...v13.2.1) (2022-04-10)
 
 
