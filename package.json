@@ -103,7 +103,7 @@
     "@types/react-dom": "^18.0.2",
     "babel-loader": "^8.2.5",
     "commitizen": "^4.2.4",
-    "commitlint": "^16.2.3",
+    "commitlint": "^16.2.4",
     "concurrently": "^7.1.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^7.0.4",
