@@ -43,6 +43,7 @@ export {
   IValidityState,
   IUseValidatorReturn,
 } from './useValidator/useValidator';
+export { useCounter, CounterActions } from './useCounter/useCounter';
 
 // Navigator
 export {
