@@ -5,16 +5,13 @@ import { IUseCookieValueReturn, useCookieValue } from '../useCookieValue';
 import SpyInstance = jest.SpyInstance;
 
 describe('useCookieValue', () => {
-  let getSpy: SpyInstance<{ [p: string]: string }, []>;
-  let setSpy: SpyInstance<
-    string | undefined,
-    [
-      name: string,
-      value: string | Record<string, any>,
-      options?: Cookies.CookieAttributes | undefined
-    ]
-  >;
-  let removeSpy: SpyInstance<void, [name: string, options?: Cookies.CookieAttributes | undefined]>;
+  type CookiesGet = typeof Cookies.get;
+  type CookiesSet = typeof Cookies.set;
+  type CookiesRemove = typeof Cookies.remove;
+
+  let getSpy: SpyInstance<ReturnType<CookiesGet>, Parameters<CookiesGet>>;
+  let setSpy: SpyInstance<ReturnType<CookiesSet>, Parameters<CookiesSet>>;
+  let removeSpy: SpyInstance<ReturnType<CookiesRemove>, Parameters<CookiesRemove>>;
 
   beforeAll(() => {
     getSpy = jest.spyOn(Cookies, 'get');
