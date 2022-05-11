@@ -1,3 +1,15 @@
+# [14.0.0](https://github.com/react-hookz/web/compare/v13.3.0...v14.0.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* **`useMediatedState`:** make initial state be passed through mediator ([#753](https://github.com/react-hookz/web/issues/753)) ([727d224](https://github.com/react-hookz/web/commit/727d224bf55373a6f0ea15bc661a666b3f1e1631))
+
+
+### BREAKING CHANGES
+
+* **`useMediatedState`:** `useMediatedState` now passes initial state through mediator
+
 # [13.3.0](https://github.com/react-hookz/web/compare/v13.2.1...v13.3.0) (2022-04-25)
 
 
