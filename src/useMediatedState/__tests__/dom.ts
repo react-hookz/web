@@ -30,8 +30,16 @@ describe('useMediatedState', () => {
       result.current[1]('321');
     });
     expect(result.current[0]).toBe(321);
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy).toHaveBeenCalledWith('321');
+  });
+
+  it('should pass initial sate through mediator', () => {
+    const { result } = renderHook(() =>
+      useMediatedState('a123', (val: string) => val.replaceAll(/[^a-z]+/gi, ''))
+    );
+
+    expect(result.current[0]).toBe('a');
   });
 
   it('should return same setState method each render even if callback is changed', () => {
