@@ -6,13 +6,11 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 
 # useMediatedState
 
-Like `useState`, but every value set is passed through mediator function.
+Like `useState`, but every value (including initial) set is passed through mediator function.
 
 > This hook uses `useSafeState` underneath, so it is safe to use its `setState` in async hooks.
 
 > `setState` returned by this hook is stable between renders.
-
-> **_This hook provides stable API, meaning returned functions do not change between renders_**
 
 #### Example
 
