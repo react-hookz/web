@@ -210,7 +210,7 @@ describe('useCounter', () => {
       reset();
     });
 
-    expect(result.current[0]).toEqual(5);
+    expect(result.current[0]).toEqual(0);
   });
 
   it('reset respects min and max parameters', () => {

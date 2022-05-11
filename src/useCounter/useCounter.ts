@@ -1,6 +1,6 @@
-import { SetStateAction, useCallback, useRef } from 'react';
+import { SetStateAction, useMemo } from 'react';
+import { useMediatedState, useSyncedRef } from '..';
 import { IInitialState, resolveHookState } from '../util/resolveHookState';
-import { useSafeState, useSyncedRef } from '..';
 
 export interface CounterActions {
   /**
@@ -50,67 +50,41 @@ export function useCounter(
   max?: number,
   min?: number
 ): [number, CounterActions] {
-  const resolvedInitialValue = resolveHookState(initialValue);
+  const mediator = (v: number): number => {
+    if (typeof max !== 'undefined') {
+      v = Math.min(max, v);
+    }
 
-  const fitInRange = useCallback(
-    (value: number) => {
-      let fittedValue = value;
+    if (typeof min !== 'undefined') {
+      v = Math.max(min, v);
+    }
 
-      if (typeof max !== 'undefined') {
-        fittedValue = Math.min(max, fittedValue);
-      }
+    return v;
+  };
 
-      if (typeof min !== 'undefined') {
-        fittedValue = Math.max(min, fittedValue);
-      }
-
-      return fittedValue;
-    },
-    [max, min]
+  const [state, setState] = useMediatedState(
+    () => mediator(resolveHookState(initialValue)),
+    mediator
   );
+  const stateRef = useSyncedRef(state);
 
-  const init = useRef(fitInRange(resolvedInitialValue));
-
-  const [counter, setCounter] = useSafeState(init.current);
-  const counterRef = useSyncedRef(counter);
-
-  const get = useCallback(() => counterRef.current, [counterRef]);
-
-  const set = useCallback(
-    (value: SetStateAction<number>) => {
-      const resolvedValue = resolveHookState(value, counterRef.current);
-      setCounter(fitInRange(resolvedValue));
-    },
-    [counterRef, fitInRange, setCounter]
-  );
-
-  const inc = useCallback(
-    (delta: SetStateAction<number> = 1) => {
-      const resolvedDelta = resolveHookState(delta, counterRef.current);
-      set((prevState) => prevState + resolvedDelta);
-    },
-    [counterRef, set]
-  );
-
-  const dec = useCallback(
-    (delta: SetStateAction<number> = 1) => {
-      const resolvedDelta = resolveHookState(delta, counterRef.current);
-      set((prevState) => prevState - resolvedDelta);
-    },
-    [counterRef, set]
-  );
-
-  const reset = useCallback(
-    (value: SetStateAction<number> = init.current) => {
-      const resolvedValue = resolveHookState(value, counterRef.current);
-      const fittedResolvedValue = fitInRange(resolvedValue);
-      init.current = fittedResolvedValue;
-      set(fittedResolvedValue);
-    },
-    [counterRef, fitInRange, set]
-  );
-
-  const counterActions: CounterActions = { get, inc, dec, set, reset };
-
-  return [counter, counterActions];
+  return [
+    state,
+    useMemo<CounterActions>(
+      () => ({
+        get: () => stateRef.current,
+        set: setState,
+        dec: (delta = 1) => {
+          setState((val) => val - resolveHookState(delta, val));
+        },
+        inc: (delta = 1) => {
+          setState((val) => val + resolveHookState(delta, val));
+        },
+        reset: (val = initialValue) => {
+          setState((v) => resolveHookState(val, v));
+        },
+      }),
+      []
+    ),
+  ];
 }
