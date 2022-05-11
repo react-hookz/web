@@ -69,6 +69,7 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     let context: any;
     const spy = jest.fn(function spyFn(this: any) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
@@ -93,6 +94,7 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     let context: any;
     const spy = jest.fn(function spyFn(this: any) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
@@ -117,6 +119,7 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     let context: any;
     const spy = jest.fn(function spyFn(this: any) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 

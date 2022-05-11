@@ -15,7 +15,7 @@ export const isBrowser =
 export const isStrictEqual: Predicate = (prev: any, next: any): boolean => prev === next;
 
 export const truthyAndArrayPredicate: IConditionsPredicate = (conditions): boolean =>
-  conditions.every((i) => Boolean(i));
+  conditions.every(Boolean);
 
 export const truthyOrArrayPredicate: IConditionsPredicate = (conditions): boolean =>
-  conditions.some((i) => Boolean(i));
+  conditions.some(Boolean);

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { DependencyList } from 'react';
 import { useUpdateEffect, useMountEffect } from '..';
 
