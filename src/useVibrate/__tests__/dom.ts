@@ -28,7 +28,7 @@ describe('useVibrate', () => {
   });
 
   it('should call navigator.vibrate(0) on unmount', () => {
-    const { unmount } = renderHook(() => useVibrate(true, [100, 200]));
+    const { unmount } = renderHook(() => useVibrate(true, [100, 200], true));
     unmount();
 
     expect(vibrateSpy.mock.calls[1][0]).toEqual(0);
