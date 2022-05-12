@@ -1,0 +1,55 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../storybookUtil/ImportPath';
+
+<Meta title="State/useCounter" component={Example} />
+
+# useCounter
+
+Tracks a numeric value and offers functions for manipulating it.
+
+> **_This hook provides stable API, meaning returned functions do not change between renders_**
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useCounter(
+  initialValue: IInitialState<number> = 0,
+  max?: number,
+  min?: number
+): [number, CounterActions];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- _**initialValue**_ _`IInitialState<number>` (default 0)_ - initial value for the counter. A number
+  or function returning a number.
+- _**max**_ _`number` (default `undefined`)_ - maximum value the counter is allowed to be set.
+- _**min**_ _`number` (default `undefined`)_ - minimum value the counter is allowed to be set.
+
+#### Return
+
+1. **counter** - The current value of the counter.
+
+2. **methods**
+
+   - **get** - Returns the current value of the counter.
+   - **inc** - Increments the counter by the given delta (by default, 1).
+   - **dec** - Decrements the counter by the given delta (by default, 1).
+   - **set** - Sets the counter to the given value.
+   - **reset** - Resets the counter to its initial value. If a value is given, it
+     is set as the new initial value and any future calls to `reset`
+     without arguments will reset the counter to the given value.
+
+   All methods respect the `max` and `min` parameters. Instead of numerical
+   arguments, they also accept functions returning numbers.
