@@ -50,7 +50,7 @@ export function useCounter(
   max?: number,
   min?: number
 ): [number, CounterActions] {
-  const mediator = (v: number): number => {
+  const [state, setState] = useMediatedState(initialValue, (v: number): number => {
     if (typeof max !== 'undefined') {
       v = Math.min(max, v);
     }
@@ -60,12 +60,7 @@ export function useCounter(
     }
 
     return v;
-  };
-
-  const [state, setState] = useMediatedState(
-    () => mediator(resolveHookState(initialValue)),
-    mediator
-  );
+  });
   const stateRef = useSyncedRef(state);
 
   return [
@@ -84,7 +79,7 @@ export function useCounter(
           setState((v) => resolveHookState(val, v));
         },
       }),
-      []
+      [initialValue, setState, stateRef]
     ),
   ];
 }
