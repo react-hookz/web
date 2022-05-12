@@ -1,3 +1,10 @@
+# [14.1.0](https://github.com/react-hookz/web/compare/v14.0.0...v14.1.0) (2022-05-12)
+
+
+### Features
+
+* **useCounter:** port `useCounter` from `react-use` ([#751](https://github.com/react-hookz/web/issues/751)) ([510947b](https://github.com/react-hookz/web/commit/510947bdd9006fc9c5f0c15c37f7983e950955e6)), closes [#33](https://github.com/react-hookz/web/issues/33)
+
 # [14.0.0](https://github.com/react-hookz/web/compare/v13.3.0...v14.0.0) (2022-05-11)
 
 
