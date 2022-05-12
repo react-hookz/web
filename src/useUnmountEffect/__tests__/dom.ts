@@ -11,14 +11,23 @@ describe('useUnmountEffect', () => {
     expect(spy).toHaveBeenCalledTimes(0);
 
     rerender();
-    rerender();
-    rerender();
-    rerender();
-
-    expect(spy).toHaveBeenCalledTimes(0);
-
     unmount();
 
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call effect even if it has been updated', () => {
+    const spy = jest.fn();
+
+    const { rerender, unmount } = renderHook(({ fn }) => useUnmountEffect(fn), {
+      initialProps: {
+        fn: () => {},
+      },
+    });
+
+    rerender({ fn: spy });
+    unmount();
+
+    expect(spy).toHaveBeenCalled();
   });
 });

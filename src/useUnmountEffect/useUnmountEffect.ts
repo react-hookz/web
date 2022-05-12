@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 /**
  * Run effect only when component is unmounted.
@@ -6,9 +7,11 @@ import { useEffect } from 'react';
  * @param effect Effector to run on unmount
  */
 export function useUnmountEffect(effect: CallableFunction): void {
+  const effectRef = useSyncedRef(effect);
+
   useEffect(
     () => () => {
-      effect();
+      effectRef.current();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
