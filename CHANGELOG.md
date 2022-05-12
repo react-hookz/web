@@ -1,3 +1,10 @@
+# [14.2.0](https://github.com/react-hookz/web/compare/v14.1.0...v14.2.0) (2022-05-12)
+
+
+### Features
+
+* `useVibration` hook implementation and docs ([#757](https://github.com/react-hookz/web/issues/757)) ([db40294](https://github.com/react-hookz/web/commit/db4029403dfa11a0e00fda8cf2427c6f94e406d2))
+
 # [14.1.0](https://github.com/react-hookz/web/compare/v14.0.0...v14.1.0) (2022-05-12)
 
 
