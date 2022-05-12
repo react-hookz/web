@@ -1,3 +1,10 @@
+## [14.2.2](https://github.com/react-hookz/web/compare/v14.2.1...v14.2.2) (2022-05-12)
+
+
+### Bug Fixes
+
+* `useResizeObserver` now respects element changes within ref object ([#759](https://github.com/react-hookz/web/issues/759)) ([2a4e848](https://github.com/react-hookz/web/commit/2a4e8482c29a8374bcd3eabb2e26c7899bc5a4a2)), closes [#755](https://github.com/react-hookz/web/issues/755)
+
 ## [14.2.1](https://github.com/react-hookz/web/compare/v14.2.0...v14.2.1) (2022-05-12)
 
 
