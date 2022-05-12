@@ -1,5 +1,5 @@
-import { RefObject, useRef } from 'react';
-import { useSafeState, IUseResizeObserverCallback, useResizeObserver, useRafCallback } from '..';
+import { MutableRefObject, useRef } from 'react';
+import { IUseResizeObserverCallback, useRafCallback, useResizeObserver, useSafeState } from '..';
 
 /**
  * Uses ResizeObserver to track element dimensions and re-render component when they change.
@@ -8,8 +8,8 @@ import { useSafeState, IUseResizeObserverCallback, useResizeObserver, useRafCall
  */
 export function useMeasure<T extends Element>(
   enabled = true
-): [DOMRectReadOnly | undefined, RefObject<T>] {
-  const elementRef = useRef<T>(null);
+): [DOMRectReadOnly | undefined, MutableRefObject<T | null>] {
+  const elementRef = useRef<T | null>(null);
   const [rect, setRect] = useSafeState<DOMRectReadOnly>();
   const [observerHandler] = useRafCallback<IUseResizeObserverCallback>((entry) =>
     setRect(entry.contentRect)

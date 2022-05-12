@@ -78,16 +78,21 @@ export function useResizeObserver<T extends Element>(
   const ro = enabled && getResizeObserver();
   const cb = useSyncedRef(callback);
 
+  const tgt = target && 'current' in target ? target.current : target;
+
   useEffect(() => {
-    if (!ro) return;
+    // this secondary target resolve required for case when we receive ref object, which, most
+    // likely, contains null during render stage, but already populated with element during
+    // effect stage.
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const tgt = target && 'current' in target ? target.current : target;
+
+    if (!ro || !tgt) return;
 
     // as unsubscription in internals of our ResizeObserver abstraction can
     // happen a bit later than effect cleanup invocation - we need a marker,
     // that this handler should not be invoked anymore
     let subscribed = true;
-
-    const tgt = target && 'current' in target ? target.current : target;
-    if (!tgt) return;
 
     const handler: IUseResizeObserverCallback = (...args) => {
       // it is reinsurance for the highly asynchronous invocations, almost
@@ -105,5 +110,5 @@ export function useResizeObserver<T extends Element>(
       ro.unsubscribe(tgt, handler);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target, ro]);
+  }, [tgt, ro]);
 }
