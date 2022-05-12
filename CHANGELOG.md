@@ -1,3 +1,10 @@
+## [14.2.1](https://github.com/react-hookz/web/compare/v14.2.0...v14.2.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* `useUnmountEffect` now invokes changing effect functions ([#758](https://github.com/react-hookz/web/issues/758)) ([380637a](https://github.com/react-hookz/web/commit/380637a1bd1e91d1f22ad5fb9ef7557598700cb3)), closes [#756](https://github.com/react-hookz/web/issues/756)
+
 # [14.2.0](https://github.com/react-hookz/web/compare/v14.1.0...v14.2.0) (2022-05-12)
 
 
