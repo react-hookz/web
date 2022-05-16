@@ -1248,6 +1248,23 @@
     resolve-from "^5.0.0"
     typescript "^4.4.3"
 
+"@commitlint/load@^16.3.0":
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-16.3.0.tgz#e674ccc9edefd64a2d8b82d175de81ec3bb70eca"
+  integrity sha512-3tykjV/iwbkv2FU9DG+NZ/JqmP0Nm3b7aDwgCNQhhKV5P74JAuByULkafnhn+zsFGypG1qMtI5u+BZoa9APm0A==
+  dependencies:
+    "@commitlint/config-validator" "^16.2.1"
+    "@commitlint/execute-rule" "^16.2.1"
+    "@commitlint/resolve-extends" "^16.2.1"
+    "@commitlint/types" "^16.2.1"
+    "@types/node" ">=12"
+    chalk "^4.0.0"
+    cosmiconfig "^7.0.0"
+    cosmiconfig-typescript-loader "^2.0.0"
+    lodash "^4.17.19"
+    resolve-from "^5.0.0"
+    typescript "^4.4.3"
+
 "@commitlint/message@^16.2.1":
   version "16.2.1"
   resolved "https://registry.yarnpkg.com/@commitlint/message/-/message-16.2.1.tgz#bc6a0fa446a746ac2ca78cf372e4cec48daf620d"
@@ -5346,12 +5363,12 @@ commitizen@^4.0.3, commitizen@^4.2.4:
     strip-bom "4.0.0"
     strip-json-comments "3.0.1"
 
-commitlint@^16.2.4:
-  version "16.2.4"
-  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-16.2.4.tgz#36063a40ec5f51b3e65458e737cf6ca8aa9d9756"
-  integrity sha512-MLTmC68lgtVIG4RD6bAfaqygWRMU8HM50DOZGFsefIsPFwnSNeY6aA0l5oo8PWhQktgx4NH5E9JEehnuShN9hg==
+commitlint@^16.3.0:
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-16.3.0.tgz#646c7f9385647e2f7b3bca0738a0a2a7c1275cd8"
+  integrity sha512-W6T/632YL4pXiKtk81lHdQ6CQzWyt2rwaYjeqsUPm0lyIWNhx9NiNI55GbZuPOnpaike7IZn56J+hnItY4pnBQ==
   dependencies:
-    "@commitlint/cli" "^16.2.4"
+    "@commitlint/cli" "^16.3.0"
     "@commitlint/types" "^16.2.1"
 
 common-ancestor-path@^1.0.1:
@@ -5588,6 +5605,14 @@ core-util-is@~1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
+
+cosmiconfig-typescript-loader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/cosmiconfig-typescript-loader/-/cosmiconfig-typescript-loader-2.0.0.tgz#bc4f5bfcaa11a353714ecdef00c4f2226ef191b8"
+  integrity sha512-2NlGul/E3vTQEANqPziqkA01vfiuUU8vT0jZAuUIjEW8u3eCcnCQWLggapCjhbF76s7KQF0fM0kXSKmzaDaG1g==
+  dependencies:
+    cosmiconfig "^7"
+    ts-node "^10.7.0"
 
 cosmiconfig-typescript-loader@^2.0.0:
   version "2.0.0"
