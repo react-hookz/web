@@ -89,7 +89,7 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.4",
-    "@storybook/addon-docs": "^6.4.20",
+    "@storybook/addon-docs": "^6.5.3",
     "@storybook/addon-essentials": "^6.5.0",
     "@storybook/addon-links": "^6.5.3",
     "@storybook/addons": "^6.5.0",
