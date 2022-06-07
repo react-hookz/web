@@ -118,7 +118,7 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.2",
     "ts-jest": "^28.0.4",
-    "ts-node": "^10.8.0",
+    "ts-node": "^10.8.1",
     "ttypescript": "^1.5.13",
     "typescript": "^4.7.3",
     "yarn": "^1.22.18"
