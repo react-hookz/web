@@ -2819,6 +2819,14 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
+"@storybook/client-logger@6.5.8":
+  version "6.5.8"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.5.8.tgz#551f818c4448ef6e6adf9c3ad256e1ae61e2d75c"
+  integrity sha512-dH6HSaVuOIMHy1+rpsqcD3SJxVZEEbuEtsNpdUGwLJaIuduhUJJpM2xQfUW0siZDyrgwoa+znll+G0YNUbv7sg==
+  dependencies:
+    core-js "^3.8.2"
+    global "^4.4.0"
+
 "@storybook/components@6.4.22":
   version "6.4.22"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.22.tgz#4d425280240702883225b6a1f1abde7dc1a0e945"
@@ -3417,12 +3425,21 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/theming@6.5.7", "@storybook/theming@^6.5.7":
+"@storybook/theming@6.5.7":
   version "6.5.7"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.5.7.tgz#63afa3838a9c1ba07d443ce6988f6ed99af62b75"
   integrity sha512-6zp1V84DSBcS8BtFOCJlF2/nIonjQmr+dILPxaM3lCm/X003i2jAQrBKTfPlmzCeDn07PBhzHaRJ3wJskfmeNw==
   dependencies:
     "@storybook/client-logger" "6.5.7"
+    core-js "^3.8.2"
+    regenerator-runtime "^0.13.7"
+
+"@storybook/theming@^6.5.8":
+  version "6.5.8"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.5.8.tgz#240a3c83ea53a9c7b1f3a2c47d6324f38ecb8771"
+  integrity sha512-1VaKHqj38Ls1bJwDpg3+aEOlvVib/DCFkP6WYrP/AQtNAzxiyw5WkaoRlTVJZvCdu5TxjpG4O6/Ai5TI9QftIg==
+  dependencies:
+    "@storybook/client-logger" "6.5.8"
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
