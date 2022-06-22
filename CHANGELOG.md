@@ -1,3 +1,11 @@
+## [14.2.3](https://github.com/react-hookz/web/compare/v14.2.2...v14.2.3) (2022-06-22)
+
+
+### Bug Fixes
+
+* apply correct order of operations in `useRerender` ([#850](https://github.com/react-hookz/web/issues/850)) ([5fc735a](https://github.com/react-hookz/web/commit/5fc735ad2b582394c913ffc2440495213d1dff2d))
+* change storybook builder to webpack5 ([#830](https://github.com/react-hookz/web/issues/830)) ([2df44c1](https://github.com/react-hookz/web/commit/2df44c1fc206dd0f6108da0bd282db259ab73010))
+
 ## [14.2.2](https://github.com/react-hookz/web/compare/v14.2.1...v14.2.2) (2022-05-12)
 
 
