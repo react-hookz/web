@@ -109,6 +109,8 @@ Coming from `react-use`? Check out our
     — Tracks a numeric value and offers functions for manipulating it.
   - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate--example)
     — Like `useSafeState` but its state setter is debounced.
+  - [**`useList`**](https://react-hookz.github.io/web/?path=/docs/state-uselist--example)
+    — Tracks a list and offers functions for manipulating it.
   - [**`useMap`**](https://react-hookz.github.io/web/?path=/docs/state-usemap--example) — Tracks the
     state of a `Map`.
   - [**`useMediatedState`**](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate--example)

@@ -26,6 +26,7 @@ export { useLifecycleLogger } from './useLifecycleLogger/useLifecycleLogger';
 
 // State
 export { useDebouncedState } from './useDebouncedState/useDebouncedState';
+export { useList } from './useList/useList';
 export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
