@@ -1,3 +1,10 @@
+# [14.3.0](https://github.com/react-hookz/web/compare/v14.2.3...v14.3.0) (2022-06-25)
+
+
+### Features
+
+* **useList:** port useList from react-use ([#810](https://github.com/react-hookz/web/issues/810)) ([73639fb](https://github.com/react-hookz/web/commit/73639fb55793c01ff8a8f1d7ad8bb3c7a9665561))
+
 ## [14.2.3](https://github.com/react-hookz/web/compare/v14.2.2...v14.2.3) (2022-06-22)
 
 
