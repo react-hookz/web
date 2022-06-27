@@ -106,7 +106,7 @@
     "@types/react-dom": "^18.0.5",
     "babel-loader": "^8.2.5",
     "commitizen": "^4.2.4",
-    "commitlint": "^17.0.2",
+    "commitlint": "^17.0.3",
     "concurrently": "^7.2.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.1",
