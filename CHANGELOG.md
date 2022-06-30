@@ -1,3 +1,10 @@
+# [14.5.0](https://github.com/react-hookz/web/compare/v14.4.0...v14.5.0) (2022-06-30)
+
+
+### Features
+
+* implement `useHookableRef` hook ([f41ab22](https://github.com/react-hookz/web/commit/f41ab226d4708a827724be3580d74dcef2baaee9))
+
 # [14.4.0](https://github.com/react-hookz/web/compare/v14.3.0...v14.4.0) (2022-06-30)
 
 
