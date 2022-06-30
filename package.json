@@ -111,7 +111,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.1",
     "jest": "^28.1.1",
-    "jest-environment-jsdom": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.2",
     "jest-github-actions-reporter": "^1.0.3",
     "js-cookie": "^3.0.1",
     "lint-staged": "^13.0.3",
