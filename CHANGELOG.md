@@ -1,3 +1,10 @@
+## [14.5.1](https://github.com/react-hookz/web/compare/v14.5.0...v14.5.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **useMeasure:** support conditional rendering ([76ac155](https://github.com/react-hookz/web/commit/76ac155f65223bdc51570138f55a4ca89d299079)), closes [#755](https://github.com/react-hookz/web/issues/755)
+
 # [14.5.0](https://github.com/react-hookz/web/compare/v14.4.0...v14.5.0) (2022-06-30)
 
 
