@@ -1,3 +1,10 @@
+# [14.4.0](https://github.com/react-hookz/web/compare/v14.3.0...v14.4.0) (2022-06-30)
+
+
+### Features
+
+* implement `useIntervalEffect` ([a3869a3](https://github.com/react-hookz/web/commit/a3869a35b80ded1f0abd96366038ccd0b10d9040)), closes [#33](https://github.com/react-hookz/web/issues/33) [#452](https://github.com/react-hookz/web/issues/452)
+
 # [14.3.0](https://github.com/react-hookz/web/compare/v14.2.3...v14.3.0) (2022-06-25)
 
 
