@@ -1,3 +1,11 @@
+# [14.6.0](https://github.com/react-hookz/web/compare/v14.5.1...v14.6.0) (2022-06-30)
+
+
+### Features
+
+* **useIsMounted:** allow to set initial value ([a63188a](https://github.com/react-hookz/web/commit/a63188a79e6b920fb6d2bd4fd18f26b3dadb7036))
+* **useSafeState:** fix issue with inability to set state before mount ([af8f4cd](https://github.com/react-hookz/web/commit/af8f4cdcc498260a6cdb763dc13605102ab9ba9b))
+
 ## [14.5.1](https://github.com/react-hookz/web/compare/v14.5.0...v14.5.1) (2022-06-30)
 
 
