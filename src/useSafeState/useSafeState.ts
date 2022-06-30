@@ -14,7 +14,7 @@ export function useSafeState<S>(
   initialState?: S | (() => S)
 ): [S | undefined, Dispatch<SetStateAction<S>>] {
   const [state, setState] = useState(initialState);
-  const isMounted = useIsMounted();
+  const isMounted = useIsMounted(true);
 
   return [
     state,
