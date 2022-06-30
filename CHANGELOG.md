@@ -1,3 +1,10 @@
+# [14.7.0](https://github.com/react-hookz/web/compare/v14.6.0...v14.7.0) (2022-06-30)
+
+
+### Features
+
+* implement `useFunctionalState` ([#862](https://github.com/react-hookz/web/issues/862)) ([1491d38](https://github.com/react-hookz/web/commit/1491d38024cf2c5c3646e5dcf5a31e9f0a0e1aec)), closes [#530](https://github.com/react-hookz/web/issues/530)
+
 # [14.6.0](https://github.com/react-hookz/web/compare/v14.5.1...v14.6.0) (2022-06-30)
 
 
