@@ -6,9 +6,12 @@ import { useCallback, useEffect, useRef } from 'react';
  * Returned function yields `true` only in case component is mounted. This hook
  * is handy for the cases when you have to detect component mount state within
  * async effects.
+ *
+ * @param initialValue Initial value. By default, this hook assumes that hook is
+ * not mounted yet at first render.
  */
-export function useIsMounted(): () => boolean {
-  const isMounted = useRef(false);
+export function useIsMounted(initialValue = false): () => boolean {
+  const isMounted = useRef(initialValue);
   const get = useCallback(() => isMounted.current, []);
 
   useEffect(() => {

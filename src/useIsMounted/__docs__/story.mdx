@@ -20,12 +20,17 @@ detect component mount state within async effects.
 ## Reference
 
 ```ts
-function useIsMounted(): () => boolean;
+function useIsMounted(initialValue = false): () => boolean;
 ```
 
 #### Importing
 
 <ImportPath />
+
+#### Arguments
+
+- **initialState** _`boolean`_ _(default: `false`)_ - Initial value. By default, this hook
+  assumes that hook is not mounted yet at first render.
 
 #### Return
 
