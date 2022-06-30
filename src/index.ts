@@ -27,6 +27,7 @@ export { useIntervalEffect } from './useIntervalEffect/useIntervalEffect';
 
 // State
 export { useDebouncedState } from './useDebouncedState/useDebouncedState';
+export { useFunctionalState } from './useFunctionalState/useFunctionalState';
 export { useList } from './useList/useList';
 export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
@@ -58,6 +59,7 @@ export { useVibrate } from './useVibrate/useVibrate';
 
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';
+export { useHookableRef, HookableRefHandler } from './useHookableRef/useHookableRef';
 
 // SideEffect
 export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValue';
@@ -109,5 +111,3 @@ export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 
 export { IEffectCallback, IEffectHook } from './util/misc';
-
-export { useHookableRef } from './useHookableRef/useHookableRef';
