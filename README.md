@@ -84,6 +84,8 @@ Coming from `react-use`? Check out our
     dependency changes.
   - [**`useFirstMountState`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
     — Return boolean that is `true` only on first render.
+  - [**`useIntervalEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useintervaleffect--example)
+    — Like `setInterval` but in form of react hook.
   - [**`useIsMounted`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
     — Returns function that yields current mount state.
   - [**`useIsomorphicLayoutEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useisomorphiclayouteffect--page)
@@ -102,8 +104,6 @@ Coming from `react-use`? Check out our
     — Effect hook that ignores the first render (not invoked on mount).
   - [**`useLifecycleLogger`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-uselifecycleLogger--example)
     — This hook provides a console log when the component mounts, updates and unmounts.
-  - [**`useInterval`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useintervaleffect--example)
-    — Like `setInterval` but in form of react hook.
 
 - #### State
 
