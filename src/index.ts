@@ -4,7 +4,7 @@ export { useDebouncedCallback } from './useDebouncedCallback/useDebouncedCallbac
 export { useRafCallback } from './useRafCallback/useRafCallback';
 export { useThrottledCallback } from './useThrottledCallback/useThrottledCallback';
 
-// Livecycle
+// Lifecycle
 export {
   useConditionalEffect,
   IConditionsPredicate,
@@ -23,6 +23,7 @@ export { useThrottledEffect } from './useThrottledEffect/useThrottledEffect';
 export { useUnmountEffect } from './useUnmountEffect/useUnmountEffect';
 export { useUpdateEffect } from './useUpdateEffect/useUpdateEffect';
 export { useLifecycleLogger } from './useLifecycleLogger/useLifecycleLogger';
+export { useIntervalEffect } from './useIntervalEffect/useIntervalEffect';
 
 // State
 export { useDebouncedState } from './useDebouncedState/useDebouncedState';

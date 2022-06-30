@@ -102,6 +102,8 @@ Coming from `react-use`? Check out our
     — Effect hook that ignores the first render (not invoked on mount).
   - [**`useLifecycleLogger`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-uselifecycleLogger--example)
     — This hook provides a console log when the component mounts, updates and unmounts.
+  - [**`useInterval`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useintervaleffect--example)
+    — Like `setInterval` but in form of react hook.
 
 - #### State
 
