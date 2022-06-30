@@ -109,3 +109,5 @@ export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 
 export { IEffectCallback, IEffectHook } from './util/misc';
+
+export { useHookableRef } from './useHookableRef/useHookableRef';
