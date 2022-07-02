@@ -1,4 +1,4 @@
-import { DocsContext, Source } from '@storybook/addon-docs/blocks';
+import { DocsContext, Source } from '@storybook/addon-docs';
 import React, { FC, useContext } from 'react';
 
 export const ImportPath: FC = () => {
