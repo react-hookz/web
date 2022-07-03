@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
+import Cookies from 'js-cookie';
 import { Dispatch, useCallback, useEffect } from 'react';
-import * as Cookies from 'js-cookie';
 import { useFirstMountState, useMountEffect, useSafeState, useSyncedRef } from '..';
 import { isBrowser } from '../util/const';
 

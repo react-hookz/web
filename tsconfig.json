@@ -14,6 +14,7 @@
     "noEmit": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "sourceMap": true
   },
   "exclude": [
