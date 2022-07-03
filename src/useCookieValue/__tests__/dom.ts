@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import * as Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 import { IUseCookieValueReturn, useCookieValue } from '../useCookieValue';
 import SpyInstance = jest.SpyInstance;
 
