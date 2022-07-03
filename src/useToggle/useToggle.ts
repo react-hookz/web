@@ -4,12 +4,12 @@ import { IInitialState, INextState, resolveHookState } from '../util/resolveHook
 
 export function useToggle(
   initialState: IInitialState<boolean>,
-  ignoreReactEvents?: true
-): [boolean, (nextState?: INextState<boolean> | BaseSyntheticEvent) => void];
-export function useToggle(
-  initialState: IInitialState<boolean>,
   ignoreReactEvents: false
 ): [boolean, (nextState?: INextState<boolean>) => void];
+export function useToggle(
+  initialState?: IInitialState<boolean>,
+  ignoreReactEvents?: true
+): [boolean, (nextState?: INextState<boolean> | BaseSyntheticEvent) => void];
 
 /**
  * Like `useSafeState`, but can only become `true` or `false`.
