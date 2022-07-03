@@ -8,6 +8,10 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 
 Like `useState`, but can only become `true` or `false`.
 
+State setter, in case called without arguments, will change the state to opposite. React synthetic
+events are ignored by default so state setter can be used as event handler directly, such behaviour
+can be changed by setting 2nd parameter to `false`.
+
 > **_This hook provides stable API, meaning returned functions do not change between renders_**
 
 #### Example
@@ -19,9 +23,15 @@ Like `useState`, but can only become `true` or `false`.
 ## Reference
 
 ```ts
-function useToggle(
-  initialState: IInitialState<boolean> = false
-): [boolean, (nextState?: INewState<boolean>) => void];
+export function useToggle(
+  initialState: IInitialState<boolean>,
+  ignoreReactEvents?: true
+): [boolean, (nextState?: INextState<boolean> | BaseSyntheticEvent) => void];
+
+export function useToggle(
+  initialState: IInitialState<boolean>,
+  ignoreReactEvents: false
+): [boolean, (nextState?: INextState<boolean>) => void];
 ```
 
 #### Importing
@@ -32,6 +42,7 @@ function useToggle(
 
 - _**initialState**_ _`IInitialState<boolean>`_ - initial state or initial state setter as for
   `useState`
+- _**ignoreReactEvents**_ _`boolean`_ _(default: true)_ - ignore received react synthetic events, so state setter can be used as event handler.
 
 #### Return
 
