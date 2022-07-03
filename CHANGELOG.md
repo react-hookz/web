@@ -1,3 +1,10 @@
+## [14.7.1](https://github.com/react-hookz/web/compare/v14.7.0...v14.7.1) (2022-07-03)
+
+
+### Bug Fixes
+
+* **useCookieValue:** proper js-cookie import ([#864](https://github.com/react-hookz/web/issues/864)) ([bb6464b](https://github.com/react-hookz/web/commit/bb6464b9893370c73edcf462a65f09de23efbf44)), closes [#280](https://github.com/react-hookz/web/issues/280)
+
 # [14.7.0](https://github.com/react-hookz/web/compare/v14.6.0...v14.7.0) (2022-06-30)
 
 
