@@ -8,6 +8,8 @@ export type ScreenOrientation = 'portrait' | 'landscape';
  * As `Screen Orientation API` is still experimental and not supported by Safari, this
  * hook uses CSS3 `orientation` media-query to check screen orientation.
  */
-export function useScreenOrientation(): ScreenOrientation {
-  return useMediaQuery('(orientation: portrait)') ? 'portrait' : 'landscape';
+export function useScreenOrientation(): ScreenOrientation | undefined {
+  const matches = useMediaQuery('(orientation: portrait)');
+
+  return typeof matches === 'undefined' ? undefined : matches ? 'portrait' : 'landscape';
 }
