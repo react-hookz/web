@@ -7,12 +7,7 @@ export const Example: React.FC = () => {
   return (
     <div>
       <div>{isToggled ? 'The toggle is on' : 'The toggle is off'}</div>
-      <button
-        onClick={() => {
-          toggle();
-        }}>
-        Toggle
-      </button>
+      <button onClick={toggle}>Toggle</button>
     </div>
   );
 };
