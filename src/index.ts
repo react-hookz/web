@@ -26,6 +26,8 @@ export { useLifecycleLogger } from './useLifecycleLogger/useLifecycleLogger';
 export { useIntervalEffect } from './useIntervalEffect/useIntervalEffect';
 
 // State
+export { useControlledRerenderState } from './useControlledRerenderState/useControlledRerenderState';
+export { useCounter, CounterActions } from './useCounter/useCounter';
 export { useDebouncedState } from './useDebouncedState/useDebouncedState';
 export { useFunctionalState } from './useFunctionalState/useFunctionalState';
 export { useList } from './useList/useList';
@@ -46,7 +48,6 @@ export {
   IValidityState,
   IUseValidatorReturn,
 } from './useValidator/useValidator';
-export { useCounter, CounterActions } from './useCounter/useCounter';
 
 // Navigator
 export {
@@ -111,3 +112,5 @@ export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 
 export { IEffectCallback, IEffectHook } from './util/misc';
+
+export { resolveHookState } from './util/resolveHookState';

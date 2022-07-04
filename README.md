@@ -107,6 +107,9 @@ Coming from `react-use`? Check out our
 
 - #### State
 
+  - [**`useControlledRerenderState`**](https://react-hookz.github.io/web/?path=/docs/state-usecontrolledrerenderstate--example)
+    — Like `React.useState`, but its state setter accepts extra argument, that allows to cancel
+    rerender.
   - [**`useCounter`**](https://react-hookz.github.io/web/?path=/docs/state-usecounter--example)
     — Tracks a numeric value and offers functions for manipulating it.
   - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate--example)
