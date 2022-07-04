@@ -36,6 +36,7 @@ module.exports = {
       },
     },
   ],
-  coverageDirectory: './coverage',
   collectCoverage: false,
+  coverageDirectory: './coverage',
+  collectCoverageFrom: ['./src/**/*.{ts,js,tsx,jsx}', '!**/__tests__/**', '!**/__docs__/**'],
 };

@@ -1,4 +1,4 @@
-import { resolveHookState } from '../resolveHookState';
+import { resolveHookState } from '../..';
 import { basicDepsComparator, off, on } from '../misc';
 
 describe('resolveHookState', () => {
