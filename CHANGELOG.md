@@ -1,3 +1,10 @@
+## [15.0.1](https://github.com/react-hookz/web/compare/v15.0.0...v15.0.1) (2022-07-04)
+
+
+### Bug Fixes
+
+* **useLifecycleLogger:** rework hook and improve tests coverage ([#868](https://github.com/react-hookz/web/issues/868)) ([bfba4c2](https://github.com/react-hookz/web/commit/bfba4c25389a81677925d71645dd41da307bfe24))
+
 # [15.0.0](https://github.com/react-hookz/web/compare/v14.7.1...v15.0.0) (2022-07-04)
 
 
