@@ -44,4 +44,12 @@ describe('useHookableRef', () => {
     expect(getter).toHaveBeenCalledTimes(2);
     expect(setter).toHaveBeenCalledTimes(1);
   });
+
+  it('should work properly without getter and setter', () => {
+    const { result } = renderHook(() => useHookableRef(123));
+    expect(result.current.current).toBe(123);
+
+    result.current.current = 321;
+    expect(result.current.current).toBe(321);
+  });
 });
