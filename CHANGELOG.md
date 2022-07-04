@@ -1,3 +1,25 @@
+# [15.0.0](https://github.com/react-hookz/web/compare/v14.7.1...v15.0.0) (2022-07-04)
+
+
+### Bug Fixes
+
+* **useMediaQuery:** fix state stuck for concurrent mode ([#866](https://github.com/react-hookz/web/issues/866)) ([75db2b5](https://github.com/react-hookz/web/commit/75db2b5d73ab07beb53f335274b4413f36d625ab)), closes [#849](https://github.com/react-hookz/web/issues/849)
+
+
+### Features
+
+* implement `useControlledRerenderState` hook ([#865](https://github.com/react-hookz/web/issues/865)) ([ea4545b](https://github.com/react-hookz/web/commit/ea4545b7ee45019c68d0edb2332bd9478e50b820))
+* **useToggle:** ignore react events passed to state setter ([#867](https://github.com/react-hookz/web/issues/867)) ([085f711](https://github.com/react-hookz/web/commit/085f711200edc9beb7ed5adedcb83d8ce45c0f77)), closes [#861](https://github.com/react-hookz/web/issues/861)
+
+
+### BREAKING CHANGES
+
+* **useToggle:** `useToggle` now ignores react events passed to its
+state setter, so it can be used as event handler directly.
+* **useMediaQuery:** `useMediaQuery` and `useScreenOrientation` are
+asynchronous now and yields `undefined` at very first render, but
+updates to actual value right after.
+
 ## [14.7.1](https://github.com/react-hookz/web/compare/v14.7.0...v14.7.1) (2022-07-03)
 
 
