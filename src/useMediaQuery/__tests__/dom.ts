@@ -56,14 +56,8 @@ describe('useMediaQuery', () => {
 
   it('should return undefined on first render', () => {
     const { result } = renderHook(() => useMediaQuery('max-width : 768px'));
-    expect(result.all.length).toBe(1);
-    expect(result.current).toBe(false);
-  });
-
-  it('should return undefined on first render and `matchOnMount` set to false', () => {
-    const { result } = renderHook(() => useMediaQuery('max-width : 768px', true));
-    expect(result.all[0]).toBeUndefined();
     expect(result.all.length).toBe(2);
+    expect(result.all[0]).toBe(undefined);
     expect(result.current).toBe(false);
   });
 

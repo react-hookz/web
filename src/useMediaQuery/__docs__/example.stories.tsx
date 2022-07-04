@@ -17,16 +17,20 @@ export const Example: React.FC = () => {
       <br />
       <br />
       <div>
-        Small device (<code>max-width : 768px</code>): {isSmallDevice ? 'yes' : 'no'}
+        Small device (<code>max-width : 768px</code>):{' '}
+        {isSmallDevice === undefined ? 'unknown' : isSmallDevice ? 'yes' : 'no'}
       </div>
       <div>
-        Medium device (<code>max-width : 992px</code>): {isMediumDevice ? 'yes' : 'no'}
+        Medium device (<code>max-width : 992px</code>):{' '}
+        {isMediumDevice === undefined ? 'unknown' : isMediumDevice ? 'yes' : 'no'}
       </div>
       <div>
-        Large device (<code>max-width : 1200px</code>): {isLargeDevice ? 'yes' : 'no'}
+        Large device (<code>max-width : 1200px</code>):{' '}
+        {isLargeDevice === undefined ? 'unknown' : isLargeDevice ? 'yes' : 'no'}
       </div>
       <div>
-        Extra large device (<code>min-width : 1201px</code>): {isExtraLargeDevice ? 'yes' : 'no'}
+        Extra large device (<code>min-width : 1201px</code>):{' '}
+        {isExtraLargeDevice === undefined ? 'unknown' : isExtraLargeDevice ? 'yes' : 'no'}
       </div>
     </div>
   );

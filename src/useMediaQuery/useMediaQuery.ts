@@ -1,13 +1,12 @@
-import { Dispatch, useCallback, useEffect, useRef } from 'react';
-import { usePrevious, useRerender } from '..';
-import { isBrowser } from '../util/const';
+import { Dispatch, useEffect } from 'react';
+import { useSafeState } from '..';
 
 const queriesMap = new Map<
   string,
   { mql: MediaQueryList; dispatchers: Set<Dispatch<boolean>>; listener: () => void }
 >();
 
-type QueryStateSetter = (matches: boolean, initial?: boolean) => void;
+type QueryStateSetter = (matches: boolean) => void;
 
 const querySubscribe = (query: string, setState: QueryStateSetter) => {
   let entry = queriesMap.get(query);
@@ -31,7 +30,7 @@ const querySubscribe = (query: string, setState: QueryStateSetter) => {
   }
 
   entry.dispatchers.add(setState);
-  setState(entry.mql.matches, true);
+  setState(entry.mql.matches);
 };
 
 const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
@@ -52,50 +51,22 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
   }
 };
 
-export function useMediaQuery(query: string, matchOnMount?: false): boolean;
-export function useMediaQuery(query: string, matchOnMount: true): boolean | undefined;
-
 /**
  * Tracks the state of CSS media query.
  *
- * Defaults to false in SSR environments
+ * Return undefined initially and later receives correct value.
  *
  * @param query CSS media query to track.
- * @param matchOnMount whether hook state should be fetched during effects stage instead of
- * synchronous fetch. Set this parameter to `true` for SSR use-cases.
  */
-export function useMediaQuery(query: string, matchOnMount?: boolean): boolean | undefined {
-  const rerender = useRerender();
-  const previousQuery = usePrevious(query);
+export function useMediaQuery(query: string): boolean | undefined {
+  const [state, setState] = useSafeState<boolean>();
 
-  const state = useRef<boolean | undefined>();
-
-  const setState = useCallback(
-    (matches: boolean, initial?: boolean) => {
-      if (state.current !== matches) {
-        state.current = matches;
-
-        if (!initial || matchOnMount) rerender();
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [matchOnMount]
-  );
-
-  // do synchronous subscription only for case we are in browser and mount match required
-  if (!matchOnMount && isBrowser && previousQuery !== query) {
-    querySubscribe(query, setState);
-  }
-
-  // otherwise, match should happen in effect stage
   useEffect(() => {
-    if (matchOnMount) {
-      querySubscribe(query, setState);
-    }
+    querySubscribe(query, setState);
 
     return () => queryUnsubscribe(query, setState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  return state.current;
+  return state;
 }
