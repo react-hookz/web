@@ -1,30 +1,45 @@
-/* eslint-disable no-console */
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { useLifecycleLogger } from '../useLifecycleLogger';
 
 describe('useLifecycleLogger', () => {
-  const originalLog = console.log; // save original console.log function
-  beforeEach(() => {
-    console.log = jest.fn(); // create a new mock function for each test
+  let logSpy: jest.SpyInstance;
+
+  beforeAll(() => {
+    logSpy = jest.spyOn(console, 'log');
   });
+
   afterAll(() => {
-    console.log = originalLog; // restore original console.log after all tests
-  });
-  it('should return TestComponent mounted on first render', () => {
-    const dep = 'test';
-    renderHook(() => useLifecycleLogger('TestComponent', [dep]));
-    expect(console.log).toBeCalledWith('TestComponent mounted', { '0': 'test' });
+    logSpy.mockRestore();
   });
 
-  it('should return `TestComponent updated` on second and next renders', () => {
-    const { rerender } = renderHook(() => useLifecycleLogger('TestComponent'));
+  beforeEach(() => {
+    logSpy.mockReset();
+  });
 
-    expect(console.log).toBeCalledWith('TestComponent mounted', {});
+  it('should log whole component lifecycle', () => {
+    const { unmount, rerender } = renderHook(
+      ({ deps }) => {
+        useLifecycleLogger('TestComponent', deps);
+      },
+      { initialProps: { deps: [1, 2, 3] } }
+    );
 
-    rerender();
-    expect(console.log).toBeCalledWith('TestComponent updated', {});
+    expect(logSpy).toBeCalledTimes(1);
+    expect(logSpy).toBeCalledWith(`TestComponent mounted`, [1, 2, 3]);
 
-    rerender();
-    expect(console.log).toBeCalledWith('TestComponent updated', {});
+    rerender({ deps: [3, 2, 1] });
+
+    expect(logSpy).toBeCalledTimes(2);
+    expect(logSpy).toBeCalledWith(`TestComponent updated`, [3, 2, 1]);
+
+    rerender({ deps: [1, 5, 6] });
+
+    expect(logSpy).toBeCalledTimes(3);
+    expect(logSpy).toBeCalledWith(`TestComponent updated`, [1, 5, 6]);
+
+    unmount();
+
+    expect(logSpy).toBeCalledTimes(4);
+    expect(logSpy).toBeCalledWith(`TestComponent unmounted`);
   });
 });
