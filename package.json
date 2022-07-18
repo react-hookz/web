@@ -100,7 +100,7 @@
     "@storybook/storybook-deployer": "^2.8.11",
     "@storybook/theming": "^6.5.9",
     "@testing-library/react-hooks": "^8.0.1",
-    "@types/jest": "^28.1.5",
+    "@types/jest": "^28.1.6",
     "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
