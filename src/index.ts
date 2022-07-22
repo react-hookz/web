@@ -50,6 +50,7 @@ export {
 } from './useValidator/useValidator';
 
 // Navigator
+export { useCopyToClipboard, CopyToClipboardState } from './useCopyToClipboard/useCopyToClipboard';
 export {
   useNetworkState,
   IUseNetworkState,
