@@ -147,6 +147,7 @@ Coming from `react-use`? Check out our
     — Provides vibration feedback using the Vibration API.
   - [**`usePermission`**](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission--example)
     — Tracks a permission state.
+  - [**`useCopyToClipboard`**](https://react-hookz.github.io/web/?path=/docs/navigator-usecopytoclipboard--example)
 
 - #### Miscellaneous
 

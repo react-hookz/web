@@ -1,0 +1,51 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Navigator/useCopyToClipboard" component={Example} />
+
+# useCopyToClipboard
+
+Copy text to clipboard and provides a state to know if copy was performed or not or if it failed.
+It's based on the Navigator's clipboard API,
+[see on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API).
+
+> This hook uses `useSafeState` underneath, so it is safe to use its `copyToClipboard` and
+> `resetCopyState` callbacks in async hooks.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+type CopyToClipboardState =
+  | {
+      value: undefined;
+      success: undefined;
+      error: undefined;
+    }
+  | {
+      value: string;
+      success: true;
+      error?: undefined;
+    }
+  | {
+      success: false;
+      value?: undefined;
+      error: Error;
+    };
+
+export function useCopyToClipboard(): [
+  copyState: CopyToClipboardState,
+  copyToClipboard: (text: string) => void,
+  resetCopyState: () => void
+];
+```
+
+#### Importing
+
+<ImportPath />
