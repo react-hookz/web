@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Lifecycle/useTimeoutEffect" component={Example} />
+
+# useTimeoutEffect
+
+Like `setTimeout` but in the form of a react hook.
+
+- Auto-cancels the timeout on component unmount.
+- Resets the timeout on delay change.
+- Changing the callback won't cause the timeout to reset.
+- Ability to cancel the timeout.
+- Ability to reset the timeout.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useTimeoutEffect(callback: () => void, ms?: number): void;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **callback** _`() => void`_ - Function to be called after timeout.
+- **ms** _`number | undefined`_ - Delay passed to underlying `setTimeout`. If `undefined` the interval will be cancelled.
+
+#### Return
+
+1. **cancel** _`() => void`_ - Function to cancel the timeout.
+2. **reset** _`() => void`_ - Function to reset the timeout.

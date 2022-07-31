@@ -98,6 +98,8 @@ Coming from `react-use`? Check out our
     — Return callback that re-renders component.
   - [**`useThrottledEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usethrottledeffect--example)
     — Like `useEffect`, but passed function is throttled.
+  - [**`useTimeoutEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetimeouteffect--example)
+    — Like `setTimeout`, but in the form of a react hook.
   - [**`useUnmountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect--example)
     — Run effect only when component unmounted.
   - [**`useUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
