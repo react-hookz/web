@@ -243,11 +243,41 @@ Not implemented yet
 
 #### useTimeout
 
-Not implemented yet
+No plans to implement, rather use [useTimeoutEffect](/docs/lifecycle-usetimeouteffect--example) and [useRerender](/docs/lifecycle-usererender--example) like this:
+
+```javascript
+const rerender = useRerender();
+const [cancel, reset] = useTimeoutEffect(rerender, 123);
+```
 
 #### useTimeoutFn
 
-Not implemented yet
+Implemented as [useTimeoutEffect](/docs/lifecycle-usetimeouteffect--example)
+
+API is backwards-compatible, minus the first `isReady` return value.
+
+In order to replicate the old functionality, you can do the following:
+
+```javascript
+const isReady = (React.useRef < boolean) | (null > false);
+
+const [cancel, reset] = useTimeoutEffect(() => {
+  isReady.current = true;
+  console.log('Hello world');
+}, 123);
+
+const clear = () => {
+  isReady.current = null;
+  cancel();
+};
+
+const set = () => {
+  isReady.current = false;
+  reset();
+};
+
+// Use set and clear, same as in `react-use`.
+```
 
 #### useTween
 
