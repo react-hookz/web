@@ -24,6 +24,7 @@ export { useUnmountEffect } from './useUnmountEffect/useUnmountEffect';
 export { useUpdateEffect } from './useUpdateEffect/useUpdateEffect';
 export { useLifecycleLogger } from './useLifecycleLogger/useLifecycleLogger';
 export { useIntervalEffect } from './useIntervalEffect/useIntervalEffect';
+export { useTimeoutEffect } from './useTimeoutEffect/useTimeoutEffect';
 
 // State
 export { useControlledRerenderState } from './useControlledRerenderState/useControlledRerenderState';
