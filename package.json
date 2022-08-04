@@ -98,7 +98,7 @@
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/storybook-deployer": "^2.8.12",
-    "@storybook/theming": "^6.5.9",
+    "@storybook/theming": "^6.5.10",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^28.1.6",
     "@types/js-cookie": "^3.0.2",
