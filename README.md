@@ -195,3 +195,8 @@ Coming from `react-use`? Check out our
     — Executes callback when keyboard event occurred on target.
   - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
     — Tracks window inner dimensions.
+
+## Contributors
+
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
