@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Miscellaneous/useRetain" component={Example} />
+
+# useRetain
+
+Like `useMemo` but with a callback to defines that factory function can be invoked.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+type DepsAreNotEqual<TDeps extends DependencyList> = (savedDeps: TDeps, deps: TDeps) => boolean;
+
+function useRetain<TFactory extends () => unknown, TDeps extends DependencyList>(
+  factory: TFactory,
+  deps: TDeps,
+  depsAreNotEqual: DepsAreNotEqual<TDeps>
+): ReturnType<TFactory>;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **factory** _`() => unknown`_ - useMemo factory function.
+- **deps** _`DependencyList`_ - useMemo dependency list.
+- **depsAreNotEqual** _`DepsAreNotEqual<DependencyList>`_ - defines that factory function can be invoked.
