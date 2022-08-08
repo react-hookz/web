@@ -1,21 +1,21 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useRetain } from '../..';
+import { useCustomCompareMemo } from '../..';
 
 const mockUser = { name: 'John' };
 
 type User = typeof mockUser;
 
-describe('useRetain', () => {
+describe('useCustomCompareMemo', () => {
   it('should be defined', () => {
-    expect(useRetain).toBeDefined();
+    expect(useCustomCompareMemo).toBeDefined();
   });
 
   it('should render', () => {
     const { result } = renderHook(() =>
-      useRetain(
+      useCustomCompareMemo(
         () => mockUser,
         [],
-        () => false
+        () => true
       )
     );
 
@@ -27,10 +27,10 @@ describe('useRetain', () => {
     type Props = { user: User };
     const { result, rerender } = renderHook(
       ({ user }: Props) =>
-        useRetain(
+        useCustomCompareMemo(
           () => user,
           [user],
-          () => false
+          () => true
         ),
       { initialProps: { user: mockUser } }
     );
@@ -40,14 +40,14 @@ describe('useRetain', () => {
     expect(result.current).toBe(mockUser);
   });
 
-  it('should ivoke factory function when user name is not the same', () => {
+  it('should invoke factory function when user name is not the same', () => {
     type Props = { user: User };
     const { result, rerender } = renderHook(
       ({ user }: Props) =>
-        useRetain(
+        useCustomCompareMemo(
           () => user,
           [user],
-          (savedDeps, deps) => savedDeps[0].name !== deps[0].name
+          (savedDeps, deps) => savedDeps[0].name === deps[0].name
         ),
       { initialProps: { user: mockUser } }
     );

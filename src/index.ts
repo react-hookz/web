@@ -61,7 +61,7 @@ export { useVibrate } from './useVibrate/useVibrate';
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';
 export { useHookableRef, HookableRefHandler } from './useHookableRef/useHookableRef';
-export { useRetain } from './useRetain/useRetain';
+export { useCustomCompareMemo } from './useCustomCompareMemo/useCustomCompareMemo';
 
 // SideEffect
 export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValue';

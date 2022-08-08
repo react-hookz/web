@@ -1,17 +1,17 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useRetain } from '../..';
+import { useCustomCompareMemo } from '../..';
 
-describe('useRetain', () => {
+describe('useCustomCompareMemo', () => {
   it('should be defined', () => {
-    expect(useRetain).toBeDefined();
+    expect(useCustomCompareMemo).toBeDefined();
   });
 
   it('should render', () => {
     const { result } = renderHook(() =>
-      useRetain(
+      useCustomCompareMemo(
         () => ({ user: { name: 'John' } }),
         [],
-        () => false
+        () => true
       )
     );
     expect(result.error).toBeUndefined();

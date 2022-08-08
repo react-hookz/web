@@ -1,5 +1,5 @@
 import React, { useReducer, useMemo, useRef } from 'react';
-import { useRetain } from '../useRetain';
+import { useCustomCompareMemo } from '../..';
 
 // data
 const keys = ['firstname', 'name'];
@@ -26,7 +26,7 @@ export const Example: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const person = { key: getRandom(keys), value: 'John' };
 
-  useRetain(
+  useCustomCompareMemo(
     () => {
       if (person) {
         retainCalls.current++;
@@ -53,7 +53,7 @@ export const Example: React.FC = () => {
     <div>
       {person && displayAsJSON(person)}
       <p>memo calls: {memoCalls.current}</p>
-      <p>retain calls: {retainCalls.current}</p>
+      <p>custom memo calls: {retainCalls.current}</p>
       <button onClick={force}>force</button>
     </div>
   );
