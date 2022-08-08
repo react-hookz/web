@@ -199,4 +199,106 @@ Coming from `react-use`? Check out our
 ## Contributors
 
 <!-- readme: collaborators,contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/xobotyi">
+            <img src="https://avatars.githubusercontent.com/u/6178739?v=4" width="80;" alt="xobotyi"/>
+            <br />
+            <sub><b>Anton Zinovyev</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/JoeDuncko">
+            <img src="https://avatars.githubusercontent.com/u/6749768?v=4" width="80;" alt="JoeDuncko"/>
+            <br />
+            <sub><b>Joe Duncko</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/semantic-release-bot">
+            <img src="https://avatars.githubusercontent.com/u/32174276?v=4" width="80;" alt="semantic-release-bot"/>
+            <br />
+            <sub><b>Semantic Release Bot</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/lint-action">
+            <img src="https://avatars.githubusercontent.com/u/59283862?v=4" width="80;" alt="lint-action"/>
+            <br />
+            <sub><b>Lint Action</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/kylemh">
+            <img src="https://avatars.githubusercontent.com/u/9523719?v=4" width="80;" alt="kylemh"/>
+            <br />
+            <sub><b>Kyle Holmberg</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ArttuOll">
+            <img src="https://avatars.githubusercontent.com/u/60509537?v=4" width="80;" alt="ArttuOll"/>
+            <br />
+            <sub><b>Arttu Olli</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Rey-Wang">
+            <img src="https://avatars.githubusercontent.com/u/45580554?v=4" width="80;" alt="Rey-Wang"/>
+            <br />
+            <sub><b>Rey Wang</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/AndreasNel">
+            <img src="https://avatars.githubusercontent.com/u/17763359?v=4" width="80;" alt="AndreasNel"/>
+            <br />
+            <sub><b>Andreas Nel</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/axelboc">
+            <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="80;" alt="axelboc"/>
+            <br />
+            <sub><b>Axel Bocciarelli</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/birant">
+            <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="80;" alt="birant"/>
+            <br />
+            <sub><b>Birant İyigün</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/punkle">
+            <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="80;" alt="punkle"/>
+            <br />
+            <sub><b>Brian Fletcher</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/JoshuaStewartEntelect">
+            <img src="https://avatars.githubusercontent.com/u/92043787?v=4" width="80;" alt="JoshuaStewartEntelect"/>
+            <br />
+            <sub><b>Joshua Stewart</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/KonradLinkowski">
+            <img src="https://avatars.githubusercontent.com/u/26126510?v=4" width="80;" alt="KonradLinkowski"/>
+            <br />
+            <sub><b>Konrad Linkowski</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/fengkx">
+            <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="80;" alt="fengkx"/>
+            <br />
+            <sub><b>Fengkx</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: collaborators,contributors -end -->
