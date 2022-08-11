@@ -58,27 +58,6 @@ jobs:
       - name: "Tests against build"
         run: yarn jest --selectProjects dom-cjs dom-package
 
-  storybook-build:
-    name: "Storybook Build"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
-          install-command: yarn --frozen-lockfile
-
-      - name: "Storybook Build"
-        run: yarn storybook:build
-
   test:
     name: "Test"
     runs-on: ubuntu-latest
@@ -147,7 +126,23 @@ jobs:
 
       - name: "Release"
         id: "release"
-        uses: codfish/semantic-release-action@v1.9.0
+        uses: codfish/semantic-release-action@v2.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  gen-contributors:
+    name: "Generate Contributors List"
+    runs-on: ubuntu-latest
+    needs: [ "test", "build", "lint" ]
+    if: github.event_name == 'push'
+    permissions:
+      contents: write
+    steps:
+      - name: Contribute List
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
+        with:
+          image_size: 100
+          columns_per_row: 8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
