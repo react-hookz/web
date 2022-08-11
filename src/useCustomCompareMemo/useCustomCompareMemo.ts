@@ -2,7 +2,7 @@ import { useMemo, useRef } from 'react';
 
 import type { DependencyList } from 'react';
 
-type DepsAreEqual<TDeps extends DependencyList> = (savedDeps: TDeps, deps: TDeps) => boolean;
+type DepsAreEqual<Deps extends DependencyList> = (savedDeps: Deps, deps: Deps) => boolean;
 
 /**
  * Like `useMemo` but with a callback to defines that factory function can be invoked.
@@ -12,12 +12,12 @@ type DepsAreEqual<TDeps extends DependencyList> = (savedDeps: TDeps, deps: TDeps
  * @param depsAreEqual defines that factory function can be invoked
  * @returns useMemo result
  */
-export const useCustomCompareMemo = <TFactory extends () => unknown, TDeps extends DependencyList>(
-  factory: TFactory,
-  deps: TDeps,
-  depsAreEqual: DepsAreEqual<TDeps>
+export const useCustomCompareMemo = <Factory extends () => unknown, Deps extends DependencyList>(
+  factory: Factory,
+  deps: Deps,
+  depsAreEqual: DepsAreEqual<Deps>
 ) => {
-  const savedDeps = useRef<TDeps>(deps);
+  const savedDeps = useRef<Deps>(deps);
   const canCall = useRef(false);
 
   if (canCall.current && !depsAreEqual(savedDeps.current, deps)) {
@@ -29,5 +29,5 @@ export const useCustomCompareMemo = <TFactory extends () => unknown, TDeps exten
   // eslint-disable-next-line react-hooks/exhaustive-deps -- missing factory function
   const memo = useMemo(factory, savedDeps.current);
 
-  return memo as ReturnType<TFactory>;
+  return memo as ReturnType<Factory>;
 };

@@ -17,13 +17,13 @@ Like `useMemo` but with a callback to defines that factory function can be invok
 ## Reference
 
 ```ts
-type DepsAreEqual<TDeps extends DependencyList> = (savedDeps: TDeps, deps: TDeps) => boolean;
+type DepsAreEqual<Deps extends DependencyList> = (savedDeps: Deps, deps: Deps) => boolean;
 
-function useCustomCompareMemo<TFactory extends () => unknown, TDeps extends DependencyList>(
-  factory: TFactory,
-  deps: TDeps,
-  depsAreEqual: DepsAreEqual<TDeps>
-): ReturnType<TFactory>;
+function useCustomCompareMemo<Factory extends () => unknown, Deps extends DependencyList>(
+  factory: Factory,
+  deps: Deps,
+  depsAreEqual: DepsAreEqual<Deps>
+): ReturnType<Factory>;
 ```
 
 #### Importing
