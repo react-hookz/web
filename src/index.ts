@@ -61,6 +61,7 @@ export { useVibrate } from './useVibrate/useVibrate';
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';
 export { useHookableRef, HookableRefHandler } from './useHookableRef/useHookableRef';
+export { useFreezeProp } from './useFreezeProp/useFreezeProp';
 
 // SideEffect
 export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValue';

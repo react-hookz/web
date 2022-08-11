@@ -154,6 +154,8 @@ Coming from `react-use`? Check out our
     — Like `useRef`, but it returns immutable ref that contains actual value.
   - [**`useHookableRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usehookableref--example)
     — Like `useRef` but it is possible to define get and set handlers.
+  - [**`useFreezeProp`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useFreezeProp--example)
+    — Freeze prop
 
 - #### Side-effect
 

@@ -1,0 +1,27 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Miscellaneous/useFreezeProp" component={Example} />
+
+# useFreezeProp
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useFreezeProp<T>(value: T): { readonly current: T };
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **prop** _`any`_ - prop for freeze.
