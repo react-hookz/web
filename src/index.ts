@@ -10,7 +10,10 @@ export {
   IConditionsPredicate,
   IConditionsList,
 } from './useConditionalEffect/useConditionalEffect';
-export { useCustomCompareEffect } from './useCustomCompareEffect/useCustomCompareEffect';
+export {
+  useCustomCompareEffect,
+  IDependenciesComparator,
+} from './useCustomCompareEffect/useCustomCompareEffect';
 export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
 export { useDeepCompareEffect } from './useDeepCompareEffect/useDeepCompareEffect';
 export { useFirstMountState } from './useFirstMountState/useFirstMountState';

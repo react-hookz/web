@@ -6,7 +6,7 @@ import { ImportPath } from '../../__docs__/ImportPath';
 
 # useCustomCompareMemo
 
-Like `useMemo` but with a callback to defines that factory function can be invoked.
+Like useMemo but uses provided comparator function to validate dependency changes.
 
 #### Example
 
@@ -17,12 +17,15 @@ Like `useMemo` but with a callback to defines that factory function can be invok
 ## Reference
 
 ```ts
-type DepsAreEqual<Deps extends DependencyList> = (savedDeps: Deps, deps: Deps) => boolean;
+export type IDependenciesComparator<Deps extends DependencyList = DependencyList> = (
+  a: Deps,
+  b: Deps
+) => boolean;
 
 function useCustomCompareMemo<Factory extends () => unknown, Deps extends DependencyList>(
   factory: Factory,
   deps: Deps,
-  depsAreEqual: DepsAreEqual<Deps>
+  comparator: IDependenciesComparator<Deps>
 ): ReturnType<Factory>;
 ```
 
@@ -34,4 +37,4 @@ function useCustomCompareMemo<Factory extends () => unknown, Deps extends Depend
 
 - **factory** _`() => unknown`_ - useMemo factory function.
 - **deps** _`DependencyList`_ - useMemo dependency list.
-- **depsAreEqual** _`DepsAreEqual<DependencyList>`_ - defines that factory function can be invoked.
+- **comparator** _`IDependenciesComparator<DependencyList>`_ - comparator function to validate dependency changes.
