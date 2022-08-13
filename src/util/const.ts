@@ -1,5 +1,7 @@
 import { IConditionsPredicate, Predicate } from '..';
 
+export type Noop = () => void;
+
 export const noop = (): void => {};
 
 export const isBrowser =

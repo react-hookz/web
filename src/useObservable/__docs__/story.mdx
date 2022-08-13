@@ -1,0 +1,42 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="State/useObservable" component={Example} />
+
+# useObservable
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+type Noop = () => void;
+
+type ObserverCallback = (entry: IntersectionObserverEntry) => void;
+
+function useObservable(
+  observerInit: IntersectionObserverInit,
+  observerCallback: ObserverCallback
+): {
+  observeElement: (element: Element) => void;
+  cleanup: () => void;
+};
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **observerInit** _`IntersectionObserverInit`_ - configuration of IntersectionObserver
+- **observerCallback** _`ObserverCallback`_ - callback of IntersectionObserver
+
+```
+
+```

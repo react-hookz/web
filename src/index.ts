@@ -48,6 +48,7 @@ export {
   IValidityState,
   IUseValidatorReturn,
 } from './useValidator/useValidator';
+export { useObservable } from './useObservable/useObservable';
 
 // Navigator
 export {

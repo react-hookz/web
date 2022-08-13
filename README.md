@@ -138,6 +138,8 @@ Coming from `react-use`? Check out our
     — Like `useSafeState` but its state setter is throttled.
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
     — Performs validation when any of provided dependencies has changed.
+  - [**`useObservable`**](https://react-hookz.github.io/web/?path=/docs/state-useobservable--example)
+    — Provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
 
 - #### Navigator
 
