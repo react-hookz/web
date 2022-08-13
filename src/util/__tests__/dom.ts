@@ -1,5 +1,6 @@
 import { resolveHookState } from '../..';
 import { basicDepsComparator, off, on } from '../misc';
+import { shallowEqual } from '../shallowEqual';
 
 describe('resolveHookState', () => {
   it('should be defined', () => {
@@ -82,5 +83,16 @@ describe('misc', () => {
     it('should return true in case arrays are equal', () => {
       expect(basicDepsComparator([1, 2, 3], [1, 2, 3])).toBe(true);
     });
+  });
+});
+
+describe('shallowEqual', () => {
+  it('should true when objects are equal by value', () => {
+    expect(shallowEqual({ a: 1, b: 2 }, { a: 1, b: 2 })).toBeTruthy();
+  });
+
+  it('should return false when object are different', () => {
+    expect(shallowEqual({ a: 1 }, { a: 1, b: 2 })).toBeFalsy();
+    expect(shallowEqual({ a: 1, b: 2 }, { a: 1 })).toBeFalsy();
   });
 });

@@ -1,0 +1,39 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Sensor/useBattery" component={Example} />
+
+# useBattery
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+type BatteryState = {
+  charging: boolean;
+  chargingTime: number;
+  dischargingTime: number;
+  level: number;
+};
+
+type HookState =
+  | (BatteryState & { isSupported: true; fetched: true })
+  | { isSupported: true; fetched: false }
+  | { isSupported: false };
+
+function useBattery(): HookState;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Return
+
+Return battery state.

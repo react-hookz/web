@@ -97,6 +97,7 @@ export {
   IKeyboardEventHandler,
   IUseKeyboardEventOptions,
 } from './useKeyboardEvent/useKeyboardEvent';
+export { useBattery } from './useBattery/useBattery';
 
 export {
   ScreenOrientation,
