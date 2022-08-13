@@ -182,7 +182,7 @@ Coming from `react-use`? Check out our
   - [**`useScreenOrientation`**](https://react-hookz.github.io/web/?path=/docs/sensor-usescreenorientation--example)
     — Checks if screen is in `portrait` or `landscape` orientation and automatically re-renders on
     orientation change.
-    - [**`useIntersectionObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-usebattery--example)
+    - [**`useBattery`**](https://react-hookz.github.io/web/?path=/docs/sensor-usebattery--example)
       — Tracks device battery state.
 
 - #### Dom
