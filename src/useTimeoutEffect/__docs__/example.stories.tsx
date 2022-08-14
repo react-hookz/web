@@ -23,6 +23,7 @@ export const Example: React.FC = () => {
 
   React.useEffect(() => {
     setNumCalls(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeoutValue, enabled]);
 
   return (
