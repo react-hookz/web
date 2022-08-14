@@ -154,6 +154,8 @@ Coming from `react-use`? Check out our
 
   - [**`useSyncedRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usesyncedref--example)
     — Like `useRef`, but it returns immutable ref that contains actual value.
+  - [**`useCustomCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useCustomCompareMemo--example)
+    — Like useMemo but uses provided comparator function to validate dependency changes.
   - [**`useHookableRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usehookableref--example)
     — Like `useRef` but it is possible to define get and set handlers.
 

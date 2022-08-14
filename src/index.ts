@@ -10,7 +10,10 @@ export {
   IConditionsPredicate,
   IConditionsList,
 } from './useConditionalEffect/useConditionalEffect';
-export { useCustomCompareEffect } from './useCustomCompareEffect/useCustomCompareEffect';
+export {
+  useCustomCompareEffect,
+  IDependenciesComparator,
+} from './useCustomCompareEffect/useCustomCompareEffect';
 export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
 export { useDeepCompareEffect } from './useDeepCompareEffect/useDeepCompareEffect';
 export { useFirstMountState } from './useFirstMountState/useFirstMountState';
@@ -62,6 +65,7 @@ export { useVibrate } from './useVibrate/useVibrate';
 // Miscellaneous
 export { useSyncedRef } from './useSyncedRef/useSyncedRef';
 export { useHookableRef, HookableRefHandler } from './useHookableRef/useHookableRef';
+export { useCustomCompareMemo } from './useCustomCompareMemo/useCustomCompareMemo';
 
 // SideEffect
 export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValue';
