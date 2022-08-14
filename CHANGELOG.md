@@ -1,3 +1,11 @@
+# [15.1.0](https://github.com/react-hookz/web/compare/v15.0.1...v15.1.0) (2022-08-14)
+
+
+### Features
+
+* `useCustomCompareMemo` - like useMemo but uses custom deps comparator ([#895](https://github.com/react-hookz/web/issues/895)) ([5b38e8d](https://github.com/react-hookz/web/commit/5b38e8d182c1642a12dbf44050c44bb56f1a4884))
+* implement useTimeoutEffect ([#886](https://github.com/react-hookz/web/issues/886)) ([a3f6f07](https://github.com/react-hookz/web/commit/a3f6f07d4f3a0ca91810a9c88e31891bdb46fe00))
+
 ## [15.0.1](https://github.com/react-hookz/web/compare/v15.0.0...v15.0.1) (2022-07-04)
 
 
