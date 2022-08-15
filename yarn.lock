@@ -2225,10 +2225,10 @@
   resolved "https://registry.yarnpkg.com/@react-hookz/deep-equal/-/deep-equal-1.0.3.tgz#e044bca38c1612ea8c1596ef858ef7cfea49dd7a"
   integrity sha512-lGZR5l3YRjzeIOHtJhiq96vQKrsq+9lsCyv+0fROMQeSNWtLLzX3R+psHNi6nsoP3XEhspiZ92nsiPmdNo8ztQ==
 
-"@react-hookz/eslint-config@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-config/-/eslint-config-1.7.0.tgz#b7345abe2c69e906ca2be03034bdf67ca3b88757"
-  integrity sha512-d7UH/yIRiO5VBYsB+l6fVDdkuU/qVqBLA3mWKLr/HJTXyl6esmffTTuGhDWqbYI0tgEFY2NsVvUfplujSZuVdA==
+"@react-hookz/eslint-config@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-config/-/eslint-config-1.7.1.tgz#1b7f98b610475ee1692a159842c1995e7cb9642f"
+  integrity sha512-xgF0HhEPlGmoEZ0qzmr6bzPsXckWa4L0YuhBxqawYxp5VpTUwrNXqWmdXpVFuRrW/VDstVqxLoL48FDlw+6vFg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.33.0"
     "@typescript-eslint/parser" "^5.33.0"
