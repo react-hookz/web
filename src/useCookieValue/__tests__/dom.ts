@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import Cookies from 'js-cookie';
-import { IUseCookieValueReturn, useCookieValue } from '../useCookieValue';
+import { UseCookieValueReturn, useCookieValue } from '../useCookieValue';
 import SpyInstance = jest.SpyInstance;
 
 describe('useCookieValue', () => {
@@ -44,7 +44,7 @@ describe('useCookieValue', () => {
     Cookies.set('react-hookz', 'awesome');
 
     const { result } = renderHook(() => useCookieValue('react-hookz'));
-    expect((result.all[0] as IUseCookieValueReturn)[0]).toBe('awesome');
+    expect((result.all[0] as UseCookieValueReturn)[0]).toBe('awesome');
 
     Cookies.remove('react-hookz');
   });
@@ -53,7 +53,7 @@ describe('useCookieValue', () => {
     const { result } = renderHook(() =>
       useCookieValue('react-hookz', { initializeWithValue: false })
     );
-    expect((result.all[0] as IUseCookieValueReturn)[0]).toBeUndefined();
+    expect((result.all[0] as UseCookieValueReturn)[0]).toBeUndefined();
   });
 
   it('should return null if cookie not exists', () => {

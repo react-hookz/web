@@ -2,15 +2,15 @@ import { MutableRefObject, useEffect } from 'react';
 import { useSafeState } from '..';
 import { off, on } from '../util/misc';
 
-export type IUsePermissionState = PermissionState | 'not-requested' | 'requested';
+export type UsePermissionState = PermissionState | 'not-requested' | 'requested';
 
 /**
  * Tracks a permission state.
  *
  * @param descriptor Permission request descriptor that passed to `navigator.permissions.query`
  */
-export function usePermission(descriptor: PermissionDescriptor): IUsePermissionState {
-  const [state, setState] = useSafeState<IUsePermissionState>('not-requested');
+export function usePermission(descriptor: PermissionDescriptor): UsePermissionState {
+  const [state, setState] = useSafeState<UsePermissionState>('not-requested');
 
   useEffect(() => {
     const unmount: MutableRefObject<(() => void) | null> = { current: null };

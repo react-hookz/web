@@ -4,15 +4,15 @@ import { isBrowser } from '../util/const';
 // eslint-disable-next-line import/no-cycle
 import { basicDepsComparator } from '../util/misc';
 
-export type IDependenciesComparator<Deps extends DependencyList = DependencyList> = (
+export type DependenciesComparator<Deps extends DependencyList = DependencyList> = (
   a: Deps,
   b: Deps
 ) => boolean;
 
-export type IEffectCallback = (...args: any[]) => any;
+export type EffectCallback = (...args: any[]) => any;
 
-export type IEffectHook<
-  Callback extends IEffectCallback = IEffectCallback,
+export type EffectHook<
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList = DependencyList,
   RestArgs extends any[] = any[]
 > = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);
@@ -30,15 +30,15 @@ export type IEffectHook<
  * @param effectHookRestArgs Extra arguments that passed to effectHook.
  */
 export function useCustomCompareEffect<
-  Callback extends IEffectCallback = IEffectCallback,
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList = DependencyList,
   HookRestArgs extends any[] = any[],
   R extends HookRestArgs = HookRestArgs
 >(
   callback: Callback,
   deps: Deps,
-  comparator: IDependenciesComparator<Deps> = basicDepsComparator,
-  effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
+  comparator: DependenciesComparator<Deps> = basicDepsComparator,
+  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void {
   const dependencies = useRef<Deps>();

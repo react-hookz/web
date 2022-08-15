@@ -1,6 +1,6 @@
 import { SetStateAction, useMemo } from 'react';
 import { useMediatedState, useSyncedRef } from '..';
-import { IInitialState, resolveHookState } from '../util/resolveHookState';
+import { InitialState, resolveHookState } from '../util/resolveHookState';
 
 export interface CounterActions {
   /**
@@ -46,7 +46,7 @@ export interface CounterActions {
  *            If `initialValue` is smaller than `min`, then `min` is set as the initial value.
  */
 export function useCounter(
-  initialValue: IInitialState<number> = 0,
+  initialValue: InitialState<number> = 0,
   max?: number,
   min?: number
 ): [number, CounterActions] {

@@ -31,7 +31,7 @@ export function useDebouncedCallback<Args extends any[], This>(
   deps: DependencyList,
   delay: number,
   maxWait = 0
-): IDebouncedFunction<Args, This>;
+): DebouncedFunction<Args, This>;
 ```
 
 #### Importing

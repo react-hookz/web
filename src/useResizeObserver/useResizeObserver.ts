@@ -2,22 +2,22 @@ import { RefObject, useEffect } from 'react';
 import { useSyncedRef } from '..';
 import { isBrowser } from '../util/const';
 
-export type IUseResizeObserverCallback = (entry: ResizeObserverEntry) => void;
+export type UseResizeObserverCallback = (entry: ResizeObserverEntry) => void;
 
-interface IResizeObserverSingleton {
+interface ResizeObserverSingleton {
   observer: ResizeObserver;
-  subscribe: (target: Element, callback: IUseResizeObserverCallback) => void;
-  unsubscribe: (target: Element, callback: IUseResizeObserverCallback) => void;
+  subscribe: (target: Element, callback: UseResizeObserverCallback) => void;
+  unsubscribe: (target: Element, callback: UseResizeObserverCallback) => void;
 }
 
-let observerSingleton: IResizeObserverSingleton;
+let observerSingleton: ResizeObserverSingleton;
 
-function getResizeObserver(): IResizeObserverSingleton | undefined {
+function getResizeObserver(): ResizeObserverSingleton | undefined {
   if (!isBrowser) return undefined;
 
   if (observerSingleton) return observerSingleton;
 
-  const callbacks = new Map<Element, Set<IUseResizeObserverCallback>>();
+  const callbacks = new Map<Element, Set<UseResizeObserverCallback>>();
 
   const observer = new ResizeObserver((entries) => {
     entries.forEach((entry) =>
@@ -32,7 +32,7 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
 
       if (!cbs) {
         // if target has no observers yet - register it
-        cbs = new Set<IUseResizeObserverCallback>();
+        cbs = new Set<UseResizeObserverCallback>();
         callbacks.set(target, cbs);
         observer.observe(target);
       }
@@ -72,7 +72,7 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
  */
 export function useResizeObserver<T extends Element>(
   target: RefObject<T> | T | null,
-  callback: IUseResizeObserverCallback,
+  callback: UseResizeObserverCallback,
   enabled = true
 ): void {
   const ro = enabled && getResizeObserver();
@@ -94,7 +94,7 @@ export function useResizeObserver<T extends Element>(
     // that this handler should not be invoked anymore
     let subscribed = true;
 
-    const handler: IUseResizeObserverCallback = (...args) => {
+    const handler: UseResizeObserverCallback = (...args) => {
       // it is reinsurance for the highly asynchronous invocations, almost
       // impossible to achieve in tests, thus excluding from LOC
       /* istanbul ignore else */

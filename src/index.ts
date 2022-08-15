@@ -7,12 +7,12 @@ export { useThrottledCallback } from './useThrottledCallback/useThrottledCallbac
 // Lifecycle
 export {
   useConditionalEffect,
-  IConditionsPredicate,
-  IConditionsList,
+  ConditionsPredicate,
+  ConditionsList,
 } from './useConditionalEffect/useConditionalEffect';
 export {
   useCustomCompareEffect,
-  IDependenciesComparator,
+  DependenciesComparator,
 } from './useCustomCompareEffect/useCustomCompareEffect';
 export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
 export { useDeepCompareEffect } from './useDeepCompareEffect/useDeepCompareEffect';
@@ -46,20 +46,20 @@ export { useToggle } from './useToggle/useToggle';
 export { useThrottledState } from './useThrottledState/useThrottledState';
 export {
   useValidator,
-  IValidatorImmediate,
-  IValidatorDeferred,
-  IValidator,
-  IValidityState,
-  IUseValidatorReturn,
+  ValidatorImmediate,
+  ValidatorDeferred,
+  Validator,
+  ValidityState,
+  UseValidatorReturn,
 } from './useValidator/useValidator';
 
 // Navigator
 export {
   useNetworkState,
-  IUseNetworkState,
-  INetworkInformation,
+  UseNetworkState,
+  NetworkInformation,
 } from './useNetworkState/useNetworkState';
-export { usePermission, IUsePermissionState } from './usePermission/usePermission';
+export { usePermission, UsePermissionState } from './usePermission/usePermission';
 export { useVibrate } from './useVibrate/useVibrate';
 
 // Miscellaneous
@@ -72,35 +72,35 @@ export { useLocalStorageValue } from './useLocalStorageValue/useLocalStorageValu
 export { useSessionStorageValue } from './useSessionStorageValue/useSessionStorageValue';
 export {
   useAsync,
-  IAsyncState,
-  IAsyncStatus,
-  IUseAsyncActions,
-  IUseAsyncMeta,
+  AsyncState,
+  AsyncStatus,
+  UseAsyncActions,
+  UseAsyncMeta,
 } from './useAsync/useAsync';
 export {
   useAsyncAbortable,
-  IUseAsyncAbortableActions,
-  IUseAsyncAbortableMeta,
-  IArgsWithAbortSignal,
+  UseAsyncAbortableActions,
+  UseAsyncAbortableMeta,
+  ArgsWithAbortSignal,
 } from './useAsyncAbortable/useAsyncAbortable';
 
 // Sensor
 export {
   useIntersectionObserver,
-  IUseIntersectionObserverOptions,
+  UseIntersectionObserverOptions,
 } from './useIntersectionObserver/useIntersectionObserver';
 export {
   useResizeObserver,
-  IUseResizeObserverCallback,
+  UseResizeObserverCallback,
 } from './useResizeObserver/useResizeObserver';
 export { useMeasure } from './useMeasure/useMeasure';
 export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 export {
   useKeyboardEvent,
-  IKeyboardEventPredicate,
-  IKeyboardEventFilter,
-  IKeyboardEventHandler,
-  IUseKeyboardEventOptions,
+  KeyboardEventPredicate,
+  KeyboardEventFilter,
+  KeyboardEventHandler,
+  UseKeyboardEventOptions,
 } from './useKeyboardEvent/useKeyboardEvent';
 
 export {
@@ -110,12 +110,12 @@ export {
 
 // Dom
 export { useClickOutside } from './useClickOutside/useClickOutside';
-export { useDocumentTitle, IUseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
+export { useDocumentTitle, UseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
 export { useEventListener } from './useEventListener/useEventListener';
 export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 
 export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 
-export { IEffectCallback, IEffectHook } from './util/misc';
+export { EffectCallback, EffectHook } from './util/misc';
 
 export { resolveHookState } from './util/resolveHookState';

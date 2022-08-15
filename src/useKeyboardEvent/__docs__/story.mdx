@@ -18,10 +18,10 @@ Executes callback when keyboard event occurred on target (window by default).
 
 ```ts
 export function useKeyboardEvent<T extends EventTarget>(
-  keyOrPredicate: IKeyboardEventFilter,
-  callback: IKeyboardEventHandler<T>,
+  keyOrPredicate: KeyboardEventFilter,
+  callback: KeyboardEventHandler<T>,
   deps?: DependencyList,
-  options: IUseKeyboardEventOptions<T> = {}
+  options: UseKeyboardEventOptions<T> = {}
 ): void;
 ```
 
@@ -31,9 +31,9 @@ export function useKeyboardEvent<T extends EventTarget>(
 
 #### Arguments
 
-- **keyOrPredicate** _`IKeyboardEventFilter`_ - Filters keypresses on which `callback` will be
+- **keyOrPredicate** _`KeyboardEventFilter`_ - Filters keypresses on which `callback` will be
   executed.
-- **callback** _`IKeyboardEventHandler`_ - Function to call when key is pressed and `keyOrPredicate`
+- **callback** _`KeyboardEventHandler`_ - Function to call when key is pressed and `keyOrPredicate`
   matches positive.
 - **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useMemo`.
 - **options** - Hook options:

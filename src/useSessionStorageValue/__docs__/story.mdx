@@ -42,8 +42,8 @@ Manages a single SessionStorage key.
 function useSessionStorageValue<T>(
   key: string,
   defaultValue: T | null = null,
-  options: IUseStorageValueOptions<T> = {}
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options: UseStorageValueOptions<T> = {}
+): HookReturn<T, typeof defaultValue, typeof options>;
 ```
 
 #### Importing

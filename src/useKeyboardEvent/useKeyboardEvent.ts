@@ -3,11 +3,11 @@ import { useEventListener, useSyncedRef } from '..';
 import { isBrowser } from '../util/const';
 import { yieldFalse, yieldTrue } from '../util/misc';
 
-export type IKeyboardEventPredicate = (event: KeyboardEvent) => boolean;
-export type IKeyboardEventFilter = null | undefined | string | boolean | IKeyboardEventPredicate;
-export type IKeyboardEventHandler<T extends EventTarget> = (this: T, event: KeyboardEvent) => void;
+export type KeyboardEventPredicate = (event: KeyboardEvent) => boolean;
+export type KeyboardEventFilter = null | undefined | string | boolean | KeyboardEventPredicate;
+export type KeyboardEventHandler<T extends EventTarget> = (this: T, event: KeyboardEvent) => void;
 
-export type IUseKeyboardEventOptions<T extends EventTarget> = {
+export type UseKeyboardEventOptions<T extends EventTarget> = {
   /**
    * Event name that triggers handler.
    * @default `keydown`
@@ -24,7 +24,7 @@ export type IUseKeyboardEventOptions<T extends EventTarget> = {
   eventOptions?: boolean | AddEventListenerOptions;
 };
 
-const createKeyPredicate = (keyFilter: IKeyboardEventFilter): IKeyboardEventPredicate => {
+const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredicate => {
   if (typeof keyFilter === 'function') return keyFilter;
   if (typeof keyFilter === 'string') return (ev) => ev.key === keyFilter;
   return keyFilter ? yieldTrue : yieldFalse;
@@ -41,15 +41,15 @@ const WINDOW_OR_NULL = isBrowser ? window : null;
  * @param options Hook options.
  */
 export function useKeyboardEvent<T extends EventTarget>(
-  keyOrPredicate: IKeyboardEventFilter,
-  callback: IKeyboardEventHandler<T>,
+  keyOrPredicate: KeyboardEventFilter,
+  callback: KeyboardEventHandler<T>,
   deps?: DependencyList,
-  options: IUseKeyboardEventOptions<T> = {}
+  options: UseKeyboardEventOptions<T> = {}
 ): void {
   const { event = 'keydown', target = WINDOW_OR_NULL, eventOptions } = options;
   const cbRef = useSyncedRef(callback);
 
-  const handler = useMemo<IKeyboardEventHandler<T>>(() => {
+  const handler = useMemo<KeyboardEventHandler<T>>(() => {
     const predicate = createKeyPredicate(keyOrPredicate);
 
     return function kbEventHandler(this: T, ev) {

@@ -1,4 +1,4 @@
-import { IConditionsPredicate, Predicate } from '..';
+import { ConditionsPredicate, Predicate } from '..';
 
 export const noop = (): void => {};
 
@@ -14,8 +14,8 @@ export const isBrowser =
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const isStrictEqual: Predicate = (prev: any, next: any): boolean => prev === next;
 
-export const truthyAndArrayPredicate: IConditionsPredicate = (conditions): boolean =>
+export const truthyAndArrayPredicate: ConditionsPredicate = (conditions): boolean =>
   conditions.every(Boolean);
 
-export const truthyOrArrayPredicate: IConditionsPredicate = (conditions): boolean =>
+export const truthyOrArrayPredicate: ConditionsPredicate = (conditions): boolean =>
   conditions.some(Boolean);

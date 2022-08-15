@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { DependencyList } from 'react';
-import { IEffectCallback, useCustomCompareEffect, useUpdateEffect } from '../..';
+import { EffectCallback, useCustomCompareEffect, useUpdateEffect } from '../..';
 
 describe('useCustomCompareEffect', () => {
   it('should be defined', () => {
@@ -51,7 +51,7 @@ describe('useCustomCompareEffect', () => {
   });
 
   it('should pass res argument to underlying hook', () => {
-    const spy = jest.fn((c: IEffectCallback, d: DependencyList, _n: number) =>
+    const spy = jest.fn((c: EffectCallback, d: DependencyList, _n: number) =>
       useUpdateEffect(c, d)
     );
     renderHook(({ deps }) => useCustomCompareEffect(() => {}, deps, undefined, spy, 123), {

@@ -1,6 +1,6 @@
 import { MutableRefObject } from 'react';
 import {
-  IUseResizeObserverCallback,
+  UseResizeObserverCallback,
   useHookableRef,
   useRafCallback,
   useResizeObserver,
@@ -23,7 +23,7 @@ export function useMeasure<T extends Element>(
   });
 
   const [rect, setRect] = useSafeState<DOMRectReadOnly>();
-  const [observerHandler] = useRafCallback<IUseResizeObserverCallback>((entry) =>
+  const [observerHandler] = useRafCallback<UseResizeObserverCallback>((entry) =>
     setRect(entry.contentRect)
   );
 

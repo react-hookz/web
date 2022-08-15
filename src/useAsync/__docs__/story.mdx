@@ -26,7 +26,7 @@ Tracks result and error of provided async function and provides handles to execu
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
   initialValue?: Result
-): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
+): [AsyncState<Result>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 ```
 
 #### Importing

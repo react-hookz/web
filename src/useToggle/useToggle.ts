@@ -1,15 +1,15 @@
 import { BaseSyntheticEvent, useCallback } from 'react';
 import { useSafeState, useSyncedRef } from '..';
-import { IInitialState, INextState, resolveHookState } from '../util/resolveHookState';
+import { InitialState, NextState, resolveHookState } from '../util/resolveHookState';
 
 export function useToggle(
-  initialState: IInitialState<boolean>,
+  initialState: InitialState<boolean>,
   ignoreReactEvents: false
-): [boolean, (nextState?: INextState<boolean>) => void];
+): [boolean, (nextState?: NextState<boolean>) => void];
 export function useToggle(
-  initialState?: IInitialState<boolean>,
+  initialState?: InitialState<boolean>,
   ignoreReactEvents?: true
-): [boolean, (nextState?: INextState<boolean> | BaseSyntheticEvent) => void];
+): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void];
 
 /**
  * Like `useSafeState`, but can only become `true` or `false`.
@@ -19,9 +19,9 @@ export function useToggle(
  * such behaviour can be changed by setting 2nd parameter to `false`.
  */
 export function useToggle(
-  initialState: IInitialState<boolean> = false,
+  initialState: InitialState<boolean> = false,
   ignoreReactEvents = true
-): [boolean, (nextState?: INextState<boolean> | BaseSyntheticEvent) => void] {
+): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void] {
   // We don't use useReducer (which would end up with less code), because exposed
   // action does not provide functional updates feature.
   // Therefore, we have to create and expose our own state setter with

@@ -1,6 +1,6 @@
 import {
-  IHookReturn,
-  IUseStorageValueOptions,
+  HookReturn,
+  UseStorageValueOptions,
   useStorageValue,
 } from '../useStorageValue/useStorageValue';
 import { isBrowser, noop } from '../util/const';
@@ -15,32 +15,32 @@ try {
   IS_LOCAL_STORAGE_AVAILABLE = false;
 }
 
-interface IUseLocalStorageValue {
-  <T = unknown>(key: string, defaultValue?: null, options?: IUseStorageValueOptions): IHookReturn<
+interface UseLocalStorageValue {
+  <T = unknown>(key: string, defaultValue?: null, options?: UseStorageValueOptions): HookReturn<
     T,
     typeof defaultValue,
-    IUseStorageValueOptions<true | undefined>
+    UseStorageValueOptions<true | undefined>
   >;
 
   <T = unknown>(
     key: string,
     defaultValue: null,
-    options: IUseStorageValueOptions<false>
-  ): IHookReturn<T, typeof defaultValue, typeof options>;
+    options: UseStorageValueOptions<false>
+  ): HookReturn<T, typeof defaultValue, typeof options>;
 
-  <T>(key: string, defaultValue: T, options?: IUseStorageValueOptions): IHookReturn<
+  <T>(key: string, defaultValue: T, options?: UseStorageValueOptions): HookReturn<
     T,
     typeof defaultValue,
-    IUseStorageValueOptions<true | undefined>
+    UseStorageValueOptions<true | undefined>
   >;
 
-  <T>(key: string, defaultValue: T, options: IUseStorageValueOptions<false>): IHookReturn<
+  <T>(key: string, defaultValue: T, options: UseStorageValueOptions<false>): HookReturn<
     T,
     typeof defaultValue,
     typeof options
   >;
 
-  <T>(key: string, defaultValue?: T | null, options?: IUseStorageValueOptions): IHookReturn<
+  <T>(key: string, defaultValue?: T | null, options?: UseStorageValueOptions): HookReturn<
     T,
     typeof defaultValue,
     typeof options
@@ -54,18 +54,18 @@ interface IUseLocalStorageValue {
  * @param defaultValue Default value to yield in case the key is not in storage
  * @param options
  */
-export const useLocalStorageValue: IUseLocalStorageValue = IS_LOCAL_STORAGE_AVAILABLE
+export const useLocalStorageValue: UseLocalStorageValue = IS_LOCAL_STORAGE_AVAILABLE
   ? <T>(
       key: string,
       defaultValue: T | null = null,
-      options: IUseStorageValueOptions = {}
-    ): IHookReturn<T, typeof defaultValue, typeof options> =>
+      options: UseStorageValueOptions = {}
+    ): HookReturn<T, typeof defaultValue, typeof options> =>
       useStorageValue(localStorage, key, defaultValue, options)
   : <T>(
       key: string,
       defaultValue: T | null = null,
-      options: IUseStorageValueOptions = {}
-    ): IHookReturn<T, typeof defaultValue, typeof options> => {
+      options: UseStorageValueOptions = {}
+    ): HookReturn<T, typeof defaultValue, typeof options> => {
       /* istanbul ignore next */
       if (isBrowser && process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console

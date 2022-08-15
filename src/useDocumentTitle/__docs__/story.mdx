@@ -25,12 +25,12 @@ Sets title of the page.
 ## Reference
 
 ```ts
-export interface IUseDocumentTitleOptions {
+export interface UseDocumentTitleOptions {
   wrapper: (title: string) => string;
   restoreOnUnmount: boolean;
 }
 
-function useDocumentTitle(title: string, options: Partial<IUseDocumentTitleOptions> = {}): void;
+function useDocumentTitle(title: string, options: Partial<UseDocumentTitleOptions> = {}): void;
 ```
 
 #### Importing

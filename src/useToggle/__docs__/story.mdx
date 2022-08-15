@@ -24,14 +24,14 @@ can be changed by setting 2nd parameter to `false`.
 
 ```ts
 export function useToggle(
-  initialState: IInitialState<boolean>,
+  initialState: InitialState<boolean>,
   ignoreReactEvents?: true
-): [boolean, (nextState?: INextState<boolean> | BaseSyntheticEvent) => void];
+): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void];
 
 export function useToggle(
-  initialState: IInitialState<boolean>,
+  initialState: InitialState<boolean>,
   ignoreReactEvents: false
-): [boolean, (nextState?: INextState<boolean>) => void];
+): [boolean, (nextState?: NextState<boolean>) => void];
 ```
 
 #### Importing
@@ -40,7 +40,7 @@ export function useToggle(
 
 #### Arguments
 
-- _**initialState**_ _`IInitialState<boolean>`_ - initial state or initial state setter as for
+- _**initialState**_ _`InitialState<boolean>`_ - initial state or initial state setter as for
   `useState`
 - _**ignoreReactEvents**_ _`boolean`_ _(default: true)_ - ignore received react synthetic events, so state setter can be used as event handler.
 
@@ -49,5 +49,5 @@ export function useToggle(
 Returns array alike `useState` does.
 
 - _**[0]**_ _`boolean`_ - current state
-- _**[1]**_ _`(nextState?: INewState<boolean>) => void`_ - state setter as for `useState`. In case
+- _**[1]**_ _`(nextState?: NewState<boolean>) => void`_ - state setter as for `useState`. In case
   called without arguments will change state to opposite.

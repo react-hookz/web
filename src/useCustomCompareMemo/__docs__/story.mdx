@@ -17,7 +17,7 @@ Like useMemo but uses provided comparator function to validate dependency change
 ## Reference
 
 ```ts
-export type IDependenciesComparator<Deps extends DependencyList = DependencyList> = (
+export type DependenciesComparator<Deps extends DependencyList = DependencyList> = (
   a: Deps,
   b: Deps
 ) => boolean;
@@ -25,7 +25,7 @@ export type IDependenciesComparator<Deps extends DependencyList = DependencyList
 function useCustomCompareMemo<Factory extends () => unknown, Deps extends DependencyList>(
   factory: Factory,
   deps: Deps,
-  comparator: IDependenciesComparator<Deps>
+  comparator: DependenciesComparator<Deps>
 ): ReturnType<Factory>;
 ```
 
@@ -37,4 +37,4 @@ function useCustomCompareMemo<Factory extends () => unknown, Deps extends Depend
 
 - **factory** _`() => unknown`_ - useMemo factory function.
 - **deps** _`DependencyList`_ - useMemo dependency list.
-- **comparator** _`IDependenciesComparator<DependencyList>`_ - comparator function to validate dependency changes.
+- **comparator** _`DependenciesComparator<DependencyList>`_ - comparator function to validate dependency changes.

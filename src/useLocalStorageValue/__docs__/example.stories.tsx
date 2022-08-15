@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocalStorageValue } from '../..';
 
-interface IExampleProps {
+interface ExampleProps {
   /**
    * Default value to return in case key not presented in LocalStorage.
    */
@@ -20,7 +20,7 @@ interface IExampleProps {
   isolated: boolean;
 }
 
-export const Example: React.FC<IExampleProps> = ({
+export const Example: React.FC<ExampleProps> = ({
   key = 'react-hookz-ls-test',
   defaultValue = '@react-hookz is awesome',
   handleStorageEvent = true,

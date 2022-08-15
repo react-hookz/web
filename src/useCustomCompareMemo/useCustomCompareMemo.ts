@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react';
 
 import type { DependencyList } from 'react';
-import type { IDependenciesComparator } from '..';
+import type { DependenciesComparator } from '..';
 
 /**
  * Like useMemo but uses provided comparator function to validate dependency changes.
@@ -14,7 +14,7 @@ import type { IDependenciesComparator } from '..';
 export const useCustomCompareMemo = <Factory extends () => unknown, Deps extends DependencyList>(
   factory: Factory,
   deps: Deps,
-  comparator: IDependenciesComparator<Deps>
+  comparator: DependenciesComparator<Deps>
 ) => {
   const dependencies = useRef<Deps>();
 

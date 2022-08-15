@@ -37,18 +37,18 @@ Manages a single cookie.
 ## Reference
 
 ```ts
-export type IUseCookieOptions = Cookies.CookieAttributes & {
+export type UseCookieOptions = Cookies.CookieAttributes & {
   initializeWithValue?: boolean;
 };
 
-export type IUseCookieReturn = [
+export type UseCookieReturn = [
   value: undefined | null | string,
   set: (value: string) => void,
   remove: () => void,
   fetch: () => void
 ];
 
-export function useCookieValue(key: string, options: IUseCookieOptions = {}): IUseCookieReturn;
+export function useCookieValue(key: string, options: UseCookieOptions = {}): UseCookieReturn;
 ```
 
 #### Importing
@@ -65,7 +65,7 @@ import { useCookieValue } from '@react-hookz/web/esnext/useCookieValue/useCookie
 #### Arguments
 
 - **key** _`string`_ - Cookie name to manage.
-- **options** _`IUseCookieOptions`_ _(default: {})_ - Cookie options that will be used during cookie
+- **options** _`UseCookieOptions`_ _(default: {})_ - Cookie options that will be used during cookie
   set and delete. Has only one extra option, that relates to the hook itself:
   - **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with cookie
     value or initialize with `undefined` state.  

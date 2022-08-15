@@ -23,8 +23,8 @@ passing `effectHook` parameter. This way you can implement almost any effect log
 
 ```ts
 export function useConditionalEffect<
-  Cond extends IConditionsList,
-  Callback extends IEffectCallback = IEffectCallback,
+  Cond extends ConditionsList,
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList | undefined = DependencyList | undefined,
   HookRestArgs extends any[] = any[],
   R extends HookRestArgs = HookRestArgs
@@ -32,8 +32,8 @@ export function useConditionalEffect<
   callback: Callback,
   deps: Deps,
   conditions: Cond,
-  predicate: IConditionsPredicate<Cond> = truthyAndArrayPredicate,
-  effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
+  predicate: ConditionsPredicate<Cond> = truthyAndArrayPredicate,
+  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void;
 ```
@@ -44,14 +44,14 @@ export function useConditionalEffect<
 
 #### Arguments
 
-- **callback** _`IEffectCallback`_ - Function that will be passed to underlying effect hook.
+- **callback** _`EffectCallback`_ - Function that will be passed to underlying effect hook.
 - **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If not undefined -
   effect will be triggered when deps change AND conditions satisfy predicate.
-- **conditions** _`IConditionsList`_ - Conditions array.
+- **conditions** _`ConditionsList`_ - Conditions array.
 - **predicate** _`IUseConditionalEffectPredicate<ReadonlyArray<any>>`_ - Predicate that defines
   whether conditions satisfying certain provision. By default, it is all-truthy provision, meaning
   that all conditions should be truthy.
-- **effectHook** _`IEffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
+- **effectHook** _`EffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
   run callback. Must comply `useEffect` signature, meaning that callback should be placed as first
   argument and dependencies list as second.
 - **...effectHookRestArgs** _`HookRestArgs`_ - Extra arguments that are passed to `effectHook`.

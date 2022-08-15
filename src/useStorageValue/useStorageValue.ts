@@ -10,11 +10,11 @@ import {
   useSyncedRef,
   useUpdateEffect,
 } from '..';
-import { INextState, resolveHookState } from '../util/resolveHookState';
+import { NextState, resolveHookState } from '../util/resolveHookState';
 import { isBrowser } from '../util/const';
 import { off, on } from '../util/misc';
 
-export type IUseStorageValueOptions<
+export type UseStorageValueOptions<
   InitializeWithValue extends boolean | undefined = boolean | undefined
 > = {
   /**
@@ -52,7 +52,7 @@ export type IUseStorageValueOptions<
       initializeWithStorageValue: InitializeWithValue;
     });
 
-export type IReturnState<
+export type ReturnState<
   T,
   D,
   O,
@@ -60,9 +60,9 @@ export type IReturnState<
   U = O extends { initializeWithStorageValue: false } ? undefined | N : N
 > = U;
 
-export type IHookReturn<T, D, O> = [
-  IReturnState<T, D, O>,
-  (val: INextState<T, IReturnState<T, D, O>>) => void,
+export type HookReturn<T, D, O> = [
+  ReturnState<T, D, O>,
+  (val: NextState<T, ReturnState<T, D, O>>) => void,
   () => void,
   () => void
 ];
@@ -71,34 +71,34 @@ export function useStorageValue<T = unknown>(
   storage: Storage,
   key: string,
   defaultValue?: null,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, IUseStorageValueOptions<true | undefined>>;
+  options?: UseStorageValueOptions
+): HookReturn<T, typeof defaultValue, UseStorageValueOptions<true | undefined>>;
 export function useStorageValue<T = unknown>(
   storage: Storage,
   key: string,
   defaultValue: null,
-  options: IUseStorageValueOptions<false>
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options: UseStorageValueOptions<false>
+): HookReturn<T, typeof defaultValue, typeof options>;
 
 export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue: T,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, IUseStorageValueOptions<true | undefined>>;
+  options?: UseStorageValueOptions
+): HookReturn<T, typeof defaultValue, UseStorageValueOptions<true | undefined>>;
 export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue: T,
-  options: IUseStorageValueOptions<false>
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options: UseStorageValueOptions<false>
+): HookReturn<T, typeof defaultValue, typeof options>;
 
 export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue?: T | null,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options?: UseStorageValueOptions
+): HookReturn<T, typeof defaultValue, typeof options>;
 
 /**
  * Manages a single storage key.
@@ -112,8 +112,8 @@ export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue: T | null = null,
-  options: IUseStorageValueOptions = {}
-): IHookReturn<T, typeof defaultValue, typeof options> {
+  options: UseStorageValueOptions = {}
+): HookReturn<T, typeof defaultValue, typeof options> {
   const { isolated } = options;
   let {
     initializeWithStorageValue = true,

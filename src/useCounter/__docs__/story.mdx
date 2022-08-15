@@ -20,7 +20,7 @@ Tracks a numeric value and offers functions for manipulating it.
 
 ```ts
 export function useCounter(
-  initialValue: IInitialState<number> = 0,
+  initialValue: InitialState<number> = 0,
   max?: number,
   min?: number
 ): [number, CounterActions];
@@ -32,7 +32,7 @@ export function useCounter(
 
 #### Arguments
 
-- _**initialValue**_ _`IInitialState<number>` (default 0)_ - initial value for the counter. A number
+- _**initialValue**_ _`InitialState<number>` (default 0)_ - initial value for the counter. A number
   or function returning a number.
 - _**max**_ _`number` (default `undefined`)_ - maximum value the counter is allowed to be set.
 - _**min**_ _`number` (default `undefined`)_ - minimum value the counter is allowed to be set.

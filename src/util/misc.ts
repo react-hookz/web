@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any,import/no-cycle */
 import { DependencyList } from 'react';
-import { IDependenciesComparator } from '../useCustomCompareEffect/useCustomCompareEffect';
+import { DependenciesComparator } from '../useCustomCompareEffect/useCustomCompareEffect';
 
 export function on<T extends EventTarget>(
   obj: T | null,
@@ -35,7 +35,7 @@ export const hasOwnProperty = <
 export const yieldTrue = () => true as const;
 export const yieldFalse = () => false as const;
 
-export const basicDepsComparator: IDependenciesComparator = (d1, d2) => {
+export const basicDepsComparator: DependenciesComparator = (d1, d2) => {
   if (d1 === d2) return true;
 
   if (d1.length !== d2.length) return false;
@@ -49,10 +49,10 @@ export const basicDepsComparator: IDependenciesComparator = (d1, d2) => {
   return true;
 };
 
-export type IEffectCallback = (...args: any[]) => any;
+export type EffectCallback = (...args: any[]) => any;
 
-export type IEffectHook<
-  Callback extends IEffectCallback = IEffectCallback,
+export type EffectHook<
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList | undefined = DependencyList | undefined,
   RestArgs extends any[] = any[]
 > = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);

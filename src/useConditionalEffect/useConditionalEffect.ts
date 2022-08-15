@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useEffect } from 'react';
-import { IEffectCallback, IEffectHook, truthyAndArrayPredicate } from '..';
+import { EffectCallback, EffectHook, truthyAndArrayPredicate } from '..';
 
-export type IConditionsList = ReadonlyArray<any>;
+export type ConditionsList = ReadonlyArray<any>;
 
-export type IConditionsPredicate<Cond extends IConditionsList = IConditionsList> = (
+export type ConditionsPredicate<Cond extends ConditionsList = ConditionsList> = (
   conditions: Cond
 ) => boolean;
 
@@ -24,8 +24,8 @@ export type IConditionsPredicate<Cond extends IConditionsList = IConditionsList>
  * @param effectHookRestArgs Extra arguments that are passed to `effectHook`.
  */
 export function useConditionalEffect<
-  Cond extends IConditionsList,
-  Callback extends IEffectCallback = IEffectCallback,
+  Cond extends ConditionsList,
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList | undefined = DependencyList | undefined,
   HookRestArgs extends any[] = any[],
   R extends HookRestArgs = HookRestArgs
@@ -33,8 +33,8 @@ export function useConditionalEffect<
   callback: Callback,
   deps: Deps,
   conditions: Cond,
-  predicate: IConditionsPredicate<Cond> = truthyAndArrayPredicate,
-  effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
+  predicate: ConditionsPredicate<Cond> = truthyAndArrayPredicate,
+  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void {
   effectHook(

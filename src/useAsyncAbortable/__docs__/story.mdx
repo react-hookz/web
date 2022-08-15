@@ -22,12 +22,12 @@ Like `useAsync`, but also provides `AbortSignal` as first function argument to a
 
 ```ts
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: IArgsWithAbortSignal<Args>) => Promise<Result>,
+  asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
   initialValue?: Result
 ): [
-  IAsyncState<Result | undefined>,
-  IUseAsyncAbortableActions<Result, Args>,
-  IUseAsyncAbortableMeta<Result, Args>
+  AsyncState<Result | undefined>,
+  UseAsyncAbortableActions<Result, Args>,
+  UseAsyncAbortableMeta<Result, Args>
 ];
 ```
 
@@ -37,7 +37,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 
 #### Arguments
 
-- **asyncFn** _`(...params: IArgsWithAbortSignal<Args>) => Promise<Result>`_ - Function that returns
+- **asyncFn** _`(...params: ArgsWithAbortSignal<Args>) => Promise<Result>`_ - Function that returns
   a promise.
 - **initialValue** _`Result`_ _(default: `undefined`)_ - Value that will be set on initialisation,
   before the async function is executed.

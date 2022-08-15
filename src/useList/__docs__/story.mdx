@@ -21,7 +21,7 @@ Manipulating the list directly will not cause a rerender. Instead, use the offer
 ## Reference
 
 ```ts
-function useList<T>(initialList: IInitialState<T[]>): [T[], ListActions<T>];
+function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>];
 ```
 
 #### Importing
@@ -30,7 +30,7 @@ function useList<T>(initialList: IInitialState<T[]>): [T[], ListActions<T>];
 
 #### Arguments
 
-- _**initialList**_ _`IInitialState<T[]>`_ - Initial list or function returning a list
+- _**initialList**_ _`InitialState<T[]>`_ - Initial list or function returning a list
 
 #### Return
 

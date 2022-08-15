@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { IKeyboardEventFilter, useKeyboardEvent } from '../..';
+import { KeyboardEventFilter, useKeyboardEvent } from '../..';
 
 describe('useKeyboardEvent', () => {
   it('should be defined', () => {
@@ -157,7 +157,7 @@ describe('useKeyboardEvent', () => {
     unmount();
 
     renderHook(() =>
-      useKeyboardEvent({} as IKeyboardEventFilter, spy, undefined, {
+      useKeyboardEvent({} as KeyboardEventFilter, spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSessionStorageValue } from '../..';
 
-interface IExampleProps {
+interface ExampleProps {
   /**
    * Default value to return in case key not presented in SessionStorage.
    */
@@ -20,7 +20,7 @@ interface IExampleProps {
   isolated: boolean;
 }
 
-export const Example: React.FC<IExampleProps> = ({
+export const Example: React.FC<ExampleProps> = ({
   key = 'react-hookz-ss-test',
   defaultValue = '@react-hookz is awesome',
   handleStorageEvent = true,

@@ -1,5 +1,5 @@
 import { SetStateAction, useMemo, useRef } from 'react';
-import { IInitialState, resolveHookState } from '../util/resolveHookState';
+import { InitialState, resolveHookState } from '../util/resolveHookState';
 import { useRerender, useSyncedRef } from '..';
 
 export interface ListActions<T> {
@@ -73,7 +73,7 @@ export interface ListActions<T> {
   reset: () => void;
 }
 
-export function useList<T>(initialList: IInitialState<T[]>): [T[], ListActions<T>] {
+export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>] {
   const initial = useSyncedRef(initialList);
   const list = useRef(resolveHookState(initial.current));
   const rerender = useRerender();
