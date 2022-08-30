@@ -298,6 +298,13 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/MichalTarasiuk">
+            <img src="https://avatars.githubusercontent.com/u/69385846?v=4" width="100;" alt="MichalTarasiuk"/>
+            <br />
+            <sub><b>Michał Tarasiuk</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/fengkx">
             <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
             <br />
