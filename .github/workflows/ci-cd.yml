@@ -32,7 +32,7 @@ jobs:
           install-command: yarn --frozen-lockfile
 
       - name: "Lint"
-        run: yarn lint -f @jamesacarr/github-actions
+        run: yarn lint -f @react-hookz/gha
 
   build:
     name: "Build"
