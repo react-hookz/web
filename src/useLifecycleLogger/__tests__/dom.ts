@@ -24,22 +24,22 @@ describe('useLifecycleLogger', () => {
       { initialProps: { deps: [1, 2, 3] } }
     );
 
-    expect(logSpy).toBeCalledTimes(1);
-    expect(logSpy).toBeCalledWith(`TestComponent mounted`, [1, 2, 3]);
+    expect(logSpy).toHaveBeenCalledTimes(1);
+    expect(logSpy).toHaveBeenCalledWith(`TestComponent mounted`, [1, 2, 3]);
 
     rerender({ deps: [3, 2, 1] });
 
-    expect(logSpy).toBeCalledTimes(2);
-    expect(logSpy).toBeCalledWith(`TestComponent updated`, [3, 2, 1]);
+    expect(logSpy).toHaveBeenCalledTimes(2);
+    expect(logSpy).toHaveBeenCalledWith(`TestComponent updated`, [3, 2, 1]);
 
     rerender({ deps: [1, 5, 6] });
 
-    expect(logSpy).toBeCalledTimes(3);
-    expect(logSpy).toBeCalledWith(`TestComponent updated`, [1, 5, 6]);
+    expect(logSpy).toHaveBeenCalledTimes(3);
+    expect(logSpy).toHaveBeenCalledWith(`TestComponent updated`, [1, 5, 6]);
 
     unmount();
 
-    expect(logSpy).toBeCalledTimes(4);
-    expect(logSpy).toBeCalledWith(`TestComponent unmounted`);
+    expect(logSpy).toHaveBeenCalledTimes(4);
+    expect(logSpy).toHaveBeenCalledWith(`TestComponent unmounted`);
   });
 });

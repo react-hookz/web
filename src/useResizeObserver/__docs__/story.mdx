@@ -33,7 +33,7 @@ Invokes a callback whenever ResizeObserver detects a change to target's size.
 
 ```ts
 export function useResizeObserver<T extends Element>(
-  target: RefObject<T> | T | null,
+  target: React.RefObject<T> | T | null,
   callback: (entry: ResizeObserverEntry) => void,
   enabled = true
 ): void;

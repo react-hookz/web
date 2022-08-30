@@ -16,7 +16,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.eslint.json',
     tsconfigRootDir: __dirname,
-    extraFileExtensions: ['.mdx', '.md'],
+    extraFileExtensions: ['.md'],
   },
 
   overrides: [
@@ -25,6 +25,8 @@ module.exports = {
       extends: ['@react-hookz/eslint-config/react'],
       rules: {
         'react/button-has-type': 'off',
+        'unicorn/prefer-node-protocol': 'off',
+        'unicorn/prefer-top-level-await': 'off',
       },
     },
     {
@@ -50,7 +52,7 @@ module.exports = {
       },
     },
     {
-      files: ['*.md', '*.mdx'],
+      files: ['*.md'],
       extends: ['@react-hookz/eslint-config/mdx'],
     },
   ],

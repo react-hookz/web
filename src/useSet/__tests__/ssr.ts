@@ -35,7 +35,7 @@ describe('useSet', () => {
 
     act(() => {
       expect(result.current[1].add(1)).toBe(result.current[1]);
-      expect(spy).toBeCalledWith(1);
+      expect(spy).toHaveBeenCalledWith(1);
     });
 
     expect(result.current[0]).toBe(1);
@@ -64,7 +64,7 @@ describe('useSet', () => {
 
     act(() => {
       expect(result.current[1].delete(1)).toBe(true);
-      expect(spy).toBeCalledWith(1);
+      expect(spy).toHaveBeenCalledWith(1);
     });
 
     expect(result.current[0]).toBe(1);

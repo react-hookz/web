@@ -59,7 +59,7 @@ describe('useCookieValue', () => {
   it('should return null if cookie not exists', () => {
     const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.current[0]).toBe(null);
-    expect(getSpy).toBeCalledWith('react-hookz');
+    expect(getSpy).toHaveBeenCalledWith('react-hookz');
   });
 
   it('should set the cookie value on call to `set`', () => {
@@ -70,7 +70,7 @@ describe('useCookieValue', () => {
       result.current[1]('awesome');
     });
     expect(result.current[0]).toBe('awesome');
-    expect(setSpy).toBeCalledWith('react-hookz', 'awesome', {});
+    expect(setSpy).toHaveBeenCalledWith('react-hookz', 'awesome', {});
     Cookies.remove('react-hookz');
   });
 
@@ -87,7 +87,7 @@ describe('useCookieValue', () => {
       result.current[2]();
     });
     expect(result.current[0]).toBe(null);
-    expect(removeSpy).toBeCalledWith('react-hookz', {});
+    expect(removeSpy).toHaveBeenCalledWith('react-hookz', {});
     Cookies.remove('react-hookz');
   });
 

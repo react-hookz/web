@@ -37,7 +37,7 @@ describe('misc', () => {
         addEventListener: jest.fn(),
       };
       on(obj as unknown as EventTarget, 'evtName', cb);
-      expect(obj.addEventListener).toBeCalledWith('evtName', cb);
+      expect(obj.addEventListener).toHaveBeenCalledWith('evtName', cb);
     });
     it("should not throw in case 'undefined' element passed", () => {
       expect(() => {
@@ -54,7 +54,7 @@ describe('misc', () => {
       };
 
       off(obj as unknown as EventTarget, 'evtName', cb);
-      expect(obj.removeEventListener).toBeCalledWith('evtName', cb);
+      expect(obj.removeEventListener).toHaveBeenCalledWith('evtName', cb);
     });
 
     it("should not throw in case 'undefined' element passed", () => {

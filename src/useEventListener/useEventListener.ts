@@ -46,7 +46,8 @@ export function useEventListener<T extends EventTarget>(
   );
 
   useEffect(() => {
-    const tgt = target && hasOwnProperty(target, 'current') ? target.current : target;
+    const tgt =
+      target && hasOwnProperty(target, 'current') ? (target as RefObject<T>).current : target;
     if (!tgt) return;
 
     const restParams = params.slice(2);

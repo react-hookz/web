@@ -3,7 +3,7 @@ import { useScreenOrientation } from '../..';
 
 describe('useScreenOrientation', () => {
   // have to copy implementation as jsdom lacks of it
-  type IMutableMediaQueryList = {
+  type MutableMediaQueryList = {
     matches: boolean;
     media: string;
     onchange: null;
@@ -59,7 +59,7 @@ describe('useScreenOrientation', () => {
     const { result } = renderHook(() => useScreenOrientation());
     expect(result.current).toBe('landscape');
 
-    const mql = matchMediaMock.mock.results[0].value as IMutableMediaQueryList;
+    const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
     mql.matches = true;
 
     act(() => {

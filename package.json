@@ -41,7 +41,7 @@
     "new-hook": "node ./utility/add-new-hook.js",
     "test": "jest --selectProjects dom ssr",
     "test:coverage": "yarn test --coverage",
-    "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md,mdx",
+    "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md",
     "lint:fix": "yarn lint --fix",
     "storybook:watch": "start-storybook -p 6006 --docs --no-manager-cache",
     "storybook:build": "build-storybook --docs -o ./storybook-build",
@@ -53,7 +53,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx}": "eslint --fix"
+    "*.{js,jsx,ts,tsx,md}": "eslint --fix"
   },
   "release": {
     "plugins": [

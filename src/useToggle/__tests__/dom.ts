@@ -84,7 +84,10 @@ describe('useToggle', () => {
     const { result } = renderHook(() => useToggle());
 
     act(() => {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
+
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
     });
     expect(result.current[0]).toBe(false);

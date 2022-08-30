@@ -40,7 +40,7 @@ describe('useMap', () => {
 
     act(() => {
       expect(result.current[1].set('foo', 'bar')).toBe(result.current[1]);
-      expect(spy).toBeCalledWith('foo', 'bar');
+      expect(spy).toHaveBeenCalledWith('foo', 'bar');
     });
 
     expect(result.current[0]).toBe(1);
@@ -69,7 +69,7 @@ describe('useMap', () => {
 
     act(() => {
       expect(result.current[1].delete('foo')).toBe(true);
-      expect(spy).toBeCalledWith('foo');
+      expect(spy).toHaveBeenCalledWith('foo');
     });
 
     expect(result.current[0]).toBe(1);
