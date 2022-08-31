@@ -2191,10 +2191,10 @@
     eslint-plugin-unicorn "^43.0.2"
     prettier "^2.7.1"
 
-"@react-hookz/eslint-formatter-gha@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-formatter-gha/-/eslint-formatter-gha-1.0.0.tgz#d8bc29710b615f92ac7bf7310f8eaaecd80c086d"
-  integrity sha512-ZqIMD5p4iEfgAqWv2aj9HhdI/dO4IiVo94/RubIrOWVa7yTn2nt3bwStLNtuqup6XTzZU4UpZ4y04oKaSQrPzg==
+"@react-hookz/eslint-formatter-gha@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-formatter-gha/-/eslint-formatter-gha-1.0.1.tgz#1cbd0a398a8b6b738388af430933e699ad29c6fc"
+  integrity sha512-3fQWSevZuFDExH276MnSW0Q+OZU/tArOlSJhM2nYm81ALn1horXXAsDjVdFX5WQVn5+oF1D95VBUwEW6ABs5DQ==
   dependencies:
     "@actions/core" "^1.9.1"
 
