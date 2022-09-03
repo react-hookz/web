@@ -37,6 +37,16 @@ export type UseStorageValueOptions<
    * @default true
    */
   handleStorageEvent?: boolean;
+
+  /**
+   * Custom function to parse storage value with.
+   */
+  parse?: (str: string | null, fallback: unknown) => unknown;
+
+  /**
+   * Custom function to stringify value to store with.
+   */
+  stringify?: (data: unknown) => string | null;
 } & (InitializeWithValue extends undefined
   ? {
       /**
@@ -114,7 +124,7 @@ export function useStorageValue<T>(
   defaultValue: T | null = null,
   options: UseStorageValueOptions = {}
 ): HookReturn<T, typeof defaultValue, typeof options> {
-  const { isolated } = options;
+  const { isolated, parse = defaultParse, stringify = defaultStringify } = options;
   let {
     initializeWithStorageValue = true,
     handleStorageEvent = true,
@@ -305,7 +315,7 @@ export function useStorageValue<T>(
 
 const storageKeysUsed = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
-const stringify = (data: unknown): string | null => {
+const defaultStringify = (data: unknown): string | null => {
   if (data === null) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -325,7 +335,7 @@ const stringify = (data: unknown): string | null => {
   }
 };
 
-const parse = (str: string | null, fallback: unknown): unknown => {
+const defaultParse = (str: string | null, fallback: unknown): unknown => {
   if (str === null) return fallback;
 
   try {

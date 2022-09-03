@@ -232,6 +232,38 @@ describe('useStorageValue', () => {
     expect(adapter.setItem).not.toHaveBeenCalled();
   });
 
+  it('should use custom stringify option', () => {
+    const { result } = renderHook(() =>
+      useStorageValue<number[]>(adapter, 'foo', null, {
+        stringify(data) {
+          return (data as number[]).map((num) => num.toString(16)).join(':');
+        },
+      })
+    );
+
+    expect(result.current[0]).toBe(null);
+    act(() => {
+      result.current[1]([1, 2, 3]);
+    });
+    expect(adapter.setItem).toHaveBeenCalledWith('foo', '1:2:3');
+  });
+
+  it('should use custom parse option', () => {
+    adapter.getItem.mockImplementationOnce(() => '1:2:3');
+    const { result } = renderHook(() =>
+      useStorageValue<number[]>(adapter, 'foo', null, {
+        parse(str, fallback) {
+          if (str === null) return fallback;
+
+          if (str === '') return [];
+
+          return str.split(':').map((num) => Number.parseInt(num, 16));
+        },
+      })
+    );
+    expect(result.current[0]).toEqual([1, 2, 3]);
+  });
+
   describe('should handle window`s `storage` event', () => {
     const addEventListenerSpy = jest.spyOn(window, 'addEventListener');
     const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
