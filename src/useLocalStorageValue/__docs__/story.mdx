@@ -63,6 +63,8 @@ function useLocalStorageValue<T>(
   - **initializeWithStorageValue** _`boolean`_ _(default: true)_ - fetch storage value on first
     render. If set to `false` will make hook to yield `undefined` state on first render and defer
     value fetch till effects execution stage.
+  - **parse** _`function`_ - Custom parse function to use instead of JSON.parse
+  - **stringify** _`function`_ - Custom stringify function to use instead of JSON.stringify
 
 #### Return
 
