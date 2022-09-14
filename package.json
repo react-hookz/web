@@ -96,7 +96,7 @@
     "@storybook/addons": "^6.5.10",
     "@storybook/builder-webpack5": "^6.5.11",
     "@storybook/manager-webpack5": "^6.5.11",
-    "@storybook/react": "^6.5.10",
+    "@storybook/react": "^6.5.11",
     "@storybook/storybook-deployer": "^2.8.12",
     "@storybook/theming": "^6.5.10",
     "@testing-library/react-hooks": "^8.0.1",
