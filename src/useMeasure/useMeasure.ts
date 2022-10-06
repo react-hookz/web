@@ -24,7 +24,7 @@ export function useMeasure<T extends Element>(
 
   const [rect, setRect] = useSafeState<DOMRectReadOnly>();
   const [observerHandler] = useRafCallback<UseResizeObserverCallback>((entry) =>
-    setRect(entry.contentRect)
+    setRect(entry.target.getBoundingClientRect())
   );
 
   useResizeObserver(element, observerHandler, enabled);
