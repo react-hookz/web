@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { useFirstMountState, useMountEffect, useRafState } from '..';
+import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
+import { useMountEffect } from '../useMountEffect/useMountEffect';
+import { useRafState } from '../useRafState/useRafState';
 import { isBrowser } from '../util/const';
 
 export interface WindowSize {

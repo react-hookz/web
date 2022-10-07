@@ -1,12 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useEffect } from 'react';
-import { EffectCallback, EffectHook, truthyAndArrayPredicate } from '..';
-
-export type ConditionsList = ReadonlyArray<any>;
-
-export type ConditionsPredicate<Cond extends ConditionsList = ConditionsList> = (
-  conditions: Cond
-) => boolean;
+import { truthyAndArrayPredicate } from '../util/const';
+import { EffectHook, EffectCallback } from '../util/misc';
+import type { ConditionsList, ConditionsPredicate } from '../types';
 
 /**
  * Like `useEffect` but callback invoked only if conditions match predicate.

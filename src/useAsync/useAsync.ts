@@ -1,5 +1,6 @@
 import { useMemo, useRef } from 'react';
-import { useSafeState, useSyncedRef } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 

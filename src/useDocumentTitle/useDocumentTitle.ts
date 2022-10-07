@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { isBrowser } from '../util/const';
-import { useUnmountEffect, useSyncedRef } from '..';
+import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export interface UseDocumentTitleOptions {
   /**

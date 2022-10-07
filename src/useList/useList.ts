@@ -1,6 +1,7 @@
 import { SetStateAction, useMemo, useRef } from 'react';
 import { InitialState, resolveHookState } from '../util/resolveHookState';
-import { useRerender, useSyncedRef } from '..';
+import { useRerender } from '../useRerender/useRerender';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export interface ListActions<T> {
   /**

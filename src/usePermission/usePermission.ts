@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect } from 'react';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 import { off, on } from '../util/misc';
 
 export type UsePermissionState = PermissionState | 'not-requested' | 'requested';

@@ -1,11 +1,11 @@
 import { MutableRefObject } from 'react';
 import {
   UseResizeObserverCallback,
-  useHookableRef,
-  useRafCallback,
   useResizeObserver,
-  useSafeState,
-} from '..';
+} from '../useResizeObserver/useResizeObserver';
+import { useHookableRef } from '../useHookableRef/useHookableRef';
+import { useRafCallback } from '../useRafCallback/useRafCallback';
+import { useSafeState } from '../useSafeState/useSafeState';
 
 /**
  * Uses ResizeObserver to track element dimensions and re-render component when they change.

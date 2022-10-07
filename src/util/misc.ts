@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any,import/no-cycle */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList } from 'react';
-import { DependenciesComparator } from '../useCustomCompareEffect/useCustomCompareEffect';
+import type { DependenciesComparator } from '../types';
 
 export function on<T extends EventTarget>(
   obj: T | null,

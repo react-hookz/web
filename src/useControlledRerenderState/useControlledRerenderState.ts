@@ -1,5 +1,6 @@
 import { SetStateAction, useCallback, useRef } from 'react';
-import { useFirstMountState, useRerender } from '..';
+import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
+import { useRerender } from '../useRerender/useRerender';
 import { resolveHookState } from '../util/resolveHookState';
 
 export type ControlledRerenderDispatch<A> = (value: A, rerender?: boolean) => void;
