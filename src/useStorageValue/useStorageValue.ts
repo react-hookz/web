@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useConditionalEffect } from '../useConditionalEffect/useConditionalEffect';
 import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect';
 import { useMountEffect } from '../useMountEffect/useMountEffect';
 import { usePrevious } from '../usePrevious/usePrevious';
-import { useSafeState } from '../useSafeState/useSafeState';
 import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { useUpdateEffect } from '../useUpdateEffect/useUpdateEffect';
 import { NextState, resolveHookState } from '../util/resolveHookState';
@@ -157,7 +156,7 @@ export function useStorageValue<T>(
   });
 
   const isFirstMount = useFirstMountState();
-  const [state, setState] = useSafeState<T | null | undefined>(
+  const [state, setState] = useState<T | null | undefined>(
     initializeWithStorageValue && isFirstMount ? (methods.current.fetchVal() as T) : undefined
   );
   const prevState = usePrevious(state);
