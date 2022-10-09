@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { isBrowser } from '../util/const';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 import { off, on } from '../util/misc';
 import { InitialState } from '../util/resolveHookState';
 

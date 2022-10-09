@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef } from 'react';
-import { useSyncedRef, useUnmountEffect } from '..';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
 import { isBrowser } from '../util/const';
 
 /**

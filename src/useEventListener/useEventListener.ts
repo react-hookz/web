@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RefObject, useEffect, useMemo } from 'react';
-import { useIsMounted, useSyncedRef } from '..';
+import { useIsMounted } from '../useIsMounted/useIsMounted';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { hasOwnProperty } from '../util/misc';
 
 /**

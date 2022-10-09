@@ -46,8 +46,8 @@ If you are contributing for the first time - we would recommend reading
    - In case hook is stateful and exposes `setState` method, or is has async callbacks (that can
      theoretically be resolved after component unmount), it should use `useSafeState` instead of
      `useState`.
-   - In case of hooks reuse, import them as `import { useSafeState } from '..';` instead of
-     `import { useSafeState } from '../useSafeState/useSafeState';`
+   - In case of hooks reuse, import them as `import { useSafeState } from '../useSafeState/useSafeState';` instead of
+     `import { useSafeState } from '..';`
 2. Reexport hook implementation and all custom types in `src/index.ts`.
    - Custom types should be also reexported.
 3. Write complete tests for your hook, tests should consist of both DOM and SSR parts.

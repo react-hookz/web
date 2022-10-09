@@ -1,5 +1,6 @@
 import { DependencyList, RefObject, useMemo } from 'react';
-import { useEventListener, useSyncedRef } from '..';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useEventListener } from '../useEventListener/useEventListener';
 import { isBrowser } from '../util/const';
 import { yieldFalse, yieldTrue } from '../util/misc';
 

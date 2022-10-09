@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useRerender } from '..';
+import { useRerender } from '../useRerender/useRerender';
 
 const proto = Set.prototype;
 

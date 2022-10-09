@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useMemo, useRef } from 'react';
-import { useUnmountEffect } from '..';
+import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
 
 export interface ThrottledFunction<Fn extends (...args: any[]) => any> {
   (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;

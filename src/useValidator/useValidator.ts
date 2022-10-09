@@ -1,5 +1,6 @@
 import { DependencyList, Dispatch, useCallback, useEffect } from 'react';
-import { useSafeState, useSyncedRef } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { InitialState, NextState } from '../util/resolveHookState';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useEffect } from 'react';
-import { useDebouncedCallback } from '..';
+import { useDebouncedCallback } from '../useDebouncedCallback/useDebouncedCallback';
 
 /**
  * Like `useEffect`, but passed function is debounced.
