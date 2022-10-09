@@ -113,9 +113,4 @@ export { EffectCallback, EffectHook } from './util/misc';
 export { resolveHookState } from './util/resolveHookState';
 
 // Types
-export type {
-  DependenciesComparator,
-  Predicate,
-  ConditionsList,
-  ConditionsPredicate,
-} from './types';
+export * from './types';

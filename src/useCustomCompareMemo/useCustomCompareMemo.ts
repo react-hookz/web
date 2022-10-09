@@ -1,5 +1,4 @@
 import { useMemo, useRef } from 'react';
-
 import type { DependencyList } from 'react';
 import type { DependenciesComparator } from '../types';
 
