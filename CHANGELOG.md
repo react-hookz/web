@@ -1,3 +1,15 @@
+# [16.0.0](https://github.com/react-hookz/web/compare/v15.1.0...v16.0.0) (2022-10-09)
+
+
+### Styles
+
+* remove I prefix from types and interfaces ([c2a1ff4](https://github.com/react-hookz/web/commit/c2a1ff40909f1ddf5066c5d038b800bd42410a21))
+
+
+### BREAKING CHANGES
+
+* `I` prefix removed from all types having it.
+
 # [15.1.0](https://github.com/react-hookz/web/compare/v15.0.1...v15.1.0) (2022-08-14)
 
 
