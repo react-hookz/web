@@ -202,7 +202,7 @@ Coming from `react-use`? Check out our
 
 ## Contributors
 
-<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors,semantic-release-bot/-,lint-action/- -start -->
 <table>
 <tr>
     <td align="center">
@@ -319,4 +319,4 @@ Coming from `react-use`? Check out our
         </a>
     </td></tr>
 </table>
-<!-- readme: collaborators,contributors -end -->
+<!-- readme: collaborators,contributors,semantic-release-bot/-,lint-action/- -end -->
