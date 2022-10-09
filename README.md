@@ -220,20 +220,6 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/semantic-release-bot">
-            <img src="https://avatars.githubusercontent.com/u/32174276?v=4" width="100;" alt="semantic-release-bot"/>
-            <br />
-            <sub><b>Semantic Release Bot</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/lint-action">
-            <img src="https://avatars.githubusercontent.com/u/59283862?v=4" width="100;" alt="lint-action"/>
-            <br />
-            <sub><b>Lint Action</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/kylemh">
             <img src="https://avatars.githubusercontent.com/u/9523719?v=4" width="100;" alt="kylemh"/>
             <br />
@@ -260,8 +246,7 @@ Coming from `react-use`? Check out our
             <br />
             <sub><b>Rey Wang</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/axelboc">
             <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="100;" alt="axelboc"/>
@@ -275,7 +260,8 @@ Coming from `react-use`? Check out our
             <br />
             <sub><b>Birant İyigün</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/punkle">
             <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="100;" alt="punkle"/>
