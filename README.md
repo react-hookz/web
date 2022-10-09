@@ -284,6 +284,13 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/wesgro">
+            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
+            <br />
+            <sub><b>Jake Ketcheson</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/JoshuaStewartEntelect">
             <img src="https://avatars.githubusercontent.com/u/92043787?v=4" width="100;" alt="JoshuaStewartEntelect"/>
             <br />
