@@ -10,26 +10,13 @@ interface ExampleProps {
    * SessionStorage key to manage.
    */
   key: string;
-  /**
-   * Subscribe to window's `storage` event.
-   */
-  handleStorageEvent: boolean;
-  /**
-   * Isolate hook from others on page - it will not receive updates from other hooks with the same key.
-   */
-  isolated: boolean;
 }
 
 export const Example: React.FC<ExampleProps> = ({
   key = 'react-hookz-ss-test',
   defaultValue = '@react-hookz is awesome',
-  handleStorageEvent = true,
-  isolated = false,
 }) => {
-  const [value, setValue, removeValue] = useSessionStorageValue(key, defaultValue, {
-    handleStorageEvent,
-    isolated,
-  });
+  const ssVal = useSessionStorageValue(key, { defaultValue, initializeWithValue: true });
 
   return (
     <div>
@@ -40,12 +27,12 @@ export const Example: React.FC<ExampleProps> = ({
       <br />
       <input
         type="text"
-        value={value}
+        value={ssVal.value}
         onChange={(ev) => {
-          setValue(ev.currentTarget.value);
+          ssVal.set(ev.currentTarget.value);
         }}
       />{' '}
-      <button onClick={removeValue}>clear storage value</button>
+      <button onClick={ssVal.remove}>remove storage value</button>
     </div>
   );
 };
