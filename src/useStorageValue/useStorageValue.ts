@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
 import { useEffect, useMemo, useState } from 'react';
+import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect';
 import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { useUpdateEffect } from '../useUpdateEffect/useUpdateEffect';
@@ -153,8 +154,9 @@ export function useStorageValue<
     },
   });
 
+  const isFirstMount = useFirstMountState();
   const [state, setState] = useState<Type | null | undefined>(
-    options?.initializeWithValue ? storageActions.current.fetch() : undefined
+    options?.initializeWithValue && isFirstMount ? storageActions.current.fetch() : undefined
   );
   const stateRef = useSyncedRef(state);
 
