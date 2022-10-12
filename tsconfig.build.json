@@ -8,7 +8,7 @@
     "noEmit": false,
     "outDir": "./cjs",
     "declaration": true,
-    "target": "ES5",
+    "target": "ES6",
     "module": "CommonJS",
     "moduleResolution": "Node",
     "sourceMap": false,
