@@ -220,6 +220,13 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/ArttuOll">
+            <img src="https://avatars.githubusercontent.com/u/60509537?v=4" width="100;" alt="ArttuOll"/>
+            <br />
+            <sub><b>Arttu Olli</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/kylemh">
             <img src="https://avatars.githubusercontent.com/u/9523719?v=4" width="100;" alt="kylemh"/>
             <br />
@@ -231,13 +238,6 @@ Coming from `react-use`? Check out our
             <img src="https://avatars.githubusercontent.com/u/17763359?v=4" width="100;" alt="AndreasNel"/>
             <br />
             <sub><b>Andreas Nel</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/ArttuOll">
-            <img src="https://avatars.githubusercontent.com/u/60509537?v=4" width="100;" alt="ArttuOll"/>
-            <br />
-            <sub><b>Arttu Olli</b></sub>
         </a>
     </td>
     <td align="center">
