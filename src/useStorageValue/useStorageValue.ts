@@ -95,7 +95,7 @@ export interface UseStorageValueOptions<T, InitializeWithValue extends boolean |
   /**
    * Whether to initialize state with storage value or initialize with `undefined` state.
    *
-   * @default false
+   * @default true
    */
   initializeWithValue?: InitializeWithValue;
 }
