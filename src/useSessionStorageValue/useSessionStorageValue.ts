@@ -5,14 +5,14 @@ import {
 } from '../useStorageValue/useStorageValue';
 import { isBrowser, noop } from '../util/const';
 
-let IS_LOCAL_STORAGE_AVAILABLE: boolean;
+let IS_SESSION_STORAGE_AVAILABLE: boolean;
 
 try {
-  IS_LOCAL_STORAGE_AVAILABLE = isBrowser && !!window.sessionStorage;
+  IS_SESSION_STORAGE_AVAILABLE = isBrowser && !!window.sessionStorage;
 } catch {
-  // no need to test this flag leads to noop behaviour
+  // no need to test as this flag leads to noop behaviour
   /* istanbul ignore next */
-  IS_LOCAL_STORAGE_AVAILABLE = false;
+  IS_SESSION_STORAGE_AVAILABLE = false;
 }
 
 type UseSessionStorageValue = <
@@ -27,7 +27,7 @@ type UseSessionStorageValue = <
 /**
  * Manages a single sessionStorage key.
  */
-export const useSessionStorageValue: UseSessionStorageValue = !IS_LOCAL_STORAGE_AVAILABLE
+export const useSessionStorageValue: UseSessionStorageValue = !IS_SESSION_STORAGE_AVAILABLE
   ? <
       Type,
       Default extends Type = Type,
