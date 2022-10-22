@@ -31,7 +31,7 @@ export const Example: React.FC<ExampleProps> = ({
         onChange={(ev) => {
           ssVal.set(ev.currentTarget.value);
         }}
-      />{' '}
+      />
       <button onClick={ssVal.remove}>remove storage value</button>
     </div>
   );
