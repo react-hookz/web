@@ -255,13 +255,20 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/lensbart">
+            <img src="https://avatars.githubusercontent.com/u/20876627?v=4" width="100;" alt="lensbart"/>
+            <br />
+            <sub><b>Bart Lens</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/birant">
             <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="100;" alt="birant"/>
             <br />
             <sub><b>Birant İyigün</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/punkle">
             <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="100;" alt="punkle"/>
