@@ -1,3 +1,10 @@
+## [16.0.1](https://github.com/react-hookz/web/compare/v16.0.0...v16.0.1) (2022-10-22)
+
+
+### Bug Fixes
+
+* **useCustomCompareMemo:** Correctly infer the type of the value returned by the factory function ([#976](https://github.com/react-hookz/web/issues/976)) ([a625c55](https://github.com/react-hookz/web/commit/a625c55bc544dc1bc7544a5ff8811a0a78c568bd)), closes [#975](https://github.com/react-hookz/web/issues/975)
+
 # [16.0.0](https://github.com/react-hookz/web/compare/v15.1.0...v16.0.0) (2022-10-09)
 
 
