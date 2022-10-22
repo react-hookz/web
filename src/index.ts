@@ -86,6 +86,7 @@ export {
   useResizeObserver,
   UseResizeObserverCallback,
 } from './useResizeObserver/useResizeObserver';
+export { useHover, type HoverableElement } from './useHover/useHover';
 export { useMeasure } from './useMeasure/useMeasure';
 export { useMediaQuery } from './useMediaQuery/useMediaQuery';
 export {

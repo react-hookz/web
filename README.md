@@ -181,6 +181,8 @@ Coming from `react-use`? Check out our
 
 - #### Sensor
 
+  - [**`useHover`**](https://react-hookz.github.io/web/?path=/docs/sensor-usehover--example)
+    — Track if an element is being hovered by a mouse.
   - [**`useIntersectionObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useintersectionobserver--example)
     — Observe changes in the intersection of a target element with an ancestor element or with the
     viewport.

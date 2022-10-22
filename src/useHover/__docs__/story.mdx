@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Sensor/useHover" />
+
+# useHover
+
+React UI sensor hooks that tracks if an element is being hovered by a mouse.
+Sets `onMouseEnter` and `onMouseLeave` events.
+
+#### Example
+
+<Canvas isColumn>
+  <Story name="Example" story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+type HoverableElement<T extends ReactElement> = ((state: boolean) => T) | T;
+
+function useHover<T extends ReactElement<DOMAttributes<T>>>(
+  element: HoverableElement<T>
+): [ReactElement<DOMAttributes<T>>, boolean];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **element** _`ReactElement`_ - The element for which you want to track the hover state.
+
+#### Return
+
+Array of two elements:
+
+- **0** _`ReactElement`_ - The hoverable element;
+- **1** _`boolean`_ - `true` if the element is being hovered, `false` otherwise.
