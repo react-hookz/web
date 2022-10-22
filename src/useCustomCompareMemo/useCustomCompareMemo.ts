@@ -10,11 +10,11 @@ import type { DependenciesComparator } from '../types';
  * @param comparator function to validate dependency changes
  * @returns useMemo result
  */
-export const useCustomCompareMemo = <Factory extends () => unknown, Deps extends DependencyList>(
-  factory: Factory,
+export const useCustomCompareMemo = <T, Deps extends DependencyList>(
+  factory: () => T,
   deps: Deps,
   comparator: DependenciesComparator<Deps>
-) => {
+): T => {
   const dependencies = useRef<Deps>();
 
   if (dependencies.current === undefined || !comparator(dependencies.current, deps)) {
@@ -22,5 +22,5 @@ export const useCustomCompareMemo = <Factory extends () => unknown, Deps extends
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps -- missing factory function
-  return useMemo(factory, dependencies.current);
+  return useMemo<T>(factory, dependencies.current);
 };
