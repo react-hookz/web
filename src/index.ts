@@ -114,3 +114,5 @@ export { resolveHookState } from './util/resolveHookState';
 
 // Types
 export * from './types';
+
+export { useDeepCompareMemo } from './useDeepCompareMemo/useDeepCompareMemo';
