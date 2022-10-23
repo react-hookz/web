@@ -7,7 +7,6 @@ module.exports = {
     'storybook-build',
     'cjs',
     'esm',
-    'esnext',
     '.github/workflows',
     '.husky',
     'CHANGELOG.md',

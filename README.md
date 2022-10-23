@@ -37,22 +37,21 @@ transpile your `node-modules` in order to run in IE.
 
 ## Usage
 
-This package provides three levels of compilation:
+This package provides two levels of compilation:
 
-1. **Main**, the `/cjs` folder — CommonJS modules, with ES5 lang level.
-2. **ESM**, the `/esm` folder — it is ES modules (browser compatible), with ES5 lang level.
-3. **ESNext**, the `/esnext` folder — it is ES modules (browser compatible), with ESNext lang level.
+1. **Main**, the `/cjs` folder — CommonJS modules, with ES6 lang level.
+2. **ESM**, the `/esm` folder — it is ES modules (browser compatible), with ESNext lang level.
 
-So, if you need the `useMountEffect` hook, depending on your needs, you can import it in three ways
-(there are actually more, but these are the three most common):
+So, if you need the `useMountEffect` hook, depending on your needs, you can import in two ways
+(there are actually more, but these are the two most common).
+But keep in mid that in case you using latest versions of webpack, vite, etc., most likely, you'll
+have to transpile your `node_modules`.
 
 ```ts
 // in case you need cjs modules
 import { useMountEffect } from '@react-hookz/web';
-// in case you need esm modules
-import { useMountEffect } from '@react-hookz/web/esm';
 // in case you want all the recent ES features
-import { useMountEffect } from '@react-hookz/web/esnext';
+import { useMountEffect } from '@react-hookz/web/esm';
 ```
 
 ## Migrating from react-use

@@ -4,7 +4,6 @@
     "./cjs",
     "./coverage",
     "./esm",
-    "./esnext",
     "./node_modules"
   ],
   "include": [

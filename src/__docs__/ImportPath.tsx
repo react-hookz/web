@@ -8,7 +8,6 @@ export const ImportPath: FC = () => {
   const path = `
 import { ${componentName} } from '@react-hookz/web'; // cjs
 import { ${componentName} } from '@react-hookz/web/esm'; // esm
-import { ${componentName} } from '@react-hookz/web/esnext' // esnext
   `;
 
   return <Source language="js" code={path} />;
