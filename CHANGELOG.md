@@ -1,3 +1,10 @@
+# [16.1.0](https://github.com/react-hookz/web/compare/v16.0.1...v16.1.0) (2022-10-23)
+
+
+### Features
+
+* **useDeepCompareMemo:** Implement useDeepCompareMemo ([#979](https://github.com/react-hookz/web/issues/979)) ([532cc41](https://github.com/react-hookz/web/commit/532cc41f3b2d55a7f6f297ea9a4b652072e0d311)), closes [#871](https://github.com/react-hookz/web/issues/871)
+
 ## [16.0.1](https://github.com/react-hookz/web/compare/v16.0.0...v16.0.1) (2022-10-22)
 
 
