@@ -57,6 +57,8 @@ import { useMountEffect } from '@react-hookz/web/esnext';
 
 ## Migrating from react-use
 
+`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974) of `react-use` by one of its former maintainers.
+
 Coming from `react-use`? Check out our
 [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).
 
@@ -156,6 +158,9 @@ Coming from `react-use`? Check out our
     — Like `useRef`, but it returns immutable ref that contains actual value.
   - [**`useCustomCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useCustomCompareMemo--example)
     — Like useMemo but uses provided comparator function to validate dependency changes.
+  - [**`useDeepCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useDeepCompareMemo--example)
+    — Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validate deep
+    dependency changes.
   - [**`useHookableRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usehookableref--example)
     — Like `useRef` but it is possible to define get and set handlers.
 

@@ -22,11 +22,11 @@ export type DependenciesComparator<Deps extends DependencyList = DependencyList>
   b: Deps
 ) => boolean;
 
-function useCustomCompareMemo<Factory extends () => unknown, Deps extends DependencyList>(
-  factory: Factory,
+function useCustomCompareMemo<T, Deps extends DependencyList>(
+  factory: () => T,
   deps: Deps,
   comparator: DependenciesComparator<Deps>
-): ReturnType<Factory>;
+): T
 ```
 
 #### Importing
