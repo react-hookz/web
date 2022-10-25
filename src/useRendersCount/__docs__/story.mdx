@@ -1,0 +1,25 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="State/useRendersCount" component={Example} />
+
+# useRendersCount
+
+Tracks component's renders count including the first render.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useRendersCount(): number;
+```
+
+#### Importing
+
+<ImportPath />
