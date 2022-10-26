@@ -179,6 +179,8 @@ Coming from `react-use`? Check out our
 
 - #### Sensor
 
+  - [**`useHash`**](https://react-hookz.github.io/web/?path=/docs/sensor-usehash--example) — Observe
+    changes in the location hash and allows setting it.
   - [**`useIntersectionObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useintersectionobserver--example)
     — Observe changes in the intersection of a target element with an ancestor element or with a
     top-level document's viewport.

@@ -77,6 +77,7 @@ export {
 } from './useAsyncAbortable/useAsyncAbortable';
 
 // Sensor
+export { useHash } from './useHash';
 export {
   useIntersectionObserver,
   UseIntersectionObserverOptions,

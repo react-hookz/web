@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { ImportPath } from '../../__docs__/ImportPath';
+import { Example } from './example.stories';
+
+<Meta title="Sensor/useHash" component={Example} />
+
+# useHash
+
+Tracks location hash value and offers a setter for it.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useHash(): [string, (hash: string) => void];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Return
+
+Array of two elements:
+
+1. **0** `string` - The current hash
+2. **1** `(hash: string) => void` - Sets the hash
