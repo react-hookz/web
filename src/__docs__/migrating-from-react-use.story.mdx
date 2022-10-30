@@ -383,7 +383,13 @@ execute();
 
 #### useBeforeUnload
 
-Not implemented yet
+No plans to implement. Use [useEventListener](/docs/dom-useeventlistener--example) instead:
+
+```javascript
+useEventListener(window, 'beforeunload', () => {
+  /* do your stuff here */
+});
+```
 
 #### useCookie
 
