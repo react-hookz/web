@@ -172,6 +172,8 @@ Coming from `react-use`? Check out our
     — Like `useAsync`, but also provides `AbortSignal` as first function argument to async function.
   - [**`useCookieValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookievalue--example)
     — Manages a single cookie.
+  - [**`useFavicon`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usefavicon--example)
+    — Sets the favicon of the page.
   - [**`useLocalStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue--example)
     — Manages a single LocalStorage key.
   - [**`useSessionStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue--example)

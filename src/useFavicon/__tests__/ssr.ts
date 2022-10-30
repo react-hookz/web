@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useFavicon } from '../..';
+import { useFavicon } from '../useFavicon';
 
 describe('useFavicon', () => {
   it('should be defined', () => {

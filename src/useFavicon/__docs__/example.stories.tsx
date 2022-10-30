@@ -1,20 +1,13 @@
 import * as React from 'react';
-import { useFavicon, useToggle } from '../..';
+import { useFavicon } from '../..';
 
 export const Example: React.FC = () => {
-  const [mounted, toggleMounted] = useToggle(false);
-
-  const ChildComponent: React.FC = () => {
-    useFavicon('https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico');
-
-    return <div>Child component is mounted</div>;
-  };
+  useFavicon('https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico');
 
   return (
     <div>
-      When child component is mounted, the document&apos;s favicon will change <br />
-      <button onClick={() => toggleMounted()}>{mounted ? 'Unmount' : 'Mount'} component</button>
-      {mounted && <ChildComponent />}
+      This example is rendered in an iframe, which means this hook cannot change the favicon of this
+      page. However, below you see an example usage of this hook.
     </div>
   );
 };

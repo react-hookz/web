@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useFavicon } from '../..';
+import { useFavicon } from '../useFavicon';
 
 afterEach(() => {
   const favicon = document.querySelector("link[rel*='icon']");
@@ -30,11 +30,11 @@ describe('useFavicon', () => {
     expect(favicon.type).toBe('image/x-icon');
   });
 
-  it('should set the elements rel to "shortcut icon"', () => {
+  it('should set the elements rel to "icon"', () => {
     renderHook(() => useFavicon('My-favicon'));
     const favicon = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
 
-    expect(favicon.rel).toBe('shortcut icon');
+    expect(favicon.rel).toBe('icon');
   });
 
   it('should set the elements href to the provided string', () => {

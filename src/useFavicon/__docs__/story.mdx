@@ -1,8 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks'
+import { Example } from './example.stories'
+import { ImportPath } from '../../__docs__/ImportPath'
 
-<Meta title="Dom/useFavicon" component={Example} />
+<Meta title="Side-effect/useFavicon" component={Example} />
 
 # useFavicon
 
@@ -10,7 +10,7 @@ Sets the favicon of the page.
 
 #### Example
 
-<Canvas>
+<Canvas withSource="open">
   <Story story={Example} inline />
 </Canvas>
 
@@ -26,4 +26,4 @@ function useFavicon(href: string): void;
 
 #### Arguments
 
-- **href** _`string`_ - favicon source string to set.
+- **href** _`string`_ - source of the favicon.
