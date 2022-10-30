@@ -51,6 +51,39 @@ describe('useResizeObserver', () => {
     expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
   });
 
+  it('should subscribe in case ref first was empty but then gained element', () => {
+    const div = document.createElement('div');
+    const ref: React.MutableRefObject<Element | null> = { current: null };
+    const spy = jest.fn();
+
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const { rerender } = renderHook(({ ref }) => useResizeObserver(ref, spy), {
+      initialProps: { ref },
+    });
+
+    expect(observeSpy).toHaveBeenCalledTimes(0);
+
+    ref.current = div;
+    rerender({ ref });
+
+    expect(observeSpy).toHaveBeenCalledTimes(1);
+
+    const entry = {
+      target: div,
+      contentRect: {},
+      borderBoxSize: {},
+      contentBoxSize: {},
+    } as unknown as ResizeObserverEntry;
+
+    ResizeObserverSpy.mock.calls[0][0]([entry]);
+
+    expect(spy).not.toHaveBeenCalledWith(entry);
+
+    jest.advanceTimersByTime(1);
+
+    expect(spy).toHaveBeenCalledWith(entry);
+  });
+
   it('should invoke each callback listening same element asynchronously using setTimeout0', () => {
     const div = document.createElement('div');
     const spy1 = jest.fn();
@@ -128,5 +161,41 @@ describe('useResizeObserver', () => {
     expect(observeSpy).toHaveBeenCalledTimes(1);
     expect(unobserveSpy).toHaveBeenCalledTimes(1);
     expect(unobserveSpy).toHaveBeenCalledWith(div);
+  });
+
+  describe('disabled observer', () => {
+    it('should not subscribe in case observer is disabled', () => {
+      const div = document.createElement('div');
+      const div2 = document.createElement('div');
+      const spy1 = jest.fn();
+      const spy2 = jest.fn();
+
+      renderHook(() => useResizeObserver(div, spy1));
+      renderHook(() => useResizeObserver({ current: div2 }, spy2, false));
+
+      expect(observeSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should unsubscribe and resubscribe in case of observer toggling', () => {
+      const div = document.createElement('div');
+      const spy1 = jest.fn();
+
+      const { rerender } = renderHook(({ enabled }) => useResizeObserver(div, spy1, enabled), {
+        initialProps: { enabled: false },
+      });
+
+      expect(observeSpy).toHaveBeenCalledTimes(0);
+      expect(unobserveSpy).toHaveBeenCalledTimes(0);
+
+      rerender({ enabled: true });
+
+      expect(observeSpy).toHaveBeenCalledTimes(1);
+      expect(unobserveSpy).toHaveBeenCalledTimes(0);
+
+      rerender({ enabled: false });
+
+      expect(observeSpy).toHaveBeenCalledTimes(1);
+      expect(unobserveSpy).toHaveBeenCalledTimes(1);
+    });
   });
 });

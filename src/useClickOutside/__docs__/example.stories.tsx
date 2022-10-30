@@ -6,6 +6,7 @@ import { useToggle } from '../../useToggle/useToggle';
 export const Example: React.FC = () => {
   const [toggled, toggle] = useToggle();
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ToggledComponent = () => {
     const ref = useRef(null);
 

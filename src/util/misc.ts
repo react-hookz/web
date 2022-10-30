@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList } from 'react';
-
-import { IDependenciesComparator } from '../useCustomCompareEffect/useCustomCompareEffect';
+import type { DependenciesComparator } from '../types';
 
 export function on<T extends EventTarget>(
   obj: T | null,
   ...args:
     | Parameters<T['addEventListener']>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
   if (obj && obj.addEventListener) {
@@ -19,7 +17,6 @@ export function off<T extends EventTarget>(
   obj: T | null,
   ...args:
     | Parameters<T['removeEventListener']>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
   if (obj && obj.removeEventListener) {
@@ -27,9 +24,7 @@ export function off<T extends EventTarget>(
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const hasOwnProperty = <
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends Record<string | number | symbol, any>,
   K extends string | number | symbol
 >(
@@ -40,7 +35,7 @@ export const hasOwnProperty = <
 export const yieldTrue = () => true as const;
 export const yieldFalse = () => false as const;
 
-export const basicDepsComparator: IDependenciesComparator = (d1, d2) => {
+export const basicDepsComparator: DependenciesComparator = (d1, d2) => {
   if (d1 === d2) return true;
 
   if (d1.length !== d2.length) return false;
@@ -54,10 +49,10 @@ export const basicDepsComparator: IDependenciesComparator = (d1, d2) => {
   return true;
 };
 
-export type IEffectCallback = (...args: any[]) => any;
+export type EffectCallback = (...args: any[]) => any;
 
-export type IEffectHook<
-  Callback extends IEffectCallback = IEffectCallback,
+export type EffectHook<
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList | undefined = DependencyList | undefined,
   RestArgs extends any[] = any[]
 > = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);

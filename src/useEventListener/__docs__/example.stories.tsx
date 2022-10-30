@@ -6,6 +6,7 @@ export const Example: React.FC = () => {
   const [state, setState] = useState<Date>();
   const [mounted, toggleMounted] = useToggle(true);
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ToggledComponent = () => {
     useEventListener(
       window,
@@ -29,7 +30,7 @@ export const Example: React.FC = () => {
       </div>
 
       <br />
-      <div>{state ? `mouse last moved: ${state}` : 'mouse not moved yet'}</div>
+      <div>{state ? `mouse last moved: ${state.toString()}` : 'mouse not moved yet'}</div>
 
       <br />
       <div>

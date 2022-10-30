@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Lifecycle/useThrottledEffect" component={Example} />
 
@@ -36,5 +36,6 @@ export function useThrottledEffect(
 - **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useEffect` and
   `useThrottledCallback`.
 - **delay** _`number`_ - Throttle delay.
-- **noTrailing** _`boolean`_ _(default: false)_ - If `noTrailing` is true, callback will only execute
-  every `delay` milliseconds, otherwise, callback will be executed once, after the last call.
+- **noTrailing** _`boolean`_ _(default: false)_ - If `noTrailing` is true, callback will only
+  execute every `delay` milliseconds, otherwise, callback will be executed once, after the last
+  call.

@@ -7,10 +7,11 @@ describe('useSafeState', () => {
   });
 
   it('should render', () => {
-    renderHook(() => useSafeState());
+    const { result } = renderHook(() => useSafeState());
+    expect(result.error).toBeUndefined();
   });
 
-  it('should not call ', () => {
+  it('should not cause state change after component unmount', () => {
     const consoleSpy = jest.spyOn(console, 'error');
     consoleSpy.mockImplementationOnce(() => {});
 

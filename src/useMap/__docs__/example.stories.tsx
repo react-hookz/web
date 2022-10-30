@@ -16,7 +16,7 @@ export const Example: React.FC = () => {
         remove 'current date'
       </button>
       <br />
-      <pre>{JSON.stringify(Array.from(map), null, 2)}</pre>
+      <pre>{JSON.stringify([...map], null, 2)}</pre>
     </div>
   );
 };

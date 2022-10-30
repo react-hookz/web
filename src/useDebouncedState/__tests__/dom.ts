@@ -23,7 +23,7 @@ describe('useDebouncedState', () => {
     expect(result.error).toBeUndefined();
   });
 
-  it('should ', () => {
+  it('should debounce state set', () => {
     const { result } = renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
 
     expect(result.current[0]).toBe(undefined);

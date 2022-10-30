@@ -1,0 +1,45 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="State/useControlledRerenderState" component={Example} />
+
+# useControlledRerenderState
+
+Like `React.useState`, but its state setter accepts extra argument, that allows to cancel rerender.
+
+- Allows to avoid rerender during state set.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export type ControlledRerenderDispatch<A> = (value: A, rerender?: boolean) => void;
+
+export function useControlledRerenderState<S>(
+  initialState: S | (() => S)
+): [S, ControlledRerenderDispatch<React.SetStateAction<S>>];
+export function useControlledRerenderState<S = undefined>(): [
+  S | undefined,
+  ControlledRerenderDispatch<React.SetStateAction<S | undefined>>
+];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+Identical to `React.useState`.
+
+#### Return
+
+Returned state setter accepts extra-argument, in case it is set to false - component will not be
+re-rendered after state set.  
+In case extra parameter omitted - state setter behaves exactly as native.

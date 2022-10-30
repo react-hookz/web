@@ -2,7 +2,7 @@ name: "GH Pages"
 
 on:
   release:
-    types: [ published ]
+    types: [published]
   workflow_dispatch:
 
 jobs:
@@ -11,19 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.release.tag_name || 'master' }}
+          fetch-depth: 0
 
-      - uses: c-hive/gha-yarn-cache@v2
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v2.4.1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 15
+          node-version: 16
 
-      - name: "Install dependencies"
-        run: yarn install --frozen-lockfile
+      - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          install-command: yarn --frozen-lockfile
 
       - name: "Deploy storybook"
         run: yarn storybook:deploy --ci

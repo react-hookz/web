@@ -3,7 +3,9 @@ import { useMediatedState } from '../..';
 
 export const Example: React.FC = () => {
   const nonLetterRe = /[^a-z]+/gi;
-  const [state, setState] = useMediatedState('', (val: string) => val.replaceAll(nonLetterRe, ''));
+  const [state, setState] = useMediatedState('123', (val: string) =>
+    val.replaceAll(nonLetterRe, '')
+  );
 
   return (
     <div>

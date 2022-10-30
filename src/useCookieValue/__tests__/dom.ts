@@ -1,20 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import * as Cookies from 'js-cookie';
-import { IUseCookieValueReturn, useCookieValue } from '../useCookieValue';
+import Cookies from 'js-cookie';
+import { UseCookieValueReturn, useCookieValue } from '../useCookieValue';
 import SpyInstance = jest.SpyInstance;
 
 describe('useCookieValue', () => {
-  let getSpy: SpyInstance<{ [p: string]: string }, []>;
-  let setSpy: SpyInstance<
-    string | undefined,
-    [
-      name: string,
-      value: string | Record<string, any>,
-      options?: Cookies.CookieAttributes | undefined
-    ]
-  >;
-  let removeSpy: SpyInstance<void, [name: string, options?: Cookies.CookieAttributes | undefined]>;
+  type CookiesGet = typeof Cookies.get;
+  type CookiesSet = typeof Cookies.set;
+  type CookiesRemove = typeof Cookies.remove;
+
+  let getSpy: SpyInstance<ReturnType<CookiesGet>, Parameters<CookiesGet>>;
+  let setSpy: SpyInstance<ReturnType<CookiesSet>, Parameters<CookiesSet>>;
+  let removeSpy: SpyInstance<ReturnType<CookiesRemove>, Parameters<CookiesRemove>>;
 
   beforeAll(() => {
     getSpy = jest.spyOn(Cookies, 'get');
@@ -47,7 +44,7 @@ describe('useCookieValue', () => {
     Cookies.set('react-hookz', 'awesome');
 
     const { result } = renderHook(() => useCookieValue('react-hookz'));
-    expect((result.all[0] as IUseCookieValueReturn)[0]).toBe('awesome');
+    expect((result.all[0] as UseCookieValueReturn)[0]).toBe('awesome');
 
     Cookies.remove('react-hookz');
   });
@@ -56,13 +53,13 @@ describe('useCookieValue', () => {
     const { result } = renderHook(() =>
       useCookieValue('react-hookz', { initializeWithValue: false })
     );
-    expect((result.all[0] as IUseCookieValueReturn)[0]).toBeUndefined();
+    expect((result.all[0] as UseCookieValueReturn)[0]).toBeUndefined();
   });
 
   it('should return null if cookie not exists', () => {
     const { result } = renderHook(() => useCookieValue('react-hookz'));
     expect(result.current[0]).toBe(null);
-    expect(getSpy).toBeCalledWith('react-hookz');
+    expect(getSpy).toHaveBeenCalledWith('react-hookz');
   });
 
   it('should set the cookie value on call to `set`', () => {
@@ -73,7 +70,7 @@ describe('useCookieValue', () => {
       result.current[1]('awesome');
     });
     expect(result.current[0]).toBe('awesome');
-    expect(setSpy).toBeCalledWith('react-hookz', 'awesome', {});
+    expect(setSpy).toHaveBeenCalledWith('react-hookz', 'awesome', {});
     Cookies.remove('react-hookz');
   });
 
@@ -90,7 +87,7 @@ describe('useCookieValue', () => {
       result.current[2]();
     });
     expect(result.current[0]).toBe(null);
-    expect(removeSpy).toBeCalledWith('react-hookz', {});
+    expect(removeSpy).toHaveBeenCalledWith('react-hookz', {});
     Cookies.remove('react-hookz');
   });
 

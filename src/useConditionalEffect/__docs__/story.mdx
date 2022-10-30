@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Lifecycle/useConditionalEffect" component={Example} />
 
@@ -9,8 +9,9 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 Like `useEffect` but callback invoked only if conditions match predicate. By default, predicate
 matches if all conditions are truthy.
 
-It also can make any effect hook that is compliant with `useEffect`'s call signature conditional by passing
-`effectHook` parameter. This way you can implement almost any effect logic via hooks "wrapping".
+It also can make any effect hook that is compliant with `useEffect`'s call signature conditional by
+passing `effectHook` parameter. This way you can implement almost any effect logic via hooks
+"wrapping".
 
 #### Example
 
@@ -22,8 +23,8 @@ It also can make any effect hook that is compliant with `useEffect`'s call signa
 
 ```ts
 export function useConditionalEffect<
-  Cond extends IConditionsList,
-  Callback extends IEffectCallback = IEffectCallback,
+  Cond extends ConditionsList,
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList | undefined = DependencyList | undefined,
   HookRestArgs extends any[] = any[],
   R extends HookRestArgs = HookRestArgs
@@ -31,8 +32,8 @@ export function useConditionalEffect<
   callback: Callback,
   deps: Deps,
   conditions: Cond,
-  predicate: IConditionsPredicate<Cond> = truthyAndArrayPredicate,
-  effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
+  predicate: ConditionsPredicate<Cond> = truthyAndArrayPredicate,
+  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void;
 ```
@@ -43,15 +44,15 @@ export function useConditionalEffect<
 
 #### Arguments
 
-- **callback** _`IEffectCallback`_ - Function that will be passed to underlying effect hook.
+- **callback** _`EffectCallback`_ - Function that will be passed to underlying effect hook.
 - **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If not undefined -
-  effect will be triggered when deps changed AND conditions are satisfying predicate.
-- **conditions** _`IConditionsList`_ - Conditions array.
+  effect will be triggered when deps change AND conditions satisfy predicate.
+- **conditions** _`ConditionsList`_ - Conditions array.
 - **predicate** _`IUseConditionalEffectPredicate<ReadonlyArray<any>>`_ - Predicate that defines
-  whether conditions satisfying certain provision.  
-  By default, it is all-truthy provision, meaning that all conditions should be truthy.
-- **effectHook** _`IEffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
+  whether conditions satisfying certain provision. By default, it is all-truthy provision, meaning
+  that all conditions should be truthy.
+- **effectHook** _`EffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
   run callback. Must comply `useEffect` signature, meaning that callback should be placed as first
   argument and dependencies list as second.
-- **...effectHookRestArgs** _`HookRestArgs`_ - Extra arguments that are passed to `effectHook`. Meaning
-  the arguments that are after 2nd argument.
+- **...effectHookRestArgs** _`HookRestArgs`_ - Extra arguments that are passed to `effectHook`.
+  Meaning the arguments that are after 2nd argument.

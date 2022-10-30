@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
-import { useSafeState, useThrottledCallback } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useThrottledCallback } from '../useThrottledCallback/useThrottledCallback';
 
 /**
  * Like `useSafeState` but its state setter is throttled.

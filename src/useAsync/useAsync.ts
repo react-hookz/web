@@ -1,9 +1,10 @@
 import { useMemo, useRef } from 'react';
-import { useSafeState, useSyncedRef } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
-export type IAsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
+export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 
-export type IAsyncState<Result> =
+export type AsyncState<Result> =
   | {
       status: 'not-executed';
       error: undefined;
@@ -20,12 +21,12 @@ export type IAsyncState<Result> =
       result: Result;
     }
   | {
-      status: IAsyncStatus;
+      status: AsyncStatus;
       error: Error | undefined;
       result: Result;
     };
 
-export interface IUseAsyncActions<Result, Args extends unknown[] = unknown[]> {
+export interface UseAsyncActions<Result, Args extends unknown[] = unknown[]> {
   /**
    * Reset state to initial, when async function haven't been executed.
    */
@@ -36,7 +37,7 @@ export interface IUseAsyncActions<Result, Args extends unknown[] = unknown[]> {
   execute: (...args: Args) => Promise<Result>;
 }
 
-export interface IUseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
+export interface UseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
   /**
    * Recent promise returned from async function.
    */
@@ -50,11 +51,11 @@ export interface IUseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
   initialValue: Result
-): [IAsyncState<Result>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
+): [AsyncState<Result>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
   initialValue?: Result
-): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>];
+): [AsyncState<Result | undefined>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 
 /**
  * Tracks result and error of provided async function and provides handles to execute and reset it.
@@ -66,8 +67,8 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
   initialValue?: Result
-): [IAsyncState<Result | undefined>, IUseAsyncActions<Result, Args>, IUseAsyncMeta<Result, Args>] {
-  const [state, setState] = useSafeState<IAsyncState<Result | undefined>>({
+): [AsyncState<Result | undefined>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>] {
+  const [state, setState] = useSafeState<AsyncState<Result | undefined>>({
     status: 'not-executed',
     error: undefined,
     result: initialValue,
@@ -83,15 +84,17 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 
       setState((s) => ({ ...s, status: 'loading' }));
 
+      // eslint-disable-next-line promise/catch-or-return
       promise.then(
         (result) => {
           // we dont want to handle result/error of non-latest function
           // this approach helps to avoid race conditions
+          // eslint-disable-next-line promise/always-return
           if (promise === promiseRef.current) {
             setState((s) => ({ ...s, status: 'success', error: undefined, result }));
           }
         },
-        (error) => {
+        (error: Error) => {
           // we dont want to handle result/error of non-latest function
           // this approach helps to avoid race conditions
           if (promise === promiseRef.current) {

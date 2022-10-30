@@ -1,22 +1,22 @@
 import { RefObject, useEffect } from 'react';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';
 
-interface IIntersectionEntryCallback {
+interface IntersectionEntryCallback {
   (entry: IntersectionObserverEntry): void;
 }
 
-interface IObserverEntry {
+interface ObserverEntry {
   observer: IntersectionObserver;
-  observe: (target: Element, callback: IIntersectionEntryCallback) => void;
-  unobserve: (target: Element, callback: IIntersectionEntryCallback) => void;
+  observe: (target: Element, callback: IntersectionEntryCallback) => void;
+  unobserve: (target: Element, callback: IntersectionEntryCallback) => void;
 }
 
-const observers: Map<Element | Document, Map<string, IObserverEntry>> = new Map();
+const observers: Map<Element | Document, Map<string, ObserverEntry>> = new Map();
 
-const getObserverEntry = (options: IntersectionObserverInit): IObserverEntry => {
+const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
   const root = options.root ?? document;
 
   let rootObservers = observers.get(root);
@@ -31,7 +31,7 @@ const getObserverEntry = (options: IntersectionObserverInit): IObserverEntry => 
   let entry = rootObservers.get(opt);
 
   if (!entry) {
-    const callbacks = new Map<Element, Set<IIntersectionEntryCallback>>();
+    const callbacks = new Map<Element, Set<IntersectionEntryCallback>>();
 
     const observer = new IntersectionObserver(
       (entries) =>
@@ -94,7 +94,7 @@ const getObserverEntry = (options: IntersectionObserverInit): IObserverEntry => 
   return entry;
 };
 
-export interface IUseIntersectionObserverOptions {
+export interface UseIntersectionObserverOptions {
   /**
    * An Element or Document object (or its react reference) which is an
    * ancestor of the intended target, whose bounding rectangle will be
@@ -133,13 +133,13 @@ export function useIntersectionObserver<T extends Element>(
     threshold = DEFAULT_THRESHOLD,
     root: r,
     rootMargin = DEFAULT_ROOT_MARGIN,
-  }: IUseIntersectionObserverOptions = {}
+  }: UseIntersectionObserverOptions = {}
 ): IntersectionObserverEntry | undefined {
   const [state, setState] = useSafeState<IntersectionObserverEntry>();
 
   useEffect(() => {
     const tgt = target && 'current' in target ? target.current : target;
-    if (!tgt) return undefined;
+    if (!tgt) return;
 
     let subscribed = true;
     const observerEntry = getObserverEntry({
@@ -148,7 +148,7 @@ export function useIntersectionObserver<T extends Element>(
       threshold,
     });
 
-    const handler: IIntersectionEntryCallback = (entry) => {
+    const handler: IntersectionEntryCallback = (entry) => {
       // it is reinsurance for the highly asynchronous invocations, almost
       // impossible to achieve in tests, thus excluding from LOC
       /* istanbul ignore else */

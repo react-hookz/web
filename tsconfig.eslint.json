@@ -8,10 +8,13 @@
     "./node_modules"
   ],
   "include": [
-    ".eslintrc.js",
-    ".storybook/**.js",
+    ".**/*.js",
+
+    "**/.*.js",
     "**/*.js",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.md",
+    "**/*.mdx",
   ]
 }

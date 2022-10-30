@@ -6,15 +6,15 @@ import { useMemo, useRef } from 'react';
  * @param value
  */
 export function useSyncedRef<T>(value: T): { readonly current: T } {
-  const _ref = useRef(value);
+  const ref = useRef(value);
 
-  _ref.current = value;
+  ref.current = value;
 
   return useMemo(
     () =>
       Object.freeze({
         get current() {
-          return _ref.current;
+          return ref.current;
         },
       }),
     []

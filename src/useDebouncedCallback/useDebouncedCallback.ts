@@ -2,7 +2,7 @@
 import { DependencyList, useMemo, useRef } from 'react';
 import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
 
-export interface IDebouncedFunction<Fn extends (...args: any[]) => any> {
+export interface DebouncedFunction<Fn extends (...args: any[]) => any> {
   (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
 }
 
@@ -20,7 +20,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
   deps: DependencyList,
   delay: number,
   maxWait = 0
-): IDebouncedFunction<Fn> {
+): DebouncedFunction<Fn> {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const waitTimeout = useRef<ReturnType<typeof setTimeout>>();
   const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
@@ -70,7 +70,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
         if (maxWait > 0 && !waitTimeout.current) {
           waitTimeout.current = setTimeout(execute, maxWait);
         }
-      } as IDebouncedFunction<Fn>;
+      } as DebouncedFunction<Fn>;
 
       Object.defineProperties(wrapped, {
         length: { value: callback.length },
@@ -79,7 +79,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 
       return wrapped;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
     [delay, maxWait, ...deps]
   );
 }

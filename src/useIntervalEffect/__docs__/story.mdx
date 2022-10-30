@@ -1,0 +1,36 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Lifecycle/useIntervalEffect" component={Example} />
+
+# useInterval
+
+Like `setInterval` but in form of react hook.
+
+- Auto-cancel interval on component unmount.
+- Reset interval on delay change.
+- Callback change dont cause interval reset.
+- Ability to disable interval.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useIntervalEffect(callback: () => void, ms?: number): void;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **callback** _`() => void`_ - function to call within interval.
+- **ms** _`number | undefined`_ - delay passed to underlying `setInterval`. In case delay
+  is `undefined` - interval will be cancelled.

@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-import { useCallback, useEffect } from 'react';
-import {
-  useConditionalEffect,
-  useFirstMountState,
-  useMountEffect,
-  usePrevious,
-  useSafeState,
-  useSyncedRef,
-  useUpdateEffect,
-} from '..';
-import { INextState, resolveHookState } from '../util/resolveHookState';
+/* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
+import { useCallback } from 'react';
+import { useConditionalEffect } from '../useConditionalEffect/useConditionalEffect';
+import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect';
+import { useMountEffect } from '../useMountEffect/useMountEffect';
+import { usePrevious } from '../usePrevious/usePrevious';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useUpdateEffect } from '../useUpdateEffect/useUpdateEffect';
+import { NextState, resolveHookState } from '../util/resolveHookState';
 import { isBrowser } from '../util/const';
 import { off, on } from '../util/misc';
 
-export type IUseStorageValueOptions<
+export type UseStorageValueOptions<
   InitializeWithValue extends boolean | undefined = boolean | undefined
 > = {
   /**
@@ -51,7 +50,7 @@ export type IUseStorageValueOptions<
       initializeWithStorageValue: InitializeWithValue;
     });
 
-export type IReturnState<
+export type ReturnState<
   T,
   D,
   O,
@@ -59,9 +58,9 @@ export type IReturnState<
   U = O extends { initializeWithStorageValue: false } ? undefined | N : N
 > = U;
 
-export type IHookReturn<T, D, O> = [
-  IReturnState<T, D, O>,
-  (val: INextState<T, IReturnState<T, D, O>>) => void,
+export type HookReturn<T, D, O> = [
+  ReturnState<T, D, O>,
+  (val: NextState<T, ReturnState<T, D, O>>) => void,
   () => void,
   () => void
 ];
@@ -70,34 +69,34 @@ export function useStorageValue<T = unknown>(
   storage: Storage,
   key: string,
   defaultValue?: null,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, IUseStorageValueOptions<true | undefined>>;
+  options?: UseStorageValueOptions
+): HookReturn<T, typeof defaultValue, UseStorageValueOptions<true | undefined>>;
 export function useStorageValue<T = unknown>(
   storage: Storage,
   key: string,
   defaultValue: null,
-  options: IUseStorageValueOptions<false>
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options: UseStorageValueOptions<false>
+): HookReturn<T, typeof defaultValue, typeof options>;
 
 export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue: T,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, IUseStorageValueOptions<true | undefined>>;
+  options?: UseStorageValueOptions
+): HookReturn<T, typeof defaultValue, UseStorageValueOptions<true | undefined>>;
 export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue: T,
-  options: IUseStorageValueOptions<false>
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options: UseStorageValueOptions<false>
+): HookReturn<T, typeof defaultValue, typeof options>;
 
 export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue?: T | null,
-  options?: IUseStorageValueOptions
-): IHookReturn<T, typeof defaultValue, typeof options>;
+  options?: UseStorageValueOptions
+): HookReturn<T, typeof defaultValue, typeof options>;
 
 /**
  * Manages a single storage key.
@@ -111,10 +110,14 @@ export function useStorageValue<T>(
   storage: Storage,
   key: string,
   defaultValue: T | null = null,
-  options: IUseStorageValueOptions = {}
-): IHookReturn<T, typeof defaultValue, typeof options> {
+  options: UseStorageValueOptions = {}
+): HookReturn<T, typeof defaultValue, typeof options> {
   const { isolated } = options;
-  let { initializeWithStorageValue = true, handleStorageEvent = true, storeDefaultValue } = options;
+  let {
+    initializeWithStorageValue = true,
+    handleStorageEvent = true,
+    storeDefaultValue = false,
+  } = options;
 
   // avoid fetching data from storage during SSR
   if (!isBrowser) {
@@ -176,7 +179,7 @@ export function useStorageValue<T>(
       methods.current.storeVal(defaultValue as T);
     },
     undefined,
-    [prevState !== state, state === defaultValue && defaultValue !== null && storeDefaultValue]
+    [prevState !== state, storeDefaultValue && state === defaultValue && defaultValue !== null]
   );
 
   // refetch value when key changed
@@ -184,13 +187,11 @@ export function useStorageValue<T>(
     methods.current.fetchState();
   }, [key]);
 
-  // register hook for same-page synchronisation
-  useEffect(() => {}, [key]);
-
   // subscribe hook for storage events
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!handleStorageEvent) return;
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const storageHandler = (ev: StorageEvent) => {
       if (ev.storageArea !== storage) return;
       if (ev.key !== keyRef.current) return;
@@ -200,14 +201,14 @@ export function useStorageValue<T>(
 
     on(window, 'storage', storageHandler, { passive: true });
 
-    // eslint-disable-next-line consistent-return
     return () => {
       off(window, 'storage', storageHandler);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleStorageEvent]);
 
-  useEffect(() => {
+  // register hook for same-page synchronisation
+  useIsomorphicLayoutEffect(() => {
     if (isolated) return;
 
     let storageKeys = storageKeysUsed.get(storage);
@@ -227,7 +228,6 @@ export function useStorageValue<T>(
     const mSetState = methods.current.setState;
     keySetters.add(mSetState);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       keySetters?.delete(mSetState);
     };
@@ -246,6 +246,7 @@ export function useStorageValue<T>(
           methods.current.setState(s);
 
           if (!isolatedRef.current) {
+            // update all other hooks state
             storageKeysUsed
               .get(storage)
               ?.get(keyRef.current)
@@ -284,18 +285,16 @@ export function useStorageValue<T>(
       if (!isBrowser) return;
 
       const newVal = methods.current.fetchState();
-      if (newVal !== null) {
-        if (!isolatedRef.current) {
-          // update all other hooks state
-          storageKeysUsed
-            .get(storage)
-            ?.get(keyRef.current)
-            ?.forEach((setter) => {
-              if (setter === methods.current.setState) return;
+      if (newVal !== null && !isolatedRef.current) {
+        // update all other hooks state
+        storageKeysUsed
+          .get(storage)
+          ?.get(keyRef.current)
+          ?.forEach((setter) => {
+            if (setter === methods.current.setState) return;
 
-              setter(newVal);
-            });
-        }
+            setter(newVal);
+          });
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
@@ -306,6 +305,7 @@ const storageKeysUsed = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
 const stringify = (data: unknown): string | null => {
   if (data === null) {
+    // eslint-disable-next-line no-console
     console.warn(
       `'null' is not a valid data for useStorageValue hook, this operation will take no effect`
     );
@@ -314,20 +314,23 @@ const stringify = (data: unknown): string | null => {
 
   try {
     return JSON.stringify(data);
-  } catch (e) /* istanbul ignore next */ {
+  } catch (error) /* istanbul ignore next */ {
     // i have absolutely no idea how to cover this, since modern JSON.stringify does not throw on
     // cyclic references anymore
-    console.warn(e);
+    // eslint-disable-next-line no-console
+    console.warn(error);
     return null;
   }
 };
+
 const parse = (str: string | null, fallback: unknown): unknown => {
   if (str === null) return fallback;
 
   try {
     return JSON.parse(str);
-  } catch (e) {
-    console.warn(e);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn(error);
     return fallback;
   }
 };

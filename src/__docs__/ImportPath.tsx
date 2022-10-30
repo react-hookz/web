@@ -1,10 +1,9 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { DocsContext, Source } from '@storybook/addon-docs/blocks';
-import React, { useContext } from 'react';
+import { DocsContext, Source } from '@storybook/addon-docs';
+import React, { FC, useContext } from 'react';
 
-export const ImportPath = (): JSX.Element => {
+export const ImportPath: FC = () => {
   const context = useContext(DocsContext);
-  const componentName = context.kind?.split('/')[1];
+  const componentName = context.kind?.split('/')[1] || 'UnknownComponent';
 
   const path = `
 import { ${componentName} } from '@react-hookz/web'; // cjs

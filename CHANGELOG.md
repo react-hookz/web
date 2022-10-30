@@ -1,3 +1,252 @@
+# [16.1.0](https://github.com/react-hookz/web/compare/v16.0.1...v16.1.0) (2022-10-23)
+
+
+### Features
+
+* **useDeepCompareMemo:** Implement useDeepCompareMemo ([#979](https://github.com/react-hookz/web/issues/979)) ([532cc41](https://github.com/react-hookz/web/commit/532cc41f3b2d55a7f6f297ea9a4b652072e0d311)), closes [#871](https://github.com/react-hookz/web/issues/871)
+
+## [16.0.1](https://github.com/react-hookz/web/compare/v16.0.0...v16.0.1) (2022-10-22)
+
+
+### Bug Fixes
+
+* **useCustomCompareMemo:** Correctly infer the type of the value returned by the factory function ([#976](https://github.com/react-hookz/web/issues/976)) ([a625c55](https://github.com/react-hookz/web/commit/a625c55bc544dc1bc7544a5ff8811a0a78c568bd)), closes [#975](https://github.com/react-hookz/web/issues/975)
+
+# [16.0.0](https://github.com/react-hookz/web/compare/v15.1.0...v16.0.0) (2022-10-09)
+
+
+### Styles
+
+* remove I prefix from types and interfaces ([c2a1ff4](https://github.com/react-hookz/web/commit/c2a1ff40909f1ddf5066c5d038b800bd42410a21))
+
+
+### BREAKING CHANGES
+
+* `I` prefix removed from all types having it.
+
+# [15.1.0](https://github.com/react-hookz/web/compare/v15.0.1...v15.1.0) (2022-08-14)
+
+
+### Features
+
+* `useCustomCompareMemo` - like useMemo but uses custom deps comparator ([#895](https://github.com/react-hookz/web/issues/895)) ([5b38e8d](https://github.com/react-hookz/web/commit/5b38e8d182c1642a12dbf44050c44bb56f1a4884))
+* implement useTimeoutEffect ([#886](https://github.com/react-hookz/web/issues/886)) ([a3f6f07](https://github.com/react-hookz/web/commit/a3f6f07d4f3a0ca91810a9c88e31891bdb46fe00))
+
+## [15.0.1](https://github.com/react-hookz/web/compare/v15.0.0...v15.0.1) (2022-07-04)
+
+
+### Bug Fixes
+
+* **useLifecycleLogger:** rework hook and improve tests coverage ([#868](https://github.com/react-hookz/web/issues/868)) ([bfba4c2](https://github.com/react-hookz/web/commit/bfba4c25389a81677925d71645dd41da307bfe24))
+
+# [15.0.0](https://github.com/react-hookz/web/compare/v14.7.1...v15.0.0) (2022-07-04)
+
+
+### Bug Fixes
+
+* **useMediaQuery:** fix state stuck for concurrent mode ([#866](https://github.com/react-hookz/web/issues/866)) ([75db2b5](https://github.com/react-hookz/web/commit/75db2b5d73ab07beb53f335274b4413f36d625ab)), closes [#849](https://github.com/react-hookz/web/issues/849)
+
+
+### Features
+
+* implement `useControlledRerenderState` hook ([#865](https://github.com/react-hookz/web/issues/865)) ([ea4545b](https://github.com/react-hookz/web/commit/ea4545b7ee45019c68d0edb2332bd9478e50b820))
+* **useToggle:** ignore react events passed to state setter ([#867](https://github.com/react-hookz/web/issues/867)) ([085f711](https://github.com/react-hookz/web/commit/085f711200edc9beb7ed5adedcb83d8ce45c0f77)), closes [#861](https://github.com/react-hookz/web/issues/861)
+
+
+### BREAKING CHANGES
+
+* **useToggle:** `useToggle` now ignores react events passed to its
+state setter, so it can be used as event handler directly.
+* **useMediaQuery:** `useMediaQuery` and `useScreenOrientation` are
+asynchronous now and yields `undefined` at very first render, but
+updates to actual value right after.
+
+## [14.7.1](https://github.com/react-hookz/web/compare/v14.7.0...v14.7.1) (2022-07-03)
+
+
+### Bug Fixes
+
+* **useCookieValue:** proper js-cookie import ([#864](https://github.com/react-hookz/web/issues/864)) ([bb6464b](https://github.com/react-hookz/web/commit/bb6464b9893370c73edcf462a65f09de23efbf44)), closes [#280](https://github.com/react-hookz/web/issues/280)
+
+# [14.7.0](https://github.com/react-hookz/web/compare/v14.6.0...v14.7.0) (2022-06-30)
+
+
+### Features
+
+* implement `useFunctionalState` ([#862](https://github.com/react-hookz/web/issues/862)) ([1491d38](https://github.com/react-hookz/web/commit/1491d38024cf2c5c3646e5dcf5a31e9f0a0e1aec)), closes [#530](https://github.com/react-hookz/web/issues/530)
+
+# [14.6.0](https://github.com/react-hookz/web/compare/v14.5.1...v14.6.0) (2022-06-30)
+
+
+### Features
+
+* **useIsMounted:** allow to set initial value ([a63188a](https://github.com/react-hookz/web/commit/a63188a79e6b920fb6d2bd4fd18f26b3dadb7036))
+* **useSafeState:** fix issue with inability to set state before mount ([af8f4cd](https://github.com/react-hookz/web/commit/af8f4cdcc498260a6cdb763dc13605102ab9ba9b))
+
+## [14.5.1](https://github.com/react-hookz/web/compare/v14.5.0...v14.5.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **useMeasure:** support conditional rendering ([76ac155](https://github.com/react-hookz/web/commit/76ac155f65223bdc51570138f55a4ca89d299079)), closes [#755](https://github.com/react-hookz/web/issues/755)
+
+# [14.5.0](https://github.com/react-hookz/web/compare/v14.4.0...v14.5.0) (2022-06-30)
+
+
+### Features
+
+* implement `useHookableRef` hook ([f41ab22](https://github.com/react-hookz/web/commit/f41ab226d4708a827724be3580d74dcef2baaee9))
+
+# [14.4.0](https://github.com/react-hookz/web/compare/v14.3.0...v14.4.0) (2022-06-30)
+
+
+### Features
+
+* implement `useIntervalEffect` ([a3869a3](https://github.com/react-hookz/web/commit/a3869a35b80ded1f0abd96366038ccd0b10d9040)), closes [#33](https://github.com/react-hookz/web/issues/33) [#452](https://github.com/react-hookz/web/issues/452)
+
+# [14.3.0](https://github.com/react-hookz/web/compare/v14.2.3...v14.3.0) (2022-06-25)
+
+
+### Features
+
+* **useList:** port useList from react-use ([#810](https://github.com/react-hookz/web/issues/810)) ([73639fb](https://github.com/react-hookz/web/commit/73639fb55793c01ff8a8f1d7ad8bb3c7a9665561))
+
+## [14.2.3](https://github.com/react-hookz/web/compare/v14.2.2...v14.2.3) (2022-06-22)
+
+
+### Bug Fixes
+
+* apply correct order of operations in `useRerender` ([#850](https://github.com/react-hookz/web/issues/850)) ([5fc735a](https://github.com/react-hookz/web/commit/5fc735ad2b582394c913ffc2440495213d1dff2d))
+* change storybook builder to webpack5 ([#830](https://github.com/react-hookz/web/issues/830)) ([2df44c1](https://github.com/react-hookz/web/commit/2df44c1fc206dd0f6108da0bd282db259ab73010))
+
+## [14.2.2](https://github.com/react-hookz/web/compare/v14.2.1...v14.2.2) (2022-05-12)
+
+
+### Bug Fixes
+
+* `useResizeObserver` now respects element changes within ref object ([#759](https://github.com/react-hookz/web/issues/759)) ([2a4e848](https://github.com/react-hookz/web/commit/2a4e8482c29a8374bcd3eabb2e26c7899bc5a4a2)), closes [#755](https://github.com/react-hookz/web/issues/755)
+
+## [14.2.1](https://github.com/react-hookz/web/compare/v14.2.0...v14.2.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* `useUnmountEffect` now invokes changing effect functions ([#758](https://github.com/react-hookz/web/issues/758)) ([380637a](https://github.com/react-hookz/web/commit/380637a1bd1e91d1f22ad5fb9ef7557598700cb3)), closes [#756](https://github.com/react-hookz/web/issues/756)
+
+# [14.2.0](https://github.com/react-hookz/web/compare/v14.1.0...v14.2.0) (2022-05-12)
+
+
+### Features
+
+* `useVibration` hook implementation and docs ([#757](https://github.com/react-hookz/web/issues/757)) ([db40294](https://github.com/react-hookz/web/commit/db4029403dfa11a0e00fda8cf2427c6f94e406d2))
+
+# [14.1.0](https://github.com/react-hookz/web/compare/v14.0.0...v14.1.0) (2022-05-12)
+
+
+### Features
+
+* **useCounter:** port `useCounter` from `react-use` ([#751](https://github.com/react-hookz/web/issues/751)) ([510947b](https://github.com/react-hookz/web/commit/510947bdd9006fc9c5f0c15c37f7983e950955e6)), closes [#33](https://github.com/react-hookz/web/issues/33)
+
+# [14.0.0](https://github.com/react-hookz/web/compare/v13.3.0...v14.0.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* **`useMediatedState`:** make initial state be passed through mediator ([#753](https://github.com/react-hookz/web/issues/753)) ([727d224](https://github.com/react-hookz/web/commit/727d224bf55373a6f0ea15bc661a666b3f1e1631))
+
+
+### BREAKING CHANGES
+
+* **`useMediatedState`:** `useMediatedState` now passes initial state through mediator
+
+# [13.3.0](https://github.com/react-hookz/web/compare/v13.2.1...v13.3.0) (2022-04-25)
+
+
+### Features
+
+* implement `useLifecycleEffect` hook ([#652](https://github.com/react-hookz/web/issues/652)) ([357b018](https://github.com/react-hookz/web/commit/357b01802ef2d98a17a36f653a3e6aa90ad5b4ef))
+
+## [13.2.1](https://github.com/react-hookz/web/compare/v13.2.0...v13.2.1) (2022-04-10)
+
+
+### Bug Fixes
+
+* make `useRerender` operate integer increment instead of bool switch ([#711](https://github.com/react-hookz/web/issues/711)) ([409a21f](https://github.com/react-hookz/web/commit/409a21f73d3250ad08e5a46da59cc2db88f29390)), closes [#691](https://github.com/react-hookz/web/issues/691)
+
+# [13.2.0](https://github.com/react-hookz/web/compare/v13.1.0...v13.2.0) (2022-03-30)
+
+
+### Features
+
+* create `useRafEffect` ([#693](https://github.com/react-hookz/web/issues/693)) ([6548831](https://github.com/react-hookz/web/commit/65488314e7a0845a10f263e05026490171891bda))
+
+# [13.1.0](https://github.com/react-hookz/web/compare/v13.0.0...v13.1.0) (2022-03-14)
+
+
+### Features
+
+* implement `useRafState` hook ([6cd44ec](https://github.com/react-hookz/web/commit/6cd44ecead3864aa1f0ece8ab3f5e02ae4e42cbf))
+* implement `useWindowSize` hook ([81819cf](https://github.com/react-hookz/web/commit/81819cf63315564ee5f41174f5a036c158dad913))
+
+# [13.0.0](https://github.com/react-hookz/web/compare/v12.3.0...v13.0.0) (2022-02-25)
+
+
+### Features
+
+* **`useMediaQuery`:** add synchronous mql state fetch ([0e0be56](https://github.com/react-hookz/web/commit/0e0be5626bbe3ab0815e25f9aef49dbb1be681b1))
+* implement new hook - `useScreenOrientation` ([107cc21](https://github.com/react-hookz/web/commit/107cc2116f09d44757495d688f41eeb5cad11760))
+
+
+### BREAKING CHANGES
+
+* **`useMediaQuery`:** `useMediaQuery` now does synchronous fetch, this means
+that in browser it will return final state on first render, while SSR
+mode still return `undefined`.
+SSR users should set second parameter of this hook to `true`, to
+postpone state fetch until effects phase.
+
+# [12.3.0](https://github.com/react-hookz/web/compare/v12.2.0...v12.3.0) (2022-01-17)
+
+
+### Features
+
+* new hook `usePreviousDistinct` ([#585](https://github.com/react-hookz/web/issues/585)) ([1bf69d6](https://github.com/react-hookz/web/commit/1bf69d66e951e8a09427aa5f9f652fb8be5d8229)), closes [#33](https://github.com/react-hookz/web/issues/33)
+
+# [12.2.0](https://github.com/react-hookz/web/compare/v12.1.2...v12.2.0) (2022-01-14)
+
+
+### Features
+
+* new hook `useDeepCompareEffect` ([#581](https://github.com/react-hookz/web/issues/581)) ([3dfa7b5](https://github.com/react-hookz/web/commit/3dfa7b5664746fd5288d488fb477c23f8e765f43))
+
+## [12.1.2](https://github.com/react-hookz/web/compare/v12.1.1...v12.1.2) (2022-01-13)
+
+
+### Bug Fixes
+
+* move to stricter linting configuration ([#580](https://github.com/react-hookz/web/issues/580)) ([f455992](https://github.com/react-hookz/web/commit/f455992a60b06846fa86a4627d206053b279e96c))
+
+## [12.1.1](https://github.com/react-hookz/web/compare/v12.1.0...v12.1.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **`useLocalStorage`, `useSessionStorage`:** replace hook with noop in case of storage absence. ([#540](https://github.com/react-hookz/web/issues/540)) ([790b302](https://github.com/react-hookz/web/commit/790b30257a15e936f5c4d776917fc2dd6dcad931)), closes [#521](https://github.com/react-hookz/web/issues/521)
+
+# [12.1.0](https://github.com/react-hookz/web/compare/v12.0.3...v12.1.0) (2022-01-11)
+
+
+### Features
+
+* **useMeasure,useResizeObserver:** ability yo disable observation ([#573](https://github.com/react-hookz/web/issues/573)) ([4c6f074](https://github.com/react-hookz/web/commit/4c6f074eca31604d0975a9c8de1262b2fa8bda48)), closes [#523](https://github.com/react-hookz/web/issues/523)
+
+## [12.0.3](https://github.com/react-hookz/web/compare/v12.0.2...v12.0.3) (2021-12-23)
+
+
+### Bug Fixes
+
+* **451:** attempt to fix issue [#451](https://github.com/react-hookz/web/issues/451) ([#539](https://github.com/react-hookz/web/issues/539)) ([c2f99da](https://github.com/react-hookz/web/commit/c2f99da82b88d78488c84ad793d3e4c99b4c2141))
+
 # [12.0.0](https://github.com/react-hookz/web/compare/v11.1.0...v12.0.0) (2021-10-01)
 
 

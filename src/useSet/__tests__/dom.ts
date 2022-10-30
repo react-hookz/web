@@ -34,7 +34,7 @@ describe('useSet', () => {
 
     await act(async () => {
       expect(result.current[1].add(1)).toBe(result.current[1]);
-      expect(spy).toBeCalledWith(1);
+      expect(spy).toHaveBeenCalledWith(1);
       await waitForNextUpdate();
     });
 
@@ -65,7 +65,7 @@ describe('useSet', () => {
 
     await act(async () => {
       expect(result.current[1].delete(1)).toBe(true);
-      expect(spy).toBeCalledWith(1);
+      expect(spy).toHaveBeenCalledWith(1);
       await waitForNextUpdate();
     });
 

@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="State/useRafState" component={Example} />
+
+# useRafState
+
+Like `React.useState`, but state is only updated within animation frame.
+
+- Auto-cancel animation frame on component unmount.
+- SSR-friendly.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useRafState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
+export function useRafState<S = undefined>(): [
+  S | undefined,
+  Dispatch<SetStateAction<S | undefined>>
+];
+```
+
+#### Importing
+
+<ImportPath />

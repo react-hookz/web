@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useMemo, useRef } from 'react';
-import { useUnmountEffect } from '..';
+import { useUnmountEffect } from '../useUnmountEffect/useUnmountEffect';
 
-export interface IThrottledFunction<Fn extends (...args: any[]) => any> {
+export interface ThrottledFunction<Fn extends (...args: any[]) => any> {
   (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
 }
 
@@ -21,7 +21,7 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
   deps: DependencyList,
   delay: number,
   noTrailing = false
-): IThrottledFunction<Fn> {
+): ThrottledFunction<Fn> {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
 
@@ -60,7 +60,7 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
       }
 
       execute(this, args);
-    } as IThrottledFunction<Fn>;
+    } as ThrottledFunction<Fn>;
 
     Object.defineProperties(wrapped, {
       length: { value: callback.length },
@@ -68,6 +68,6 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
     });
 
     return wrapped;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
   }, [delay, noTrailing, ...deps]);
 }

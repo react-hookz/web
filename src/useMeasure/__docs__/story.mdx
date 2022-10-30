@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Sensor/useMeasure" />
 
@@ -11,6 +11,7 @@ Uses ResizeObserver to track element dimensions and re-render component when the
 - Its ResizeObserver callback uses RAF debouncing, therefore it is pretty performant.
 - SSR friendly, returns `undefined` on initial mount.
 - Automatically creates ref for you, that you can easily pass to needed element.
+- Allows to dynamically enable and disable observation.
 
 #### Example
 
@@ -21,12 +22,16 @@ Uses ResizeObserver to track element dimensions and re-render component when the
 ## Reference
 
 ```ts
-function useMeasure<T extends Element>(): [DOMRectReadOnly | undefined, RefObject<T>];
+function useMeasure<T extends Element>(enabled = true): [DOMRectReadOnly | undefined, React.RefObject<T>];
 ```
 
 #### Importing
 
 <ImportPath />
+
+#### Arguments
+
+- **enabled** _`boolean`_ _(default: `true`)_ - Whether resize observer is enabled or not.
 
 #### Return
 

@@ -1,6 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies, import/no-default-export */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as ts from 'typescript';
-import * as path from 'path';
+import * as path from 'node:path';
 
 function shouldUpdateImportDeclaration(
   node: ts.Node
@@ -21,7 +21,7 @@ function shouldUpdateImportDeclaration(
   return path.extname(node.moduleSpecifier.text) === '';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line import/no-default-export
 export default function transformer(_: ts.Program): ts.TransformerFactory<ts.SourceFile> {
   return (context) => (sourceFile) => {
     const fac = context.factory;
@@ -34,7 +34,8 @@ export default function transformer(_: ts.Program): ts.TransformerFactory<ts.Sou
             node.decorators,
             node.modifiers,
             node.importClause,
-            newModuleSpecifier
+            newModuleSpecifier,
+            node.assertClause
           );
         }
         if (ts.isExportDeclaration(node)) {
@@ -45,7 +46,8 @@ export default function transformer(_: ts.Program): ts.TransformerFactory<ts.Sou
             node.modifiers,
             false,
             node.exportClause,
-            newModuleSpecifier
+            newModuleSpecifier,
+            node.assertClause
           );
         }
       }

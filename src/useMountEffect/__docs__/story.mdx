@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Lifecycle/useMountEffect" component={Example} />
 
@@ -29,5 +29,6 @@ function useMountEffect(effect: CallableFunction): void;
 
 #### Arguments
 
-- _**effect**_ _`CallableFunction`_ - Effector to call when component mounted. Can be a function returning any value.
-  In case the need of cleanup action - use common `useEffect` with empty deps array.
+- _**effect**_ _`CallableFunction`_ - Effector to call when component mounted. Can be a function
+  returning any value. In case the need of cleanup action - use common `useEffect` with empty deps
+  array.

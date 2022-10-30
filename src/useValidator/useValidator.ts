@@ -1,23 +1,24 @@
 import { DependencyList, Dispatch, useCallback, useEffect } from 'react';
-import { useSafeState, useSyncedRef } from '..';
-import { IInitialState, INextState } from '../util/resolveHookState';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { InitialState, NextState } from '../util/resolveHookState';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface IValidityState extends Record<any, any> {
+export interface ValidityState extends Record<any, any> {
   isValid: boolean | undefined;
 }
 
-export type IValidatorImmediate<V extends IValidityState = IValidityState> = () => V;
-export type IValidatorDeferred<V extends IValidityState = IValidityState> = (
-  done: Dispatch<INextState<V>>
+export type ValidatorImmediate<V extends ValidityState = ValidityState> = () => V;
+export type ValidatorDeferred<V extends ValidityState = ValidityState> = (
+  done: Dispatch<NextState<V>>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ) => any;
 
-export type IValidator<V extends IValidityState = IValidityState> =
-  | IValidatorImmediate<V>
-  | IValidatorDeferred<V>;
+export type Validator<V extends ValidityState = ValidityState> =
+  | ValidatorImmediate<V>
+  | ValidatorDeferred<V>;
 
-export type IUseValidatorReturn<V extends IValidityState> = [V, () => void];
+export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 
 /**
  * Performs validation when any of provided dependencies has changed.
@@ -26,17 +27,17 @@ export type IUseValidatorReturn<V extends IValidityState> = [V, () => void];
  * @param deps Dependencies list that passed straight to underlying `useEffect`.
  * @param initialValidity Initial validity state.
  */
-export function useValidator<V extends IValidityState>(
-  validator: IValidator<V>,
+export function useValidator<V extends ValidityState>(
+  validator: Validator<V>,
   deps: DependencyList,
-  initialValidity: IInitialState<V> = { isValid: undefined } as V
-): IUseValidatorReturn<V> {
+  initialValidity: InitialState<V> = { isValid: undefined } as V
+): UseValidatorReturn<V> {
   const [validity, setValidity] = useSafeState(initialValidity);
   const validatorRef = useSyncedRef(() => {
     if (validator.length) {
       validator(setValidity);
     } else {
-      setValidity((validator as IValidatorImmediate<V>)());
+      setValidity((validator as ValidatorImmediate<V>)());
     }
   });
 

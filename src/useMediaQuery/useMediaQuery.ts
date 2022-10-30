@@ -1,21 +1,21 @@
 import { Dispatch, useEffect } from 'react';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 
 const queriesMap = new Map<
   string,
   { mql: MediaQueryList; dispatchers: Set<Dispatch<boolean>>; listener: () => void }
 >();
 
-const querySubscribe = (query: string, dispatch: Dispatch<boolean>) => {
+type QueryStateSetter = (matches: boolean) => void;
+
+const querySubscribe = (query: string, setState: QueryStateSetter) => {
   let entry = queriesMap.get(query);
 
   if (!entry) {
     const mql = matchMedia(query);
-    const dispatchers = new Set<Dispatch<boolean>>();
+    const dispatchers = new Set<QueryStateSetter>();
     const listener = () => {
-      dispatchers.forEach((d) => {
-        d(mql.matches);
-      });
+      dispatchers.forEach((d) => d(mql.matches));
     };
 
     if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
@@ -29,18 +29,18 @@ const querySubscribe = (query: string, dispatch: Dispatch<boolean>) => {
     queriesMap.set(query, entry);
   }
 
-  entry.dispatchers.add(dispatch);
-  dispatch(entry.mql.matches);
+  entry.dispatchers.add(setState);
+  setState(entry.mql.matches);
 };
 
-const queryUnsubscribe = (query: string, dispatch: Dispatch<boolean>): void => {
+const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
   const entry = queriesMap.get(query);
 
   // else path is impossible to test in normal situation
   /* istanbul ignore else */
   if (entry) {
     const { mql, dispatchers, listener } = entry;
-    dispatchers.delete(dispatch);
+    dispatchers.delete(setState);
 
     if (!dispatchers.size) {
       queriesMap.delete(query);
@@ -54,6 +54,8 @@ const queryUnsubscribe = (query: string, dispatch: Dispatch<boolean>): void => {
 /**
  * Tracks the state of CSS media query.
  *
+ * Return undefined initially and later receives correct value.
+ *
  * @param query CSS media query to track.
  */
 export function useMediaQuery(query: string): boolean | undefined {
@@ -62,9 +64,7 @@ export function useMediaQuery(query: string): boolean | undefined {
   useEffect(() => {
     querySubscribe(query, setState);
 
-    return () => {
-      queryUnsubscribe(query, setState);
-    };
+    return () => queryUnsubscribe(query, setState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 

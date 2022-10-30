@@ -5,6 +5,7 @@ import { useConditionalEffect, useToggle, useUpdateEffect } from '../..';
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(false);
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ToggledComponent: React.FC = () => {
     const [state1, setState1] = useState(2);
     const [state2, setState2] = useState(2);

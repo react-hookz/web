@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="State/useValidator" component={Example} />
 
@@ -25,17 +25,17 @@ Performs validation when any of provided dependencies has changed.
 ## Reference
 
 ```ts
-interface IValidityState extends Record<any, any> { isValid: boolean | undefined; }
-type IValidatorImmediate<V extends IValidityState = IValidityState> = () => V;
-type IValidatorDeferred<V extends IValidityState = IValidityState> = (done: Dispatch<INextState<V>>) => any;
-type IValidator<V extends IValidityState = IValidityState> = IValidatorImmediate<V> | IValidatorDeferred<V>;
-type IUseValidatorReturn<V extends IValidityState> = [V, () => void];
+interface ValidityState extends Record<any, any> { isValid: boolean | undefined; }
+type ValidatorImmediate<V extends ValidityState = ValidityState> = () => V;
+type ValidatorDeferred<V extends ValidityState = ValidityState> = (done: Dispatch<NextState<V>>) => any;
+type Validator<V extends ValidityState = ValidityState> = ValidatorImmediate<V> | ValidatorDeferred<V>;
+type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 
-function useValidator<V extends IValidityState>(
-  validator: IValidator<V>,
+function useValidator<V extends ValidityState>(
+  validator: Validator<V>,
   deps: DependencyList,
-  initialValidity: IInitialState<V> = { isValid: undefined } as V
-) => IUseValidatorReturn<V>;
+  initialValidity: InitialState<V> = { isValid: undefined } as V
+) => UseValidatorReturn<V>;
 ```
 
 #### Importing
@@ -44,17 +44,17 @@ function useValidator<V extends IValidityState>(
 
 #### Arguments
 
-- **validator** _`IValidator<V>`_ - the function that performs validation, it can be of two types:
+- **validator** _`Validator<V>`_ - the function that performs validation, it can be of two types:
   - _immediate validator_ - performs validation on the go and returns validity state as a function
     result, expects 0 arguments.
-  - _deferred validator_ - performs any kind of asynchronous validation, expects 1 argument which
-    is the validity state setter.
+  - _deferred validator_ - performs any kind of asynchronous validation, expects 1 argument which is
+    the validity state setter.
     > TypeScript warning: deferred validators are unable to infer the validity type, therefore it
     > requires explicit validity state type definition, as it is shown in example.
-- **deps** _`DependencyList`_ - dependencies list that will trigger automatic revalidation, as
-  for `useEffect` hook.
-- **initialValidity** _`IInitialState<V>`_ _(default: `{ isValid: undefined }`)_ - initial validity state, that is set before mount
-  validation.
+- **deps** _`DependencyList`_ - dependencies list that will trigger automatic revalidation, as for
+  `useEffect` hook.
+- **initialValidity** _`InitialState<V>`_ _(default: `{ isValid: undefined }`)_ - initial validity
+  state, that is set before mount validation.
 
 #### Return
 

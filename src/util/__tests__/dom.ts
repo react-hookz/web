@@ -1,8 +1,8 @@
-import { resolveHookState } from '../resolveHookState';
+import { resolveHookState } from '../..';
 import { basicDepsComparator, off, on } from '../misc';
 
 describe('resolveHookState', () => {
-  it('it should be defined', () => {
+  it('should be defined', () => {
     expect(resolveHookState).toBeDefined();
   });
 
@@ -28,16 +28,16 @@ describe('resolveHookState', () => {
   });
 });
 
+const cb = () => {};
+
 describe('misc', () => {
   describe('on', () => {
     it("should call object's `addEventListener` with passed parameters", () => {
       const obj = {
         addEventListener: jest.fn(),
       };
-
-      const cb = () => {};
       on(obj as unknown as EventTarget, 'evtName', cb);
-      expect(obj.addEventListener).toBeCalledWith('evtName', cb);
+      expect(obj.addEventListener).toHaveBeenCalledWith('evtName', cb);
     });
     it("should not throw in case 'undefined' element passed", () => {
       expect(() => {
@@ -53,9 +53,8 @@ describe('misc', () => {
         removeEventListener: jest.fn(),
       };
 
-      const cb = () => {};
       off(obj as unknown as EventTarget, 'evtName', cb);
-      expect(obj.removeEventListener).toBeCalledWith('evtName', cb);
+      expect(obj.removeEventListener).toHaveBeenCalledWith('evtName', cb);
     });
 
     it("should not throw in case 'undefined' element passed", () => {

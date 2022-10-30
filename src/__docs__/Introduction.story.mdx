@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Home" />
 
@@ -14,9 +14,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 [![Types](https://flat.badgen.net/npm/types/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 [![Tree Shaking](https://flat.badgen.net/bundlephobia/tree-shaking/@react-hookz/web)](https://bundlephobia.com/result?p=@react-hookz/web)
 
-× **[DOCS](https://react-hookz.github.io/web/)**
-× **[DISCORD](https://discord.gg/Fjwphtu65f)**
-× **[CHANGELOG](https://github.com/react-hookz/web/blob/master/CHANGELOG.md)** ×
+× **[GITHUB](https://github.com/react-hookz/web)** × **[DISCORD](https://discord.gg/Fjwphtu65f)** ×
+**[CHANGELOG](https://github.com/react-hookz/web/blob/master/CHANGELOG.md)** ×
 
 </div>
 
@@ -36,7 +35,7 @@ yarn add @react-hookz/web
 ```
 
 As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you guessed it -
-`react` and `react-dom` 16.8+.  
+`react` and `react-dom` 16.8+.
 Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
 transpile your `node-modules` in order to run in IE.
 
@@ -59,3 +58,10 @@ import { useMountEffect } from '@react-hookz/web/esm';
 // in case you want all the recent ES features
 import { useMountEffect } from '@react-hookz/web/esnext';
 ```
+
+## Migrating from react-use
+
+`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974) of `react-use` by one of its former maintainers.
+
+Coming from `react-use`? Check out our
+[migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).

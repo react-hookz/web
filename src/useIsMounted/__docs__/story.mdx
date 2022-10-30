@@ -1,13 +1,13 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Lifecycle/useIsMounted" component={Example} />
 
 # useMountedGetter
 
-Returns function that yields current mount state.
-This hook is handy for the cases when you have to detect component mount state within async effects.
+Returns function that yields current mount state. This hook is handy for the cases when you have to
+detect component mount state within async effects.
 
 > **_This hook provides stable API, meaning returned methods does not change between renders_**
 
@@ -20,12 +20,17 @@ This hook is handy for the cases when you have to detect component mount state w
 ## Reference
 
 ```ts
-function useIsMounted(): () => boolean;
+function useIsMounted(initialValue = false): () => boolean;
 ```
 
 #### Importing
 
 <ImportPath />
+
+#### Arguments
+
+- **initialState** _`boolean`_ _(default: `false`)_ - Initial value. By default, this hook
+  assumes that hook is not mounted yet at first render.
 
 #### Return
 

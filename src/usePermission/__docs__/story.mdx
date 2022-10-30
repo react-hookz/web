@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Navigator/usePermission" component={Example} />
 
@@ -20,7 +20,7 @@ Tracks a permission state.
 ## Reference
 
 ```ts
-export function usePermission(descriptor: IAnyPermissionDescriptor): IUsePermissionState;
+export function usePermission(descriptor: AnyPermissionDescriptor): UsePermissionState;
 ```
 
 #### Importing
@@ -32,8 +32,8 @@ export function usePermission(descriptor: IAnyPermissionDescriptor): IUsePermiss
 #### Return
 
 0. **state** - Permission state, can be one of the following strings:
-   - **`not-requested`** - State not requested yet, yielded only on mount, before permission
-     state requested.
+   - **`not-requested`** - State not requested yet, yielded only on mount, before permission state
+     requested.
    - **`requested`** - State requested, but request promise is pending yet.
    - **`prompt`** - Permission not requested from user, and can be requested via target API.
    - **`denied`** - User denied permission.

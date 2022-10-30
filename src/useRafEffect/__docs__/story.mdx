@@ -1,0 +1,34 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Lifecycle/useRafEffect" component={Example} />
+
+# useRafEffect
+
+Like `React.useEffect`, but effect is only run within animation frame.
+
+- Auto-cancel animation frame on component unmount.
+- SSR-friendly.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useRafEffect(callback: (...args: any[]) => void, deps: DependencyList): void;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **callback** _`(...args: any[]) => void`_ - Callback like for `useEffect`, but without ability to
+  return a cleanup function.
+- **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useEffect`.

@@ -1,0 +1,47 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="DOM/useWindowSize" component={Example} />
+
+# useWindowSize
+
+Tracks window inner dimensions.
+
+- Does not force `reflow` on every render - only on first mount and resizes.
+- SSR-friendly - defaults to 0 during SSR and deferred measuring.
+- Performant - uses single passive event listener for all instances.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export interface WindowSize {
+  width: number;
+  height: number;
+}
+
+export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean): WindowSize;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **stateHook** `<S>(initialState?: S | (() => S)): [S | undefined, Dispatch<SetStateAction<S>>]` -
+  state hook that will be used to hold windows dimensions.
+- **measureOnMount** `boolean` - whether window's size should be fetched during effects stage instead
+  of synchronous fetch. Set this parameter to `true` for SSR use-cases.
+
+#### Return
+
+- `object`
+  - **width** `number` - window's `innerWidth`
+  - **height** `number` - window's `innerHeight`

@@ -13,7 +13,7 @@ describe('useConditionalEffect', () => {
 
   it('should not invoke nor effect nor predicate', () => {
     const spy = jest.fn();
-    const predicateSpy = jest.fn((arr: unknown[]) => arr.some((i) => Boolean(i)));
+    const predicateSpy = jest.fn((arr: unknown[]) => arr.some(Boolean));
     renderHook(() => useConditionalEffect(spy, undefined, [true], predicateSpy));
     expect(predicateSpy).toHaveBeenCalledTimes(0);
     expect(spy).toHaveBeenCalledTimes(0);

@@ -1,5 +1,5 @@
 import { DependencyList, EffectCallback, useEffect } from 'react';
-import { useFirstMountState } from '..';
+import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
 import { noop } from '../util/const';
 
 /**

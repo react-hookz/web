@@ -4,6 +4,7 @@ import { useIsMounted, useMountEffect, useToggle } from '../..';
 export const Example: React.FC = () => {
   const [isToggled, toggle] = useToggle(false);
 
+  // eslint-disable-next-line react/no-unstable-nested-components
   const ToggledComponent: React.FC = () => {
     const isMounted = useIsMounted();
 

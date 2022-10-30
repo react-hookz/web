@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-import { useIsMounted } from '..';
+import { useIsMounted } from '../useIsMounted/useIsMounted';
 
 export function useSafeState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 export function useSafeState<S = undefined>(): [
@@ -14,7 +14,7 @@ export function useSafeState<S>(
   initialState?: S | (() => S)
 ): [S | undefined, Dispatch<SetStateAction<S>>] {
   const [state, setState] = useState(initialState);
-  const isMounted = useIsMounted();
+  const isMounted = useIsMounted(true);
 
   return [
     state,

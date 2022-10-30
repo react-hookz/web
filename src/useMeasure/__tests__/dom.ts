@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { MutableRefObject } from 'react';
+import { useEffect } from 'react';
 import { useMeasure } from '../..';
 import Mock = jest.Mock;
 
@@ -74,7 +74,9 @@ describe('useMeasure', () => {
     const { result } = renderHook(() => {
       const res = useMeasure<HTMLDivElement>();
 
-      (res[1] as MutableRefObject<HTMLDivElement>).current = div;
+      useEffect(() => {
+        res[1].current = div;
+      });
 
       return res;
     });

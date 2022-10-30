@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RefObject, useEffect, useMemo } from 'react';
-import { useIsMounted, useSyncedRef } from '..';
+import { useIsMounted } from '../useIsMounted/useIsMounted';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { hasOwnProperty } from '../util/misc';
 
 /**
@@ -46,13 +47,16 @@ export function useEventListener<T extends EventTarget>(
   );
 
   useEffect(() => {
-    const tgt = target && hasOwnProperty(target, 'current') ? target.current : target;
-    if (!tgt) return undefined;
+    const tgt =
+      target && hasOwnProperty(target, 'current') ? (target as RefObject<T>).current : target;
+    if (!tgt) return;
 
     const restParams = params.slice(2);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     tgt.addEventListener(params[0], eventListener, ...restParams);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return () => tgt.removeEventListener(params[0], eventListener, ...restParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, params[0]]);

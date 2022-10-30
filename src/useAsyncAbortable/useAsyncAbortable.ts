@@ -1,8 +1,8 @@
 import { useMemo, useRef } from 'react';
-import { IAsyncState, IUseAsyncActions, IUseAsyncMeta, useAsync } from '..';
+import { useAsync, UseAsyncMeta, UseAsyncActions, AsyncState } from '../useAsync/useAsync';
 
-export interface IUseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]>
-  extends IUseAsyncActions<Result, Args> {
+export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]>
+  extends UseAsyncActions<Result, Args> {
   /**
    *  Abort currently running async.
    */
@@ -14,31 +14,31 @@ export interface IUseAsyncAbortableActions<Result, Args extends unknown[] = unkn
   reset: () => void;
 }
 
-export interface IUseAsyncAbortableMeta<Result, Args extends unknown[] = unknown[]>
-  extends IUseAsyncMeta<Result, Args> {
+export interface UseAsyncAbortableMeta<Result, Args extends unknown[] = unknown[]>
+  extends UseAsyncMeta<Result, Args> {
   /**
    * Current abort controller. New one created each async execution.
    */
   abortController: AbortController | undefined;
 }
 
-export type IArgsWithAbortSignal<Args extends unknown[] = unknown[]> = [AbortSignal, ...Args];
+export type ArgsWithAbortSignal<Args extends unknown[] = unknown[]> = [AbortSignal, ...Args];
 
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: IArgsWithAbortSignal<Args>) => Promise<Result>,
+  asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
   initialValue: Result
 ): [
-  IAsyncState<Result>,
-  IUseAsyncAbortableActions<Result, Args>,
-  IUseAsyncAbortableMeta<Result, Args>
+  AsyncState<Result>,
+  UseAsyncAbortableActions<Result, Args>,
+  UseAsyncAbortableMeta<Result, Args>
 ];
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: IArgsWithAbortSignal<Args>) => Promise<Result>,
+  asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
   initialValue?: Result
 ): [
-  IAsyncState<Result | undefined>,
-  IUseAsyncAbortableActions<Result, Args>,
-  IUseAsyncAbortableMeta<Result, Args>
+  AsyncState<Result | undefined>,
+  UseAsyncAbortableActions<Result, Args>,
+  UseAsyncAbortableMeta<Result, Args>
 ];
 
 /**
@@ -49,12 +49,12 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
  * executed.
  */
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: IArgsWithAbortSignal<Args>) => Promise<Result>,
+  asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
   initialValue?: Result
 ): [
-  IAsyncState<Result | undefined>,
-  IUseAsyncAbortableActions<Result, Args>,
-  IUseAsyncAbortableMeta<Result, Args>
+  AsyncState<Result | undefined>,
+  UseAsyncAbortableActions<Result, Args>,
+  UseAsyncAbortableMeta<Result, Args>
 ] {
   const abortController = useRef<AbortController>();
 

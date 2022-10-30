@@ -13,7 +13,9 @@
     "strictBindCallApply": true,
     "noEmit": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "sourceMap": true
   },
   "exclude": [
     "node_modules"

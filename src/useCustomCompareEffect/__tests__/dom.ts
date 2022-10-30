@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { DependencyList } from 'react';
-import { IEffectCallback, useCustomCompareEffect, useUpdateEffect } from '../..';
+import { EffectCallback, useCustomCompareEffect, useUpdateEffect } from '../..';
 
 describe('useCustomCompareEffect', () => {
   it('should be defined', () => {
@@ -14,9 +14,7 @@ describe('useCustomCompareEffect', () => {
 
   it('should not call provided comparator on render', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(() =>
-      useCustomCompareEffect(() => {}, [], spy, useUpdateEffect)
-    );
+    renderHook(() => useCustomCompareEffect(() => {}, [], spy, useUpdateEffect));
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
@@ -53,13 +51,12 @@ describe('useCustomCompareEffect', () => {
   });
 
   it('should pass res argument to underlying hook', () => {
-    const spy = jest.fn((c: IEffectCallback, d: DependencyList, _n: number) =>
+    const spy = jest.fn((c: EffectCallback, d: DependencyList, _n: number) =>
       useUpdateEffect(c, d)
     );
-    const { rerender } = renderHook(
-      ({ deps }) => useCustomCompareEffect(() => {}, deps, undefined, spy, 123),
-      { initialProps: { deps: [1, 2] } }
-    );
+    renderHook(({ deps }) => useCustomCompareEffect(() => {}, deps, undefined, spy, 123), {
+      initialProps: { deps: [1, 2] },
+    });
 
     expect(spy.mock.calls[0][2]).toBe(123);
   });

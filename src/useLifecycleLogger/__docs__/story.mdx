@@ -1,0 +1,30 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Lifecycle/useLifecycleLogger" component={Example} />
+
+# useLifecycleLogger
+
+React lifecycle hook that console logs parameters as component transitions through lifecycles.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useLifecycleLogger(componentName: string, deps: []): void;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- _**componentName**_ _`ComponentName`_ - String value to log the components name when logging the lifecycle.
+- **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useEffect`.

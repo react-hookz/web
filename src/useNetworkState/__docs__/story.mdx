@@ -1,6 +1,6 @@
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { ImportPath } from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 <Meta title={'Navigator/useNetworkState'} component={Example} />
 
@@ -9,7 +9,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 Tracks the state of browser's network connection.
 
 > As of the standard, it is not guaranteed that browser connected to the _Internet_, it only
-> guarantees the network connection. [[MDN Docs]](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine)
+> guarantees the network connection.
+> [[MDN Docs]](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine)
 
 #### Example
 
@@ -41,7 +42,7 @@ export interface IUseNetworkState {
     | undefined;
 }
 
-export function useNetworkState(initialState?: IInitialState<IUseNetworkState>): IUseNetworkState;
+export function useNetworkState(initialState?: InitialState<IUseNetworkState>): IUseNetworkState;
 ```
 
 #### Importing
@@ -50,5 +51,5 @@ export function useNetworkState(initialState?: IInitialState<IUseNetworkState>):
 
 #### Arguments
 
-- _**initialState**_ _`IInitialState<IUseNetworkState>`_ - the value that will be used as default,
+- _**initialState**_ _`InitialState<IUseNetworkState>`_ - the value that will be used as default,
   unless real network state is resolved.

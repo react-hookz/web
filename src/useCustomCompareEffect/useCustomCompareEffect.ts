@@ -2,22 +2,18 @@
 import { DependencyList, useEffect, useRef } from 'react';
 import { isBrowser } from '../util/const';
 import { basicDepsComparator } from '../util/misc';
+import type { DependenciesComparator } from '../types';
 
-export type IDependenciesComparator<Deps extends DependencyList = DependencyList> = (
-  a: Deps,
-  b: Deps
-) => boolean;
+export type EffectCallback = (...args: any[]) => any;
 
-export type IEffectCallback = (...args: any[]) => any;
-
-export type IEffectHook<
-  Callback extends IEffectCallback = IEffectCallback,
+export type EffectHook<
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList = DependencyList,
   RestArgs extends any[] = any[]
 > = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);
 
 /**
- * Like `useEffect` but uses provided comparator function to validate dependencies change.
+ * Like `useEffect` but uses provided comparator function to validate dependency changes.
  *
  * @param callback Function that will be passed to underlying effect hook.
  * @param deps Dependencies list, like for `useEffect` hook.
@@ -29,15 +25,15 @@ export type IEffectHook<
  * @param effectHookRestArgs Extra arguments that passed to effectHook.
  */
 export function useCustomCompareEffect<
-  Callback extends IEffectCallback = IEffectCallback,
+  Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList = DependencyList,
   HookRestArgs extends any[] = any[],
   R extends HookRestArgs = HookRestArgs
 >(
   callback: Callback,
   deps: Deps,
-  comparator: IDependenciesComparator<Deps> = basicDepsComparator,
-  effectHook: IEffectHook<Callback, Deps, HookRestArgs> = useEffect,
+  comparator: DependenciesComparator<Deps> = basicDepsComparator,
+  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void {
   const dependencies = useRef<Deps>();

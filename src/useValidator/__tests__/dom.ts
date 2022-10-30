@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useValidator } from '../..';
-import { IUseValidatorReturn } from '../useValidator';
+import { UseValidatorReturn } from '../useValidator';
 
 describe('useValidator', () => {
   it('should be defined', () => {
@@ -14,14 +14,14 @@ describe('useValidator', () => {
 
   it('should return undefined validity on first render', () => {
     const { result } = renderHook(() => useValidator(() => ({ isValid: true }), []));
-    expect((result.all[0] as IUseValidatorReturn<{ isValid: boolean }>)[0].isValid).toBeUndefined();
+    expect((result.all[0] as UseValidatorReturn<{ isValid: boolean }>)[0].isValid).toBeUndefined();
   });
 
   it('should apply initial state parameter', () => {
     const { result } = renderHook(() =>
       useValidator(() => ({ isValid: true }), [], { isValid: true })
     );
-    expect((result.all[0] as IUseValidatorReturn<{ isValid: boolean }>)[0].isValid).toBe(true);
+    expect((result.all[0] as UseValidatorReturn<{ isValid: boolean }>)[0].isValid).toBe(true);
   });
 
   it('should call validator on first render', () => {

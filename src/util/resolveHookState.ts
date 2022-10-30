@@ -1,15 +1,16 @@
-export type IInitialState<State> = State | (() => State);
-export type INextState<State, PrevState = State> = State | ((prevState: PrevState) => State);
+export type InitialState<State> = State | (() => State);
+export type NextState<State, PrevState = State> = State | ((prevState: PrevState) => State);
 
-export function resolveHookState<State>(nextState: IInitialState<State>): State;
+export function resolveHookState<State>(nextState: InitialState<State>): State;
 export function resolveHookState<State, PrevState = State>(
-  nextState: INextState<State, PrevState>,
+  nextState: NextState<State, PrevState>,
   prevState: PrevState
 ): State;
 export function resolveHookState<State, PrevState = State>(
-  nextState: IInitialState<State> | INextState<State, PrevState>,
+  nextState: InitialState<State> | NextState<State, PrevState>,
   prevState?: PrevState
 ): State {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   if (typeof nextState === 'function') return (nextState as CallableFunction)(prevState);
 
   return nextState;

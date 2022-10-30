@@ -1,20 +1,21 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Callback/useDebouncedCallback" component={Example} />
 
 # useDebouncedCallback
 
-The third argument is a list of dependencies, as for `useCallback`.
+Makes passed function debounced, otherwise acts like `useCallback`.  
+[What is debouncing?](https://css-tricks.com/debouncing-throttling-explained-examples/#debounce)
 
-> The third argument is dependencies list on `useEffect` manner, passed function will be re-wrapped
-> when delay or dependencies has changed. Changed debounce callbacks still has same timeout, meaning
-> that calling new debounced function will abort previously scheduled invocation.
+The third argument is dependencies list on `useCallback` manner, passed function will be re-wrapped
+when delay or dependencies has changed. Changed debounce callbacks still has same timeout, meaning
+that calling new debounced function will abort previously scheduled invocation.
 
-> Debounced function is always a void function since original callback invoked later.
+Debounced function is always a void function since original callback invoked later.
 
-> Deferred execution automatically cancelled on component unmount.
+Deferred execution automatically cancelled on component unmount.
 
 #### Example
 
@@ -30,7 +31,7 @@ export function useDebouncedCallback<Args extends any[], This>(
   deps: DependencyList,
   delay: number,
   maxWait = 0
-): IDebouncedFunction<Args, This>;
+): DebouncedFunction<Args, This>;
 ```
 
 #### Importing

@@ -1,12 +1,15 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="State/usePrevious" component={Example} />
 
 # usePrevious
 
-Returns the value passed to the hook on previous render.
+Returns the value passed to the hook on previous render. It is important to note that any renders
+will cause an update if the value has changed. This is useful for keeping track of state changes;
+however, if your desire is to track distinctly different values, you should use
+[`usePreviousDistinct`](/docs/state-usepreviousdistinct--example).
 
 #### Example
 
@@ -26,7 +29,7 @@ function usePrevious<T>(value?: T): T | undefined;
 
 #### Arguments
 
-- _**value**_ _`any`_ - the value that will be returned on next render
+- _**value**_ _`T (any)`_ - the value that will be returned on next render
 
 #### Return
 

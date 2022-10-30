@@ -1,34 +1,38 @@
 import { MutableRefObject, useEffect } from 'react';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 import { off, on } from '../util/misc';
 
-export type IUsePermissionState = PermissionState | 'not-requested' | 'requested';
+export type UsePermissionState = PermissionState | 'not-requested' | 'requested';
 
 /**
  * Tracks a permission state.
  *
  * @param descriptor Permission request descriptor that passed to `navigator.permissions.query`
  */
-export function usePermission(descriptor: PermissionDescriptor): IUsePermissionState {
-  const [state, setState] = useSafeState<IUsePermissionState>('not-requested');
+export function usePermission(descriptor: PermissionDescriptor): UsePermissionState {
+  const [state, setState] = useSafeState<UsePermissionState>('not-requested');
 
   useEffect(() => {
     const unmount: MutableRefObject<(() => void) | null> = { current: null };
 
     setState('requested');
 
-    navigator.permissions.query(descriptor).then((status) => {
-      const handleChange = () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises,promise/catch-or-return
+    navigator.permissions
+      .query(descriptor)
+      // eslint-disable-next-line promise/always-return
+      .then((status): void => {
+        const handleChange = () => {
+          setState(status.state);
+        };
+
         setState(status.state);
-      };
+        on(status, 'change', handleChange, { passive: true });
 
-      setState(status.state);
-      on(status, 'change', handleChange, { passive: true });
-
-      unmount.current = () => {
-        off(status, 'change', handleChange);
-      };
-    });
+        unmount.current = () => {
+          off(status, 'change', handleChange);
+        };
+      });
 
     return () => {
       if (unmount.current) {

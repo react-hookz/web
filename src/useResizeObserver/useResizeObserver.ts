@@ -1,23 +1,23 @@
 import { RefObject, useEffect } from 'react';
-import { useSyncedRef } from '..';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { isBrowser } from '../util/const';
 
-export type IUseResizeObserverCallback = (entry: ResizeObserverEntry) => void;
+export type UseResizeObserverCallback = (entry: ResizeObserverEntry) => void;
 
-interface IResizeObserverSingleton {
+interface ResizeObserverSingleton {
   observer: ResizeObserver;
-  subscribe: (target: Element, callback: IUseResizeObserverCallback) => void;
-  unsubscribe: (target: Element, callback: IUseResizeObserverCallback) => void;
+  subscribe: (target: Element, callback: UseResizeObserverCallback) => void;
+  unsubscribe: (target: Element, callback: UseResizeObserverCallback) => void;
 }
 
-let observerSingleton: IResizeObserverSingleton;
+let observerSingleton: ResizeObserverSingleton;
 
-function getResizeObserver(): IResizeObserverSingleton | undefined {
+function getResizeObserver(): ResizeObserverSingleton | undefined {
   if (!isBrowser) return undefined;
 
   if (observerSingleton) return observerSingleton;
 
-  const callbacks = new Map<Element, Set<IUseResizeObserverCallback>>();
+  const callbacks = new Map<Element, Set<UseResizeObserverCallback>>();
 
   const observer = new ResizeObserver((entries) => {
     entries.forEach((entry) =>
@@ -32,7 +32,7 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
 
       if (!cbs) {
         // if target has no observers yet - register it
-        cbs = new Set<IUseResizeObserverCallback>();
+        cbs = new Set<UseResizeObserverCallback>();
         callbacks.set(target, cbs);
         observer.observe(target);
       }
@@ -68,29 +68,33 @@ function getResizeObserver(): IResizeObserverSingleton | undefined {
  *
  * @param target React reference or Element to track.
  * @param callback Callback that will be invoked on resize.
+ * @param enabled Whether resize observer is enabled or not.
  */
 export function useResizeObserver<T extends Element>(
   target: RefObject<T> | T | null,
-  callback: IUseResizeObserverCallback
+  callback: UseResizeObserverCallback,
+  enabled = true
 ): void {
-  const ro = getResizeObserver();
+  const ro = enabled && getResizeObserver();
   const cb = useSyncedRef(callback);
 
+  const tgt = target && 'current' in target ? target.current : target;
+
   useEffect(() => {
-    // quite difficult to cover with tests, but the 'if' branch  is pretty
-    // straightforward: do nothing, it is safe to exclude from LOC
-    /* istanbul ignore if */
-    if (!ro) return;
+    // this secondary target resolve required for case when we receive ref object, which, most
+    // likely, contains null during render stage, but already populated with element during
+    // effect stage.
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const tgt = target && 'current' in target ? target.current : target;
+
+    if (!ro || !tgt) return;
 
     // as unsubscription in internals of our ResizeObserver abstraction can
     // happen a bit later than effect cleanup invocation - we need a marker,
     // that this handler should not be invoked anymore
     let subscribed = true;
 
-    const tgt = target && 'current' in target ? target.current : target;
-    if (!tgt) return;
-
-    const handler: IUseResizeObserverCallback = (...args) => {
+    const handler: UseResizeObserverCallback = (...args) => {
       // it is reinsurance for the highly asynchronous invocations, almost
       // impossible to achieve in tests, thus excluding from LOC
       /* istanbul ignore else */
@@ -101,11 +105,10 @@ export function useResizeObserver<T extends Element>(
 
     ro.subscribe(tgt, handler);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       subscribed = false;
       ro.unsubscribe(tgt, handler);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target, ro]);
+  }, [tgt, ro]);
 }

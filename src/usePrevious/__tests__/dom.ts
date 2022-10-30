@@ -32,4 +32,14 @@ describe('usePrevious', () => {
     rerender({ state: 25 });
     expect(result.current).toBe(10);
   });
+
+  it('should return passed value after unrelated rerender', () => {
+    const { result, rerender } = renderHook(({ state }) => usePrevious(state), {
+      initialProps: { state: 0 },
+    });
+
+    expect(result.current).toBeUndefined();
+    rerender();
+    expect(result.current).toBe(0);
+  });
 });

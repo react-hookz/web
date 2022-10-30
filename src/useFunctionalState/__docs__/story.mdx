@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="State/useFunctionalState" />
+
+# useFunctionalState
+
+Like `useState` but instead of raw state, state getter returned. `useSafeState` is used underneath.
+
+## Reference
+
+```ts
+export function useFunctionalState<S>(
+  initialState: S | (() => S)
+): [() => S, React.Dispatch<React.SetStateAction<S>>];
+export function useFunctionalState<S = undefined>(): [
+  () => S | undefined,
+  React.Dispatch<React.SetStateAction<S | undefined>>
+];
+```

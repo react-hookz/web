@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useRef } from 'react';
+import { BaseSyntheticEvent, useRef } from 'react';
 import { useToggle } from '../..';
 
 describe('useToggle', () => {
@@ -32,7 +32,7 @@ describe('useToggle', () => {
     expect(result.current[0]).toBe(true);
 
     act(() => {
-      result.current[1](undefined);
+      result.current[1]();
     });
     expect(result.current[0]).toBe(false);
   });
@@ -58,7 +58,7 @@ describe('useToggle', () => {
   });
 
   it('should change state to one that passed to toggler', () => {
-    const { result } = renderHook(() => useToggle());
+    const { result } = renderHook(() => useToggle(false, false));
     act(() => {
       result.current[1](false);
     });
@@ -76,6 +76,24 @@ describe('useToggle', () => {
 
     act(() => {
       result.current[1](() => true);
+    });
+    expect(result.current[0]).toBe(true);
+  });
+
+  it('should not account react events', () => {
+    const { result } = renderHook(() => useToggle());
+
+    act(() => {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
+
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
+    });
+    expect(result.current[0]).toBe(false);
+
+    act(() => {
+      result.current[1](new (class SyntheticBaseEvent {})() as unknown as BaseSyntheticEvent);
     });
     expect(result.current[0]).toBe(true);
   });

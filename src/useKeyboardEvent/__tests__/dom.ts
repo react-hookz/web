@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { IKeyboardEventFilter, useKeyboardEvent } from '../..';
+import { KeyboardEventFilter, useKeyboardEvent } from '../..';
 
 describe('useKeyboardEvent', () => {
   it('should be defined', () => {
@@ -69,6 +69,7 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     let context: any;
     const spy = jest.fn(function spyFn(this: any) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
@@ -93,6 +94,7 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     let context: any;
     const spy = jest.fn(function spyFn(this: any) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
@@ -117,6 +119,7 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     let context: any;
     const spy = jest.fn(function spyFn(this: any) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
@@ -139,7 +142,6 @@ describe('useKeyboardEvent', () => {
 
   it('should fallback to boolean when key filter is not function or string', () => {
     const div = document.createElement('div');
-    let context: any;
     const spy = jest.fn();
 
     const { unmount } = renderHook(() =>
@@ -155,7 +157,7 @@ describe('useKeyboardEvent', () => {
     unmount();
 
     renderHook(() =>
-      useKeyboardEvent({} as IKeyboardEventFilter, spy, undefined, {
+      useKeyboardEvent({} as KeyboardEventFilter, spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },

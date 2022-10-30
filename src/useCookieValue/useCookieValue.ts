@@ -1,7 +1,10 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
+import Cookies from 'js-cookie';
 import { Dispatch, useCallback, useEffect } from 'react';
-import * as Cookies from 'js-cookie';
-import { useSafeState, useSyncedRef, useFirstMountState, useMountEffect } from '..';
+import { useFirstMountState } from '../useFirstMountState/useFirstMountState';
+import { useMountEffect } from '../useMountEffect/useMountEffect';
+import { useSafeState } from '../useSafeState/useSafeState';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { isBrowser } from '../util/const';
 
 const cookiesSetters = new Map<string, Set<Dispatch<string | null>>>();
@@ -47,7 +50,7 @@ const invokeRegisteredSetters = (
   });
 };
 
-export type IUseCookieValueOptions<
+export type UseCookieValueOptions<
   InitializeWithValue extends boolean | undefined = boolean | undefined
 > = Cookies.CookieAttributes &
   (InitializeWithValue extends undefined
@@ -65,17 +68,17 @@ export type IUseCookieValueOptions<
         initializeWithValue: InitializeWithValue;
       });
 
-export type IUseCookieValueReturn<V extends undefined | null | string = undefined | null | string> =
+export type UseCookieValueReturn<V extends undefined | null | string = undefined | null | string> =
   [value: V, set: (value: string) => void, remove: () => void, fetch: () => void];
 
 export function useCookieValue(
   key: string,
-  options: IUseCookieValueOptions<false>
-): IUseCookieValueReturn;
+  options: UseCookieValueOptions<false>
+): UseCookieValueReturn;
 export function useCookieValue(
   key: string,
-  options?: IUseCookieValueOptions
-): IUseCookieValueReturn<null | string>;
+  options?: UseCookieValueOptions
+): UseCookieValueReturn<null | string>;
 /**
  * Manages a single cookie.
  *
@@ -84,12 +87,12 @@ export function useCookieValue(
  */
 export function useCookieValue(
   key: string,
-  options: IUseCookieValueOptions = {}
-): IUseCookieValueReturn {
+  options: UseCookieValueOptions = {}
+): UseCookieValueReturn {
   // no need to test it, dev-only notification about 3rd party library requirement
   /* istanbul ignore next */
   if (process.env.NODE_ENV === 'development' && typeof Cookies === 'undefined') {
-    throw ReferenceError(
+    throw new ReferenceError(
       'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.'
     );
   }
