@@ -1,3 +1,16 @@
+# [17.0.0](https://github.com/react-hookz/web/compare/v16.1.0...v17.0.0) (2022-11-03)
+
+
+* Rework `useStorageValue` to more simple and robust variant (#960) ([7bcc385](https://github.com/react-hookz/web/commit/7bcc3858d882afcf8e3d79c2ac2a5c0996922926)), closes [#960](https://github.com/react-hookz/web/issues/960)
+
+
+### BREAKING CHANGES
+
+* new implementation brings different API.
+It is not backward compatible!
+
+Co-authored-by: Arttu Olli <arttuoll@tutanota.com>
+
 # [16.1.0](https://github.com/react-hookz/web/compare/v16.0.1...v16.1.0) (2022-10-23)
 
 
