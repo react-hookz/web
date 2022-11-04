@@ -96,6 +96,6 @@ describe('useMeasure', () => {
     });
 
     expect(result.current[1]).toStrictEqual({ current: div });
-    expect(result.current[0]).toStrictEqual(entry.target.getBoundingClientRect());
+    expect(result.current[0]).toBe(entry.contentRect);
   });
 });
