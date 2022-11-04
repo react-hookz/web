@@ -156,7 +156,9 @@ export function useStorageValue<
 
   const isFirstMount = useFirstMountState();
   const [state, setState] = useState<Type | null | undefined>(
-    options?.initializeWithValue && isFirstMount ? storageActions.current.fetch() : undefined
+    optionsRef.current?.initializeWithValue && isFirstMount
+      ? storageActions.current.fetch()
+      : undefined
   );
   const stateRef = useSyncedRef(state);
 
@@ -172,7 +174,7 @@ export function useStorageValue<
   }, [key]);
 
   useEffect(() => {
-    if (!options?.initializeWithValue) {
+    if (!optionsRef.current.initializeWithValue) {
       stateActions.current.fetch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
