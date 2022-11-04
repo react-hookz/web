@@ -18,7 +18,6 @@ export const Example: React.FC<ExampleProps> = ({
 }) => {
   const lsVal = useLocalStorageValue(key, {
     defaultValue,
-    initializeWithValue: true,
   });
 
   return (
