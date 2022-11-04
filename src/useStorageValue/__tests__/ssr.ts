@@ -12,58 +12,71 @@ describe('useStorageValue', () => {
     expect(result.error).toBeUndefined();
   });
 
-  it('should not fetch value from storage on init', () => {
-    const storage = newStorage();
-    const { result } = renderHook(() => useStorageValue(storage, 'foo'));
+  describe('if initializeWithValue set to false', () => {
+    it('should not fetch value from storage on init', () => {
+      const storage = newStorage();
+      const { result } = renderHook(() =>
+        useStorageValue(storage, 'foo', { initializeWithValue: false })
+      );
 
-    expect(result.current.value).toBe(undefined);
-    expect(storage.getItem).not.toHaveBeenCalled();
-  });
-
-  it('should not fetch value from storage on .fetch() call', () => {
-    const storage = newStorage();
-    const { result } = renderHook(() => useStorageValue(storage, 'foo'));
-
-    expect(result.current.value).toBe(undefined);
-    act(() => {
-      result.current.fetch();
+      expect(result.current.value).toBe(undefined);
+      expect(storage.getItem).not.toHaveBeenCalled();
     });
-    expect(result.current.value).toBe(undefined);
-    expect(storage.getItem).not.toHaveBeenCalled();
-  });
 
-  it('should not set storage value on .set() call', () => {
-    const storage = newStorage();
-    const { result } = renderHook(() => useStorageValue<string>(storage, 'foo'));
+    it('should not fetch value from storage on .fetch() call', () => {
+      const storage = newStorage();
+      const { result } = renderHook(() =>
+        useStorageValue(storage, 'foo', { initializeWithValue: false })
+      );
 
-    expect(result.current.value).toBe(undefined);
-    act(() => {
-      result.current.set('bar');
+      expect(result.current.value).toBe(undefined);
+      act(() => {
+        result.current.fetch();
+      });
+      expect(result.current.value).toBe(undefined);
+      expect(storage.getItem).not.toHaveBeenCalled();
     });
-    expect(result.current.value).toBe(undefined);
-    expect(storage.setItem).not.toHaveBeenCalled();
-  });
 
-  it('should not call storage`s removeItem on .remove() call', () => {
-    const storage = newStorage();
-    const { result } = renderHook(() => useStorageValue<string>(storage, 'foo'));
+    it('should not set storage value on .set() call', () => {
+      const storage = newStorage();
+      const { result } = renderHook(() =>
+        useStorageValue<string>(storage, 'foo', { initializeWithValue: false })
+      );
 
-    act(() => {
-      result.current.remove();
+      expect(result.current.value).toBe(undefined);
+      act(() => {
+        result.current.set('bar');
+      });
+      expect(result.current.value).toBe(undefined);
+      expect(storage.setItem).not.toHaveBeenCalled();
     });
-    expect(storage.removeItem).not.toHaveBeenCalled();
-  });
 
-  it('should not set state to default value on item remove', () => {
-    const storage = newStorage(() => '"bar"');
-    const { result } = renderHook(() =>
-      useStorageValue<string>(storage, 'foo', { defaultValue: 'default value' })
-    );
+    it('should not call storage`s removeItem on .remove() call', () => {
+      const storage = newStorage();
+      const { result } = renderHook(() =>
+        useStorageValue<string>(storage, 'foo', { initializeWithValue: false })
+      );
 
-    expect(result.current.value).toBe(undefined);
-    act(() => {
-      result.current.remove();
+      act(() => {
+        result.current.remove();
+      });
+      expect(storage.removeItem).not.toHaveBeenCalled();
     });
-    expect(result.current.value).toBe(undefined);
+
+    it('should not set state to default value on item remove', () => {
+      const storage = newStorage(() => '"bar"');
+      const { result } = renderHook(() =>
+        useStorageValue<string>(storage, 'foo', {
+          defaultValue: 'default value',
+          initializeWithValue: false,
+        })
+      );
+
+      expect(result.current.value).toBe(undefined);
+      act(() => {
+        result.current.remove();
+      });
+      expect(result.current.value).toBe(undefined);
+    });
   });
 });
