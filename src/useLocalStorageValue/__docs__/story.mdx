@@ -53,7 +53,7 @@ function useLocalStorageValue<T>(
 - **key** _`string`_ - LocalStorage key to manage.
 - **options** _`object`_ - Hook options:
   - **defaultValue** _`T | null`_ - Value to return if `key` is not present in LocalStorage.
-  - **initializeWithValue** _`boolean`_ _(default: false)_ - Fetch storage value on first render. If
+  - **initializeWithValue** _`boolean`_ _(default: true)_ - Fetch storage value on first render. If
     set to `false` will make the hook yield `undefined` on first render and defer fetching of the
     value until effects are executed.
 

@@ -120,9 +120,9 @@ export interface UseStorageValueResult<
   fetch: () => void;
 }
 
-const DEFAULT_OPTIONS: UseStorageValueOptions<null, false> = {
+const DEFAULT_OPTIONS: UseStorageValueOptions<null, true> = {
   defaultValue: null,
-  initializeWithValue: false,
+  initializeWithValue: true,
 };
 
 export function useStorageValue<
