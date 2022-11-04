@@ -1,10 +1,7 @@
 import { useRef, useState } from 'react';
-import { useUpdateEffect } from '..';
+import { useUpdateEffect } from '../useUpdateEffect/useUpdateEffect';
 import { isStrictEqual } from '../util/const';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Predicate = (prev: any, next: any) => boolean;
-
+import type { Predicate } from '../types';
 /**
  * Returns the most recent _distinct_ value passed to the hook on previous render. Distinct here
  * means that the hook's return value will only update when the passed value updates. This is

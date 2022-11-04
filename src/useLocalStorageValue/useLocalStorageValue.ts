@@ -1,11 +1,11 @@
 import {
-  HookReturn,
-  UseStorageValueOptions,
   useStorageValue,
+  UseStorageValueOptions,
+  UseStorageValueResult,
 } from '../useStorageValue/useStorageValue';
 import { isBrowser, noop } from '../util/const';
 
-let IS_LOCAL_STORAGE_AVAILABLE = false;
+let IS_LOCAL_STORAGE_AVAILABLE: boolean;
 
 try {
   IS_LOCAL_STORAGE_AVAILABLE = isBrowser && !!window.localStorage;
@@ -15,62 +15,34 @@ try {
   IS_LOCAL_STORAGE_AVAILABLE = false;
 }
 
-interface UseLocalStorageValue {
-  <T = unknown>(key: string, defaultValue?: null, options?: UseStorageValueOptions): HookReturn<
-    T,
-    typeof defaultValue,
-    UseStorageValueOptions<true | undefined>
-  >;
-
-  <T = unknown>(
-    key: string,
-    defaultValue: null,
-    options: UseStorageValueOptions<false>
-  ): HookReturn<T, typeof defaultValue, typeof options>;
-
-  <T>(key: string, defaultValue: T, options?: UseStorageValueOptions): HookReturn<
-    T,
-    typeof defaultValue,
-    UseStorageValueOptions<true | undefined>
-  >;
-
-  <T>(key: string, defaultValue: T, options: UseStorageValueOptions<false>): HookReturn<
-    T,
-    typeof defaultValue,
-    typeof options
-  >;
-
-  <T>(key: string, defaultValue?: T | null, options?: UseStorageValueOptions): HookReturn<
-    T,
-    typeof defaultValue,
-    typeof options
-  >;
-}
+type UseLocalStorageValue = <
+  Type,
+  Default extends Type = Type,
+  Initialize extends boolean | undefined = boolean | undefined
+>(
+  key: string,
+  options?: UseStorageValueOptions<Type, Initialize>
+) => UseStorageValueResult<Type, Default, Initialize>;
 
 /**
  * Manages a single localStorage key.
- *
- * @param key Storage key to manage
- * @param defaultValue Default value to yield in case the key is not in storage
- * @param options
  */
-export const useLocalStorageValue: UseLocalStorageValue = IS_LOCAL_STORAGE_AVAILABLE
-  ? <T>(
-      key: string,
-      defaultValue: T | null = null,
-      options: UseStorageValueOptions = {}
-    ): HookReturn<T, typeof defaultValue, typeof options> =>
-      useStorageValue(localStorage, key, defaultValue, options)
-  : <T>(
-      key: string,
-      defaultValue: T | null = null,
-      options: UseStorageValueOptions = {}
-    ): HookReturn<T, typeof defaultValue, typeof options> => {
-      /* istanbul ignore next */
+export const useLocalStorageValue: UseLocalStorageValue = !IS_LOCAL_STORAGE_AVAILABLE
+  ? <
+      Type,
+      Default extends Type = Type,
+      Initialize extends boolean | undefined = boolean | undefined
+    >(
+      _key: string,
+      _options?: UseStorageValueOptions<Type, Initialize>
+    ): UseStorageValueResult<Type, Default, Initialize> => {
       if (isBrowser && process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
         console.warn('LocalStorage is not available in this environment');
       }
 
-      return [undefined, noop, noop, noop];
+      return { value: undefined as Type, set: noop, remove: noop, fetch: noop };
+    }
+  : (key, options) => {
+      return useStorageValue(localStorage, key, options);
     };

@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from 'react';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';

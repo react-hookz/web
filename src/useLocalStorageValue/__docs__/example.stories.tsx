@@ -10,25 +10,15 @@ interface ExampleProps {
    * LocalStorage key to manage.
    */
   key: string;
-  /**
-   * Subscribe to window's `storage` event.
-   */
-  handleStorageEvent: boolean;
-  /**
-   * Isolate hook from others on page - it will not receive updates from other hooks with the same key.
-   */
-  isolated: boolean;
 }
 
 export const Example: React.FC<ExampleProps> = ({
   key = 'react-hookz-ls-test',
   defaultValue = '@react-hookz is awesome',
-  handleStorageEvent = true,
-  isolated = false,
 }) => {
-  const [value, setValue, removeValue] = useLocalStorageValue(key, defaultValue, {
-    handleStorageEvent,
-    isolated,
+  const lsVal = useLocalStorageValue(key, {
+    defaultValue,
+    initializeWithValue: true,
   });
 
   return (
@@ -40,12 +30,12 @@ export const Example: React.FC<ExampleProps> = ({
       <br />
       <input
         type="text"
-        value={value}
+        value={lsVal.value}
         onChange={(ev) => {
-          setValue(ev.currentTarget.value);
+          lsVal.set(ev.currentTarget.value);
         }}
-      />{' '}
-      <button onClick={removeValue}>clear storage value</button>
+      />
+      <button onClick={lsVal.remove}>remove storage value</button>
     </div>
   );
 };

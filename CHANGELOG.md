@@ -1,3 +1,42 @@
+# [17.0.0](https://github.com/react-hookz/web/compare/v16.1.0...v17.0.0) (2022-11-03)
+
+
+* Rework `useStorageValue` to more simple and robust variant (#960) ([7bcc385](https://github.com/react-hookz/web/commit/7bcc3858d882afcf8e3d79c2ac2a5c0996922926)), closes [#960](https://github.com/react-hookz/web/issues/960)
+
+
+### BREAKING CHANGES
+
+* new implementation brings different API.
+It is not backward compatible!
+
+Co-authored-by: Arttu Olli <arttuoll@tutanota.com>
+
+# [16.1.0](https://github.com/react-hookz/web/compare/v16.0.1...v16.1.0) (2022-10-23)
+
+
+### Features
+
+* **useDeepCompareMemo:** Implement useDeepCompareMemo ([#979](https://github.com/react-hookz/web/issues/979)) ([532cc41](https://github.com/react-hookz/web/commit/532cc41f3b2d55a7f6f297ea9a4b652072e0d311)), closes [#871](https://github.com/react-hookz/web/issues/871)
+
+## [16.0.1](https://github.com/react-hookz/web/compare/v16.0.0...v16.0.1) (2022-10-22)
+
+
+### Bug Fixes
+
+* **useCustomCompareMemo:** Correctly infer the type of the value returned by the factory function ([#976](https://github.com/react-hookz/web/issues/976)) ([a625c55](https://github.com/react-hookz/web/commit/a625c55bc544dc1bc7544a5ff8811a0a78c568bd)), closes [#975](https://github.com/react-hookz/web/issues/975)
+
+# [16.0.0](https://github.com/react-hookz/web/compare/v15.1.0...v16.0.0) (2022-10-09)
+
+
+### Styles
+
+* remove I prefix from types and interfaces ([c2a1ff4](https://github.com/react-hookz/web/commit/c2a1ff40909f1ddf5066c5d038b800bd42410a21))
+
+
+### BREAKING CHANGES
+
+* `I` prefix removed from all types having it.
+
 # [15.1.0](https://github.com/react-hookz/web/compare/v15.0.1...v15.1.0) (2022-08-14)
 
 

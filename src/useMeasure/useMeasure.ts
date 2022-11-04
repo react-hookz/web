@@ -1,11 +1,11 @@
 import { MutableRefObject } from 'react';
 import {
-  useHookableRef,
-  useRafCallback,
-  useResizeObserver,
   UseResizeObserverCallback,
-  useSafeState,
-} from '..';
+  useResizeObserver,
+} from '../useResizeObserver/useResizeObserver';
+import { useHookableRef } from '../useHookableRef/useHookableRef';
+import { useRafCallback } from '../useRafCallback/useRafCallback';
+import { useSafeState } from '../useSafeState/useSafeState';
 
 export interface Measures {
   width: number;

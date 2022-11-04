@@ -1,5 +1,6 @@
 import { BaseSyntheticEvent, useCallback } from 'react';
-import { useSafeState, useSyncedRef } from '..';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
+import { useSafeState } from '../useSafeState/useSafeState';
 import { InitialState, NextState, resolveHookState } from '../util/resolveHookState';
 
 export function useToggle(
