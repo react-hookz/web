@@ -102,7 +102,6 @@ export {
 
 // Dom
 export { useClickOutside } from './useClickOutside/useClickOutside';
-export { useDocumentTitle, UseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
 export { useEventListener } from './useEventListener/useEventListener';
 export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 
