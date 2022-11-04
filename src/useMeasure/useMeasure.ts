@@ -1,11 +1,16 @@
 import { MutableRefObject } from 'react';
 import {
-  UseResizeObserverCallback,
   useHookableRef,
   useRafCallback,
   useResizeObserver,
+  UseResizeObserverCallback,
   useSafeState,
 } from '..';
+
+export interface Measures {
+  width: number;
+  height: number;
+}
 
 /**
  * Uses ResizeObserver to track element dimensions and re-render component when they change.
@@ -14,7 +19,7 @@ import {
  */
 export function useMeasure<T extends Element>(
   enabled = true
-): [DOMRectReadOnly | undefined, MutableRefObject<T | null>] {
+): [Measures | undefined, MutableRefObject<T | null>] {
   const [element, setElement] = useSafeState<T | null>(null);
   const elementRef = useHookableRef<T | null>(null, (v) => {
     setElement(v);
@@ -22,12 +27,12 @@ export function useMeasure<T extends Element>(
     return v;
   });
 
-  const [rect, setRect] = useSafeState<DOMRectReadOnly>();
+  const [measures, setMeasures] = useSafeState<Measures>();
   const [observerHandler] = useRafCallback<UseResizeObserverCallback>((entry) =>
-    setRect(entry.contentRect)
+    setMeasures({ width: entry.contentRect.width, height: entry.contentRect.height })
   );
 
   useResizeObserver(element, observerHandler, enabled);
 
-  return [rect, elementRef];
+  return [measures, elementRef];
 }

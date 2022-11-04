@@ -81,9 +81,14 @@ describe('useMeasure', () => {
       return res;
     });
 
+    const measures = {
+      width: 0,
+      height: 0,
+    };
+
     const entry = {
       target: div,
-      contentRect: {},
+      contentRect: { width: 0, height: 0 },
       borderBoxSize: {},
       contentBoxSize: {},
     } as unknown as ResizeObserverEntry;
@@ -96,6 +101,6 @@ describe('useMeasure', () => {
     });
 
     expect(result.current[1]).toStrictEqual({ current: div });
-    expect(result.current[0]).toBe(entry.contentRect);
+    expect(result.current[0]).toStrictEqual(measures);
   });
 });
