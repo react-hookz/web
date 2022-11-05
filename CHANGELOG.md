@@ -1,3 +1,10 @@
+## [17.0.1](https://github.com/react-hookz/web/compare/v17.0.0...v17.0.1) (2022-11-05)
+
+
+### Bug Fixes
+
+* **useStorageValue:** respect `initializeWithValue` default, fix docs and tests ([#1003](https://github.com/react-hookz/web/issues/1003)) ([1f730d6](https://github.com/react-hookz/web/commit/1f730d6de3700dfffb60440af4039a49556d7f77)), closes [#1002](https://github.com/react-hookz/web/issues/1002)
+
 # [17.0.0](https://github.com/react-hookz/web/compare/v16.1.0...v17.0.0) (2022-11-03)
 
 
