@@ -16,7 +16,7 @@ export const Example: React.FC<ExampleProps> = ({
   key = 'react-hookz-ss-test',
   defaultValue = '@react-hookz is awesome',
 }) => {
-  const ssVal = useSessionStorageValue(key, { defaultValue, initializeWithValue: true });
+  const ssVal = useSessionStorageValue(key, { defaultValue });
 
   return (
     <div>
