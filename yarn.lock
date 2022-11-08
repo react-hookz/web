@@ -1494,16 +1494,6 @@
     slash "^3.0.0"
     strip-ansi "^6.0.0"
 
-"@jest/environment@^29.2.2":
-  version "29.2.2"
-  resolved "https://registry.yarnpkg.com/@jest/environment/-/environment-29.2.2.tgz#481e729048d42e87d04842c38aa4d09c507f53b0"
-  integrity sha512-OWn+Vhu0I1yxuGBJEFFekMYc8aGBGrY4rt47SOh/IFaI+D7ZHCk7pKRiSoZ2/Ml7b0Ony3ydmEHRx/tEOC7H1A==
-  dependencies:
-    "@jest/fake-timers" "^29.2.2"
-    "@jest/types" "^29.2.1"
-    "@types/node" "*"
-    jest-mock "^29.2.2"
-
 "@jest/environment@^29.3.0":
   version "29.3.0"
   resolved "https://registry.yarnpkg.com/@jest/environment/-/environment-29.3.0.tgz#e7bfe22531813f86040feb75c046faab32fd534d"
@@ -1528,18 +1518,6 @@
   dependencies:
     expect "^29.3.0"
     jest-snapshot "^29.3.0"
-
-"@jest/fake-timers@^29.2.2":
-  version "29.2.2"
-  resolved "https://registry.yarnpkg.com/@jest/fake-timers/-/fake-timers-29.2.2.tgz#d8332e6e3cfa99cde4bc87d04a17d6b699deb340"
-  integrity sha512-nqaW3y2aSyZDl7zQ7t1XogsxeavNpH6kkdq+EpXncIDvAkjvFD7hmhcIs1nWloengEWUoWqkqSA6MSbf9w6DgA==
-  dependencies:
-    "@jest/types" "^29.2.1"
-    "@sinonjs/fake-timers" "^9.1.2"
-    "@types/node" "*"
-    jest-message-util "^29.2.1"
-    jest-mock "^29.2.2"
-    jest-util "^29.2.1"
 
 "@jest/fake-timers@^29.3.0":
   version "29.3.0"
@@ -9375,17 +9353,17 @@ jest-each@^29.2.1:
     jest-util "^29.2.1"
     pretty-format "^29.2.1"
 
-jest-environment-jsdom@^29.2.2:
-  version "29.2.2"
-  resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-29.2.2.tgz#1e2d9f1f017fbaa7362a83e670b569158b4b8527"
-  integrity sha512-5mNtTcky1+RYv9kxkwMwt7fkzyX4EJUarV7iI+NQLigpV4Hz4sgfOdP4kOpCHXbkRWErV7tgXoXLm2CKtucr+A==
+jest-environment-jsdom@^29.3.0:
+  version "29.3.0"
+  resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-29.3.0.tgz#378d750e3c6894efa543ba8f7261c0a3d892d42e"
+  integrity sha512-xFLbMR4OF4lntNcO9LthJdPRbI9WgfFlG73aQS6wQ54+v4oSAp8T4FKUw0add+Z+Ghu/dirRxuvc4FzzN5kRxw==
   dependencies:
-    "@jest/environment" "^29.2.2"
-    "@jest/fake-timers" "^29.2.2"
+    "@jest/environment" "^29.3.0"
+    "@jest/fake-timers" "^29.3.0"
     "@jest/types" "^29.2.1"
     "@types/jsdom" "^20.0.0"
     "@types/node" "*"
-    jest-mock "^29.2.2"
+    jest-mock "^29.3.0"
     jest-util "^29.2.1"
     jsdom "^20.0.0"
 
@@ -9493,15 +9471,6 @@ jest-message-util@^29.2.1:
     pretty-format "^29.2.1"
     slash "^3.0.0"
     stack-utils "^2.0.3"
-
-jest-mock@^29.2.2:
-  version "29.2.2"
-  resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-29.2.2.tgz#9045618b3f9d27074bbcf2d55bdca6a5e2e8bca7"
-  integrity sha512-1leySQxNAnivvbcx0sCB37itu8f4OX2S/+gxLAV4Z62shT4r4dTG9tACDywUAEZoLSr36aYUTsVp3WKwWt4PMQ==
-  dependencies:
-    "@jest/types" "^29.2.1"
-    "@types/node" "*"
-    jest-util "^29.2.1"
 
 jest-mock@^29.3.0:
   version "29.3.0"
