@@ -1,3 +1,13 @@
+# [18.0.0](https://github.com/react-hookz/web/compare/v17.0.1...v18.0.0) (2022-11-09)
+
+
+* Remove hooks that modify the head element (#1004) ([12f723d](https://github.com/react-hookz/web/commit/12f723d0d368913e7198012fb18db683c2a97689)), closes [#1004](https://github.com/react-hookz/web/issues/1004) [#386](https://github.com/react-hookz/web/issues/386) [#386](https://github.com/react-hookz/web/issues/386) [#386](https://github.com/react-hookz/web/issues/386)
+
+
+### BREAKING CHANGES
+
+* useDocumentTitle has been removed.
+
 ## [17.0.1](https://github.com/react-hookz/web/compare/v17.0.0...v17.0.1) (2022-11-05)
 
 
