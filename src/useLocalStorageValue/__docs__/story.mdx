@@ -37,11 +37,14 @@ Manages a single LocalStorage key.
 ## Reference
 
 ```ts
-function useLocalStorageValue<T>(
+function useLocalStorageValue<
+  Type,
+  Default extends Type = Type,
+  Initialize extends boolean | undefined = boolean | undefined
+>(
   key: string,
-  defaultValue: T | null = null,
-  options: UseStorageValueOptions<T> = {}
-): HookReturn<T, typeof defaultValue, typeof options>;
+  options?: UseStorageValueOptions<Type, Initialize>
+): UseStorageValueResult<Type, Default, Initialize>
 ```
 
 #### Importing
