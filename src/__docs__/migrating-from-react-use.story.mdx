@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs'
 
 <Meta title="Migrating from react-use" />
 
@@ -15,7 +15,7 @@ progress porting the rest of `react-use`'s hooks in
 If there is a `react-use` hook you need that isn't ported yet, please comment there - or even
 better, make a PR!
 
-In the mean time, **feel free to use both `@react-hookz/web` and `react-use` in tandem**.
+In the meantime, **feel free to use both `@react-hookz/web` and `react-use` in tandem**.
 
 ## Installation
 
@@ -191,7 +191,7 @@ Not implemented yet
 
 #### useClickAway
 
-Implmented as [useClickOutside](/docs/dom-useclickoutside--example))
+Implemented as [useClickOutside](/docs/dom-useclickoutside--example))
 
 No API changes, besides name change.
 
@@ -440,13 +440,14 @@ Not implemented yet
 
 #### useFavicon
 
-Not implemented yet
+Hooks that modify contents of the `<head>` element will not be implemented. Instead, consider using
+libraries such as [react-helmet](https://github.com/nfl/react-helmet) and [react-helmet-async](https://github.com/staylor/react-helmet-async).
 
 #### useLocalStorage
 
 Implemented as [useLocalStorageValue](/docs/side-effect-uselocalstoragevalue--example)
 
-Backwards compatiable API, minus the `raw` option.
+Backwards compatible API, minus the `raw` option.
 
 NOTE: `useLocalStorage` instances with the same key on the same page are synchronised. This
 synchronisation does not work across tabs or on changes that are triggered by third-party code.
@@ -463,7 +464,7 @@ Not implemented yet
 
 Implemented as [useSessionStorageValue](/docs/side-effect-usesessionstoragevalue--example)
 
-Backwards compatiable API, minus the `raw` option.
+Backwards compatible API, minus the `raw` option.
 
 NOTE: `useSessionStorage` instances with the same key on the same page are synchronised. This
 synchronisation does not work across tabs or on changes that are triggered by third-party code.
@@ -479,7 +480,8 @@ Depending on your use case, [useThrottledEffect](/docs/lifecycle-usethrottledeff
 
 #### useTitle
 
-Implemented as [useDocumentTitle](/docs/dom-usedocumenttitle--example)
+Hooks that modify contents of the `<head>` element will not be implemented. Instead, consider using
+libraries such as [react-helmet](https://github.com/nfl/react-helmet) and [react-helmet-async](https://github.com/staylor/react-helmet-async).
 
 Backwards compatiable API.
 
@@ -563,7 +565,7 @@ No API change, besides name change.
 
 Implemented as [useUpdateEffect](/docs/lifecycle-useUpdateEffect--example)
 
-No API change.
+No API changes.
 
 #### useIsomorphicLayoutEffect
 
@@ -626,7 +628,7 @@ Not implemented yet
 
 #### useLatest
 
-Implemented as [useSynchedRef](/docs/miscellaneous-usesyncedref--example)
+Implemented as [useSyncedRef](/docs/miscellaneous-usesyncedref--example)
 
 No API changes, besides name change.
 
