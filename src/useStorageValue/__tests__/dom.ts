@@ -13,6 +13,22 @@ describe('useStorageValue', () => {
     expect(result.error).toBeUndefined();
   });
 
+  it('should action methods should be stable between renders', () => {
+    const { result, rerender } = renderHook(() => useStorageValue(newStorage(), 'foo'));
+
+    rerender();
+    act(() => {
+      result.current.set('bar');
+    });
+    rerender();
+
+    type ResultType = typeof result.current;
+
+    expect((result.all[0] as ResultType).set).toBe(result.current.set);
+    expect((result.all[0] as ResultType).fetch).toBe(result.current.fetch);
+    expect((result.all[0] as ResultType).remove).toBe(result.current.remove);
+  });
+
   it('should fetch value from storage only on init', () => {
     const storage = newStorage((key) => `"${key}"`);
     const { result, rerender } = renderHook(() => useStorageValue(storage, 'foo'));
