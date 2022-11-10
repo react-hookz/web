@@ -1,4 +1,4 @@
-import { ConditionsPredicate, Predicate } from '..';
+import type { Predicate, ConditionsPredicate } from '../types';
 
 export const noop = (): void => {};
 

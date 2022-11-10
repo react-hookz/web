@@ -1,4 +1,4 @@
-import { useMediaQuery } from '..';
+import { useMediaQuery } from '../useMediaQuery/useMediaQuery';
 
 export type ScreenOrientation = 'portrait' | 'landscape';
 

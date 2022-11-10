@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-import { useIsMounted } from '..';
+import { useIsMounted } from '../useIsMounted/useIsMounted';
 
 export function useSafeState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 export function useSafeState<S = undefined>(): [

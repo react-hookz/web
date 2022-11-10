@@ -57,6 +57,8 @@ import { useMountEffect } from '@react-hookz/web/esnext';
 
 ## Migrating from react-use
 
+`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974) of `react-use` by one of its former maintainers.
+
 Coming from `react-use`? Check out our
 [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).
 
@@ -156,6 +158,9 @@ Coming from `react-use`? Check out our
     — Like `useRef`, but it returns immutable ref that contains actual value.
   - [**`useCustomCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useCustomCompareMemo--example)
     — Like useMemo but uses provided comparator function to validate dependency changes.
+  - [**`useDeepCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useDeepCompareMemo--example)
+    — Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validate deep
+    dependency changes.
   - [**`useHookableRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usehookableref--example)
     — Like `useRef` but it is possible to define get and set handlers.
 
@@ -191,8 +196,6 @@ Coming from `react-use`? Check out our
 
   - [**`useClickOutside`**](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside--example)
     — Triggers callback when user clicks outside the target element.
-  - [**`useDocumentTitle`**](https://react-hookz.github.io/web/?path=/docs/dom-usedocumenttitle--example)
-    — Sets title of the page.
   - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener--example)
     — Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
@@ -202,7 +205,7 @@ Coming from `react-use`? Check out our
 
 ## Contributors
 
-<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors,semantic-release-bot/-,lint-action/- -start -->
 <table>
 <tr>
     <td align="center">
@@ -220,17 +223,10 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/semantic-release-bot">
-            <img src="https://avatars.githubusercontent.com/u/32174276?v=4" width="100;" alt="semantic-release-bot"/>
+        <a href="https://github.com/ArttuOll">
+            <img src="https://avatars.githubusercontent.com/u/60509537?v=4" width="100;" alt="ArttuOll"/>
             <br />
-            <sub><b>Semantic Release Bot</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/lint-action">
-            <img src="https://avatars.githubusercontent.com/u/59283862?v=4" width="100;" alt="lint-action"/>
-            <br />
-            <sub><b>Lint Action</b></sub>
+            <sub><b>Arttu Olli</b></sub>
         </a>
     </td>
     <td align="center">
@@ -248,20 +244,12 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/ArttuOll">
-            <img src="https://avatars.githubusercontent.com/u/60509537?v=4" width="100;" alt="ArttuOll"/>
-            <br />
-            <sub><b>Arttu Olli</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/Rey-Wang">
             <img src="https://avatars.githubusercontent.com/u/45580554?v=4" width="100;" alt="Rey-Wang"/>
             <br />
             <sub><b>Rey Wang</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/axelboc">
             <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="100;" alt="axelboc"/>
@@ -269,6 +257,14 @@ Coming from `react-use`? Check out our
             <sub><b>Axel Bocciarelli</b></sub>
         </a>
     </td>
+    <td align="center">
+        <a href="https://github.com/lensbart">
+            <img src="https://avatars.githubusercontent.com/u/20876627?v=4" width="100;" alt="lensbart"/>
+            <br />
+            <sub><b>Bart Lens</b></sub>
+        </a>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/birant">
             <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="100;" alt="birant"/>
@@ -281,6 +277,13 @@ Coming from `react-use`? Check out our
             <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="100;" alt="punkle"/>
             <br />
             <sub><b>Brian Fletcher</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/wesgro">
+            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
+            <br />
+            <sub><b>Jake Ketcheson</b></sub>
         </a>
     </td>
     <td align="center">
@@ -312,4 +315,4 @@ Coming from `react-use`? Check out our
         </a>
     </td></tr>
 </table>
-<!-- readme: collaborators,contributors -end -->
+<!-- readme: collaborators,contributors,semantic-release-bot/-,lint-action/- -end -->

@@ -1,19 +1,11 @@
-/* eslint-disable import/no-cycle */
 // Callback
 export { useDebouncedCallback } from './useDebouncedCallback/useDebouncedCallback';
 export { useRafCallback } from './useRafCallback/useRafCallback';
 export { useThrottledCallback } from './useThrottledCallback/useThrottledCallback';
 
 // Lifecycle
-export {
-  useConditionalEffect,
-  ConditionsPredicate,
-  ConditionsList,
-} from './useConditionalEffect/useConditionalEffect';
-export {
-  useCustomCompareEffect,
-  DependenciesComparator,
-} from './useCustomCompareEffect/useCustomCompareEffect';
+export { useConditionalEffect } from './useConditionalEffect/useConditionalEffect';
+export { useCustomCompareEffect } from './useCustomCompareEffect/useCustomCompareEffect';
 export { useDebouncedEffect } from './useDebouncedEffect/useDebouncedEffect';
 export { useDeepCompareEffect } from './useDeepCompareEffect/useDeepCompareEffect';
 export { useFirstMountState } from './useFirstMountState/useFirstMountState';
@@ -38,7 +30,7 @@ export { useList } from './useList/useList';
 export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
-export { usePreviousDistinct, Predicate } from './usePreviousDistinct/usePreviousDistinct';
+export { usePreviousDistinct } from './usePreviousDistinct/usePreviousDistinct';
 export { useRafState } from './useRafState/useRafState';
 export { useSafeState } from './useSafeState/useSafeState';
 export { useSet } from './useSet/useSet';
@@ -110,7 +102,6 @@ export {
 
 // Dom
 export { useClickOutside } from './useClickOutside/useClickOutside';
-export { useDocumentTitle, UseDocumentTitleOptions } from './useDocumentTitle/useDocumentTitle';
 export { useEventListener } from './useEventListener/useEventListener';
 export { useWindowSize, WindowSize } from './useWindowSize/useWindowSize';
 
@@ -119,3 +110,8 @@ export { truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 export { EffectCallback, EffectHook } from './util/misc';
 
 export { resolveHookState } from './util/resolveHookState';
+
+// Types
+export * from './types';
+
+export { useDeepCompareMemo } from './useDeepCompareMemo/useDeepCompareMemo';

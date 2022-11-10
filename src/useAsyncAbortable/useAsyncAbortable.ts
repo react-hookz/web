@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import { AsyncState, UseAsyncActions, UseAsyncMeta, useAsync } from '..';
+import { useAsync, UseAsyncMeta, UseAsyncActions, AsyncState } from '../useAsync/useAsync';
 
 export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]>
   extends UseAsyncActions<Result, Args> {

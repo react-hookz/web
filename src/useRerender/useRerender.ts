@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useSafeState } from '..';
+import { useSafeState } from '../useSafeState/useSafeState';
 
 const stateChanger = (state: number) => (state + 1) % Number.MAX_SAFE_INTEGER;
 

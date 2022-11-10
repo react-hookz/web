@@ -1,13 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useEffect, useRef } from 'react';
 import { isBrowser } from '../util/const';
-// eslint-disable-next-line import/no-cycle
 import { basicDepsComparator } from '../util/misc';
-
-export type DependenciesComparator<Deps extends DependencyList = DependencyList> = (
-  a: Deps,
-  b: Deps
-) => boolean;
+import type { DependenciesComparator } from '../types';
 
 export type EffectCallback = (...args: any[]) => any;
 
