@@ -1,15 +1,15 @@
 import { useMemo, useRef } from 'react';
-import { useAsync, UseAsyncMeta, UseAsyncActions, AsyncState } from '../useAsync/useAsync';
+import { AsyncState, useAsync, UseAsyncActions, UseAsyncMeta } from '../useAsync/useAsync';
 
 export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]>
   extends UseAsyncActions<Result, Args> {
   /**
-   *  Abort currently running async.
+   *  Abort the currently running async function invocation.
    */
   abort: () => void;
 
   /**
-   * Abort currently running async and reset state to initial, when async function haven't been executed.
+   * Reset state to initial, when the async function hadn't been executed.
    */
   reset: () => void;
 }
@@ -17,7 +17,7 @@ export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unkno
 export interface UseAsyncAbortableMeta<Result, Args extends unknown[] = unknown[]>
   extends UseAsyncMeta<Result, Args> {
   /**
-   * Current abort controller. New one created each async execution.
+   * Currently used `AbortController`. New one is created on each execution of the async function.
    */
   abortController: AbortController | undefined;
 }
@@ -42,10 +42,10 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ];
 
 /**
- * Like `useAsync`, but also provides `AbortSignal` as first function argument to async function.
+ * Like `useAsync`, but also provides `AbortSignal` as the first argument to the async function.
  *
  * @param asyncFn Function that returns a promise.
- * @param initialValue Value that will be set on initialisation, before the async function is
+ * @param initialValue Value that will be set on initialisation before the async function is
  * executed.
  */
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
