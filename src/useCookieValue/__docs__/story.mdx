@@ -1,5 +1,5 @@
-import { Canvas, Meta, Story, Source } from '@storybook/addon-docs';
-import { Example } from './example.stories';
+import {Canvas, Meta, Source, Story} from '@storybook/addon-docs';
+import {Example} from './example.stories';
 
 <Meta title="Side-effect/useCookieValue" component={Example} />
 
@@ -7,24 +7,24 @@ import { Example } from './example.stories';
 
 Manages a single cookie.
 
-> **IMPORTANT**: Requires separate installation of `js-cookie` package.
+> **IMPORTANT**: Requires separate installation of the `js-cookie` package.
 
-> **IMPORTANT**: This hook should be directly imported as it has optional dependency and therefore
-> it is not exported from index file. See [importing](#importing) section below.
+> **IMPORTANT**: This hook should be directly imported as it has an optional dependency and therefore
+> is not exported from the index file. See [importing](#importing) section below.
 
-- Uses `js-cookie` package underneath.
+- Uses the `js-cookie` package underneath.
 - SSR-friendly.
 - Hooks with the same key on the same page are synchronised. This synchronisation does not work
   across tabs or on changes that are triggered by third-party code.
 
-> **_This hook provides stable API, meaning returned methods does not change between renders_**
+> **_This hook provides a stable API, meaning returned methods do not change between renders_**
 
-> Uses `null` values as indicator of cookie absence, `undefined` value means that cookie value
+> Uses `null` value as the indicator of cookie absence. `undefined` value means that the cookie value
 > hasn't been fetched yet.
 
-> While using SSR, to avoid hydration mismatch, consider setting `initializeWithValue` option to
-> `false`, this will yield `undefined` state on first render and defer value fetch till effects
-> execution stage.
+> While using SSR, to avoid hydration mismatch, consider setting the `initializeWithValue` option to
+> `false`. This will make the hook yield `undefined` on first render and defer fetching of the cookie
+> value until effects are executed.
 
 #### Example
 
@@ -64,17 +64,16 @@ import { useCookieValue } from '@react-hookz/web/esnext/useCookieValue/useCookie
 
 #### Arguments
 
-- **key** _`string`_ - Cookie name to manage.
-- **options** _`UseCookieOptions`_ _(default: {})_ - Cookie options that will be used during cookie
-  set and delete. Has only one extra option, that relates to the hook itself:
-  - **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with cookie
-    value or initialize with `undefined` state.  
-    _Default to `false` during SSR._
+- **key** _`string`_ - Name of the cookie to manage.
+- **options** _`UseCookieOptions`_ _(default: {})_ - Cookie options that will be used during setting
+    and deleting the cookie. Has one extra option, that relates to the hook itself:
+  - **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with the cookie
+    value or `undefined`. _We suggest setting this to `false` during SSR._
 
 #### Return
 
-0. **state** - cookie value, `undefined` means it is not fetched yet, `null` means absence of
-   cookie.
-1. **set** - Method to set new cookie value.
-2. **remove** - Method to remove cookie.
-3. **fetch** - Method to re-fetch cookie value.
+0. **state** - Value of the managed cookie. `undefined` means the value has not been fetched yet,
+    `null` means the cookie is absent.
+1. **set** - Set new value to the cookie.
+2. **remove** - Remove the cookie.
+3. **fetch** - Re-fetch the cookie value.
