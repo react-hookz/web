@@ -217,12 +217,21 @@ export function useStorageValue<
     },
   });
 
+  // make actions static so developers can pass methods further
+  const staticActions = useMemo(
+    () => ({
+      set: ((v) => actions.current.set(v)) as typeof actions.current.set,
+      remove: () => actions.current.delete(),
+      fetch: () => actions.current.fetch(),
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
   return useMemo(
     () => ({
       value: state as UseStorageValueValue<Type, Default, Initialize>,
-      set: actions.current.set,
-      remove: actions.current.delete,
-      fetch: actions.current.fetch,
+      ...staticActions,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]
