@@ -22,6 +22,9 @@ Manages a single SessionStorage key.
 > `undefined` on first render. The SessionStorage value will be fetched client-side when effects
 > are executed.
 
+> If you are using useSessionStorageValue in multiple places with the same key, all instances must
+> use compatible serializers if you are overriding the serializers with the `parse` and `stringify` options.
+
 #### Example
 
 <Canvas isColumn>

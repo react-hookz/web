@@ -22,12 +22,15 @@ Manages a single LocalStorage key.
 > `undefined` on first render. The LocalStorage value will be fetched client-side when effects
 > are executed.
 
+> If you are using useLocalStorageValue in multiple places with the same key, all instances must
+> use compatible serializers if you are overriding the serializers with the `parse` and `stringify` options.
+
 #### Example
 
 <Canvas isColumn>
   <Story name="Example" story={Example} />
   <hr />
-  It also synchronised between hooks on same page
+  It is also synchronised between hooks on the same page
   <hr />
   <Story name="Example2" story={Example} />
 </Canvas>
@@ -50,7 +53,6 @@ function useLocalStorageValue<
 #### Importing
 
 <ImportPath />
-
 
 #### Arguments
 
