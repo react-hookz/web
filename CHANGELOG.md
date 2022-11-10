@@ -1,3 +1,10 @@
+## [18.0.1](https://github.com/react-hookz/web/compare/v18.0.0...v18.0.1) (2022-11-10)
+
+
+### Bug Fixes
+
+* **useStorageValue:** make methods to be stable between renders ([#1015](https://github.com/react-hookz/web/issues/1015)) ([2211bb7](https://github.com/react-hookz/web/commit/2211bb7379ade02511ea49266bad3d8817ea5514)), closes [#1014](https://github.com/react-hookz/web/issues/1014)
+
 # [18.0.0](https://github.com/react-hookz/web/compare/v17.0.1...v18.0.0) (2022-11-09)
 
 
