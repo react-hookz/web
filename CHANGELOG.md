@@ -1,3 +1,15 @@
+# [19.0.0](https://github.com/react-hookz/web/compare/v18.0.1...v19.0.0) (2022-11-12)
+
+
+### Bug Fixes
+
+* **useMeasure:** only expose with and height properties ([#954](https://github.com/react-hookz/web/issues/954)) ([161c18d](https://github.com/react-hookz/web/commit/161c18dd2f16e9e4f5164b6bb78799df184dde13)), closes [#951](https://github.com/react-hookz/web/issues/951)
+
+
+### BREAKING CHANGES
+
+* **useMeasure:** Only width and height are now exposed from the element instead of the whole DOMRect
+
 ## [18.0.1](https://github.com/react-hookz/web/compare/v18.0.0...v18.0.1) (2022-11-10)
 
 
