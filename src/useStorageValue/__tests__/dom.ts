@@ -211,6 +211,50 @@ describe('useStorageValue', () => {
     expect(result.current.value).toBe('bar');
   });
 
+  it('should use custom stringify option', () => {
+    const storage = newStorage();
+    const { result } = renderHook(() =>
+      useStorageValue<number[]>(storage, 'foo', {
+        stringify(data) {
+          return (data as number[]).map((num) => num.toString(16)).join(':');
+        },
+        parse(str, fallback) {
+          if (str === null) return fallback;
+
+          if (str === '') return [];
+
+          return str.split(':').map((num) => Number.parseInt(num, 16));
+        },
+      })
+    );
+
+    expect(result.current.value).toBe(null);
+    act(() => {
+      result.current.set([1, 2, 3]);
+    });
+    expect(storage.setItem).toHaveBeenCalledWith('foo', '1:2:3');
+  });
+
+  it('should use custom parse option', () => {
+    const storage = newStorage();
+    storage.getItem.mockImplementationOnce(() => '1:2:3');
+    const { result } = renderHook(() =>
+      useStorageValue<number[]>(storage, 'foo', {
+        stringify(data) {
+          return (data as number[]).map((num) => num.toString(16)).join(':');
+        },
+        parse(str, fallback) {
+          if (str === null) return fallback;
+
+          if (str === '') return [];
+
+          return str.split(':').map((num) => Number.parseInt(num, 16));
+        },
+      })
+    );
+    expect(result.current.value).toEqual([1, 2, 3]);
+  });
+
   describe('should handle window`s `storage` event', () => {
     it('should update state if tracked key is updated', () => {
       const { result } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));

@@ -98,6 +98,16 @@ export interface UseStorageValueOptions<T, InitializeWithValue extends boolean |
    * @default true
    */
   initializeWithValue?: InitializeWithValue;
+
+  /**
+   * Custom function to parse storage value with.
+   */
+  parse?: (str: string | null, fallback: T | null) => T | null;
+
+  /**
+   * Custom function to stringify value to store with.
+   */
+  stringify?: (data: unknown) => string | null;
 }
 
 type UseStorageValueValue<
@@ -120,7 +130,7 @@ export interface UseStorageValueResult<
   fetch: () => void;
 }
 
-const DEFAULT_OPTIONS: UseStorageValueOptions<null, true> = {
+const DEFAULT_OPTIONS = {
   defaultValue: null,
   initializeWithValue: true,
 };
@@ -135,6 +145,14 @@ export function useStorageValue<
   options?: UseStorageValueOptions<Type, Initialize>
 ): UseStorageValueResult<Type, Default, Initialize> {
   const optionsRef = useSyncedRef({ ...DEFAULT_OPTIONS, ...options });
+  const parse = (str: string | null, fallback: Type | null): Type | null => {
+    const parseFunction = optionsRef.current.parse ?? defaultParse;
+    return parseFunction(str, fallback);
+  };
+  const stringify = (data: unknown): string | null => {
+    const stringifyFunction = optionsRef.current.stringify ?? defaultStringify;
+    return stringifyFunction(data);
+  };
   const storageActions = useSyncedRef({
     fetchRaw: () => storage.getItem(key),
     fetch: () =>
@@ -238,7 +256,7 @@ export function useStorageValue<
   );
 }
 
-const stringify = (data: unknown): string | null => {
+const defaultStringify = (data: unknown): string | null => {
   if (data === null) {
     /* istanbul ignore next */
     if (process.env.NODE_ENV === 'development') {
@@ -263,7 +281,7 @@ const stringify = (data: unknown): string | null => {
   }
 };
 
-const parse = <T>(str: string | null, fallback: T | null): T | null => {
+const defaultParse = <T>(str: string | null, fallback: T | null): T | null => {
   if (str === null) return fallback;
 
   try {
