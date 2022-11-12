@@ -280,6 +280,13 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/dantman">
+            <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
+            <br />
+            <sub><b>Daniel Friesen</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/wesgro">
             <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
             <br />
