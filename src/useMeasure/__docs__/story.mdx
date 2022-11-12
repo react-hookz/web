@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Example } from './example.stories'
+import { ImportPath } from '../../__docs__/ImportPath'
 
 <Meta title="Sensor/useMeasure" />
 
@@ -22,7 +22,12 @@ Uses ResizeObserver to track element dimensions and re-render component when the
 ## Reference
 
 ```ts
-function useMeasure<T extends Element>(enabled = true): [DOMRectReadOnly | undefined, React.RefObject<T>];
+interface Measures {
+  width: number;
+  height: number;
+}
+
+function useMeasure<T extends Element>(enabled = true): [Measures | undefined, React.RefObject<T>];
 ```
 
 #### Importing
@@ -37,5 +42,5 @@ function useMeasure<T extends Element>(enabled = true): [DOMRectReadOnly | undef
 
 Array of two elements:
 
-- **0** _`DOMRectReadOnly | undefined`_ - Current element rect, received from ResizeObserver;
-- **1** _`RefObject<T>`_ - Ref object that should be passed to tracked element;
+- **0** _`Measures | undefined`_ - Width and height of the tracked element's `contentRect`
+- **1** _`RefObject<T>`_ - Ref object that should be passed to tracked element
