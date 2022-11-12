@@ -1,3 +1,10 @@
+# [19.1.0](https://github.com/react-hookz/web/compare/v19.0.0...v19.1.0) (2022-11-12)
+
+
+### Features
+
+* **useStorageValue:** add custom parse and stringify functions to options ([#913](https://github.com/react-hookz/web/issues/913)) ([095d371](https://github.com/react-hookz/web/commit/095d371a25363cfefa9c2df607c4af10ed8ef01d))
+
 # [19.0.0](https://github.com/react-hookz/web/compare/v18.0.1...v19.0.0) (2022-11-12)
 
 
