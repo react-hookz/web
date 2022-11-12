@@ -86,14 +86,15 @@ const removeStorageListener = (s: Storage, key: string, listener: CallableFuncti
 
 export interface UseStorageValueOptions<T, InitializeWithValue extends boolean | undefined> {
   /**
-   * Default value that will be used in absence of value in storage.
+   * Value to return if `key` is not present in LocalStorage.
    *
    * @default undefined
    */
   defaultValue?: T;
 
   /**
-   * Whether to initialize state with storage value or initialize with `undefined` state.
+   * Fetch storage value on first render. If set to `false` will make the hook yield `undefined` on
+   * first render and defer fetching of the value until effects are executed.
    *
    * @default true
    */
