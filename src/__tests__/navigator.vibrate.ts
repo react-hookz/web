@@ -1,3 +1,3 @@
 export const NavigatorVibrateSetup = () => {
-  navigator.vibrate = (_: VibratePattern): boolean => true;
+  navigator.vibrate = (_: number[]): boolean => true;
 };
