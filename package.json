@@ -102,6 +102,7 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^29.2.3",
     "@types/js-cookie": "^3.0.2",
+    "@types/node": "^18.11.9",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^9.1.0",
