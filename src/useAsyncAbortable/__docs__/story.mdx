@@ -39,7 +39,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 
 - **asyncFn** _`(...params: ArgsWithAbortSignal<Args>) => Promise<Result>`_ - Function that returns
   a promise.
-- **initialValue** _`Result`_ _(default: `undefined`)_ - Value that will be set on initialisation
+- **initialValue** _`Result`_ _(default: `undefined`)_ - Value that will be set on initialisation,
   before the async function is executed.
 
 #### Return
@@ -52,7 +52,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 
 2. **methods**
 
-   - **reset** _`() => void`_- Reset state to initial, when the async function hadn't been executed.
+   - **reset** _`() => void`_- Abort the currently running async function invocation and reset state to initial.
    - **execute** _`(...args: Args) => Promise<Result>`_- Execute the async function manually.
    - **abort** _`() => void`_- Abort the currently running async function invocation.
 

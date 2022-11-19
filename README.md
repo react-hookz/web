@@ -135,7 +135,7 @@ Coming from `react-use`? Check out our
   - [**`useRenderCount`**](https://react-hookz.github.io/web/?path=/docs/state-userendercount--example) —
     Tracks component's render count including first render.
   - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page) —
-    Like `useState`, but its state setter is guarded against settings the state of an unmounted component.
+    Like `useState`, but its state setter is guarded against setting the state of an unmounted component.
   - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
     state of a `Set`.
   - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example) — Like
@@ -185,7 +185,7 @@ Coming from `react-use`? Check out our
     — Observe changes in the intersection of a target element with an ancestor element or with the
     viewport.
   - [**`useMeasure`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure--example) —
-    Uses `ResizeObserver` to track element's dimensions and to re-render the component when they change.
+    Uses `ResizeObserver` to track an element's dimensions and to re-render the component when they change.
   - [**`useMediaQuery`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery--example)
     — Tracks the state of a CSS media query.
   - [**`useResizeObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useresizeobserver--example)

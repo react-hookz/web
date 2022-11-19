@@ -28,7 +28,7 @@ export type AsyncState<Result> =
 
 export interface UseAsyncActions<Result, Args extends unknown[] = unknown[]> {
   /**
-   * Reset state to initial, when the async function hadn't been executed.
+   * Reset state to initial.
    */
   reset: () => void;
   /**

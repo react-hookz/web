@@ -16,7 +16,7 @@ Manages a single LocalStorage key.
 > **_This hook provides a stable API, meaning the returned methods do not change between renders._**
 
 > Does not allow usage of `null` as a value, since JSON allows serializing `null` - it would be
-> impossible to separate `null` value fom 'no such value' API result which is also `null`.
+> impossible to separate `null` value from 'no such value' API result which is also `null`.
 
 > If you are doing SSR, set `initializeWithValue` to `false` in order for this hook to return
 > `undefined` on first render. The LocalStorage value will be fetched client-side when effects
@@ -67,7 +67,7 @@ function useLocalStorageValue<
 
 #### Return
 
-Object with following properties. Note, that this object changes with `value`, but its methods are
+Object with following properties. Note that this object changes with `value`, but its methods are
 stable between renders. Thus, it is safe to pass them as props.
 - **value** - LocalStorage value of the given `key` argument or `defaultValue`, if the key was not
 present.

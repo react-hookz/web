@@ -9,7 +9,7 @@ export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unkno
   abort: () => void;
 
   /**
-   * Reset state to initial, when the async function hadn't been executed.
+   * Abort the currently running async function invocation and reset state to initial.
    */
   reset: () => void;
 }

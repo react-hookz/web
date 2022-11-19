@@ -8,7 +8,7 @@ export function useSafeState<S = undefined>(): [
 ];
 
 /**
- * Like `useState` but its state setter is guarded against sets on unmounted component.
+ * Like `useState` but its state setter is guarded against setting the state of an unmounted component.
  */
 export function useSafeState<S>(
   initialState?: S | (() => S)
