@@ -282,6 +282,13 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/ChloeMouret">
+            <img src="https://avatars.githubusercontent.com/u/63965373?v=4" width="100;" alt="ChloeMouret"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/dantman">
             <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
             <br />
@@ -315,7 +322,8 @@ Coming from `react-use`? Check out our
             <br />
             <sub><b>Michał Tarasiuk</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/fengkx">
             <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
