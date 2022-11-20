@@ -1,5 +1,5 @@
-import { Dispatch, useEffect } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { Dispatch, useEffect, useState } from 'react';
+import { isBrowser } from '../util/const';
 
 const queriesMap = new Map<
   string,
@@ -8,24 +8,28 @@ const queriesMap = new Map<
 
 type QueryStateSetter = (matches: boolean) => void;
 
+const createQueryEntry = (query: string) => {
+  const mql = matchMedia(query);
+  const dispatchers = new Set<QueryStateSetter>();
+  const listener = () => {
+    dispatchers.forEach((d) => d(mql.matches));
+  };
+
+  if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
+  else mql.addListener(listener);
+
+  return {
+    mql,
+    dispatchers,
+    listener,
+  };
+};
+
 const querySubscribe = (query: string, setState: QueryStateSetter) => {
   let entry = queriesMap.get(query);
 
   if (!entry) {
-    const mql = matchMedia(query);
-    const dispatchers = new Set<QueryStateSetter>();
-    const listener = () => {
-      dispatchers.forEach((d) => d(mql.matches));
-    };
-
-    if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
-    else mql.addListener(listener);
-
-    entry = {
-      mql,
-      dispatchers,
-      listener,
-    };
+    entry = createQueryEntry(query);
     queriesMap.set(query, entry);
   }
 
@@ -54,12 +58,19 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
 /**
  * Tracks the state of CSS media query.
  *
- * Return undefined initially and later receives correct value.
- *
  * @param query CSS media query to track.
  */
 export function useMediaQuery(query: string): boolean | undefined {
-  const [state, setState] = useSafeState<boolean>();
+  const [state, setState] = useState<boolean | undefined>(() => {
+    if (isBrowser) {
+      let entry = queriesMap.get(query);
+      if (!entry) {
+        entry = createQueryEntry(query);
+        queriesMap.set(query, entry);
+      }
+      return entry.mql.matches;
+    }
+  });
 
   useEffect(() => {
     querySubscribe(query, setState);
