@@ -28,22 +28,22 @@ export type AsyncState<Result> =
 
 export interface UseAsyncActions<Result, Args extends unknown[] = unknown[]> {
   /**
-   * Reset state to initial, when async function haven't been executed.
+   * Reset state to initial.
    */
   reset: () => void;
   /**
-   * Execute async function manually.
+   * Execute the async function manually.
    */
   execute: (...args: Args) => Promise<Result>;
 }
 
 export interface UseAsyncMeta<Result, Args extends unknown[] = unknown[]> {
   /**
-   * Recent promise returned from async function.
+   * Latest promise returned from the async function.
    */
   promise: Promise<Result> | undefined;
   /**
-   * List of arguments applied to recent async function invocation.
+   * List of arguments applied to the latest async function invocation.
    */
   lastArgs: Args | undefined;
 }
@@ -58,10 +58,10 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 ): [AsyncState<Result | undefined>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 
 /**
- * Tracks result and error of provided async function and provides handles to execute and reset it.
+ * Tracks the result and errors of the provided async function and provides handles to control its execution.
  *
  * @param asyncFn Function that returns a promise.
- * @param initialValue Value that will be set on initialisation, before the async function is
+ * @param initialValue Value that will be set on initialisation before the async function is
  * executed.
  */
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
