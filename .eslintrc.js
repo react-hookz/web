@@ -41,6 +41,7 @@ module.exports = {
     {
       files: ['**/__docs__/**', '**/__tests__/**'],
       rules: {
+        '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
