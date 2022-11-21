@@ -7,12 +7,16 @@ describe('useMediaQuery', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useMediaQuery('max-width : 768px'));
+    const { result } = renderHook(() =>
+      useMediaQuery('max-width : 768px', { initializeWithValue: false })
+    );
     expect(result.error).toBeUndefined();
   });
 
-  it('should return undefined on first render', () => {
-    const { result } = renderHook(() => useMediaQuery('max-width : 768px'));
+  it('should return undefined on first render, if initializeWithValue is set to false', () => {
+    const { result } = renderHook(() =>
+      useMediaQuery('max-width : 768px', { initializeWithValue: false })
+    );
     expect(result.current).toBeUndefined();
   });
 });

@@ -9,7 +9,7 @@ export type ScreenOrientation = 'portrait' | 'landscape';
  * hook uses CSS3 `orientation` media-query to check screen orientation.
  */
 export function useScreenOrientation(): ScreenOrientation | undefined {
-  const matches = useMediaQuery('(orientation: portrait)');
+  const matches = useMediaQuery('(orientation: portrait)', { initializeWithValue: false });
 
   return typeof matches === 'undefined' ? undefined : matches ? 'portrait' : 'landscape';
 }

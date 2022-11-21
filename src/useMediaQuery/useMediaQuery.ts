@@ -1,5 +1,4 @@
 import { Dispatch, useEffect, useState } from 'react';
-import { isBrowser } from '../util/const';
 
 const queriesMap = new Map<
   string,
@@ -55,14 +54,21 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
   }
 };
 
+interface UseMediaQueryOptions {
+  initializeWithValue?: boolean;
+}
+
 /**
  * Tracks the state of CSS media query.
  *
  * @param query CSS media query to track.
+ * @param options Hook options:
+ * `initializeWithValue` (default: `true`) - Determine media query match state on first render. Setting
+ * this to false will make the hook yield `undefined` on first render.
  */
-export function useMediaQuery(query: string): boolean | undefined {
+export function useMediaQuery(query: string, options?: UseMediaQueryOptions): boolean | undefined {
   const [state, setState] = useState<boolean | undefined>(() => {
-    if (isBrowser) {
+    if (options?.initializeWithValue ?? true) {
       let entry = queriesMap.get(query);
       if (!entry) {
         entry = createQueryEntry(query);

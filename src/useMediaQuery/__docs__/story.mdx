@@ -22,7 +22,11 @@ Tracks the state of CSS media query.
 ## Reference
 
 ```ts
-export function useMediaQuery(query: string): boolean | undefined;
+interface UseMediaQueryOptions {
+  initializeWithValue?: boolean;
+}
+
+export function useMediaQuery(query: string, options?: UseMediaQueryOptions): boolean | undefined;
 ```
 
 #### Importing
@@ -32,7 +36,12 @@ export function useMediaQuery(query: string): boolean | undefined;
 #### Arguments
 
 - **query** _`string`_ - CSS media query to track.
+- **options** _`object`_ - Hook options:
+    - **initializeWithValue** _`boolean`_ _(default: true)_ - Determine media query match state on first
+    render. Setting this to false will make the hook yield `undefined` on first render. We suggest
+    setting this to `false` during SSR.
 
 #### Return
 
-`boolean` - `true` in case document matches media query, `false` otherwise.
+`boolean` - `true` if document matches the media query, `false` if not. `undefined` on first render
+if `initializeWithValue` was set to `false`.
