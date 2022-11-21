@@ -138,6 +138,8 @@ Coming from `react-use`? Check out our
     Like `useState`, but its state setter is guarded against setting the state of an unmounted component.
   - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
     state of a `Set`.
+  - [**`useSsrState`**](https://react-hookz.github.io/web/?path=/state-usessrstate--example) — Combination
+    of hook and context provider that allows to seamlessly declare that application is server-rendered.
   - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example) — Like
     `useState`, but can only be `true` or `false`.
   - [**`useThrottledState`**](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate--example)

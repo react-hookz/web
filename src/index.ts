@@ -35,6 +35,7 @@ export { useRafState } from './useRafState/useRafState';
 export { useRenderCount } from './useRenderCount/useRenderCount';
 export { useSafeState } from './useSafeState/useSafeState';
 export { useSet } from './useSet/useSet';
+export { useSsrState, SsrStateProvider, SsrStateProviderProps } from './useSsrState/useSsrState';
 export { useToggle } from './useToggle/useToggle';
 export { useThrottledState } from './useThrottledState/useThrottledState';
 export {
