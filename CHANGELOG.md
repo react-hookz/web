@@ -1,3 +1,16 @@
+# [20.0.0](https://github.com/react-hookz/web/compare/v19.2.0...v20.0.0) (2022-12-02)
+
+
+### Bug Fixes
+
+* **useMediaQuery:** add option to martch media query on first render ([#1020](https://github.com/react-hookz/web/issues/1020)) ([087b2b1](https://github.com/react-hookz/web/commit/087b2b1eb8db625f85f606a98b17077616dac968)), closes [#1000](https://github.com/react-hookz/web/issues/1000)
+
+
+### BREAKING CHANGES
+
+* **useMediaQuery:** `useMediaQuery` and `useScreenOrientation` now returns matched media query state 
+on first render by default, SSR users can change that behaviour via hook options.
+
 # [19.2.0](https://github.com/react-hookz/web/compare/v19.1.0...v19.2.0) (2022-11-20)
 
 
