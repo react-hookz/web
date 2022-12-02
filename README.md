@@ -203,7 +203,7 @@ Coming from `react-use`? Check out our
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
     — Invokes a callback when a keyboard event occurs on the chosen target.
   - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
-    — Tracks the inner dimensions of the window.
+    — Tracks the inner dimensions of the browser window.
 
 ## Contributors
 
