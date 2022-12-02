@@ -1,5 +1,4 @@
-import { Dispatch, useEffect } from 'react';
-import { useSafeState } from '../useSafeState/useSafeState';
+import { Dispatch, useEffect, useState } from 'react';
 
 const queriesMap = new Map<
   string,
@@ -8,24 +7,28 @@ const queriesMap = new Map<
 
 type QueryStateSetter = (matches: boolean) => void;
 
+const createQueryEntry = (query: string) => {
+  const mql = matchMedia(query);
+  const dispatchers = new Set<QueryStateSetter>();
+  const listener = () => {
+    dispatchers.forEach((d) => d(mql.matches));
+  };
+
+  if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
+  else mql.addListener(listener);
+
+  return {
+    mql,
+    dispatchers,
+    listener,
+  };
+};
+
 const querySubscribe = (query: string, setState: QueryStateSetter) => {
   let entry = queriesMap.get(query);
 
   if (!entry) {
-    const mql = matchMedia(query);
-    const dispatchers = new Set<QueryStateSetter>();
-    const listener = () => {
-      dispatchers.forEach((d) => d(mql.matches));
-    };
-
-    if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
-    else mql.addListener(listener);
-
-    entry = {
-      mql,
-      dispatchers,
-      listener,
-    };
+    entry = createQueryEntry(query);
     queriesMap.set(query, entry);
   }
 
@@ -51,15 +54,29 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
   }
 };
 
+interface UseMediaQueryOptions {
+  initializeWithValue?: boolean;
+}
+
 /**
  * Tracks the state of CSS media query.
  *
- * Return undefined initially and later receives correct value.
- *
  * @param query CSS media query to track.
+ * @param options Hook options:
+ * `initializeWithValue` (default: `true`) - Determine media query match state on first render. Setting
+ * this to false will make the hook yield `undefined` on first render.
  */
-export function useMediaQuery(query: string): boolean | undefined {
-  const [state, setState] = useSafeState<boolean>();
+export function useMediaQuery(query: string, options?: UseMediaQueryOptions): boolean | undefined {
+  const [state, setState] = useState<boolean | undefined>(() => {
+    if (options?.initializeWithValue ?? true) {
+      let entry = queriesMap.get(query);
+      if (!entry) {
+        entry = createQueryEntry(query);
+        queriesMap.set(query, entry);
+      }
+      return entry.mql.matches;
+    }
+  });
 
   useEffect(() => {
     querySubscribe(query, setState);

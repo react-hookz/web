@@ -54,10 +54,20 @@ describe('useMediaQuery', () => {
     expect(result.error).toBeUndefined();
   });
 
-  it('should return undefined on first render', () => {
-    const { result } = renderHook(() => useMediaQuery('max-width : 768px'));
+  it('should return undefined on first render, if initializeWithValue is false', () => {
+    const { result } = renderHook(() =>
+      useMediaQuery('max-width : 768px', { initializeWithValue: false })
+    );
     expect(result.all.length).toBe(2);
     expect(result.all[0]).toBe(undefined);
+    expect(result.current).toBe(false);
+  });
+
+  it('should return value on first render, if initializeWithValue is true', () => {
+    const { result } = renderHook(() =>
+      useMediaQuery('max-width : 768px', { initializeWithValue: true })
+    );
+    expect(result.all.length).toBe(1);
     expect(result.current).toBe(false);
   });
 
