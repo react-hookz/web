@@ -1,12 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import { Example } from './example.stories'
-import { ImportPath } from '../../__docs__/ImportPath'
+import {Canvas, Meta, Story} from '@storybook/addon-docs'
+import {Example} from './example.stories'
+import {ImportPath} from '../../__docs__/ImportPath'
 
 <Meta title="DOM/useKeyboardEvent" component={Example} />
 
 # useKeyboardEvent
 
-Invokes a callback when a keyboard event occurs on the chosen target.
+Invokes a callback when a keyboard event occurs on the chosen target element.
 
 #### Example
 
@@ -43,5 +43,5 @@ function useKeyboardEvent<T extends EventTarget>(
 - **deps** _`DependencyList`_ - Dependencies list that is passed to the underlying `useMemo`.
 - **options** - Hook options:
   - **event** _`'keydown' | 'keypress' | 'keyup'`_ (default: `keydown`) - Keyboard event which triggers `callback`.
-  - **target** _`RefObject<T> | T | null`_ (default: `window`) - Target that emits `event`.
+  - **target** _`RefObject<T> | T | null`_ (default: `window`) - Target element that emits `event`.
   - **eventOptions** _`boolean | AddEventListenerOptions`_ - Options passed to the underlying `useEventListener` hook.

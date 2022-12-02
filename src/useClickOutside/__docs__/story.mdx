@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs'
-import { Example } from './example.stories'
-import { ImportPath } from '../../__docs__/ImportPath'
+import {Canvas, Meta, Story} from '@storybook/addon-docs'
+import {Example} from './example.stories'
+import {ImportPath} from '../../__docs__/ImportPath'
 
 <Meta title="DOM/useClickOutside" component={Example} />
 
@@ -11,7 +11,7 @@ Triggers a callback when the user clicks outside a targeted element.
 > This hook listens for events on the `document` object. Therefore, if any listener between the event
 > target and the `document` object stops event propagation, the hook won't work.
 
-> By default, the `mousedown` and `touchstart` events are used, but any bubbling events can be used instead.
+> By default, the `mousedown` and `touchstart` events are used, but any bubbling event can be used instead.
 
 #### Example
 
@@ -37,7 +37,7 @@ export function useClickOutside<T extends HTMLElement>(
 
 #### Arguments
 
-- **ref** _`RefObject<T> | MutableRefObject<T>`_ - React ref object containing the target HTML element.
-- **callback** _`EventListener`_ - Callback invoked when the user clicks outside the target HTML element.
+- **ref** _`RefObject<T> | MutableRefObject<T>`_ - React ref object containing the target element.
+- **callback** _`EventListener`_ - Callback invoked when the user clicks outside the target element.
 - **events**: _`string[]`_ _(default: `['mousedown', 'touchstart']`)_ - List of events that will be
   used as triggers for the outside click.

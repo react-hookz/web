@@ -15,7 +15,7 @@ export type UseKeyboardEventOptions<T extends EventTarget> = {
    */
   event?: 'keydown' | 'keypress' | 'keyup';
   /**
-   * Target that emits `event`.
+   * Target element that emits `event`.
    * @default window
    */
   target?: RefObject<T> | T | null;
@@ -34,7 +34,7 @@ const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredic
 const WINDOW_OR_NULL = isBrowser ? window : null;
 
 /**
- * Invokes a callback when a keyboard event occurs on the chosen target.
+ * Invokes a callback when a keyboard event occurs on the chosen target element.
  *
  * @param keyOrPredicate Filters key presses on which `callback` is invoked.
  * @param callback Function to call when a key is pressed and `keyOrPredicate` matches positive.
