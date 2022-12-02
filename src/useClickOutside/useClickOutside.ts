@@ -5,12 +5,12 @@ import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 /**
- * Triggers callback when user clicks outside the target element.
+ * Triggers a callback when the user clicks outside a targeted element.
  *
- * @param ref React ref object with target HTML element.
- * @param callback Callback that will be triggered during the click.
- * @param events Events list that will be used as triggers for outside click.
- * Default: 'mousedown', 'touchstart'
+ * @param ref React ref object containing the target HTML element.
+ * @param callback Callback invoked when the user clicks outside the target HTML element.
+ * @param events List of events that will be used as triggers for the outside click. Default:
+ * 'mousedown', 'touchstart'
  */
 export function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T> | MutableRefObject<T>,
