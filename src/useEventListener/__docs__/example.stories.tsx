@@ -17,20 +17,20 @@ export const Example: React.FC = () => {
       { passive: true }
     );
 
-    return <div>child component is mounted</div>;
+    return <div>Datetime updating component is mounted.</div>;
   };
 
   return (
     <div>
       <div>
-        Below state is update on window&apos;s `mousemove` event.
+        The datetime shown below is updated on window&apos;s <code>mousemove</code> event.
         <br />
-        You can unmount child component to ensure that event is unsubscribed when component
-        unmounted.
+        You can unmount the datetime updating component by clicking the button below to ensure that
+        the event is unsubscribed from when the component unmounts.
       </div>
 
       <br />
-      <div>{state ? `mouse last moved: ${state.toString()}` : 'mouse not moved yet'}</div>
+      <div>{state ? `Cursor last moved: ${state.toString()}.` : 'Cursor not moved yet.'}</div>
 
       <br />
       <div>

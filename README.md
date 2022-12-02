@@ -199,7 +199,7 @@ Coming from `react-use`? Check out our
   - [**`useClickOutside`**](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside--example)
     — Triggers a callback when the user clicks outside a targeted element.
   - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener--example)
-    — Subscribes an event listener to the target and automatically unsubscribes it on unmount.
+    — Subscribes an event listener to a target.
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
     — Executes a callback whenever a keyboard event occurs on the target.
   - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
