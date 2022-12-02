@@ -201,7 +201,7 @@ Coming from `react-use`? Check out our
   - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener--example)
     — Subscribes an event listener to a target.
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
-    — Executes a callback whenever a keyboard event occurs on the target.
+    — Invokes a callback when a keyboard event occurs on the chosen target.
   - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
     — Tracks the inner dimensions of the window.
 
