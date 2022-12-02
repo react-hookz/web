@@ -55,6 +55,12 @@ describe('useScreenOrientation', () => {
     expect(result.error).toBeUndefined();
   });
 
+  it('should initialize without value if initializeWithValue option is set to false', () => {
+    const { result } = renderHook(() => useScreenOrientation({ initializeWithValue: false }));
+    expect(result.all[0]).toBeUndefined();
+    expect(result.all[1]).toBe('landscape');
+  });
+
   it('should return `portrait` in case media query matches and `landscape` otherwise', () => {
     const { result } = renderHook(() => useScreenOrientation());
     expect(result.current).toBe('landscape');
