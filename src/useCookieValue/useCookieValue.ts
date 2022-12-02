@@ -56,9 +56,9 @@ export type UseCookieValueOptions<
   (InitializeWithValue extends undefined
     ? {
         /**
-         * Whether to initialize state with cookie value or initialize with `undefined` state.
+         * Whether to initialize state with the cookie value or `undefined`.
          *
-         * Default to false during SSR
+         * _We suggest setting this to `false` during SSR._
          *
          * @default true
          */
@@ -82,8 +82,8 @@ export function useCookieValue(
 /**
  * Manages a single cookie.
  *
- * @param key Cookie name to manage.
- * @param options Cookie options that will be used during cookie set and delete.
+ * @param key Name of the cookie to manage.
+ * @param options Cookie options that will be used during setting and deleting the cookie.
  */
 export function useCookieValue(
   key: string,

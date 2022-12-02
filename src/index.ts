@@ -32,6 +32,7 @@ export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { usePreviousDistinct } from './usePreviousDistinct/usePreviousDistinct';
 export { useRafState } from './useRafState/useRafState';
+export { useRenderCount } from './useRenderCount/useRenderCount';
 export { useSafeState } from './useSafeState/useSafeState';
 export { useSet } from './useSet/useSet';
 export { useToggle } from './useToggle/useToggle';

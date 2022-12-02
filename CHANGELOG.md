@@ -1,3 +1,10 @@
+# [19.2.0](https://github.com/react-hookz/web/compare/v19.1.0...v19.2.0) (2022-11-20)
+
+
+### Features
+
+* implement `useRenderCount` hook ([#990](https://github.com/react-hookz/web/issues/990)) ([efbeeb1](https://github.com/react-hookz/web/commit/efbeeb1e365c386bf1368e703a3da01302987557))
+
 # [19.1.0](https://github.com/react-hookz/web/compare/v19.0.0...v19.1.0) (2022-11-12)
 
 
