@@ -1,4 +1,5 @@
 import { Dispatch, useEffect, useState } from 'react';
+import { isBrowser } from '../util/const';
 
 const queriesMap = new Map<
   string,
@@ -66,9 +67,18 @@ interface UseMediaQueryOptions {
  * `initializeWithValue` (default: `true`) - Determine media query match state on first render. Setting
  * this to false will make the hook yield `undefined` on first render.
  */
-export function useMediaQuery(query: string, options?: UseMediaQueryOptions): boolean | undefined {
+export function useMediaQuery(
+  query: string,
+  options: UseMediaQueryOptions = {}
+): boolean | undefined {
+  let { initializeWithValue = true } = options;
+
+  if (!isBrowser) {
+    initializeWithValue = false;
+  }
+
   const [state, setState] = useState<boolean | undefined>(() => {
-    if (options?.initializeWithValue ?? true) {
+    if (initializeWithValue) {
       let entry = queriesMap.get(query);
       if (!entry) {
         entry = createQueryEntry(query);
