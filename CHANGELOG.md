@@ -1,3 +1,10 @@
+## [20.0.1](https://github.com/react-hookz/web/compare/v20.0.0...v20.0.1) (2022-12-07)
+
+
+### Bug Fixes
+
+* **useMediaQuery:** On misconfiguration, cause hydration error instead of SSR crash ([#1042](https://github.com/react-hookz/web/issues/1042)) ([46e5bcc](https://github.com/react-hookz/web/commit/46e5bcc287ab79d6436465cf90dfd6a837a535eb)), closes [#1000](https://github.com/react-hookz/web/issues/1000) [#1000](https://github.com/react-hookz/web/issues/1000)
+
 # [20.0.0](https://github.com/react-hookz/web/compare/v19.2.0...v20.0.0) (2022-12-02)
 
 
