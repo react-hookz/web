@@ -332,6 +332,13 @@ Coming from `react-use`? Check out our
             <br />
             <sub><b>Fengkx</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jpwallace22">
+            <img src="https://avatars.githubusercontent.com/u/93415734?v=4" width="100;" alt="jpwallace22"/>
+            <br />
+            <sub><b>Justin Wallace</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: collaborators,contributors,semantic-release-bot/-,lint-action/- -end -->
