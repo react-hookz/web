@@ -10,4 +10,9 @@ describe('useQueue', () => {
     const { result } = renderHook(() => useQueue());
     expect(result.error).toBeUndefined();
   });
+
+  it('should return an object', () => {
+    const { result } = renderHook(() => useQueue());
+    expect(result.current).toBeInstanceOf(Object);
+  });
 });
