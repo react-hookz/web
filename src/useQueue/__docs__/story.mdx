@@ -2,9 +2,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
 import { ImportPath } from '../../storybookUtil/ImportPath';
 
-<Meta title="New Hook/useQueue" component={Example} />
+<Meta title="State/useQueue" component={Example} />
 
 # useQueue
+
+A react state hook implements simple first-in first-out (FIFO) queue.
 
 #### Example
 
@@ -15,7 +17,12 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 ## Reference
 
 ```ts
-
+export function useQueue<T[]>(initialValue: T[] =[]): {
+  add: (item: T) => void;
+  remove: () => T;
+  first: T;
+  size: number;
+}
 ```
 
 #### Importing
@@ -23,5 +30,7 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 <ImportPath />
 
 #### Arguments
+
+- _**initialValue**_ _`T[]`_ - The initial value of the queue state. Defaults to an empty array.
 
 #### Return
