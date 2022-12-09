@@ -25,7 +25,7 @@ export interface QueueMethods<T> {
 }
 
 /**
- * A react state hook implements simple first-in first-out (FIFO) queue.
+ * A react state hook implements a simple first-in first-out (FIFO) queue.
  * @param initialValue an array for the initial value of the queue
  */
 export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T> => {
