@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="State/useQueue" component={Example} />
 
@@ -31,6 +31,11 @@ export function useQueue<T[]>(initialValue: T[] =[]): {
 
 #### Arguments
 
-- _**initialValue**_ _`T[]`_ - The initial value of the queue state. Defaults to an empty array.
+- **initialValue** _`T[]`_ - The initial value of the queue state. Defaults to an empty array.
 
 #### Return
+
+- **first** _`T`_ - The value of the first item in the queue.
+- **last** _`T`_ - The value of the last item in the queue.
+- **add** _`(item: T) => void`_ - Adds a value to the end of the queue.
+- **remove** _`() => T`_ - Removed and returns the value from the end of the queue
