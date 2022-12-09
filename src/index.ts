@@ -116,3 +116,5 @@ export { resolveHookState } from './util/resolveHookState';
 export * from './types';
 
 export { useDeepCompareMemo } from './useDeepCompareMemo/useDeepCompareMemo';
+
+export { useQueue } from './useQueue/useQueue';
