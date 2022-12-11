@@ -1,12 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import {Canvas, Meta, Story} from '@storybook/addon-docs'
+import {Example} from './example.stories'
+import {ImportPath} from '../../__docs__/ImportPath'
 
 <Meta title="DOM/useKeyboardEvent" component={Example} />
 
 # useKeyboardEvent
 
-Executes callback when keyboard event occurred on target (window by default).
+Invokes a callback when a keyboard event occurs on the chosen target element.
 
 #### Example
 
@@ -17,7 +17,13 @@ Executes callback when keyboard event occurred on target (window by default).
 ## Reference
 
 ```ts
-export function useKeyboardEvent<T extends EventTarget>(
+type UseKeyboardEventOptions<T extends EventTarget> = {
+  event?: 'keydown' | 'keypress' | 'keyup';
+  target?: RefObject<T> | T | null;
+  eventOptions?: boolean | AddEventListenerOptions;
+};
+
+function useKeyboardEvent<T extends EventTarget>(
   keyOrPredicate: KeyboardEventFilter,
   callback: KeyboardEventHandler<T>,
   deps?: DependencyList,
@@ -31,14 +37,11 @@ export function useKeyboardEvent<T extends EventTarget>(
 
 #### Arguments
 
-- **keyOrPredicate** _`KeyboardEventFilter`_ - Filters keypresses on which `callback` will be
-  executed.
-- **callback** _`KeyboardEventHandler`_ - Function to call when key is pressed and `keyOrPredicate`
+- **keyOrPredicate** _`KeyboardEventFilter`_ - Filters key presses on which `callback` is invoked.
+- **callback** _`KeyboardEventHandler`_ - Function to call when a key is pressed and `keyOrPredicate`
   matches positive.
-- **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useMemo`.
+- **deps** _`DependencyList`_ - Dependencies list that is passed to the underlying `useMemo`.
 - **options** - Hook options:
-  - **event** _`'keydown' | 'keypress' | 'keyup'`_ (default: `keydown`) - Event name that triggers
-    handler.
-  - **target** _`RefObject<T> | T | null`_ (default: `window`) - Target that should emit event.
-  - **eventOptions** _`boolean | AddEventListenerOptions`_ - Options that will be passed to
-    underlying `useEventListener` hook.
+  - **event** _`'keydown' | 'keypress' | 'keyup'`_ (default: `keydown`) - Keyboard event which triggers `callback`.
+  - **target** _`RefObject<T> | T | null`_ (default: `window`) - Target element that emits `event`.
+  - **eventOptions** _`boolean | AddEventListenerOptions`_ - Options passed to the underlying `useEventListener` hook.

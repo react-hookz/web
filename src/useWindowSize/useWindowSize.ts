@@ -21,10 +21,12 @@ const callAllListeners = () => {
 };
 
 /**
- * Tracks window inner dimensions.
+ * Tracks the inner dimensions of the browser window.
  *
- * @param stateHook State hook that will be used internally. Default: `useRafState`.
- * @param measureOnMount Perform size fetch during mount effect stage or synchronously with render.
+ * @param stateHook State hook that will be used to hold the dimensions of the window.
+ * @param measureOnMount If `true`, the size of the window will be measured during the effects
+  stage, after the component has mounted. If `false`, the window size is measured synchronously during
+  the component render. Set this to `true` during SSR.
  */
 export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean): WindowSize {
   const isFirstMount = useFirstMountState();
