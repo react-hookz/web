@@ -15,9 +15,7 @@ describe('useQueue', () => {
     const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
     expect(result.current.first).toBe(0);
   });
-});
 
-describe('remove', () => {
   it('should remove the first value', () => {
     const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
 
@@ -28,16 +26,12 @@ describe('remove', () => {
 
     expect(result.current.first).toBe(1);
   });
-});
 
-describe('size', () => {
   it('should return the length', () => {
     const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
     expect(result.current.size).toBe(4);
   });
-});
 
-describe('add', () => {
   it('should add a value to the end', () => {
     const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
 
@@ -46,5 +40,17 @@ describe('add', () => {
     });
 
     expect(result.current.last).toBe(4);
+  });
+
+  it('should return referentially stable functions', () => {
+    const { result, rerender } = renderHook(() => useQueue([0, 1, 2, 3]));
+
+    const remove1 = result.current.remove;
+    const add1 = result.current.add;
+
+    rerender();
+
+    expect(result.current.remove).toBe(remove1);
+    expect(result.current.add).toBe(add1);
   });
 });
