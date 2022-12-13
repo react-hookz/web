@@ -26,11 +26,4 @@ describe('usePromise', () => {
 
     await expect(result.current(rejects)).rejects.toBe(Error);
   });
-
-  // Test fails due to being timed out. But it DOES prevent the promise from being called.
-  // test('should not return if unmounted', async () => {
-  //   const { result, unmount } = renderHook(() => usePromise());
-  //   unmount();
-  //   await expect(result.current(resolves)).resolves.toBeUndefined();
-  // });
 });

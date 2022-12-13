@@ -94,6 +94,8 @@ Coming from `react-use`? Check out our
     — Like `useLayoutEffect` but falls back to `useEffect` during SSR.
   - [**`useMountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
     — Run an effect only when a component mounts.
+  - [**`usePromise`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usepromise--example)
+    — Resolves promise only while component is mounted.
   - [**`useRafEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useRafEffect--example)
     — Like `useEffect`, but the effect is only run within an animation frame.
   - [**`useRerender`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)

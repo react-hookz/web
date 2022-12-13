@@ -6,7 +6,7 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 
 # usePromise
 
-React Lifecycle hook that returns a helper function for wrapping promises. Promises wrapped with this function will resolve only when component is mounted.
+React lifecycle hook that returns a helper function for wrapping promises. Promises wrapped with this function will resolve only if component is mounted.
 
 #### Example
 
@@ -17,13 +17,16 @@ React Lifecycle hook that returns a helper function for wrapping promises. Promi
 ## Reference
 
 ```ts
-
+usePromise =
+  () =>
+  <T>(promise: Promise<T>) =>
+    Promise<T>;
 ```
 
 #### Importing
 
 <ImportPath />
 
-#### Arguments
-
 #### Return
+
+_`(promise: Promise<T>) => Promise<T>`_ — Function wrapper that for a promise.
