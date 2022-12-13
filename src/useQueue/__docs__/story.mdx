@@ -17,12 +17,14 @@ A state hook in the form of a first-in first-out (FIFO) queue.
 ## Reference
 
 ```ts
-export function useQueue<T[]>(initialValue: T[] =[]): {
+export interface QueueMethods<T> {
+  first: T;
+  last: T;
   add: (item: T) => void;
   remove: () => T;
-  first: T;
   size: number;
 }
+export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T>
 ```
 
 #### Importing
