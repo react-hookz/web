@@ -3,31 +3,31 @@ import { useList } from '../useList/useList';
 
 export interface QueueMethods<T> {
   /**
-   * Function for adding an item to to the queue
-   * @param item The item to be added
-   */
-  add: (item: T) => void;
-  /**
-   * Function to remove and return an item from the queue
-   */
-  remove: () => T;
-  /**
-   * The first item in current queue
+   * The first item in the queue.
    */
   first: T;
   /**
-   * The last item in current queue
+   * The last item in the queue.
    */
   last: T;
   /**
-   * The current size of te queue
+   * Adds an item to the end of the queue.
+   * @param item The item to be added.
+   */
+  add: (item: T) => void;
+  /**
+   * Removes and returns the head of the queue.
+   */
+  remove: () => T;
+  /**
+   * The current size of the queue.
    */
   size: number;
 }
 
 /**
- * A react state hook implements a simple first-in first-out (FIFO) queue.
- * @param initialValue an array for the initial value of the queue
+ * A state hook in the form of a first-in first-out (FIFO) queue.
+ * @param initialValue The initial value. Defaults to an empty array.
  */
 export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T> => {
   const [list, { insertAt, removeAt }] = useList(initialValue);
