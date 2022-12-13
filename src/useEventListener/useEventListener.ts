@@ -5,12 +5,11 @@ import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 import { hasOwnProperty } from '../util/misc';
 
 /**
- *  Subscribes an event listener to the target, and automatically unsubscribes
- *  it on unmount.
+ *  An HTML element or ref object containing an HTML element.
  *
- * @param target Element ref object or element itself.
- * @param params Parameters specific for target's `addEventListener`. Commonly,
- * it is `[eventName, listener, options]`.
+ * @param target An HTML element or ref object containing an HTML element.
+ * @param params Parameters specific to the target element's `addEventListener` method. Commonly
+ * something like `[eventName, listener, options]`.
  */
 export function useEventListener<T extends EventTarget>(
   target: RefObject<T> | T | null,

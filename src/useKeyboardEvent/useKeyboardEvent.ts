@@ -10,17 +10,17 @@ export type KeyboardEventHandler<T extends EventTarget> = (this: T, event: Keybo
 
 export type UseKeyboardEventOptions<T extends EventTarget> = {
   /**
-   * Event name that triggers handler.
+   * Keyboard event which triggers `callback`.
    * @default `keydown`
    */
   event?: 'keydown' | 'keypress' | 'keyup';
   /**
-   * Target that should emit event.
+   * Target element that emits `event`.
    * @default window
    */
   target?: RefObject<T> | T | null;
   /**
-   * Options that will be passed to underlying `useEventListener` hook.
+   * Options passed to the underlying `useEventListener` hook.
    */
   eventOptions?: boolean | AddEventListenerOptions;
 };
@@ -34,11 +34,11 @@ const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredic
 const WINDOW_OR_NULL = isBrowser ? window : null;
 
 /**
- * Executes callback when keyboard event occurred on target (window by default).
+ * Invokes a callback when a keyboard event occurs on the chosen target element.
  *
- * @param keyOrPredicate Filters keypresses on which `callback` will be executed.
- * @param callback Function to call when key is pressed and `keyOrPredicate` matches positive.
- * @param deps Dependencies list that will be passed to underlying `useMemo`.
+ * @param keyOrPredicate Filters key presses on which `callback` is invoked.
+ * @param callback Function to call when a key is pressed and `keyOrPredicate` matches positive.
+ * @param deps Dependencies list that is passed to the underlying `useMemo`.
  * @param options Hook options.
  */
 export function useKeyboardEvent<T extends EventTarget>(

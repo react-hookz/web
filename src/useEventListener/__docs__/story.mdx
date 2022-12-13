@@ -1,17 +1,17 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import {Canvas, Meta, Story} from '@storybook/addon-docs'
+import {Example} from './example.stories'
+import {ImportPath} from '../../__docs__/ImportPath'
 
 <Meta title="Dom/useEventListener" component={Example} />
 
 # useEventListener
 
-Subscribes an event listener to the target, and automatically unsubscribes it on unmount.
+Subscribes an event listener to a target element.
 
-- Automatically unsubscribes on component unmount.
-- Properly handle event listener objects.
+- Automatically unsubscribes the event listener on component unmount.
+- Properly handles event listener objects.
 - SSR-friendly.
-- Full TypeScript support for any target type.
+- Full TypeScript support for any target element.
 
 #### Example
 
@@ -23,11 +23,11 @@ Subscribes an event listener to the target, and automatically unsubscribes it on
 
 ```ts
 export function useEventListener<T extends EventTarget>(
-  target: ITargetOrTargetRef<T>,
+  target: RefObject<T> | T | null,
   ...params:
     | Parameters<T['addEventListener']>
-    | [string, EventListenerOrEventListenerObject, ...any]
-): void;
+    | [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
+): void
 ```
 
 #### Importing
@@ -36,6 +36,6 @@ export function useEventListener<T extends EventTarget>(
 
 #### Arguments
 
-- **target** _`ITargetOrTargetRef`_ - Element ref object or element itself.
-- **params** - Parameters specific for target's `addEventListener`. Commonly, it is
-  `[eventName, listener, options]`.
+- **target** _`ITargetOrTargetRef`_ - An HTML element or ref object containing an HTML element.
+- **params** - Parameters specific to the target element's `addEventListener` method. Commonly
+  something like `[eventName, listener, options]`.

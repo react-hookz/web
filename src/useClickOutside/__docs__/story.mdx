@@ -1,17 +1,17 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import {Canvas, Meta, Story} from '@storybook/addon-docs'
+import {Example} from './example.stories'
+import {ImportPath} from '../../__docs__/ImportPath'
 
 <Meta title="DOM/useClickOutside" component={Example} />
 
 # useClickOutside
 
-Triggers callback when user clicks outside the target element.
+Triggers a callback when the user clicks outside a targeted element.
 
-> Hook listens for `document` events, therefore if any listener between event target and `document`
-> stopped event propagation - hook won't work.
+> This hook listens for events on the `document` object. Therefore, if any listener between the event
+> target and the `document` object stops event propagation, the hook won't work.
 
-> By default, `mousedown` and `touchstart` events used, but it can be any bubbling event.
+> By default, the `mousedown` and `touchstart` events are used, but any bubbling event can be used instead.
 
 #### Example
 
@@ -22,6 +22,8 @@ Triggers callback when user clicks outside the target element.
 ## Reference
 
 ```ts
+const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
+
 export function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T> | MutableRefObject<T>,
   callback: EventListener,
@@ -35,7 +37,7 @@ export function useClickOutside<T extends HTMLElement>(
 
 #### Arguments
 
-- **ref** _`RefObject<T> | MutableRefObject<T>`_ - React ref object with target HTML element.
-- **callback** _`EventListener`_ - Callback that will be triggered during the click.
-- **events**: _`string[]`_ _(default: `['mousedown', 'touchstart']`)_ - Events list that will be
-  used as triggers for outside click.
+- **ref** _`RefObject<T> | MutableRefObject<T>`_ - React ref object containing the target element.
+- **callback** _`EventListener`_ - Callback invoked when the user clicks outside the target element.
+- **events**: _`string[]`_ _(default: `['mousedown', 'touchstart']`)_ - List of events that will be
+  used as triggers for the outside click.
