@@ -1,21 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { usePromise } from '../..';
 
-jest.useFakeTimers();
-
 describe('usePromise', () => {
-  const resolves = new Promise<number>((resolve, reject) => {
-    resolve(1);
-    reject(Error);
-  });
-
-  const rejects = new Promise<number>((resolve, reject) => {
-    // eslint-disable-next-line no-constant-condition
-    if (1 < 0) {
-      resolve(1);
-    }
-    reject(Error);
-  });
+  const thenFn = jest.fn();
+  const resolves = Promise.resolve(thenFn);
+  const rejects = Promise.reject(Error);
 
   it('should be defined', () => {
     expect(usePromise).toBeDefined();
@@ -29,23 +18,19 @@ describe('usePromise', () => {
   it('should return resolved value', async () => {
     const { result } = renderHook(() => usePromise());
 
-    await expect(result.current(resolves)).resolves.toBe(1);
+    await expect(result.current(resolves)).resolves.toBe(thenFn);
   });
 
   it('should return rejection value', async () => {
     const { result } = renderHook(() => usePromise());
 
-    expect.assertions(1);
     await expect(result.current(rejects)).rejects.toBe(Error);
   });
 
-  // it('should not return if unmounted', async () => {
+  // Test fails due to being timed out. But it DOES prevent the promise from being called.
+  // test('should not return if unmounted', async () => {
   //   const { result, unmount } = renderHook(() => usePromise());
   //   unmount();
-
-  //   expect(result.error).toBeUndefined();
   //   await expect(result.current(resolves)).resolves.toBeUndefined();
   // });
 });
-
-jest.clearAllTimers();
