@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useList } from '../useList/useList';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export interface QueueMethods<T> {
   /**
@@ -32,24 +33,26 @@ export interface QueueMethods<T> {
 export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T> => {
   const [list, { insertAt, removeAt }] = useList(initialValue);
 
+  const listRef = useSyncedRef(list);
+
   return useMemo(
     () => ({
-      add: (value: T) => insertAt(list.length, value),
+      add: (value: T) => insertAt(listRef.current.length, value),
       remove: () => {
-        const removed = list[0];
+        const removed = listRef.current[0];
         removeAt(0);
         return removed;
       },
       get first() {
-        return list[0];
+        return listRef.current[0];
       },
       get last() {
-        return list[list.length - 1];
+        return listRef.current[listRef.current.length - 1];
       },
       get size() {
-        return list.length;
+        return listRef.current.length;
       },
     }),
-    [list, insertAt, removeAt]
+    [insertAt, listRef, removeAt]
   );
 };

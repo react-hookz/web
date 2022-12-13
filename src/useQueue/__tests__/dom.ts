@@ -43,12 +43,15 @@ describe('useQueue', () => {
   });
 
   it('should return referentially stable functions', () => {
-    const { result, rerender } = renderHook(() => useQueue([0, 1, 2, 3]));
+    const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
 
     const remove1 = result.current.remove;
     const add1 = result.current.add;
 
-    rerender();
+    act(() => {
+      result.current.add(1);
+      result.current.remove();
+    });
 
     expect(result.current.remove).toBe(remove1);
     expect(result.current.add).toBe(add1);
