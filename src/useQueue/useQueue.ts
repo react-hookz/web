@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useList } from '../useList/useList';
 
 export interface QueueMethods<T> {
   /**
@@ -29,28 +30,26 @@ export interface QueueMethods<T> {
  * @param initialValue an array for the initial value of the queue
  */
 export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T> => {
-  const [state, set] = useState(initialValue);
+  const [list, { insertAt, removeAt }] = useList(initialValue);
 
   return useMemo(
     () => ({
-      add: (value: T) => {
-        set((queue) => [...queue, value]);
-      },
+      add: (value: T) => insertAt(list.length, value),
       remove: () => {
-        const removed = state[0];
-        set((current) => current.slice(1, current.length));
+        const removed = list[0];
+        removeAt(0);
         return removed;
       },
       get first() {
-        return state[0];
+        return list[0];
       },
       get last() {
-        return state[state.length - 1];
+        return list[list.length - 1];
       },
       get size() {
-        return state.length;
+        return list.length;
       },
     }),
-    [state]
+    [list, insertAt, removeAt]
   );
 };
