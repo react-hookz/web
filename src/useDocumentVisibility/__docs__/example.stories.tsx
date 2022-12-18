@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { useWindowVisibility } from '../..';
+import { useDocumentVisibility } from '../..';
 
 export const Example: React.FC = () => {
-  const isVisible = useWindowVisibility();
+  const isVisible = useDocumentVisibility();
 
   useEffect(() => {
     if (!isVisible) {

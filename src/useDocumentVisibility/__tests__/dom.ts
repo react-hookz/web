@@ -1,13 +1,13 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useWindowVisibility } from '../..';
+import { useDocumentVisibility } from '../..';
 
-describe('useWindowVisibility', () => {
+describe('useDocumentVisibility', () => {
   it('should be defined', () => {
-    expect(useWindowVisibility).toBeDefined();
+    expect(useDocumentVisibility).toBeDefined();
   });
 
   it('should return true when window is visible', () => {
-    const { result } = renderHook(() => useWindowVisibility());
+    const { result } = renderHook(() => useDocumentVisibility());
 
     expect(result.current).toBe(true);
   });
@@ -18,7 +18,7 @@ describe('useWindowVisibility', () => {
       value: 'hidden',
     });
 
-    const { result } = renderHook(() => useWindowVisibility());
+    const { result } = renderHook(() => useDocumentVisibility());
 
     expect(result.current).toBe(false);
   });

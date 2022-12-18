@@ -96,7 +96,7 @@ export {
   KeyboardEventHandler,
   UseKeyboardEventOptions,
 } from './useKeyboardEvent/useKeyboardEvent';
-export { useWindowVisibility } from './useWindowVisibility/useWindowVisibility';
+export { useDocumentVisibility } from './useDocumentVisibility/useDocumentVisibility';
 
 export {
   ScreenOrientation,

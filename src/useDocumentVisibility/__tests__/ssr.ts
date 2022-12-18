@@ -1,13 +1,13 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useWindowVisibility } from '../..';
+import { useDocumentVisibility } from '../..';
 
-describe('useWindowVisibility', () => {
+describe('useDocumentVisibility', () => {
   it('should be defined', () => {
-    expect(useWindowVisibility()).toBeDefined();
+    expect(useDocumentVisibility()).toBeDefined();
   });
 
   it('should return default value on server-side rendering', () => {
-    const { result } = renderHook(() => useWindowVisibility(true));
+    const { result } = renderHook(() => useDocumentVisibility(true));
 
     expect(result.current).toBe(true);
   });

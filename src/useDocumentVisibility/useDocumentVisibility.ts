@@ -5,10 +5,10 @@ import { isBrowser } from '../util/const';
 
 /**
  * Returns a boolean indicating whether the window is visible or not.
- * @param ssrValue Value to return on server-side rendering.
+ * @param initializeWithValue Value to return on server-side rendering.
  */
-export function useWindowVisibility(ssrValue = true): boolean {
-  const [isVisible, setIsVisible] = useState(document.visibilityState === 'visible');
+export function useDocumentVisibility(initializeWithValue = true): boolean {
+  const [isVisible, setIsVisible] = useState(isBrowser && document.visibilityState === 'visible');
 
   const handleVisibilityChange = useCallback(() => {
     setIsVisible(document.visibilityState === 'visible');
@@ -17,7 +17,7 @@ export function useWindowVisibility(ssrValue = true): boolean {
   useEventListener(document, 'visibilitychange', handleVisibilityChange);
 
   if (!isBrowser) {
-    return ssrValue;
+    return initializeWithValue;
   }
 
   return isVisible;

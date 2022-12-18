@@ -2,13 +2,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
 import { ImportPath } from '../../__docs__/ImportPath';
 
-<Meta title="Lifecycle/useWindowVisibility" component={Example} />
+<Meta title="Lifecycle/useDocumentVisibility" component={Example} />
 
-# useWindowVisibility
+# useDocumentVisibility
 
 Returns a boolean indicating whether the window is visible or not.
-
-> **_This hook provides stable API, meaning returned methods does not change between renders_**
 
 #### Example
 
@@ -19,7 +17,7 @@ Returns a boolean indicating whether the window is visible or not.
 ## Reference
 
 ```ts
-function useWindowVisibility(ssrValue = true): () => boolean;
+function useDocumentVisibility(initializeWithValue = true): () => boolean;
 ```
 
 #### Importing
@@ -28,7 +26,7 @@ function useWindowVisibility(ssrValue = true): () => boolean;
 
 #### Arguments
 
-- **ssrValue** _`boolean`_ _(default: `true`)_ - Value to return on server-side rendering.
+- **initializeWithValue** _`boolean`_ _(default: `true`)_ - Value to return on server-side rendering.
 
 #### Return
 
