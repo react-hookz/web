@@ -1,3 +1,10 @@
+## [20.0.2](https://github.com/react-hookz/web/compare/v20.0.1...v20.0.2) (2022-12-18)
+
+
+### Bug Fixes
+
+* **docs:** update link to GHA actions badge ([348cba7](https://github.com/react-hookz/web/commit/348cba7a0ba241e15386066b5f3ea464531e5f09))
+
 ## [20.0.1](https://github.com/react-hookz/web/compare/v20.0.0...v20.0.1) (2022-12-07)
 
 
