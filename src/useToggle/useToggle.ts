@@ -35,7 +35,7 @@ export function useToggle(
     useCallback((nextState) => {
       setState((prevState) => {
         if (
-          typeof nextState === 'undefined' ||
+          nextState === undefined ||
           (ignoreReactEventsRef.current &&
             typeof nextState === 'object' &&
             (nextState.constructor.name === 'SyntheticBaseEvent' ||

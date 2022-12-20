@@ -17,7 +17,7 @@ export const Example: React.FC = () => {
 
       d({
         isValid,
-        error: !isValid ? new Error('text length should be an odd length') : undefined,
+        error: isValid ? undefined : new Error('text length should be an odd length'),
       });
     },
     [text],

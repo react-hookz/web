@@ -32,7 +32,7 @@ export function useTimeoutEffect(
   }, []);
 
   const reset = useCallback(() => {
-    if (typeof msRef.current === 'undefined') return;
+    if (msRef.current === undefined) return;
 
     cancel();
     timeoutIdRef.current = setTimeout(() => cbRef.current(), msRef.current);

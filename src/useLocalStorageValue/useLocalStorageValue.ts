@@ -27,8 +27,11 @@ type UseLocalStorageValue = <
 /**
  * Manages a single localStorage key.
  */
-export const useLocalStorageValue: UseLocalStorageValue = !IS_LOCAL_STORAGE_AVAILABLE
-  ? <
+export const useLocalStorageValue: UseLocalStorageValue = IS_LOCAL_STORAGE_AVAILABLE
+  ? (key, options) => {
+      return useStorageValue(localStorage, key, options);
+    }
+  : <
       Type,
       Default extends Type = Type,
       Initialize extends boolean | undefined = boolean | undefined
@@ -42,7 +45,4 @@ export const useLocalStorageValue: UseLocalStorageValue = !IS_LOCAL_STORAGE_AVAI
       }
 
       return { value: undefined as Type, set: noop, remove: noop, fetch: noop };
-    }
-  : (key, options) => {
-      return useStorageValue(localStorage, key, options);
     };

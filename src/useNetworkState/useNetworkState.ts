@@ -89,7 +89,7 @@ function getConnectionState(previousState?: UseNetworkState): UseNetworkState {
   return {
     online,
     previous: previousOnline,
-    since: online !== previousOnline ? new Date() : previousState?.since,
+    since: online === previousOnline ? previousState?.since : new Date(),
     downlink: conn?.downlink,
     downlinkMax: conn?.downlinkMax,
     effectiveType: conn?.effectiveType,
