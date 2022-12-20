@@ -2,7 +2,7 @@
 import { RefObject, useEffect, useMemo } from 'react';
 import { useIsMounted } from '../useIsMounted/useIsMounted';
 import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
-import { hasOwnProperty } from '../util/misc';
+import { hasOwnProperty, off, on } from '../util/misc';
 
 /**
  *  An HTML element or ref object containing an HTML element.
@@ -53,10 +53,10 @@ export function useEventListener<T extends EventTarget>(
     const restParams = params.slice(2);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    tgt.addEventListener(params[0], eventListener, ...restParams);
+    on(tgt, params[0], eventListener, ...restParams);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return () => tgt.removeEventListener(params[0], eventListener, ...restParams);
+    return () => off(tgt, params[0], eventListener, ...restParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, params[0]]);
 }
