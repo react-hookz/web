@@ -52,11 +52,11 @@ export function useCounter(
   min?: number
 ): [number, CounterActions] {
   const [state, setState] = useMediatedState(initialValue, (v: number): number => {
-    if (typeof max !== 'undefined') {
+    if (max !== undefined) {
       v = Math.min(max, v);
     }
 
-    if (typeof min !== 'undefined') {
+    if (min !== undefined) {
       v = Math.max(min, v);
     }
 
