@@ -2358,7 +2358,7 @@
     lodash "^4.17.21"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-docs@6.5.14", "@storybook/addon-docs@^6.5.12":
+"@storybook/addon-docs@6.5.14":
   version "6.5.14"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.5.14.tgz#5df8bd132890828320cfb5b4769f098142e57a4c"
   integrity sha512-gapuzDY+dqgS4/Ap9zj5L76OSExBYtVNYej9xTiF+v0Gh4/kty9FIGlVWiqskffOmixL4nlyImpfsSH8V0JnCw==
@@ -2381,6 +2381,40 @@
     "@storybook/source-loader" "6.5.14"
     "@storybook/store" "6.5.14"
     "@storybook/theming" "6.5.14"
+    babel-loader "^8.0.0"
+    core-js "^3.8.2"
+    fast-deep-equal "^3.1.3"
+    global "^4.4.0"
+    lodash "^4.17.21"
+    regenerator-runtime "^0.13.7"
+    remark-external-links "^8.0.0"
+    remark-slug "^6.0.0"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/addon-docs@^6.5.15":
+  version "6.5.15"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-6.5.15.tgz#d5f4b991636953f30daea6aa89d5bfdfa97b9116"
+  integrity sha512-k3LAu+wVp6pNhfh6B1soCRl6+7sNTNxtqy6WTrIeVJVCGbXbyc5s7gQ48gJ4WAk6meoDEZbypiP4NK1El03YLg==
+  dependencies:
+    "@babel/plugin-transform-react-jsx" "^7.12.12"
+    "@babel/preset-env" "^7.12.11"
+    "@jest/transform" "^26.6.2"
+    "@mdx-js/react" "^1.6.22"
+    "@storybook/addons" "6.5.15"
+    "@storybook/api" "6.5.15"
+    "@storybook/components" "6.5.15"
+    "@storybook/core-common" "6.5.15"
+    "@storybook/core-events" "6.5.15"
+    "@storybook/csf" "0.0.2--canary.4566f4d.1"
+    "@storybook/docs-tools" "6.5.15"
+    "@storybook/mdx1-csf" "^0.0.1"
+    "@storybook/node-logger" "6.5.15"
+    "@storybook/postinstall" "6.5.15"
+    "@storybook/preview-web" "6.5.15"
+    "@storybook/source-loader" "6.5.15"
+    "@storybook/store" "6.5.15"
+    "@storybook/theming" "6.5.15"
     babel-loader "^8.0.0"
     core-js "^3.8.2"
     fast-deep-equal "^3.1.3"
@@ -2731,32 +2765,6 @@
   integrity sha512-gPpsBgirv2NCXbH4WbYqdkI0JLE96aiVuu7UEWfn9yu071pQ9CLHbhXGD9fSFNrfOkyBBY10ppSE7uCXw3Wexg==
   dependencies:
     core-js "^3.8.2"
-    ts-dedent "^2.0.0"
-    util-deprecate "^1.0.2"
-
-"@storybook/client-api@6.5.14":
-  version "6.5.14"
-  resolved "https://registry.yarnpkg.com/@storybook/client-api/-/client-api-6.5.14.tgz#57a660810165126cdf3380cd04bf6c5f027eab5c"
-  integrity sha512-G5mBQCKn8/VqE9XDCL19ixcvu8YhaQZ0AE+EXGYXUsvPpyQ43oGoGJry5IqOzeRlc7dbglFWpMkB6PeeUD7aCw==
-  dependencies:
-    "@storybook/addons" "6.5.14"
-    "@storybook/channel-postmessage" "6.5.14"
-    "@storybook/channels" "6.5.14"
-    "@storybook/client-logger" "6.5.14"
-    "@storybook/core-events" "6.5.14"
-    "@storybook/csf" "0.0.2--canary.4566f4d.1"
-    "@storybook/store" "6.5.14"
-    "@types/qs" "^6.9.5"
-    "@types/webpack-env" "^1.16.0"
-    core-js "^3.8.2"
-    fast-deep-equal "^3.1.3"
-    global "^4.4.0"
-    lodash "^4.17.21"
-    memoizerific "^1.11.3"
-    qs "^6.10.0"
-    regenerator-runtime "^0.13.7"
-    store2 "^2.12.0"
-    synchronous-promise "^2.0.15"
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
@@ -3219,6 +3227,13 @@
   dependencies:
     core-js "^3.8.2"
 
+"@storybook/postinstall@6.5.15":
+  version "6.5.15"
+  resolved "https://registry.yarnpkg.com/@storybook/postinstall/-/postinstall-6.5.15.tgz#90989c8049357a6df6f38c933172210c9c6caf8c"
+  integrity sha512-l7pApTgLD10OedNOyuf4vUdVCHLOSaIUIL9gdJl1WaSFHiUpJvvzBIh5M4aRICYPbnuExQc8y2GAjERKO4Ep+g==
+  dependencies:
+    core-js "^3.8.2"
+
 "@storybook/preview-web@6.5.14":
   version "6.5.14"
   resolved "https://registry.yarnpkg.com/@storybook/preview-web/-/preview-web-6.5.14.tgz#acfd5e3ba72a00405f9ad5925a9a7844b36602c4"
@@ -3354,6 +3369,22 @@
   dependencies:
     "@storybook/addons" "6.5.14"
     "@storybook/client-logger" "6.5.14"
+    "@storybook/csf" "0.0.2--canary.4566f4d.1"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    global "^4.4.0"
+    loader-utils "^2.0.4"
+    lodash "^4.17.21"
+    prettier ">=2.2.1 <=2.3.0"
+    regenerator-runtime "^0.13.7"
+
+"@storybook/source-loader@6.5.15":
+  version "6.5.15"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.5.15.tgz#363a9b2812a2cef6cc5cb948e55d8a2624e18643"
+  integrity sha512-MaWzki40g0/7NWmJgUBhOp+e7y8Ohw6G/bRr/rcDP7eXSnud6ThYylXv0QqBScLPPTy8txjmBClCoqdLGyvLWQ==
+  dependencies:
+    "@storybook/addons" "6.5.15"
+    "@storybook/client-logger" "6.5.15"
     "@storybook/csf" "0.0.2--canary.4566f4d.1"
     core-js "^3.8.2"
     estraverse "^5.2.0"
