@@ -4,6 +4,10 @@ import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export interface QueueMethods<T> {
   /**
+   * returns the array
+   */
+  items: T[];
+  /**
    * The first item in the queue.
    */
   first: T;
@@ -29,7 +33,7 @@ export interface QueueMethods<T> {
 /**
  * A state hook in the form of a queue. Can be either first-in-first-out or last-in-last-out.
  * @param initialValue The initial value. Defaults to an empty array.
- * @param type 'fifo' | 'lilo' for  either first-in-first-out or last-in-last-out @default 'fifo'
+ * @param type `fifo` | `lilo` for  either first-in-first-out or last-in-last-out **default** `fifo`
  */
 export const useQueue = <T>(
   initialValue: T[] = [],
@@ -56,6 +60,9 @@ export const useQueue = <T>(
       },
       get size() {
         return listRef.current.length;
+      },
+      get items() {
+        return listRef.current;
       },
     }),
     [insertAt, listRef, removeAt, isFifo]
