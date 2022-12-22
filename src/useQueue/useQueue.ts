@@ -4,7 +4,7 @@ import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export interface QueueMethods<T> {
   /**
-   * returns the entire queue
+   * The entire queue.
    */
   items: T[];
   /**
