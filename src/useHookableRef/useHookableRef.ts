@@ -32,11 +32,11 @@ export function useHookableRef<T>(
 
     return {
       get current() {
-        return typeof onGetRef.current !== 'undefined' ? onGetRef.current(v as T) : v;
+        return onGetRef.current === undefined ? v : onGetRef.current(v as T);
       },
 
       set current(val) {
-        v = typeof onSetRef.current !== 'undefined' ? onSetRef.current(val as T) : val;
+        v = onSetRef.current === undefined ? val : onSetRef.current(val as T);
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

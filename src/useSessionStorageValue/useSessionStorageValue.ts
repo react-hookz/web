@@ -27,8 +27,11 @@ type UseSessionStorageValue = <
 /**
  * Manages a single sessionStorage key.
  */
-export const useSessionStorageValue: UseSessionStorageValue = !IS_SESSION_STORAGE_AVAILABLE
-  ? <
+export const useSessionStorageValue: UseSessionStorageValue = IS_SESSION_STORAGE_AVAILABLE
+  ? (key, options) => {
+      return useStorageValue(sessionStorage, key, options);
+    }
+  : <
       Type,
       Default extends Type = Type,
       Initialize extends boolean | undefined = boolean | undefined
@@ -42,7 +45,4 @@ export const useSessionStorageValue: UseSessionStorageValue = !IS_SESSION_STORAG
       }
 
       return { value: undefined as Type, set: noop, remove: noop, fetch: noop };
-    }
-  : (key, options) => {
-      return useStorageValue(sessionStorage, key, options);
     };

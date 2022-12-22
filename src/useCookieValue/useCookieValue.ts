@@ -91,7 +91,7 @@ export function useCookieValue(
 ): UseCookieValueReturn {
   // no need to test it, dev-only notification about 3rd party library requirement
   /* istanbul ignore next */
-  if (process.env.NODE_ENV === 'development' && typeof Cookies === 'undefined') {
+  if (process.env.NODE_ENV === 'development' && Cookies === undefined) {
     throw new ReferenceError(
       'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.'
     );

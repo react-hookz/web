@@ -33,7 +33,7 @@ export function useControlledRerenderState<S>(
       if (newState !== state.current) {
         state.current = newState;
 
-        if (typeof rerender === 'undefined' || rerender) {
+        if (rerender === undefined || rerender) {
           rr();
         }
       }

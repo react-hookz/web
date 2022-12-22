@@ -1,3 +1,17 @@
+## [20.0.3](https://github.com/react-hookz/web/compare/v20.0.2...v20.0.3) (2022-12-20)
+
+
+### Bug Fixes
+
+* **useEventListener:** change the way listener added and removed ([#1050](https://github.com/react-hookz/web/issues/1050)) ([f2936a5](https://github.com/react-hookz/web/commit/f2936a5b9a20b6e26f7eba0b34327fdd09762ee0))
+
+## [20.0.2](https://github.com/react-hookz/web/compare/v20.0.1...v20.0.2) (2022-12-18)
+
+
+### Bug Fixes
+
+* **docs:** update link to GHA actions badge ([348cba7](https://github.com/react-hookz/web/commit/348cba7a0ba241e15386066b5f3ea464531e5f09))
+
 ## [20.0.1](https://github.com/react-hookz/web/compare/v20.0.0...v20.0.1) (2022-12-07)
 
 

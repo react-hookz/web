@@ -1,6 +1,6 @@
 {
   "name": "@react-hookz/web",
-  "version": "20.0.1",
+  "version": "20.0.3",
   "description": "React hooks done right, for browser and SSR.",
   "keywords": [
     "react",
@@ -66,7 +66,7 @@
     ]
   },
   "dependencies": {
-    "@react-hookz/deep-equal": "^1.0.3"
+    "@react-hookz/deep-equal": "^1.0.4"
   },
   "peerDependencies": {
     "js-cookie": "^3.0.1",
@@ -84,19 +84,19 @@
     "@commitlint/config-conventional": "^17.2.0",
     "@commitlint/cz-commitlint": "^17.2.0",
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
-    "@react-hookz/eslint-config": "^1.7.5",
+    "@react-hookz/eslint-config": "^1.7.6",
     "@react-hookz/eslint-formatter-gha": "^1.0.1",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.7",
-    "@storybook/addon-docs": "^6.5.12",
-    "@storybook/addon-essentials": "^6.5.14",
-    "@storybook/addon-links": "^6.5.14",
+    "@storybook/addon-docs": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.5.14",
-    "@storybook/builder-webpack5": "^6.5.14",
-    "@storybook/manager-webpack5": "^6.5.14",
-    "@storybook/react": "^6.5.14",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^6.5.15",
     "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/theming": "^6.5.14",
     "@testing-library/react-hooks": "^8.0.1",
