@@ -70,6 +70,18 @@ If you are contributing for the first time, we recommend reading this
    standards.
 7. `yarn new-hook myAwesomeHook` will help you to create a proper file structure for the new hook.
 
+### Notes on porting a hook from `react-use`
+
+- Check from #33 and the [migration guide](src/__docs__/migrating-from-react-use.story.mdx)
+  that the hook has been approved for porting. If there is no previous discussion on the hook in #33,
+  leave a comment there asking if you could port the hook. In your comment, provide a valid use-case
+  for the hook.
+- Don't just copy-paste the hook. Think through the code:
+  - Is there sufficient tests?
+  - Could the hook be implemented by reusing existing hooks in `@react-hookz/web`?
+  - Is the documentation exhaustive?
+  - Is the example useful?
+
 ## Committing
 
 ### Commit message
