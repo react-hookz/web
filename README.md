@@ -131,7 +131,7 @@ Coming from `react-use`? Check out our
   - [**`usePreviousDistinct`**](https://react-hookz.github.io/web/?path=/docs/state-usepreviousdistinct--example) —
     Returns the most recent distinct value passed to the hook on previous renders.
   - [**`useQueue`**](https://react-hookz.github.io/web/?path=/docs/state-usequeue--example) —
-    A state hook in the form of a first-in first-out (FIFO) queue.
+    A state hook in the form of a FIFO or LILO queue.
   - [**`useRafState`**](https://react-hookz.github.io/web/?path=/docs/state-userafstate--example) —
     Like `React.useState`, but state is only updated within animation frame.
   - [**`useRenderCount`**](https://react-hookz.github.io/web/?path=/docs/state-userendercount--example) —

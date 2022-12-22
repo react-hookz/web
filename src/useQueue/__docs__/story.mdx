@@ -6,7 +6,7 @@ import { ImportPath } from '../../__docs__/ImportPath';
 
 # useQueue
 
-A state hook in the form of a first-in first-out (FIFO) queue.
+A state hook in the form of a queue. Can be either first-in-first-out (FIFO) or last-in-last-out (LILO).
 
 #### Example
 
@@ -17,10 +17,12 @@ A state hook in the form of a first-in first-out (FIFO) queue.
 ## Reference
 
 ```ts
-export function useQueue<T[]>(initialValue: T[] =[]): {
+export function useQueue<T[]>(initialValue: T[] =[], type: 'fifo' | 'lilo' = 'fifo'): {
+  items: T[];
   add: (item: T) => void;
   remove: () => T;
   first: T;
+  last: T;
   size: number;
 }
 ```
@@ -40,3 +42,4 @@ export function useQueue<T[]>(initialValue: T[] =[]): {
 - **add** _`(item: T) => void`_ - Adds an item to the end of the queue.
 - **remove** _`() => T`_ - Removes and returns the head of the queue.
 - **size** _`number`_ - The current size of the queue.
+- **items** _`T[]`_ - The entire queue.

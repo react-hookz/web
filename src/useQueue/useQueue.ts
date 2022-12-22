@@ -4,7 +4,7 @@ import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 export interface QueueMethods<T> {
   /**
-   * returns the array
+   * returns the entire queue
    */
   items: T[];
   /**
@@ -31,7 +31,7 @@ export interface QueueMethods<T> {
 }
 
 /**
- * A state hook in the form of a queue. Can be either first-in-first-out or last-in-last-out.
+ * A state hook in the form of a queue. Can be either first-in-first-out (FIFO) or last-in-last-out (LILO).
  * @param initialValue The initial value. Defaults to an empty array.
  * @param type `fifo` | `lilo` for  either first-in-first-out or last-in-last-out **default** `fifo`
  */
