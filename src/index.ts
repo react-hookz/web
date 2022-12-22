@@ -31,7 +31,7 @@ export { useMap } from './useMap/useMap';
 export { useMediatedState } from './useMediatedState/useMediatedState';
 export { usePrevious } from './usePrevious/usePrevious';
 export { usePreviousDistinct } from './usePreviousDistinct/usePreviousDistinct';
-export { useQueue } from './useQueue/useQueue';
+export { useQueue, QueueMethods } from './useQueue/useQueue';
 export { useRafState } from './useRafState/useRafState';
 export { useRenderCount } from './useRenderCount/useRenderCount';
 export { useSafeState } from './useSafeState/useSafeState';

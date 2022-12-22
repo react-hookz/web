@@ -17,14 +17,15 @@ A state hook in the form of a queue. Can be either first-in-first-out (FIFO) or 
 ## Reference
 
 ```ts
-export function useQueue<T[]>(initialValue: T[] =[], type: 'fifo' | 'lilo' = 'fifo'): {
-  items: T[];
-  add: (item: T) => void;
-  remove: () => T;
+export interface QueueMethods<T> {
   first: T;
   last: T;
+  add: (item: T) => void;
+  remove: () => T;
   size: number;
+  items: T[]
 }
+export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T>
 ```
 
 #### Importing
