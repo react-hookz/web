@@ -27,32 +27,37 @@ export interface QueueMethods<T> {
 }
 
 /**
- * A state hook in the form of a first-in first-out (FIFO) queue.
+ * A state hook in the form of a queue. Can be either first-in-first-out or last-in-last-out.
  * @param initialValue The initial value. Defaults to an empty array.
+ * @param type 'fifo' | 'lilo' for  either first-in-first-out or last-in-last-out @default 'fifo'
  */
-export const useQueue = <T>(initialValue: T[] = []): QueueMethods<T> => {
+export const useQueue = <T>(
+  initialValue: T[] = [],
+  type: 'fifo' | 'lilo' = 'fifo'
+): QueueMethods<T> => {
   const [list, { insertAt, removeAt }] = useList(initialValue);
-
+  const isFifo = type === 'fifo';
   const listRef = useSyncedRef(list);
 
   return useMemo(
     () => ({
-      add: (value: T) => insertAt(listRef.current.length, value),
+      add: (value: T) => insertAt(isFifo ? listRef.current.length : 0, value),
       remove: () => {
-        const removed = listRef.current[0];
-        removeAt(0);
+        const removedIndex = isFifo ? 0 : listRef.current.length - 1;
+        const removed = listRef.current[removedIndex];
+        removeAt(removedIndex);
         return removed;
       },
       get first() {
-        return listRef.current[0];
+        return isFifo ? listRef.current[0] : listRef.current[listRef.current.length - 1];
       },
       get last() {
-        return listRef.current[listRef.current.length - 1];
+        return isFifo ? listRef.current[listRef.current.length - 1] : listRef.current[0];
       },
       get size() {
         return listRef.current.length;
       },
     }),
-    [insertAt, listRef, removeAt]
+    [insertAt, listRef, removeAt, isFifo]
   );
 };
