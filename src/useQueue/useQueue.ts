@@ -31,32 +31,29 @@ export interface QueueMethods<T> {
 }
 
 /**
- * A state hook in the form of a queue. Can be either first-in-first-out (FIFO) or last-in-last-out (LILO).
+ * A state hook implementing FIFO queue.
+ *
  * @param initialValue The initial value. Defaults to an empty array.
- * @param type `fifo` | `lilo` for  either first-in-first-out or last-in-last-out **default** `fifo`
  */
-export const useQueue = <T>(
-  initialValue: T[] = [],
-  type: 'fifo' | 'lilo' = 'fifo'
-): QueueMethods<T> => {
-  const [list, { insertAt, removeAt }] = useList(initialValue);
-  const isFifo = type === 'fifo';
+export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
+  const [list, { removeAt, push }] = useList(initialValue);
   const listRef = useSyncedRef(list);
 
   return useMemo(
     () => ({
-      add: (value: T) => insertAt(isFifo ? listRef.current.length : 0, value),
+      add: (value: T) => push(value),
       remove: () => {
-        const removedIndex = isFifo ? 0 : listRef.current.length - 1;
-        const removed = listRef.current[removedIndex];
-        removeAt(removedIndex);
-        return removed;
+        const val = listRef.current[0];
+
+        removeAt(0);
+
+        return val;
       },
       get first() {
-        return isFifo ? listRef.current[0] : listRef.current[listRef.current.length - 1];
+        return listRef.current[0];
       },
       get last() {
-        return isFifo ? listRef.current[listRef.current.length - 1] : listRef.current[0];
+        return listRef.current[listRef.current.length - 1];
       },
       get size() {
         return listRef.current.length;
@@ -65,6 +62,7 @@ export const useQueue = <T>(
         return listRef.current;
       },
     }),
-    [insertAt, listRef, removeAt, isFifo]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
-};
+}

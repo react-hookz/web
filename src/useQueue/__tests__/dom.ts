@@ -27,17 +27,6 @@ describe('useQueue', () => {
     expect(result.current.first).toBe(1);
   });
 
-  it('should remove the last value', () => {
-    const { result } = renderHook(() => useQueue([0, 1, 2, 3], 'lilo'));
-
-    act(() => {
-      const removed = result.current.remove();
-      expect(removed).toBe(3);
-    });
-
-    expect(result.current.first).toBe(2);
-  });
-
   it('should return the length', () => {
     const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
     expect(result.current.size).toBe(4);
@@ -45,16 +34,6 @@ describe('useQueue', () => {
 
   it('should add a value to the end', () => {
     const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
-
-    act(() => {
-      result.current.add(4);
-    });
-
-    expect(result.current.last).toBe(4);
-  });
-
-  it('should add a value to the beginning', () => {
-    const { result } = renderHook(() => useQueue([0, 1, 2, 3], 'lilo'));
 
     act(() => {
       result.current.add(4);

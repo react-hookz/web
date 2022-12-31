@@ -6,7 +6,7 @@ import {ImportPath} from '../../__docs__/ImportPath';
 
 # useQueue
 
-A state hook in the form of a queue. Can be either first-in-first-out (FIFO) or last-in-last-out (LILO).
+A state hook implementing FIFO queue.
 
 #### Example
 
@@ -25,10 +25,7 @@ export interface QueueMethods<T> {
   size: number;
   items: T[]
 }
-export const useQueue = <T>(
-  initialValue: T[] = [],
-  type: 'fifo' | 'lilo' = 'fifo'
-): QueueMethods<T>
+export function useQueue<T>( initialValue: T[] = [] ): QueueMethods<T>;
 ```
 
 #### Importing
