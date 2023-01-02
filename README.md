@@ -130,6 +130,8 @@ Coming from `react-use`? Check out our
     Returns the value passed to the hook on previous render.
   - [**`usePreviousDistinct`**](https://react-hookz.github.io/web/?path=/docs/state-usepreviousdistinct--example) —
     Returns the most recent distinct value passed to the hook on previous renders.
+  - [**`useQueue`**](https://react-hookz.github.io/web/?path=/docs/state-usequeue--example) —
+    A state hook implementing FIFO queue.
   - [**`useRafState`**](https://react-hookz.github.io/web/?path=/docs/state-userafstate--example) —
     Like `React.useState`, but state is only updated within animation frame.
   - [**`useRenderCount`**](https://react-hookz.github.io/web/?path=/docs/state-userendercount--example) —

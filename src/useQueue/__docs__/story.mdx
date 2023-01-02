@@ -1,0 +1,46 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
+import {Example} from './example.stories';
+import {ImportPath} from '../../__docs__/ImportPath';
+
+<Meta title="State/useQueue" component={Example} />
+
+# useQueue
+
+A state hook implementing FIFO queue.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export interface QueueMethods<T> {
+  first: T;
+  last: T;
+  add: (item: T) => void;
+  remove: () => T;
+  size: number;
+  items: T[]
+}
+export function useQueue<T>( initialValue: T[] = [] ): QueueMethods<T>;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **initialValue** _`T[]`_ - The initial value. Defaults to an empty array.
+
+#### Return
+
+- **first** _`T`_ - The first item in the queue.
+- **last** _`T`_ - The last item in the queue.
+- **add** _`(item: T) => void`_ - Adds an item to the end of the queue.
+- **remove** _`() => T`_ - Removes and returns the head of the queue.
+- **size** _`number`_ - The current size of the queue.
+- **items** _`T[]`_ - The entire queue.
