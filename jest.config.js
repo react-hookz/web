@@ -16,16 +16,6 @@ module.exports = {
 
     // needed for output bundle testing
     {
-      displayName: 'dom-cjs',
-      preset: 'ts-jest',
-      testEnvironment: 'jsdom',
-      testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
-      setupFiles: ['./src/__tests__/setup.ts'],
-      moduleNameMapper: {
-        '^../..$': '<rootDir>/cjs',
-      },
-    },
-    {
       displayName: 'dom-package',
       preset: 'ts-jest',
       testEnvironment: 'jsdom',

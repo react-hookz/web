@@ -34,7 +34,7 @@
   "scripts": {
     "prepare": "husky install",
     "commit": "git-cz",
-    "build": "yarn build:cleanup && build:dist",
+    "build": "yarn build:cleanup && yarn build:dist",
     "build:cleanup": "rimraf ./dist",
     "build:dist": "ttsc -p ./tsconfig.build.json",
     "new-hook": "node ./utility/add-new-hook.js",
