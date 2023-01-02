@@ -8,7 +8,7 @@ export const Example: React.FC = () => {
   useEffect(() => {
     if (!isVisible) {
       // eslint-disable-next-line no-alert
-      alert('Window was not visible');
+      alert('Document was not visible');
     }
   }, [isVisible]);
 

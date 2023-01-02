@@ -3,12 +3,12 @@ import { useDocumentVisibility } from '../..';
 
 describe('useDocumentVisibility', () => {
   it('should be defined', () => {
-    expect(useDocumentVisibility()).toBeDefined();
+    expect(useDocumentVisibility).toBeDefined();
   });
 
-  it('should return default value on server-side rendering', () => {
-    const { result } = renderHook(() => useDocumentVisibility(true));
-
-    expect(result.current).toBe(true);
+  it('should return undefined regardless of `initializeWithValue` parameter', () => {
+    expect(renderHook(() => useDocumentVisibility()).result.current).toBeUndefined();
+    expect(renderHook(() => useDocumentVisibility(true)).result.current).toBeUndefined();
+    expect(renderHook(() => useDocumentVisibility(false)).result.current).toBeUndefined();
   });
 });
