@@ -312,20 +312,27 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/jpwallace22">
+            <img src="https://avatars.githubusercontent.com/u/93415734?v=4" width="100;" alt="jpwallace22"/>
+            <br />
+            <sub><b>Justin Wallace</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/KonradLinkowski">
             <img src="https://avatars.githubusercontent.com/u/26126510?v=4" width="100;" alt="KonradLinkowski"/>
             <br />
             <sub><b>Konrad Linkowski</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/MichalTarasiuk">
             <img src="https://avatars.githubusercontent.com/u/69385846?v=4" width="100;" alt="MichalTarasiuk"/>
             <br />
             <sub><b>Michał Tarasiuk</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/fengkx">
             <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
