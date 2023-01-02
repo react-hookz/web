@@ -1,63 +1,57 @@
-import { useRef, useState } from '@storybook/addons';
-import * as React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useMemo, useRef, useState } from 'react';
 import { useMemoCache } from '../..';
 
-const getSummary = (state: Record<string, number>) => Object.values(state).reduce((a, b) => a + b);
+const dependencyListMapper = {
+  true: [1, 3],
+  false: [2, 4],
+};
+
+const getSummary = (numbers: number[]) => numbers.reduce((a, b) => a + b);
+
+const boolToString = (bool: boolean) => String(bool) as 'true' | 'false';
 
 export const Example: React.FC = () => {
-  const [state, setState] = useState<Record<string, number>>({ dependency1: 0, dependency2: 0 });
+  const isTruthy = useRef(false);
+
+  const [dependencyList, setDependencyList] = useState(
+    () => dependencyListMapper[boolToString(isTruthy.current)]
+  );
 
   const memoSpy = useRef(0);
-  const memoWithCacheSpy = useRef(0);
+  const memoCacheSpy = useRef(0);
 
-  const summary = useMemoCache(() => {
+  const memo = useMemo(() => {
     memoSpy.current++;
 
-    return getSummary(state);
-  }, [state.dependency1, state.dependency2]);
-  const summaryWithCache = useMemoCache(() => {
-    memoWithCacheSpy.current++;
+    return getSummary(dependencyList);
+  }, dependencyList);
 
-    return getSummary(state);
-  }, [state.dependency1, state.dependency2]);
+  const memoCache = useMemoCache(() => {
+    memoCacheSpy.current++;
 
-  const increase = (key: string) => {
-    setState({ ...state, [key]: state[key] + 1 });
-  };
+    return getSummary(dependencyList);
+  }, dependencyList);
 
-  const decrease = (key: string) => {
-    setState({ ...state, [key]: state[key] - 1 });
+  const toggleDependencyList = () => {
+    isTruthy.current = !isTruthy.current;
+
+    setDependencyList(dependencyListMapper[boolToString(isTruthy.current)]);
   };
 
   return (
     <div>
-      <div>
-        <p>
-          summary: {summary}, calls: {memoSpy.current}
-        </p>
-        <p>
-          summary with cache: {summaryWithCache}, calls: {memoWithCacheSpy.current}
-        </p>
-      </div>
-      <ul>
-        {Object.values(state).map((value, index) => {
-          return (
-            <li>
-              <p>
-                dependency {index + 1}: {value}
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-      <div>
-        {Object.keys(state).map((key, index) => (
-          <>
-            <button onClick={() => increase(key)}>increase dependency {index + 1}</button>
-            <button onClick={() => decrease(key)}>decrease dependency {index + 1}</button>
-          </>
-        ))}
-      </div>
+      <section>
+        <h1>Memo</h1>
+        <p>summary: {memo}</p>
+        <p>calls: {memoSpy.current}</p>
+      </section>
+      <section>
+        <h1>Memo with cache</h1>
+        <p>summary: {memoCache}</p>
+        <p>calls: {memoCacheSpy.current}</p>
+      </section>
+      <button onClick={toggleDependencyList}>toggle dependency list</button>
     </div>
   );
 };

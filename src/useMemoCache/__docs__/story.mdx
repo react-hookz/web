@@ -1,8 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
-<Meta title="New Hook/useMemoCache" component={Example} />
+<Meta title="Miscellaneous/useMemoCache" component={Example} />
 
 # useMemoCache
 
@@ -15,7 +15,7 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 ## Reference
 
 ```ts
-
+function useMemoCache<State, Deps extends DependencyList>(factory: () => State, deps: Deps): State;
 ```
 
 #### Importing
@@ -24,4 +24,5 @@ import { ImportPath } from '../../storybookUtil/ImportPath';
 
 #### Arguments
 
-#### Return
+- **factory** _`() => unknown`_ - useMemo factory function.
+- **deps** _`DependencyList`_ - useMemo dependency list.

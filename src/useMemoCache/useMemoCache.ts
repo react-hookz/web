@@ -41,11 +41,11 @@ const createCache = <State>() => {
 /**
  * useMemo with cache based on dependency list
  */
-export const useMemoCache = <State>(factory: () => State, dependencyList: DependencyList) => {
+export const useMemoCache = <State>(factory: () => State, deps: DependencyList) => {
   const cache = useMemo(() => createCache<State>(), []);
 
   const memo = useMemo(() => {
-    const cachedState = cache.get(dependencyList);
+    const cachedState = cache.get(deps);
 
     if (!cache.isNone(cachedState)) {
       return cachedState;
@@ -53,11 +53,11 @@ export const useMemoCache = <State>(factory: () => State, dependencyList: Depend
 
     const state = factory();
 
-    cache.set(dependencyList, state);
+    cache.set(deps, state);
 
     return state;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, dependencyList);
+  }, deps);
 
   return memo;
 };
