@@ -1,3 +1,10 @@
+# [20.1.0](https://github.com/react-hookz/web/compare/v20.0.3...v20.1.0) (2023-01-02)
+
+
+### Features
+
+* implement `useDocumentVisibility` hook ([#1049](https://github.com/react-hookz/web/issues/1049)) ([b00f793](https://github.com/react-hookz/web/commit/b00f79353fd025c61de995e88148e377fffad848))
+
 ## [20.0.3](https://github.com/react-hookz/web/compare/v20.0.2...v20.0.3) (2022-12-20)
 
 
