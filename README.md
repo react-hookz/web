@@ -195,6 +195,8 @@ Coming from `react-use`? Check out our
   - [**`useScreenOrientation`**](https://react-hookz.github.io/web/?path=/docs/sensor-usescreenorientation--example)
     — Checks if the screen is in `portrait` or `landscape` orientation and automatically re-renders on
     orientation change.
+  - [**`useDocumentVisibility`**](https://react-hookz.github.io/web/?path=/docs/sensor-usedocumentvisibility--example)
+    — Tracks document visibility state.
 
 - #### Dom
 

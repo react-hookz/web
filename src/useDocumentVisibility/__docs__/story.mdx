@@ -1,0 +1,31 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {ImportPath} from '../../__docs__/ImportPath';
+import {Example} from './example.stories';
+
+<Meta title="Lifecycle/useDocumentVisibility" component={Example}/>
+
+# useDocumentVisibility
+
+Returns a boolean indicating whether the document is visible or not.
+
+#### Example
+
+<Canvas>
+    <Story story={Example} inline/>
+</Canvas>
+
+## Reference
+
+```ts
+function useDocumentVisibility(initializeWithValue = true): boolean | undefined;
+```
+
+#### Importing
+
+<ImportPath/>
+
+#### Arguments
+
+- **initializeWithValue** _`boolean | undefined`_ _(default: `true`)_ - Whether to initialize state 
+    with the cookie value or `undefined`.
+    _We suggest setting this to `false` during SSR._
