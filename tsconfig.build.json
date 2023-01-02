@@ -1,16 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "src/index.ts",
-    "src/*/*.ts"
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/__tests__/**",
+    "src/**/__docs__/**"
   ],
   "compilerOptions": {
     "noEmit": false,
-    "outDir": "./cjs",
+    "outDir": "./dist",
     "declaration": true,
-    "target": "ES6",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
     "sourceMap": false,
     "plugins": [
       {

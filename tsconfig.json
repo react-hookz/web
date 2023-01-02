@@ -3,8 +3,8 @@
     "strict": true,
     "alwaysStrict": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
     "target": "ESNext",
+    "moduleResolution": "Node",
     "lib": [
       "ESNext",
       "DOM"
