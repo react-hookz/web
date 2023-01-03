@@ -65,7 +65,10 @@ export const useMemoCache = <State>(
   deps: DependencyList,
   customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
 ) => {
-  const cache = useMemo(() => createCache<State>(customAreHookInputsEqual), []);
+  const cache = useMemo(
+    () => createCache<State>(customAreHookInputsEqual),
+    [customAreHookInputsEqual]
+  );
 
   const memo = useMemo(() => {
     const cachedState = cache.get(deps);
