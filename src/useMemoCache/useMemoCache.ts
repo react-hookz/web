@@ -10,7 +10,7 @@ type None = typeof none;
 type CachedItem<State> = { state: State; dependencyList: DependencyList };
 
 const createCache = <State>() => {
-  const cache = new Map<string, Array<CachedItem<State>>>();
+  const cache = new Map<string, Set<CachedItem<State>>>();
 
   const get = (dependencyList: DependencyList) => {
     const key = String(dependencyList);
@@ -20,7 +20,7 @@ const createCache = <State>() => {
       return none;
     }
 
-    const cachedItem = cached.find((item) =>
+    const cachedItem = [...cached.values()].find((item) =>
       areHookInputsEqual(item.dependencyList, dependencyList)
     );
 
@@ -37,13 +37,13 @@ const createCache = <State>() => {
     const hasCachedItem = cache.has(key);
 
     if (!hasCachedItem) {
-      cache.set(key, []);
+      cache.set(key, new Set());
     }
 
     const cachedItem = cache.get(key);
 
     if (cachedItem) {
-      cachedItem.push({ dependencyList, state });
+      cachedItem.add({ dependencyList, state });
     }
   };
 
