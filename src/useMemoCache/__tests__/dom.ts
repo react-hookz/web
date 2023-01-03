@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
+import { DependencyList } from 'react';
 import { useMemoCache } from '../..';
 
 describe('useMemoCache', () => {
@@ -74,5 +75,37 @@ describe('useMemoCache', () => {
 
     expect(result.current).toEqual([2, 3]);
     expect(spy).toHaveBeenCalledTimes(3);
+  });
+
+  it('should work with custom `areHookInputsEqual`', () => {
+    const spy = jest.fn();
+    const { result, rerender } = renderHook(
+      ({ dependencyList }) => {
+        return useMemoCache(
+          () => {
+            spy();
+
+            return Object.values(dependencyList[0]);
+          },
+          dependencyList,
+          (nextDeps: DependencyList, prevDeps: DependencyList | null) =>
+            JSON.stringify(nextDeps) === JSON.stringify(prevDeps)
+        );
+      },
+      { initialProps: { dependencyList: [{ a: 1, b: 2 }] } }
+    );
+
+    expect(result.current).toEqual([1, 2]);
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ dependencyList: [{ a: 1, b: 2 }] });
+
+    expect(result.current).toEqual([1, 2]);
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ dependencyList: [{ a: 2, b: 3 }] });
+
+    expect(result.current).toEqual([2, 3]);
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 });

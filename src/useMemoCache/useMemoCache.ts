@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import type { DependencyList } from 'react';
-import { areHookInputsEqual } from '../util/areHookInputsEqual';
+import { areHookInputsEqual as nativeAreHookInputsEqual } from '../util/areHookInputsEqual';
 
 // eslint-disable-next-line symbol-description
 const none = Symbol();
@@ -9,8 +9,9 @@ const none = Symbol();
 type None = typeof none;
 type CachedItem<State> = { state: State; dependencyList: DependencyList };
 
-const createCache = <State>() => {
+const createCache = <State>(customAreHookInputsEqual?: typeof nativeAreHookInputsEqual) => {
   const cache = new Map<string, Set<CachedItem<State>>>();
+  const areHookInputsEqual = customAreHookInputsEqual ?? nativeAreHookInputsEqual;
 
   const get = (dependencyList: DependencyList) => {
     const key = String(dependencyList);
@@ -59,8 +60,12 @@ const createCache = <State>() => {
 /**
  * useMemo with cache based on dependency list
  */
-export const useMemoCache = <State>(factory: () => State, deps: DependencyList) => {
-  const cache = useMemo(() => createCache<State>(), []);
+export const useMemoCache = <State>(
+  factory: () => State,
+  deps: DependencyList,
+  customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
+) => {
+  const cache = useMemo(() => createCache<State>(customAreHookInputsEqual), []);
 
   const memo = useMemo(() => {
     const cachedState = cache.get(deps);
