@@ -1,4 +1,5 @@
 import { resolveHookState } from '../..';
+import { areHookInputsEqual } from '../areHookInputsEqual';
 import { basicDepsComparator, off, on } from '../misc';
 
 describe('resolveHookState', () => {
@@ -82,5 +83,19 @@ describe('misc', () => {
     it('should return true in case arrays are equal', () => {
       expect(basicDepsComparator([1, 2, 3], [1, 2, 3])).toBe(true);
     });
+  });
+});
+
+describe('areHookInputsEqual', () => {
+  it('should return false when prevDeps are null', () => {
+    expect(areHookInputsEqual([], null)).toBeFalsy();
+  });
+
+  it('should return false when prevDeps differ', () => {
+    expect(areHookInputsEqual([0], [1])).toBeFalsy();
+  });
+
+  it('should return true when pervDeps are equal', () => {
+    expect(areHookInputsEqual([0], [0])).toBeTruthy();
   });
 });

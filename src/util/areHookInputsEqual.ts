@@ -15,11 +15,6 @@ export const objectIs: (x: unknown, y: unknown) => boolean =
 
 // 1:1 how react compare previous dependency list with current dependency list
 
-// Usage:
-// For example if you are creating custom hook which has dependency list.
-// Use this function to compare dependencies.
-
-// react source code
 export const areHookInputsEqual = (nextDeps: DependencyList, prevDeps: DependencyList | null) => {
   if (prevDeps === null) {
     return false;
