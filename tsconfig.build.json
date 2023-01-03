@@ -9,6 +9,7 @@
     "outDir": "./cjs",
     "declaration": true,
     "target": "ES5",
+    "downlevelIteration": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
     "sourceMap": false,
