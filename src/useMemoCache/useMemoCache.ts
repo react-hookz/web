@@ -7,26 +7,44 @@ import { areHookInputsEqual } from '../util/areHookInputsEqual';
 const none = Symbol();
 
 type None = typeof none;
+type CachedItem<State> = { state: State; dependencyList: DependencyList };
 
 const createCache = <State>() => {
-  const cache: Array<[DependencyList, State]> = [];
+  const cache = new Map<string, Array<CachedItem<State>>>();
 
   const get = (dependencyList: DependencyList) => {
-    const cacheEntry = cache.find(([cachedDependencyList]) =>
-      areHookInputsEqual(cachedDependencyList, dependencyList)
-    );
+    const key = String(dependencyList);
+    const cached = cache.get(key);
 
-    if (!cacheEntry) {
+    if (!cached) {
       return none;
     }
 
-    const cachedState = cacheEntry[1];
+    const cachedItem = cached.find((item) =>
+      areHookInputsEqual(item.dependencyList, dependencyList)
+    );
 
-    return cachedState;
+    if (cachedItem) {
+      return cachedItem.state;
+    }
+
+    return none;
   };
 
   const set = (dependencyList: DependencyList, state: State) => {
-    cache.push([dependencyList, state]);
+    const key = String(dependencyList);
+
+    const hasCachedItem = cache.has(key);
+
+    if (!hasCachedItem) {
+      cache.set(key, []);
+    }
+
+    const cachedItem = cache.get(key);
+
+    if (cachedItem) {
+      cachedItem.push({ dependencyList, state });
+    }
   };
 
   const isNone = (state: None | State): state is None => state === none;

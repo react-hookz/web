@@ -48,4 +48,31 @@ describe('useMemoCache', () => {
     expect(result.current).toBe(3);
     expect(spy).toHaveBeenCalledTimes(2);
   });
+
+  it('should invoke when state is not cached (reference case)', () => {
+    const spy = jest.fn();
+    const { result, rerender } = renderHook(
+      ({ dependencyList }) => {
+        return useMemoCache(() => {
+          spy();
+
+          return Object.values(dependencyList[0]);
+        }, dependencyList);
+      },
+      { initialProps: { dependencyList: [{ a: 1, b: 2 }] } }
+    );
+
+    expect(result.current).toEqual([1, 2]);
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    rerender({ dependencyList: [{ a: 1, b: 2 }] });
+
+    expect(result.current).toEqual([1, 2]);
+    expect(spy).toHaveBeenCalledTimes(2);
+
+    rerender({ dependencyList: [{ a: 2, b: 3 }] });
+
+    expect(result.current).toEqual([2, 3]);
+    expect(spy).toHaveBeenCalledTimes(3);
+  });
 });
