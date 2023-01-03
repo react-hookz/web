@@ -79,6 +79,9 @@ describe('useMemoCache', () => {
 
   it('should work with custom `areHookInputsEqual`', () => {
     const spy = jest.fn();
+    const customAreHookInputsEqual = (nextDeps: DependencyList, prevDeps: DependencyList | null) =>
+      JSON.stringify(nextDeps) === JSON.stringify(prevDeps);
+
     const { result, rerender } = renderHook(
       ({ dependencyList }) => {
         return useMemoCache(
@@ -88,8 +91,7 @@ describe('useMemoCache', () => {
             return Object.values(dependencyList[0]);
           },
           dependencyList,
-          (nextDeps: DependencyList, prevDeps: DependencyList | null) =>
-            JSON.stringify(nextDeps) === JSON.stringify(prevDeps)
+          customAreHookInputsEqual
         );
       },
       { initialProps: { dependencyList: [{ a: 1, b: 2 }] } }
