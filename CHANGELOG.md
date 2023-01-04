@@ -1,3 +1,21 @@
+# [21.0.0](https://github.com/react-hookz/web/compare/v20.1.0...v21.0.0) (2023-01-04)
+
+
+### Features
+
+* **no-release:** drop es5 versions support, leave only ESNext ([#963](https://github.com/react-hookz/web/issues/963)) ([5a622af](https://github.com/react-hookz/web/commit/5a622afe3f106036b807865faf6231ab20427113))
+
+
+### BREAKING CHANGES
+
+* **no-release:** `CJS ES5` and `ESM ES5` versions are removed from distribution, leaving only `ESM ESNext` version.
+
+We understand that this change can break existing pipelines for some developers, but such move eases library maintenance and is one of several moves towards module package.
+
+This change is one of several braking changes that will be released under same major version regarding changes in distribution and importing.
+
+Sorry for any inconvenience.
+
 # [20.1.0](https://github.com/react-hookz/web/compare/v20.0.3...v20.1.0) (2023-01-02)
 
 
