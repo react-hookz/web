@@ -47,7 +47,7 @@ export const Example: React.FC = () => {
     path.resolve(hookDir, `__docs__/story.mdx`),
     `import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="New Hook/${hookName}" component={Example} />
 
