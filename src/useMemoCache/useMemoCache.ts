@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import type { DependencyList } from 'react';
 import { areHookInputsEqual as nativeAreHookInputsEqual } from '../util/areHookInputsEqual';
+import { useSyncedRef } from '../useSyncedRef/useSyncedRef';
 
 // eslint-disable-next-line symbol-description
 const none = Symbol();
@@ -65,9 +66,10 @@ export const useMemoCache = <State>(
   deps: DependencyList,
   customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
 ) => {
+  const syncedCustomAreHookInputsEqual = useSyncedRef(customAreHookInputsEqual);
   const cache = useMemo(
-    () => createCache<State>(customAreHookInputsEqual),
-    [customAreHookInputsEqual]
+    () => createCache<State>(syncedCustomAreHookInputsEqual.current),
+    [syncedCustomAreHookInputsEqual]
   );
 
   const memo = useMemo(() => {
