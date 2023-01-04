@@ -59,7 +59,7 @@ const createCache = <State>(customAreHookInputsEqual?: typeof nativeAreHookInput
 };
 
 /**
- * useMemo with cache based on dependency list
+ * Like useMemo but with cache based on dependency list.
  */
 export const useMemoCache = <State>(
   factory: () => State,

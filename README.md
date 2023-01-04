@@ -158,6 +158,8 @@ Coming from `react-use`? Check out our
 
 - #### Miscellaneous
 
+  - [**`useMemoCache`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useMemoCache--example)
+    — Like useMemo but with cache based on dependency list.
   - [**`useSyncedRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usesyncedref--example)
     — Like `useRef`, but it returns an immutable ref that contains the actual value.
   - [**`useCustomCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useCustomCompareMemo--example)
