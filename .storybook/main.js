@@ -18,8 +18,9 @@ module.exports = {
   },
   staticDirs: ['./public'],
   managerWebpack: (config, options) => {
-    //ToDo: maybe enable cache mack when storybook is fixed
-    options.cache.set = () => Promise.resolve();
-    return config;
+    // ToDo: maybe enable cache mack when storybook is fixed
+    options.cache.set = () => Promise.resolve(); // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+
+    return config; // eslint-disable-line @typescript-eslint/no-unsafe-return
   },
 };
