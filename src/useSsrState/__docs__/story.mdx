@@ -1,0 +1,34 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
+import {ImportPath} from '../../__docs__/ImportPath';
+import {Example} from './example.stories';
+
+<Meta title="State/useSsrState" component={Example}/>
+
+# useSsrState
+
+Combination of hook and context provider that allows to seamlessly, and once for all
+`@react-hookz/web` hooks, declare that application is server-rendered. All you have to do is wrap
+your application with `<SsrStateProvider>` component - it will provide static value that can be only
+changed via props and accessed over `useSsrState` hook.
+
+Every isomorphic hook that has to change it's behavior depending on environment will do it basing
+off this hook state.
+
+In case there is no upper context provider, or provider has `disabled` prop - `useSsrState` will
+yield false.
+
+#### Example
+
+<Canvas>
+    <Story story={Example} inline/>
+</Canvas>
+
+## Reference
+
+```ts
+function useSsrState(): boolean;
+```
+
+#### Importing
+
+<ImportPath/>
