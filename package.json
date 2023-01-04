@@ -1,6 +1,6 @@
 {
   "name": "@react-hookz/web",
-  "version": "20.1.0",
+  "version": "21.0.0",
   "description": "React hooks done right, for browser and SSR.",
   "keywords": [
     "react",
@@ -21,23 +21,22 @@
     "access": "public"
   },
   "files": [
-    "cjs",
-    "esm",
-    "esnext"
+    "dist"
   ],
-  "main": "cjs/index.js",
-  "esnext": "esnext/index.js",
-  "types": "cjs/index.d.ts",
-  "module": "esm/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "esnext": {
+    "browser": "dist/index.js",
+    "module": "dist/index.js"
+  },
   "sideEffects": false,
   "scripts": {
     "prepare": "husky install",
     "commit": "git-cz",
-    "build": "yarn build:cleanup && concurrently yarn:build:cjs yarn:build:esm yarn:build:esnext --kill-others-on-fail",
-    "build:cleanup": "rimraf ./cjs ./esm ./esnext ./types",
-    "build:cjs": "ttsc -p ./tsconfig.build.json --module CommonJS --target ES5 --outDir ./cjs",
-    "build:esm": "ttsc -p ./tsconfig.build.json --module ES6 --target ES5 --outDir ./esm",
-    "build:esnext": "ttsc -p ./tsconfig.build.json --module ESNext --target ESNext --outDir ./esnext",
+    "build": "yarn build:cleanup && yarn build:dist",
+    "build:cleanup": "rimraf ./dist",
+    "build:dist": "ttsc -p ./tsconfig.build.json",
     "new-hook": "node ./utility/add-new-hook.js",
     "test": "jest --selectProjects dom ssr",
     "test:coverage": "yarn test --coverage",
@@ -99,6 +98,8 @@
     "@storybook/react": "^6.5.15",
     "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/theming": "^6.5.14",
+    "@swc/core": "^1.3.24",
+    "@swc/jest": "^0.2.24",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.2.5",
@@ -108,8 +109,7 @@
     "babel-loader": "^9.1.0",
     "commitizen": "^4.2.6",
     "commitlint": "^17.2.0",
-    "concurrently": "^7.6.0",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
     "js-cookie": "^3.0.1",
@@ -119,7 +119,6 @@
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "semantic-release": "^19.0.5",
-    "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.15",
     "typescript": "^4.9.4",

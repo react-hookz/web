@@ -1,3 +1,21 @@
+# [21.0.0](https://github.com/react-hookz/web/compare/v20.1.0...v21.0.0) (2023-01-04)
+
+
+### Features
+
+* Drop es5 versions support, leave only ESNext ([#963](https://github.com/react-hookz/web/issues/963)) ([5a622af](https://github.com/react-hookz/web/commit/5a622afe3f106036b807865faf6231ab20427113))
+
+
+### BREAKING CHANGES
+
+* `CJS ES5` and `ESM ES5` versions are removed from distribution, leaving only `ESM ESNext` version.
+
+We understand that this change can break existing pipelines for some developers, but such move eases library maintenance and is one of several moves towards module package. Address [Usage](https://github.com/react-hookz/web#usage) docs to actualize your pipeline if needed.
+
+This change is one of several braking changes regarding distribution and package usage.
+
+Sorry for any inconvenience.
+
 # [20.1.0](https://github.com/react-hookz/web/compare/v20.0.3...v20.1.0) (2023-01-02)
 
 
@@ -891,13 +909,13 @@ SSR remains untouched, but requires implicit setting of
 
 ### Features
 
-* package now has /cjs, /esm, /esnext distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
+* package now has /cjs, /esm distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
 
 # [1.7.0](https://github.com/react-hookz/web/compare/v1.6.2...v1.7.0) (2021-04-23)
 
 ### Features
 
-* package now has /cjs, /esm, /esnext distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
+* package now has /cjs, /esm distibuted versions ([4911c9d](https://github.com/react-hookz/web/commit/4911c9d3c0813bff5e52ae98cfc4dfc542996a0b))
 
 ## [1.6.2](https://github.com/react-hookz/web/compare/v1.6.1...v1.6.2) (2021-04-22)
 
