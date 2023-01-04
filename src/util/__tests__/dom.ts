@@ -1,5 +1,5 @@
 import { resolveHookState } from '../..';
-import { areHookInputsEqual, objectIs } from '../areHookInputsEqual';
+import { areHookInputsEqual, objectIs, is } from '../areHookInputsEqual';
 import { basicDepsComparator, off, on } from '../misc';
 
 describe('resolveHookState', () => {
@@ -99,7 +99,7 @@ describe('areHookInputsEqual', () => {
     expect(areHookInputsEqual([0], [0])).toBeTruthy();
   });
 
-  describe('objectIs', () => {
+  describe.each([objectIs, is])('objectIs', (objectIsFn) => {
     // eslint-disable-next-line unicorn/no-useless-undefined
     const orginalObjectIs = Object.is.bind(undefined);
 
@@ -114,33 +114,33 @@ describe('areHookInputsEqual', () => {
     });
 
     test('evaluation result is the same as using ===', () => {
-      expect(objectIs(25, 25)).toBeTruthy();
-      expect(objectIs('foo', 'foo')).toBeTruthy();
-      expect(objectIs('foo', 'bar')).toBeFalsy();
-      expect(objectIs(null, null)).toBeTruthy();
+      expect(objectIsFn(25, 25)).toBeTruthy();
+      expect(objectIsFn('foo', 'foo')).toBeTruthy();
+      expect(objectIsFn('foo', 'bar')).toBeFalsy();
+      expect(objectIsFn(null, null)).toBeTruthy();
       // eslint-disable-next-line unicorn/no-useless-undefined
-      expect(objectIs(undefined, undefined)).toBeTruthy();
-      expect(objectIs(window, window)).toBeTruthy();
-      expect(objectIs([], [])).toBeFalsy();
+      expect(objectIsFn(undefined, undefined)).toBeTruthy();
+      expect(objectIsFn(window, window)).toBeTruthy();
+      expect(objectIsFn([], [])).toBeFalsy();
 
       const foo = { a: 1 };
       const bar = { a: 1 };
       const sameFoo = foo;
 
-      expect(objectIs(foo, foo)).toBeTruthy();
-      expect(objectIs(foo, bar)).toBeFalsy();
-      expect(objectIs(foo, sameFoo)).toBeTruthy();
+      expect(objectIsFn(foo, foo)).toBeTruthy();
+      expect(objectIsFn(foo, bar)).toBeFalsy();
+      expect(objectIsFn(foo, sameFoo)).toBeTruthy();
     });
 
     test('signed zero', () => {
-      expect(objectIs(0, -0)).toBeFalsy();
-      expect(objectIs(+0, -0)).toBeFalsy();
-      expect(objectIs(-0, -0)).toBeTruthy();
+      expect(objectIsFn(0, -0)).toBeFalsy();
+      expect(objectIsFn(+0, -0)).toBeFalsy();
+      expect(objectIsFn(-0, -0)).toBeTruthy();
     });
 
     test('NaN', () => {
-      expect(objectIs(Number.NaN, 0 / 0)).toBeTruthy();
-      expect(objectIs(Number.NaN, Number.NaN)).toBeTruthy();
+      expect(objectIsFn(Number.NaN, 0 / 0)).toBeTruthy();
+      expect(objectIsFn(Number.NaN, Number.NaN)).toBeTruthy();
     });
   });
 });
