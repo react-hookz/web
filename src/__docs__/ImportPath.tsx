@@ -1,14 +1,26 @@
 import { DocsContext, Source } from '@storybook/addon-docs';
 import React, { FC, useContext } from 'react';
 
-export const ImportPath: FC = () => {
+export interface ImportPathProps {
+  root?: boolean;
+  direct?: boolean;
+}
+
+export const ImportPath: FC<ImportPathProps> = ({ root = true, direct = true }) => {
   const context = useContext(DocsContext);
-  const componentName = context.kind?.split('/')[1] || 'UnknownComponent';
+  const componentName = context.title?.split('/')[1] || 'UnknownComponent';
 
-  const path = `
-import { ${componentName} } from '@react-hookz/web'; // cjs
-import { ${componentName} } from '@react-hookz/web/esm'; // esm
-  `;
+  const imports: string[] = [];
 
-  return <Source language="js" code={path} />;
+  if (root) {
+    imports.push(`// root import\nimport { ${componentName} } from '@react-hookz/web';`);
+  }
+
+  if (direct) {
+    imports.push(
+      `// direct import\nimport { ${componentName} } from '@react-hookz/web/${componentName}';`
+    );
+  }
+
+  return <Source language="js" code={imports.join('\n')} />;
 };

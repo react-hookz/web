@@ -17,4 +17,9 @@ module.exports = {
     fastRefresh: true,
   },
   staticDirs: ['./public'],
+  managerWebpack: (config, options) => {
+    //ToDo: maybe enable cache mack when storybook is fixed
+    options.cache.set = () => Promise.resolve();
+    return config;
+  },
 };
