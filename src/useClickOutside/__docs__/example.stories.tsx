@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useRef } from 'react';
-import { useClickOutside } from '../useClickOutside';
-import { useToggle } from '../../useToggle/useToggle';
+import { useClickOutside, useToggle } from '../..';
 
 export const Example: React.FC = () => {
   const [toggled, toggle] = useToggle();
