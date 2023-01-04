@@ -1,5 +1,5 @@
 import { resolveHookState } from '../..';
-import { areHookInputsEqual } from '../areHookInputsEqual';
+import { areHookInputsEqual, objectIs } from '../areHookInputsEqual';
 import { basicDepsComparator, off, on } from '../misc';
 
 describe('resolveHookState', () => {
@@ -97,5 +97,50 @@ describe('areHookInputsEqual', () => {
 
   it('should return true when pervDeps are equal', () => {
     expect(areHookInputsEqual([0], [0])).toBeTruthy();
+  });
+
+  describe('objectIs', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
+    const orginalObjectIs = Object.is.bind(undefined);
+
+    beforeAll(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      Object.is = undefined;
+    });
+
+    afterAll(() => {
+      Object.is = orginalObjectIs;
+    });
+
+    test('evaluation result is the same as using ===', () => {
+      expect(objectIs(25, 25)).toBeTruthy();
+      expect(objectIs('foo', 'foo')).toBeTruthy();
+      expect(objectIs('foo', 'bar')).toBeFalsy();
+      expect(objectIs(null, null)).toBeTruthy();
+      // eslint-disable-next-line unicorn/no-useless-undefined
+      expect(objectIs(undefined, undefined)).toBeTruthy();
+      expect(objectIs(window, window)).toBeTruthy();
+      expect(objectIs([], [])).toBeFalsy();
+
+      const foo = { a: 1 };
+      const bar = { a: 1 };
+      const sameFoo = foo;
+
+      expect(objectIs(foo, foo)).toBeTruthy();
+      expect(objectIs(foo, bar)).toBeFalsy();
+      expect(objectIs(foo, sameFoo)).toBeTruthy();
+    });
+
+    test('signed zero', () => {
+      expect(objectIs(0, -0)).toBeFalsy();
+      expect(objectIs(+0, -0)).toBeFalsy();
+      expect(objectIs(-0, -0)).toBeTruthy();
+    });
+
+    test('NaN', () => {
+      expect(objectIs(Number.NaN, 0 / 0)).toBeTruthy();
+      expect(objectIs(Number.NaN, Number.NaN)).toBeTruthy();
+    });
   });
 });

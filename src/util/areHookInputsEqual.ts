@@ -7,11 +7,11 @@ import type { DependencyList } from 'react';
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- not known x and y
-const is = (x: any, y: any) => (x === y && (x !== 0 || 1 / x === 1 / y)) || (x !== x && y !== y);
-
-const objectIs: (x: unknown, y: unknown) => boolean =
-  typeof Object.is === 'function' ? Object.is : is;
+export const objectIs: (x: unknown, y: unknown) => boolean =
+  typeof Object.is === 'function'
+    ? Object.is
+    : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (x: any, y: any) => (x === y && (x !== 0 || 1 / x === 1 / y)) || (x !== x && y !== y);
 
 // 1:1 how react compare previous dependency list with current dependency list
 
