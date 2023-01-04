@@ -32,32 +32,32 @@ yarn add @react-hookz/web
 
 As hooks was introduced to the world in React 16.8, `@react-hookz/web` requires - you guessed it -
 `react` and `react-dom` 16.8+.
-Also, as React does not support IE, `@react-hookz/web` does not do so either. You'll have to
-transpile your `node-modules` in order to run in IE.
+Also, as React does not support IE, `@react-hookz/web` don't either.
 
 ## Usage
 
-This package provides three levels of compilation:
+> This package distributed with ESNext language level and ES modules syntax. It helps us to ease the
+> support and provide you with the best hooks quality.  
+> But also this means that depending on your browser target and bundling configuration you might need
+> to transpile it. Every major bundler provides a way to transpile `node_modules` fully or partially.
+> Address your bundler documentation for more details.
 
-1. **Main**, the `/cjs` folder — CommonJS modules, with ES5 lang level.
-2. **ESM**, the `/esm` folder — ES modules (browser compatible), with ES5 lang level.
-3. **ESNext**, the `/esnext` folder — ES modules (browser compatible), with ESNext lang level.
-
-So, if you need the `useMountEffect` hook, depending on your needs, you can import it in three ways
-(there are actually more, but these are the three most common):
+You can import hooks two ways:
 
 ```ts
-// in case you need cjs modules
+// from the root of package
 import { useMountEffect } from '@react-hookz/web';
-// in case you need esm modules
-import { useMountEffect } from '@react-hookz/web/esm';
-// in case you want all the recent ES features
-import { useMountEffect } from '@react-hookz/web/esnext';
+// or single hook directly
+import { useMountEffect } from '@react-hookz/web/useMountEffect';
 ```
+
+In case your bundler supports tree-shaking (most of modern does) - both variants are equal and only
+necessary code will get into your bundle. Direct hook imports should be considered otherwise.
 
 ## Migrating from react-use
 
-`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974) of `react-use` by one of its former maintainers.
+`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974)
+of `react-use` by one of its former maintainers.
 
 Coming from `react-use`? Check out our
 [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).

@@ -31,7 +31,6 @@ export default function transformer(_: ts.Program): ts.TransformerFactory<ts.Sou
           const newModuleSpecifier = fac.createStringLiteral(`${node.moduleSpecifier.text}.js`);
           return fac.updateImportDeclaration(
             node,
-            node.decorators,
             node.modifiers,
             node.importClause,
             newModuleSpecifier,
@@ -42,7 +41,6 @@ export default function transformer(_: ts.Program): ts.TransformerFactory<ts.Sou
           const newModuleSpecifier = fac.createStringLiteral(`${node.moduleSpecifier.text}.js`);
           return fac.updateExportDeclaration(
             node,
-            node.decorators,
             node.modifiers,
             false,
             node.exportClause,

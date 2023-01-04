@@ -9,7 +9,7 @@ import {Meta} from '@storybook/addon-docs';
 [![NPM Version](https://flat.badgen.net/npm/v/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 [![NPM Downloads](https://flat.badgen.net/npm/dm/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 [![NPM Dependents](https://flat.badgen.net/npm/dependents/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
-[![Build](https://img.shields.io/github/workflow/status/react-hookz/web/CI?style=flat-square)](https://github.com/react-hookz/web/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/react-hookz/web/ci-cd.yml?branch=master&style=flat-square)](https://github.com/react-hookz/web/actions)
 [![Coverage](https://flat.badgen.net/codecov/c/github/react-hookz/web)](https://app.codecov.io/gh/react-hookz/web)
 [![Types](https://flat.badgen.net/npm/types/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 [![Tree Shaking](https://flat.badgen.net/bundlephobia/tree-shaking/@react-hookz/web)](https://bundlephobia.com/result?p=@react-hookz/web)
@@ -41,27 +41,28 @@ transpile your `node-modules` in order to run in IE.
 
 ## Usage
 
-This package provides three levels of compilation:
+> This package distributed with ESNext language level and ES modules syntax. It helps us to ease the
+support and provide you with the best hooks quality.  
+> But also this means that depending on your browser target and bundling configuration you might need
+to transpile it. Every major bundler provides a way to transpile `node_modules` fully or partially.
+Address your bundler documentation for more details.
 
-1. **Main**, the `/cjs` folder — CommonJS modules, with ES5 lang level.
-2. **ESM**, the `/esm` folder — ES modules (browser compatible), with ES5 lang level.
-3. **ESNext**, the `/esnext` folder — ES modules (browser compatible), with ESNext lang level.
-
-So, if you need the `useMountEffect` hook, depending on your needs, you can import it in three ways
-(there are actually more, but these are the three most common):
+You can import hooks two ways:
 
 ```ts
-// in case you need cjs modules
+// from the root of package
 import { useMountEffect } from '@react-hookz/web';
-// in case you need esm modules
-import { useMountEffect } from '@react-hookz/web/esm';
-// in case you want all the recent ES features
-import { useMountEffect } from '@react-hookz/web/esnext';
+// or single hook directly
+import { useMountEffect } from '@react-hookz/web/useMountEffect';
 ```
+
+In case your bundler supports tree-shaking (most of modern does) - both variants are equal and only
+necessary code will get into your bundle. Direct hook imports should be considered otherwise.
 
 ## Migrating from react-use
 
-`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974) of `react-use` by one of its former maintainers.
+`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974) 
+of `react-use` by one of its former maintainers.
 
 Coming from `react-use`? Check out our
 [migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).

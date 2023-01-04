@@ -1,7 +1,8 @@
-import {Canvas, Meta, Source, Story} from '@storybook/addon-docs';
-import {Example} from './example.stories';
+import {Canvas, Meta, Story} from '@storybook/addon-docs'
+import {Example} from './example.stories'
+import {ImportPath} from '../../__docs__/ImportPath'
 
-<Meta title="Side-effect/useCookieValue" component={Example} />
+<Meta title="Side-effect/useCookieValue" component={Example}/>
 
 # useCookieValue
 
@@ -15,7 +16,7 @@ Manages a single cookie.
 - Uses the `js-cookie` package under the hood.
 - SSR-friendly.
 - Hooks with the same key on the same page are synchronised. This synchronisation does not work
-  across tabs or on changes that are triggered by third-party code.
+across tabs or on changes that are triggered by third-party code.
 
 > **_This hook provides a stable API, meaning returned methods do not change between renders_**
 
@@ -29,9 +30,9 @@ Manages a single cookie.
 #### Example
 
 <Canvas columns={3}>
-  <Story story={Example} inline />
-  <Story story={Example} inline />
-  <Story story={Example} inline />
+    <Story story={Example} inline/>
+    <Story story={Example} inline/>
+    <Story story={Example} inline/>
 </Canvas>
 
 ## Reference
@@ -53,27 +54,20 @@ export function useCookieValue(key: string, options: UseCookieOptions = {}): Use
 
 #### Importing
 
-<Source
-  language="js"
-  code={`
-import { useCookieValue } from '@react-hookz/web/cjs/useCookieValue/useCookieValue'; // cjs
-import { useCookieValue } from '@react-hookz/web/esm/useCookieValue/useCookieValue'; // esm
-import { useCookieValue } from '@react-hookz/web/esnext/useCookieValue/useCookieValue' // esnext
-`}
-/>
+<ImportPath root={false}/>
 
 #### Arguments
 
 - **key** _`string`_ - Name of the cookie to manage.
 - **options** _`UseCookieOptions`_ _(default: {})_ - Cookie options that will be used during setting
-    and deleting the cookie. Has one extra option, that relates to the hook itself:
-  - **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with the cookie
-    value or `undefined`. _We suggest setting this to `false` during SSR._
+and deleting the cookie. Has one extra option, that relates to the hook itself:
+- **initializeWithValue** _`boolean`_ _(default: true)_ - Whether to initialize state with the cookie
+value or `undefined`. _We suggest setting this to `false` during SSR._
 
 #### Return
 
 0. **state** - Value of the managed cookie. `undefined` means the value has not been fetched yet,
-    `null` means the cookie is absent.
+`null` means the cookie is absent.
 1. **set** - Set new value to the cookie.
 2. **remove** - Remove the cookie.
 3. **fetch** - Re-fetch the cookie value.

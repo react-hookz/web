@@ -1,33 +1,33 @@
-module.exports = {
+import { type Config } from 'jest';
+
+const cfg: Config = {
   projects: [
     {
       displayName: 'dom',
-      preset: 'ts-jest',
+      transform: {
+        '\\.[jt]sx?$': '@swc/jest',
+      },
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
       setupFiles: ['./src/__tests__/setup.ts'],
     },
+
     {
       displayName: 'ssr',
-      preset: 'ts-jest',
+      transform: {
+        '\\.[jt]sx?$': '@swc/jest',
+      },
       testEnvironment: 'node',
       testMatch: ['<rootDir>/src/**/__tests__/ssr.[jt]s?(x)'],
     },
 
     // needed for output bundle testing
     {
-      displayName: 'dom-cjs',
-      preset: 'ts-jest',
-      testEnvironment: 'jsdom',
-      testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
-      setupFiles: ['./src/__tests__/setup.ts'],
-      moduleNameMapper: {
-        '^../..$': '<rootDir>/cjs',
-      },
-    },
-    {
       displayName: 'dom-package',
-      preset: 'ts-jest',
+      transformIgnorePatterns: [],
+      transform: {
+        '\\.[jt]sx?$': '@swc/jest',
+      },
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
       setupFiles: ['./src/__tests__/setup.ts'],
@@ -40,3 +40,6 @@ module.exports = {
   coverageDirectory: './coverage',
   collectCoverageFrom: ['./src/**/*.{ts,js,tsx,jsx}', '!**/__tests__/**', '!**/__docs__/**'],
 };
+
+// eslint-disable-next-line import/no-default-export
+export default cfg;
