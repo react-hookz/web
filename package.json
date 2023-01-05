@@ -1,6 +1,6 @@
 {
   "name": "@react-hookz/web",
-  "version": "21.0.0",
+  "version": "22.0.0",
   "description": "React hooks done right, for browser and SSR.",
   "keywords": [
     "react",
