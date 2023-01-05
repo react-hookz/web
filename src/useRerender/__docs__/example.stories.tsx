@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useRenderCount } from '../../useRenderCount/useRenderCount';
-import { useRerender } from '../useRerender';
+import { useRenderCount, useRerender } from '../..';
 
 export const Example: React.FC = () => {
   const renders = useRenderCount();

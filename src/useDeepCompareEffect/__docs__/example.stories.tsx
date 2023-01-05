@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import * as React from 'react';
 import { useEffect } from 'react';
-import { useDeepCompareEffect } from '../useDeepCompareEffect';
-import { useRerender } from '../../useRerender/useRerender';
+import { useDeepCompareEffect, useRerender } from '../..';
 
 export const Example: React.FC = () => {
   const rerender = useRerender();

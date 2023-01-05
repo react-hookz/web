@@ -22,15 +22,12 @@ void (async () => {
     throw new TypeError(`directory for hook ${hookName} already exists`);
   }
 
-  await fs.appendFile(
-    path.join(srcDir, 'index.ts'),
-    `\nexport { ${hookName} } from './${hookName}/${hookName}';\n`
-  );
+  await fs.appendFile(path.join(srcDir, 'index.ts'), `\nexport * from './${hookName}';\n`);
 
   await fs.mkdir(hookDir);
   await fs.writeFile(
-    path.resolve(hookDir, `${hookName}.ts`),
-    `export function ${hookName}(): void {}\n`
+    path.resolve(hookDir, `index.ts`),
+    `export function ${hookName}(): void {\n}\n`
   );
 
   await fs.mkdir(path.resolve(hookDir, `__docs__`));
@@ -45,9 +42,9 @@ export const Example: React.FC = () => {
   );
   await fs.writeFile(
     path.resolve(hookDir, `__docs__/story.mdx`),
-    `import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+    `import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
-import { ImportPath } from '../../storybookUtil/ImportPath';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="New Hook/${hookName}" component={Example} />
 

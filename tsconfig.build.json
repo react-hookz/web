@@ -9,7 +9,7 @@
   ],
   "compilerOptions": {
     "noEmit": false,
-    "outDir": "./dist",
+    "outDir": "./esm",
     "declaration": true,
     "sourceMap": false,
     "plugins": [
