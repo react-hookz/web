@@ -27,55 +27,60 @@ If you are contributing for the first time, we recommend reading this
 > git branch --set-upstream-to=upstream/master master
 > ```
 >
-> After running these commands you'll be able to easily pull changes from the original repository with
+> After running these commands you'll be able to easily pull changes from the original repository
+> with
 > `git pull`.
 
 ## Development
 
+0. Perform self-check on hook usefulness. We're not interested in hooks that has too specific
+   usecase or hooks that can be easily achieved by composition of existing hooks.
 1. Implement the hook in the `src` folder.
-   - The file should be named after the hook and placed in a subdirectory also named after the hook.
+   - The file with hook implementation should be named `index.ts` and placed in a subdirectory
+     named after the hook.
    - The hook should have return types explicitly defined.
-   - The hook should have a JSDoc comment containing a description of the hook and an overview of its arguments.
-   - The hook should be exported by name, not by default.
-   - If the hook has custom types in its parameters or return values, they should be exported as well.
-   - Types and interfaces should not have prefixes like `I` or `T` (currently some types like this
-     still exists for compatibility reasons, but they will be removed in the future).
-   - The hook should be developed with SSR in mind.
-   - If the hook is stateful and exposes `setState` method, or is has async callbacks (that can
-     theoretically be resolved after component unmount), it should use `useSafeState` instead of
-     `useState`.
-   - If your hook reuses other @react-hookz/web hooks, import them as `import { useSafeState } from '../useSafeState/useSafeState';` instead of
+   - The hook should have a JSDoc comment containing a description of the hook and an overview of
+     its arguments.
+   - The hook should be exported by name, not default-exported.
+   - If the hook has custom types in its parameters or return values, they should be exported as
+     well.
+   - Types and interfaces should not have prefixes like `I` or `T`.
+   - The hook should be developed with SSR in mind, meaning that usage of hook in SSR environment
+     should not lead to errors.
+   - If your hook reuses other @react-hookz/web hooks, import them as
+     `import { useSafeState } from '../useSafeState';` instead of
      `import { useSafeState } from '..';`
 2. Re-export the hook implementation and all its custom types in `src/index.ts`.
 3. Fully test your hook. The tests should include tests for both DOM and SSR environments.
-   - Hook's tests should be placed in `__tests__` subdirectory, next to the source file - `dom.ts` for DOM
-     environment, `ssr.ts` for SSR environment.
-     For example: `src/useFirstMountState/__tests__/dom.ts` and `src/useFirstMountState/__tests__/ssr.ts`.
-   - Ideally, your hook should have 100% test coverage. If that is impossible, you should leave a comment
-     in the code describing why.
-   - Each hook should have at least 'should be defined' and 'should render' tests in `SSR`
+   - Hook's tests should be placed in `__tests__` subdirectory, next to the source file - `dom.ts`
+     for DOM environment, `ssr.ts` for SSR environment.  
+     For example: `src/useFirstMountState/__tests__/dom.ts`
+     and `src/useFirstMountState/__tests__/ssr.ts`.
+   - Ideally, your hook should have 100% test coverage. If that is impossible, you should leave a
+     comment in the code describing why.
+   - Each hook should have at least `'should be defined'` and `'should render'` tests in `SSR`
      environment.
    - All utility functions should also be tested.
 4. Write docs for your hook.
    - Docs should be placed in `__docs__` sub-folder, near the source file.  
      For example: `src/useFirstMountState/__docs__/story.mdx`.
    - Docs are built with Storybook. You can run `yarn storybook:watch` to preview your work.
-   - Write a short example demonstrating your hook in `example.stories.tsx` within the `__docs__` folder.
-     (If the filename misses the `.stories.tsx` part, Storybook won't find your example.)
+   - Write a short example demonstrating your hook in `example.stories.tsx` within the `__docs__`
+     folder. (If the filename misses the `.stories.tsx` part, Storybook won't find your example.)  
      For example: `src/useFirstMountState/__docs__/example.stories.tsx`.
-   - Docs are written in MDX format.
+   - Docs are written in MDX format.  
      [Read more about storybook docs](https://storybook.js.org/docs/react/writing-docs/introduction).
 5. Add a summary of the hook and a link to the docs to `README.md`.
-6. After all the above steps are done, run `yarn lint:fix` to ensure that everything is styled by our
-   standards.
+6. After all the above steps are done, run `yarn lint:fix` to ensure that everything is styled by
+   our standards and there are no linting issues.
 7. `yarn new-hook myAwesomeHook` will help you to create a proper file structure for the new hook.
 
 ### Notes on porting a hook from `react-use`
 
-- Check from #33 and the [migration guide](src/__docs__/migrating-from-react-use.story.mdx)
-  that the hook has been approved for porting. If there is no previous discussion on the hook in #33,
-  leave a comment there asking if you could port the hook. In your comment, provide a valid use-case
-  for the hook.
+- Check from #33 and the [migration guide](src/__docs__/migrating-from-react-use.story.mdx) that the
+  hook has been approved for porting. If there is no previous discussion on the hook in #33, leave a
+  comment there asking if you could port the hook. In your comment, provide a valid use-case for the
+  hook.
 - Don't just copy-paste the hook. Think through the code:
   - Is there sufficient tests?
   - Could the hook be implemented by reusing existing hooks in `@react-hookz/web`?
