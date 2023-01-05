@@ -108,7 +108,7 @@
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^9.1.0",
     "commitizen": "^4.2.6",
-    "commitlint": "^17.2.0",
+    "commitlint": "^17.4.0",
     "husky": "^8.0.3",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
