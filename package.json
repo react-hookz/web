@@ -21,22 +21,20 @@
     "access": "public"
   },
   "files": [
-    "dist"
+    "cjs",
+    "esm"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "module": "dist/index.js",
-  "esnext": {
-    "browser": "dist/index.js",
-    "module": "dist/index.js"
-  },
+  "main": "./cjs/index.js",
+  "types": "./cjs/index.d.ts",
+  "module": "./esm/index.js",
   "sideEffects": false,
   "scripts": {
     "prepare": "husky install",
     "commit": "git-cz",
-    "build": "yarn build:cleanup && yarn build:dist",
+    "build": "yarn build:cleanup && concurrently yarn:build:cjs yarn:build:esm",
     "build:cleanup": "rimraf ./dist",
-    "build:dist": "ttsc -p ./tsconfig.build.json",
+    "build:cjs": "ttsc -p ./tsconfig.build.json --module CommonJS --outDir ./cjs",
+    "build:esm": "ttsc -p ./tsconfig.build.json --module ESNext --outDir ./esm",
     "new-hook": "node ./utility/add-new-hook.js",
     "test": "jest --selectProjects dom ssr",
     "test:coverage": "yarn test --coverage",
@@ -108,6 +106,7 @@
     "babel-loader": "^9.1.2",
     "commitizen": "^4.2.6",
     "commitlint": "^17.4.0",
+    "concurrently": "^7.6.0",
     "husky": "^8.0.3",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",

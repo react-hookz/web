@@ -18,7 +18,7 @@ export const ImportPath: FC<ImportPathProps> = ({ root = true, direct = true }) 
 
   if (direct) {
     imports.push(
-      `// direct import\nimport { ${componentName} } from '@react-hookz/web/${componentName}';`
+      `// direct import\nimport { ${componentName} } from '@react-hookz/web/esm/${componentName}';`
     );
   }
 
