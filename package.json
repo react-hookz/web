@@ -106,7 +106,7 @@
     "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
-    "babel-loader": "^9.1.0",
+    "babel-loader": "^9.1.2",
     "commitizen": "^4.2.6",
     "commitlint": "^17.2.0",
     "husky": "^8.0.3",
