@@ -258,20 +258,27 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/wesgro">
+            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
+            <br />
+            <sub><b>Jake Ketcheson</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/axelboc">
             <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="100;" alt="axelboc"/>
             <br />
             <sub><b>Axel Bocciarelli</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/lensbart">
             <img src="https://avatars.githubusercontent.com/u/20876627?v=4" width="100;" alt="lensbart"/>
             <br />
             <sub><b>Bart Lens</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/birant">
             <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="100;" alt="birant"/>
@@ -298,13 +305,6 @@ Coming from `react-use`? Check out our
             <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
             <br />
             <sub><b>Daniel Friesen</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/wesgro">
-            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
-            <br />
-            <sub><b>Jake Ketcheson</b></sub>
         </a>
     </td>
     <td align="center">
