@@ -10,4 +10,11 @@ describe('useResponsiveText', () => {
     const { result } = renderHook(() => useResponsiveText());
     expect(result.error).toBeUndefined();
   });
+
+  it('should return a ref', () => {
+    const { result } = renderHook(() => useResponsiveText());
+    const [ref] = result.current;
+
+    expect(ref).toBeTruthy();
+  });
 });

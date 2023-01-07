@@ -2,9 +2,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Example } from './example.stories';
 import { ImportPath } from '../../__docs__/ImportPath';
 
-<Meta title="New Hook/useResponsiveText" component={Example} />
+<Meta title="DOM/useResponsiveText" component={Example} />
 
 # useResponsiveText
+
+Style the referenced element to have a `font-size` thats a percentage of its parent element.
 
 #### Example
 
@@ -15,7 +17,7 @@ import { ImportPath } from '../../__docs__/ImportPath';
 ## Reference
 
 ```ts
-
+export function useResponsiveText<T extends HTMLElement>(percentage = 5): [RefObject<T>];
 ```
 
 #### Importing
@@ -24,4 +26,8 @@ import { ImportPath } from '../../__docs__/ImportPath';
 
 #### Arguments
 
+- **percentage** _`number`_ _(default: 5)_ - `font-size` percentage of the parent element.
+
 #### Return
+
+- **ref** _`[RefObject<T>]`_ - Ref Object to be used on the target element
