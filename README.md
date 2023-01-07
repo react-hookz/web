@@ -207,6 +207,8 @@ Coming from `react-use`? Check out our
     — Subscribes an event listener to a target element.
   - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
     — Invokes a callback when a keyboard event occurs on the chosen target.
+  - [**`useResponsiveText`**](https://react-hookz.github.io/web/?path=/docs/dom-useresponsivetext--example)
+    — Style referenced element to have a `font-size` thats a percentage of its parent element.
   - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
     — Tracks the inner dimensions of the browser window.
 
