@@ -16,8 +16,8 @@ export function useResponsiveText<T extends HTMLElement | null>(percentage = 5):
   const responsiveText = <P extends HTMLElement | null>(flexRef: RefObject<P>) => {
     const el = flexRef.current;
     if (flexRef && el) {
-      const relFontsize = (el?.parentElement?.offsetWidth || 0) * (percentage / 100);
-      el.style.fontSize = `${relFontsize}px`;
+      const relSize = (el?.parentElement?.offsetWidth || 0) * (percentage / 100);
+      el.style.fontSize = `${relSize}px`;
     }
   };
 
