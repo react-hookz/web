@@ -78,3 +78,5 @@ export { resolveHookState } from './util/resolveHookState';
 
 // Types
 export * from './types';
+
+export * from './useResponsiveText';
