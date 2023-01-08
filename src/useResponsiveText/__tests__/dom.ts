@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
+
 import { useResponsiveText } from '../..';
 
 describe('useResponsiveText', () => {
@@ -12,7 +13,7 @@ describe('useResponsiveText', () => {
   });
 
   it('should return a ref', () => {
-    const { result } = renderHook(() => useResponsiveText());
+    const { result } = renderHook(() => useResponsiveText(10));
     const [ref] = result.current;
 
     expect(ref).toBeTruthy();
