@@ -36,10 +36,9 @@ Also, as React does not support IE, `@react-hookz/web` don't either.
 
 ## Usage
 
-> This package distributed with ESNext language level and ES modules syntax. It helps us to ease the
-> support and provide you with the best hooks quality.  
-> But also this means that depending on your browser target and bundling configuration you might need
-> to transpile it. Every major bundler provides a way to transpile `node_modules` fully or partially.
+> This package distributed with ESNext language level and both, CJS and ES imports.  
+> It means that depending on your browser target you might need to transpile it. Every major
+> bundler provides a way to transpile `node_modules` fully or partially.
 > Address your bundler documentation for more details.
 
 You can import hooks two ways:
@@ -48,11 +47,13 @@ You can import hooks two ways:
 // from the root of package
 import { useMountEffect } from '@react-hookz/web';
 // or single hook directly
-import { useMountEffect } from '@react-hookz/web/useMountEffect';
+import { useMountEffect } from '@react-hookz/web/esm/useMountEffect';
 ```
 
 In case your bundler supports tree-shaking (most of modern does) - both variants are equal and only
-necessary code will get into your bundle. Direct hook imports should be considered otherwise.
+necessary code will get into your bundle. Direct hook imports should be considered otherwise.  
+In case, for some reason, you are not able to use ES imports - you should direct-import hooks from
+`@react-hookz/web/esm` folder.
 
 ## Migrating from react-use
 
@@ -259,20 +260,27 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/wesgro">
+            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
+            <br />
+            <sub><b>Jake Ketcheson</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/axelboc">
             <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="100;" alt="axelboc"/>
             <br />
             <sub><b>Axel Bocciarelli</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/lensbart">
             <img src="https://avatars.githubusercontent.com/u/20876627?v=4" width="100;" alt="lensbart"/>
             <br />
             <sub><b>Bart Lens</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/birant">
             <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="100;" alt="birant"/>
@@ -299,13 +307,6 @@ Coming from `react-use`? Check out our
             <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
             <br />
             <sub><b>Daniel Friesen</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/wesgro">
-            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
-            <br />
-            <sub><b>Jake Ketcheson</b></sub>
         </a>
     </td>
     <td align="center">

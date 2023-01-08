@@ -1,3 +1,25 @@
+# [22.0.0](https://github.com/react-hookz/web/compare/v21.0.0...v22.0.0) (2023-01-05)
+
+
+### Features
+
+* rename all hook implementation files to `index.ts` ([#1065](https://github.com/react-hookz/web/issues/1065)) ([34c36f2](https://github.com/react-hookz/web/commit/34c36f20bb41c11db55bbf0ba54d78d344024807))
+
+
+### BREAKING CHANGES
+
+* all current hook implementation fies renamed to index to allow usage of directory imports and avoid redundant reexporting.
+Such change breaks previous direct imports, but simplifies import string and solves redundant hook name duplication.
+
+4ex:
+```
+// previously
+import { useUpdate } from "@react-hookz/web/useUpdate/useUpdate"
+
+// now
+import { useUpdate } from "@react-hookz/web/useUpdate"
+```
+
 # [21.0.0](https://github.com/react-hookz/web/compare/v20.1.0...v21.0.0) (2023-01-04)
 
 

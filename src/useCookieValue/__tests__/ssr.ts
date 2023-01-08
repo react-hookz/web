@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useCookieValue } from '../useCookieValue';
+import { useCookieValue } from '..';
 
 describe('useCookieValue', () => {
   it('should be defined', () => {

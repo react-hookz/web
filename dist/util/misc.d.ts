@@ -1,0 +1,10 @@
+import { DependencyList } from 'react';
+import type { DependenciesComparator } from '../types';
+export declare function on<T extends EventTarget>(obj: T | null, ...args: Parameters<T['addEventListener']> | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]): void;
+export declare function off<T extends EventTarget>(obj: T | null, ...args: Parameters<T['removeEventListener']> | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]): void;
+export declare const hasOwnProperty: <T extends Record<string | number | symbol, any>, K extends string | number | symbol>(obj: T, property: K) => obj is T & Record<K, unknown>;
+export declare const yieldTrue: () => true;
+export declare const yieldFalse: () => false;
+export declare const basicDepsComparator: DependenciesComparator;
+export type EffectCallback = (...args: any[]) => any;
+export type EffectHook<Callback extends EffectCallback = EffectCallback, Deps extends DependencyList | undefined = DependencyList | undefined, RestArgs extends any[] = any[]> = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);

@@ -55,9 +55,8 @@ jobs:
       - name: "Build"
         run: yarn build
 
-# ToDo: uncomment when https://github.com/facebook/jest/issues/13715 will be fixed
-# - name: "Tests against build"
-#   run: yarn jest --selectProjects dom-package
+      - name: "Tests against build"
+        run: yarn jest --selectProjects dom-package
 
   test:
     name: "Test"

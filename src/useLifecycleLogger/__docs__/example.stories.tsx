@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useRerender } from '../..';
-import { useLifecycleLogger } from '../useLifecycleLogger';
+import { useRerender, useLifecycleLogger } from '../..';
 
 export const Example: React.FC = () => {
   const rerender = useRerender();

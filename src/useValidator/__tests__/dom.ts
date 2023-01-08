@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useValidator } from '../..';
-import { UseValidatorReturn } from '../useValidator';
+import { useValidator, UseValidatorReturn } from '../..';
 
 describe('useValidator', () => {
   it('should be defined', () => {
