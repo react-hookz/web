@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {Example} from './example.stories';
+import {ImportPath} from '../../__docs__/ImportPath';
 
 <Meta title="Lifecycle/useCustomCompareEffect" component={Example} />
 
@@ -9,7 +9,7 @@ import { ImportPath } from '../../__docs__/ImportPath';
 Like `useEffect` but uses provided comparator function to validate dependency changes.
 
 - SSR-friendly, meaning that comparator won't be called on the server.
-- Ability to change underlying effect hook (default to `useEffect`).
+- Ability to change the underlying effect hook (the default is `useEffect`).
 
 #### Example
 
@@ -40,13 +40,12 @@ export function useCustomCompareEffect<
 
 #### Arguments
 
-- **callback** _`EffectCallback`_ - Function that will be passed to underlying effect hook.
-- **deps** _`React.DependencyList`_ - Dependencies list like for `useEffect`. If not undefined -
-  effect will be triggered when deps change AND conditions satisfy predicate.
-- **comparator** _`DependenciesComparator<Deps> `_ - Function that compares two dependencies
-  arrays, and returns true in case they're equal.
-- **effectHook** _`EffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to
-  run callback. Must comply `useEffect` signature, meaning that callback should be placed as first
-  argument and dependencies list as second.
-- **...effectHookRestArgs** _`HookRestArgs`_ - Extra arguments that passed to effectHook. Meaning
-  the arguments that are after 2nd argument.
+- **callback** _`EffectCallback`_ -  Function that will be passed to the underlying effect hook.
+- **deps** _`DependencyList`_ - Dependency list like the one passed to `useEffect`.
+- **comparator** _`DependenciesComparator<Deps> `_ - Function that compares two dependency arrays,
+  and returns `true` if they're equal.
+- **effectHook** _`EffectHook<Callback, Deps, HookRestArgs>`_ - Effect hook that will be used to run
+  `callback`. Must match the type signature of `useEffect`, meaning that the `callback` should be
+  placed as the first argument and the dependency list as second.
+- **...effectHookRestArgs** _`HookRestArgs`_ - Extra arguments that are passed to the `effectHook`
+  after the `callback` and the dependency list.
