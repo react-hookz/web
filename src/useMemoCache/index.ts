@@ -10,7 +10,9 @@ const none = Symbol();
 type None = typeof none;
 type CachedItem<State> = { state: State; dependencyList: DependencyList };
 
-const createCache = <State>(customAreHookInputsEqual?: typeof nativeAreHookInputsEqual) => {
+export const createMemoCache = <State>(
+  customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
+) => {
   const cache = new Map<string, Set<CachedItem<State>>>();
   const areHookInputsEqual = customAreHookInputsEqual ?? nativeAreHookInputsEqual;
 
@@ -65,23 +67,23 @@ export const useMemoCache = <State>(
   factory: () => State,
   deps: DependencyList,
   customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
-) => {
+): State => {
   const syncedCustomAreHookInputsEqual = useSyncedRef(customAreHookInputsEqual);
-  const cache = useMemo(
-    () => createCache<State>(syncedCustomAreHookInputsEqual.current),
+  const memoCache = useMemo(
+    () => createMemoCache<State>(syncedCustomAreHookInputsEqual.current),
     [syncedCustomAreHookInputsEqual]
   );
 
   const memo = useMemo(() => {
-    const cachedState = cache.get(deps);
+    const cachedState = memoCache.get(deps);
 
-    if (!cache.isNone(cachedState)) {
+    if (!memoCache.isNone(cachedState)) {
       return cachedState;
     }
 
     const state = factory();
 
-    cache.set(deps, state);
+    memoCache.set(deps, state);
 
     return state;
     // eslint-disable-next-line react-hooks/exhaustive-deps

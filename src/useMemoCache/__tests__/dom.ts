@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { DependencyList } from 'react';
-import { useMemoCache } from '../..';
+import { useMemoCache, createMemoCache } from '../..';
 
 describe('useMemoCache', () => {
   it('should be defined', () => {
@@ -138,5 +138,72 @@ describe('useMemoCache', () => {
 
     expect(result.current).toEqual([1, 2]);
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  describe('createCache', () => {
+    it(`should return 'none' when there is no cached value`, () => {
+      const memoCache = createMemoCache();
+      const dependencyList = [1, 2];
+
+      const cachedValue = memoCache.get(dependencyList);
+
+      expect(memoCache.isNone(cachedValue)).toBeTruthy();
+    });
+
+    it('should return cached value', () => {
+      const memoCache = createMemoCache();
+
+      const dependencyList = [1, 2];
+      const value = Object.values(dependencyList);
+
+      memoCache.set(dependencyList, value);
+      const cachedValue = memoCache.get(dependencyList);
+
+      expect(cachedValue).toBe(value);
+      expect(memoCache.isNone(cachedValue)).toBeFalsy();
+    });
+
+    it('should compare dependency list like React', () => {
+      const memoCache = createMemoCache();
+
+      const dependencyList = [1, {}];
+      const value = Object.values(dependencyList);
+
+      memoCache.set(dependencyList, value);
+      const cachedValue1 = memoCache.get(dependencyList);
+
+      expect(cachedValue1).toBe(value);
+      expect(memoCache.isNone(cachedValue1)).toBeFalsy();
+
+      const cachedValue2 = memoCache.get([...dependencyList]);
+
+      expect(cachedValue2).toBe(value);
+      expect(memoCache.isNone(cachedValue2)).toBeFalsy();
+
+      const cachedValue3 = memoCache.get([1, {}]);
+
+      expect(memoCache.isNone(cachedValue3)).toBeTruthy();
+    });
+
+    it('should work with custom `areHookInputsEqual`', () => {
+      const memoCache = createMemoCache(
+        (nextDeps: DependencyList, prevDeps: DependencyList | null) =>
+          JSON.stringify(nextDeps) === JSON.stringify(prevDeps)
+      );
+
+      const dependencyList = [1, {}];
+      const value = Object.values(dependencyList);
+
+      memoCache.set(dependencyList, value);
+      const cachedValue1 = memoCache.get(dependencyList);
+
+      expect(cachedValue1).toBe(value);
+      expect(memoCache.isNone(cachedValue1)).toBeFalsy();
+
+      const cachedValue2 = memoCache.get([1, {}]);
+
+      expect(cachedValue2).toBe(value);
+      expect(memoCache.isNone(cachedValue1)).toBeFalsy();
+    });
   });
 });
