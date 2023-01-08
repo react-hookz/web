@@ -44,10 +44,13 @@ export const createMemoCache = <State>(
       cache.set(key, new Set());
     }
 
-    const cachedItem = cache.get(key);
+    const cached = cache.get(key);
+    const canAddItem =
+      cached &&
+      ![...cached.values()].some((item) => areHookInputsEqual(item.dependencyList, dependencyList));
 
-    if (cachedItem) {
-      cachedItem.add({ dependencyList, state });
+    if (canAddItem) {
+      cached.add({ dependencyList, state });
     }
   };
 
