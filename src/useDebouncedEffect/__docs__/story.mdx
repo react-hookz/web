@@ -1,12 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {Example} from './example.stories';
+import {ImportPath} from '../../__docs__/ImportPath';
 
 <Meta title="Lifecycle/useDebouncedEffect" component={Example} />
 
 # useDebouncedEffect
 
-Like `useEffect`, but passed function is debounced.
+Like `useEffect`, but the passed function is debounced.
 
 #### Example
 
@@ -33,8 +33,7 @@ export function useDebouncedEffect(
 
 - **callback** _`(...args: any[]) => void`_ - Callback like for `useEffect`, but without ability to
   return a cleanup function.
-- **deps** _`DependencyList`_ - Dependencies list that will be passed to underlying `useEffect` and
-  `useDebouncedCallback`.
-- **delay** _`number`_ - Debounce delay.
+- **deps** _`DependencyList`_ - Dependency list like the one passed to `useEffect`.
+- **delay** _`number`_ - Debounce delay (in milliseconds).
 - **maxWait** _`number`_ _(default: `0`)_ The maximum time `callback` is allowed to be delayed
   before it's invoked. `0` means no max wait.

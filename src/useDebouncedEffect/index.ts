@@ -3,15 +3,14 @@ import { DependencyList, useEffect } from 'react';
 import { useDebouncedCallback } from '../useDebouncedCallback';
 
 /**
- * Like `useEffect`, but passed function is debounced.
+ * Like `useEffect`, but the passed function is debounced.
  *
  * @param callback Callback like for `useEffect`, but without ability to return
  * a cleanup function.
- * @param deps Dependencies list that will be passed to underlying `useEffect`
- * and `useDebouncedCallback`.
- * @param delay Debounce delay.
- * @param maxWait Maximum amount of milliseconds that function can be delayed
- * before it's force execution. 0 means no max wait.
+ * @param deps Dependency list like the one passed to `useEffect`.
+ * @param delay Debounce delay (in milliseconds).
+ * @param maxWait The maximum time `callback` is allowed to be delayed
+ * before it's invoked. `0` means no max wait.
  */
 export function useDebouncedEffect(
   callback: (...args: any[]) => void,
