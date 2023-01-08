@@ -4,15 +4,16 @@ import { useCustomCompareEffect } from '../useCustomCompareEffect';
 import { EffectCallback, EffectHook } from '../util/misc';
 
 /**
- * Like `useEffect` but uses `@react-hookz/deep-equal` comparator function to validate deep
+ * Like `useEffect`, but uses `@react-hookz/deep-equal` comparator function to validate deep
  * dependency changes.
  *
- * @param callback Function that will be passed to underlying effect hook.
- * @param deps Dependencies list, like for `useEffect` hook.
- * @param effectHook Effect hook that will be used to run callback. Must comply `useEffect`
- * signature, meaning that callback should be placed as first argument and dependencies list
- * as second.
- * @param effectHookRestArgs Extra arguments that passed to effectHook.
+ * @param callback Function that will be passed to the underlying effect hook.
+ * @param deps Dependency list like the one passed to `useEffect`.
+ * @param effectHook Effect hook that will be used to run
+ * `callback`. Must match the type signature of `useEffect`, meaning that the `callback` should be
+ * placed as the first argument and the dependency list as second.
+ * @param effectHookRestArgs Extra arguments that are passed to the `effectHook`
+ * after the `callback` and the dependency list.
  */
 export function useDeepCompareEffect<
   Callback extends EffectCallback = EffectCallback,
