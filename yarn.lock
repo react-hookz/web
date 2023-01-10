@@ -1166,14 +1166,14 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@commitlint/cli@^17.2.0", "@commitlint/cli@^17.4.0":
-  version "17.4.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.4.0.tgz#14a5f9b713a5b60ff1a0cfce66b0bb207954c1ad"
-  integrity sha512-SEY4sYe8yVlgxPP7X0wJb96DBAGBPsCsy6QbqJt/UECbIAjDeDV5xXBV4jnS7T/qMC10sk6Ub9kDhEX0VWvblw==
+"@commitlint/cli@^17.2.0", "@commitlint/cli@^17.4.1":
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.4.1.tgz#71086653a42abafe5519c6c5f8ada35b17f1dc53"
+  integrity sha512-W8OJwz+izY+fVwyUt1HveCDmABMZNRVZHSVPw/Bh9Y62tp11SmmQaycgbsYLMiMy7JGn4mAJqEGlSHS9Uti9ZQ==
   dependencies:
     "@commitlint/format" "^17.4.0"
     "@commitlint/lint" "^17.4.0"
-    "@commitlint/load" "^17.4.0"
+    "@commitlint/load" "^17.4.1"
     "@commitlint/read" "^17.4.0"
     "@commitlint/types" "^17.4.0"
     execa "^5.0.0"
@@ -1261,6 +1261,26 @@
     "@commitlint/execute-rule" "^17.4.0"
     "@commitlint/resolve-extends" "^17.4.0"
     "@commitlint/types" "^17.4.0"
+    chalk "^4.1.0"
+    cosmiconfig "^8.0.0"
+    cosmiconfig-typescript-loader "^4.0.0"
+    lodash.isplainobject "^4.0.6"
+    lodash.merge "^4.6.2"
+    lodash.uniq "^4.5.0"
+    resolve-from "^5.0.0"
+    ts-node "^10.8.1"
+    typescript "^4.6.4"
+
+"@commitlint/load@^17.4.1":
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.4.1.tgz#e1073e0264c84b304f5ab22862217152daca5d27"
+  integrity sha512-6A7/LhIaQpL4ieciIDcVvK2d5z/UI1GBrtDaHm6sQSCL0265clB2/F7XKQNTJHXv9yG4LByT2r+QCpM4GugIfw==
+  dependencies:
+    "@commitlint/config-validator" "^17.4.0"
+    "@commitlint/execute-rule" "^17.4.0"
+    "@commitlint/resolve-extends" "^17.4.0"
+    "@commitlint/types" "^17.4.0"
+    "@types/node" "*"
     chalk "^4.1.0"
     cosmiconfig "^8.0.0"
     cosmiconfig-typescript-loader "^4.0.0"
@@ -5746,12 +5766,12 @@ commitizen@^4.0.3, commitizen@^4.2.6:
     strip-bom "4.0.0"
     strip-json-comments "3.1.1"
 
-commitlint@^17.4.0:
-  version "17.4.0"
-  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-17.4.0.tgz#84eecbbfcbc7f6faf5a88d1564f68141f7fbbdf7"
-  integrity sha512-ec+KR2iBx0NVxkUvgbG19ZAZhFUyXlhrvFpJhcijXn7oVIzorlxHLMdXrC5iUAs4+3GkL/c/IMd0ZqXYVjnJJg==
+commitlint@^17.4.1:
+  version "17.4.1"
+  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-17.4.1.tgz#bdb382a59e12b78ab3e1b84133957e1bd128a9c8"
+  integrity sha512-stTT0LYdoIUMstnaqwuVzwb7ujVWvw/1qLxFNY9jFlwX8/kLMEWX0iFOPMeiLRda4T90beNExWFc8mPe98tLzQ==
   dependencies:
-    "@commitlint/cli" "^17.4.0"
+    "@commitlint/cli" "^17.4.1"
     "@commitlint/types" "^17.4.0"
 
 common-ancestor-path@^1.0.1:
