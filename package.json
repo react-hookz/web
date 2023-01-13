@@ -115,7 +115,7 @@
     "prettier": "^2.8.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.0.0",
     "semantic-release": "^20.0.2",
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.15",
