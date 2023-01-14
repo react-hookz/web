@@ -45,6 +45,7 @@ export * from './useValidator';
 export * from './useNetworkState';
 export * from './usePermission';
 export * from './useVibrate';
+export * from './useClipboard';
 
 // Miscellaneous
 export * from './useSyncedRef';

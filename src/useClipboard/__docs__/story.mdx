@@ -1,0 +1,31 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {Example} from './example.stories';
+import {ImportPath} from '../../__docs__/ImportPath';
+
+<Meta title="Navigator/useClipboard" component={Example} />
+
+# useClipboard
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Return
+
+- **eventHandlers**
+    - **onCopy** _`(event: ClipboardEvent) => void`_ - Event handler for the `copy` event.
+    - **onCut** _`(event: ClipboardEvent) => void`_ - Event handler for the `cut` event.
+    - **onPaste** _`(event: ClipboardEvent) => void`_ - Event handler for the `paste` event.
+- **setClipboardContent** _`(content: unknown) => void`_ - Populate the clipboard with `content`.
