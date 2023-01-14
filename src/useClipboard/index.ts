@@ -10,11 +10,18 @@ export function useClipboard(): ClipboardMethods {
   return useMemo(
     () => ({
       read: (onSuccess, onFailure) => {
-        if (isBrowser && 'readText' in navigator.clipboard) {
-          navigator.clipboard
-            .readText()
-            .then((result) => onSuccess(result))
-            .catch(onFailure);
+        if (isBrowser) {
+          try {
+            navigator.clipboard
+              .readText()
+              .then((result) => onSuccess(result))
+              .catch(onFailure);
+          } catch {
+            // eslint-disable-next-line no-console
+            console.warn(
+              'Cannot read text from the clipboard. navigator.clipboard.readText is not supported by your browser.'
+            );
+          }
         }
       },
       write: (newClipText, onSuccess, onFailure) => {
