@@ -15,7 +15,7 @@ export const Example: React.FC = () => {
   return (
     <div>
       <p>
-        Window is <strong>{isVisible ? 'visible' : 'hidden'}</strong>
+        The document is <strong>{isVisible ? 'visible' : 'hidden'}</strong>
       </p>
     </div>
   );

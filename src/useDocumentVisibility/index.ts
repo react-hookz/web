@@ -10,8 +10,8 @@ export function useDocumentVisibility(initializeWithValue?: true): boolean;
 /**
  * Returns a boolean indicating whether the document is visible or not.
  *
- * @param initializeWithValue Whether to initialize state with the cookie value or `undefined`.
- *        _We suggest setting this to `false` during SSR._
+ * @param initializeWithValue Whether to initialize with the document visibility state or
+ * `undefined`. _Set this to `false` during SSR._
  */
 export function useDocumentVisibility(initializeWithValue = true): boolean | undefined {
   const [isVisible, setIsVisible] = useState(
