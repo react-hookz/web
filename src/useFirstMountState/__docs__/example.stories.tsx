@@ -7,11 +7,7 @@ export const Example: React.FC = () => {
 
   return (
     <div>
-      <div>
-        {isFirstMount
-          ? 'This component just mounted'
-          : 'Not first mount, component already been updated'}
-      </div>
+      <div>{isFirstMount ? 'This is the first render.' : 'This is not the first render.'}</div>
       <button
         onClick={() => {
           rerender();
