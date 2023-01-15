@@ -21,9 +21,9 @@ export const Example: React.FC = () => {
 
     return (
       <p>
-        This component will generate alert 5 seconds after mount.
+        This component will display an alert 5 seconds after mount.
         <br />
-        Unmount will prevent it.
+        Unmounting the component will prevent it.
       </p>
     );
   };
@@ -32,14 +32,15 @@ export const Example: React.FC = () => {
     <div>
       {!isToggled && (
         <div>
-          As example component displays alert without interaction - it is initially unmounted.
+          Because the example component displays an alert without interaction, it is initially
+          unmounted.
         </div>
       )}
       <button
         onClick={() => {
           toggle();
         }}>
-        Toggle component {isToggled ? 'off' : 'on'}
+        Toggle example component {isToggled ? 'off' : 'on'}
       </button>{' '}
       {isToggled && <ToggledComponent />}
     </div>
