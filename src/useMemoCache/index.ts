@@ -14,18 +14,11 @@ type CachedItem<State> = { state: State; dependencyList: DependencyList };
 export const createMemoCache = <State>(
   customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
 ) => {
-  const cache = new Map<string, Set<CachedItem<State>>>();
+  const cache = new Set<CachedItem<State>>();
   const areHookInputsEqual = customAreHookInputsEqual ?? nativeAreHookInputsEqual;
 
   const get = (dependencyList: DependencyList) => {
-    const key = String(dependencyList);
-    const cached = cache.get(key);
-
-    if (!cached) {
-      return none;
-    }
-
-    const cachedItem = [...cached.values()].find((item) =>
+    const cachedItem = [...cache.values()].find((item) =>
       areHookInputsEqual(item.dependencyList, dependencyList)
     );
 
@@ -37,23 +30,12 @@ export const createMemoCache = <State>(
   };
 
   const set = (dependencyList: DependencyList, state: State) => {
-    const key = String(dependencyList);
-
-    const hasCachedItem = cache.has(key);
-
-    if (!hasCachedItem) {
-      cache.set(key, new Set());
-    }
-
-    const cachedItem = cache.get(key);
-    const canAddToItem =
-      cachedItem &&
-      ![...cachedItem.values()].some((item) =>
-        areHookInputsEqual(item.dependencyList, dependencyList)
-      );
+    const canAddToItem = ![...cache.values()].some((item) =>
+      areHookInputsEqual(item.dependencyList, dependencyList)
+    );
 
     if (canAddToItem) {
-      cachedItem.add({ dependencyList, state });
+      cache.add({ dependencyList, state });
     }
   };
 
