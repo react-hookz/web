@@ -111,7 +111,7 @@ describe('useMemoCache', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  it('should handle unstable refference of `areHookInputsEqual`', () => {
+  it('should handle unstable reference of `areHookInputsEqual`', () => {
     const spy = jest.fn();
     const initialDependencyList = [{ a: 1, b: 2 }];
 

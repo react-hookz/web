@@ -67,6 +67,11 @@ export const createMemoCache = <State>(
 
 /**
  * Like useMemo but with cache based on dependency list.
+ *
+ * @param factory useMemo factory function
+ * @param deps useMemo dependency list
+ * @param customAreHookInputsEqual function which indicates when dependencies are the same
+ * @returns useMemo result
  */
 export const useMemoCache = <State>(
   factory: () => State,

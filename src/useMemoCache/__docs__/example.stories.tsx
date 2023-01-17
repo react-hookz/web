@@ -1,57 +1,106 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useRef, useState } from 'react';
 import { useMemoCache } from '../..';
 
-const dependencyListMapper = {
-  true: [1, 3],
-  false: [2, 4],
-};
-
-const getSummary = (numbers: number[]) => numbers.reduce((a, b) => a + b);
-
-const boolToString = (bool: boolean) => String(bool) as 'true' | 'false';
-
 export const Example: React.FC = () => {
-  const isTruthy = useRef(false);
+  const { initialFilters: filters, initialUsers: users } = useMemo(() => {
+    const initialFilters = {
+      none: 'none',
+      premiumCustomer: 'premium customer',
+      customer: 'customer',
+      guest: 'guest',
+    };
 
-  const [dependencyList, setDependencyList] = useState(
-    () => dependencyListMapper[boolToString(isTruthy.current)]
-  );
+    const initialUsers = [
+      {
+        name: 'James',
+        type: initialFilters.customer,
+      },
+      {
+        name: 'Robert',
+        type: initialFilters.premiumCustomer,
+      },
+      {
+        name: 'Mary',
+        type: initialFilters.guest,
+      },
+      {
+        name: 'Elizabeth',
+        type: initialFilters.customer,
+      },
+      {
+        name: 'Richard',
+        type: initialFilters.guest,
+      },
+    ];
 
-  const memoSpy = useRef(0);
-  const memoCacheSpy = useRef(0);
+    return {
+      initialFilters,
+      initialUsers,
+    };
+  }, []);
 
-  const memo = useMemo(() => {
-    memoSpy.current++;
+  const [selectedFilter, setSelectedFilter] = useState(filters.none);
 
-    return getSummary(dependencyList);
-  }, dependencyList);
+  const memoCalls = useRef(0);
+  const memoCacheCalls = useRef(0);
 
-  const memoCache = useMemoCache(() => {
-    memoCacheSpy.current++;
+  const memoUsers = useMemo(() => {
+    memoCalls.current++;
 
-    return getSummary(dependencyList);
-  }, dependencyList);
+    return users.filter((user) => selectedFilter === filters.none || user.type === selectedFilter);
+  }, [filters.none, selectedFilter, users]);
+  const memoCacheUsers = useMemoCache(() => {
+    memoCacheCalls.current++;
 
-  const toggleDependencyList = () => {
-    isTruthy.current = !isTruthy.current;
+    return users.filter((user) => selectedFilter === filters.none || user.type === selectedFilter);
+  }, [filters.none, selectedFilter, users]);
 
-    setDependencyList(dependencyListMapper[boolToString(isTruthy.current)]);
-  };
+  const listing = [
+    {
+      name: useMemoCache.name,
+      calls: memoCacheCalls.current,
+      listedUsers: memoCacheUsers,
+    },
+    {
+      name: useMemo.name,
+      calls: memoCalls.current,
+      listedUsers: memoUsers,
+    },
+  ];
+
+  const labelDomId = 'user-type';
 
   return (
-    <div>
-      <section>
-        <h1>Memo</h1>
-        <p>summary: {memo}</p>
-        <p>calls: {memoSpy.current}</p>
-      </section>
-      <section>
-        <h1>Memo with cache</h1>
-        <p>summary: {memoCache}</p>
-        <p>calls: {memoCacheSpy.current}</p>
-      </section>
-      <button onClick={toggleDependencyList}>toggle dependency list</button>
-    </div>
+    <section>
+      <h1>Example of useMemoCache</h1>
+      <div>
+        {listing.map(({ name, listedUsers, calls }) => (
+          <section key={name}>
+            <h2>
+              {name}: calls {calls}
+            </h2>
+            <ul>
+              {listedUsers.map((user) => (
+                <li>
+                  <p>
+                    {user.name}: {user.type}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+      <label htmlFor={labelDomId}>
+        select filter:{' '}
+        <select id={labelDomId} onChange={({ target: { value } }) => setSelectedFilter(value)}>
+          {Object.values(filters).map((filter) => (
+            <option selected={selectedFilter === filter} value={filter}>
+              {filter}
+            </option>
+          ))}
+        </select>
+      </label>
+    </section>
   );
 };
