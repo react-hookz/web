@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import type { DependencyList } from 'react';
 import { areHookInputsEqual as nativeAreHookInputsEqual } from '../util/areHookInputsEqual';
 import { useSyncedRef } from '../useSyncedRef';
+import { useCustomCompareMemo } from '../useCustomCompareMemo';
 
 // eslint-disable-next-line symbol-description
 const none = Symbol();
@@ -84,20 +85,23 @@ export const useMemoCache = <State>(
     [syncedCustomAreHookInputsEqual]
   );
 
-  const memo = useMemo(() => {
-    const cachedState = memoCache.get(deps);
+  const memo = useCustomCompareMemo(
+    () => {
+      const cachedState = memoCache.get(deps);
 
-    if (!memoCache.isNone(cachedState)) {
-      return cachedState;
-    }
+      if (!memoCache.isNone(cachedState)) {
+        return cachedState;
+      }
 
-    const state = factory();
+      const state = factory();
 
-    memoCache.set(deps, state);
+      memoCache.set(deps, state);
 
-    return state;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+      return state;
+    },
+    deps,
+    syncedCustomAreHookInputsEqual.current ?? nativeAreHookInputsEqual
+  );
 
   return memo;
 };
