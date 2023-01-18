@@ -205,5 +205,33 @@ describe('useMemoCache', () => {
       expect(cachedValue2).toBe(value);
       expect(memoCache.isNone(cachedValue1)).toBeFalsy();
     });
+
+    it('cache should have max 64 entries', () => {
+      const memoCache = createMemoCache();
+
+      // eslint-disable-next-line symbol-description
+      const firstItem = Symbol();
+
+      const MAX_ENTRIES = 64;
+      let indexCounter = 0;
+
+      while (indexCounter !== MAX_ENTRIES) {
+        indexCounter++;
+
+        if (indexCounter === 1) {
+          memoCache.set([indexCounter], firstItem);
+        } else {
+          memoCache.set([indexCounter], null);
+        }
+      }
+
+      const state1 = memoCache.get([1]);
+      expect(state1).toBe(firstItem);
+
+      memoCache.set([indexCounter + 1], null);
+
+      const state2 = memoCache.get([1]);
+      expect(memoCache.isNone(state2)).toBeTruthy();
+    });
   });
 });

@@ -14,7 +14,10 @@ type CachedItem<State> = { state: State; dependencyList: DependencyList };
 export const createMemoCache = <State>(
   customAreHookInputsEqual?: typeof nativeAreHookInputsEqual
 ) => {
-  const cache = new Set<CachedItem<State>>();
+  const MAX_ENTRIES = 64;
+  let indexCounter = 0;
+
+  const cache = new Map<number, CachedItem<State>>();
   const areHookInputsEqual = customAreHookInputsEqual ?? nativeAreHookInputsEqual;
 
   const get = (dependencyList: DependencyList) => {
@@ -34,8 +37,14 @@ export const createMemoCache = <State>(
       areHookInputsEqual(item.dependencyList, dependencyList)
     );
 
+    indexCounter++;
+
     if (canAddToItem) {
-      cache.add({ dependencyList, state });
+      cache.set(indexCounter, { dependencyList, state });
+    }
+
+    if (canAddToItem && indexCounter > MAX_ENTRIES) {
+      cache.delete(indexCounter - MAX_ENTRIES);
     }
   };
 
