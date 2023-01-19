@@ -37,9 +37,9 @@ export const createMemoCache = <State>(
       areHookInputsEqual(item.dependencyList, dependencyList)
     );
 
-    indexCounter++;
-
     if (canAddToItem) {
+      indexCounter++;
+
       cache.set(indexCounter, { dependencyList, state });
     }
 
