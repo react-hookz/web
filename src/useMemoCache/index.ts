@@ -17,11 +17,11 @@ export const createMemoCache = <State>(
   const MAX_ENTRIES = 64;
   let indexCounter = 0;
 
-  const cache = new Map<number, CachedItem<State>>();
+  const cache: CachedItem<State>[] = [];
   const areHookInputsEqual = customAreHookInputsEqual ?? nativeAreHookInputsEqual;
 
   const get = (dependencyList: DependencyList) => {
-    const cachedItem = [...cache.values()].find((item) =>
+    const cachedItem = cache.find((item) =>
       areHookInputsEqual(item.dependencyList, dependencyList)
     );
 
@@ -32,19 +32,19 @@ export const createMemoCache = <State>(
     return none;
   };
 
+  const has = (dependencyList: DependencyList) => {
+    return get(dependencyList) !== none;
+  };
+
   const set = (dependencyList: DependencyList, state: State) => {
-    const canAddToItem = ![...cache.values()].some((item) =>
-      areHookInputsEqual(item.dependencyList, dependencyList)
-    );
+    const canAddToItem = !has(dependencyList);
 
     if (canAddToItem) {
-      indexCounter++;
+      const index = indexCounter % MAX_ENTRIES;
 
-      cache.set(indexCounter, { dependencyList, state });
-    }
+      cache[index] = { dependencyList, state };
 
-    if (canAddToItem && indexCounter > MAX_ENTRIES) {
-      cache.delete(indexCounter - MAX_ENTRIES);
+      indexCounter = index + 1;
     }
   };
 
@@ -52,6 +52,7 @@ export const createMemoCache = <State>(
 
   return {
     get,
+    has,
     set,
     isNone,
   };
