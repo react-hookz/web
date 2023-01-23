@@ -7,14 +7,15 @@ import { basicDepsComparator, EffectCallback, EffectHook } from '../util/misc';
 /**
  * Like `useEffect` but uses provided comparator function to validate dependency changes.
  *
- * @param callback Function that will be passed to underlying effect hook.
- * @param deps Dependencies list, like for `useEffect` hook.
- * @param comparator Function that compares two dependencies arrays, and returns true in case
- * they're equal.
- * @param effectHook Effect hook that will be used to run callback. Must comply `useEffect`
- * signature, meaning that callback should be placed as first argument and dependencies list
- * as second.
- * @param effectHookRestArgs Extra arguments that passed to effectHook.
+ * @param callback Function that will be passed to the underlying effect hook.
+ * @param deps Dependency list like the one passed to `useEffect`.
+ * @param comparator Function that compares two dependency arrays,
+ * and returns `true` if they're equal.
+ * @param effectHook Effect hook that will be used to run
+ * `callback`. Must match the type signature of `useEffect`, meaning that the `callback` should be
+ * placed as the first argument and the dependency list as second.
+ * @param effectHookRestArgs Extra arguments that are passed to the `effectHook`
+ * after the `callback` and the dependency list.
  */
 export function useCustomCompareEffect<
   Callback extends EffectCallback = EffectCallback,
@@ -30,7 +31,7 @@ export function useCustomCompareEffect<
 ): void {
   const dependencies = useRef<Deps>();
 
-  // Effects not working in SSR environment therefore no sense to invoke comparator
+  // Effects are not run during SSR, therefore, it makes no sense to invoke the comparator
   if (
     dependencies.current === undefined ||
     (isBrowser && !comparator(dependencies.current, deps))

@@ -1,23 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DependencyList, useEffect } from 'react';
 import { truthyAndArrayPredicate } from '../util/const';
-import { EffectHook, EffectCallback } from '../util/misc';
+import { EffectCallback, EffectHook } from '../util/misc';
 import type { ConditionsList, ConditionsPredicate } from '../types';
 
 /**
- * Like `useEffect` but callback invoked only if conditions match predicate.
+ * Like `useEffect` but its callback is invoked only if all given conditions match a given predicate.
  *
- * @param callback Function that will be passed to underlying effect hook.
- * @param deps Dependencies list like for `useEffect`. If not undefined - effect will be
- * triggered when deps change AND conditions satisfy predicate.
- * @param conditions Conditions array.
- * @param predicate Predicate that defines whether conditions satisfying certain
- * provision. By default, it is all-truthy provision, meaning that all
- * conditions should be truthy.
- * @param effectHook Effect hook that will be used to run callback. Must comply `useEffect`
- * signature, meaning that callback should be placed as first argument and dependencies list
- * as second.
- * @param effectHookRestArgs Extra arguments that are passed to `effectHook`.
+ * @param callback Function that will be passed to the underlying effect hook.
+ * @param deps Dependency list like the one passed to `useEffect`. If not
+ * `undefined`, the effect will be triggered when the dependencies change and the given `conditions`
+ * satisfy the `predicate`.
+ * @param conditions List of conditions.
+ * @param predicate Predicate that should be satisfied by every condition in `conditions`. By
+ * default, the predicate checks that every condition in `conditions` is truthy.
+ * @param effectHook Effect hook that will be used to run `callback`. Must match the type signature
+ * of `useEffect`, meaning that the `callback` should be placed as the first argument and the
+ * dependency list as second.
+ * @param effectHookRestArgs Extra arguments that are passed to the `effectHook` after the
+ * `callback` and the dependency list.
  */
 export function useConditionalEffect<
   Cond extends ConditionsList,
