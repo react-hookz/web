@@ -35,7 +35,6 @@ export * from './usePreviousDistinct';
 export * from './useQueue';
 export * from './useRafState';
 export * from './useRenderCount';
-export * from './useSafeState';
 export * from './useSet';
 export * from './useToggle';
 export * from './useThrottledState';
