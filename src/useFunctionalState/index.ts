@@ -1,5 +1,4 @@
-import { Dispatch, SetStateAction, useCallback } from 'react';
-import { useSafeState } from '../useSafeState';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 
 export function useFunctionalState<S>(
@@ -11,13 +10,12 @@ export function useFunctionalState<S = undefined>(): [
 ];
 
 /**
- * Like `useState` but instead of raw state, state getter returned. `useSafeState` is
- * used underneath.
+ * Like `useState` but instead of raw state, state getter returned.
  */
 export function useFunctionalState<S>(
   initialState?: S | (() => S)
 ): [() => S | undefined, Dispatch<SetStateAction<S | undefined>>] {
-  const [state, setState] = useSafeState(initialState);
+  const [state, setState] = useState(initialState);
   const stateRef = useSyncedRef(state);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

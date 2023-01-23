@@ -1,5 +1,4 @@
-import { RefObject, useEffect } from 'react';
-import { useSafeState } from '../useSafeState';
+import { RefObject, useEffect, useState } from 'react';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';
@@ -135,7 +134,7 @@ export function useIntersectionObserver<T extends Element>(
     rootMargin = DEFAULT_ROOT_MARGIN,
   }: UseIntersectionObserverOptions = {}
 ): IntersectionObserverEntry | undefined {
-  const [state, setState] = useSafeState<IntersectionObserverEntry>();
+  const [state, setState] = useState<IntersectionObserverEntry>();
 
   useEffect(() => {
     const tgt = target && 'current' in target ? target.current : target;

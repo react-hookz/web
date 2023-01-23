@@ -1,12 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Example } from './example.stories'
+import { ImportPath } from '../../__docs__/ImportPath'
 
 <Meta title="State/useDebouncedState" component={Example} />
 
 # useDebouncedState
 
-Like `useSafeState` but its state setter is debounced.
+Like `useState` but its state setter is debounced.
 
 #### Example
 
@@ -30,7 +30,7 @@ export function useDebouncedState<S>(
 
 #### Arguments
 
-- **initialState** _`S | (() => S)`_ - Initial state to pass to underlying `useSafeState`.
+- **initialState** _`S | (() => S)`_ - Initial state to pass to underlying `useState`.
 - **delay** _`number`_ - Debounce delay.
 - **maxWait** _`number`_ _(default: `0`)_ - The maximum time `callback` is allowed to be delayed
   before it's invoked. `0` means no max wait.

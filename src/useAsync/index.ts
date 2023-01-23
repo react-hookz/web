@@ -1,5 +1,4 @@
-import { useMemo, useRef } from 'react';
-import { useSafeState } from '../useSafeState';
+import { useMemo, useRef, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 
 export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
@@ -68,7 +67,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
   asyncFn: (...params: Args) => Promise<Result>,
   initialValue?: Result
 ): [AsyncState<Result | undefined>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>] {
-  const [state, setState] = useSafeState<AsyncState<Result | undefined>>({
+  const [state, setState] = useState<AsyncState<Result | undefined>>({
     status: 'not-executed',
     error: undefined,
     result: initialValue,

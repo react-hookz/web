@@ -1,14 +1,12 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Example } from './example.stories'
+import { ImportPath } from '../../__docs__/ImportPath'
 
 <Meta title="State/useMediatedState" component={Example} />
 
 # useMediatedState
 
 Like `useState`, but every value (including initial) set is passed through mediator function.
-
-> This hook uses `useSafeState` underneath, so it is safe to use its `setState` in async hooks.
 
 > `setState` returned by this hook is stable between renders.
 
