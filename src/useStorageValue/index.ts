@@ -108,7 +108,7 @@ export interface UseStorageValueOptions<T, InitializeWithValue extends boolean |
   /**
    * Custom function to stringify value to store with.
    */
-  stringify?: (data: unknown) => string | null;
+  stringify?: (data: T) => string | null;
 }
 
 type UseStorageValueValue<
