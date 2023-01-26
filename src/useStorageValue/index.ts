@@ -150,7 +150,7 @@ export function useStorageValue<
     const parseFunction = optionsRef.current.parse ?? defaultParse;
     return parseFunction(str, fallback);
   };
-  const stringify = (data: unknown): string | null => {
+  const stringify = (data: Type): string | null => {
     const stringifyFunction = optionsRef.current.stringify ?? defaultStringify;
     return stringifyFunction(data);
   };
