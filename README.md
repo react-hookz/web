@@ -148,7 +148,7 @@ Coming from `react-use`? Check out our
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
     — Performs validation when any of the provided dependencies change.
   - [**`useStateRef`**](https://react-hookz.github.io/web/?path=/docs/state-usestateref--example)
-    — Hook with callback which provide access to node reference.
+    — Hook with callback which provide access to DOM node reference.
 
 - #### Navigator
 

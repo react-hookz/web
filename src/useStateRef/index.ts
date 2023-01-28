@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 
 /**
- * Hook with callback which provide access to node reference.
+ * Hook with callback which provide access to DOM node reference.
  *
  * @param refCallback Function which call on mount and unmount of component.
  */
