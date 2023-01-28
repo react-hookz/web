@@ -37,6 +37,12 @@ module.exports = {
       extends: ['@react-hookz/eslint-config/react', '@react-hookz/eslint-config/jest'],
     },
     {
+      files: ['**/__tests__/**/*.jsx', '**/__tests__/**/*.tsx'],
+      rules: {
+        'jest/expect-expect': 'off',
+      },
+    },
+    {
       files: ['**/__docs__/**', '**/__tests__/**'],
       rules: {
         '@typescript-eslint/no-floating-promises': 'off',

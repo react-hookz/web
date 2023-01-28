@@ -147,6 +147,8 @@ Coming from `react-use`? Check out our
     — Like `useSafeState` but its state setter is throttled.
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
     — Performs validation when any of the provided dependencies change.
+  - [**`useStateRef`**](https://react-hookz.github.io/web/?path=/docs/state-usestateref--example)
+    — Hook with callback which provide access to node reference.
 
 - #### Navigator
 
