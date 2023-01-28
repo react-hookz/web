@@ -29,3 +29,8 @@ export function useStateRef<Node extends HTMLElement | null, StateRef>(
 #### Arguments
 
 - **refCallback** _`(node: HTMLElement) => unknown`_ - Function which call on mount and unmount of component.
+
+#### Return
+
+- _**[0]**_ _`unknown`_ - return value of `refCallback`
+- _**[1]**_ _`(node: HTMLElement) => void`_ - handler which update `stateRef`
