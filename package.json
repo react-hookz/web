@@ -119,7 +119,7 @@
     "semantic-release": "^20.1.0",
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.15",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "yarn": "^1.22.19"
   }
 }
