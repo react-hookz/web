@@ -216,7 +216,7 @@ describe('useStorageValue', () => {
     const { result } = renderHook(() =>
       useStorageValue<number[]>(storage, 'foo', {
         stringify(data) {
-          return (data as number[]).map((num) => num.toString(16)).join(':');
+          return data.map((num) => num.toString(16)).join(':');
         },
         parse(str, fallback) {
           if (str === null) return fallback;
@@ -241,7 +241,7 @@ describe('useStorageValue', () => {
     const { result } = renderHook(() =>
       useStorageValue<number[]>(storage, 'foo', {
         stringify(data) {
-          return (data as number[]).map((num) => num.toString(16)).join(':');
+          return data.map((num) => num.toString(16)).join(':');
         },
         parse(str, fallback) {
           if (str === null) return fallback;

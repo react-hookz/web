@@ -108,7 +108,7 @@ export interface UseStorageValueOptions<T, InitializeWithValue extends boolean |
   /**
    * Custom function to stringify value to store with.
    */
-  stringify?: (data: unknown) => string | null;
+  stringify?: (data: T) => string | null;
 }
 
 type UseStorageValueValue<
@@ -116,7 +116,7 @@ type UseStorageValueValue<
   Default extends Type = Type,
   Initialize extends boolean | undefined = boolean | undefined,
   N = Default extends null | undefined ? null | Type : Type,
-  U = Initialize extends false | undefined ? undefined | N : N
+  U = Initialize extends false ? undefined | N : N
 > = U;
 
 export interface UseStorageValueResult<
@@ -150,7 +150,7 @@ export function useStorageValue<
     const parseFunction = optionsRef.current.parse ?? defaultParse;
     return parseFunction(str, fallback);
   };
-  const stringify = (data: unknown): string | null => {
+  const stringify = (data: Type): string | null => {
     const stringifyFunction = optionsRef.current.stringify ?? defaultStringify;
     return stringifyFunction(data);
   };
