@@ -40,6 +40,7 @@ export * from './useSet';
 export * from './useToggle';
 export * from './useThrottledState';
 export * from './useValidator';
+export * from './useStateRef';
 
 // Navigator
 export * from './useNetworkState';

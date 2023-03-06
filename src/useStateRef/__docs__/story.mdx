@@ -1,0 +1,36 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="state/useStateRef" component={Example} />
+
+# useStateRef
+
+Hook with callback which provide access to DOM node reference.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+export function useStateRef<Node extends HTMLElement | null, StateRef>(
+  refCallback: (node: Node) => StateRef
+): readonly [StateRef | null, (node: Node) => void];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **refCallback** _`(node: HTMLElement) => unknown`_ - Function which call on mount and unmount of component.
+
+#### Return
+
+- _**[0]**_ _`unknown`_ - return value of `refCallback`
+- _**[1]**_ _`(node: HTMLElement) => void`_ - handler which update `stateRef`
