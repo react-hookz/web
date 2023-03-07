@@ -108,7 +108,7 @@
     "commitlint": "^17.4.4",
     "concurrently": "^7.6.0",
     "husky": "^8.0.3",
-    "jest": "^29.4.3",
+    "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.4.3",
     "js-cookie": "^3.0.1",
     "lint-staged": "^13.1.2",
