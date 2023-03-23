@@ -1,6 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { useRafCallback } from '../useRafCallback';
-import { useSafeState } from '../useSafeState';
 import { useUnmountEffect } from '../useUnmountEffect';
 
 export function useRafState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
@@ -15,7 +14,7 @@ export function useRafState<S = undefined>(): [
 export function useRafState<S>(
   initialState?: S | (() => S)
 ): [S | undefined, Dispatch<SetStateAction<S>>] {
-  const [state, innerSetState] = useSafeState<S | undefined>(initialState);
+  const [state, innerSetState] = useState<S | undefined>(initialState);
 
   const [setState, cancelRaf] = useRafCallback(innerSetState);
 

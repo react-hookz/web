@@ -1,5 +1,4 @@
-import { DependencyList, Dispatch, useCallback, useEffect } from 'react';
-import { useSafeState } from '../useSafeState';
+import { DependencyList, Dispatch, useCallback, useEffect, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 import { InitialState, NextState } from '../util/resolveHookState';
 
@@ -32,7 +31,7 @@ export function useValidator<V extends ValidityState>(
   deps: DependencyList,
   initialValidity: InitialState<V> = { isValid: undefined } as V
 ): UseValidatorReturn<V> {
-  const [validity, setValidity] = useSafeState(initialValidity);
+  const [validity, setValidity] = useState(initialValidity);
   const validatorRef = useSyncedRef(() => {
     if (validator.length) {
       validator(setValidity);

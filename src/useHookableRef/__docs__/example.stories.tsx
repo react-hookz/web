@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { useHookableRef, useSafeState } from '../..';
+import { useState } from 'react';
+import { useHookableRef } from '../..';
 
 export const Example: React.FC = () => {
-  const [get, setGet] = useSafeState<Date>();
-  const [set, setSet] = useSafeState<Date>();
+  const [get, setGet] = useState<Date>();
+  const [set, setSet] = useState<Date>();
 
   const ref = useHookableRef(
     123,

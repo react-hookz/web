@@ -48,8 +48,8 @@ If you are contributing for the first time, we recommend reading this
    - The hook should be developed with SSR in mind, meaning that usage of hook in SSR environment
      should not lead to errors.
    - If your hook reuses other @react-hookz/web hooks, import them as
-     `import { useSafeState } from '../useSafeState';` instead of
-     `import { useSafeState } from '..';`
+     `import { useToggle } from '../useToggle';` instead of
+     `import { useToggle } from '..';`
 2. Re-export the hook implementation and all its custom types in `src/index.ts`.
 3. Fully test your hook. The tests should include tests for both DOM and SSR environments.
    - Hook's tests should be placed in `__tests__` subdirectory, next to the source file - `dom.ts`

@@ -118,7 +118,7 @@ Coming from `react-use`? Check out our
   - [**`useCounter`**](https://react-hookz.github.io/web/?path=/docs/state-usecounter--example)
     — Tracks a numeric value and offers functions for manipulating it.
   - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate--example)
-    — Like `useSafeState` but its state setter is debounced.
+    — Like `useState` but its state setter is debounced.
   - [**`useFunctionalState`**](https://react-hookz.github.io/web/?path=/docs/state-usefunctionalstate--page)
     — Like `useState` but instead of raw state, a state getter function is returned.
   - [**`useList`**](https://react-hookz.github.io/web/?path=/docs/state-uselist--example)
@@ -137,14 +137,12 @@ Coming from `react-use`? Check out our
     Like `React.useState`, but state is only updated within animation frame.
   - [**`useRenderCount`**](https://react-hookz.github.io/web/?path=/docs/state-userendercount--example) —
     Tracks component's render count including first render.
-  - [**`useSafeState`**](https://react-hookz.github.io/web/?path=/docs/state-usesafestate--page) —
-    Like `useState`, but its state setter is guarded against setting the state of an unmounted component.
   - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
     state of a `Set`.
   - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example) — Like
     `useState`, but can only be `true` or `false`.
   - [**`useThrottledState`**](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate--example)
-    — Like `useSafeState` but its state setter is throttled.
+    — Like `useState` but its state setter is throttled.
   - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
     — Performs validation when any of the provided dependencies change.
 

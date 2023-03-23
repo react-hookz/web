@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
 import Cookies from 'js-cookie';
-import { Dispatch, useCallback, useEffect } from 'react';
+import { Dispatch, useCallback, useEffect, useState } from 'react';
 import { useFirstMountState } from '../useFirstMountState';
 import { useMountEffect } from '../useMountEffect';
-import { useSafeState } from '../useSafeState';
 import { useSyncedRef } from '../useSyncedRef';
 import { isBrowser } from '../util/const';
 
@@ -125,7 +124,7 @@ export function useCookieValue(
   });
 
   const isFirstMount = useFirstMountState();
-  const [state, setState] = useSafeState<string | null | undefined>(
+  const [state, setState] = useState<string | null | undefined>(
     isFirstMount && initializeWithValue ? methods.current.fetchVal() : undefined
   );
 

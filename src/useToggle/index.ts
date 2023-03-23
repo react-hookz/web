@@ -1,6 +1,5 @@
-import { BaseSyntheticEvent, useCallback } from 'react';
+import { BaseSyntheticEvent, useCallback, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
-import { useSafeState } from '../useSafeState';
 import { InitialState, NextState, resolveHookState } from '../util/resolveHookState';
 
 export function useToggle(
@@ -13,7 +12,7 @@ export function useToggle(
 ): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void];
 
 /**
- * Like `useSafeState`, but can only become `true` or `false`.
+ * Like `useState`, but can only become `true` or `false`.
  *
  * State setter, in case called without arguments, will change the state to opposite. React
  * synthetic events are ignored by default so state setter can be used as event handler directly,
@@ -27,7 +26,7 @@ export function useToggle(
   // action does not provide functional updates feature.
   // Therefore, we have to create and expose our own state setter with
   // toggle logic.
-  const [state, setState] = useSafeState(initialState);
+  const [state, setState] = useState(initialState);
   const ignoreReactEventsRef = useSyncedRef(ignoreReactEvents);
 
   return [

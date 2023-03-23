@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { useSafeState, useTimeoutEffect, useToggle } from '../..';
+import { useState } from 'react';
+import { useTimeoutEffect, useToggle } from '../..';
 
 export const Example: React.FC = () => {
-  const [numCalls, setNumCalls] = useSafeState<number>(0);
+  const [numCalls, setNumCalls] = useState<number>(0);
   const [enabled, toggleEnabled] = useToggle();
-  const [timeoutValue, setTimeoutValue] = useSafeState<number>(1000);
+  const [timeoutValue, setTimeoutValue] = useState<number>(1000);
   const [cancelled, toggleCancelled] = useToggle();
 
   let status;

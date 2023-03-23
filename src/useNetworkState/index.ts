@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { isBrowser } from '../util/const';
-import { useSafeState } from '../useSafeState';
 import { off, on } from '../util/misc';
 import { InitialState } from '../util/resolveHookState';
 
@@ -103,7 +102,7 @@ function getConnectionState(previousState?: UseNetworkState): UseNetworkState {
  * Tracks the state of browser's network connection.
  */
 export function useNetworkState(initialState?: InitialState<UseNetworkState>): UseNetworkState {
-  const [state, setState] = useSafeState(initialState ?? getConnectionState);
+  const [state, setState] = useState(initialState ?? getConnectionState);
 
   useEffect(() => {
     const handleStateChange = () => {
