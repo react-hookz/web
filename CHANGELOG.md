@@ -1,3 +1,13 @@
+# [23.0.0](https://github.com/react-hookz/web/compare/v22.0.0...v23.0.0) (2023-03-23)
+
+
+* Deprecate useSafeState (#1096) ([284e499](https://github.com/react-hookz/web/commit/284e499aeee125ffa67ca499a0579b4050d2888f)), closes [#1096](https://github.com/react-hookz/web/issues/1096)
+
+
+### BREAKING CHANGES
+
+* `useSafeState` hook is removed
+
 # [22.0.0](https://github.com/react-hookz/web/compare/v21.0.0...v22.0.0) (2023-01-05)
 
 
