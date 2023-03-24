@@ -83,7 +83,7 @@
     "@jamesacarr/jest-reporter-github-actions": "^0.0.4",
     "@react-hookz/eslint-config": "^1.7.6",
     "@react-hookz/eslint-formatter-gha": "^1.0.1",
-    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.7",
     "@storybook/addon-docs": "^6.5.15",

@@ -1261,27 +1261,7 @@
     "@commitlint/rules" "^17.4.4"
     "@commitlint/types" "^17.4.4"
 
-"@commitlint/load@>6.1.1", "@commitlint/load@^17.4.4", "@commitlint/load@^17.5.0":
-  version "17.5.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.5.0.tgz#be45dbbb50aaf5eb7e8e940e1e0d6171d1426bab"
-  integrity sha512-l+4W8Sx4CD5rYFsrhHH8HP01/8jEP7kKf33Xlx2Uk2out/UKoKPYMOIRcDH5ppT8UXLMV+x6Wm5osdRKKgaD1Q==
-  dependencies:
-    "@commitlint/config-validator" "^17.4.4"
-    "@commitlint/execute-rule" "^17.4.0"
-    "@commitlint/resolve-extends" "^17.4.4"
-    "@commitlint/types" "^17.4.4"
-    "@types/node" "*"
-    chalk "^4.1.0"
-    cosmiconfig "^8.0.0"
-    cosmiconfig-typescript-loader "^4.0.0"
-    lodash.isplainobject "^4.0.6"
-    lodash.merge "^4.6.2"
-    lodash.uniq "^4.5.0"
-    resolve-from "^5.0.0"
-    ts-node "^10.8.1"
-    typescript "^4.6.4 || ^5.0.0"
-
-"@commitlint/load@^17.5.0":
+"@commitlint/load@>6.1.1", "@commitlint/load@^17.5.0":
   version "17.5.0"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.5.0.tgz#be45dbbb50aaf5eb7e8e940e1e0d6171d1426bab"
   integrity sha512-l+4W8Sx4CD5rYFsrhHH8HP01/8jEP7kKf33Xlx2Uk2out/UKoKPYMOIRcDH5ppT8UXLMV+x6Wm5osdRKKgaD1Q==
@@ -2229,10 +2209,10 @@
   dependencies:
     "@actions/core" "^1.9.1"
 
-"@semantic-release/changelog@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-6.0.2.tgz#fdcdbd368788c8fcc69c4af29bf2064f4afb45f4"
-  integrity sha512-jHqfTkoPbDEOAgAP18mGP53IxeMwxTISN+GwTRy9uLu58UjARoZU8ScCgWGeO2WPkEsm57H8AkyY02W2ntIlIw==
+"@semantic-release/changelog@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-6.0.3.tgz#6195630ecbeccad174461de727d5f975abc23eeb"
+  integrity sha512-dZuR5qByyfe3Y03TpmCvAxCyTnp7r5XwtHRf/8vD9EAn4ZWbavUX8adMtXYzE86EVh0gyLA7lm5yW4IV30XUag==
   dependencies:
     "@semantic-release/error" "^3.0.0"
     aggregate-error "^3.0.0"
@@ -15283,11 +15263,6 @@ typescript@^4.9.5:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
-
-"typescript@^4.6.4 || ^5.0.0":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.2.tgz#891e1a90c5189d8506af64b9ef929fca99ba1ee5"
-  integrity sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==
 
 uglify-js@^3.1.4:
   version "3.17.4"
