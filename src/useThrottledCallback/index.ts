@@ -28,6 +28,7 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
   useUnmountEffect(() => {
     if (timeout.current) {
       clearTimeout(timeout.current);
+      timeout.current = undefined;
     }
   });
 
