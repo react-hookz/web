@@ -2648,7 +2648,7 @@
     memoizerific "^1.11.3"
     prop-types "^15.7.2"
 
-"@storybook/addons@6.5.16", "@storybook/addons@^6.5.16":
+"@storybook/addons@6.5.16":
   version "6.5.16"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.5.16.tgz#07e8f2205f86fa4c9dada719e3e096cb468e3cdd"
   integrity sha512-p3DqQi+8QRL5k7jXhXmJZLsE/GqHqyY6PcoA1oNTJr0try48uhTGUOYkgzmqtDaa/qPFO5LP+xCPzZXckGtquQ==
@@ -2665,7 +2665,7 @@
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@7.0.2":
+"@storybook/addons@7.0.2", "@storybook/addons@^7.0.2":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-7.0.2.tgz#3dce0b58c85578c2d20a6fbd346502c2467cc13f"
   integrity sha512-2+amBRcmJ5kD2ZNeftiyp9Or9Kd7oVjwycZZX5SBB4EFQvRNKyM0w4GVgwbeJAdx5uuw7tJFtQgnakb39mxAgA==
