@@ -40,8 +40,8 @@
     "test:coverage": "yarn test --coverage",
     "lint": "eslint ./ ./.storybook --ext ts,js,tsx,jsx,md",
     "lint:fix": "yarn lint --fix",
-    "storybook:watch": "start-storybook -p 6006 --docs --no-manager-cache",
-    "storybook:build": "build-storybook --docs -o ./storybook-build",
+    "storybook:watch": "storybook dev -p 6006 --docs",
+    "storybook:build": "storybook build --docs -o ./storybook-build",
     "storybook:deploy": "storybook-to-ghpages -s storybook:build"
   },
   "config": {
@@ -117,6 +117,7 @@
     "react-dom": "^17.0.2",
     "rimraf": "^4.4.1",
     "semantic-release": "^21.0.1",
+    "storybook": "next",
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.15",
     "typescript": "^4.9.5",
