@@ -12,11 +12,5 @@
     "outDir": "./esm",
     "declaration": true,
     "sourceMap": false,
-    "plugins": [
-      {
-        "transform": "./utility/ts-transformer-js-extension.ts",
-        "after": true
-      }
-    ]
   }
 }

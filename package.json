@@ -33,8 +33,8 @@
     "commit": "git-cz",
     "build": "yarn build:cleanup && concurrently yarn:build:cjs yarn:build:esm",
     "build:cleanup": "rimraf ./dist",
-    "build:cjs": "ttsc -p ./tsconfig.build.json --module CommonJS --outDir ./cjs",
-    "build:esm": "ttsc -p ./tsconfig.build.json --module ESNext --outDir ./esm",
+    "build:cjs": "tsc -p ./tsconfig.build.json --module CommonJS --outDir ./cjs",
+    "build:esm": "tsc -p ./tsconfig.build.json --module ESNext --outDir ./esm",
     "new-hook": "node ./utility/add-new-hook.js",
     "test": "jest --selectProjects dom ssr",
     "test:coverage": "yarn test --coverage",
@@ -118,7 +118,6 @@
     "rimraf": "^5.0.0",
     "semantic-release": "^21.0.1",
     "ts-node": "^10.9.1",
-    "ttypescript": "^1.5.15",
     "typescript": "^5.0.3",
     "yarn": "^1.22.19"
   }
