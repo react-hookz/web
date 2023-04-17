@@ -90,7 +90,7 @@
     "@storybook/addon-essentials": "^7.0.4",
     "@storybook/addon-links": "^7.0.5",
     "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/addons": "^7.0.2",
+    "@storybook/addons": "^7.0.5",
     "@storybook/builder-webpack5": "^7.0.4",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^7.0.3",
