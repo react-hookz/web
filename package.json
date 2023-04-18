@@ -91,7 +91,7 @@
     "@storybook/addon-links": "^7.0.5",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^7.0.5",
-    "@storybook/builder-webpack5": "^7.0.4",
+    "@storybook/builder-webpack5": "^7.0.5",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^7.0.3",
     "@storybook/storybook-deployer": "^2.8.16",
