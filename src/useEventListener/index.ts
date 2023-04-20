@@ -2,7 +2,7 @@
 import { RefObject, useEffect, useMemo } from 'react';
 import { useIsMounted } from '../useIsMounted';
 import { useSyncedRef } from '../useSyncedRef';
-import { hasOwnProperty, off, on } from '../util/misc';
+import { off, on } from '../util/misc';
 
 /**
  *  An HTML element or ref object containing an HTML element.
@@ -46,8 +46,7 @@ export function useEventListener<T extends EventTarget>(
   );
 
   useEffect(() => {
-    const tgt =
-      target && hasOwnProperty(target, 'current') ? (target as RefObject<T>).current : target;
+    const tgt = target && 'current' in target ? target.current : target;
     if (!tgt) return;
 
     const restParams = params.slice(2);
