@@ -88,7 +88,7 @@
     "@semantic-release/github": "^8.0.7",
     "@storybook/addon-docs": "^6.5.15",
     "@storybook/addon-essentials": "^7.0.6",
-    "@storybook/addon-links": "^7.0.5",
+    "@storybook/addon-links": "^7.0.6",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^7.0.6",
     "@storybook/builder-webpack5": "^7.0.6",
