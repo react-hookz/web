@@ -8,6 +8,7 @@ export interface ImportPathProps {
 
 export const ImportPath: FC<ImportPathProps> = ({ root = true, direct = true }) => {
   const context = useContext(DocsContext);
+  // eslint-disable-next-line react/destructuring-assignment
   const componentName = context.title?.split('/')[1] || 'UnknownComponent';
 
   const imports: string[] = [];

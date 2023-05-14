@@ -98,7 +98,7 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          target: ['minor', 'patch']
+          target: 'minor'
 
   semantic-release:
     name: "Release"
