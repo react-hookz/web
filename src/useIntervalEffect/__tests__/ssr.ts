@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks/server';
 import { useIntervalEffect } from '../..';
 
-describe('useInterval', () => {
+describe('useIntervalEffect', () => {
   it('should be defined', () => {
     expect(useIntervalEffect).toBeDefined();
   });

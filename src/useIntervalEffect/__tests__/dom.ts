@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks/dom';
 import { useIntervalEffect } from '../..';
 import advanceTimersByTime = jest.advanceTimersByTime;
 
-describe('useInterval', () => {
+describe('useIntervalEffect', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
