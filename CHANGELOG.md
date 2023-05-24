@@ -1,3 +1,10 @@
+## [23.0.1](https://github.com/react-hookz/web/compare/v23.0.0...v23.0.1) (2023-05-24)
+
+
+### Bug Fixes
+
+* **useThrottleCallback:** Cleared timeout on unmount ([#1173](https://github.com/react-hookz/web/issues/1173)) ([8681ad8](https://github.com/react-hookz/web/commit/8681ad84044a78ddf868a1dbe3382cc846faec14))
+
 # [23.0.0](https://github.com/react-hookz/web/compare/v22.0.0...v23.0.0) (2023-03-23)
 
 
