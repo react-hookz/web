@@ -1,4 +1,4 @@
-import { SetStateAction, useCallback, useRef } from 'react';
+import { type SetStateAction, useCallback, useRef } from 'react';
 import { useFirstMountState } from '../useFirstMountState';
 import { useRerender } from '../useRerender';
 import { resolveHookState } from '../util/resolveHookState';
@@ -37,7 +37,6 @@ export function useControlledRerenderState<S>(
           rr();
         }
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
   ];
 }

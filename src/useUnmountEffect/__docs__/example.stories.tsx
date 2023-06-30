@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { useToggle, useUnmountEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [isToggled, toggle] = useToggle(false);
 
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const ToggledComponent: React.FC = () => {
-    // eslint-disable-next-line no-alert
-    useUnmountEffect(() => alert('UNMOUNTED'));
+  function ToggledComponent() {
+    useUnmountEffect(() => {
+      // eslint-disable-next-line no-alert
+      alert('UNMOUNTED');
+    });
 
     return <p>Unmount me</p>;
-  };
+  }
 
   return (
     <div>
       <button
+        type="button"
         onClick={() => {
           toggle();
         }}>
@@ -23,4 +25,4 @@ export const Example: React.FC = () => {
       {isToggled && <ToggledComponent />}
     </div>
   );
-};
+}

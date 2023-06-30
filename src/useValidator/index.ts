@@ -1,16 +1,14 @@
-import { DependencyList, Dispatch, useCallback, useEffect, useState } from 'react';
+import { type DependencyList, type Dispatch, useCallback, useEffect, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
-import { InitialState, NextState } from '../util/resolveHookState';
+import { type InitialState, type NextState } from '../util/resolveHookState';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface ValidityState extends Record<any, any> {
+export type ValidityState = {
   isValid: boolean | undefined;
-}
+} & Record<any, any>;
 
 export type ValidatorImmediate<V extends ValidityState = ValidityState> = () => V;
 export type ValidatorDeferred<V extends ValidityState = ValidityState> = (
   done: Dispatch<NextState<V>>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ) => any;
 
 export type Validator<V extends ValidityState = ValidityState> =
@@ -42,14 +40,12 @@ export function useValidator<V extends ValidityState>(
 
   useEffect(() => {
     validatorRef.current();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   return [
     validity,
     useCallback(() => {
       validatorRef.current();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
   ];
 }

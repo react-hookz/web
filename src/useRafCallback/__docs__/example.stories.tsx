@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useRafCallback } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [eventDate, setEventDate] = useState<Date>();
   const [frameDate, setFrameDate] = useState<Date>();
 
@@ -24,7 +24,9 @@ export const Example: React.FC = () => {
       <div>Event occurred: {eventDate?.toISOString() ?? 'NOT TRIGGERED'}</div>
       <div>Animation frame occurred: {frameDate?.toISOString()}</div>
       <br />
-      <button onClick={handleClick}>Push me!</button>
+      <button type="button" onClick={handleClick}>
+        Push me!
+      </button>
     </div>
   );
-};
+}

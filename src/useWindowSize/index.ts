@@ -4,10 +4,10 @@ import { useMountEffect } from '../useMountEffect';
 import { useRafState } from '../useRafState';
 import { isBrowser } from '../util/const';
 
-export interface WindowSize {
+export type WindowSize = {
   width: number;
   height: number;
-}
+};
 
 const listeners = new Set<(size: WindowSize) => void>();
 

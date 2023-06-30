@@ -1,7 +1,7 @@
-import { DependencyList, useEffect } from 'react';
+import { type DependencyList, useEffect } from 'react';
 import { isEqual } from '@react-hookz/deep-equal';
 import { useCustomCompareEffect } from '../useCustomCompareEffect';
-import { EffectCallback, EffectHook } from '../util/misc';
+import { type EffectCallback, type EffectHook } from '../util/misc';
 
 /**
  * Like `useEffect`, but uses `@react-hookz/deep-equal` comparator function to validate deep
@@ -18,7 +18,6 @@ import { EffectCallback, EffectHook } from '../util/misc';
 export function useDeepCompareEffect<
   Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList = DependencyList,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   HookRestArgs extends any[] = any[],
   R extends HookRestArgs = HookRestArgs
 >(
@@ -27,5 +26,5 @@ export function useDeepCompareEffect<
   effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
   ...effectHookRestArgs: R
 ): void {
-  return useCustomCompareEffect(callback, deps, isEqual, effectHook, ...effectHookRestArgs);
+  useCustomCompareEffect(callback, deps, isEqual, effectHook, ...effectHookRestArgs);
 }

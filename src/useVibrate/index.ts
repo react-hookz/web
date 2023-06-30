@@ -11,7 +11,7 @@ import { isBrowser, noop } from '../util/const';
 export const useVibrate =
   !isBrowser || navigator.vibrate === undefined
     ? noop
-    : function useVibrate(enabled: boolean, pattern: VibratePattern, loop?: boolean): void {
+    : (enabled: boolean, pattern: VibratePattern, loop?: boolean): void => {
         useEffect(() => {
           let interval: undefined | ReturnType<typeof setInterval>;
 

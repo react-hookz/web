@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { MutableRefObject } from 'react';
+import { type MutableRefObject } from 'react';
 import { useClickOutside } from '../..';
 
 describe('useClickOutside', () => {
@@ -8,7 +8,9 @@ describe('useClickOutside', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useClickOutside({ current: null }, () => {}));
+    const { result } = renderHook(() => {
+      useClickOutside({ current: null }, () => {});
+    });
     expect(result.error).toBeUndefined();
   });
 
@@ -17,7 +19,9 @@ describe('useClickOutside', () => {
     const addSpy = jest.spyOn(document, 'addEventListener');
     const removeSpy = jest.spyOn(document, 'removeEventListener');
 
-    const { rerender, unmount } = renderHook(() => useClickOutside({ current: div }, () => {}));
+    const { rerender, unmount } = renderHook(() => {
+      useClickOutside({ current: div }, () => {});
+    });
 
     expect(addSpy).toHaveBeenCalledTimes(2);
     expect(removeSpy).toHaveBeenCalledTimes(0);
@@ -39,7 +43,9 @@ describe('useClickOutside', () => {
     const addSpy = jest.spyOn(document, 'addEventListener');
     const removeSpy = jest.spyOn(document, 'removeEventListener');
 
-    const { unmount } = renderHook(() => useClickOutside({ current: div }, () => {}, ['click']));
+    const { unmount } = renderHook(() => {
+      useClickOutside({ current: div }, () => {}, ['click']);
+    });
 
     expect(addSpy).toHaveBeenCalledTimes(1);
     expect(removeSpy).toHaveBeenCalledTimes(0);
@@ -57,7 +63,9 @@ describe('useClickOutside', () => {
     const div2 = document.createElement('div2');
     const spy = jest.fn();
 
-    renderHook(() => useClickOutside({ current: div }, spy));
+    renderHook(() => {
+      useClickOutside({ current: div }, spy);
+    });
 
     document.body.append(div, div2);
 
@@ -70,7 +78,9 @@ describe('useClickOutside', () => {
     const div2 = document.createElement('div2');
     const spy = jest.fn();
 
-    renderHook(() => useClickOutside({ current: div }, spy));
+    renderHook(() => {
+      useClickOutside({ current: div }, spy);
+    });
 
     document.body.append(div);
     div.append(div2);
@@ -85,7 +95,9 @@ describe('useClickOutside', () => {
     const spy = jest.fn();
     const ref: MutableRefObject<HTMLDivElement | null> = { current: div };
 
-    const { rerender } = renderHook(() => useClickOutside(ref, spy));
+    const { rerender } = renderHook(() => {
+      useClickOutside(ref, spy);
+    });
 
     document.body.append(div);
     div.append(div2);

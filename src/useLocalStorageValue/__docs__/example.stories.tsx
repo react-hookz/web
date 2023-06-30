@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocalStorageValue } from '../..';
 
-interface ExampleProps {
+type ExampleProps = {
   /**
    * Default value to return in case key not presented in LocalStorage.
    */
@@ -10,12 +10,12 @@ interface ExampleProps {
    * LocalStorage key to manage.
    */
   key: string;
-}
+};
 
-export const Example: React.FC<ExampleProps> = ({
+export function Example({
   key = 'react-hookz-ls-test',
   defaultValue = '@react-hookz is awesome',
-}) => {
+}: ExampleProps) {
   const lsVal = useLocalStorageValue(key, {
     defaultValue,
   });
@@ -34,7 +34,9 @@ export const Example: React.FC<ExampleProps> = ({
           lsVal.set(ev.currentTarget.value);
         }}
       />
-      <button onClick={lsVal.remove}>remove storage value</button>
+      <button type="button" onClick={lsVal.remove}>
+        remove storage value
+      </button>
     </div>
   );
-};
+}

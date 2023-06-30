@@ -10,6 +10,5 @@ export function useRerender(): () => void {
 
   return useCallback(() => {
     setState(stateChanger);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

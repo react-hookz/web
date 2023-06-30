@@ -7,7 +7,9 @@ describe('useEventListener', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useEventListener(null, 'random name', () => {}));
+    const { result } = renderHook(() => {
+      useEventListener(null, 'random name', () => {});
+    });
     expect(result.error).toBeUndefined();
   });
 });

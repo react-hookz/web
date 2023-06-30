@@ -54,7 +54,7 @@ describe('useMap', () => {
     const { result } = renderHook(() => [++i, useMap()] as const);
 
     act(() => {
-      expect(result.current[1].clear()).toBe(undefined);
+      result.current[1].clear();
     });
 
     expect(result.current[0]).toBe(1);

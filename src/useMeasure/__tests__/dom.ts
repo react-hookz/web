@@ -17,7 +17,9 @@ describe('useMeasure', () => {
     jest.useFakeTimers();
 
     global.requestAnimationFrame = (cb) => setTimeout(cb, 1);
-    global.cancelAnimationFrame = (cb) => clearTimeout(cb);
+    global.cancelAnimationFrame = (cb) => {
+      clearTimeout(cb);
+    };
 
     ResizeObserverSpy = jest.fn(() => ({
       observe: observeSpy,

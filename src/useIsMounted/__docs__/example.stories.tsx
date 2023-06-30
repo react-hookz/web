@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useIsMounted, useMountEffect, useToggle } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [isToggled, toggle] = useToggle(false);
 
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const ToggledComponent: React.FC = () => {
+  function ToggledComponent() {
     const isMounted = useIsMounted();
 
     // As you can see, below effect has no dependencies, it will be executed
@@ -26,7 +25,7 @@ export const Example: React.FC = () => {
         Unmounting the component will prevent it.
       </p>
     );
-  };
+  }
 
   return (
     <div>
@@ -37,6 +36,7 @@ export const Example: React.FC = () => {
         </div>
       )}
       <button
+        type="button"
         onClick={() => {
           toggle();
         }}>
@@ -45,4 +45,4 @@ export const Example: React.FC = () => {
       {isToggled && <ToggledComponent />}
     </div>
   );
-};
+}

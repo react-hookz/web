@@ -64,9 +64,12 @@ describe('useTimeoutEffect', () => {
 
   it('should not reset timeout in callback change', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ callback }) => useTimeoutEffect(callback, 100), {
-      initialProps: { callback: () => {} },
-    });
+    const { rerender } = renderHook<{ callback: () => void }, void>(
+      ({ callback }) => useTimeoutEffect(callback, 100),
+      {
+        initialProps: { callback() {} },
+      }
+    );
 
     jest.advanceTimersByTime(99);
     expect(spy).not.toHaveBeenCalled();
@@ -78,9 +81,12 @@ describe('useTimeoutEffect', () => {
 
   it('should cancel timeout if delay is undefined', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ delay }) => useTimeoutEffect(spy, delay), {
-      initialProps: { delay: 100 } as { delay: number | undefined },
-    });
+    const { rerender } = renderHook<{ delay: number | undefined }, void>(
+      ({ delay }) => useTimeoutEffect(spy, delay),
+      {
+        initialProps: { delay: 100 },
+      }
+    );
 
     jest.advanceTimersByTime(99);
     expect(spy).not.toHaveBeenCalled();

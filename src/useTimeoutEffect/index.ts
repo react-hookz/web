@@ -28,21 +28,20 @@ export function useTimeoutEffect(
 
   const cancel = useCallback(() => {
     cancelTimeout(timeoutIdRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const reset = useCallback(() => {
     if (msRef.current === undefined) return;
 
     cancel();
-    timeoutIdRef.current = setTimeout(() => cbRef.current(), msRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    timeoutIdRef.current = setTimeout(() => {
+      cbRef.current();
+    }, msRef.current);
   }, []);
 
   useEffect(() => {
     reset();
     return cancel;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ms]);
 
   return [cancel, reset];

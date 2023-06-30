@@ -13,7 +13,7 @@ export function useUnmountEffect(effect: CallableFunction): void {
     () => () => {
       effectRef.current();
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     []
   );
 }

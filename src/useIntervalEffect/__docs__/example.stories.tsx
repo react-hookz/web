@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useIntervalEffect, useToggle } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, setState] = useState<Date>();
   const [enabled, toggleEnabled] = useToggle();
 
@@ -18,6 +18,7 @@ export const Example: React.FC = () => {
       Last interval invocation: {state?.toString()}
       <br />
       <button
+        type="button"
         onClick={() => {
           toggleEnabled();
         }}>
@@ -25,4 +26,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

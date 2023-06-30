@@ -1,6 +1,6 @@
-import { Dispatch, useCallback, useState } from 'react';
+import { type Dispatch, useCallback, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
-import { InitialState, NextState, resolveHookState } from '../util/resolveHookState';
+import { type InitialState, type NextState, resolveHookState } from '../util/resolveHookState';
 
 export function useMediatedState<State = undefined>(): [
   State | undefined,
@@ -38,7 +38,6 @@ export function useMediatedState<State, RawState = State>(
       } else {
         setState(value as unknown as State);
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
   ];
 }

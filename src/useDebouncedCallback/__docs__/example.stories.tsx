@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { type ComponentProps, useState } from 'react';
 import { useDebouncedCallback } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, setState] = useState('');
 
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useDebouncedCallback(
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = useDebouncedCallback<
+    NonNullable<ComponentProps<'input'>['onChange']>
+  >(
     (ev) => {
       setState(ev.target.value);
     },
@@ -21,4 +23,4 @@ export const Example: React.FC = () => {
       <input type="text" onChange={handleChange} />
     </div>
   );
-};
+}

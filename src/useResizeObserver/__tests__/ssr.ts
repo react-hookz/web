@@ -7,7 +7,9 @@ describe('useResizeObserver', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useResizeObserver(null, () => {}));
+    const { result } = renderHook(() => {
+      useResizeObserver(null, () => {});
+    });
 
     expect(result.error).toBeUndefined();
   });

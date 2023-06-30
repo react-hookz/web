@@ -70,9 +70,9 @@ export * from './useClickOutside';
 export * from './useEventListener';
 export * from './useWindowSize';
 
-// utils
+// Utils
 export { isStrictEqual, truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
-export { EffectCallback, EffectHook } from './util/misc';
+export type { EffectCallback, EffectHook } from './util/misc';
 export { resolveHookState } from './util/resolveHookState';
 
 // Types

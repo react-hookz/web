@@ -19,15 +19,22 @@ describe('useThrottledEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useThrottledEffect(() => {}, [], 200));
+    const { result } = renderHook(() => {
+      useThrottledEffect(() => {}, [], 200);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should throttle passed callback', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook((dep) => useThrottledEffect(spy, [dep], 200, true), {
-      initialProps: 1,
-    });
+    const { rerender } = renderHook(
+      (dep) => {
+        useThrottledEffect(spy, [dep], 200, true);
+      },
+      {
+        initialProps: 1,
+      }
+    );
 
     expect(spy).toHaveBeenCalledTimes(1);
     rerender(2);

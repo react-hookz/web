@@ -73,7 +73,6 @@ describe('useDebouncedCallback', () => {
   });
 
   it('should pass parameters to callback', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const cb = jest.fn((_a: number, _c: string) => {});
     const { result } = renderHook(() => useDebouncedCallback(cb, [], 200));
 
@@ -87,7 +86,18 @@ describe('useDebouncedCallback', () => {
     const cb2 = jest.fn(() => {});
 
     const { result, rerender } = renderHook(
-      ({ i }) => useDebouncedCallback(() => (i === 1 ? cb1() : cb2()), [i], 200),
+      ({ i }) =>
+        useDebouncedCallback(
+          () => {
+            if (i === 1) {
+              cb1();
+            } else {
+              cb2();
+            }
+          },
+          [i],
+          200
+        ),
       { initialProps: { i: 1 } }
     );
 

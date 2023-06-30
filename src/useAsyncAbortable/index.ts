@@ -1,8 +1,7 @@
 import { useMemo, useRef } from 'react';
-import { AsyncState, useAsync, UseAsyncActions, UseAsyncMeta } from '../useAsync';
+import { type AsyncState, useAsync, type UseAsyncActions, type UseAsyncMeta } from '../useAsync';
 
-export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]>
-  extends UseAsyncActions<Result, Args> {
+export type UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]> = {
   /**
    *  Abort the currently running async function invocation.
    */
@@ -12,15 +11,14 @@ export interface UseAsyncAbortableActions<Result, Args extends unknown[] = unkno
    * Abort the currently running async function invocation and reset state to initial.
    */
   reset: () => void;
-}
+} & UseAsyncActions<Result, Args>;
 
-export interface UseAsyncAbortableMeta<Result, Args extends unknown[] = unknown[]>
-  extends UseAsyncMeta<Result, Args> {
+export type UseAsyncAbortableMeta<Result, Args extends unknown[] = unknown[]> = {
   /**
    * Currently used `AbortController`. New one is created on each execution of the async function.
    */
   abortController: AbortController | undefined;
-}
+} & UseAsyncMeta<Result, Args>;
 
 export type ArgsWithAbortSignal<Args extends unknown[] = unknown[]> = [AbortSignal, ...Args];
 
@@ -59,16 +57,16 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
   const abortController = useRef<AbortController>();
 
   const fn = async (...args: Args): Promise<Result> => {
-    // abort previous async
+    // Abort previous async
     abortController.current?.abort();
 
-    // create new controller for ongoing async call
+    // Create new controller for ongoing async call
     const ac = new AbortController();
     abortController.current = ac;
 
-    // pass down abort signal and received arguments
+    // Pass down abort signal and received arguments
     return asyncFn(ac.signal, ...args).finally(() => {
-      // unset ref uf the call is last
+      // Unset ref uf the call is last
       if (abortController.current === ac) {
         abortController.current = undefined;
       }
@@ -81,11 +79,11 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
     state,
     useMemo(() => {
       const actions = {
-        reset: () => {
+        reset() {
           actions.abort();
           asyncActions.reset();
         },
-        abort: () => {
+        abort() {
           abortController.current?.abort();
         },
       };
@@ -94,7 +92,6 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
         ...asyncActions,
         ...actions,
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
     { ...asyncMeta, abortController: abortController.current },
   ];

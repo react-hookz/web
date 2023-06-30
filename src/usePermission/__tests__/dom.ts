@@ -72,7 +72,7 @@ describe('usePermission', () => {
           setTimeout(() => {
             const status = {
               state: 'prompt',
-              addEventListener: (_n: any, listener: any) => {
+              addEventListener(_n: any, listener: any) {
                 status.state = 'granted';
                 setTimeout(() => listener(), 1);
               },

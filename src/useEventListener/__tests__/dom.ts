@@ -1,4 +1,3 @@
-/* eslint-disable func-names */
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { useEventListener } from '../..';
 
@@ -8,7 +7,9 @@ describe('useEventListener', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useEventListener(null, '', () => {}));
+    const { result } = renderHook(() => {
+      useEventListener(null, '', () => {});
+    });
     expect(result.error).toBeUndefined();
   });
 
@@ -17,9 +18,9 @@ describe('useEventListener', () => {
     const addSpy = jest.spyOn(div, 'addEventListener');
     const removeSpy = jest.spyOn(div, 'removeEventListener');
 
-    const { rerender, unmount } = renderHook(() =>
-      useEventListener(div, 'resize', () => {}, { passive: true })
-    );
+    const { rerender, unmount } = renderHook(() => {
+      useEventListener(div, 'resize', () => {}, { passive: true });
+    });
 
     expect(addSpy).toHaveBeenCalledTimes(1);
     expect(removeSpy).toHaveBeenCalledTimes(0);
@@ -39,9 +40,9 @@ describe('useEventListener', () => {
     const removeSpy = jest.spyOn(div, 'removeEventListener');
 
     const ref = { current: div };
-    const { rerender, unmount } = renderHook(() =>
-      useEventListener(ref, 'resize', () => {}, { passive: true })
-    );
+    const { rerender, unmount } = renderHook(() => {
+      useEventListener(ref, 'resize', () => {}, { passive: true });
+    });
 
     expect(addSpy).toHaveBeenCalledTimes(1);
     expect(addSpy.mock.calls[0][2]).toStrictEqual({ passive: true });
@@ -64,7 +65,9 @@ describe('useEventListener', () => {
       context = this;
     });
 
-    renderHook(() => useEventListener(div, 'resize', spy, { passive: true }));
+    renderHook(() => {
+      useEventListener(div, 'resize', spy, { passive: true });
+    });
 
     const evt = new Event('resize');
     div.dispatchEvent(evt);
@@ -81,7 +84,9 @@ describe('useEventListener', () => {
       context = this;
     });
 
-    renderHook(() => useEventListener(div, 'resize', { handleEvent: spy }, { passive: true }));
+    renderHook(() => {
+      useEventListener(div, 'resize', { handleEvent: spy }, { passive: true });
+    });
 
     const evt = new Event('resize');
     div.dispatchEvent(evt);

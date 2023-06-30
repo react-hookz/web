@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useAsyncAbortable } from '../..';
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useTimeoutEffect, useToggle } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [numCalls, setNumCalls] = useState<number>(0);
   const [enabled, toggleEnabled] = useToggle();
   const [timeoutValue, setTimeoutValue] = useState<number>(1000);
@@ -24,7 +24,6 @@ export const Example: React.FC = () => {
 
   React.useEffect(() => {
     setNumCalls(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeoutValue, enabled]);
 
   return (
@@ -38,9 +37,12 @@ export const Example: React.FC = () => {
         type="number"
         min={0}
         value={timeoutValue}
-        onChange={(e) => setTimeoutValue(Number(e.target.value))}
+        onChange={(e) => {
+          setTimeoutValue(Number(e.target.value));
+        }}
       />
       <button
+        type="button"
         onClick={() => {
           toggleEnabled();
           toggleCancelled(false);
@@ -48,6 +50,7 @@ export const Example: React.FC = () => {
         {enabled ? 'Disable' : 'Enable'} timeout
       </button>
       <button
+        type="button"
         onClick={() => {
           reset();
           toggleCancelled(false);
@@ -55,6 +58,7 @@ export const Example: React.FC = () => {
         Reset
       </button>
       <button
+        type="button"
         onClick={() => {
           cancel();
           toggleCancelled(enabled && true);
@@ -63,4 +67,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

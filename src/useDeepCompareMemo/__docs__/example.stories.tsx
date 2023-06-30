@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMemo } from 'react';
 import { useRerender, useDeepCompareMemo } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const newOnEveryRender = { value: 'Foo' };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const unstable = useMemo(() => Math.floor(Math.random() * 10), [newOnEveryRender]);
@@ -14,7 +14,9 @@ export const Example: React.FC = () => {
     <>
       <div style={{ display: 'flex', gap: '0.5rem' }}>
         <p>When you click this button:</p>
-        <button onClick={rerender}>Rerender</button>
+        <button type="button" onClick={rerender}>
+          Rerender
+        </button>
         <p>, you notice, that the useDeepCompareMemo value does not change at all,</p>
       </div>
       <p>even though its dependencies change on every render.</p>
@@ -23,4 +25,4 @@ export const Example: React.FC = () => {
       <p>useDeepCompareMemo: {stable}</p>
     </>
   );
-};
+}

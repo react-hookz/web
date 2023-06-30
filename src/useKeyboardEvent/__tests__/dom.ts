@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { KeyboardEventFilter, useKeyboardEvent } from '../..';
+import { type KeyboardEventFilter, useKeyboardEvent } from '../..';
 
 describe('useKeyboardEvent', () => {
   it('should be defined', () => {
@@ -7,7 +7,9 @@ describe('useKeyboardEvent', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useKeyboardEvent('a', () => {}));
+    const { result } = renderHook(() => {
+      useKeyboardEvent('a', () => {});
+    });
     expect(result.error).toBeUndefined();
   });
 
@@ -16,14 +18,14 @@ describe('useKeyboardEvent', () => {
     const addSpy = jest.spyOn(div, 'addEventListener');
     const removeSpy = jest.spyOn(div, 'removeEventListener');
 
-    const { rerender, unmount } = renderHook(() =>
+    const { rerender, unmount } = renderHook(() => {
       useKeyboardEvent(
         () => true,
         () => {},
         undefined,
         { target: div, event: 'keydown', eventOptions: { passive: true } }
-      )
-    );
+      );
+    });
 
     expect(addSpy).toHaveBeenCalledTimes(1);
     expect(removeSpy).toHaveBeenCalledTimes(0);
@@ -43,14 +45,14 @@ describe('useKeyboardEvent', () => {
     const removeSpy = jest.spyOn(div, 'removeEventListener');
 
     const ref = { current: div };
-    const { rerender, unmount } = renderHook(() =>
+    const { rerender, unmount } = renderHook(() => {
       useKeyboardEvent(
         () => true,
         () => {},
         undefined,
         { target: ref, eventOptions: { passive: true } }
-      )
-    );
+      );
+    });
 
     expect(addSpy).toHaveBeenCalledTimes(1);
     expect(addSpy.mock.calls[0][2]).toStrictEqual({ passive: true });
@@ -68,18 +70,18 @@ describe('useKeyboardEvent', () => {
   it('should invoke provided function on the event trigger with proper context', () => {
     const div = document.createElement('div');
     let context: any;
-    const spy = jest.fn(function spyFn(this: any) {
+    const spy = jest.fn(function (this: any) {
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
-    renderHook(() =>
+    renderHook(() => {
       useKeyboardEvent(() => true, spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },
-      })
-    );
+      });
+    });
 
     const evt = new KeyboardEvent('keydown', { key: 'a' });
     div.dispatchEvent(evt);
@@ -93,18 +95,18 @@ describe('useKeyboardEvent', () => {
   it('should invoke provided function based on string key filter with proper context', () => {
     const div = document.createElement('div');
     let context: any;
-    const spy = jest.fn(function spyFn(this: any) {
+    const spy = jest.fn(function (this: any) {
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
-    renderHook(() =>
+    renderHook(() => {
       useKeyboardEvent('a', spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },
-      })
-    );
+      });
+    });
 
     const evt = new KeyboardEvent('keydown', { key: 'a' });
     div.dispatchEvent(evt);
@@ -118,18 +120,18 @@ describe('useKeyboardEvent', () => {
   it('should invoke provided function based on function key filter with proper context', () => {
     const div = document.createElement('div');
     let context: any;
-    const spy = jest.fn(function spyFn(this: any) {
+    const spy = jest.fn(function (this: any) {
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       context = this;
     });
 
-    renderHook(() =>
+    renderHook(() => {
       useKeyboardEvent((ev) => ev.metaKey, spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },
-      })
-    );
+      });
+    });
 
     const evt = new KeyboardEvent('keydown', { key: 'a', metaKey: true });
     div.dispatchEvent(evt);
@@ -144,25 +146,25 @@ describe('useKeyboardEvent', () => {
     const div = document.createElement('div');
     const spy = jest.fn();
 
-    const { unmount } = renderHook(() =>
+    const { unmount } = renderHook(() => {
       useKeyboardEvent(null, spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },
-      })
-    );
+      });
+    });
     const evt = new KeyboardEvent('keydown', { key: 'a', metaKey: true });
     div.dispatchEvent(evt);
     expect(spy).not.toHaveBeenCalledWith(evt);
     unmount();
 
-    renderHook(() =>
+    renderHook(() => {
       useKeyboardEvent({} as KeyboardEventFilter, spy, undefined, {
         target: div,
         event: 'keydown',
         eventOptions: { passive: true },
-      })
-    );
+      });
+    });
 
     div.dispatchEvent(evt);
     expect(spy).toHaveBeenCalledWith(evt);

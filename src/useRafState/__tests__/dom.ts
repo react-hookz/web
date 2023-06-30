@@ -9,7 +9,9 @@ describe('useRafState', () => {
     jest.useFakeTimers();
 
     global.requestAnimationFrame = (cb) => setTimeout(cb);
-    global.cancelAnimationFrame = (cb) => clearTimeout(cb);
+    global.cancelAnimationFrame = (cb) => {
+      clearTimeout(cb);
+    };
   });
 
   afterEach(() => {

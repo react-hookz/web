@@ -8,7 +8,7 @@ const proto = Set.prototype;
  *
  * @param values Initial values iterator for underlying `Set` constructor.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function useSet<T = any>(values?: readonly T[] | null): Set<T> {
   const setRef = useRef<Set<T>>();
   const rerender = useRerender();

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDebouncedState } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, setState] = useDebouncedState('', 300, 500);
 
   return (
@@ -17,4 +17,4 @@ export const Example: React.FC = () => {
       />
     </div>
   );
-};
+}

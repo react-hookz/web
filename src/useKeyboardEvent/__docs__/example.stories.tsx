@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useKeyboardEvent } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [list, setList] = useState<string[]>([]);
 
   useKeyboardEvent(
@@ -27,4 +27,4 @@ export const Example: React.FC = () => {
       </ul>
     </div>
   );
-};
+}

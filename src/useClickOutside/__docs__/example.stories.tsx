@@ -2,11 +2,10 @@ import * as React from 'react';
 import { useRef } from 'react';
 import { useClickOutside, useToggle } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [toggled, toggle] = useToggle();
 
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const ToggledComponent = () => {
+  function ToggledComponent() {
     const ref = useRef(null);
 
     useClickOutside(ref, () => {
@@ -35,15 +34,23 @@ export const Example: React.FC = () => {
         THE RED SQUARE!
       </div>
     );
-  };
+  }
 
   return (
     <div>
       <div>Let&apos;s try some reverse psychology =)</div>
       <br />
 
-      {!toggled && <button onClick={() => toggle()}>Let&apos;s try!</button>}
+      {!toggled && (
+        <button
+          type="button"
+          onClick={() => {
+            toggle();
+          }}>
+          Let&apos;s try!
+        </button>
+      )}
       {toggled && <ToggledComponent />}
     </div>
   );
-};
+}

@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useEffect, useRef } from 'react';
+import { type DependencyList, useEffect, useRef } from 'react';
 import type { DependenciesComparator } from '../types';
 import { isBrowser } from '../util/const';
-import { basicDepsComparator, EffectCallback, EffectHook } from '../util/misc';
+import { basicDepsComparator, type EffectCallback, type EffectHook } from '../util/misc';
 
 /**
  * Like `useEffect` but uses provided comparator function to validate dependency changes.
@@ -17,6 +16,7 @@ import { basicDepsComparator, EffectCallback, EffectHook } from '../util/misc';
  * @param effectHookRestArgs Extra arguments that are passed to the `effectHook`
  * after the `callback` and the dependency list.
  */
+// eslint-disable-next-line max-params
 export function useCustomCompareEffect<
   Callback extends EffectCallback = EffectCallback,
   Deps extends DependencyList = DependencyList,

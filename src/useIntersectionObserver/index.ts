@@ -1,19 +1,17 @@
-import { RefObject, useEffect, useState } from 'react';
+import { type RefObject, useEffect, useState } from 'react';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';
 
-interface IntersectionEntryCallback {
-  (entry: IntersectionObserverEntry): void;
-}
+type IntersectionEntryCallback = (entry: IntersectionObserverEntry) => void;
 
-interface ObserverEntry {
+type ObserverEntry = {
   observer: IntersectionObserver;
   observe: (target: Element, callback: IntersectionEntryCallback) => void;
   unobserve: (target: Element, callback: IntersectionEntryCallback) => void;
-}
+};
 
-const observers: Map<Element | Document, Map<string, ObserverEntry>> = new Map();
+const observers = new Map<Element | Document, Map<string, ObserverEntry>>();
 
 const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
   const root = options.root ?? document;
@@ -32,13 +30,15 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
   if (!entry) {
     const callbacks = new Map<Element, Set<IntersectionEntryCallback>>();
 
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) =>
-          callbacks.get(e.target)?.forEach((cb) => setTimeout(() => cb(e), 0))
-        ),
-      options
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) =>
+        callbacks.get(e.target)?.forEach((cb) =>
+          setTimeout(() => {
+            cb(e);
+          }, 0)
+        )
+      );
+    }, options);
 
     entry = {
       observer,
@@ -46,38 +46,37 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
         let cbs = callbacks.get(target);
 
         if (!cbs) {
-          // if target has no observers yet - register it
+          // If target has no observers yet - register it
           cbs = new Set();
           callbacks.set(target, cbs);
           observer.observe(target);
         }
 
-        // as Set is duplicate-safe - simply add callback on each call
+        // As Set is duplicate-safe - simply add callback on each call
         cbs.add(callback);
       },
       unobserve(target, callback) {
         const cbs = callbacks.get(target);
 
-        // else branch should never occur in case of normal execution
+        // Else branch should never occur in case of normal execution
         // because callbacks map is hidden in closure - it is impossible to
         // simulate situation with non-existent `cbs` Set
         /* istanbul ignore else */
         if (cbs) {
-          // remove current observer
+          // Remove current observer
           cbs.delete(callback);
 
           if (!cbs.size) {
-            // if no observers left unregister target completely
+            // If no observers left unregister target completely
             callbacks.delete(target);
             observer.unobserve(target);
 
-            // if not tracked elements left - disconnect observer
+            // If not tracked elements left - disconnect observer
             if (!callbacks.size) {
               observer.disconnect();
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
               rootObservers!.delete(opt);
 
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               if (!rootObservers!.size) {
                 observers.delete(root);
               }
@@ -93,7 +92,7 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
   return entry;
 };
 
-export interface UseIntersectionObserverOptions {
+export type UseIntersectionObserverOptions = {
   /**
    * An Element or Document object (or its react reference) which is an
    * ancestor of the intended target, whose bounding rectangle will be
@@ -116,7 +115,7 @@ export interface UseIntersectionObserverOptions {
    * The default is a threshold of `[0]`.
    */
   threshold?: number[];
-}
+};
 
 /**
  * Tracks intersection of a target element with an ancestor element or with a
@@ -148,7 +147,7 @@ export function useIntersectionObserver<T extends Element>(
     });
 
     const handler: IntersectionEntryCallback = (entry) => {
-      // it is reinsurance for the highly asynchronous invocations, almost
+      // It is reinsurance for the highly asynchronous invocations, almost
       // impossible to achieve in tests, thus excluding from LOC
       /* istanbul ignore else */
       if (subscribed) {
@@ -162,7 +161,6 @@ export function useIntersectionObserver<T extends Element>(
       subscribed = false;
       observerEntry.unobserve(tgt, handler);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, r, rootMargin, ...threshold]);
 
   return state;

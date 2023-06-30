@@ -37,7 +37,9 @@ describe('useResizeObserver', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useResizeObserver(null, () => {}));
+    const { result } = renderHook(() => {
+      useResizeObserver(null, () => {});
+    });
 
     expect(result.error).toBeUndefined();
   });
@@ -45,8 +47,12 @@ describe('useResizeObserver', () => {
   it('should create ResizeObserver instance only on first hook render', () => {
     expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
 
-    renderHook(() => useResizeObserver(null, () => {}));
-    renderHook(() => useResizeObserver(null, () => {}));
+    renderHook(() => {
+      useResizeObserver(null, () => {});
+    });
+    renderHook(() => {
+      useResizeObserver(null, () => {});
+    });
 
     expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
   });
@@ -56,10 +62,14 @@ describe('useResizeObserver', () => {
     const ref: React.MutableRefObject<Element | null> = { current: null };
     const spy = jest.fn();
 
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { rerender } = renderHook(({ ref }) => useResizeObserver(ref, spy), {
-      initialProps: { ref },
-    });
+    const { rerender } = renderHook(
+      ({ ref }) => {
+        useResizeObserver(ref, spy);
+      },
+      {
+        initialProps: { ref },
+      }
+    );
 
     expect(observeSpy).toHaveBeenCalledTimes(0);
 
@@ -89,8 +99,12 @@ describe('useResizeObserver', () => {
     const spy1 = jest.fn();
     const spy2 = jest.fn();
 
-    renderHook(() => useResizeObserver(div, spy1));
-    renderHook(() => useResizeObserver(div, spy2));
+    renderHook(() => {
+      useResizeObserver(div, spy1);
+    });
+    renderHook(() => {
+      useResizeObserver(div, spy2);
+    });
 
     expect(observeSpy).toHaveBeenCalledTimes(1);
 
@@ -118,8 +132,12 @@ describe('useResizeObserver', () => {
     const spy1 = jest.fn();
     const spy2 = jest.fn();
 
-    renderHook(() => useResizeObserver(div, spy1));
-    renderHook(() => useResizeObserver({ current: div2 }, spy2));
+    renderHook(() => {
+      useResizeObserver(div, spy1);
+    });
+    renderHook(() => {
+      useResizeObserver({ current: div2 }, spy2);
+    });
 
     expect(observeSpy).toHaveBeenCalledTimes(2);
 
@@ -150,7 +168,9 @@ describe('useResizeObserver', () => {
   it('should unsubscribe on component unmount', () => {
     const div = document.createElement('div');
     const spy = jest.fn();
-    const { unmount } = renderHook(() => useResizeObserver(div, spy));
+    const { unmount } = renderHook(() => {
+      useResizeObserver(div, spy);
+    });
 
     expect(observeSpy).toHaveBeenCalledTimes(1);
     expect(observeSpy).toHaveBeenCalledWith(div);
@@ -170,8 +190,12 @@ describe('useResizeObserver', () => {
       const spy1 = jest.fn();
       const spy2 = jest.fn();
 
-      renderHook(() => useResizeObserver(div, spy1));
-      renderHook(() => useResizeObserver({ current: div2 }, spy2, false));
+      renderHook(() => {
+        useResizeObserver(div, spy1);
+      });
+      renderHook(() => {
+        useResizeObserver({ current: div2 }, spy2, false);
+      });
 
       expect(observeSpy).toHaveBeenCalledTimes(1);
     });
@@ -180,9 +204,14 @@ describe('useResizeObserver', () => {
       const div = document.createElement('div');
       const spy1 = jest.fn();
 
-      const { rerender } = renderHook(({ enabled }) => useResizeObserver(div, spy1, enabled), {
-        initialProps: { enabled: false },
-      });
+      const { rerender } = renderHook(
+        ({ enabled }) => {
+          useResizeObserver(div, spy1, enabled);
+        },
+        {
+          initialProps: { enabled: false },
+        }
+      );
 
       expect(observeSpy).toHaveBeenCalledTimes(0);
       expect(unobserveSpy).toHaveBeenCalledTimes(0);

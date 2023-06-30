@@ -1,11 +1,11 @@
-import { DependencyList, RefObject, useMemo } from 'react';
+import { type DependencyList, type RefObject, useMemo } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 import { useEventListener } from '../useEventListener';
 import { isBrowser } from '../util/const';
 import { yieldFalse, yieldTrue } from '../util/misc';
 
 export type KeyboardEventPredicate = (event: KeyboardEvent) => boolean;
-export type KeyboardEventFilter = null | undefined | string | boolean | KeyboardEventPredicate;
+export type KeyboardEventFilter = null | string | boolean | KeyboardEventPredicate;
 export type KeyboardEventHandler<T extends EventTarget> = (this: T, event: KeyboardEvent) => void;
 
 export type UseKeyboardEventOptions<T extends EventTarget> = {
@@ -53,12 +53,11 @@ export function useKeyboardEvent<T extends EventTarget>(
   const handler = useMemo<KeyboardEventHandler<T>>(() => {
     const predicate = createKeyPredicate(keyOrPredicate);
 
-    return function kbEventHandler(this: T, ev) {
+    return function (this: T, ev) {
       if (predicate(ev)) {
         cbRef.current.call(this, ev);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   useEventListener(target, event, handler, eventOptions);

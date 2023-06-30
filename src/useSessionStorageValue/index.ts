@@ -1,12 +1,16 @@
-import { useStorageValue, UseStorageValueOptions, UseStorageValueResult } from '../useStorageValue';
+import {
+  useStorageValue,
+  type UseStorageValueOptions,
+  type UseStorageValueResult,
+} from '../useStorageValue';
 import { isBrowser, noop } from '../util/const';
 
 let IS_SESSION_STORAGE_AVAILABLE: boolean;
 
 try {
-  IS_SESSION_STORAGE_AVAILABLE = isBrowser && !!window.sessionStorage;
+  IS_SESSION_STORAGE_AVAILABLE = isBrowser && Boolean(window.sessionStorage);
 } catch {
-  // no need to test as this flag leads to noop behaviour
+  // No need to test as this flag leads to noop behaviour
   /* istanbul ignore next */
   IS_SESSION_STORAGE_AVAILABLE = false;
 }
@@ -36,7 +40,6 @@ export const useSessionStorageValue: UseSessionStorageValue = IS_SESSION_STORAGE
       _options?: UseStorageValueOptions<Type, Initialize>
     ): UseStorageValueResult<Type, Default, Initialize> => {
       if (isBrowser && process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
         console.warn('SessionStorage is not available in this environment');
       }
 

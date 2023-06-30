@@ -7,7 +7,9 @@ describe('useLifecycleLogger', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useLifecycleLogger('TestComponent'));
+    const { result } = renderHook(() => {
+      useLifecycleLogger('TestComponent');
+    });
     expect(result.error).toBeUndefined();
   });
 });

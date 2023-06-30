@@ -15,6 +15,7 @@ const hashWithCYRB53 = (someString: string) => {
     h1 = Math.imul(h1 ^ ch, 2_654_435_761);
     h2 = Math.imul(h2 ^ ch, 1_597_334_677);
   }
+
   h1 = Math.imul(h1 ^ (h1 >>> 16), 2_246_822_507) ^ Math.imul(h2 ^ (h2 >>> 13), 3_266_489_909);
   h2 = Math.imul(h2 ^ (h2 >>> 16), 2_246_822_507) ^ Math.imul(h1 ^ (h1 >>> 13), 3_266_489_909);
 
@@ -22,14 +23,22 @@ const hashWithCYRB53 = (someString: string) => {
   /* eslint-enable no-bitwise */
 };
 
-export const Example: React.FC = () => {
+export function Example() {
   const [valueA, setValueA] = React.useState(0);
   const [valueB, setValueB] = React.useState(0);
   const [irrelevantValue, setIrrelevantValue] = React.useState(0);
 
-  const incrementValueA = () => setValueA((prev) => prev + 1);
-  const incrementValueB = () => setValueB((prev) => prev + 1);
-  const incrementIrrelevantValue = () => setIrrelevantValue((prev) => prev + 1);
+  const incrementValueA = () => {
+    setValueA((prev) => prev + 1);
+  };
+
+  const incrementValueB = () => {
+    setValueB((prev) => prev + 1);
+  };
+
+  const incrementIrrelevantValue = () => {
+    setIrrelevantValue((prev) => prev + 1);
+  };
 
   const objectA = { key: valueA };
   const objectB = { key: valueB };
@@ -77,15 +86,21 @@ export const Example: React.FC = () => {
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ marginBottom: '1rem' }}>
           <span>Current valueA: {valueA}</span>{' '}
-          <button onClick={incrementValueA}>increment valueA</button>
+          <button type="button" onClick={incrementValueA}>
+            increment valueA
+          </button>
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <span>Current valueB: {valueB}</span>{' '}
-          <button onClick={incrementValueB}>increment valueB</button>
+          <button type="button" onClick={incrementValueB}>
+            increment valueB
+          </button>
         </div>
         <div style={{ marginBottom: '1rem' }}>
           <span>Current irrelevantValue: {irrelevantValue}</span>{' '}
-          <button onClick={incrementIrrelevantValue}>increment irrelevantValue</button>
+          <button type="button" onClick={incrementIrrelevantValue}>
+            increment irrelevantValue
+          </button>
         </div>
 
         <span>Current hash objectA: {hashWithCYRB53(JSON.stringify(objectA))}</span>
@@ -93,4 +108,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

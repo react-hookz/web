@@ -64,7 +64,6 @@ describe('useThrottledCallback', () => {
   });
 
   it('should pass parameters to callback', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const cb = jest.fn((_a: number, _c: string) => {});
     const { result } = renderHook(() => useThrottledCallback(cb, [], 200));
 

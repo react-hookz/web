@@ -19,7 +19,9 @@ describe('useDebouncedEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useDebouncedEffect(() => {}, [], 200));
+    const { result } = renderHook(() => {
+      useDebouncedEffect(() => {}, [], 200);
+    });
     expect(result.error).toBeUndefined();
   });
 });

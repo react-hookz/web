@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs/blocks';
-import {Example} from './example.stories';
-import {ImportPath} from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="State/useQueue" component={Example} />
 
@@ -23,9 +23,9 @@ export interface QueueMethods<T> {
   add: (item: T) => void;
   remove: () => T;
   size: number;
-  items: T[]
+  items: T[];
 }
-export function useQueue<T>( initialValue: T[] = [] ): QueueMethods<T>;
+export function useQueue<T>(initialValue: T[] = []): QueueMethods<T>;
 ```
 
 #### Importing

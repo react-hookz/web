@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useToggle, useVibrate } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [doVibrate, setDoVibrate] = useToggle(false);
 
   useVibrate(
@@ -12,7 +12,13 @@ export const Example: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => setDoVibrate()}>{doVibrate ? 'Stop' : 'Start'} vibration</button>
+      <button
+        type="button"
+        onClick={() => {
+          setDoVibrate();
+        }}>
+        {doVibrate ? 'Stop' : 'Start'} vibration
+      </button>
     </div>
   );
-};
+}

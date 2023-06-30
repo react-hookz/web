@@ -7,7 +7,9 @@ describe('useKeyboardEvent', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useKeyboardEvent('a', () => {}));
+    const { result } = renderHook(() => {
+      useKeyboardEvent('a', () => {});
+    });
     expect(result.error).toBeUndefined();
   });
 });

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRerender, useLifecycleLogger } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const rerender = useRerender();
   const dependency = 'test';
   useLifecycleLogger('Demo', [dependency]);
@@ -10,6 +10,7 @@ export const Example: React.FC = () => {
     <div>
       <div>Check your console for useLifecycleLogger logs</div>
       <button
+        type="button"
         onClick={() => {
           rerender();
         }}>
@@ -17,4 +18,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

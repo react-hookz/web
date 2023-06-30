@@ -24,9 +24,9 @@ export function useDocumentVisibility(initializeWithValue = true): boolean | und
     }
   });
 
-  useEventListener(isBrowser ? document : null, 'visibilitychange', () =>
-    setIsVisible(isDocumentVisible())
-  );
+  useEventListener(isBrowser ? document : null, 'visibilitychange', () => {
+    setIsVisible(isDocumentVisible());
+  });
 
   return isVisible;
 }

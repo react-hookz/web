@@ -7,7 +7,9 @@ describe('useIntervalEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useIntervalEffect(() => {}, 123));
+    const { result } = renderHook(() => {
+      useIntervalEffect(() => {}, 123);
+    });
     expect(result.error).toBeUndefined();
   });
 });

@@ -2,12 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useEventListener, useToggle } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, setState] = useState<Date>();
   const [mounted, toggleMounted] = useToggle(true);
 
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const ToggledComponent = () => {
+  function ToggledComponent() {
     useEventListener(
       window,
       'mousemove',
@@ -18,7 +17,7 @@ export const Example: React.FC = () => {
     );
 
     return <div>Datetime updating component is mounted.</div>;
-  };
+  }
 
   return (
     <div>
@@ -35,8 +34,14 @@ export const Example: React.FC = () => {
       <br />
       <div>
         {mounted && <ToggledComponent />}
-        <button onClick={() => toggleMounted()}>toggle component</button>
+        <button
+          type="button"
+          onClick={() => {
+            toggleMounted();
+          }}>
+          toggle component
+        </button>
       </div>
     </div>
   );
-};
+}

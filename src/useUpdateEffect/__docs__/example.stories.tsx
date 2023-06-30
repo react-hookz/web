@@ -2,13 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useRerender, useUpdateEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [count, setCount] = useState(1);
-  const [isUpdated, setUpdated] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
   const rerender = useRerender();
 
   useUpdateEffect(() => {
-    setUpdated(true);
+    setIsUpdated(true);
   }, [count]);
 
   return (
@@ -18,12 +18,14 @@ export const Example: React.FC = () => {
         {isUpdated ? 'yes' : 'no'}
       </div>
       <button
+        type="button"
         onClick={() => {
           setCount((i) => i + 1);
         }}>
         Increment counter [{count}]
       </button>{' '}
       <button
+        type="button"
         onClick={() => {
           rerender();
         }}>
@@ -31,4 +33,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

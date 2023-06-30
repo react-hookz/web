@@ -7,7 +7,9 @@ describe('useVibrate', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useVibrate(true, 100));
+    const { result } = renderHook(() => {
+      useVibrate(true, 100);
+    });
     expect(result.error).toBeUndefined();
   });
 });

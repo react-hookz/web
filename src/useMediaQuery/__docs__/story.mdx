@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs';
-import {Example} from './example.stories';
-import {ImportPath} from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Sensor/useMediaQuery" component={Example} />
 
@@ -37,7 +37,7 @@ export function useMediaQuery(query: string, options?: UseMediaQueryOptions): bo
 
 - **query** _`string`_ - CSS media query to track.
 - **options** _`object`_ - Hook options:
-    - **initializeWithValue** _`boolean`_ _(default: true)_ - Determine media query match state on first
+  - **initializeWithValue** _`boolean`_ _(default: true)_ - Determine media query match state on first
     render. Setting this to false will make the hook yield `undefined` on first render. We suggest
     setting this to `false` during SSR.
 

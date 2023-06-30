@@ -21,7 +21,7 @@ const cfg: Config = {
       testMatch: ['<rootDir>/src/**/__tests__/ssr.[jt]s?(x)'],
     },
 
-    // needed for output bundle testing
+    // Needed for output bundle testing
     {
       displayName: 'dom-package',
       transformIgnorePatterns: [],
@@ -41,5 +41,4 @@ const cfg: Config = {
   collectCoverageFrom: ['./src/**/*.{ts,js,tsx,jsx}', '!**/__tests__/**', '!**/__docs__/**'],
 };
 
-// eslint-disable-next-line import/no-default-export
 export default cfg;

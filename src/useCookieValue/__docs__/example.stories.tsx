@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCookieValue } from '..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [cookie, set, remove] = useCookieValue('react-hookz', { expires: 3600 });
 
   return (
@@ -16,16 +16,18 @@ export const Example: React.FC = () => {
       <input
         type="text"
         value={cookie ?? ''}
+        placeholder="Enter cookie value here"
         onChange={(ev) => {
           set(ev.target.value);
         }}
-        placeholder="Enter cookie value here"
       />
       <br />
       <br />
       <div>
-        <button onClick={remove}>remove cookie</button>
+        <button type="button" onClick={remove}>
+          remove cookie
+        </button>
       </div>
     </div>
   );
-};
+}

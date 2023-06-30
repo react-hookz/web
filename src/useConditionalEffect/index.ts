@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useEffect } from 'react';
+import { type DependencyList, useEffect } from 'react';
 import { truthyAndArrayPredicate } from '../util/const';
-import { EffectCallback, EffectHook } from '../util/misc';
+import { type EffectCallback, type EffectHook } from '../util/misc';
 import type { ConditionsList, ConditionsPredicate } from '../types';
 
 /**
@@ -20,6 +19,7 @@ import type { ConditionsList, ConditionsPredicate } from '../types';
  * @param effectHookRestArgs Extra arguments that are passed to the `effectHook` after the
  * `callback` and the dependency list.
  */
+// eslint-disable-next-line max-params
 export function useConditionalEffect<
   Cond extends ConditionsList,
   Callback extends EffectCallback = EffectCallback,

@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useState } from 'react';
+import { type MutableRefObject, useEffect, useState } from 'react';
 import { off, on } from '../util/misc';
 
 export type UsePermissionState = PermissionState | 'not-requested' | 'requested';
@@ -38,7 +38,6 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
         unmount.current();
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [descriptor.name]);
 
   return state;

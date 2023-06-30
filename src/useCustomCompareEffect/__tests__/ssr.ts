@@ -7,13 +7,17 @@ describe('useCustomCompareEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useCustomCompareEffect(() => {}, []));
+    const { result } = renderHook(() => {
+      useCustomCompareEffect(() => {}, []);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should not invoke comparator', () => {
     const spy = jest.fn();
-    renderHook(() => useCustomCompareEffect(() => {}, [], spy));
+    renderHook(() => {
+      useCustomCompareEffect(() => {}, [], spy);
+    });
     expect(spy).not.toHaveBeenCalled();
   });
 });

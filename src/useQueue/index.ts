@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useList } from '../useList';
 import { useSyncedRef } from '../useSyncedRef';
 
-export interface QueueMethods<T> {
+export type QueueMethods<T> = {
   /**
    * The entire queue.
    */
@@ -28,7 +28,7 @@ export interface QueueMethods<T> {
    * The current size of the queue.
    */
   size: number;
-}
+};
 
 /**
  * A state hook implementing FIFO queue.
@@ -41,8 +41,10 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 
   return useMemo(
     () => ({
-      add: (value: T) => push(value),
-      remove: () => {
+      add(value: T) {
+        push(value);
+      },
+      remove() {
         const val = listRef.current[0];
 
         removeAt(0);
@@ -62,7 +64,7 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
         return listRef.current;
       },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     []
   );
 }

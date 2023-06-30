@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useConditionalEffect, useUpdateEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state1, setState1] = useState(2);
   const [state2, setState2] = useState(2);
 
@@ -21,12 +21,14 @@ export const Example: React.FC = () => {
     <div>
       <div>An alert will be displayed when both counters have even values.</div>
       <button
+        type="button"
         onClick={() => {
           setState1((i) => i + 1);
         }}>
         Increment counter 1 [{state1}]
       </button>{' '}
       <button
+        type="button"
         onClick={() => {
           setState2((i) => i + 1);
         }}>
@@ -34,4 +36,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

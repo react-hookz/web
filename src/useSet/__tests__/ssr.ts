@@ -49,7 +49,7 @@ describe('useSet', () => {
     const { result } = renderHook(() => [++i, useSet()] as const);
 
     act(() => {
-      expect(result.current[1].clear()).toBe(undefined);
+      result.current[1].clear();
     });
 
     expect(result.current[0]).toBe(1);

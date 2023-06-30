@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSessionStorageValue } from '../..';
 
-interface ExampleProps {
+type ExampleProps = {
   /**
    * Default value to return in case key not presented in SessionStorage.
    */
@@ -10,12 +10,12 @@ interface ExampleProps {
    * SessionStorage key to manage.
    */
   key: string;
-}
+};
 
-export const Example: React.FC<ExampleProps> = ({
+export function Example({
   key = 'react-hookz-ss-test',
   defaultValue = '@react-hookz is awesome',
-}) => {
+}: ExampleProps) {
   const ssVal = useSessionStorageValue(key, { defaultValue });
 
   return (
@@ -32,7 +32,9 @@ export const Example: React.FC<ExampleProps> = ({
           ssVal.set(ev.currentTarget.value);
         }}
       />
-      <button onClick={ssVal.remove}>remove storage value</button>
+      <button type="button" onClick={ssVal.remove}>
+        remove storage value
+      </button>
     </div>
   );
-};
+}

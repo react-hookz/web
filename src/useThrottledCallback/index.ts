@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useMemo, useRef } from 'react';
+import { type DependencyList, useMemo, useRef } from 'react';
 import { useUnmountEffect } from '../useUnmountEffect';
 
-export interface ThrottledFunction<Fn extends (...args: any[]) => any> {
-  (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
-}
+export type ThrottledFunction<Fn extends (...args: any[]) => any> = (
+  this: ThisParameterType<Fn>,
+  ...args: Parameters<Fn>
+) => void;
 
 /**
  * Makes passed function throttled, otherwise acts like `useCallback`.
@@ -40,7 +40,7 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
       timeout.current = setTimeout(() => {
         timeout.current = undefined;
 
-        // if trailing execution is not disabled - call callback with last
+        // If trailing execution is not disabled - call callback with last
         // received arguments and context
         if (!noTrailing && lastCall.current) {
           execute(lastCall.current.this, lastCall.current.args);
@@ -50,10 +50,9 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
       }, delay);
     };
 
-    // eslint-disable-next-line func-names
     const wrapped = function (this, ...args) {
       if (timeout.current) {
-        // if we cant execute callback immediately - save its arguments and
+        // If we cant execute callback immediately - save its arguments and
         // context to execute it when delay is passed
         lastCall.current = { args, this: this };
 
@@ -69,6 +68,5 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
     });
 
     return wrapped;
-    // eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
   }, [delay, noTrailing, ...deps]);
 }
