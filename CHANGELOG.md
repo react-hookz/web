@@ -1,3 +1,10 @@
+# [23.1.0](https://github.com/react-hookz/web/compare/v23.0.1...v23.1.0) (2023-06-30)
+
+
+### Features
+
+* conform new linting configuration ([#1296](https://github.com/react-hookz/web/issues/1296)) ([e0bc4e1](https://github.com/react-hookz/web/commit/e0bc4e199da399de68b0527724952111332e6f43))
+
 ## [23.0.1](https://github.com/react-hookz/web/compare/v23.0.0...v23.0.1) (2023-05-24)
 
 
