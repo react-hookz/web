@@ -201,6 +201,7 @@ export function useStorageValue<
 		if (!optionsRef.current.initializeWithValue) {
 			stateActions.current.fetch();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useIsomorphicLayoutEffect(() => {
@@ -253,7 +254,7 @@ export function useStorageValue<
 				actions.current.fetch();
 			},
 		}),
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[]
 	);
 
@@ -262,7 +263,7 @@ export function useStorageValue<
 			value: state as UseStorageValueValue<Type, Default, Initialize>,
 			...staticActions,
 		}),
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[state]
 	);
 }

@@ -124,7 +124,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 				},
 				execute: (...params: Args) => methods.current.execute(...params),
 			}),
-
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 			[]
 		),
 		{ promise: promiseRef.current, lastArgs: argsRef.current },

@@ -38,6 +38,7 @@ export function useMediatedState<State, RawState = State>(
 			} else {
 				setState(value as unknown as State);
 			}
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 	];
 }

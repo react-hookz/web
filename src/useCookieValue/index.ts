@@ -142,14 +142,17 @@ export function useCookieValue(
 
 		useCallback((value: string) => {
 			methods.current.set(value);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 
 		useCallback(() => {
 			methods.current.remove();
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 
 		useCallback(() => {
 			methods.current.fetch();
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 	];
 }

@@ -44,5 +44,6 @@ export function useClickOutside<T extends HTMLElement>(
 				off(document, name, handler, { passive: true });
 			});
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [...events]);
 }

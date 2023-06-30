@@ -47,6 +47,7 @@ export function useRafCallback<T extends (...args: any[]) => any>(
 			});
 
 			return wrapped;
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 
 		cancel,

@@ -41,6 +41,7 @@ export function useEventListener<T extends EventTarget>(
 				}
 			},
 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[]
 	);
 
@@ -56,5 +57,6 @@ export function useEventListener<T extends EventTarget>(
 		return () => {
 			off(tgt, params[0], eventListener, ...restParams);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [target, params[0]]);
 }

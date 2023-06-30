@@ -58,6 +58,7 @@ export function useKeyboardEvent<T extends EventTarget>(
 				cbRef.current.call(this, ev);
 			}
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, deps);
 
 	useEventListener(target, event, handler, eventOptions);

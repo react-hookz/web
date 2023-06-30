@@ -64,7 +64,7 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 				return listRef.current;
 			},
 		}),
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[]
 	);
 }

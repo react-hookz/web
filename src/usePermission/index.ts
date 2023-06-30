@@ -38,6 +38,7 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 				unmount.current();
 			}
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [descriptor.name]);
 
 	return state;

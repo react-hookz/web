@@ -17,5 +17,6 @@ export function useDebouncedEffect(
 	delay: number,
 	maxWait = 0
 ): void {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(useDebouncedCallback(callback, deps, delay, maxWait), deps);
 }

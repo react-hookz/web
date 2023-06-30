@@ -113,5 +113,6 @@ export function useResizeObserver<T extends Element>(
 			subscribed = false;
 			ro.unsubscribe(tgt, handler);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [tgt, ro]);
 }

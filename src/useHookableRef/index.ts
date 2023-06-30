@@ -39,5 +39,6 @@ export function useHookableRef<T>(
 				v = onSetRef.current === undefined ? val : onSetRef.current(val as T);
 			},
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 }

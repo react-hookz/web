@@ -18,5 +18,6 @@ export function useFunctionalState<S>(
 	const [state, setState] = useState(initialState);
 	const stateRef = useSyncedRef(state);
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	return [useCallback(() => stateRef.current, []), setState];
 }

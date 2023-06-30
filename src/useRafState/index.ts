@@ -14,6 +14,7 @@ export function useRafState<S = undefined>(): [
 export function useRafState<S>(
 	initialState?: S | (() => S)
 ): [S | undefined, Dispatch<SetStateAction<S>>] {
+	// eslint-disable-next-line react/hook-use-state
 	const [state, innerSetState] = useState<S | undefined>(initialState);
 
 	const [setState, cancelRaf] = useRafCallback(innerSetState);

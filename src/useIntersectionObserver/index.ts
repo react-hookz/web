@@ -161,6 +161,7 @@ export function useIntersectionObserver<T extends Element>(
 			subscribed = false;
 			observerEntry.unobserve(tgt, handler);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [target, r, rootMargin, ...threshold]);
 
 	return state;

@@ -19,5 +19,6 @@ export function useThrottledEffect(
 	delay: number,
 	noTrailing = false
 ): void {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(useThrottledCallback(callback, deps, delay, noTrailing), deps);
 }

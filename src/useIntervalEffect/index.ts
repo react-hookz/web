@@ -23,5 +23,6 @@ export function useIntervalEffect(callback: () => void, ms?: number): void {
 		return () => {
 			clearInterval(id);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ms]);
 }

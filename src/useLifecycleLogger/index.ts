@@ -13,6 +13,7 @@ export function useLifecycleLogger(componentName: string, deps?: DependencyList)
 		if (mountedRef.current) {
 			console.log(`${componentName} updated`, deps && [...deps]);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, deps);
 
 	useEffect(() => {
@@ -23,5 +24,6 @@ export function useLifecycleLogger(componentName: string, deps?: DependencyList)
 			mountedRef.current = false;
 			console.log(`${componentName} unmounted`);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 }

@@ -11,5 +11,6 @@ import { noop } from '../util/const';
 export function useUpdateEffect(effect: EffectCallback, deps?: DependencyList): void {
 	const isFirstMount = useFirstMountState();
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(isFirstMount ? noop : effect, deps);
 }

@@ -40,12 +40,14 @@ export function useValidator<V extends ValidityState>(
 
 	useEffect(() => {
 		validatorRef.current();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, deps);
 
 	return [
 		validity,
 		useCallback(() => {
 			validatorRef.current();
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 	];
 }

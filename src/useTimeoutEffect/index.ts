@@ -37,11 +37,13 @@ export function useTimeoutEffect(
 		timeoutIdRef.current = setTimeout(() => {
 			cbRef.current();
 		}, msRef.current);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		reset();
 		return cancel;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ms]);
 
 	return [cancel, reset];

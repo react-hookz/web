@@ -11,7 +11,7 @@
       "DOM"
     ],
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
+		"allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true
   },

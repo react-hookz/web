@@ -17,7 +17,7 @@ export function useRafEffect(callback: (...args: any[]) => void, deps: Dependenc
 
 			return cancelRaf;
 		},
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		deps
 	);
 }

@@ -37,6 +37,7 @@ export function useControlledRerenderState<S>(
 					rr();
 				}
 			}
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 	];
 }

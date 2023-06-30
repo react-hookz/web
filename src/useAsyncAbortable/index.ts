@@ -92,6 +92,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 				...asyncActions,
 				...actions,
 			};
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
 		{ ...asyncMeta, abortController: abortController.current },
 	];

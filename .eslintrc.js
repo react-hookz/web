@@ -7,22 +7,14 @@ module.exports = {
 
 	overrides: [
 		{
-			files: ['*.js'],
-			extends: ['@react-hookz/eslint-config/base.cjs'],
-		},
-		{
-			files: ['*.jsx'],
-			extends: ['@react-hookz/eslint-config/base.cjs', '@react-hookz/eslint-config/react.cjs'],
-		},
-		{
-			files: ['*.ts'],
+			files: ['*.js', '*.jsx'],
 			parserOptions: {
 				project: './tsconfig.eslint.json',
 			},
-			extends: ['@react-hookz/eslint-config/typescript.cjs'],
+			extends: ['@react-hookz/eslint-config/base.cjs', '@react-hookz/eslint-config/react.cjs'],
 		},
 		{
-			files: ['*.tsx'],
+			files: ['*.ts', '*.tsx'],
 			parserOptions: {
 				project: './tsconfig.eslint.json',
 			},
@@ -32,11 +24,7 @@ module.exports = {
 			],
 		},
 		{
-			files: ['**/__tests__/**/*.js'],
-			extends: ['@react-hookz/eslint-config/base.cjs', '@react-hookz/eslint-config/jest.cjs'],
-		},
-		{
-			files: ['**/__tests__/**/*.jsx'],
+			files: ['**/__tests__/**/*.js', '**/__tests__/**/*.jsx'],
 			extends: [
 				'@react-hookz/eslint-config/base.cjs',
 				'@react-hookz/eslint-config/react.cjs',
@@ -44,20 +32,7 @@ module.exports = {
 			],
 		},
 		{
-			files: ['**/__tests__/**/*.ts'],
-			parserOptions: {
-				project: './tsconfig.eslint.json',
-			},
-			extends: [
-				'@react-hookz/eslint-config/typescript-unsafe.cjs',
-				'@react-hookz/eslint-config/jest.cjs',
-			],
-		},
-		{
-			files: ['**/__tests__/**/*.tsx'],
-			parserOptions: {
-				project: './tsconfig.eslint.json',
-			},
+			files: ['**/__tests__/**/*.ts', '**/__tests__/**/*.tsx'],
 			extends: [
 				'@react-hookz/eslint-config/typescript-unsafe.cjs',
 				'@react-hookz/eslint-config/react.cjs',
