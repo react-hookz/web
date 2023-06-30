@@ -11,21 +11,21 @@ Like useMemo but uses provided comparator function to validate dependency change
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export type DependenciesComparator<Deps extends DependencyList = DependencyList> = (
-  a: Deps,
-  b: Deps
+	a: Deps,
+	b: Deps
 ) => boolean;
 
 function useCustomCompareMemo<T, Deps extends DependencyList>(
-  factory: () => T,
-  deps: Deps,
-  comparator: DependenciesComparator<Deps>
+	factory: () => T,
+	deps: Deps,
+	comparator: DependenciesComparator<Deps>
 ): T;
 ```
 

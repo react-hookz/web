@@ -1,8 +1,8 @@
 import { type DependencyList } from 'react';
 
 export type DependenciesComparator<Deps extends DependencyList = DependencyList> = (
-  a: Deps,
-  b: Deps
+	a: Deps,
+	b: Deps
 ) => boolean;
 
 export type Predicate = (prev: any, next: any) => boolean;
@@ -10,5 +10,5 @@ export type Predicate = (prev: any, next: any) => boolean;
 export type ConditionsList = readonly any[];
 
 export type ConditionsPredicate<Cond extends ConditionsList = ConditionsList> = (
-  conditions: Cond
+	conditions: Cond
 ) => boolean;

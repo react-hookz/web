@@ -14,10 +14,10 @@ import { useThrottledCallback } from '../useThrottledCallback';
  * after the last throttled-function call.
  */
 export function useThrottledEffect(
-  callback: (...args: any[]) => void,
-  deps: DependencyList,
-  delay: number,
-  noTrailing = false
+	callback: (...args: any[]) => void,
+	deps: DependencyList,
+	delay: number,
+	noTrailing = false
 ): void {
-  useEffect(useThrottledCallback(callback, deps, delay, noTrailing), deps);
+	useEffect(useThrottledCallback(callback, deps, delay, noTrailing), deps);
 }

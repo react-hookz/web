@@ -14,18 +14,18 @@ import type { Predicate } from '../types';
  * the value will be updated if it is strictly equal (`===`) to the previous value.
  */
 export function usePreviousDistinct<T>(
-  value: T,
-  predicate: Predicate = isStrictEqual
+	value: T,
+	predicate: Predicate = isStrictEqual
 ): T | undefined {
-  const [previousState, setPreviousState] = useState<T>();
-  const currentRef = useRef<T>(value);
+	const [previousState, setPreviousState] = useState<T>();
+	const currentRef = useRef<T>(value);
 
-  useUpdateEffect(() => {
-    if (!predicate(currentRef.current, value)) {
-      setPreviousState(currentRef.current);
-      currentRef.current = value;
-    }
-  }, [value]);
+	useUpdateEffect(() => {
+		if (!predicate(currentRef.current, value)) {
+			setPreviousState(currentRef.current);
+			currentRef.current = value;
+		}
+	}, [value]);
 
-  return previousState;
+	return previousState;
 }

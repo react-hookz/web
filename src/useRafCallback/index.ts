@@ -12,43 +12,43 @@ import { isBrowser } from '../util/const';
  */
 
 export function useRafCallback<T extends (...args: any[]) => any>(
-  cb: T
+	cb: T
 ): [(...args: Parameters<T>) => void, () => void] {
-  const cbRef = useSyncedRef(cb);
-  const frame = useRef<number>(0);
+	const cbRef = useSyncedRef(cb);
+	const frame = useRef<number>(0);
 
-  const cancel = useCallback(() => {
-    if (!isBrowser) return;
+	const cancel = useCallback(() => {
+		if (!isBrowser) return;
 
-    if (frame.current) {
-      cancelAnimationFrame(frame.current);
-      frame.current = 0;
-    }
-  }, []);
+		if (frame.current) {
+			cancelAnimationFrame(frame.current);
+			frame.current = 0;
+		}
+	}, []);
 
-  useUnmountEffect(cancel);
+	useUnmountEffect(cancel);
 
-  return [
-    useMemo(() => {
-      const wrapped = (...args: Parameters<T>) => {
-        if (!isBrowser) return;
+	return [
+		useMemo(() => {
+			const wrapped = (...args: Parameters<T>) => {
+				if (!isBrowser) return;
 
-        cancel();
+				cancel();
 
-        frame.current = requestAnimationFrame(() => {
-          cbRef.current(...args);
-          frame.current = 0;
-        });
-      };
+				frame.current = requestAnimationFrame(() => {
+					cbRef.current(...args);
+					frame.current = 0;
+				});
+			};
 
-      Object.defineProperties(wrapped, {
-        length: { value: cb.length },
-        name: { value: `${cb.name || 'anonymous'}__raf` },
-      });
+			Object.defineProperties(wrapped, {
+				length: { value: cb.length },
+				name: { value: `${cb.name || 'anonymous'}__raf` },
+			});
 
-      return wrapped;
-    }, []),
+			return wrapped;
+		}, []),
 
-    cancel,
-  ];
+		cancel,
+	];
 }

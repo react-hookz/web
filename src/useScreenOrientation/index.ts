@@ -3,7 +3,7 @@ import { useMediaQuery } from '../useMediaQuery';
 export type ScreenOrientation = 'portrait' | 'landscape';
 
 type UseScreenOrientationOptions = {
-  initializeWithValue?: boolean;
+	initializeWithValue?: boolean;
 };
 
 /**
@@ -13,11 +13,11 @@ type UseScreenOrientationOptions = {
  * hook uses CSS3 `orientation` media-query to check screen orientation.
  */
 export function useScreenOrientation(
-  options?: UseScreenOrientationOptions
+	options?: UseScreenOrientationOptions
 ): ScreenOrientation | undefined {
-  const matches = useMediaQuery('(orientation: portrait)', {
-    initializeWithValue: options?.initializeWithValue ?? true,
-  });
+	const matches = useMediaQuery('(orientation: portrait)', {
+		initializeWithValue: options?.initializeWithValue ?? true,
+	});
 
-  return matches === undefined ? undefined : matches ? 'portrait' : 'landscape';
+	return matches === undefined ? undefined : matches ? 'portrait' : 'landscape';
 }

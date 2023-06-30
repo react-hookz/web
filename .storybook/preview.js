@@ -1,4 +1,4 @@
 export const parameters = {
-  layout: 'centered',
-  viewMode: 'docs',
+	layout: 'centered',
+	viewMode: 'docs',
 };

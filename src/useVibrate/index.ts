@@ -9,31 +9,31 @@ import { isBrowser, noop } from '../util/const';
  * @param loop If true - vibration will be looped using `setInterval`.
  */
 export const useVibrate =
-  !isBrowser || navigator.vibrate === undefined
-    ? noop
-    : (enabled: boolean, pattern: VibratePattern, loop?: boolean): void => {
-        useEffect(() => {
-          let interval: undefined | ReturnType<typeof setInterval>;
+	!isBrowser || navigator.vibrate === undefined
+		? noop
+		: (enabled: boolean, pattern: VibratePattern, loop?: boolean): void => {
+				useEffect(() => {
+					let interval: undefined | ReturnType<typeof setInterval>;
 
-          if (enabled) {
-            navigator.vibrate(pattern);
+					if (enabled) {
+						navigator.vibrate(pattern);
 
-            if (loop) {
-              interval = setInterval(
-                () => {
-                  navigator.vibrate(pattern);
-                },
-                Array.isArray(pattern) ? pattern.reduce((a, n) => a + n, 0) : pattern
-              );
-            }
+						if (loop) {
+							interval = setInterval(
+								() => {
+									navigator.vibrate(pattern);
+								},
+								Array.isArray(pattern) ? pattern.reduce((a, n) => a + n, 0) : pattern
+							);
+						}
 
-            return () => {
-              navigator.vibrate(0);
+						return () => {
+							navigator.vibrate(0);
 
-              if (interval) {
-                clearInterval(interval);
-              }
-            };
-          }
-        }, [loop, pattern, enabled]);
-      };
+							if (interval) {
+								clearInterval(interval);
+							}
+						};
+					}
+				}, [loop, pattern, enabled]);
+		  };

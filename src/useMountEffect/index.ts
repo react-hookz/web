@@ -6,7 +6,7 @@ import { useEffect } from 'react';
  * @param effect Effector to run on mount
  */
 export function useMountEffect(effect: CallableFunction): void {
-  useEffect(() => {
-    effect();
-  }, []);
+	useEffect(() => {
+		effect();
+	}, []);
 }

@@ -18,26 +18,26 @@ import { basicDepsComparator, type EffectCallback, type EffectHook } from '../ut
  */
 // eslint-disable-next-line max-params
 export function useCustomCompareEffect<
-  Callback extends EffectCallback = EffectCallback,
-  Deps extends DependencyList = DependencyList,
-  HookRestArgs extends any[] = any[],
-  R extends HookRestArgs = HookRestArgs
+	Callback extends EffectCallback = EffectCallback,
+	Deps extends DependencyList = DependencyList,
+	HookRestArgs extends any[] = any[],
+	R extends HookRestArgs = HookRestArgs
 >(
-  callback: Callback,
-  deps: Deps,
-  comparator: DependenciesComparator<Deps> = basicDepsComparator,
-  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
-  ...effectHookRestArgs: R
+	callback: Callback,
+	deps: Deps,
+	comparator: DependenciesComparator<Deps> = basicDepsComparator,
+	effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
+	...effectHookRestArgs: R
 ): void {
-  const dependencies = useRef<Deps>();
+	const dependencies = useRef<Deps>();
 
-  // Effects are not run during SSR, therefore, it makes no sense to invoke the comparator
-  if (
-    dependencies.current === undefined ||
-    (isBrowser && !comparator(dependencies.current, deps))
-  ) {
-    dependencies.current = deps;
-  }
+	// Effects are not run during SSR, therefore, it makes no sense to invoke the comparator
+	if (
+		dependencies.current === undefined ||
+		(isBrowser && !comparator(dependencies.current, deps))
+	) {
+		dependencies.current = deps;
+	}
 
-  effectHook(callback, dependencies.current, ...effectHookRestArgs);
+	effectHook(callback, dependencies.current, ...effectHookRestArgs);
 }

@@ -11,16 +11,16 @@ Like `useState` but its state setter is debounced.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useDebouncedState<S>(
-  initialState: S | (() => S),
-  delay: number,
-  maxWait = 0
+	initialState: S | (() => S),
+	delay: number,
+	maxWait = 0
 ): [S, Dispatch<SetStateAction<S>>];
 ```
 

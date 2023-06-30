@@ -11,7 +11,7 @@ Like `React.useRef` but it is possible to define get and set handlers.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
@@ -20,9 +20,9 @@ Like `React.useRef` but it is possible to define get and set handlers.
 export type HookableRefHandler<T> = (v: T) => T;
 
 export function useHookableRef<T>(
-  initialValue: T,
-  onSet?: HookableRefHandler<T>,
-  onGet?: HookableRefHandler<T>
+	initialValue: T,
+	onSet?: HookableRefHandler<T>,
+	onGet?: HookableRefHandler<T>
 ): React.MutableRefObject<T>;
 export function useHookableRef<T = undefined>(): React.MutableRefObject<T | undefined>;
 ```

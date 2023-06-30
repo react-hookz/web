@@ -20,22 +20,22 @@ Invokes a callback whenever ResizeObserver detects a change to target's size.
 #### Example
 
 <Canvas isColumn>
-  Below component uses direct invocation so it is not so optimal in terms of CPU usage, but it gains
-  most recent data.
-  <Story name="Example" story={Example} />
-  As `useResizeObserver` does not apply any debounce or throttle mechanisms to received callback -
-  it is up to developer to do so if needed. Below example is almost same as previous but state is
-  updated within 500ms debounce.
-  <Story name="ExampleDebounced" story={ExampleDebounced} />
+	Below component uses direct invocation so it is not so optimal in terms of CPU usage, but it gains
+	most recent data.
+	<Story name="Example" story={Example} />
+	As `useResizeObserver` does not apply any debounce or throttle mechanisms to received callback -
+	it is up to developer to do so if needed. Below example is almost same as previous but state is
+	updated within 500ms debounce.
+	<Story name="ExampleDebounced" story={ExampleDebounced} />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useResizeObserver<T extends Element>(
-  target: React.RefObject<T> | T | null,
-  callback: (entry: ResizeObserverEntry) => void,
-  enabled = true
+	target: React.RefObject<T> | T | null,
+	callback: (entry: ResizeObserverEntry) => void,
+	enabled = true
 ): void;
 ```
 

@@ -7,3 +7,5 @@ storybook-build
 CHANGELOG.md
 !.eslintrc.js
 !.prettierrc.js
+!.storybook
+!.github

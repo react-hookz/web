@@ -9,7 +9,7 @@ import { noop } from '../util/const';
  * @param deps Dependencies list, as for `useEffect` hook
  */
 export function useUpdateEffect(effect: EffectCallback, deps?: DependencyList): void {
-  const isFirstMount = useFirstMountState();
+	const isFirstMount = useFirstMountState();
 
-  useEffect(isFirstMount ? noop : effect, deps);
+	useEffect(isFirstMount ? noop : effect, deps);
 }

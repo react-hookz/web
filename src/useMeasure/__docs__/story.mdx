@@ -16,15 +16,15 @@ Uses ResizeObserver to track element dimensions and re-render component when the
 #### Example
 
 <Canvas isColumn>
-  <Story name="Example" story={Example} />
+	<Story name="Example" story={Example} />
 </Canvas>
 
 ## Reference
 
 ```ts
 interface Measures {
-  width: number;
-  height: number;
+	width: number;
+	height: number;
 }
 
 function useMeasure<T extends Element>(enabled = true): [Measures | undefined, React.RefObject<T>];

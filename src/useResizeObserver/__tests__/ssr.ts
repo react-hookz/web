@@ -2,15 +2,15 @@ import { renderHook } from '@testing-library/react-hooks/server';
 import { useResizeObserver } from '../..';
 
 describe('useResizeObserver', () => {
-  it('should be defined', () => {
-    expect(useResizeObserver).toBeDefined();
-  });
+	it('should be defined', () => {
+		expect(useResizeObserver).toBeDefined();
+	});
 
-  it('should render', () => {
-    const { result } = renderHook(() => {
-      useResizeObserver(null, () => {});
-    });
+	it('should render', () => {
+		const { result } = renderHook(() => {
+			useResizeObserver(null, () => {});
+		});
 
-    expect(result.error).toBeUndefined();
-  });
+		expect(result.error).toBeUndefined();
+	});
 });

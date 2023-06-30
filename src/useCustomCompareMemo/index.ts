@@ -11,15 +11,15 @@ import type { DependenciesComparator } from '../types';
  * @returns useMemo result
  */
 export const useCustomCompareMemo = <T, Deps extends DependencyList>(
-  factory: () => T,
-  deps: Deps,
-  comparator: DependenciesComparator<Deps>
+	factory: () => T,
+	deps: Deps,
+	comparator: DependenciesComparator<Deps>
 ): T => {
-  const dependencies = useRef<Deps>();
+	const dependencies = useRef<Deps>();
 
-  if (dependencies.current === undefined || !comparator(dependencies.current, deps)) {
-    dependencies.current = deps;
-  }
+	if (dependencies.current === undefined || !comparator(dependencies.current, deps)) {
+		dependencies.current = deps;
+	}
 
-  return useMemo<T>(factory, dependencies.current);
+	return useMemo<T>(factory, dependencies.current);
 };

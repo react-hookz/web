@@ -4,9 +4,9 @@ import { useSyncedRef } from '../useSyncedRef';
 type TimeoutID = ReturnType<typeof setTimeout> | null;
 
 const cancelTimeout = (id: TimeoutID) => {
-  if (id) {
-    clearTimeout(id);
-  }
+	if (id) {
+		clearTimeout(id);
+	}
 };
 
 /**
@@ -19,30 +19,30 @@ const cancelTimeout = (id: TimeoutID) => {
  * that it will be set as new after the change.
  */
 export function useTimeoutEffect(
-  callback: () => void,
-  ms?: number
+	callback: () => void,
+	ms?: number
 ): [cancel: () => void, reset: () => void] {
-  const cbRef = useSyncedRef(callback);
-  const msRef = useSyncedRef(ms);
-  const timeoutIdRef = useRef<TimeoutID>(null);
+	const cbRef = useSyncedRef(callback);
+	const msRef = useSyncedRef(ms);
+	const timeoutIdRef = useRef<TimeoutID>(null);
 
-  const cancel = useCallback(() => {
-    cancelTimeout(timeoutIdRef.current);
-  }, []);
+	const cancel = useCallback(() => {
+		cancelTimeout(timeoutIdRef.current);
+	}, []);
 
-  const reset = useCallback(() => {
-    if (msRef.current === undefined) return;
+	const reset = useCallback(() => {
+		if (msRef.current === undefined) return;
 
-    cancel();
-    timeoutIdRef.current = setTimeout(() => {
-      cbRef.current();
-    }, msRef.current);
-  }, []);
+		cancel();
+		timeoutIdRef.current = setTimeout(() => {
+			cbRef.current();
+		}, msRef.current);
+	}, []);
 
-  useEffect(() => {
-    reset();
-    return cancel;
-  }, [ms]);
+	useEffect(() => {
+		reset();
+		return cancel;
+	}, [ms]);
 
-  return [cancel, reset];
+	return [cancel, reset];
 }

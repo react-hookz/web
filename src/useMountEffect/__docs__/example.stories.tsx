@@ -3,23 +3,23 @@ import { useState } from 'react';
 import { useRerender, useMountEffect } from '../..';
 
 export function Example() {
-  const [count, setCount] = useState(0);
-  const rerender = useRerender();
+	const [count, setCount] = useState(0);
+	const rerender = useRerender();
 
-  useMountEffect(() => {
-    setCount((i) => i + 1);
-  });
+	useMountEffect(() => {
+		setCount((i) => i + 1);
+	});
 
-  return (
-    <div>
-      <div>useMountEffect has run {count} time(s)</div>
-      <button
-        type="button"
-        onClick={() => {
-          rerender();
-        }}>
-        Rerender component
-      </button>
-    </div>
-  );
+	return (
+		<div>
+			<div>useMountEffect has run {count} time(s)</div>
+			<button
+				type="button"
+				onClick={() => {
+					rerender();
+				}}>
+				Rerender component
+			</button>
+		</div>
+	);
 }

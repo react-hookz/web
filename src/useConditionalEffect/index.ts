@@ -21,27 +21,27 @@ import type { ConditionsList, ConditionsPredicate } from '../types';
  */
 // eslint-disable-next-line max-params
 export function useConditionalEffect<
-  Cond extends ConditionsList,
-  Callback extends EffectCallback = EffectCallback,
-  Deps extends DependencyList | undefined = DependencyList | undefined,
-  HookRestArgs extends any[] = any[],
-  R extends HookRestArgs = HookRestArgs
+	Cond extends ConditionsList,
+	Callback extends EffectCallback = EffectCallback,
+	Deps extends DependencyList | undefined = DependencyList | undefined,
+	HookRestArgs extends any[] = any[],
+	R extends HookRestArgs = HookRestArgs
 >(
-  callback: Callback,
-  deps: Deps,
-  conditions: Cond,
-  predicate: ConditionsPredicate<Cond> = truthyAndArrayPredicate,
-  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
-  ...effectHookRestArgs: R
+	callback: Callback,
+	deps: Deps,
+	conditions: Cond,
+	predicate: ConditionsPredicate<Cond> = truthyAndArrayPredicate,
+	effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
+	...effectHookRestArgs: R
 ): void {
-  effectHook(
-    (() => {
-      if (predicate(conditions)) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return callback();
-      }
-    }) as Callback,
-    deps,
-    ...effectHookRestArgs
-  );
+	effectHook(
+		(() => {
+			if (predicate(conditions)) {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+				return callback();
+			}
+		}) as Callback,
+		deps,
+		...effectHookRestArgs
+	);
 }

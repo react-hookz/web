@@ -10,10 +10,10 @@ Like `useState` but instead of raw state, state getter returned.
 
 ```ts
 export function useFunctionalState<S>(
-  initialState: S | (() => S)
+	initialState: S | (() => S)
 ): [() => S, React.Dispatch<React.SetStateAction<S>>];
 export function useFunctionalState<S = undefined>(): [
-  () => S | undefined,
-  React.Dispatch<React.SetStateAction<S | undefined>>
+	() => S | undefined,
+	React.Dispatch<React.SetStateAction<S | undefined>>
 ];
 ```

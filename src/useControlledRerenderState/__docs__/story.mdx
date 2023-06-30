@@ -13,7 +13,7 @@ Like `React.useState`, but its state setter accepts extra argument, that allows 
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
@@ -22,11 +22,11 @@ Like `React.useState`, but its state setter accepts extra argument, that allows 
 export type ControlledRerenderDispatch<A> = (value: A, rerender?: boolean) => void;
 
 export function useControlledRerenderState<S>(
-  initialState: S | (() => S)
+	initialState: S | (() => S)
 ): [S, ControlledRerenderDispatch<React.SetStateAction<S>>];
 export function useControlledRerenderState<S = undefined>(): [
-  S | undefined,
-  ControlledRerenderDispatch<React.SetStateAction<S | undefined>>
+	S | undefined,
+	ControlledRerenderDispatch<React.SetStateAction<S | undefined>>
 ];
 ```
 

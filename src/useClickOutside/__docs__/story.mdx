@@ -16,7 +16,7 @@ Triggers a callback when the user clicks outside a targeted element.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
@@ -25,9 +25,9 @@ Triggers a callback when the user clicks outside a targeted element.
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
 export function useClickOutside<T extends HTMLElement>(
-  ref: RefObject<T> | MutableRefObject<T>,
-  callback: EventListener,
-  events: string[] = DEFAULT_EVENTS
+	ref: RefObject<T> | MutableRefObject<T>,
+	callback: EventListener,
+	events: string[] = DEFAULT_EVENTS
 ): void;
 ```
 

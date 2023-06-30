@@ -13,36 +13,36 @@ const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
  * 'mousedown', 'touchstart'
  */
 export function useClickOutside<T extends HTMLElement>(
-  ref: RefObject<T> | MutableRefObject<T>,
-  callback: EventListener,
-  events: string[] = DEFAULT_EVENTS
+	ref: RefObject<T> | MutableRefObject<T>,
+	callback: EventListener,
+	events: string[] = DEFAULT_EVENTS
 ): void {
-  const cbRef = useSyncedRef(callback);
-  const refRef = useSyncedRef(ref);
+	const cbRef = useSyncedRef(callback);
+	const refRef = useSyncedRef(ref);
 
-  useEffect(() => {
-    function handler(this: HTMLElement, event: Event) {
-      if (!refRef.current.current) return;
+	useEffect(() => {
+		function handler(this: HTMLElement, event: Event) {
+			if (!refRef.current.current) return;
 
-      const { target: evtTarget } = event;
-      const cb = cbRef.current;
+			const { target: evtTarget } = event;
+			const cb = cbRef.current;
 
-      if (
-        !evtTarget ||
-        (Boolean(evtTarget) && !refRef.current.current.contains(evtTarget as Node))
-      ) {
-        cb.call(this, event);
-      }
-    }
+			if (
+				!evtTarget ||
+				(Boolean(evtTarget) && !refRef.current.current.contains(evtTarget as Node))
+			) {
+				cb.call(this, event);
+			}
+		}
 
-    events.forEach((name) => {
-      on(document, name, handler, { passive: true });
-    });
+		events.forEach((name) => {
+			on(document, name, handler, { passive: true });
+		});
 
-    return () => {
-      events.forEach((name) => {
-        off(document, name, handler, { passive: true });
-      });
-    };
-  }, [...events]);
+		return () => {
+			events.forEach((name) => {
+				off(document, name, handler, { passive: true });
+			});
+		};
+	}, [...events]);
 }

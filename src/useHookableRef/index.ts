@@ -4,9 +4,9 @@ import { useSyncedRef } from '../useSyncedRef';
 export type HookableRefHandler<T> = (v: T) => T;
 
 export function useHookableRef<T>(
-  initialValue: T,
-  onSet?: HookableRefHandler<T>,
-  onGet?: HookableRefHandler<T>
+	initialValue: T,
+	onSet?: HookableRefHandler<T>,
+	onGet?: HookableRefHandler<T>
 ): MutableRefObject<T>;
 export function useHookableRef<T = undefined>(): MutableRefObject<T | undefined>;
 
@@ -20,24 +20,24 @@ export function useHookableRef<T = undefined>(): MutableRefObject<T | undefined>
  * value will be used as a return value.
  */
 export function useHookableRef<T>(
-  initialValue?: T,
-  onSet?: HookableRefHandler<T>,
-  onGet?: HookableRefHandler<T>
+	initialValue?: T,
+	onSet?: HookableRefHandler<T>,
+	onGet?: HookableRefHandler<T>
 ): MutableRefObject<T | undefined> {
-  const onSetRef = useSyncedRef(onSet);
-  const onGetRef = useSyncedRef(onGet);
+	const onSetRef = useSyncedRef(onSet);
+	const onGetRef = useSyncedRef(onGet);
 
-  return useMemo(() => {
-    let v = initialValue;
+	return useMemo(() => {
+		let v = initialValue;
 
-    return {
-      get current() {
-        return onGetRef.current === undefined ? v : onGetRef.current(v as T);
-      },
+		return {
+			get current() {
+				return onGetRef.current === undefined ? v : onGetRef.current(v as T);
+			},
 
-      set current(val) {
-        v = onSetRef.current === undefined ? val : onSetRef.current(val as T);
-      },
-    };
-  }, []);
+			set current(val) {
+				v = onSetRef.current === undefined ? val : onSetRef.current(val as T);
+			},
+		};
+	}, []);
 }

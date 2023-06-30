@@ -4,11 +4,11 @@ import { useEffect, useRef } from 'react';
  * Returns a boolean that is `true` only on first render.
  */
 export function useFirstMountState(): boolean {
-  const isFirstMount = useRef(true);
+	const isFirstMount = useRef(true);
 
-  useEffect(() => {
-    isFirstMount.current = false;
-  }, []);
+	useEffect(() => {
+		isFirstMount.current = false;
+	}, []);
 
-  return isFirstMount.current;
+	return isFirstMount.current;
 }

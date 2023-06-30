@@ -16,17 +16,17 @@ Subscribes an event listener to a target element.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useEventListener<T extends EventTarget>(
-  target: RefObject<T> | T | null,
-  ...params:
-    | Parameters<T['addEventListener']>
-    | [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
+	target: RefObject<T> | T | null,
+	...params:
+		| Parameters<T['addEventListener']>
+		| [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
 ): void;
 ```
 

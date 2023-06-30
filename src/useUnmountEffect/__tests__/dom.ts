@@ -2,39 +2,39 @@ import { renderHook } from '@testing-library/react-hooks/dom';
 import { useUnmountEffect } from '../..';
 
 describe('useUnmountEffect', () => {
-  it('should call effector only when component unmounted', () => {
-    const spy = jest.fn();
+	it('should call effector only when component unmounted', () => {
+		const spy = jest.fn();
 
-    const { result, rerender, unmount } = renderHook(() => {
-      useUnmountEffect(spy);
-    });
+		const { result, rerender, unmount } = renderHook(() => {
+			useUnmountEffect(spy);
+		});
 
-    expect(result.current).toBe(undefined);
-    expect(spy).toHaveBeenCalledTimes(0);
+		expect(result.current).toBe(undefined);
+		expect(spy).toHaveBeenCalledTimes(0);
 
-    rerender();
-    unmount();
+		rerender();
+		unmount();
 
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
+		expect(spy).toHaveBeenCalledTimes(1);
+	});
 
-  it('should call effect even if it has been updated', () => {
-    const spy = jest.fn();
+	it('should call effect even if it has been updated', () => {
+		const spy = jest.fn();
 
-    const { rerender, unmount } = renderHook<{ fn: () => void }, void>(
-      ({ fn }) => {
-        useUnmountEffect(fn);
-      },
-      {
-        initialProps: {
-          fn() {},
-        },
-      }
-    );
+		const { rerender, unmount } = renderHook<{ fn: () => void }, void>(
+			({ fn }) => {
+				useUnmountEffect(fn);
+			},
+			{
+				initialProps: {
+					fn() {},
+				},
+			}
+		);
 
-    rerender({ fn: spy });
-    unmount();
+		rerender({ fn: spy });
+		unmount();
 
-    expect(spy).toHaveBeenCalled();
-  });
+		expect(spy).toHaveBeenCalled();
+	});
 });

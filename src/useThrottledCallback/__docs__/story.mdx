@@ -18,17 +18,17 @@ Throttled function is always a void function since original callback invoked lat
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useThrottledCallback<Args extends any[], This>(
-  callback: (this: This, ...args: Args) => any,
-  deps: DependencyList,
-  delay: number,
-  noTrailing = false
+	callback: (this: This, ...args: Args) => any,
+	deps: DependencyList,
+	delay: number,
+	noTrailing = false
 ): ThrottledFunction<Args, This>;
 ```
 

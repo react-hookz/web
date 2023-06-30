@@ -10,11 +10,11 @@ import { useDebouncedCallback } from '../useDebouncedCallback';
  * before it's force execution. 0 means no max wait.
  */
 export function useDebouncedState<S>(
-  initialState: S | (() => S),
-  delay: number,
-  maxWait = 0
+	initialState: S | (() => S),
+	delay: number,
+	maxWait = 0
 ): [S, Dispatch<SetStateAction<S>>] {
-  const [state, setState] = useState(initialState);
+	const [state, setState] = useState(initialState);
 
-  return [state, useDebouncedCallback(setState, [], delay, maxWait)];
+	return [state, useDebouncedCallback(setState, [], delay, maxWait)];
 }

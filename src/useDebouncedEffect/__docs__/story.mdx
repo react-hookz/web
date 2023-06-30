@@ -11,17 +11,17 @@ Like `useEffect`, but the passed function is debounced.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useDebouncedEffect(
-  callback: (...args: any[]) => void,
-  deps: DependencyList,
-  delay: number,
-  maxWait = 0
+	callback: (...args: any[]) => void,
+	deps: DependencyList,
+	delay: number,
+	maxWait = 0
 ): void;
 ```
 

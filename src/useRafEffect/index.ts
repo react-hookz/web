@@ -9,15 +9,15 @@ import { useRafCallback } from '../useRafCallback';
  * @param deps Dependencies list that will be passed to underlying `useEffect`.
  */
 export function useRafEffect(callback: (...args: any[]) => void, deps: DependencyList): void {
-  const [rafCallback, cancelRaf] = useRafCallback(callback);
+	const [rafCallback, cancelRaf] = useRafCallback(callback);
 
-  useEffect(
-    () => {
-      rafCallback();
+	useEffect(
+		() => {
+			rafCallback();
 
-      return cancelRaf;
-    },
+			return cancelRaf;
+		},
 
-    deps
-  );
+		deps
+	);
 }

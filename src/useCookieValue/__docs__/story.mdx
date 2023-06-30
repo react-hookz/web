@@ -30,23 +30,23 @@ Manages a single cookie.
 #### Example
 
 <Canvas columns={3}>
-  <Story story={Example} inline />
-  <Story story={Example} inline />
-  <Story story={Example} inline />
+	<Story story={Example} inline />
+	<Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export type UseCookieOptions = Cookies.CookieAttributes & {
-  initializeWithValue?: boolean;
+	initializeWithValue?: boolean;
 };
 
 export type UseCookieReturn = [
-  value: undefined | null | string,
-  set: (value: string) => void,
-  remove: () => void,
-  fetch: () => void
+	value: undefined | null | string,
+	set: (value: string) => void,
+	remove: () => void,
+	fetch: () => void
 ];
 
 export function useCookieValue(key: string, options: UseCookieOptions = {}): UseCookieReturn;

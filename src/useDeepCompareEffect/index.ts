@@ -16,15 +16,15 @@ import { type EffectCallback, type EffectHook } from '../util/misc';
  * after the `callback` and the dependency list.
  */
 export function useDeepCompareEffect<
-  Callback extends EffectCallback = EffectCallback,
-  Deps extends DependencyList = DependencyList,
-  HookRestArgs extends any[] = any[],
-  R extends HookRestArgs = HookRestArgs
+	Callback extends EffectCallback = EffectCallback,
+	Deps extends DependencyList = DependencyList,
+	HookRestArgs extends any[] = any[],
+	R extends HookRestArgs = HookRestArgs
 >(
-  callback: Callback,
-  deps: Deps,
-  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
-  ...effectHookRestArgs: R
+	callback: Callback,
+	deps: Deps,
+	effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
+	...effectHookRestArgs: R
 ): void {
-  useCustomCompareEffect(callback, deps, isEqual, effectHook, ...effectHookRestArgs);
+	useCustomCompareEffect(callback, deps, isEqual, effectHook, ...effectHookRestArgs);
 }

@@ -11,5 +11,5 @@ import { useCustomCompareMemo } from '../useCustomCompareMemo';
  * the same value, if dependencies haven't changed, or the result of calling `factory` again, if they have changed.
  */
 export function useDeepCompareMemo<T, Deps extends DependencyList>(factory: () => T, deps: Deps) {
-  return useCustomCompareMemo(factory, deps, isEqual);
+	return useCustomCompareMemo(factory, deps, isEqual);
 }

@@ -2,58 +2,58 @@ import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useMediatedState } from '../..';
 
 describe('useMediatedState', () => {
-  it('should be defined', () => {
-    expect(useMediatedState).toBeDefined();
-  });
+	it('should be defined', () => {
+		expect(useMediatedState).toBeDefined();
+	});
 
-  it('should render', () => {
-    const { result } = renderHook(() => useMediatedState());
-    expect(result.error).toBeUndefined();
-  });
+	it('should render', () => {
+		const { result } = renderHook(() => useMediatedState());
+		expect(result.error).toBeUndefined();
+	});
 
-  it('should act like useState if mediator not passed', () => {
-    const { result } = renderHook(() => useMediatedState(123));
+	it('should act like useState if mediator not passed', () => {
+		const { result } = renderHook(() => useMediatedState(123));
 
-    expect(result.current[0]).toBe(123);
-    act(() => {
-      result.current[1](321);
-    });
-    expect(result.current[0]).toBe(321);
-  });
+		expect(result.current[0]).toBe(123);
+		act(() => {
+			result.current[1](321);
+		});
+		expect(result.current[0]).toBe(321);
+	});
 
-  it('should pass received sate through mediator', () => {
-    const spy = jest.fn((val: string) => Number.parseInt(val, 10));
-    const { result } = renderHook(() => useMediatedState(123, spy));
+	it('should pass received sate through mediator', () => {
+		const spy = jest.fn((val: string) => Number.parseInt(val, 10));
+		const { result } = renderHook(() => useMediatedState(123, spy));
 
-    expect(result.current[0]).toBe(123);
-    act(() => {
-      result.current[1]('321');
-    });
-    expect(result.current[0]).toBe(321);
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(spy).toHaveBeenCalledWith('321');
-  });
+		expect(result.current[0]).toBe(123);
+		act(() => {
+			result.current[1]('321');
+		});
+		expect(result.current[0]).toBe(321);
+		expect(spy).toHaveBeenCalledTimes(2);
+		expect(spy).toHaveBeenCalledWith('321');
+	});
 
-  it('should pass initial sate through mediator', () => {
-    const { result } = renderHook(() =>
-      useMediatedState('a123', (val: string) => val.replaceAll(/[^a-z]+/gi, ''))
-    );
+	it('should pass initial sate through mediator', () => {
+		const { result } = renderHook(() =>
+			useMediatedState('a123', (val: string) => val.replaceAll(/[^a-z]+/gi, ''))
+		);
 
-    expect(result.current[0]).toBe('a');
-  });
+		expect(result.current[0]).toBe('a');
+	});
 
-  it('should return same setState method each render even if callback is changed', () => {
-    const { result, rerender } = renderHook(() =>
-      useMediatedState(123, (val: string) => Number.parseInt(val, 10))
-    );
+	it('should return same setState method each render even if callback is changed', () => {
+		const { result, rerender } = renderHook(() =>
+			useMediatedState(123, (val: string) => Number.parseInt(val, 10))
+		);
 
-    const f1 = result.current[1];
-    rerender();
-    const f2 = result.current[1];
-    rerender();
-    const f3 = result.current[1];
+		const f1 = result.current[1];
+		rerender();
+		const f2 = result.current[1];
+		rerender();
+		const f3 = result.current[1];
 
-    expect(f1).toBe(f2);
-    expect(f3).toBe(f2);
-  });
+		expect(f1).toBe(f2);
+		expect(f3).toBe(f2);
+	});
 });

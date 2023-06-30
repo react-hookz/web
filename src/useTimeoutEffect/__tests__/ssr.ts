@@ -2,32 +2,32 @@ import { renderHook } from '@testing-library/react-hooks/server';
 import { useTimeoutEffect } from '../..';
 
 describe('useTimeoutEffect', () => {
-  beforeAll(() => {
-    jest.useFakeTimers();
-  });
+	beforeAll(() => {
+		jest.useFakeTimers();
+	});
 
-  beforeEach(() => {
-    jest.clearAllTimers();
-  });
+	beforeEach(() => {
+		jest.clearAllTimers();
+	});
 
-  afterAll(() => {
-    jest.useRealTimers();
-  });
+	afterAll(() => {
+		jest.useRealTimers();
+	});
 
-  it('should be defined', () => {
-    expect(useTimeoutEffect).toBeDefined();
-  });
+	it('should be defined', () => {
+		expect(useTimeoutEffect).toBeDefined();
+	});
 
-  it('should render', () => {
-    const { result } = renderHook(() => useTimeoutEffect(() => {}, 123));
-    expect(result.error).toBeUndefined();
-  });
+	it('should render', () => {
+		const { result } = renderHook(() => useTimeoutEffect(() => {}, 123));
+		expect(result.error).toBeUndefined();
+	});
 
-  it('should not invoke callback after timeout', () => {
-    const spy = jest.fn();
-    renderHook(() => useTimeoutEffect(spy, 100));
+	it('should not invoke callback after timeout', () => {
+		const spy = jest.fn();
+		renderHook(() => useTimeoutEffect(spy, 100));
 
-    jest.advanceTimersByTime(100);
-    expect(spy).not.toHaveBeenCalled();
-  });
+		jest.advanceTimersByTime(100);
+		expect(spy).not.toHaveBeenCalled();
+	});
 });

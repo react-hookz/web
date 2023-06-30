@@ -3,17 +3,17 @@ import { useSyncedRef } from '../useSyncedRef';
 import { type InitialState, type NextState } from '../util/resolveHookState';
 
 export type ValidityState = {
-  isValid: boolean | undefined;
+	isValid: boolean | undefined;
 } & Record<any, any>;
 
 export type ValidatorImmediate<V extends ValidityState = ValidityState> = () => V;
 export type ValidatorDeferred<V extends ValidityState = ValidityState> = (
-  done: Dispatch<NextState<V>>
+	done: Dispatch<NextState<V>>
 ) => any;
 
 export type Validator<V extends ValidityState = ValidityState> =
-  | ValidatorImmediate<V>
-  | ValidatorDeferred<V>;
+	| ValidatorImmediate<V>
+	| ValidatorDeferred<V>;
 
 export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 
@@ -25,27 +25,27 @@ export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
  * @param initialValidity Initial validity state.
  */
 export function useValidator<V extends ValidityState>(
-  validator: Validator<V>,
-  deps: DependencyList,
-  initialValidity: InitialState<V> = { isValid: undefined } as V
+	validator: Validator<V>,
+	deps: DependencyList,
+	initialValidity: InitialState<V> = { isValid: undefined } as V
 ): UseValidatorReturn<V> {
-  const [validity, setValidity] = useState(initialValidity);
-  const validatorRef = useSyncedRef(() => {
-    if (validator.length) {
-      validator(setValidity);
-    } else {
-      setValidity((validator as ValidatorImmediate<V>)());
-    }
-  });
+	const [validity, setValidity] = useState(initialValidity);
+	const validatorRef = useSyncedRef(() => {
+		if (validator.length) {
+			validator(setValidity);
+		} else {
+			setValidity((validator as ValidatorImmediate<V>)());
+		}
+	});
 
-  useEffect(() => {
-    validatorRef.current();
-  }, deps);
+	useEffect(() => {
+		validatorRef.current();
+	}, deps);
 
-  return [
-    validity,
-    useCallback(() => {
-      validatorRef.current();
-    }, []),
-  ];
+	return [
+		validity,
+		useCallback(() => {
+			validatorRef.current();
+		}, []),
+	];
 }

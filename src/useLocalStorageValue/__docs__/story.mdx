@@ -28,11 +28,11 @@ Manages a single LocalStorage key.
 #### Example
 
 <Canvas isColumn>
-  <Story name="Example" story={Example} />
-  <hr />
-  It is also synchronised between hooks on the same page
-  <hr />
-  <Story name="Example2" story={Example} />
+	<Story name="Example" story={Example} />
+	<hr />
+	It is also synchronised between hooks on the same page
+	<hr />
+	<Story name="Example2" story={Example} />
 </Canvas>
 
 <ArgsTable story="Example" />
@@ -41,12 +41,12 @@ Manages a single LocalStorage key.
 
 ```ts
 function useLocalStorageValue<
-  Type,
-  Default extends Type = Type,
-  Initialize extends boolean | undefined = boolean | undefined
+	Type,
+	Default extends Type = Type,
+	Initialize extends boolean | undefined = boolean | undefined
 >(
-  key: string,
-  options?: UseStorageValueOptions<Type, Initialize>
+	key: string,
+	options?: UseStorageValueOptions<Type, Initialize>
 ): UseStorageValueResult<Type, Default, Initialize>;
 ```
 

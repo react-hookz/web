@@ -13,7 +13,7 @@ other renders are involved potentially making multiple, irrelevant updates.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
@@ -24,8 +24,8 @@ export type Predicate<T> = (prev: T, next: any) => next is typeof prev;
 const isStrictEqual = <T>(a: T, b: any): b is typeof a => a === b;
 
 export function usePreviousDistinct<T>(
-  value: T,
-  predicate: Predicate<T> = isStrictEqual
+	value: T,
+	predicate: Predicate<T> = isStrictEqual
 ): T | undefined;
 ```
 

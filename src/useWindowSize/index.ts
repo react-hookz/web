@@ -5,19 +5,19 @@ import { useRafState } from '../useRafState';
 import { isBrowser } from '../util/const';
 
 export type WindowSize = {
-  width: number;
-  height: number;
+	width: number;
+	height: number;
 };
 
 const listeners = new Set<(size: WindowSize) => void>();
 
 const callAllListeners = () => {
-  listeners.forEach((l) => {
-    l({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  });
+	listeners.forEach((l) => {
+		l({
+			width: window.innerWidth,
+			height: window.innerHeight,
+		});
+	});
 };
 
 /**
@@ -29,36 +29,36 @@ const callAllListeners = () => {
   the component render. Set this to `true` during SSR.
  */
 export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean): WindowSize {
-  const isFirstMount = useFirstMountState();
-  const [size, setSize] = stateHook<WindowSize>({
-    width: isFirstMount && isBrowser && !measureOnMount ? window.innerWidth : 0,
-    height: isFirstMount && isBrowser && !measureOnMount ? window.innerHeight : 0,
-  });
+	const isFirstMount = useFirstMountState();
+	const [size, setSize] = stateHook<WindowSize>({
+		width: isFirstMount && isBrowser && !measureOnMount ? window.innerWidth : 0,
+		height: isFirstMount && isBrowser && !measureOnMount ? window.innerHeight : 0,
+	});
 
-  useMountEffect(() => {
-    if (measureOnMount) {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-  });
+	useMountEffect(() => {
+		if (measureOnMount) {
+			setSize({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+		}
+	});
 
-  useEffect(() => {
-    if (listeners.size === 0) {
-      window.addEventListener('resize', callAllListeners, { passive: true });
-    }
+	useEffect(() => {
+		if (listeners.size === 0) {
+			window.addEventListener('resize', callAllListeners, { passive: true });
+		}
 
-    listeners.add(setSize);
+		listeners.add(setSize);
 
-    return () => {
-      listeners.delete(setSize);
+		return () => {
+			listeners.delete(setSize);
 
-      if (listeners.size === 0) {
-        window.removeEventListener('resize', callAllListeners);
-      }
-    };
-  }, [setSize]);
+			if (listeners.size === 0) {
+				window.removeEventListener('resize', callAllListeners);
+			}
+		};
+	}, [setSize]);
 
-  return size;
+	return size;
 }

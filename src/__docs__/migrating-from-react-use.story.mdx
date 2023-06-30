@@ -58,9 +58,9 @@ OLD in `react-use`:
 
 ```javascript
 const intersection = useIntersection(elementRef, {
-  root: rootRef,
-  rootMargin: '0px',
-  threshold: 1,
+	root: rootRef,
+	rootMargin: '0px',
+	threshold: 1,
 });
 ```
 
@@ -68,9 +68,9 @@ NEW in `@react-hookz/web`:
 
 ```javascript
 const intersection = useIntersectionObserver(elementRef, {
-  root: rootRef,
-  rootMargin: '0px',
-  threshold: [0, 0.5],
+	root: rootRef,
+	rootMargin: '0px',
+	threshold: [0, 0.5],
 });
 ```
 
@@ -267,18 +267,18 @@ In order to replicate the old functionality, you can do the following:
 const isReady = (React.useRef < boolean) | (null > false);
 
 const [cancel, reset] = useTimeoutEffect(() => {
-  isReady.current = true;
-  console.log('Hello world');
+	isReady.current = true;
+	console.log('Hello world');
 }, 123);
 
 const clear = () => {
-  isReady.current = null;
-  cancel();
+	isReady.current = null;
+	cancel();
 };
 
 const set = () => {
-  isReady.current = false;
-  reset();
+	isReady.current = false;
+	reset();
 };
 
 // Use set and clear, same as in `react-use`.
@@ -304,9 +304,9 @@ OLD in `react-use`:
 
 ```javascript
 const { loading, value, error } = useAsync(async () => {
-  const response = await fetch(url);
-  const result = await response.text();
-  return result;
+	const response = await fetch(url);
+	const result = await response.text();
+	return result;
 }, [url]);
 
 console.log(loading);
@@ -318,9 +318,9 @@ NEW in `@react-hookz/web`:
 
 ```javascript
 const [{ status, result, error }, { execute }] = useAsync(async () => {
-  const response = await fetch(url);
-  const result = await response.text();
-  return result;
+	const response = await fetch(url);
+	const result = await response.text();
+	return result;
 });
 
 useMountEffect(execute);
@@ -338,9 +338,9 @@ OLD in `react-use`:
 
 ```javascript
 const [{ loading, value, error }, doFetch] = useAsync(async () => {
-  const response = await fetch(url);
-  const result = await response.text();
-  return result;
+	const response = await fetch(url);
+	const result = await response.text();
+	return result;
 }, [url]);
 
 doFetch();
@@ -350,9 +350,9 @@ NEW in `@react-hookz/web`:
 
 ```javascript
 const [{ status, result, error }, { execute }] = useAsync(async () => {
-  const response = await fetch(url);
-  const result = await response.text();
-  return result;
+	const response = await fetch(url);
+	const result = await response.text();
+	return result;
 });
 
 execute();
@@ -366,9 +366,9 @@ OLD in `react-use`:
 
 ```javascript
 const { loading, value, error, retry } = useAsync(async () => {
-  const response = await fetch(url);
-  const result = await response.text();
-  return result;
+	const response = await fetch(url);
+	const result = await response.text();
+	return result;
 }, [url]);
 
 retry();
@@ -378,9 +378,9 @@ NEW in `@react-hookz/web`:
 
 ```javascript
 const [{ status, result, error }, { execute }] = useAsync(async () => {
-  const response = await fetch(url);
-  const result = await response.text();
-  return result;
+	const response = await fetch(url);
+	const result = await response.text();
+	return result;
 });
 
 execute();
@@ -392,7 +392,7 @@ No plans to implement. Use [useEventListener](/docs/dom-useeventlistener--exampl
 
 ```javascript
 useEventListener(window, 'beforeunload', () => {
-  /* do your stuff here */
+	/* do your stuff here */
 });
 ```
 
@@ -510,12 +510,12 @@ OLD in `react-use`:
 
 ```javascript
 useEvent(
-  'mousemove',
-  () => {
-    setState(new Date());
-  },
-  window,
-  { passive: true }
+	'mousemove',
+	() => {
+		setState(new Date());
+	},
+	window,
+	{ passive: true }
 );
 ```
 
@@ -523,12 +523,12 @@ NEW in `@react-hookz/web`:
 
 ```javascript
 useEventListener(
-  window,
-  'mousemove',
-  () => {
-    setState(new Date());
-  },
-  { passive: true }
+	window,
+	'mousemove',
+	() => {
+		setState(new Date());
+	},
+	{ passive: true }
 );
 ```
 
@@ -617,8 +617,8 @@ so:
 const initialValue = 'world';
 const defaultValue = 'you';
 const [greeting, setGreeting] = useMediatedState(
-  initialValue,
-  (newValue) => newValue ?? defaultValue
+	initialValue,
+	(newValue) => newValue ?? defaultValue
 );
 console.log(`Hello ${greeting}`);
 ```
@@ -715,7 +715,7 @@ OLD in `react-use`:
 
 ```javascript
 const [map, { set, remove, reset, setAll }] = useMap({
-  hello: 'there',
+	hello: 'there',
 });
 
 console.log(JSON.stringify(map, null, 2));

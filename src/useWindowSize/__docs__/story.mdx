@@ -15,15 +15,15 @@ Tracks inner dimensions of the browser window.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export interface WindowSize {
-  width: number;
-  height: number;
+	width: number;
+	height: number;
 }
 
 export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean): WindowSize;

@@ -17,15 +17,15 @@ Tracks the result and errors of the provided async function and provides handles
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
-  asyncFn: (...params: Args) => Promise<Result>,
-  initialValue?: Result
+	asyncFn: (...params: Args) => Promise<Result>,
+	initialValue?: Result
 ): [AsyncState<Result>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 ```
 

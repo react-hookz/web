@@ -15,31 +15,31 @@ Tracks the state of browser's network connection.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export interface IUseNetworkState {
-  online: boolean | undefined;
-  previous: boolean | undefined;
-  since: Date | undefined;
-  downlink: number | undefined;
-  downlinkMax: number | undefined;
-  effectiveType: 'slow-2g' | '2g' | '3g' | '4g' | undefined;
-  rtt: number | undefined;
-  saveData: boolean | undefined;
-  type:
-    | 'bluetooth'
-    | 'cellular'
-    | 'ethernet'
-    | 'none'
-    | 'wifi'
-    | 'wimax'
-    | 'other'
-    | 'unknown'
-    | undefined;
+	online: boolean | undefined;
+	previous: boolean | undefined;
+	since: Date | undefined;
+	downlink: number | undefined;
+	downlinkMax: number | undefined;
+	effectiveType: 'slow-2g' | '2g' | '3g' | '4g' | undefined;
+	rtt: number | undefined;
+	saveData: boolean | undefined;
+	type:
+		| 'bluetooth'
+		| 'cellular'
+		| 'ethernet'
+		| 'none'
+		| 'wifi'
+		| 'wimax'
+		| 'other'
+		| 'unknown'
+		| undefined;
 }
 
 export function useNetworkState(initialState?: InitialState<IUseNetworkState>): IUseNetworkState;

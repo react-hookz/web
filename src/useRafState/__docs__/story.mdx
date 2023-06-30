@@ -14,7 +14,7 @@ Like `React.useState`, but state is only updated within animation frame.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
@@ -22,8 +22,8 @@ Like `React.useState`, but state is only updated within animation frame.
 ```ts
 export function useRafState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 export function useRafState<S = undefined>(): [
-  S | undefined,
-  Dispatch<SetStateAction<S | undefined>>
+	S | undefined,
+	Dispatch<SetStateAction<S | undefined>>
 ];
 ```
 

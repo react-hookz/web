@@ -17,15 +17,15 @@ viewport.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useIntersectionObserver<T extends Element>(
-  target: RefObject<T> | T | null,
-  { threshold = [0], root, rootMargin = '0px' }: IUseIntersectionObserverOptions = {}
+	target: RefObject<T> | T | null,
+	{ threshold = [0], root, rootMargin = '0px' }: IUseIntersectionObserverOptions = {}
 ): IntersectionObserverEntry | undefined;
 ```
 

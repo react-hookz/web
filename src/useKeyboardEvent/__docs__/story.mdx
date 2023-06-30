@@ -11,23 +11,23 @@ Invokes a callback when a keyboard event occurs on the chosen target element.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 type UseKeyboardEventOptions<T extends EventTarget> = {
-  event?: 'keydown' | 'keypress' | 'keyup';
-  target?: RefObject<T> | T | null;
-  eventOptions?: boolean | AddEventListenerOptions;
+	event?: 'keydown' | 'keypress' | 'keyup';
+	target?: RefObject<T> | T | null;
+	eventOptions?: boolean | AddEventListenerOptions;
 };
 
 function useKeyboardEvent<T extends EventTarget>(
-  keyOrPredicate: KeyboardEventFilter,
-  callback: KeyboardEventHandler<T>,
-  deps?: DependencyList,
-  options: UseKeyboardEventOptions<T> = {}
+	keyOrPredicate: KeyboardEventFilter,
+	callback: KeyboardEventHandler<T>,
+	deps?: DependencyList,
+	options: UseKeyboardEventOptions<T> = {}
 ): void;
 ```
 

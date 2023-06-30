@@ -30,10 +30,10 @@ What should `@react-hookz/web` be doing?
 
 ### Environment Details
 
-- _`@react-hookz/web` version:_ 
-- _`react` version:_ 
-- _`react-dom` version:_ 
-- _`typescript` version:_ 
-- _OS:_ 
-- _Browser:_ 
-- _Did this work in previous versions?_ 
+- _`@react-hookz/web` version:_
+- _`react` version:_
+- _`react-dom` version:_
+- _`typescript` version:_
+- _OS:_
+- _Browser:_
+- _Did this work in previous versions?_

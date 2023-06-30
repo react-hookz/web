@@ -6,11 +6,11 @@ import { resolveHookState } from '../util/resolveHookState';
 export type ControlledRerenderDispatch<A> = (value: A, rerender?: boolean) => void;
 
 export function useControlledRerenderState<S>(
-  initialState: S | (() => S)
+	initialState: S | (() => S)
 ): [S, ControlledRerenderDispatch<SetStateAction<S>>];
 export function useControlledRerenderState<S = undefined>(): [
-  S | undefined,
-  ControlledRerenderDispatch<SetStateAction<S | undefined>>
+	S | undefined,
+	ControlledRerenderDispatch<SetStateAction<S | undefined>>
 ];
 
 /**
@@ -18,25 +18,25 @@ export function useControlledRerenderState<S = undefined>(): [
  * rerender.
  */
 export function useControlledRerenderState<S>(
-  initialState?: S | (() => S)
+	initialState?: S | (() => S)
 ): [S | undefined, ControlledRerenderDispatch<SetStateAction<S | undefined>>] {
-  const state = useRef<S | undefined>(
-    useFirstMountState() ? resolveHookState(initialState) : undefined
-  );
-  const rr = useRerender();
+	const state = useRef<S | undefined>(
+		useFirstMountState() ? resolveHookState(initialState) : undefined
+	);
+	const rr = useRerender();
 
-  return [
-    state.current,
-    useCallback((value, rerender) => {
-      const newState = resolveHookState(value, state.current);
+	return [
+		state.current,
+		useCallback((value, rerender) => {
+			const newState = resolveHookState(value, state.current);
 
-      if (newState !== state.current) {
-        state.current = newState;
+			if (newState !== state.current) {
+				state.current = newState;
 
-        if (rerender === undefined || rerender) {
-          rr();
-        }
-      }
-    }, []),
-  ];
+				if (rerender === undefined || rerender) {
+					rr();
+				}
+			}
+		}, []),
+	];
 }

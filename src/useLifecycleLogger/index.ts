@@ -7,21 +7,21 @@ import { type DependencyList, useEffect, useRef } from 'react';
  * @param deps Dependencies list, as for `useEffect` hook
  */
 export function useLifecycleLogger(componentName: string, deps?: DependencyList): void {
-  const mountedRef = useRef(false);
+	const mountedRef = useRef(false);
 
-  useEffect(() => {
-    if (mountedRef.current) {
-      console.log(`${componentName} updated`, deps && [...deps]);
-    }
-  }, deps);
+	useEffect(() => {
+		if (mountedRef.current) {
+			console.log(`${componentName} updated`, deps && [...deps]);
+		}
+	}, deps);
 
-  useEffect(() => {
-    mountedRef.current = true;
-    console.log(`${componentName} mounted`, deps && [...deps]);
+	useEffect(() => {
+		mountedRef.current = true;
+		console.log(`${componentName} mounted`, deps && [...deps]);
 
-    return () => {
-      mountedRef.current = false;
-      console.log(`${componentName} unmounted`);
-    };
-  }, []);
+		return () => {
+			mountedRef.current = false;
+			console.log(`${componentName} unmounted`);
+		};
+	}, []);
 }

@@ -10,32 +10,32 @@ const proto = Set.prototype;
  */
 
 export function useSet<T = any>(values?: readonly T[] | null): Set<T> {
-  const setRef = useRef<Set<T>>();
-  const rerender = useRerender();
+	const setRef = useRef<Set<T>>();
+	const rerender = useRerender();
 
-  if (!setRef.current) {
-    const set = new Set<T>(values);
+	if (!setRef.current) {
+		const set = new Set<T>(values);
 
-    setRef.current = set;
+		setRef.current = set;
 
-    set.add = (...args) => {
-      proto.add.apply(set, args);
-      rerender();
-      return set;
-    };
+		set.add = (...args) => {
+			proto.add.apply(set, args);
+			rerender();
+			return set;
+		};
 
-    set.clear = (...args) => {
-      proto.clear.apply(set, args);
-      rerender();
-    };
+		set.clear = (...args) => {
+			proto.clear.apply(set, args);
+			rerender();
+		};
 
-    set.delete = (...args) => {
-      const res = proto.delete.apply(set, args);
-      rerender();
+		set.delete = (...args) => {
+			const res = proto.delete.apply(set, args);
+			rerender();
 
-      return res;
-    };
-  }
+			return res;
+		};
+	}
 
-  return setRef.current;
+	return setRef.current;
 }

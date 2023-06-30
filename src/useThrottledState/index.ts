@@ -11,11 +11,11 @@ import { useThrottledCallback } from '../useThrottledCallback';
  * after the last throttled-function call.
  */
 export function useThrottledState<S>(
-  initialState: S | (() => S),
-  delay: number,
-  noTrailing = false
+	initialState: S | (() => S),
+	delay: number,
+	noTrailing = false
 ): [S, Dispatch<SetStateAction<S>>] {
-  const [state, setState] = useState(initialState);
+	const [state, setState] = useState(initialState);
 
-  return [state, useThrottledCallback(setState, [], delay, noTrailing)];
+	return [state, useThrottledCallback(setState, [], delay, noTrailing)];
 }

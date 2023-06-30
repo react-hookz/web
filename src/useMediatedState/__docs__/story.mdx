@@ -13,15 +13,15 @@ Like `useState`, but every value (including initial) set is passed through media
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 function useMediatedState<S, R>(
-  initialState?: S | (() => S),
-  mediator?: (state: R) => S
+	initialState?: S | (() => S),
+	mediator?: (state: R) => S
 ): [S, (value: R | ((prevState: S) => R)) => void];
 ```
 

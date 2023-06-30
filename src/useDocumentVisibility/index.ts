@@ -14,19 +14,19 @@ export function useDocumentVisibility(initializeWithValue?: true): boolean;
  * `undefined`. _Set this to `false` during SSR._
  */
 export function useDocumentVisibility(initializeWithValue = true): boolean | undefined {
-  const [isVisible, setIsVisible] = useState(
-    isBrowser && initializeWithValue ? isDocumentVisible() : undefined
-  );
+	const [isVisible, setIsVisible] = useState(
+		isBrowser && initializeWithValue ? isDocumentVisible() : undefined
+	);
 
-  useMountEffect(() => {
-    if (!initializeWithValue) {
-      setIsVisible(isDocumentVisible());
-    }
-  });
+	useMountEffect(() => {
+		if (!initializeWithValue) {
+			setIsVisible(isDocumentVisible());
+		}
+	});
 
-  useEventListener(isBrowser ? document : null, 'visibilitychange', () => {
-    setIsVisible(isDocumentVisible());
-  });
+	useEventListener(isBrowser ? document : null, 'visibilitychange', () => {
+		setIsVisible(isDocumentVisible());
+	});
 
-  return isVisible;
+	return isVisible;
 }

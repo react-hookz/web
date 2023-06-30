@@ -20,17 +20,17 @@ Deferred execution automatically cancelled on component unmount.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useDebouncedCallback<Args extends any[], This>(
-  callback: (this: This, ...args: Args) => any,
-  deps: DependencyList,
-  delay: number,
-  maxWait = 0
+	callback: (this: This, ...args: Args) => any,
+	deps: DependencyList,
+	delay: number,
+	maxWait = 0
 ): DebouncedFunction<Args, This>;
 ```
 

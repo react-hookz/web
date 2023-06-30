@@ -14,23 +14,23 @@ Like `useEffect` but uses provided comparator function to validate dependency ch
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useCustomCompareEffect<
-  Callback extends EffectCallback = EffectCallback,
-  Deps extends DependencyList = DependencyList,
-  HookRestArgs extends any[] = any[],
-  R extends HookRestArgs = HookRestArgs
+	Callback extends EffectCallback = EffectCallback,
+	Deps extends DependencyList = DependencyList,
+	HookRestArgs extends any[] = any[],
+	R extends HookRestArgs = HookRestArgs
 >(
-  callback: Callback,
-  deps: Deps,
-  comparator: DependenciesComparator<Deps> = basicDepsComparator,
-  effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
-  ...effectHookRestArgs: R
+	callback: Callback,
+	deps: Deps,
+	comparator: DependenciesComparator<Deps> = basicDepsComparator,
+	effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
+	...effectHookRestArgs: R
 ): void;
 ```
 

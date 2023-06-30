@@ -8,11 +8,11 @@ import { useEffect, useRef } from 'react';
  * @param value Value to yield on next render
  */
 export function usePrevious<T>(value?: T): T | undefined {
-  const prev = useRef<T>();
+	const prev = useRef<T>();
 
-  useEffect(() => {
-    prev.current = value;
-  });
+	useEffect(() => {
+		prev.current = value;
+	});
 
-  return prev.current;
+	return prev.current;
 }

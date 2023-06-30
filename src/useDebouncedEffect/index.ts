@@ -12,10 +12,10 @@ import { useDebouncedCallback } from '../useDebouncedCallback';
  * before it's invoked. `0` means no max wait.
  */
 export function useDebouncedEffect(
-  callback: (...args: any[]) => void,
-  deps: DependencyList,
-  delay: number,
-  maxWait = 0
+	callback: (...args: any[]) => void,
+	deps: DependencyList,
+	delay: number,
+	maxWait = 0
 ): void {
-  useEffect(useDebouncedCallback(callback, deps, delay, maxWait), deps);
+	useEffect(useDebouncedCallback(callback, deps, delay, maxWait), deps);
 }

@@ -17,20 +17,20 @@ can be changed by setting 2nd parameter to `false`.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export function useToggle(
-  initialState: InitialState<boolean>,
-  ignoreReactEvents?: true
+	initialState: InitialState<boolean>,
+	ignoreReactEvents?: true
 ): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void];
 
 export function useToggle(
-  initialState: InitialState<boolean>,
-  ignoreReactEvents: false
+	initialState: InitialState<boolean>,
+	ignoreReactEvents: false
 ): [boolean, (nextState?: NextState<boolean>) => void];
 ```
 

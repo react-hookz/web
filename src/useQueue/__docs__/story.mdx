@@ -11,19 +11,19 @@ A state hook implementing FIFO queue.
 #### Example
 
 <Canvas>
-  <Story story={Example} inline />
+	<Story story={Example} inline />
 </Canvas>
 
 ## Reference
 
 ```ts
 export interface QueueMethods<T> {
-  first: T;
-  last: T;
-  add: (item: T) => void;
-  remove: () => T;
-  size: number;
-  items: T[];
+	first: T;
+	last: T;
+	add: (item: T) => void;
+	remove: () => T;
+	size: number;
+	items: T[];
 }
 export function useQueue<T>(initialValue: T[] = []): QueueMethods<T>;
 ```

@@ -7,13 +7,13 @@ import { useSyncedRef } from '../useSyncedRef';
  * @param effect Effector to run on unmount
  */
 export function useUnmountEffect(effect: CallableFunction): void {
-  const effectRef = useSyncedRef(effect);
+	const effectRef = useSyncedRef(effect);
 
-  useEffect(
-    () => () => {
-      effectRef.current();
-    },
+	useEffect(
+		() => () => {
+			effectRef.current();
+		},
 
-    []
-  );
+		[]
+	);
 }

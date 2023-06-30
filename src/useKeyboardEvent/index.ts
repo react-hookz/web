@@ -9,26 +9,26 @@ export type KeyboardEventFilter = null | string | boolean | KeyboardEventPredica
 export type KeyboardEventHandler<T extends EventTarget> = (this: T, event: KeyboardEvent) => void;
 
 export type UseKeyboardEventOptions<T extends EventTarget> = {
-  /**
-   * Keyboard event which triggers `callback`.
-   * @default `keydown`
-   */
-  event?: 'keydown' | 'keypress' | 'keyup';
-  /**
-   * Target element that emits `event`.
-   * @default window
-   */
-  target?: RefObject<T> | T | null;
-  /**
-   * Options passed to the underlying `useEventListener` hook.
-   */
-  eventOptions?: boolean | AddEventListenerOptions;
+	/**
+	 * Keyboard event which triggers `callback`.
+	 * @default `keydown`
+	 */
+	event?: 'keydown' | 'keypress' | 'keyup';
+	/**
+	 * Target element that emits `event`.
+	 * @default window
+	 */
+	target?: RefObject<T> | T | null;
+	/**
+	 * Options passed to the underlying `useEventListener` hook.
+	 */
+	eventOptions?: boolean | AddEventListenerOptions;
 };
 
 const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredicate => {
-  if (typeof keyFilter === 'function') return keyFilter;
-  if (typeof keyFilter === 'string') return (ev) => ev.key === keyFilter;
-  return keyFilter ? yieldTrue : yieldFalse;
+	if (typeof keyFilter === 'function') return keyFilter;
+	if (typeof keyFilter === 'string') return (ev) => ev.key === keyFilter;
+	return keyFilter ? yieldTrue : yieldFalse;
 };
 
 const WINDOW_OR_NULL = isBrowser ? window : null;
@@ -42,23 +42,23 @@ const WINDOW_OR_NULL = isBrowser ? window : null;
  * @param options Hook options.
  */
 export function useKeyboardEvent<T extends EventTarget>(
-  keyOrPredicate: KeyboardEventFilter,
-  callback: KeyboardEventHandler<T>,
-  deps?: DependencyList,
-  options: UseKeyboardEventOptions<T> = {}
+	keyOrPredicate: KeyboardEventFilter,
+	callback: KeyboardEventHandler<T>,
+	deps?: DependencyList,
+	options: UseKeyboardEventOptions<T> = {}
 ): void {
-  const { event = 'keydown', target = WINDOW_OR_NULL, eventOptions } = options;
-  const cbRef = useSyncedRef(callback);
+	const { event = 'keydown', target = WINDOW_OR_NULL, eventOptions } = options;
+	const cbRef = useSyncedRef(callback);
 
-  const handler = useMemo<KeyboardEventHandler<T>>(() => {
-    const predicate = createKeyPredicate(keyOrPredicate);
+	const handler = useMemo<KeyboardEventHandler<T>>(() => {
+		const predicate = createKeyPredicate(keyOrPredicate);
 
-    return function (this: T, ev) {
-      if (predicate(ev)) {
-        cbRef.current.call(this, ev);
-      }
-    };
-  }, deps);
+		return function (this: T, ev) {
+			if (predicate(ev)) {
+				cbRef.current.call(this, ev);
+			}
+		};
+	}, deps);
 
-  useEventListener(target, event, handler, eventOptions);
+	useEventListener(target, event, handler, eventOptions);
 }

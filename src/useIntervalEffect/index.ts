@@ -9,19 +9,19 @@ import { useSyncedRef } from '../useSyncedRef';
  * be cancelled. Keep in mind, that changing this parameter will reset the interval.
  */
 export function useIntervalEffect(callback: () => void, ms?: number): void {
-  const cbRef = useSyncedRef(callback);
+	const cbRef = useSyncedRef(callback);
 
-  useEffect(() => {
-    if (!ms && ms !== 0) {
-      return;
-    }
+	useEffect(() => {
+		if (!ms && ms !== 0) {
+			return;
+		}
 
-    const id = setInterval(() => {
-      cbRef.current();
-    }, ms);
+		const id = setInterval(() => {
+			cbRef.current();
+		}, ms);
 
-    return () => {
-      clearInterval(id);
-    };
-  }, [ms]);
+		return () => {
+			clearInterval(id);
+		};
+	}, [ms]);
 }
