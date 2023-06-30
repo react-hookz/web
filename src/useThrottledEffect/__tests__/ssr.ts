@@ -19,7 +19,9 @@ describe('useThrottledEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useThrottledEffect(() => {}, [], 200));
+    const { result } = renderHook(() => {
+      useThrottledEffect(() => {}, [], 200);
+    });
     expect(result.error).toBeUndefined();
   });
 });

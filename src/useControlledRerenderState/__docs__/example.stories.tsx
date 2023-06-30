@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControlledRerenderState, useToggle } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, setState] = useControlledRerenderState(0);
   const [doRerender, toggleDoRerender] = useToggle(true);
 
@@ -10,12 +10,14 @@ export const Example: React.FC = () => {
       <div>State: {state}</div>
       <p>
         <button
+          type="button"
           onClick={() => {
             setState((s) => s + 1, doRerender);
           }}>
           Increment (+1)
         </button>{' '}
         <button
+          type="button"
           onClick={() => {
             toggleDoRerender();
           }}>
@@ -24,4 +26,4 @@ export const Example: React.FC = () => {
       </p>
     </div>
   );
-};
+}

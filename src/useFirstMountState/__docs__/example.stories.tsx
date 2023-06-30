@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useFirstMountState, useRerender } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const isFirstMount = useFirstMountState();
   const rerender = useRerender();
 
@@ -9,6 +9,7 @@ export const Example: React.FC = () => {
     <div>
       <div>{isFirstMount ? 'This is the first render.' : 'This is not the first render.'}</div>
       <button
+        type="button"
         onClick={() => {
           rerender();
         }}>
@@ -16,4 +17,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

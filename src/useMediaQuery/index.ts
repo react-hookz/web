@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { type Dispatch, useEffect, useState } from 'react';
 import { isBrowser } from '../util/const';
 
 const queriesMap = new Map<
@@ -12,7 +12,9 @@ const createQueryEntry = (query: string) => {
   const mql = matchMedia(query);
   const dispatchers = new Set<QueryStateSetter>();
   const listener = () => {
-    dispatchers.forEach((d) => d(mql.matches));
+    dispatchers.forEach((d) => {
+      d(mql.matches);
+    });
   };
 
   if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
@@ -40,7 +42,7 @@ const querySubscribe = (query: string, setState: QueryStateSetter) => {
 const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
   const entry = queriesMap.get(query);
 
-  // else path is impossible to test in normal situation
+  // Else path is impossible to test in normal situation
   /* istanbul ignore else */
   if (entry) {
     const { mql, dispatchers, listener } = entry;
@@ -55,9 +57,9 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
   }
 };
 
-interface UseMediaQueryOptions {
+type UseMediaQueryOptions = {
   initializeWithValue?: boolean;
-}
+};
 
 /**
  * Tracks the state of CSS media query.
@@ -84,6 +86,7 @@ export function useMediaQuery(
         entry = createQueryEntry(query);
         queriesMap.set(query, entry);
       }
+
       return entry.mql.matches;
     }
   });
@@ -91,8 +94,9 @@ export function useMediaQuery(
   useEffect(() => {
     querySubscribe(query, setState);
 
-    return () => queryUnsubscribe(query, setState);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      queryUnsubscribe(query, setState);
+    };
   }, [query]);
 
   return state;

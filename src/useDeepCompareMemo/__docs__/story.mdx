@@ -1,6 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks'
-import { Example } from './example.stories'
-import { ImportPath } from '../../__docs__/ImportPath'
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Miscellaneous/useDeepCompareMemo" component={Example} />
 
@@ -20,10 +20,7 @@ Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validat
 ## Reference
 
 ```ts
-export function useDeepCompareMemo<T, Deps extends DependencyList>(
-  factory: () => T,
-  deps: Deps
-): T
+export function useDeepCompareMemo<T, Deps extends DependencyList>(factory: () => T, deps: Deps): T;
 ```
 
 #### Importing

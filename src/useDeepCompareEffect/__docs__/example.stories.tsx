@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDeepCompareEffect, useRerender } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const rerender = useRerender();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,7 +26,9 @@ export const Example: React.FC = () => {
         useDeepCompareEffect does not. This is because useDeepCompareEffect determines dependency
         changes by deep comparison instead of by reference like useEffect.
       </p>
-      <button onClick={rerender}>Rerender</button>
+      <button type="button" onClick={rerender}>
+        Rerender
+      </button>
     </>
   );
-};
+}

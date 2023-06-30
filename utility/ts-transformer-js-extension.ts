@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as ts from 'typescript';
@@ -43,7 +42,6 @@ function isDirectoryImport(
   }
 }
 
-// eslint-disable-next-line import/no-default-export
 export default function transformer(_: ts.Program): ts.TransformerFactory<ts.SourceFile> {
   return (context) => (sourceFile) => {
     const fac = context.factory;

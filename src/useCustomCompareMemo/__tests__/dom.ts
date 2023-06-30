@@ -22,7 +22,6 @@ describe('useCustomCompareMemo', () => {
     expect(result.error).toBeUndefined();
   });
 
-  // eslint-disable-next-line jest/expect-expect
   it(`should't invoke factory function on each rerender`, () => {
     type Props = { user: User };
     const { result, rerender } = renderHook(

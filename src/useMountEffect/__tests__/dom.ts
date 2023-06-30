@@ -5,7 +5,9 @@ describe('useMountEffect', () => {
   it('should call effector only on first render', () => {
     const spy = jest.fn();
 
-    const { result, rerender, unmount } = renderHook(() => useMountEffect(spy));
+    const { result, rerender, unmount } = renderHook(() => {
+      useMountEffect(spy);
+    });
 
     expect(result.current).toBe(undefined);
     expect(spy).toHaveBeenCalledTimes(1);

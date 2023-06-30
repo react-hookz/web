@@ -9,7 +9,9 @@ describe('useRafEffect', () => {
     jest.useFakeTimers();
 
     global.requestAnimationFrame = (cb) => setTimeout(cb);
-    global.cancelAnimationFrame = (cb) => clearTimeout(cb);
+    global.cancelAnimationFrame = (cb) => {
+      clearTimeout(cb);
+    };
   });
 
   afterEach(() => {
@@ -28,15 +30,22 @@ describe('useRafEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useRafEffect(() => {}, []));
+    const { result } = renderHook(() => {
+      useRafEffect(() => {}, []);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should not run unless animation frame', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook((dep) => useRafEffect(spy, [dep]), {
-      initialProps: 1,
-    });
+    const { rerender } = renderHook(
+      (dep) => {
+        useRafEffect(spy, [dep]);
+      },
+      {
+        initialProps: 1,
+      }
+    );
 
     expect(spy).toHaveBeenCalledTimes(0);
 
@@ -53,9 +62,14 @@ describe('useRafEffect', () => {
 
   it('should cancel animation frame on unmount', () => {
     const spy = jest.fn();
-    const { rerender, unmount } = renderHook((dep) => useRafEffect(spy, [dep]), {
-      initialProps: 1,
-    });
+    const { rerender, unmount } = renderHook(
+      (dep) => {
+        useRafEffect(spy, [dep]);
+      },
+      {
+        initialProps: 1,
+      }
+    );
 
     expect(spy).toHaveBeenCalledTimes(0);
 

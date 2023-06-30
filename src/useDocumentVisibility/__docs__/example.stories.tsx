@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import { useDocumentVisibility } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const isVisible = useDocumentVisibility();
 
   useEffect(() => {
@@ -19,4 +19,4 @@ export const Example: React.FC = () => {
       </p>
     </div>
   );
-};
+}

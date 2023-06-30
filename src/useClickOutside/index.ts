@@ -1,4 +1,4 @@
-import { MutableRefObject, RefObject, useEffect } from 'react';
+import { type MutableRefObject, type RefObject, useEffect } from 'react';
 import { off, on } from '../util/misc';
 import { useSyncedRef } from '../useSyncedRef';
 
@@ -27,16 +27,22 @@ export function useClickOutside<T extends HTMLElement>(
       const { target: evtTarget } = event;
       const cb = cbRef.current;
 
-      if (!evtTarget || (!!evtTarget && !refRef.current.current.contains(evtTarget as Node))) {
+      if (
+        !evtTarget ||
+        (Boolean(evtTarget) && !refRef.current.current.contains(evtTarget as Node))
+      ) {
         cb.call(this, event);
       }
     }
 
-    events.forEach((name) => on(document, name, handler, { passive: true }));
+    events.forEach((name) => {
+      on(document, name, handler, { passive: true });
+    });
 
     return () => {
-      events.forEach((name) => off(document, name, handler, { passive: true }));
+      events.forEach((name) => {
+        off(document, name, handler, { passive: true });
+      });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...events]);
 }

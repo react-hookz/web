@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { useRafCallback } from '../useRafCallback';
 import { useUnmountEffect } from '../useUnmountEffect';
 

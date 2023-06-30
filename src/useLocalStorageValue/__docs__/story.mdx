@@ -1,6 +1,6 @@
-import {Example} from './example.stories'
-import {ImportPath} from '../../__docs__/ImportPath'
-import {ArgsTable, Canvas, Meta, Story} from '@storybook/addon-docs'
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 
 <Meta title="Side-effect/useLocalStorageValue" component={Example} />
 
@@ -47,7 +47,7 @@ function useLocalStorageValue<
 >(
   key: string,
   options?: UseStorageValueOptions<Type, Initialize>
-): UseStorageValueResult<Type, Default, Initialize>
+): UseStorageValueResult<Type, Default, Initialize>;
 ```
 
 #### Importing
@@ -69,8 +69,9 @@ function useLocalStorageValue<
 
 Object with following properties. Note that this object changes with `value`, but its methods are
 stable between renders. Thus, it is safe to pass them as props.
+
 - **value** - LocalStorage value of the given `key` argument or `defaultValue`, if the key was not
-present.
+  present.
 - **set** - Set a new value for the managed `key`.
 - **remove** - Remove the current value of `key`.
 - **fetch** - Manually retrieve the value of `key`.

@@ -20,13 +20,17 @@ describe('useIntervalEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useIntervalEffect(() => {}, 123));
+    const { result } = renderHook(() => {
+      useIntervalEffect(() => {}, 123);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should set interval and cancel it on unmount', () => {
     const spy = jest.fn();
-    const { unmount } = renderHook(() => useIntervalEffect(spy, 100));
+    const { unmount } = renderHook(() => {
+      useIntervalEffect(spy, 100);
+    });
 
     jest.advanceTimersByTime(99);
     expect(spy).not.toHaveBeenCalled();
@@ -43,9 +47,14 @@ describe('useIntervalEffect', () => {
 
   it('should reset interval in delay change', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ delay }) => useIntervalEffect(spy, delay), {
-      initialProps: { delay: 100 },
-    });
+    const { rerender } = renderHook(
+      ({ delay }) => {
+        useIntervalEffect(spy, delay);
+      },
+      {
+        initialProps: { delay: 100 },
+      }
+    );
 
     advanceTimersByTime(99);
     expect(spy).not.toHaveBeenCalled();
@@ -60,9 +69,14 @@ describe('useIntervalEffect', () => {
 
   it('should cancel interval if delay is undefined', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ delay }) => useIntervalEffect(spy, delay), {
-      initialProps: { delay: 100 } as { delay: number | undefined },
-    });
+    const { rerender } = renderHook<{ delay: number | undefined }, void>(
+      ({ delay }) => {
+        useIntervalEffect(spy, delay);
+      },
+      {
+        initialProps: { delay: 100 },
+      }
+    );
 
     advanceTimersByTime(99);
     expect(spy).not.toHaveBeenCalled();

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
 import { useEffect, useMemo, useState } from 'react';
 import { useFirstMountState } from '../useFirstMountState';
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect';
@@ -6,7 +5,7 @@ import { useSyncedRef } from '../useSyncedRef';
 import { useUpdateEffect } from '../useUpdateEffect';
 import { isBrowser } from '../util/const';
 import { off, on } from '../util/misc';
-import { NextState, resolveHookState } from '../util/resolveHookState';
+import { type NextState, resolveHookState } from '../util/resolveHookState';
 
 const storageListeners = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
@@ -33,7 +32,7 @@ const storageEventHandler = (evt: StorageEvent) => {
 };
 
 const addStorageListener = (s: Storage, key: string, listener: CallableFunction) => {
-  // in case of first listener added within browser environment we
+  // In case of first listener added within browser environment we
   // want to bind single storage event handler
   if (isBrowser && storageListeners.size === 0) {
     on(window, 'storage', storageEventHandler, { passive: true });
@@ -77,14 +76,14 @@ const removeStorageListener = (s: Storage, key: string, listener: CallableFuncti
     storageListeners.delete(s);
   }
 
-  // unbind storage event handler in browser environment in case there is no
+  // Unbind storage event handler in browser environment in case there is no
   // storage keys listeners left
   if (isBrowser && !storageListeners.size) {
     off(window, 'storage', storageEventHandler);
   }
 };
 
-export interface UseStorageValueOptions<T, InitializeWithValue extends boolean | undefined> {
+export type UseStorageValueOptions<T, InitializeWithValue extends boolean | undefined> = {
   /**
    * Value to return if `key` is not present in LocalStorage.
    *
@@ -109,7 +108,7 @@ export interface UseStorageValueOptions<T, InitializeWithValue extends boolean |
    * Custom function to stringify value to store with.
    */
   stringify?: (data: T) => string | null;
-}
+};
 
 type UseStorageValueValue<
   Type,
@@ -119,17 +118,17 @@ type UseStorageValueValue<
   U = Initialize extends false ? undefined | N : N
 > = U;
 
-export interface UseStorageValueResult<
+export type UseStorageValueResult<
   Type,
   Default extends Type = Type,
   Initialize extends boolean | undefined = boolean | undefined
-> {
+> = {
   value: UseStorageValueValue<Type, Default, Initialize>;
 
   set: (val: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) => void;
   remove: () => void;
   fetch: () => void;
-}
+};
 
 const DEFAULT_OPTIONS = {
   defaultValue: null,
@@ -150,10 +149,12 @@ export function useStorageValue<
     const parseFunction = optionsRef.current.parse ?? defaultParse;
     return parseFunction(str, fallback);
   };
+
   const stringify = (data: Type): string | null => {
     const stringifyFunction = optionsRef.current.stringify ?? defaultStringify;
     return stringifyFunction(data);
   };
+
   const storageActions = useSyncedRef({
     fetchRaw: () => storage.getItem(key),
     fetch: () =>
@@ -161,8 +162,10 @@ export function useStorageValue<
         storageActions.current.fetchRaw(),
         optionsRef.current.defaultValue as Required<Type> | null
       ),
-    remove: () => storage.removeItem(key),
-    store: (val: Type): string | null => {
+    remove() {
+      storage.removeItem(key);
+    },
+    store(val: Type): string | null {
       const stringified = stringify(val);
 
       if (stringified !== null) {
@@ -182,8 +185,10 @@ export function useStorageValue<
   const stateRef = useSyncedRef(state);
 
   const stateActions = useSyncedRef({
-    fetch: () => setState(storageActions.current.fetch()),
-    setRawVal: (val: string | null) => {
+    fetch() {
+      setState(storageActions.current.fetch());
+    },
+    setRawVal(val: string | null) {
       setState(parse(val, optionsRef.current.defaultValue));
     },
   });
@@ -196,7 +201,6 @@ export function useStorageValue<
     if (!optionsRef.current.initializeWithValue) {
       stateActions.current.fetch();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useIsomorphicLayoutEffect(() => {
@@ -210,7 +214,7 @@ export function useStorageValue<
   }, [storage, key]);
 
   const actions = useSyncedRef({
-    set: (val: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) => {
+    set(val: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) {
       if (!isBrowser) return;
 
       const s = resolveHookState(
@@ -223,27 +227,33 @@ export function useStorageValue<
         invokeStorageKeyListeners(storage, key, storeVal);
       }
     },
-    delete: () => {
+    delete() {
       if (!isBrowser) return;
 
       storageActions.current.remove();
       invokeStorageKeyListeners(storage, key, null);
     },
-    fetch: () => {
+    fetch() {
       if (!isBrowser) return;
 
       invokeStorageKeyListeners(storage, key, storageActions.current.fetchRaw());
     },
   });
 
-  // make actions static so developers can pass methods further
+  // Make actions static so developers can pass methods further
   const staticActions = useMemo(
     () => ({
-      set: ((v) => actions.current.set(v)) as typeof actions.current.set,
-      remove: () => actions.current.delete(),
-      fetch: () => actions.current.fetch(),
+      set: ((v) => {
+        actions.current.set(v);
+      }) as typeof actions.current.set,
+      remove() {
+        actions.current.delete();
+      },
+      fetch() {
+        actions.current.fetch();
+      },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     []
   );
 
@@ -252,7 +262,7 @@ export function useStorageValue<
       value: state as UseStorageValueValue<Type, Default, Initialize>,
       ...staticActions,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [state]
   );
 }
@@ -261,7 +271,6 @@ const defaultStringify = (data: unknown): string | null => {
   if (data === null) {
     /* istanbul ignore next */
     if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
       console.warn(
         `'null' is not a valid data for useStorageValue hook, this operation will take no effect`
       );
@@ -275,9 +284,8 @@ const defaultStringify = (data: unknown): string | null => {
   } catch (error) /* istanbul ignore next */ {
     // I have absolutely no idea how to cover this, since modern JSON.stringify does not throw on
     // cyclic references anymore
-    // eslint-disable-next-line no-console
-    console.warn(error);
 
+    console.warn(error);
     return null;
   }
 };
@@ -289,7 +297,6 @@ const defaultParse = <T>(str: string | null, fallback: T | null): T | null => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(str);
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.warn(error);
 
     return fallback;

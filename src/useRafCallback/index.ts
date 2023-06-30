@@ -10,7 +10,7 @@ import { isBrowser } from '../util/const';
  *
  * @param cb Callback to fire within animation frame.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export function useRafCallback<T extends (...args: any[]) => any>(
   cb: T
 ): [(...args: Parameters<T>) => void, () => void] {
@@ -47,7 +47,6 @@ export function useRafCallback<T extends (...args: any[]) => any>(
       });
 
       return wrapped;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
 
     cancel,

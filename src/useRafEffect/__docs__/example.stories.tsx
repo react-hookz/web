@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useRef } from 'react';
 import { useRafEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useRafEffect(() => {
@@ -25,4 +25,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

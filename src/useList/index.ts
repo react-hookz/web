@@ -1,9 +1,9 @@
-import { SetStateAction, useMemo, useRef } from 'react';
-import { InitialState, resolveHookState } from '../util/resolveHookState';
+import { type SetStateAction, useMemo, useRef } from 'react';
+import { type InitialState, resolveHookState } from '../util/resolveHookState';
 import { useRerender } from '../useRerender';
 import { useSyncedRef } from '../useSyncedRef';
 
-export interface ListActions<T> {
+export type ListActions<T> = {
   /**
    * Replaces the current list.
    */
@@ -53,7 +53,7 @@ export interface ListActions<T> {
    * Filters the list with the given filter function.
    */
   // We're allowing the type of thisArg to be any, because we are following the Array.prototype.filter API.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   filter: (callbackFn: (value: T, index?: number, array?: T[]) => boolean, thisArg?: any) => void;
 
   /**
@@ -72,7 +72,7 @@ export interface ListActions<T> {
    * Replaces the current list with the initial list given to this hook.
    */
   reset: () => void;
-}
+};
 
 export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>] {
   const initial = useSyncedRef(initialList);
@@ -81,16 +81,16 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
 
   const actions = useMemo(
     () => ({
-      set: (newList: SetStateAction<T[]>) => {
+      set(newList: SetStateAction<T[]>) {
         list.current = resolveHookState(newList, list.current);
         rerender();
       },
 
-      push: (...items: T[]) => {
+      push(...items: T[]) {
         actions.set((currentList: T[]) => [...currentList, ...items]);
       },
 
-      updateAt: (index: number, newItem: T) => {
+      updateAt(index: number, newItem: T) {
         actions.set((currentList: T[]) => {
           const listCopy = [...currentList];
           listCopy[index] = newItem;
@@ -98,7 +98,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
         });
       },
 
-      insertAt: (index: number, newItem: T) => {
+      insertAt(index: number, newItem: T) {
         actions.set((currentList: T[]) => {
           const listCopy = [...currentList];
 
@@ -112,13 +112,13 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
         });
       },
 
-      update: (predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) => {
+      update(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
         actions.set((currentList: T[]) =>
           currentList.map((item: T) => (predicate(item, newItem) ? newItem : item))
         );
       },
 
-      updateFirst: (predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) => {
+      updateFirst(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
         const indexOfMatch = list.current.findIndex((item: T) => predicate(item, newItem));
 
         const NO_MATCH = -1;
@@ -127,7 +127,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
         }
       },
 
-      upsert: (predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) => {
+      upsert(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
         const indexOfMatch = list.current.findIndex((item: T) => predicate(item, newItem));
 
         const NO_MATCH = -1;
@@ -138,33 +138,32 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
         }
       },
 
-      sort: (compareFn?: (a: T, b: T) => number) => {
+      sort(compareFn?: (a: T, b: T) => number) {
         actions.set((currentList: T[]) => [...currentList].sort(compareFn));
       },
 
-      filter: (callbackFn: (value: T, index: number, array: T[]) => boolean, thisArg?: never) => {
-        /*
-         We're implementing filter based on the Array.prototype.filter API, thus the API is not going
-         to change, and we can turn off the no-array-callback-reference rule. Also, the filter API
-         requires the thisArg, so we can turn off the no-array-method-this-argument-rule.
-        */
-        // eslint-disable-next-line unicorn/no-array-callback-reference, unicorn/no-array-method-this-argument
+      filter(callbackFn: (value: T, index: number, array: T[]) => boolean, thisArg?: never) {
         actions.set((currentList: T[]) => [...currentList].filter(callbackFn, thisArg));
       },
 
-      removeAt: (index: number) => {
+      removeAt(index: number) {
         actions.set((currentList: T[]) => {
           const listCopy = [...currentList];
           if (index < listCopy.length) {
             listCopy.splice(index, 1);
           }
+
           return listCopy;
         });
       },
 
-      clear: () => actions.set([]),
+      clear() {
+        actions.set([]);
+      },
 
-      reset: () => actions.set([...resolveHookState(initial.current)]),
+      reset() {
+        actions.set([...resolveHookState(initial.current)]);
+      },
     }),
     [initial, rerender]
   );

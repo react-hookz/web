@@ -1,3 +1,3 @@
-const config = require("@react-hookz/eslint-config/.prettierrc.js");
+const config = require('@react-hookz/eslint-config/.prettierrc.cjs');
 
 module.exports = config;

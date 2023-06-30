@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useHookableRef } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [get, setGet] = useState<Date>();
   const [set, setSet] = useState<Date>();
 
@@ -25,6 +25,7 @@ export const Example: React.FC = () => {
 
       <div>
         <button
+          type="button"
           onClick={() => {
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             ref.current;
@@ -32,6 +33,7 @@ export const Example: React.FC = () => {
           Read ref
         </button>
         <button
+          type="button"
           onClick={() => {
             ref.current = 321;
           }}>
@@ -40,4 +42,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

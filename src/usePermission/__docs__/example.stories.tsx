@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePermission } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const status = usePermission({ name: 'notifications' });
 
   return (
@@ -19,6 +19,7 @@ export const Example: React.FC = () => {
       <div>
         {status === 'prompt' && (
           <button
+            type="button"
             onClick={() => {
               // eslint-disable-next-line @typescript-eslint/no-floating-promises
               Notification.requestPermission();
@@ -29,4 +30,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

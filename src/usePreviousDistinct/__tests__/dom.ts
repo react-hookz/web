@@ -46,9 +46,9 @@ describe('usePreviousDistinct', () => {
       initialProps: { state: 0 },
     });
 
-    expect(result.current).toBeUndefined(); // asserting against initial render.
+    expect(result.current).toBeUndefined(); // Asserting against initial render.
     rerender({ state: 1 });
-    expect(result.current).toBe(0); // asserting against first re-render. value has now changed
+    expect(result.current).toBe(0); // Asserting against first re-render. value has now changed
   });
 
   it('should update previous value only after render with different value', () => {
@@ -57,11 +57,11 @@ describe('usePreviousDistinct', () => {
     });
 
     expect(result.current).toBeUndefined();
-    rerender({ state: 1 }); // update
+    rerender({ state: 1 }); // Update
     expect(result.current).toBe(0);
-    rerender({ state: 5 }); // update
+    rerender({ state: 5 }); // Update
     expect(result.current).toBe(1);
-    rerender({ state: 5 }); // no update
+    rerender({ state: 5 }); // No update
     expect(result.current).toBe(1);
   });
 
@@ -80,10 +80,10 @@ describe('usePreviousDistinct', () => {
   });
 
   it('should update even when going between defined and undefined values', () => {
-    const { result, rerender } = renderHook(
+    const { result, rerender } = renderHook<{ state: number | undefined }, number | undefined>(
       ({ state }: { state: number | undefined }) => usePreviousDistinct(state),
       {
-        initialProps: { state: 0 } as { state: number | undefined },
+        initialProps: { state: 0 },
       }
     );
 

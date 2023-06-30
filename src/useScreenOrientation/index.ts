@@ -2,9 +2,9 @@ import { useMediaQuery } from '../useMediaQuery';
 
 export type ScreenOrientation = 'portrait' | 'landscape';
 
-interface UseScreenOrientationOptions {
+type UseScreenOrientationOptions = {
   initializeWithValue?: boolean;
-}
+};
 
 /**
  * Checks if screen is in `portrait` or `landscape` orientation.

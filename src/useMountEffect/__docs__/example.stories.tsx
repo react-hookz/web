@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useRerender, useMountEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [count, setCount] = useState(0);
   const rerender = useRerender();
 
@@ -14,6 +14,7 @@ export const Example: React.FC = () => {
     <div>
       <div>useMountEffect has run {count} time(s)</div>
       <button
+        type="button"
         onClick={() => {
           rerender();
         }}>
@@ -21,4 +22,4 @@ export const Example: React.FC = () => {
       </button>
     </div>
   );
-};
+}

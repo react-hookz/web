@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { BaseSyntheticEvent, useRef } from 'react';
+import { type BaseSyntheticEvent, useRef } from 'react';
 import { useToggle } from '../..';
 
 describe('useToggle', () => {
@@ -84,15 +84,14 @@ describe('useToggle', () => {
     const { result } = renderHook(() => useToggle());
 
     act(() => {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
 
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
     });
     expect(result.current[0]).toBe(false);
 
     act(() => {
+      // eslint-disable-next-line @typescript-eslint/no-extraneous-class
       result.current[1](new (class SyntheticBaseEvent {})() as unknown as BaseSyntheticEvent);
     });
     expect(result.current[0]).toBe(true);

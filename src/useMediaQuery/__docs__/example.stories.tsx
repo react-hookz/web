@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMediaQuery } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');
   const isMediumDevice = useMediaQuery(
     'only screen and (min-width : 769px) and (max-width : 992px)'
@@ -34,4 +34,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

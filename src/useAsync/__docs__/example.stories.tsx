@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAsync, useMountEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, actions] = useAsync(
     () =>
       new Promise<string>((resolve) => {
@@ -25,6 +25,7 @@ export const Example: React.FC = () => {
       <br />
       <div>
         <button
+          type="button"
           onClick={() => {
             actions.reset();
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -33,6 +34,7 @@ export const Example: React.FC = () => {
           reset
         </button>{' '}
         <button
+          type="button"
           onClick={() => {
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             actions.execute();
@@ -42,4 +44,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

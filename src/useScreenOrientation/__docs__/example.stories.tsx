@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useScreenOrientation } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const orientation = useScreenOrientation();
 
   return (
@@ -14,4 +14,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

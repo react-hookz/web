@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAsyncAbortable, useMountEffect } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [state, actions, meta] = useAsyncAbortable(
     (signal) =>
       new Promise<string>((resolve, reject) => {
@@ -32,10 +32,11 @@ export const Example: React.FC = () => {
       <div>error: {state.error ? state.error.message : 'undefined'}</div>
       <br />
       <div>
-        <button onClick={actions.abort} disabled={!meta.abortController}>
+        <button type="button" disabled={!meta.abortController} onClick={actions.abort}>
           abort
         </button>{' '}
         <button
+          type="button"
           onClick={() => {
             actions.reset();
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -44,6 +45,7 @@ export const Example: React.FC = () => {
           reset & execute
         </button>{' '}
         <button
+          type="button"
           onClick={() => {
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
             actions.execute();
@@ -53,4 +55,4 @@ export const Example: React.FC = () => {
       </div>
     </div>
   );
-};
+}

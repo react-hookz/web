@@ -19,14 +19,18 @@ describe('useDebouncedEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useDebouncedEffect(() => {}, [], 200));
+    const { result } = renderHook(() => {
+      useDebouncedEffect(() => {}, [], 200);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should call effect only after delay', () => {
     const spy = jest.fn();
 
-    renderHook(() => useDebouncedEffect(spy, [], 200));
+    renderHook(() => {
+      useDebouncedEffect(spy, [], 200);
+    });
     expect(spy).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(199);

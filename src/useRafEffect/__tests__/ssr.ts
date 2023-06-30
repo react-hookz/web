@@ -7,7 +7,9 @@ describe('useRafEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useRafEffect(() => {}, []));
+    const { result } = renderHook(() => {
+      useRafEffect(() => {}, []);
+    });
     expect(result.error).toBeUndefined();
   });
 });

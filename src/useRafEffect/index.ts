@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useEffect } from 'react';
+import { type DependencyList, useEffect } from 'react';
 import { useRafCallback } from '../useRafCallback';
 
 /**
@@ -12,14 +11,13 @@ import { useRafCallback } from '../useRafCallback';
 export function useRafEffect(callback: (...args: any[]) => void, deps: DependencyList): void {
   const [rafCallback, cancelRaf] = useRafCallback(callback);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     () => {
       rafCallback();
 
       return cancelRaf;
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     deps
   );
 }

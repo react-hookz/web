@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-use-before-define,no-use-before-define */
 import Cookies from 'js-cookie';
-import { Dispatch, useCallback, useEffect, useState } from 'react';
+import { type Dispatch, useCallback, useEffect, useState } from 'react';
 import { useFirstMountState } from '../useFirstMountState';
 import { useMountEffect } from '../useMountEffect';
 import { useSyncedRef } from '../useSyncedRef';
@@ -22,7 +21,7 @@ const registerSetter = (key: string, setter: Dispatch<string | null>) => {
 const unregisterSetter = (key: string, setter: Dispatch<string | null>): void => {
   const setters = cookiesSetters.get(key);
 
-  // almost impossible to test in normal situation
+  // Almost impossible to test in normal situation
   /* istanbul ignore next */
   if (!setters) return;
 
@@ -40,7 +39,7 @@ const invokeRegisteredSetters = (
 ) => {
   const setters = cookiesSetters.get(key);
 
-  // almost impossible to test in normal situation
+  // Almost impossible to test in normal situation
   /* istanbul ignore next */
   if (!setters) return;
 
@@ -74,10 +73,7 @@ export function useCookieValue(
   key: string,
   options: UseCookieValueOptions<false>
 ): UseCookieValueReturn;
-export function useCookieValue(
-  key: string,
-  options?: UseCookieValueOptions
-): UseCookieValueReturn<null | string>;
+export function useCookieValue(key: string, options?: UseCookieValueOptions): UseCookieValueReturn;
 /**
  * Manages a single cookie.
  *
@@ -88,7 +84,7 @@ export function useCookieValue(
   key: string,
   options: UseCookieValueOptions = {}
 ): UseCookieValueReturn {
-  // no need to test it, dev-only notification about 3rd party library requirement
+  // No need to test it, dev-only notification about 3rd party library requirement
   /* istanbul ignore next */
   if (process.env.NODE_ENV === 'development' && Cookies === undefined) {
     throw new ReferenceError(
@@ -96,7 +92,6 @@ export function useCookieValue(
     );
   }
 
-  // eslint-disable-next-line prefer-const
   let { initializeWithValue = true, ...cookiesOptions } = options;
 
   if (!isBrowser) {
@@ -104,19 +99,19 @@ export function useCookieValue(
   }
 
   const methods = useSyncedRef({
-    set: (value: string) => {
+    set(value: string) {
       setState(value);
       Cookies.set(key, value, cookiesOptions);
-      // update all other hooks with the same key
+      // Update all other hooks with the same key
       invokeRegisteredSetters(key, value, setState);
     },
-    remove: () => {
+    remove() {
       setState(null);
       Cookies.remove(key, cookiesOptions);
       invokeRegisteredSetters(key, null, setState);
     },
     fetchVal: () => Cookies.get(key) ?? null,
-    fetch: () => {
+    fetch() {
       const val = methods.current.fetchVal();
       setState(val);
       invokeRegisteredSetters(key, val, setState);
@@ -140,16 +135,21 @@ export function useCookieValue(
     return () => {
       unregisterSetter(key, setState);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
   return [
     state,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useCallback((value: string) => methods.current.set(value), []),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useCallback(() => methods.current.remove(), []),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useCallback(() => methods.current.fetch(), []),
+
+    useCallback((value: string) => {
+      methods.current.set(value);
+    }, []),
+
+    useCallback(() => {
+      methods.current.remove();
+    }, []),
+
+    useCallback(() => {
+      methods.current.fetch();
+    }, []),
   ];
 }

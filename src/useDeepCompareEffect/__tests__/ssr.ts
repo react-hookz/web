@@ -7,7 +7,9 @@ describe('useDeepCompareEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useDeepCompareEffect(() => {}, []));
+    const { result } = renderHook(() => {
+      useDeepCompareEffect(() => {}, []);
+    });
     expect(result.error).toBeUndefined();
   });
 });

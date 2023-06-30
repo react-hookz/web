@@ -49,7 +49,7 @@ describe('useSet', () => {
     const { result, waitForNextUpdate } = renderHook(() => [++i, useSet()] as const);
 
     await act(async () => {
-      expect(result.current[1].clear()).toBe(undefined);
+      result.current[1].clear();
       await waitForNextUpdate();
     });
 

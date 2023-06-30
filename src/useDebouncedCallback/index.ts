@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useMemo, useRef } from 'react';
+import { type DependencyList, useMemo, useRef } from 'react';
 import { useUnmountEffect } from '../useUnmountEffect';
 
-export interface DebouncedFunction<Fn extends (...args: any[]) => any> {
-  (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
-}
+export type DebouncedFunction<Fn extends (...args: any[]) => any> = (
+  this: ThisParameterType<Fn>,
+  ...args: Parameters<Fn>
+) => void;
 
 /**
  * Makes passed function debounced, otherwise acts like `useCallback`.
@@ -37,49 +37,44 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
     }
   };
 
-  // cancel scheduled execution on unmount
+  // Cancel scheduled execution on unmount
   useUnmountEffect(clear);
 
-  return useMemo(
-    () => {
-      const execute = () => {
-        // barely possible to test this line
-        /* istanbul ignore next */
-        if (!lastCall.current) return;
+  return useMemo(() => {
+    const execute = () => {
+      // Barely possible to test this line
+      /* istanbul ignore next */
+      if (!lastCall.current) return;
 
-        const context = lastCall.current;
-        lastCall.current = undefined;
+      const context = lastCall.current;
+      lastCall.current = undefined;
 
-        callback.apply(context.this, context.args);
+      callback.apply(context.this, context.args);
 
-        clear();
-      };
+      clear();
+    };
 
-      // eslint-disable-next-line func-names
-      const wrapped = function (this, ...args) {
-        if (timeout.current) {
-          clearTimeout(timeout.current);
-        }
+    const wrapped = function (this, ...args) {
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
 
-        lastCall.current = { args, this: this };
+      lastCall.current = { args, this: this };
 
-        // plan regular execution
-        timeout.current = setTimeout(execute, delay);
+      // Plan regular execution
+      timeout.current = setTimeout(execute, delay);
 
-        // plan maxWait execution if required
-        if (maxWait > 0 && !waitTimeout.current) {
-          waitTimeout.current = setTimeout(execute, maxWait);
-        }
-      } as DebouncedFunction<Fn>;
+      // Plan maxWait execution if required
+      if (maxWait > 0 && !waitTimeout.current) {
+        waitTimeout.current = setTimeout(execute, maxWait);
+      }
+    } as DebouncedFunction<Fn>;
 
-      Object.defineProperties(wrapped, {
-        length: { value: callback.length },
-        name: { value: `${callback.name || 'anonymous'}__debounced__${delay}` },
-      });
+    Object.defineProperties(wrapped, {
+      length: { value: callback.length },
+      name: { value: `${callback.name || 'anonymous'}__debounced__${delay}` },
+    });
 
-      return wrapped;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
-    [delay, maxWait, ...deps]
-  );
+    return wrapped;
+  }, [delay, maxWait, ...deps]);
 }

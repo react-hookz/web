@@ -5,7 +5,9 @@ describe('useUpdateEffect', () => {
   it('should call effector only on updates (after first render)', () => {
     const spy = jest.fn();
 
-    const { rerender, unmount } = renderHook(() => useUpdateEffect(spy));
+    const { rerender, unmount } = renderHook(() => {
+      useUpdateEffect(spy);
+    });
 
     expect(spy).toHaveBeenCalledTimes(0);
 
@@ -22,9 +24,14 @@ describe('useUpdateEffect', () => {
   it('should accept dependencies as useEffect', () => {
     const spy = jest.fn();
 
-    const { rerender, unmount } = renderHook(({ deps }) => useUpdateEffect(spy, deps), {
-      initialProps: { deps: [1, 2, 3] },
-    });
+    const { rerender, unmount } = renderHook(
+      ({ deps }) => {
+        useUpdateEffect(spy, deps);
+      },
+      {
+        initialProps: { deps: [1, 2, 3] },
+      }
+    );
 
     expect(spy).toHaveBeenCalledTimes(0);
 

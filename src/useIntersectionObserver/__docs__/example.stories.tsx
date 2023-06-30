@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useRef } from 'react';
 import { useIntersectionObserver } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const rootRef = useRef<HTMLDivElement>(null);
   const elementRef = useRef<HTMLDivElement>(null);
   const intersection = useIntersectionObserver(elementRef, { root: rootRef, threshold: [0, 0.5] });
@@ -47,4 +47,4 @@ export const Example: React.FC = () => {
       </pre>
     </div>
   );
-};
+}

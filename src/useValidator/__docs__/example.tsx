@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { ValidatorDeferred, useDebouncedCallback, useValidator } from '../..';
+import { type ValidatorDeferred, useDebouncedCallback, useValidator } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const [text, setText] = useState('');
 
-  // as deferred validator is unable to infer the type of validity
+  // As deferred validator is unable to infer the type of validity
   // state - we should define it ourself
   type TextValidityState = { isValid: boolean | undefined; error: Error | undefined };
 
-  // debounced callback is deferred callback so we should use deferred type
+  // Debounced callback is deferred callback so we should use deferred type
   // of validator (the one that receives dispatcher as an argument)
   const validator = useDebouncedCallback<ValidatorDeferred<TextValidityState>>(
     (d) => {
@@ -24,7 +24,7 @@ export const Example: React.FC = () => {
     150
   );
 
-  // validity state type if inferred from validator
+  // Validity state type if inferred from validator
   const [validity] = useValidator(validator, [validator]);
 
   return (
@@ -42,4 +42,4 @@ export const Example: React.FC = () => {
       />
     </div>
   );
-};
+}

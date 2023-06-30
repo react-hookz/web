@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useScreenOrientation } from '../..';
 
 describe('useScreenOrientation', () => {
-  // have to copy implementation as jsdom lacks of it
+  // Have to copy implementation as jsdom lacks of it
   type MutableMediaQueryList = {
     matches: boolean;
     media: string;

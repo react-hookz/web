@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useWindowSize } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const size = useWindowSize();
 
   return (
@@ -13,4 +13,4 @@ export const Example: React.FC = () => {
       </blockquote>
     </div>
   );
-};
+}

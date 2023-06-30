@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs';
-import {Example} from './example.stories';
-import {ImportPath} from '../../__docs__/ImportPath';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Side-effect/useAsync" component={Example} />
 
@@ -52,7 +52,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
    - **reset** _`() => void`_- Reset state to initial.
    - **execute** _`(...args: Args) => Promise<Result>`_- Execute the async function manually.
 
-2. **meta**
+3. **meta**
 
    - **promise** _`Promise<Result> | undefined`_- Latest promise returned from the async function.
    - **lastArgs** _`Args | undefined`_ - List of arguments applied to the latest async function

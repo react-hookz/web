@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { isBrowser } from '../util/const';
 import { off, on } from '../util/misc';
-import { InitialState } from '../util/resolveHookState';
+import { type InitialState } from '../util/resolveHookState';
 
-export interface NetworkInformation extends EventTarget {
+export type NetworkInformation = {
   readonly downlink: number;
   readonly downlinkMax: number;
   readonly effectiveType: 'slow-2g' | '2g' | '3g' | '4g';
@@ -18,9 +18,9 @@ export interface NetworkInformation extends EventTarget {
     | 'wimax'
     | 'other'
     | 'unknown';
-}
+} & EventTarget;
 
-export interface UseNetworkState {
+export type UseNetworkState = {
   /**
    * @desc Whether browser connected to the network or not.
    */
@@ -72,14 +72,14 @@ export interface UseNetworkState {
    *  - unknown
    */
   type: NetworkInformation['type'] | undefined;
-}
+};
 
 type NavigatorWithConnection = Navigator &
   Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', NetworkInformation>>;
 const navigator = isBrowser ? (window.navigator as NavigatorWithConnection) : undefined;
 
 const conn: NetworkInformation | undefined =
-  navigator && (navigator.connection || navigator.mozConnection || navigator.webkitConnection);
+  navigator && (navigator.connection ?? navigator.mozConnection ?? navigator.webkitConnection);
 
 function getConnectionState(previousState?: UseNetworkState): UseNetworkState {
   const online = navigator?.onLine;
@@ -112,7 +112,7 @@ export function useNetworkState(initialState?: InitialState<UseNetworkState>): U
     on(window, 'online', handleStateChange, { passive: true });
     on(window, 'offline', handleStateChange, { passive: true });
 
-    // it is quite hard to test it in jsdom environment maybe will be improved in future
+    // It is quite hard to test it in jsdom environment maybe will be improved in future
     /* istanbul ignore next */
     if (conn) {
       on(conn, 'change', handleStateChange, { passive: true });
@@ -127,7 +127,6 @@ export function useNetworkState(initialState?: InitialState<UseNetworkState>): U
         off(conn, 'change', handleStateChange);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return state;

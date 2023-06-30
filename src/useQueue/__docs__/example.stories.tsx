@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useQueue } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const { add, remove, first, last, size, items } = useQueue<number>([1, 2, 3]);
 
   return (
@@ -11,14 +11,23 @@ export const Example: React.FC = () => {
         <li>last: {last}</li>
         <li>size: {size}</li>
       </ul>
-      <button onClick={() => add((last || 0) + 1)}>Add</button>
-      <button onClick={() => remove()}>Remove</button>
+      <button
+        type="button"
+        onClick={() => {
+          add((last || 0) + 1);
+        }}>
+        Add
+      </button>
+      <button type="button" onClick={() => remove()}>
+        Remove
+      </button>
       <h4>All Items</h4>
       <ul>
-        {items.map((item) => (
-          <li>{item}</li>
+        {items.map((item, idx) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={idx}>{item}</li>
         ))}
       </ul>
     </div>
   );
-};
+}

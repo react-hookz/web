@@ -7,7 +7,9 @@ describe('useDeepCompareMemo', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useDeepCompareMemo(() => {}, []));
+    const { result } = renderHook(() => {
+      useDeepCompareMemo(() => {}, []);
+    });
     expect(result.error).toBeUndefined();
   });
 });

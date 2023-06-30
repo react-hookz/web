@@ -7,7 +7,9 @@ describe('useClickOutside', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useClickOutside({ current: null }, () => {}));
+    const { result } = renderHook(() => {
+      useClickOutside({ current: null }, () => {});
+    });
     expect(result.error).toBeUndefined();
   });
 });

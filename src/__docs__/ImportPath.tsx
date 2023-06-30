@@ -1,27 +1,27 @@
 import { DocsContext, Source } from '@storybook/addon-docs';
-import React, { FC, useContext } from 'react';
+import React, { type FC, useContext } from 'react';
 
-export interface ImportPathProps {
-  root?: boolean;
-  direct?: boolean;
-}
+export type ImportPathProps = {
+  isRoot?: boolean;
+  isDirect?: boolean;
+};
 
-export const ImportPath: FC<ImportPathProps> = ({ root = true, direct = true }) => {
+export function ImportPath({ isRoot = true, isDirect = true }: ImportPathProps) {
   const context = useContext(DocsContext);
-  // eslint-disable-next-line react/destructuring-assignment
+
   const componentName = context.title?.split('/')[1] || 'UnknownComponent';
 
   const imports: string[] = [];
 
-  if (root) {
+  if (isRoot) {
     imports.push(`// root import\nimport { ${componentName} } from '@react-hookz/web';`);
   }
 
-  if (direct) {
+  if (isDirect) {
     imports.push(
       `// direct import\nimport { ${componentName} } from '@react-hookz/web/esm/${componentName}';`
     );
   }
 
   return <Source language="js" code={imports.join('\n')} />;
-};
+}

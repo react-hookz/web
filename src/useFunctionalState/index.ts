@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 
 export function useFunctionalState<S>(
@@ -18,6 +18,5 @@ export function useFunctionalState<S>(
   const [state, setState] = useState(initialState);
   const stateRef = useSyncedRef(state);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   return [useCallback(() => stateRef.current, []), setState];
 }

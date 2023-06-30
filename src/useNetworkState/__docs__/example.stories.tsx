@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNetworkState } from '../..';
 
-export const Example: React.FC = () => {
+export function Example() {
   const onlineState = useNetworkState();
 
   return (
@@ -10,4 +10,4 @@ export const Example: React.FC = () => {
       <pre>{JSON.stringify(onlineState, null, 2)}</pre>
     </div>
   );
-};
+}

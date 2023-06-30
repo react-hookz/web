@@ -1,6 +1,6 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs'
-import {Example} from './example.stories'
-import {ImportPath} from '../../__docs__/ImportPath'
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
 
 <Meta title="Dom/useEventListener" component={Example} />
 
@@ -27,7 +27,7 @@ export function useEventListener<T extends EventTarget>(
   ...params:
     | Parameters<T['addEventListener']>
     | [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
-): void
+): void;
 ```
 
 #### Importing

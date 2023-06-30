@@ -7,15 +7,22 @@ describe('useDeepCompareEffect', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useDeepCompareEffect(() => {}, []));
+    const { result } = renderHook(() => {
+      useDeepCompareEffect(() => {}, []);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should run only in case deps are changed', () => {
     const spy = jest.fn();
-    const { rerender } = renderHook(({ deps }) => useDeepCompareEffect(spy, deps), {
-      initialProps: { deps: [{ foo: 'bar' }] },
-    });
+    const { rerender } = renderHook(
+      ({ deps }) => {
+        useDeepCompareEffect(spy, deps);
+      },
+      {
+        initialProps: { deps: [{ foo: 'bar' }] },
+      }
+    );
 
     expect(spy).toHaveBeenCalledTimes(1);
 

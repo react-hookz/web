@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList } from 'react';
+import { type DependencyList } from 'react';
 import type { DependenciesComparator } from '../types';
 
 export function on<T extends EventTarget>(
@@ -8,9 +7,7 @@ export function on<T extends EventTarget>(
     | Parameters<T['addEventListener']>
     | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
-  if (obj && obj.addEventListener) {
-    obj.addEventListener(...(args as Parameters<HTMLElement['addEventListener']>));
-  }
+  obj?.addEventListener?.(...(args as Parameters<HTMLElement['addEventListener']>));
 }
 
 export function off<T extends EventTarget>(
@@ -19,9 +16,7 @@ export function off<T extends EventTarget>(
     | Parameters<T['removeEventListener']>
     | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
-  if (obj && obj.removeEventListener) {
-    obj.removeEventListener(...(args as Parameters<HTMLElement['removeEventListener']>));
-  }
+  obj?.removeEventListener?.(...(args as Parameters<HTMLElement['removeEventListener']>));
 }
 
 export const hasOwnProperty = <

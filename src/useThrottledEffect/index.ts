@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useEffect } from 'react';
+import { type DependencyList, useEffect } from 'react';
 import { useThrottledCallback } from '../useThrottledCallback';
 
 /**
@@ -20,6 +19,5 @@ export function useThrottledEffect(
   delay: number,
   noTrailing = false
 ): void {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(useThrottledCallback(callback, deps, delay, noTrailing), deps);
 }

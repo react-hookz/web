@@ -16,9 +16,12 @@ export function useIntervalEffect(callback: () => void, ms?: number): void {
       return;
     }
 
-    const id = setInterval(() => cbRef.current(), ms);
+    const id = setInterval(() => {
+      cbRef.current();
+    }, ms);
 
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      clearInterval(id);
+    };
   }, [ms]);
 }

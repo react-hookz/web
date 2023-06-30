@@ -17,18 +17,24 @@ describe('useVibrate', () => {
   });
 
   it('should render', () => {
-    const { result } = renderHook(() => useVibrate(true, 100));
+    const { result } = renderHook(() => {
+      useVibrate(true, 100);
+    });
     expect(result.error).toBeUndefined();
   });
 
   it('should call navigator.vibrate', () => {
-    renderHook(() => useVibrate(true, [100, 200]));
+    renderHook(() => {
+      useVibrate(true, [100, 200]);
+    });
     expect(vibrateSpy).toHaveBeenCalledTimes(1);
     expect(vibrateSpy.mock.calls[0][0]).toEqual([100, 200]);
   });
 
   it('should call navigator.vibrate(0) on unmount', () => {
-    const { unmount } = renderHook(() => useVibrate(true, [100, 200], true));
+    const { unmount } = renderHook(() => {
+      useVibrate(true, [100, 200], true);
+    });
     unmount();
 
     expect(vibrateSpy.mock.calls[1][0]).toEqual(0);
@@ -36,7 +42,9 @@ describe('useVibrate', () => {
 
   it('should vibrate constantly using interval', () => {
     jest.useFakeTimers();
-    renderHook(() => useVibrate(true, 300, true));
+    renderHook(() => {
+      useVibrate(true, 300, true);
+    });
 
     expect(vibrateSpy).toHaveBeenCalledTimes(1);
     expect(vibrateSpy.mock.calls[0][0]).toEqual(300);

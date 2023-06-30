@@ -1,4 +1,4 @@
-import { MutableRefObject, useMemo } from 'react';
+import { type MutableRefObject, useMemo } from 'react';
 import { useSyncedRef } from '../useSyncedRef';
 
 export type HookableRefHandler<T> = (v: T) => T;
@@ -39,6 +39,5 @@ export function useHookableRef<T>(
         v = onSetRef.current === undefined ? val : onSetRef.current(val as T);
       },
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

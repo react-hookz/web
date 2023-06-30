@@ -21,6 +21,5 @@ export const useCustomCompareMemo = <T, Deps extends DependencyList>(
     dependencies.current = deps;
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- missing factory function
   return useMemo<T>(factory, dependencies.current);
 };

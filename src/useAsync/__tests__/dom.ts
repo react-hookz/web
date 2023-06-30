@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useAsync } from '../..';
 
@@ -56,7 +55,7 @@ describe('useAsync', () => {
 
   it('should have `not-executed` status initially', async () => {
     await act(async () => {
-      const [spy, resolve] = getControllableAsync<undefined | null, []>();
+      const [spy, resolve] = getControllableAsync<void, []>();
       const { result } = renderHook(() => useAsync(spy));
 
       expect(result.current[0]).toStrictEqual({
@@ -66,13 +65,13 @@ describe('useAsync', () => {
       });
 
       if (resolve.current) {
-        resolve.current(null);
+        resolve.current();
       }
     });
   });
 
   it('should have `loading` status while promise invoked but not resolved', async () => {
-    const [spy, resolve] = getControllableAsync<undefined | null, []>();
+    const [spy, resolve] = getControllableAsync<void, []>();
     const { result } = renderHook(() => useAsync(spy));
 
     expect(result.current[0]).toStrictEqual({
@@ -94,7 +93,7 @@ describe('useAsync', () => {
 
     await act(async () => {
       if (resolve.current) {
-        resolve.current(null);
+        resolve.current();
       }
     });
   });
