@@ -81,7 +81,7 @@
 		"@commitlint/config-conventional": "^17.6.6",
 		"@commitlint/cz-commitlint": "^17.5.0",
 		"@jamesacarr/jest-reporter-github-actions": "^0.0.4",
-		"@react-hookz/eslint-config": "^2.0.0",
+		"@react-hookz/eslint-config": "^2.0.2",
 		"@react-hookz/eslint-formatter-gha": "^1.0.1",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
