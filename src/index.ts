@@ -64,7 +64,7 @@ export * from './useMediaQuery';
 export * from './useKeyboardEvent';
 export * from './useDocumentVisibility';
 export * from './useScreenOrientation';
-
+export * from './useScrolling';
 // Dom
 export * from './useClickOutside';
 export * from './useEventListener';
