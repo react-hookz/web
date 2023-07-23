@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useScrolling } from '../..';
+import { renderHook } from '@testing-library/react-hooks';
+import { useScrolling } from '..';
 
 describe('useScrolling', () => {
 	it('should be defined', () => {
@@ -7,7 +7,25 @@ describe('useScrolling', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useScrolling());
+		const { result } = renderHook(() => useScrolling({ current: null }));
 		expect(result.error).toBeUndefined();
+	});
+
+	it('should return false while ref is null', async () => {
+		const { result } = renderHook(() => useScrolling({ current: null }));
+		expect(result.current).toBe(false);
+	});
+
+	it('should return true while scrolling', async () => {
+		const div = document.createElement('div');
+		const { result, waitForNextUpdate } = renderHook(() => useScrolling({ current: div }));
+		const scrollEvent = new window.Event('scroll');
+		div.dispatchEvent(scrollEvent);
+		div.addEventListener('scroll', (e) => {
+			console.log(e);
+		});
+		expect(result.current).toBe(true);
+		await waitForNextUpdate();
+		expect(result.current).toBe(false);
 	});
 });

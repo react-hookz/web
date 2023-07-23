@@ -1,7 +1,13 @@
 import { useEffect, useState, type RefObject } from 'react';
 
-export type Timeout = ReturnType<typeof setTimeout>;
+type Timeout = ReturnType<typeof setTimeout>;
 
+/**
+ * Listen to whether a dom element is scrolling
+ * @param ref RefObject
+ * @param time debonce time
+ * @returns isScolling: boolean
+ */
 export function useScrolling(ref: RefObject<HTMLElement>, time = 150): boolean {
 	const [scrolling, setScrolling] = useState(false);
 
@@ -24,11 +30,7 @@ export function useScrolling(ref: RefObject<HTMLElement>, time = 150): boolean {
 				}
 			};
 		}
-
-		return () => {};
 	}, [ref, time]);
 
 	return scrolling;
 }
-
-export default useScrolling;

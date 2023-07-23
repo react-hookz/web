@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRef } from 'react';
-import useScrolling from '..';
+import { useScrolling } from '../index';
 
 export function Example() {
 	const ref = useRef(null);

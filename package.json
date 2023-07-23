@@ -63,7 +63,8 @@
 		]
 	},
 	"dependencies": {
-		"@react-hookz/deep-equal": "^1.0.4"
+		"@react-hookz/deep-equal": "^1.0.4",
+		"@testing-library/react": "^14.0.0"
 	},
 	"peerDependencies": {
 		"js-cookie": "^3.0.5",

@@ -7,7 +7,7 @@ describe('useScrolling', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useScrolling());
+		const { result } = renderHook(() => useScrolling({ current: null }));
 		expect(result.error).toBeUndefined();
 	});
 });
