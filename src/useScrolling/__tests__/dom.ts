@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import { useScrolling } from '..';
 
 describe('useScrolling', () => {
@@ -20,10 +20,10 @@ describe('useScrolling', () => {
 		const div = document.createElement('div');
 		const { result, waitForNextUpdate } = renderHook(() => useScrolling({ current: div }));
 		const scrollEvent = new window.Event('scroll');
-		div.dispatchEvent(scrollEvent);
-		div.addEventListener('scroll', (e) => {
-			console.log(e);
+		act(() => {
+			div.dispatchEvent(scrollEvent);
 		});
+
 		expect(result.current).toBe(true);
 		await waitForNextUpdate();
 		expect(result.current).toBe(false);
