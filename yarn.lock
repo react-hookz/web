@@ -1169,7 +1169,7 @@
   resolved "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@commitlint/cli@^17.6.6", "@commitlint/cli@^17.6.7":
+"@commitlint/cli@^17.6.7":
   version "17.6.7"
   resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.6.7.tgz#1d352a6cfdb6b6a6ae49a959e6c13dcef1b63782"
   integrity sha512-nzZmfO5KIOupYppn1MsnYX/80I+KDlxiwkks3CJT0XT+t34UgqGi3eSyEuzgcIjPlORk5/GMaAEiys78iLfGMg==
@@ -5846,12 +5846,12 @@ commitizen@^4.0.3, commitizen@^4.3.0:
     strip-bom "4.0.0"
     strip-json-comments "3.1.1"
 
-commitlint@^17.6.6:
-  version "17.6.6"
-  resolved "https://registry.npmmirror.com/commitlint/-/commitlint-17.6.6.tgz"
-  integrity sha512-Q5M+w1nqGQSEkEW43EtPNrU+uKL2pENrJl6QigFupZ0v4AfvI8k5Q6uFgWmxlEOrSkgCYaN436Q9c9pydqyJqg==
+commitlint@^17.6.7:
+  version "17.6.7"
+  resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-17.6.7.tgz#db2c964ac61cb0f98d00d95d2561e6927c7ddea5"
+  integrity sha512-9hNJdmFC/mpS9qgJISCnqhnGdMDHw+QLXqlsSCYuhib43+5O/qLH08P7wn/Gr9Zt8aZygjKmdnIaPcxFaw4KKA==
   dependencies:
-    "@commitlint/cli" "^17.6.6"
+    "@commitlint/cli" "^17.6.7"
     "@commitlint/types" "^17.4.4"
 
 common-ancestor-path@^1.0.1:
