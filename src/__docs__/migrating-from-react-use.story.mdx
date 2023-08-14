@@ -264,7 +264,7 @@ API is backwards-compatible, minus the first `isReady` return value.
 In order to replicate the old functionality, you can do the following:
 
 ```javascript
-const isReady = (React.useRef < boolean) | (null > false);
+const isReady = React.useRef<boolean | null>(false);
 
 const [cancel, reset] = useTimeoutEffect(() => {
 	isReady.current = true;
