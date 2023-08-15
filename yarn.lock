@@ -1264,17 +1264,17 @@
     "@commitlint/types" "^17.4.4"
     ajv "^8.11.0"
 
-"@commitlint/cz-commitlint@^17.6.7":
-  version "17.6.7"
-  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-17.6.7.tgz#4f0b01df188713d1d308dbcb5973d611bd1d2a3a"
-  integrity sha512-mX1gKRJYzOgbBDVpvlDlLJIbF2dReT2L410eTcnV3DK8AJ5vvkhuXXRPN3jyqO2FVbtYzZDht6noHMhPGFDVlA==
+"@commitlint/cz-commitlint@^17.7.1":
+  version "17.7.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-17.7.1.tgz#2b0ae17cb5f0db8c41114490c396eb76389c3afb"
+  integrity sha512-6hxY9TNBrEFCL9EE0t59617TIZZDHwbieMbvfM9PLpC2SadYD+YnDb9yZoaSHq3pI10g6BFoiDzF6ADWOgNnpw==
   dependencies:
     "@commitlint/ensure" "^17.6.7"
-    "@commitlint/load" "^17.6.7"
+    "@commitlint/load" "^17.7.1"
     "@commitlint/types" "^17.4.4"
     chalk "^4.1.0"
     lodash.isplainobject "^4.0.6"
-    word-wrap "^1.2.3"
+    word-wrap "^1.2.5"
 
 "@commitlint/ensure@^17.6.7":
   version "17.6.7"
@@ -1319,7 +1319,7 @@
     "@commitlint/rules" "^17.7.0"
     "@commitlint/types" "^17.4.4"
 
-"@commitlint/load@>6.1.1", "@commitlint/load@^17.6.7", "@commitlint/load@^17.7.1":
+"@commitlint/load@>6.1.1", "@commitlint/load@^17.7.1":
   version "17.7.1"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.7.1.tgz#0723b11723a20043a304a74960602dead89b5cdd"
   integrity sha512-S/QSOjE1ztdogYj61p6n3UbkUvweR17FQ0zDbNtoTLc+Hz7vvfS7ehoTMQ27hPSjVBpp7SzEcOQu081RLjKHJQ==
@@ -16606,10 +16606,10 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-word-wrap@^1.0.3, word-wrap@^1.2.3, word-wrap@~1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
-  integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+word-wrap@^1.0.3, word-wrap@^1.2.5, word-wrap@~1.2.3:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.5.tgz#d2c45c6dd4fbce621a66f136cbe328afd0410b34"
+  integrity sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==
 
 wordwrap@^1.0.0:
   version "1.0.0"
