@@ -1,0 +1,53 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="DOM/useSpeech" component={Example} />
+
+# useSpeech
+
+A hook for speech synthesis using browser API
+
+#### Example
+
+<Canvas>
+	<Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+type SpeechOptions = {
+	voice?: SpeechSynthesisVoice;
+	rate: number;
+	pitch: number;
+	volume: number;
+	lang?: string;
+};
+
+export type ISpeechOptions = Partial<SpeechOptions>;
+
+export type VoiceInfo = Pick<SpeechSynthesisVoice, 'lang' | 'name'>;
+
+type SpeechPlayStatus = 'init' | 'play' | 'pause' | 'end' | 'error';
+
+export type ISpeechState = SpeechOptions & {
+	isPlaying: boolean;
+	status: SpeechPlayStatus;
+	voiceInfo: VoiceInfo;
+	errorMessage?: string;
+};
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **text** _`string`_ - Text to be spoken
+- **options** _`ISpeechOptions`_ - Speech options
+
+#### Return
+
+- **state** _`ISpeechState`_ - Represents the current state of speech synthesis.

@@ -69,6 +69,7 @@ export * from './useScreenOrientation';
 export * from './useClickOutside';
 export * from './useEventListener';
 export * from './useWindowSize';
+export * from './useSpeech';
 
 // Utils
 export { isStrictEqual, truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
