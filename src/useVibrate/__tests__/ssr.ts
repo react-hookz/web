@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
 import { useVibrate } from '../..';
+import { renderHookServer } from '../../__tests__/ssr-render-hook';
 
 describe('useVibrate', () => {
 	it('should be defined', () => {
@@ -7,9 +7,10 @@ describe('useVibrate', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
-			useVibrate(true, 100);
-		});
-		expect(result.error).toBeUndefined();
+		expect(() => {
+			renderHookServer(() => {
+				useVibrate(true, 100);
+			});
+		}).not.toThrow();
 	});
 });
