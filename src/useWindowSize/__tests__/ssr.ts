@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
 import { useWindowSize } from '../..';
+import { renderHookServer } from '../../__tests__/ssr-render-hook';
 
 describe('useWindowSize', () => {
 	it('should be defined', () => {
@@ -7,7 +7,8 @@ describe('useWindowSize', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useWindowSize());
-		expect(result.error).toBeUndefined();
+		expect(() => {
+			renderHookServer(() => useWindowSize());
+		}).not.toThrow();
 	});
 });
