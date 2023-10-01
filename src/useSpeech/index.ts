@@ -34,7 +34,6 @@ export type ISpeechState = SpeechOptions & {
  * @param {string} [options.lang] - Language of the text.
  * @returns {ISpeechState} State object representing the current state of speech synthesis.
  */
-
 export const useSpeech = (text: string, options: ISpeechOptions): ISpeechState => {
 	const isMounted = useIsMounted();
 	const mounted = isMounted();
