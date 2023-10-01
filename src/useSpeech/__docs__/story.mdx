@@ -19,22 +19,17 @@ A hook for speech synthesis using browser API
 ```ts
 type SpeechOptions = {
 	voice?: SpeechSynthesisVoice;
-	rate: number;
-	pitch: number;
-	volume: number;
+	rate?: number;
+	pitch?: number;
+	volume?: number;
 	lang?: string;
 };
 
-export type ISpeechOptions = Partial<SpeechOptions>;
-
-export type VoiceInfo = Pick<SpeechSynthesisVoice, 'lang' | 'name'>;
-
 type SpeechPlayStatus = 'init' | 'play' | 'pause' | 'end' | 'error';
 
-export type ISpeechState = SpeechOptions & {
+export type SpeechState = {
 	isPlaying: boolean;
 	status: SpeechPlayStatus;
-	voiceInfo: VoiceInfo;
 	errorMessage?: string;
 };
 ```
@@ -46,8 +41,8 @@ export type ISpeechState = SpeechOptions & {
 #### Arguments
 
 - **text** _`string`_ - Text to be spoken
-- **options** _`ISpeechOptions`_ - Speech options
+- **options** _`SpeechOptions`_ - Speech options
 
 #### Return
 
-- **state** _`ISpeechState`_ - Represents the current state of speech synthesis.
+- **state** _`SpeechState`_ - Represents the current state of speech synthesis.

@@ -1,24 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useIsMounted } from '../useIsMounted';
+import { useCallback, useEffect, useState } from 'react';
 
 type SpeechOptions = {
 	voice?: SpeechSynthesisVoice;
-	rate: number;
-	pitch: number;
-	volume: number;
+	rate?: number;
+	pitch?: number;
+	volume?: number;
 	lang?: string;
 };
 
-export type ISpeechOptions = Partial<SpeechOptions>;
-
-export type VoiceInfo = Pick<SpeechSynthesisVoice, 'lang' | 'name'>;
-
 type SpeechPlayStatus = 'init' | 'play' | 'pause' | 'end' | 'error';
 
-export type ISpeechState = SpeechOptions & {
+export type SpeechState = {
 	isPlaying: boolean;
 	status: SpeechPlayStatus;
-	voiceInfo: VoiceInfo;
 	errorMessage?: string;
 };
 
@@ -32,21 +26,14 @@ export type ISpeechState = SpeechOptions & {
  * @param {number} [options.pitch] - Pitch at which to play the text.
  * @param {number} [options.volume] - Volume at which to play the text.
  * @param {string} [options.lang] - Language of the text.
- * @returns {ISpeechState} State object representing the current state of speech synthesis.
+ * @returns {SpeechState} State object representing the current state of speech synthesis.
  */
-export const useSpeech = (text: string, options: ISpeechOptions): ISpeechState => {
-	const [state, setState] = useState<ISpeechState>(() => {
-		const { lang = 'default', name = '' } = options.voice ?? {};
+export const useSpeech = (text: string, options: SpeechOptions): SpeechState => {
+	const [state, setState] = useState<SpeechState>(() => {
 		return {
 			isPlaying: false,
 			status: 'init',
-			voiceInfo: {
-				lang,
-				name,
-			},
-			rate: options.rate ?? 1,
-			pitch: options.pitch ?? 1,
-			volume: options.volume ?? 1,
+			errorMessage: undefined,
 		};
 	});
 
@@ -90,7 +77,18 @@ export const useSpeech = (text: string, options: ISpeechOptions): ISpeechState =
 		return () => {
 			window.speechSynthesis.cancel();
 		};
-	}, []);
+	}, [
+		handleEnd,
+		handleError,
+		handlePause,
+		handlePlay,
+		options?.lang,
+		options?.pitch,
+		options?.rate,
+		options?.voice,
+		options?.volume,
+		text,
+	]);
 
 	return state;
 };
