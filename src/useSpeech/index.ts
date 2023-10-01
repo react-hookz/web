@@ -35,8 +35,6 @@ export type ISpeechState = SpeechOptions & {
  * @returns {ISpeechState} State object representing the current state of speech synthesis.
  */
 export const useSpeech = (text: string, options: ISpeechOptions): ISpeechState => {
-	const isMounted = useIsMounted();
-	const mounted = isMounted();
 	const [state, setState] = useState<ISpeechState>(() => {
 		const { lang = 'default', name = '' } = options.voice ?? {};
 		return {
@@ -53,40 +51,24 @@ export const useSpeech = (text: string, options: ISpeechOptions): ISpeechState =
 	});
 
 	const handlePlay = useCallback(() => {
-		if (!mounted) {
-			return;
-		}
-
 		setState((preState) => {
 			return { ...preState, isPlaying: true, status: 'play' };
 		});
 	}, []);
 
 	const handlePause = useCallback(() => {
-		if (!mounted) {
-			return;
-		}
-
 		setState((preState) => {
 			return { ...preState, isPlaying: false, status: 'pause' };
 		});
 	}, []);
 
 	const handleEnd = useCallback(() => {
-		if (!mounted) {
-			return;
-		}
-
 		setState((preState) => {
 			return { ...preState, isPlaying: false, status: 'end' };
 		});
 	}, []);
 
 	const handleError = useCallback((error: SpeechSynthesisErrorEvent) => {
-		if (!mounted) {
-			return;
-		}
-
 		setState((preState) => {
 			return { ...preState, isPlaying: false, status: 'error', errorMessage: error.error };
 		});
