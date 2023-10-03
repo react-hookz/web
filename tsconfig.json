@@ -10,7 +10,7 @@
       "ESNext",
       "DOM"
     ],
-    "jsx": "react",
+    "jsx": "react-jsx",
 		"allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true

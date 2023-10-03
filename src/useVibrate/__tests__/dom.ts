@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { renderHook } from '@testing-library/react';
 import { useVibrate } from '../..';
 
 describe('useVibrate', () => {
@@ -17,10 +17,11 @@ describe('useVibrate', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
-			useVibrate(true, 100);
-		});
-		expect(result.error).toBeUndefined();
+		expect(() => {
+			renderHook(() => {
+				useVibrate(true, 100);
+			});
+		}).not.toThrow();
 	});
 
 	it('should call navigator.vibrate', () => {
