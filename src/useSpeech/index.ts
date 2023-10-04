@@ -17,6 +17,13 @@ export type SpeechState = {
 	errorMessage?: string;
 };
 
+function getInitState(): SpeechState {
+	return {
+		isPlaying: false,
+		status: 'init',
+	};
+}
+
 /**
  * Hook for playing text using the SpeechSynthesis API.
  *
@@ -30,13 +37,7 @@ export type SpeechState = {
  * @returns {SpeechState} State object representing the current state of speech synthesis.
  */
 export const useSpeech = (text: string, options: SpeechOptions): SpeechState => {
-	const [state, setState] = useState<SpeechState>(() => {
-		return {
-			isPlaying: false,
-			status: 'init',
-			errorMessage: undefined,
-		};
-	});
+	const [state, setState] = useState<SpeechState>(getInitState);
 
 	const handleActions = useMemo(
 		() => ({
