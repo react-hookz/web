@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type SpeechOptions = {
 	voice?: SpeechSynthesisVoice;
@@ -20,7 +20,7 @@ export type SpeechState = {
  * Hook for playing text using the SpeechSynthesis API.
  *
  * @param {string} text - Text to play.
- * @param {ISpeechOptions} options - Options for playing the text.
+ * @param {SpeechOptions} options - Options for playing the text.
  * @param {SpeechSynthesisVoice} [options.voice] - Voice to use for playing the text.
  * @param {number} [options.rate] - Rate at which to play the text.
  * @param {number} [options.pitch] - Pitch at which to play the text.
@@ -37,29 +37,31 @@ export const useSpeech = (text: string, options: SpeechOptions): SpeechState => 
 		};
 	});
 
-	const handlePlay = useCallback(() => {
-		setState((preState) => {
-			return { ...preState, isPlaying: true, status: 'play' };
-		});
-	}, []);
-
-	const handlePause = useCallback(() => {
-		setState((preState) => {
-			return { ...preState, isPlaying: false, status: 'pause' };
-		});
-	}, []);
-
-	const handleEnd = useCallback(() => {
-		setState((preState) => {
-			return { ...preState, isPlaying: false, status: 'end' };
-		});
-	}, []);
-
-	const handleError = useCallback((error: SpeechSynthesisErrorEvent) => {
-		setState((preState) => {
-			return { ...preState, isPlaying: false, status: 'error', errorMessage: error.error };
-		});
-	}, []);
+	const handleActions = useMemo(
+		() => ({
+			play() {
+				setState((preState) => {
+					return { ...preState, isPlaying: true, status: 'play' };
+				});
+			},
+			pause() {
+				setState((preState) => {
+					return { ...preState, isPlaying: false, status: 'pause' };
+				});
+			},
+			end() {
+				setState((preState) => {
+					return { ...preState, isPlaying: false, status: 'end' };
+				});
+			},
+			error(error: SpeechSynthesisErrorEvent) {
+				setState((preState) => {
+					return { ...preState, isPlaying: false, status: 'error', errorMessage: error.error };
+				});
+			},
+		}),
+		[]
+	);
 
 	useEffect(() => {
 		const utterance = new SpeechSynthesisUtterance(text);
@@ -68,20 +70,17 @@ export const useSpeech = (text: string, options: SpeechOptions): SpeechState => 
 		utterance.rate = options?.rate ?? 1;
 		utterance.pitch = options?.pitch ?? 1;
 		utterance.volume = options?.volume ?? 1;
-		utterance.onstart = handlePlay;
-		utterance.onpause = handlePause;
-		utterance.onresume = handlePlay;
-		utterance.onend = handleEnd;
-		utterance.onerror = handleError;
+		utterance.onstart = handleActions.play;
+		utterance.onpause = handleActions.pause;
+		utterance.onresume = handleActions.play;
+		utterance.onend = handleActions.end;
+		utterance.onerror = handleActions.error;
 		window.speechSynthesis.speak(utterance);
 		return () => {
 			window.speechSynthesis.cancel();
 		};
 	}, [
-		handleEnd,
-		handleError,
-		handlePause,
-		handlePlay,
+		handleActions,
 		options?.lang,
 		options?.pitch,
 		options?.rate,
