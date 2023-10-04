@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useDeepCompareEffect } from '../useDeepCompareEffect';
 
 type SpeechOptions = {
 	voice?: SpeechSynthesisVoice;
@@ -63,7 +64,7 @@ export const useSpeech = (text: string, options: SpeechOptions): SpeechState => 
 		[]
 	);
 
-	useEffect(() => {
+	useDeepCompareEffect(() => {
 		const utterance = new SpeechSynthesisUtterance(text);
 		utterance.lang = options?.lang ?? '';
 		utterance.voice = options?.voice ?? null;
@@ -79,15 +80,7 @@ export const useSpeech = (text: string, options: SpeechOptions): SpeechState => 
 		return () => {
 			window.speechSynthesis.cancel();
 		};
-	}, [
-		handleActions,
-		options?.lang,
-		options?.pitch,
-		options?.rate,
-		options?.voice,
-		options?.volume,
-		text,
-	]);
+	}, [handleActions, options, text]);
 
 	return state;
 };
