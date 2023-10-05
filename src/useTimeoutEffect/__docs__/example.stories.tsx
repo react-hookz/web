@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTimeoutEffect, useToggle } from '../..';
 
 export function Example() {
-	const [numCalls, setNumCalls] = useState<number>(0);
+	const [numberCalls, setNumberCalls] = useState<number>(0);
 	const [enabled, toggleEnabled] = useToggle();
 	const [timeoutValue, setTimeoutValue] = useState<number>(1000);
 	const [cancelled, toggleCancelled] = useToggle();
@@ -17,18 +17,18 @@ export function Example() {
 
 	const [cancel, reset] = useTimeoutEffect(
 		() => {
-			setNumCalls((n) => n + 1);
+			setNumberCalls((n) => n + 1);
 		},
 		enabled ? timeoutValue : undefined
 	);
 
 	React.useEffect(() => {
-		setNumCalls(0);
+		setNumberCalls(0);
 	}, [timeoutValue, enabled]);
 
 	return (
 		<div>
-			Has fired: {numCalls.toString()}
+			Has fired: {numberCalls.toString()}
 			<br />
 			Status: {status}
 			<br />

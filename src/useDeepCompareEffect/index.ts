@@ -1,5 +1,5 @@
-import { type DependencyList, useEffect } from 'react';
 import { isEqual } from '@react-hookz/deep-equal';
+import { type DependencyList, useEffect } from 'react';
 import { useCustomCompareEffect } from '../useCustomCompareEffect';
 import { type EffectCallback, type EffectHook } from '../util/misc';
 
@@ -19,7 +19,7 @@ export function useDeepCompareEffect<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList = DependencyList,
 	HookRestArgs extends any[] = any[],
-	R extends HookRestArgs = HookRestArgs
+	R extends HookRestArgs = HookRestArgs,
 >(
 	callback: Callback,
 	deps: Deps,

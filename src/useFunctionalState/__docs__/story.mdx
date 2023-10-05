@@ -14,6 +14,6 @@ export function useFunctionalState<S>(
 ): [() => S, React.Dispatch<React.SetStateAction<S>>];
 export function useFunctionalState<S = undefined>(): [
 	() => S | undefined,
-	React.Dispatch<React.SetStateAction<S | undefined>>
+	React.Dispatch<React.SetStateAction<S | undefined>>,
 ];
 ```

@@ -27,7 +27,7 @@ export function useConditionalEffect<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList | undefined = DependencyList | undefined,
 	HookRestArgs extends any[] = any[],
-	R extends HookRestArgs = HookRestArgs
+	R extends HookRestArgs = HookRestArgs,
 >(
 	callback: Callback,
 	deps: Deps,

@@ -73,7 +73,9 @@ describe('useIntersectionObserver', () => {
 		const entry2 = { target: div2 };
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[1][0]([entry2]);
 			jest.advanceTimersByTime(1);
 		});
@@ -85,6 +87,7 @@ describe('useIntersectionObserver', () => {
 
 		const entry3 = { target: div1 };
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry3]);
 			jest.advanceTimersByTime(1);
 		});
@@ -109,6 +112,7 @@ describe('useIntersectionObserver', () => {
 		const entry1 = { target: div1 };
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
 			jest.advanceTimersByTime(1);
 		});
@@ -124,6 +128,7 @@ describe('useIntersectionObserver', () => {
 		const entry1 = { target: div1 };
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
 			jest.advanceTimersByTime(1);
 		});

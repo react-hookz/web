@@ -1,6 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { useRafCallback } from '../..';
 
+function testFn(_a: any, _b: any, _c: any) {}
+
 describe('useRafCallback', () => {
 	const raf = global.requestAnimationFrame;
 	const caf = global.cancelAnimationFrame;
@@ -39,8 +41,6 @@ describe('useRafCallback', () => {
 
 		expect(result.current[0].length).toBe(3);
 		expect(result.current[0].name).toBe(`anonymous__raf`);
-
-		function testFn(_a: any, _b: any, _c: any) {}
 
 		result = renderHook(() => useRafCallback(testFn)).result;
 

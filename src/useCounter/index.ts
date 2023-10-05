@@ -71,13 +71,13 @@ export function useCounter(
 				get: () => stateRef.current,
 				set: setState,
 				dec(delta = 1) {
-					setState((val) => val - resolveHookState(delta, val));
+					setState((value) => value - resolveHookState(delta, value));
 				},
 				inc(delta = 1) {
-					setState((val) => val + resolveHookState(delta, val));
+					setState((value) => value + resolveHookState(delta, value));
 				},
-				reset(val = initialValue) {
-					setState((v) => resolveHookState(val, v));
+				reset(value = initialValue) {
+					setState((v) => resolveHookState(value, v));
 				},
 			}),
 			[initialValue, setState, stateRef]

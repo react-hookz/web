@@ -30,7 +30,7 @@ describe('useScreenOrientation', () => {
 	});
 
 	beforeEach(() => {
-		matchMediaMock.mockImplementation((query) => ({
+		matchMediaMock.mockImplementation((query: string) => ({
 			matches: false,
 			media: query,
 			onchange: null,
@@ -69,6 +69,7 @@ describe('useScreenOrientation', () => {
 		mql.matches = true;
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			mql.addEventListener.mock.calls[0][1]();
 		});
 

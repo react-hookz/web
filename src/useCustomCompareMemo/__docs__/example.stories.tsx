@@ -5,8 +5,8 @@ import { useCustomCompareMemo } from '../..';
 const keys = ['firstname', 'name'];
 
 // Utils
-const getRandom = <ArrayParam extends unknown[]>(array: ArrayParam) =>
-	array[Math.floor(Math.random() * array.length)] as ArrayParam[number];
+const getRandom = <ArrayParameter extends unknown[]>(array: ArrayParameter) =>
+	array[Math.floor(Math.random() * array.length)] as ArrayParameter[number];
 const displayAsJSON = (object: Record<string, string>) => JSON.stringify(object, undefined, 2);
 const reverse = (object: Record<string, string>) =>
 	Object.fromEntries(Object.entries(object).map(([key, value]) => [value, key]));

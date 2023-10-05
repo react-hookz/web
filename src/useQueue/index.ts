@@ -45,17 +45,17 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 				push(value);
 			},
 			remove() {
-				const val = listRef.current[0];
+				const value = listRef.current[0];
 
 				removeAt(0);
 
-				return val;
+				return value;
 			},
 			get first() {
 				return listRef.current[0];
 			},
 			get last() {
-				return listRef.current[listRef.current.length - 1];
+				return listRef.current.at(-1);
 			},
 			get size() {
 				return listRef.current.length;
