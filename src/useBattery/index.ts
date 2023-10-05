@@ -14,10 +14,22 @@ import { useEffect, useState } from 'react';
  * In server-side rendering (SSR) environments, the returned values will be undefined.
  */
 export type BatteryState = {
-	charging: boolean | undefined;
-	chargingTime: number | undefined;
-	dischargingTime: number | undefined;
-	level: number | undefined;
+	/**
+	 * @desc {true} if the battery is charging, {false} otherwise.
+	 */
+	readonly charging: boolean | undefined;
+	/**
+	 * @desc The time remaining in seconds until the system's battery is fully charged.
+	 */
+	readonly chargingTime: number | undefined;
+	/**
+	 * @desc The time remaining in seconds until the system's battery is fully discharged.
+	 */
+	readonly dischargingTime: number | undefined;
+	/**
+	 * @desc The battery level of the system as a number between 0 and 1.
+	 */
+	readonly level: number | undefined;
 };
 
 type BatteryManager = {
@@ -33,7 +45,7 @@ type NavigatorWithPossibleBattery = Navigator & {
 
 const nav: NavigatorWithPossibleBattery | undefined = isBrowser ? navigator : undefined;
 /**
- * React hook that tracks battery state.
+ * Hook that tracks battery state.
  *
  * @see https://react-hookz.github.io/web/?path=/docs/navigator-usebattery
  *

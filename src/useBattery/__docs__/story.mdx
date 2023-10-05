@@ -6,6 +6,11 @@ import { ImportPath } from '../../__docs__/ImportPath';
 
 # useBattery
 
+Hook that tracks battery state.
+
+- Automatically updates on battery state changes.
+- SSR compatible. (Properties return `undefined` on server.)
+
 #### Example
 
 <Canvas>
@@ -15,13 +20,26 @@ import { ImportPath } from '../../__docs__/ImportPath';
 ## Reference
 
 ```ts
-
+export type BatteryState = {
+	/**
+	 * @desc {true} if the battery is charging, {false} otherwise.
+	 */
+	readonly charging: boolean | undefined;
+	/**
+	 * @desc The time remaining in seconds until the system's battery is fully charged.
+	 */
+	readonly chargingTime: number | undefined;
+	/**
+	 * @desc The time remaining in seconds until the system's battery is fully discharged.
+	 */
+	readonly dischargingTime: number | undefined;
+	/**
+	 * @desc The battery level of the system as a number between 0 and 1.
+	 */
+	readonly level: number | undefined;
+};
 ```
 
 #### Importing
 
 <ImportPath />
-
-#### Arguments
-
-#### Return
