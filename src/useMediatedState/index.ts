@@ -4,7 +4,7 @@ import { type InitialState, type NextState, resolveHookState } from '../util/res
 
 export function useMediatedState<State = undefined>(): [
 	State | undefined,
-	Dispatch<NextState<State | undefined>>
+	Dispatch<NextState<State | undefined>>,
 ];
 export function useMediatedState<State>(
 	initialState: InitialState<State>
@@ -30,10 +30,11 @@ export function useMediatedState<State, RawState = State>(
 		state as State,
 		useCallback((value) => {
 			if (mediatorRef.current) {
-				setState((prevState) =>
-					mediatorRef.current?.(
-						resolveHookState<RawState, State | undefined>(value, prevState as State)
-					)
+				setState(
+					(previousState) =>
+						mediatorRef.current?.(
+							resolveHookState<RawState, State | undefined>(value, previousState as State)
+						)
 				);
 			} else {
 				setState(value as unknown as State);

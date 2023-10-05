@@ -18,7 +18,7 @@ try {
 type UseLocalStorageValue = <
 	Type,
 	Default extends Type = Type,
-	Initialize extends boolean | undefined = boolean | undefined
+	Initialize extends boolean | undefined = boolean | undefined,
 >(
 	key: string,
 	options?: UseStorageValueOptions<Type, Initialize>
@@ -34,7 +34,7 @@ export const useLocalStorageValue: UseLocalStorageValue = IS_LOCAL_STORAGE_AVAIL
 	: <
 			Type,
 			Default extends Type = Type,
-			Initialize extends boolean | undefined = boolean | undefined
+			Initialize extends boolean | undefined = boolean | undefined,
 	  >(
 			_key: string,
 			_options?: UseStorageValueOptions<Type, Initialize>

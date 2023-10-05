@@ -5,7 +5,7 @@ export type DependenciesComparator<Deps extends DependencyList = DependencyList>
 	b: Deps
 ) => boolean;
 
-export type Predicate = (prev: any, next: any) => boolean;
+export type Predicate = (previous: any, next: any) => boolean;
 
 export type ConditionsList = readonly any[];
 

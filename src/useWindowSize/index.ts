@@ -12,12 +12,12 @@ export type WindowSize = {
 const listeners = new Set<(size: WindowSize) => void>();
 
 const callAllListeners = () => {
-	listeners.forEach((l) => {
+	for (const l of listeners) {
 		l({
 			width: window.innerWidth,
 			height: window.innerHeight,
 		});
-	});
+	}
 };
 
 /**

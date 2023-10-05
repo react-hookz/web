@@ -1,6 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { useDebouncedCallback } from '../..';
 
+function testFn(_a: any, _b: any, _c: any) {}
+
 describe('useDebouncedCallback', () => {
 	beforeAll(() => {
 		jest.useFakeTimers();
@@ -32,8 +34,6 @@ describe('useDebouncedCallback', () => {
 
 		expect(result.current.length).toBe(3);
 		expect(result.current.name).toBe(`anonymous__debounced__200`);
-
-		function testFn(_a: any, _b: any, _c: any) {}
 
 		result = renderHook(() => useDebouncedCallback(testFn, [], 100)).result;
 

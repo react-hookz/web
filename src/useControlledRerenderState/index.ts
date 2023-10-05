@@ -10,7 +10,7 @@ export function useControlledRerenderState<S>(
 ): [S, ControlledRerenderDispatch<SetStateAction<S>>];
 export function useControlledRerenderState<S = undefined>(): [
 	S | undefined,
-	ControlledRerenderDispatch<SetStateAction<S | undefined>>
+	ControlledRerenderDispatch<SetStateAction<S | undefined>>,
 ];
 
 /**

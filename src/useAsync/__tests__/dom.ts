@@ -1,25 +1,25 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useAsync } from '../..';
 
+function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
+	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
+	const reject: { current: undefined | ((err: Error) => void) } = { current: undefined };
+
+	return [
+		jest.fn(
+			(..._args: Args) =>
+				// eslint-disable-next-line promise/param-names
+				new Promise<Res>((res, rej) => {
+					resolve.current = res;
+					reject.current = rej;
+				})
+		),
+		resolve,
+		reject,
+	] as const;
+}
+
 describe('useAsync', () => {
-	function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
-		const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
-		const reject: { current: undefined | ((err: Error) => void) } = { current: undefined };
-
-		return [
-			jest.fn(
-				(..._args: Args) =>
-					// eslint-disable-next-line promise/param-names
-					new Promise<Res>((res, rej) => {
-						resolve.current = res;
-						reject.current = rej;
-					})
-			),
-			resolve,
-			reject,
-		] as const;
-	}
-
 	it('should be defined', () => {
 		expect(useAsync).toBeDefined();
 	});

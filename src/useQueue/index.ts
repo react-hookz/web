@@ -10,11 +10,11 @@ export type QueueMethods<T> = {
 	/**
 	 * The first item in the queue.
 	 */
-	first: T;
+	first: T | undefined;
 	/**
 	 * The last item in the queue.
 	 */
-	last: T;
+	last: T | undefined;
 	/**
 	 * Adds an item to the end of the queue.
 	 * @param item The item to be added.
@@ -45,17 +45,17 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 				push(value);
 			},
 			remove() {
-				const val = listRef.current[0];
+				const value = listRef.current[0];
 
 				removeAt(0);
 
-				return val;
+				return value;
 			},
 			get first() {
-				return listRef.current[0];
+				return listRef.current.at(0);
 			},
 			get last() {
-				return listRef.current[listRef.current.length - 1];
+				return listRef.current.at(-1);
 			},
 			get size() {
 				return listRef.current.length;

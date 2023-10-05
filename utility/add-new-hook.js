@@ -1,7 +1,9 @@
-const path = require('path');
-const fs = require('fs/promises');
+// eslint-disable-next-line unicorn/prefer-module
+const fs = require('node:fs/promises');
+// eslint-disable-next-line unicorn/prefer-module
+const path = require('node:path');
 
-// eslint-disable-next-line no-void
+// eslint-disable-next-line no-void,unicorn/prefer-top-level-await
 void (async () => {
 	const scriptPath = process.argv[1].trim();
 	const hookName = process.argv[2]?.trim();

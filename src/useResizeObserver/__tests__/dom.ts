@@ -85,6 +85,7 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 
 		expect(spy).not.toHaveBeenCalledWith(entry);
@@ -115,6 +116,7 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 
 		expect(spy1).not.toHaveBeenCalledWith(entry);
@@ -154,6 +156,7 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry1, entry2]);
 
 		expect(spy1).not.toHaveBeenCalledWith(entry1);

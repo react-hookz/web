@@ -14,7 +14,7 @@ export function Example() {
 			<button
 				type="button"
 				onClick={() => {
-					add((last || 0) + 1);
+					add((last ?? 0) + 1);
 				}}>
 				Add
 			</button>

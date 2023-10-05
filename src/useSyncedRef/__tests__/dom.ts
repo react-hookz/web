@@ -31,6 +31,7 @@ describe('useSyncedRef', () => {
 
 	it('should contain actual value on each render', () => {
 		const { result, rerender } = renderHook(({ val }) => useSyncedRef<any>(val), {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			initialProps: { val: 1 as any },
 		});
 

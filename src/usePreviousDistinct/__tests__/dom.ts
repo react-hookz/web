@@ -25,6 +25,7 @@ describe('usePreviousDistinct', () => {
 	it('should not invoke predicate on first render', () => {
 		const mockedCompare = jest.fn();
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 		const { result } = renderHook(() => usePreviousDistinct(0, mockedCompare as any));
 		expect(result.current).toBeUndefined();
 		expect(mockedCompare).not.toHaveBeenCalled();

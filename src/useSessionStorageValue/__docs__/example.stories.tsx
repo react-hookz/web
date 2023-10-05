@@ -5,18 +5,18 @@ type ExampleProps = {
 	/**
 	 * Default value to return in case key not presented in SessionStorage.
 	 */
-	defaultValue: string;
+	readonly defaultValue: string;
 	/**
 	 * SessionStorage key to manage.
 	 */
-	key: string;
+	readonly key: string;
 };
 
 export function Example({
 	key = 'react-hookz-ss-test',
 	defaultValue = '@react-hookz is awesome',
 }: ExampleProps) {
-	const ssVal = useSessionStorageValue(key, { defaultValue });
+	const ssValue = useSessionStorageValue(key, { defaultValue });
 
 	return (
 		<div>
@@ -27,12 +27,12 @@ export function Example({
 			<br />
 			<input
 				type="text"
-				value={ssVal.value}
+				value={ssValue.value}
 				onChange={(ev) => {
-					ssVal.set(ev.currentTarget.value);
+					ssValue.set(ev.currentTarget.value);
 				}}
 			/>
-			<button type="button" onClick={ssVal.remove}>
+			<button type="button" onClick={ssValue.remove}>
 				remove storage value
 			</button>
 		</div>

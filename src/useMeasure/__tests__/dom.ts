@@ -95,6 +95,7 @@ describe('useMeasure', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 		expect(result.current[0]).toBeUndefined();
 
