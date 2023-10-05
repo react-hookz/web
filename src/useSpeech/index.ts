@@ -39,32 +39,6 @@ function getInitState(): SpeechState {
 export const useSpeech = (text: string, options: SpeechOptions): SpeechState => {
 	const [state, setState] = useState<SpeechState>(getInitState);
 
-	const handleActions = useMemo(
-		() => ({
-			play() {
-				setState((preState) => {
-					return { ...preState, isPlaying: true, status: 'play' };
-				});
-			},
-			pause() {
-				setState((preState) => {
-					return { ...preState, isPlaying: false, status: 'pause' };
-				});
-			},
-			end() {
-				setState((preState) => {
-					return { ...preState, isPlaying: false, status: 'end' };
-				});
-			},
-			error(error: SpeechSynthesisErrorEvent) {
-				setState((preState) => {
-					return { ...preState, isPlaying: false, status: 'error', errorMessage: error.error };
-				});
-			},
-		}),
-		[]
-	);
-
 	useDeepCompareEffect(() => {
 		const utterance = new SpeechSynthesisUtterance(text);
 		utterance.lang = options?.lang ?? '';
@@ -72,16 +46,41 @@ export const useSpeech = (text: string, options: SpeechOptions): SpeechState => 
 		utterance.rate = options?.rate ?? 1;
 		utterance.pitch = options?.pitch ?? 1;
 		utterance.volume = options?.volume ?? 1;
-		utterance.onstart = handleActions.play;
-		utterance.onpause = handleActions.pause;
-		utterance.onresume = handleActions.play;
-		utterance.onend = handleActions.end;
-		utterance.onerror = handleActions.error;
+		utterance.onstart = function () {
+			setState((preState) => {
+				return { ...preState, isPlaying: true, status: 'play' };
+			});
+		};
+
+		utterance.onpause = function () {
+			setState((preState) => {
+				return { ...preState, isPlaying: false, status: 'pause' };
+			});
+		};
+
+		utterance.onresume = function () {
+			setState((preState) => {
+				return { ...preState, isPlaying: true, status: 'play' };
+			});
+		};
+
+		utterance.onend = function () {
+			setState((preState) => {
+				return { ...preState, isPlaying: false, status: 'end' };
+			});
+		};
+
+		utterance.onerror = function (error) {
+			setState((preState) => {
+				return { ...preState, isPlaying: false, status: 'error', errorMessage: error.error };
+			});
+		};
+
 		window.speechSynthesis.speak(utterance);
 		return () => {
 			window.speechSynthesis.cancel();
 		};
-	}, [handleActions, options, text]);
+	}, [options, text, setState]);
 
 	return state;
 };
