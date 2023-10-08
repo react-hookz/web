@@ -43,7 +43,7 @@ Manages a single LocalStorage key.
 function useLocalStorageValue<
 	Type,
 	Default extends Type = Type,
-	Initialize extends boolean | undefined = boolean | undefined
+	Initialize extends boolean | undefined = boolean | undefined,
 >(
 	key: string,
 	options?: UseStorageValueOptions<Type, Initialize>

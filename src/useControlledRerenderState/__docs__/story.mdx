@@ -26,7 +26,7 @@ export function useControlledRerenderState<S>(
 ): [S, ControlledRerenderDispatch<React.SetStateAction<S>>];
 export function useControlledRerenderState<S = undefined>(): [
 	S | undefined,
-	ControlledRerenderDispatch<React.SetStateAction<S | undefined>>
+	ControlledRerenderDispatch<React.SetStateAction<S | undefined>>,
 ];
 ```
 
@@ -41,5 +41,5 @@ Identical to `React.useState`.
 #### Return
 
 Returned state setter accepts extra-argument, in case it is set to false - component will not be
-re-rendered after state set.  
+re-rendered after state set.
 In case extra parameter omitted - state setter behaves exactly as native.

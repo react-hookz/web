@@ -74,6 +74,7 @@ describe('useTimeoutEffect', () => {
 		jest.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 		rerender({ callback: () => spy() });
 		jest.advanceTimersByTime(1);
 		expect(spy).toHaveBeenCalledTimes(1);

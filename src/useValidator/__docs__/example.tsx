@@ -13,7 +13,7 @@ export function Example() {
 	// of validator (the one that receives dispatcher as an argument)
 	const validator = useDebouncedCallback<ValidatorDeferred<TextValidityState>>(
 		(d) => {
-			const isValid = !text.length || text.length % 2 === 1;
+			const isValid = text.length === 0 || text.length % 2 === 1;
 
 			d({
 				isValid,

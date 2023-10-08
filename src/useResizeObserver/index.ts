@@ -20,13 +20,12 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 	const callbacks = new Map<Element, Set<UseResizeObserverCallback>>();
 
 	const observer = new ResizeObserver((entries) => {
-		entries.forEach((entry) =>
+		for (const entry of entries)
 			callbacks.get(entry.target)?.forEach((cb) =>
 				setTimeout(() => {
 					cb(entry);
 				}, 0)
-			)
-		);
+			);
 	});
 
 	observerSingleton = {
@@ -55,7 +54,7 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 				// Remove current observer
 				cbs.delete(callback);
 
-				if (!cbs.size) {
+				if (cbs.size === 0) {
 					// If no observers left unregister target completely
 					callbacks.delete(target);
 					observer.unobserve(target);

@@ -1,6 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { useThrottledCallback } from '../..';
 
+function testFn(_a: any, _b: any, _c: any) {}
+
 describe('useThrottledCallback', () => {
 	beforeAll(() => {
 		jest.useFakeTimers();
@@ -32,8 +34,6 @@ describe('useThrottledCallback', () => {
 
 		expect(result.current.length).toBe(3);
 		expect(result.current.name).toBe(`anonymous__throttled__200`);
-
-		function testFn(_a: any, _b: any, _c: any) {}
 
 		result = renderHook(() => useThrottledCallback(testFn, [], 100)).result;
 

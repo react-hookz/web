@@ -39,12 +39,12 @@ describe(`useNetworkState`, () => {
 		);
 
 		expect(hook.result.current[1]).toBe(1);
-		const prevNWState = hook.result.current[0];
+		const previousNWState = hook.result.current[0];
 
 		act(() => {
 			window.dispatchEvent(new Event('online'));
 		});
 		expect(hook.result.current[1]).toBe(2);
-		expect(hook.result.current[0]).not.toBe(prevNWState);
+		expect(hook.result.current[0]).not.toBe(previousNWState);
 	});
 });

@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
 import { act } from '@testing-library/react-hooks/dom';
+import { renderHook } from '@testing-library/react-hooks/server';
 import { useSet } from '../..';
 
 describe('useSet', () => {

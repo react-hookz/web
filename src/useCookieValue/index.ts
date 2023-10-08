@@ -27,7 +27,7 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
 
 	setters.delete(setter);
 
-	if (!setters.size) {
+	if (setters.size === 0) {
 		cookiesSetters.delete(key);
 	}
 };
@@ -43,13 +43,13 @@ const invokeRegisteredSetters = (
 	/* istanbul ignore next */
 	if (!setters) return;
 
-	setters.forEach((s) => {
+	for (const s of setters) {
 		if (s !== skipSetter) s(value);
-	});
+	}
 };
 
 export type UseCookieValueOptions<
-	InitializeWithValue extends boolean | undefined = boolean | undefined
+	InitializeWithValue extends boolean | undefined = boolean | undefined,
 > = Cookies.CookieAttributes &
 	(InitializeWithValue extends undefined
 		? {
@@ -112,9 +112,9 @@ export function useCookieValue(
 		},
 		fetchVal: () => Cookies.get(key) ?? null,
 		fetch() {
-			const val = methods.current.fetchVal();
-			setState(val);
-			invokeRegisteredSetters(key, val, setState);
+			const value = methods.current.fetchVal();
+			setState(value);
+			invokeRegisteredSetters(key, value, setState);
 		},
 	});
 

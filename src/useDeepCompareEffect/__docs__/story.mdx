@@ -26,7 +26,7 @@ export function useCustomCompareEffect<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList = DependencyList,
 	HookRestArgs extends any[] = any[],
-	R extends HookRestArgs = HookRestArgs
+	R extends HookRestArgs = HookRestArgs,
 >(
 	callback: Callback,
 	deps: Deps,

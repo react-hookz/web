@@ -1,17 +1,29 @@
+const commonJSRules = {
+	'unicorn/filename-case': 'off',
+	'unicorn/prevent-abbreviations': 'off',
+	'unicorn/no-null': 'off',
+	'unicorn/no-array-for-each': 'off',
+};
+
+// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
 	root: true,
 
 	parserOptions: {
-		extraFileExtensions: ['.md', '.mdx'],
+		extraFileExtensions: ['.md'],
+	},
+
+	settings: {
+		'import/ignore': ['react-apexcharts'],
 	},
 
 	overrides: [
 		{
-			files: ['*.js', '*.jsx'],
-			parserOptions: {
-				project: './tsconfig.eslint.json',
-			},
+			files: ['*.js', '*.cjs', '*.jsx', '*.cjsx'],
 			extends: ['@react-hookz/eslint-config/base.cjs', '@react-hookz/eslint-config/react.cjs'],
+			rules: {
+				...commonJSRules,
+			},
 		},
 		{
 			files: ['*.ts', '*.tsx'],
@@ -22,22 +34,9 @@ module.exports = {
 				'@react-hookz/eslint-config/typescript.cjs',
 				'@react-hookz/eslint-config/react.cjs',
 			],
-		},
-		{
-			files: ['**/__tests__/**/*.js', '**/__tests__/**/*.jsx'],
-			extends: [
-				'@react-hookz/eslint-config/base.cjs',
-				'@react-hookz/eslint-config/react.cjs',
-				'@react-hookz/eslint-config/jest.cjs',
-			],
-		},
-		{
-			files: ['**/__tests__/**/*.ts', '**/__tests__/**/*.tsx'],
-			extends: [
-				'@react-hookz/eslint-config/typescript-unsafe.cjs',
-				'@react-hookz/eslint-config/react.cjs',
-				'@react-hookz/eslint-config/jest.cjs',
-			],
+			rules: {
+				...commonJSRules,
+			},
 		},
 		{
 			files: ['*.md'],

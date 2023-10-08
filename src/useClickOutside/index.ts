@@ -1,6 +1,6 @@
 import { type MutableRefObject, type RefObject, useEffect } from 'react';
-import { off, on } from '../util/misc';
 import { useSyncedRef } from '../useSyncedRef';
+import { off, on } from '../util/misc';
 
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 
@@ -35,14 +35,14 @@ export function useClickOutside<T extends HTMLElement>(
 			}
 		}
 
-		events.forEach((name) => {
+		for (const name of events) {
 			on(document, name, handler, { passive: true });
-		});
+		}
 
 		return () => {
-			events.forEach((name) => {
+			for (const name of events) {
 				off(document, name, handler, { passive: true });
-			});
+			}
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [...events]);

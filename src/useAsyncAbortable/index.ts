@@ -28,7 +28,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ];
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
@@ -36,7 +36,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result | undefined>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ];
 
 /**
@@ -52,7 +52,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result | undefined>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ] {
 	const abortController = useRef<AbortController>();
 
