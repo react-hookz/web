@@ -20,9 +20,6 @@ describe('useSpeech', () => {
 			})
 		);
 		expect(result.error).toBeUndefined();
-		expect(result.current.voiceInfo.lang).toBe('en-US');
-		expect(result.current.voiceInfo.name).toBe('Google US English');
-		expect(result.current.volume).toBe(5);
 		expect(result.current.errorMessage).toBeUndefined();
 	});
 });

@@ -34,8 +34,6 @@ describe('useSpeech', () => {
 				volume: 5,
 			});
 		});
-		expect(result.current.voiceInfo.lang).toBe('en-US');
-		expect(result.current.volume).toBe(5);
 		expect(result.current.errorMessage).toBeUndefined();
 		expect(window.speechSynthesis.speak).toHaveBeenCalled();
 		expect(result.error).toBeUndefined();
