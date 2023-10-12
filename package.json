@@ -76,7 +76,7 @@
 		}
 	},
 	"devDependencies": {
-		"@babel/core": "^7.23.0",
+		"@babel/core": "^7.23.2",
 		"@commitlint/cli": "^17.7.1",
 		"@commitlint/config-conventional": "^17.7.0",
 		"@commitlint/cz-commitlint": "^17.7.2",
