@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/server';
-import { newStorage } from './misc';
 import { useStorageValue } from '..';
+import { newStorage } from './misc';
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {

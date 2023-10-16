@@ -68,17 +68,17 @@ const removeStorageListener = (s: Storage, key: string, listener: CallableFuncti
 
 	listeners.delete(listener);
 
-	if (!listeners.size) {
+	if (listeners.size === 0) {
 		keys.delete(key);
 	}
 
-	if (!keys.size) {
+	if (keys.size === 0) {
 		storageListeners.delete(s);
 	}
 
 	// Unbind storage event handler in browser environment in case there is no
 	// storage keys listeners left
-	if (isBrowser && !storageListeners.size) {
+	if (isBrowser && storageListeners.size === 0) {
 		off(window, 'storage', storageEventHandler);
 	}
 };
@@ -115,17 +115,17 @@ type UseStorageValueValue<
 	Default extends Type = Type,
 	Initialize extends boolean | undefined = boolean | undefined,
 	N = Default extends null | undefined ? null | Type : Type,
-	U = Initialize extends false ? undefined | N : N
+	U = Initialize extends false ? undefined | N : N,
 > = U;
 
 export type UseStorageValueResult<
 	Type,
 	Default extends Type = Type,
-	Initialize extends boolean | undefined = boolean | undefined
+	Initialize extends boolean | undefined = boolean | undefined,
 > = {
 	value: UseStorageValueValue<Type, Default, Initialize>;
 
-	set: (val: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) => void;
+	set: (value: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) => void;
 	remove: () => void;
 	fetch: () => void;
 };
@@ -138,7 +138,7 @@ const DEFAULT_OPTIONS = {
 export function useStorageValue<
 	Type,
 	Default extends Type = Type,
-	Initialize extends boolean | undefined = boolean | undefined
+	Initialize extends boolean | undefined = boolean | undefined,
 >(
 	storage: Storage,
 	key: string,
@@ -165,8 +165,8 @@ export function useStorageValue<
 		remove() {
 			storage.removeItem(key);
 		},
-		store(val: Type): string | null {
-			const stringified = stringify(val);
+		store(value: Type): string | null {
+			const stringified = stringify(value);
 
 			if (stringified !== null) {
 				storage.setItem(key, stringified);
@@ -188,8 +188,8 @@ export function useStorageValue<
 		fetch() {
 			setState(storageActions.current.fetch());
 		},
-		setRawVal(val: string | null) {
-			setState(parse(val, optionsRef.current.defaultValue));
+		setRawVal(value: string | null) {
+			setState(parse(value, optionsRef.current.defaultValue));
 		},
 	});
 
@@ -215,17 +215,17 @@ export function useStorageValue<
 	}, [storage, key]);
 
 	const actions = useSyncedRef({
-		set(val: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) {
+		set(value: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) {
 			if (!isBrowser) return;
 
 			const s = resolveHookState(
-				val,
+				value,
 				stateRef.current as UseStorageValueValue<Type, Default, Initialize>
 			);
 
-			const storeVal = storageActions.current.store(s);
-			if (storeVal !== null) {
-				invokeStorageKeyListeners(storage, key, storeVal);
+			const storeValue = storageActions.current.store(s);
+			if (storeValue !== null) {
+				invokeStorageKeyListeners(storage, key, storeValue);
 			}
 		},
 		delete() {

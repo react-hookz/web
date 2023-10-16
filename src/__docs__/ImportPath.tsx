@@ -1,9 +1,9 @@
 import { DocsContext, Source } from '@storybook/addon-docs';
-import React, { type FC, useContext } from 'react';
+import React, { useContext } from 'react';
 
 export type ImportPathProps = {
-	isRoot?: boolean;
-	isDirect?: boolean;
+	readonly isRoot?: boolean;
+	readonly isDirect?: boolean;
 };
 
 export function ImportPath({ isRoot = true, isDirect = true }: ImportPathProps) {

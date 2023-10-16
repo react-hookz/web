@@ -87,7 +87,7 @@ describe('useConditionalEffect', () => {
 
 	it('should apply custom predicate', () => {
 		const spy = jest.fn();
-		const predicateSpy = jest.fn((conditions) => truthyOrArrayPredicate(conditions));
+		const predicateSpy = jest.fn((conditions: any[]) => truthyOrArrayPredicate(conditions));
 		const { rerender } = renderHook(
 			({ cond }) => {
 				useConditionalEffect(spy, undefined, cond, predicateSpy);
@@ -115,7 +115,7 @@ describe('useConditionalEffect', () => {
 	it('should accept custom hooks and pass extra args to it', () => {
 		const callbackSpy = jest.fn();
 		const effectSpy = jest.fn(
-			(cb: EffectCallback, deps: DependencyList | undefined, _num: number) => {
+			(cb: EffectCallback, deps: DependencyList | undefined, _number: number) => {
 				useUpdateEffect(cb, deps);
 			}
 		);

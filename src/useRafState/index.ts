@@ -5,7 +5,7 @@ import { useUnmountEffect } from '../useUnmountEffect';
 export function useRafState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 export function useRafState<S = undefined>(): [
 	S | undefined,
-	Dispatch<SetStateAction<S | undefined>>
+	Dispatch<SetStateAction<S | undefined>>,
 ];
 
 /**

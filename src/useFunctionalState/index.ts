@@ -6,7 +6,7 @@ export function useFunctionalState<S>(
 ): [() => S, Dispatch<SetStateAction<S>>];
 export function useFunctionalState<S = undefined>(): [
 	() => S | undefined,
-	Dispatch<SetStateAction<S | undefined>>
+	Dispatch<SetStateAction<S | undefined>>,
 ];
 
 /**

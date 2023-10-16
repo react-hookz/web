@@ -46,7 +46,7 @@ export type UseCookieReturn = [
 	value: undefined | null | string,
 	set: (value: string) => void,
 	remove: () => void,
-	fetch: () => void
+	fetch: () => void,
 ];
 
 export function useCookieValue(key: string, options: UseCookieOptions = {}): UseCookieReturn;

@@ -32,7 +32,7 @@ export function useToggle(
 	return [
 		state,
 		useCallback((nextState) => {
-			setState((prevState) => {
+			setState((previousState) => {
 				if (
 					nextState === undefined ||
 					(ignoreReactEventsRef.current &&
@@ -40,10 +40,10 @@ export function useToggle(
 						(nextState.constructor.name === 'SyntheticBaseEvent' ||
 							typeof (nextState as any)._reactName === 'string'))
 				) {
-					return !prevState;
+					return !previousState;
 				}
 
-				return Boolean(resolveHookState(nextState, prevState));
+				return Boolean(resolveHookState(nextState, previousState));
 			});
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),

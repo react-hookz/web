@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { newStorage } from './misc';
 import { useStorageValue } from '..';
+import { newStorage } from './misc';
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {
@@ -216,14 +216,14 @@ describe('useStorageValue', () => {
 		const { result } = renderHook(() =>
 			useStorageValue<number[]>(storage, 'foo', {
 				stringify(data) {
-					return data.map((num) => num.toString(16)).join(':');
+					return data.map((number_) => number_.toString(16)).join(':');
 				},
 				parse(str, fallback) {
 					if (str === null) return fallback;
 
 					if (str === '') return [];
 
-					return str.split(':').map((num) => Number.parseInt(num, 16));
+					return str.split(':').map((number_) => Number.parseInt(number_, 16));
 				},
 			})
 		);
@@ -241,14 +241,14 @@ describe('useStorageValue', () => {
 		const { result } = renderHook(() =>
 			useStorageValue<number[]>(storage, 'foo', {
 				stringify(data) {
-					return data.map((num) => num.toString(16)).join(':');
+					return data.map((number_) => number_.toString(16)).join(':');
 				},
 				parse(str, fallback) {
 					if (str === null) return fallback;
 
 					if (str === '') return [];
 
-					return str.split(':').map((num) => Number.parseInt(num, 16));
+					return str.split(':').map((number_) => Number.parseInt(number_, 16));
 				},
 			})
 		);

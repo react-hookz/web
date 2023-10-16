@@ -1,5 +1,5 @@
-import { type DependencyList } from 'react';
 import { isEqual } from '@react-hookz/deep-equal';
+import { type DependencyList } from 'react';
 import { useCustomCompareMemo } from '../useCustomCompareMemo';
 
 /**
