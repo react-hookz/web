@@ -1,13 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useDeepCompareEffect } from '../useDeepCompareEffect';
 
-type SpeechOptions = {
-	voice?: SpeechSynthesisVoice;
-	rate?: number;
-	pitch?: number;
-	volume?: number;
-	lang?: string;
-};
+type SpeechOptions = Partial<
+	Pick<SpeechSynthesisUtterance, 'lang' | 'pitch' | 'rate' | 'voice' | 'volume'>
+>;
 
 type SpeechPlayStatus = 'init' | 'play' | 'pause' | 'end' | 'error';
 

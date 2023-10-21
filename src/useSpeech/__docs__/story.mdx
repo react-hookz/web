@@ -17,13 +17,9 @@ A hook for speech synthesis using browser API
 ## Reference
 
 ```ts
-type SpeechOptions = {
-	voice?: SpeechSynthesisVoice;
-	rate?: number;
-	pitch?: number;
-	volume?: number;
-	lang?: string;
-};
+type SpeechOptions = Partial<
+	Pick<SpeechSynthesisUtterance, 'lang' | 'pitch' | 'rate' | 'voice' | 'volume'>
+>;
 
 type SpeechPlayStatus = 'init' | 'play' | 'pause' | 'end' | 'error';
 
