@@ -1,25 +1,11 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useSpeech } from '../index';
+import { useSpeech } from '../..';
 
 describe('useSpeech', () => {
 	// Mock the SpeechSynthesisUtterance and speechSynthesis objects
-	beforeAll(() => {
-		window.SpeechSynthesisUtterance = jest.fn();
-		// @ts-expect-error testing irrelevant usage
-		window.speechSynthesis = {
-			speak: jest.fn(),
-			getVoices() {
-				return [
-					{
-						lang: 'en-US',
-						name: 'Google US English',
-						voiceURI: 'Google US English',
-						default: true,
-						localService: true,
-					},
-				];
-			},
-		};
+	const speakSpy = jest.spyOn(window.speechSynthesis, 'speak');
+	beforeEach(() => {
+		speakSpy.mockReset();
 	});
 
 	it('should be defined', () => {
@@ -35,7 +21,7 @@ describe('useSpeech', () => {
 			});
 		});
 		expect(result.current.errorMessage).toBeUndefined();
-		expect(window.speechSynthesis.speak).toHaveBeenCalled();
+		expect(speakSpy).toHaveBeenCalled();
 		expect(result.error).toBeUndefined();
 	});
 });
