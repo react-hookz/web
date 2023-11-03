@@ -42,35 +42,35 @@ export const useSpeech = (text: string, options: SpeechOptions): SpeechState => 
 		utterance.rate = options?.rate ?? 1;
 		utterance.pitch = options?.pitch ?? 1;
 		utterance.volume = options?.volume ?? 1;
-		utterance.onstart = function () {
+		utterance.addEventListener('start', function () {
 			setState((preState) => {
 				return { ...preState, isPlaying: true, status: 'play' };
 			});
-		};
+		});
 
-		utterance.onpause = function () {
+		utterance.addEventListener('pause', function () {
 			setState((preState) => {
 				return { ...preState, isPlaying: false, status: 'pause' };
 			});
-		};
+		});
 
-		utterance.onresume = function () {
+		utterance.addEventListener('resume', function () {
 			setState((preState) => {
 				return { ...preState, isPlaying: true, status: 'play' };
 			});
-		};
+		});
 
-		utterance.onend = function () {
+		utterance.addEventListener('end', function () {
 			setState((preState) => {
 				return { ...preState, isPlaying: false, status: 'end' };
 			});
-		};
+		});
 
-		utterance.onerror = function (error) {
+		utterance.addEventListener('error', function (error) {
 			setState((preState) => {
 				return { ...preState, isPlaying: false, status: 'error', errorMessage: error.error };
 			});
-		};
+		});
 
 		window.speechSynthesis.speak(utterance);
 		return () => {
