@@ -1,5 +1,6 @@
 export const setupWindowSpeechSynthesisUtterance = () => {
 	window.SpeechSynthesisUtterance = jest.fn();
+	window.SpeechSynthesisUtterance.prototype.addEventListener = jest.fn();
 	window.speechSynthesis = {
 		getVoices: jest.fn().mockReturnValue([
 			{
