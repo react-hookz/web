@@ -100,7 +100,7 @@
 		"@swc/jest": "^0.2.29",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/jest": "^29.5.8",
-		"@types/js-cookie": "^3.0.5",
+		"@types/js-cookie": "^3.0.6",
 		"@types/react": "^18.2.14",
 		"@types/react-dom": "^18.2.6",
 		"babel-loader": "^9.1.3",
