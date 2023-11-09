@@ -85,7 +85,7 @@
 		"@react-hookz/eslint-formatter-gha": "^1.0.1",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
-		"@semantic-release/github": "^9.2.1",
+		"@semantic-release/github": "^9.2.2",
 		"@storybook/addon-docs": "^6.5.16",
 		"@storybook/addon-essentials": "^6.5.16",
 		"@storybook/addon-links": "^6.5.16",
