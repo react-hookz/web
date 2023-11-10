@@ -77,7 +77,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.3",
-		"@commitlint/cli": "^17.7.1",
+		"@commitlint/cli": "^18.2.0",
 		"@commitlint/config-conventional": "^18.1.0",
 		"@commitlint/cz-commitlint": "^18.2.0",
 		"@jamesacarr/jest-reporter-github-actions": "^0.0.4",
