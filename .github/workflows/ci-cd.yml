@@ -127,7 +127,7 @@ jobs:
 
       - name: "Release"
         id: "release"
-        uses: codfish/semantic-release-action@v2.2.0
+        uses: codfish/semantic-release-action@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
