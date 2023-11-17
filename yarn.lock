@@ -1298,13 +1298,13 @@
     "@commitlint/types" "^18.4.0"
     ajv "^8.11.0"
 
-"@commitlint/cz-commitlint@^18.4.1":
-  version "18.4.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-18.4.1.tgz#88243604217b8d37a02c0a4df937bcd3cda20519"
-  integrity sha512-1ly7FA56jKr6jBzb6NO2WSixhQ/Y6ZQObC1d2392eo2DhqBIPNyLQ6NppSLC3Dmm6bkRsvy1kb43VETmr9PB/g==
+"@commitlint/cz-commitlint@^18.4.2":
+  version "18.4.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-18.4.2.tgz#e37390f65afb1c15292ae39fb0ece389c3c7e677"
+  integrity sha512-lazTdOqi+zPdPS9wG2SzDirLfAGTfAPFubY6KflsYPqufOygocbUSluvT5Y0PetiLnvPD54ii5zGBPq4ZR76qA==
   dependencies:
     "@commitlint/ensure" "^18.4.0"
-    "@commitlint/load" "^18.4.1"
+    "@commitlint/load" "^18.4.2"
     "@commitlint/types" "^18.4.0"
     chalk "^4.1.0"
     lodash.isplainobject "^4.0.6"
@@ -1396,10 +1396,10 @@
     "@commitlint/rules" "^18.4.0"
     "@commitlint/types" "^18.4.0"
 
-"@commitlint/load@>6.1.1", "@commitlint/load@^18.4.1":
-  version "18.4.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-18.4.1.tgz#41097fe3b0eed33e61fab6ab6015e9c4bd17de1a"
-  integrity sha512-o/plBiPJQgbSq/4ipDpsq4HCmURjBAEjr1EO/p2falr3VhwV0WGXTvb8NlihgI8xtSyO6lHvtycrE535GMLQbA==
+"@commitlint/load@>6.1.1", "@commitlint/load@^18.4.1", "@commitlint/load@^18.4.2":
+  version "18.4.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-18.4.2.tgz#f3f213f8c0fd36ded1f8950880905add8ae5920b"
+  integrity sha512-CKmzXdF9XwZJoVijAqpUlV9qzZOkyiYni4KuSCtTZVAAVudi9H84cJ4FqZxSwEP9G21vmoJiNrW8G042AsduVg==
   dependencies:
     "@commitlint/config-validator" "^18.4.0"
     "@commitlint/execute-rule" "^18.4.0"
