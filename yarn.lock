@@ -1275,10 +1275,10 @@
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
-"@commitlint/config-conventional@^18.4.0":
-  version "18.4.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.4.0.tgz#8d2cab9e6ea62c90cade345c4c5a4db73fe9b694"
-  integrity sha512-vArwCZopsZs0FnGsh9AR7uUTPZ5oVGk8+qnEZWq2KTsMjrE0k80b+oZ32GSQmXQT2iMKVrDC8pKX5uKNkCe9Sw==
+"@commitlint/config-conventional@^18.4.2":
+  version "18.4.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.4.2.tgz#df041190ddc7604a855633f4c36e80a81c65f9d3"
+  integrity sha512-qFjIqgKGV89lzUGHxanq2WJDXk5wZIxoZmZvf0I4i4CirL06Xj8qRh1shPsXNyI15d8Rj2HExww6cGJSFU9DdA==
   dependencies:
     conventional-changelog-conventionalcommits "^7.0.2"
 
@@ -1396,7 +1396,7 @@
     "@commitlint/rules" "^18.4.0"
     "@commitlint/types" "^18.4.0"
 
-"@commitlint/load@>6.1.1", "@commitlint/load@^18.4.1", "@commitlint/load@^18.4.2":
+"@commitlint/load@>6.1.1", "@commitlint/load@^18.4.2":
   version "18.4.2"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-18.4.2.tgz#f3f213f8c0fd36ded1f8950880905add8ae5920b"
   integrity sha512-CKmzXdF9XwZJoVijAqpUlV9qzZOkyiYni4KuSCtTZVAAVudi9H84cJ4FqZxSwEP9G21vmoJiNrW8G042AsduVg==
@@ -1433,24 +1433,6 @@
     resolve-from "^5.0.0"
     ts-node "^10.8.1"
     typescript "^4.6.4 || ^5.0.0"
-
-"@commitlint/load@^18.4.2":
-  version "18.4.2"
-  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-18.4.2.tgz#f3f213f8c0fd36ded1f8950880905add8ae5920b"
-  integrity sha512-CKmzXdF9XwZJoVijAqpUlV9qzZOkyiYni4KuSCtTZVAAVudi9H84cJ4FqZxSwEP9G21vmoJiNrW8G042AsduVg==
-  dependencies:
-    "@commitlint/config-validator" "^18.4.0"
-    "@commitlint/execute-rule" "^18.4.0"
-    "@commitlint/resolve-extends" "^18.4.0"
-    "@commitlint/types" "^18.4.0"
-    "@types/node" "^18.11.9"
-    chalk "^4.1.0"
-    cosmiconfig "^8.3.6"
-    cosmiconfig-typescript-loader "^5.0.0"
-    lodash.isplainobject "^4.0.6"
-    lodash.merge "^4.6.2"
-    lodash.uniq "^4.5.0"
-    resolve-from "^5.0.0"
 
 "@commitlint/message@^17.4.2":
   version "17.4.2"
