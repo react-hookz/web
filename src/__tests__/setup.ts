@@ -3,5 +3,7 @@
  */
 
 import { setupNavigatorVibrate } from './navigator.vibrate';
+import { setupWindowSpeechSynthesisUtterance } from './window.speechSynthesis';
 
 setupNavigatorVibrate();
+setupWindowSpeechSynthesisUtterance();
