@@ -49,6 +49,7 @@ export * from './useVibrate';
 export * from './useSyncedRef';
 export * from './useHookableRef';
 export * from './useCustomCompareMemo';
+export * from './useMemoCache';
 
 // SideEffect
 export * from './useLocalStorageValue';
@@ -74,6 +75,7 @@ export * from './useWindowSize';
 export { isStrictEqual, truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const';
 export type { EffectCallback, EffectHook } from './util/misc';
 export { resolveHookState } from './util/resolveHookState';
+export { is, objectIs, areHookInputsEqual } from './util/areHookInputsEqual';
 
 // Types
 export * from './types';

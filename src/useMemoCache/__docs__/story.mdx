@@ -1,0 +1,35 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Miscellaneous/useMemoCache" component={Example} />
+
+# useMemoCache
+
+Like useMemo but with cache based on dependency list.
+
+#### Example
+
+<Canvas>
+  <Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useMemoCache<State, Deps extends DependencyList>(
+  factory: () => State,
+  deps: Deps,
+  customAreHookInputsEqual?: (nextDeps: DependencyList, prevDeps: DependencyList | null) => boolean
+): State;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **factory** _`() => unknown`_ - useMemo factory function
+- **deps** _`DependencyList`_ - useMemo dependency list
+- **customAreHookInputsEqual** _`(nextDeps: DependencyList, prevDeps: DependencyList | null) => boolean`_ - function which indicates when dependencies are the same
