@@ -81,7 +81,7 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 
 		expect(result.current[0]).toStrictEqual({
@@ -108,7 +108,7 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 
 			if (resolve.current) resolve.current(123);
 		});
@@ -133,7 +133,7 @@ describe('useAsync', () => {
 		const err = new Error('some error');
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 
 			if (reject.current) reject.current(err);
 		});
@@ -156,7 +156,7 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 
 			if (resolve.current) resolve.current(1);
 		});
@@ -183,12 +183,12 @@ describe('useAsync', () => {
 		const { result } = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const resolve1 = resolve.current;
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const resolve2 = resolve.current;
 
@@ -209,12 +209,12 @@ describe('useAsync', () => {
 		const { result } = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const reject1 = reject.current;
 
 		await act(async () => {
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const resolve2 = resolve.current;
 

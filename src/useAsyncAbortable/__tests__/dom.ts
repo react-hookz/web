@@ -46,7 +46,7 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		expect(spy.mock.calls[0][0]).toBeInstanceOf(AbortSignal);
@@ -65,7 +65,7 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		result.current[1].abort();
@@ -84,7 +84,7 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		await act(async () => {
@@ -111,13 +111,13 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		const resolve1 = resolve.current;
 
 		await act(async () => {
-			result.current[1].execute(1234);
+			void result.current[1].execute(1234);
 		});
 
 		expect(spy.mock.calls[0][1]).toBe(123);

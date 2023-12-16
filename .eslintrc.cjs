@@ -5,7 +5,6 @@ const commonJSRules = {
 	'unicorn/no-array-for-each': 'off',
 };
 
-// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
 	root: true,
 
