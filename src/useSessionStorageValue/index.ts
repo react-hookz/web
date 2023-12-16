@@ -2,8 +2,8 @@ import {
 	useStorageValue,
 	type UseStorageValueOptions,
 	type UseStorageValueResult,
-} from '../useStorageValue/index.js';
-import { isBrowser, noop } from '../util/const.js';
+} from '#root/useStorageValue/index.js';
+import { isBrowser, noop } from '#root/util/const.js';
 
 let IS_SESSION_STORAGE_AVAILABLE: boolean;
 

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useVibrate } from '../../index.js';
+import { useVibrate } from '#root/index.js';
 
 describe('useVibrate', () => {
 	it('should be defined', () => {

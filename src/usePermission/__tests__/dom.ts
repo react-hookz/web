@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { usePermission } from '../../index.js';
+import { usePermission } from '#root/index.js';
 
 describe('usePermission', () => {
 	let querySpy: jest.SpyInstance;

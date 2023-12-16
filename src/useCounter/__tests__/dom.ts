@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useCounter } from '../../index.js';
+import { useCounter } from '#root/index.js';
 
 describe('useCounter', () => {
 	it('should be defined', () => {

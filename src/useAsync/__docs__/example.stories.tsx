@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAsync, useMountEffect } from '../../index.js';
+import { useAsync, useMountEffect } from '#root/index.js';
 
 export function Example() {
 	const [state, actions] = useAsync(
@@ -27,17 +27,16 @@ export function Example() {
 				<button
 					type="button"
 					onClick={() => {
-						actions.reset();
-						// eslint-disable-next-line @typescript-eslint/no-floating-promises
-						actions.execute();
+						void actions.reset();
+
+						void actions.execute();
 					}}>
 					reset
 				</button>{' '}
 				<button
 					type="button"
 					onClick={() => {
-						// eslint-disable-next-line @typescript-eslint/no-floating-promises
-						actions.execute();
+						void actions.execute();
 					}}>
 					execute
 				</button>

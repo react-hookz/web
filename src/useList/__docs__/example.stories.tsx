@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useList } from '../../index.js';
+import { useList } from '#root/index.js';
 
 export function Example() {
 	const [

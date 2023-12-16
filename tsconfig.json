@@ -14,7 +14,8 @@
 		"newLine": "lf",
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"rootDir": "."
 	},
 	"include": [
 		"src/**/*.ts"
@@ -22,5 +23,9 @@
 	"exclude": [
 		"src/**/__tests__/**",
 		"src/**/__docs__/**"
-	]
+	],
+	"ts-node": {
+		"esm": true,
+		"swc": true
+	}
 }

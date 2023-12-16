@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom';
-import { useThrottledState } from '../../index.js';
+import { useThrottledState } from '#root/index.js';
 
 describe('useThrottledState', () => {
 	beforeAll(() => {

@@ -1,4 +1,4 @@
-import { useLocalStorageValue } from '../../index.js';
+import { useLocalStorageValue } from '#root/index.js';
 
 type ExampleProps = {
 	/**

@@ -3,6 +3,9 @@ const commonJSRules = {
 	'unicorn/prevent-abbreviations': 'off',
 	'unicorn/no-null': 'off',
 	'unicorn/no-array-for-each': 'off',
+
+	'@typescript-eslint/no-meaningless-void-operator': 'off',
+	'@typescript-eslint/no-confusing-void-expression': 'off',
 };
 
 module.exports = {

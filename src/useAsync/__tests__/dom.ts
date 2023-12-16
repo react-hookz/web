@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsync } from '../../index.js';
+import { useAsync } from '#root/index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
 	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
@@ -41,7 +41,7 @@ describe('useAsync', () => {
 			const [spy, resolve] = getControllableAsync<number, []>();
 			const { result } = renderHook(() => useAsync(spy, 3));
 
-			expect((result.all[0] as ReturnType<typeof useAsync>)[0]).toStrictEqual({
+			expect(result.all[0][0]).toStrictEqual({
 				status: 'not-executed',
 				error: undefined,
 				result: 3,

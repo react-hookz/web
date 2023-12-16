@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react';
-import { useIsomorphicLayoutEffect } from '../../index.js';
+import { useIsomorphicLayoutEffect } from '#root/index.js';
 
 describe('useIsomorphicLayoutEffect', () => {
 	it('should be defined', () => {

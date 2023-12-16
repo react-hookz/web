@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useKeyboardEvent } from '../../index.js';
+import { useKeyboardEvent } from '#root/index.js';
 
 export function Example() {
 	const [list, setList] = useState<string[]>([]);

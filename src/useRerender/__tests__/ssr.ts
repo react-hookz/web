@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/server';
 import { useRef } from 'react';
-import { useRerender } from '../../index.js';
+import { useRerender } from '#root/index.js';
 
 describe('useRerender', () => {
 	it('should be defined', () => {

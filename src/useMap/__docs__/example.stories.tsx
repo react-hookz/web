@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as React from 'react';
-import { useMap } from '../../index.js';
+import { useMap } from '#root/index.js';
 
 export function Example() {
 	const map = useMap<string, string | Date>([['@react-hooks', 'is awesome']]);

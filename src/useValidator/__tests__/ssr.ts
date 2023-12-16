@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useValidator } from '../../index.js';
+import { useValidator } from '#root/index.js';
 
 describe('useValidator', () => {
 	it('should be defined', () => {

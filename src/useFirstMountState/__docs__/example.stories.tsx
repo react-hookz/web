@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useFirstMountState, useRerender } from '../../index.js';
+import { useFirstMountState, useRerender } from '#root/index.js';
 
 export function Example() {
 	const isFirstMount = useFirstMountState();

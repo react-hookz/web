@@ -4,7 +4,7 @@ import {
 	type UseResizeObserverCallback,
 	useDebouncedCallback,
 	useResizeObserver,
-} from '../../index.js';
+} from '#root/index.js';
 
 export function Example() {
 	const ref = useRef<HTMLDivElement | null>(null);

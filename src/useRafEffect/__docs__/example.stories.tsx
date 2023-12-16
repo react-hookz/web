@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRef } from 'react';
-import { useRafEffect } from '../../index.js';
+import { useRafEffect } from '#root/index.js';
 
 export function Example() {
 	const inputRef = useRef<HTMLInputElement>(null);

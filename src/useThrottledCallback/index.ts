@@ -1,5 +1,5 @@
 import { type DependencyList, useMemo, useRef } from 'react';
-import { useUnmountEffect } from '../useUnmountEffect/index.js';
+import { useUnmountEffect } from '#root/useUnmountEffect/index.js';
 
 export type ThrottledFunction<Fn extends (...args: any[]) => any> = (
 	this: ThisParameterType<Fn>,

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useMeasure } from '../../index.js';
+import { useMeasure } from '#root/index.js';
 import Mock = jest.Mock;
 
 describe('useMeasure', () => {

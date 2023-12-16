@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMediaQuery } from '../../index.js';
+import { useMediaQuery } from '#root/index.js';
 
 export function Example() {
 	const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)');

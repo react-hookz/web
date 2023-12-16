@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useFirstMountState } from '../useFirstMountState/index.js';
-import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { useUpdateEffect } from '../useUpdateEffect/index.js';
-import { isBrowser } from '../util/const.js';
-import { off, on } from '../util/misc.js';
-import { type NextState, resolveHookState } from '../util/resolveHookState.js';
+import { useFirstMountState } from '#root/useFirstMountState/index.js';
+import { useIsomorphicLayoutEffect } from '#root/useIsomorphicLayoutEffect/index.js';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
+import { useUpdateEffect } from '#root/useUpdateEffect/index.js';
+import { isBrowser } from '#root/util/const.js';
+import { off, on } from '#root/util/misc.js';
+import { type NextState, resolveHookState } from '#root/util/resolveHookState.js';
 
 const storageListeners = new Map<Storage, Map<string, Set<CallableFunction>>>();
 

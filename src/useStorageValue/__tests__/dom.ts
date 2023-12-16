@@ -22,11 +22,11 @@ describe('useStorageValue', () => {
 		});
 		rerender();
 
-		type ResultType = typeof result.current;
+		const firstResult = result.all[0] as ReturnType<typeof useStorageValue>;
 
-		expect(result.all[0].set).toBe(result.current.set);
-		expect(result.all[0].fetch).toBe(result.current.fetch);
-		expect(result.all[0].remove).toBe(result.current.remove);
+		expect(firstResult.set).toBe(result.current.set);
+		expect(firstResult.fetch).toBe(result.current.fetch);
+		expect(firstResult.remove).toBe(result.current.remove);
 	});
 
 	it('should fetch value from storage only on init', () => {

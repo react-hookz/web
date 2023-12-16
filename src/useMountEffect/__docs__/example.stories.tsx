@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useRerender, useMountEffect } from '../../index.js';
+import { useRerender, useMountEffect } from '#root/index.js';
 
 export function Example() {
 	const [count, setCount] = useState(0);

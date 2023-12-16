@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useIntersectionObserver } from '../../index.js';
+import { useIntersectionObserver } from '#root/index.js';
 
 describe('useIntersectionObserver', () => {
 	it('should be defined', () => {

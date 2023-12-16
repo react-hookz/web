@@ -1,4 +1,4 @@
-import { useNetworkState } from '../../index.js';
+import { useNetworkState } from '#root/index.js';
 
 export function Example() {
 	const onlineState = useNetworkState();

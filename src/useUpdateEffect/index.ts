@@ -1,6 +1,6 @@
 import { type DependencyList, type EffectCallback, useEffect } from 'react';
-import { useFirstMountState } from '../useFirstMountState/index.js';
-import { noop } from '../util/const.js';
+import { useFirstMountState } from '#root/useFirstMountState/index.js';
+import { noop } from '#root/util/const.js';
 
 /**
  * Effect hook that ignores the first render (not invoked on mount).

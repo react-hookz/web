@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useSyncedRef } from '../../index.js';
+import { useSyncedRef } from '#root/index.js';
 
 describe('useSyncedRef', () => {
 	it('should be defined', () => {

@@ -1,8 +1,8 @@
 import { type DependencyList, type RefObject, useMemo } from 'react';
-import { useEventListener } from '../useEventListener/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { isBrowser } from '../util/const.js';
-import { yieldFalse, yieldTrue } from '../util/misc.js';
+import { useEventListener } from '#root/useEventListener/index.js';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
+import { isBrowser } from '#root/util/const.js';
+import { yieldFalse, yieldTrue } from '#root/util/misc.js';
 
 export type KeyboardEventPredicate = (event: KeyboardEvent) => boolean;
 export type KeyboardEventFilter = null | string | boolean | KeyboardEventPredicate;

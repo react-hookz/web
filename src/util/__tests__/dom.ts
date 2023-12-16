@@ -1,5 +1,5 @@
 /* eslint-disable max-nested-callbacks */
-import { resolveHookState } from '../../index.js';
+import { resolveHookState } from '#root/index.js';
 import { basicDepsComparator, off, on } from '../misc.js';
 
 describe('resolveHookState', () => {

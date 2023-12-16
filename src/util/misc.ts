@@ -1,5 +1,5 @@
 import { type DependencyList } from 'react';
-import { type DependenciesComparator } from '../types.js';
+import { type DependenciesComparator } from '#root/types.js';
 
 export function on<T extends EventTarget>(
 	object: T | null,

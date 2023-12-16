@@ -1,4 +1,4 @@
-import { useMediatedState } from '../../index.js';
+import { useMediatedState } from '#root/index.js';
 
 export function Example() {
 	const nonLetterRe = /[^a-z]+/gi;

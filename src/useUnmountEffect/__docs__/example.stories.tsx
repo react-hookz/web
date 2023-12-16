@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToggle, useUnmountEffect } from '../../index.js';
+import { useToggle, useUnmountEffect } from '#root/index.js';
 
 export function Example() {
 	const [isToggled, toggle] = useToggle(false);

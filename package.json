@@ -27,6 +27,9 @@
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"sideEffects": false,
+	"imports": {
+		"#root/*": "./src/*"
+	},
 	"scripts": {
 		"prepare": "husky install",
 		"commit": "git-cz",
@@ -92,7 +95,7 @@
 		"@storybook/react": "^6.5.16",
 		"@storybook/storybook-deployer": "^2.8.16",
 		"@storybook/theming": "^6.5.16",
-		"@swc/core": "1.3.100",
+		"@swc/core": "^1.3.100",
 		"@swc/jest": "^0.2.29",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/jest": "^29.5.11",
@@ -115,6 +118,7 @@
 		"react-dom": "^17.0.2",
 		"rimraf": "^5.0.5",
 		"semantic-release": "^22.0.12",
+		"ts-jest": "^29.1.1",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.3.3",
 		"yarn": "^1.22.21"

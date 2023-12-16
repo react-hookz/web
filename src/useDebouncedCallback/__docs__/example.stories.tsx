@@ -1,5 +1,5 @@
 import { type ComponentProps, useState } from 'react';
-import { useDebouncedCallback } from '../../index.js';
+import { useDebouncedCallback } from '#root/index.js';
 
 export function Example() {
 	const [state, setState] = useState('');

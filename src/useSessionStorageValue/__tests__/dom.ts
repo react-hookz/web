@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useSessionStorageValue } from '../../index.js';
+import { useSessionStorageValue } from '#root/index.js';
 
 describe('useSessionStorageValue', () => {
 	it('should be defined', () => {

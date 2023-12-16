@@ -1,7 +1,7 @@
 import { type RefObject, useEffect, useMemo } from 'react';
-import { useIsMounted } from '../useIsMounted/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { hasOwnProperty, off, on } from '../util/misc.js';
+import { useIsMounted } from '#root/useIsMounted/index.js';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
+import { hasOwnProperty, off, on } from '#root/util/misc.js';
 
 /**
  *  An HTML element or ref object containing an HTML element.

@@ -1,6 +1,6 @@
 import { type MutableRefObject, type RefObject, useEffect } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { off, on } from '../util/misc.js';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
+import { off, on } from '#root/util/misc.js';
 
 const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
 

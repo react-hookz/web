@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useRafEffect } from '../../index.js';
+import { useRafEffect } from '#root/index.js';
 
 describe('useRafEffect', () => {
 	it('should be defined', () => {

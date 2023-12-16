@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useLocalStorageValue } from '../../index.js';
+import { useLocalStorageValue } from '#root/index.js';
 
 describe('useLocalStorageValue', () => {
 	it('should be defined', () => {

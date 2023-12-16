@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useHookableRef } from '../../index.js';
+import { useHookableRef } from '#root/index.js';
 
 export function Example() {
 	const [get, setGet] = useState<Date>();

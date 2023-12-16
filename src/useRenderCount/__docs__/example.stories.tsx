@@ -1,4 +1,4 @@
-import { useRerender, useRenderCount } from '../../index.js';
+import { useRerender, useRenderCount } from '#root/index.js';
 
 export function Example() {
 	const renders = useRenderCount();

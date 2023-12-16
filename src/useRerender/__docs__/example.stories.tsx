@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRenderCount, useRerender } from '../../index.js';
+import { useRenderCount, useRerender } from '#root/index.js';
 
 export function Example() {
 	const renders = useRenderCount();

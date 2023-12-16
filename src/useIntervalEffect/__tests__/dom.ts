@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useIntervalEffect } from '../../index.js';
+import { useIntervalEffect } from '#root/index.js';
 import advanceTimersByTime = jest.advanceTimersByTime;
 
 describe('useIntervalEffect', () => {

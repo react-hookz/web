@@ -1,4 +1,4 @@
-import { useThrottledState } from '../../index.js';
+import { useThrottledState } from '#root/index.js';
 
 export function Example() {
 	const [state, setState] = useThrottledState('', 500);

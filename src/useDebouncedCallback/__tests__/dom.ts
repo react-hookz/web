@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDebouncedCallback } from '../../index.js';
+import { useDebouncedCallback } from '#root/index.js';
 
 function testFn(_a: any, _b: any, _c: any) {}
 

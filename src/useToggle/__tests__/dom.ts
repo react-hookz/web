@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { type BaseSyntheticEvent, useRef } from 'react';
-import { useToggle } from '../../index.js';
+import { useToggle } from '#root/index.js';
 
 describe('useToggle', () => {
 	it('should be defined', () => {

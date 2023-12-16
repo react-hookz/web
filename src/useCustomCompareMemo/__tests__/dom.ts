@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useCustomCompareMemo } from '../../index.js';
+import { useCustomCompareMemo } from '#root/index.js';
 
 const mockUser = { name: 'John' };
 
