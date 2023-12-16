@@ -1,5 +1,5 @@
 import { type MutableRefObject, useMemo } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
+import { useSyncedRef } from '../useSyncedRef/index.js';
 
 export type HookableRefHandler<T> = (v: T) => T;
 

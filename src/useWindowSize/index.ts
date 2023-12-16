@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useFirstMountState } from '../useFirstMountState';
-import { useMountEffect } from '../useMountEffect';
-import { useRafState } from '../useRafState';
-import { isBrowser } from '../util/const';
+import { useFirstMountState } from '../useFirstMountState/index.js';
+import { useMountEffect } from '../useMountEffect/index.js';
+import { useRafState } from '../useRafState/index.js';
+import { isBrowser } from '../util/const.js';
 
 export type WindowSize = {
 	width: number;

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { useList } from '../useList';
-import { useSyncedRef } from '../useSyncedRef';
+import { useList } from '../useList/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
 
 export type QueueMethods<T> = {
 	/**

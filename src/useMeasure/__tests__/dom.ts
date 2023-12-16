@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useEffect } from 'react';
-import { useMeasure } from '../..';
+import { useMeasure } from '../../index.js';
 import Mock = jest.Mock;
 
 describe('useMeasure', () => {

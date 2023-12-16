@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useConditionalEffect } from '../..';
+import { useConditionalEffect } from '../../index.js';
 
 describe('useConditionalEffect', () => {
 	it('should be defined', () => {

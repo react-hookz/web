@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsync } from '../..';
+import { useAsync } from '../../index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
 	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
@@ -81,7 +81,6 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 		});
 
@@ -109,7 +108,6 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 
 			if (resolve.current) resolve.current(123);
@@ -135,7 +133,6 @@ describe('useAsync', () => {
 		const err = new Error('some error');
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 
 			if (reject.current) reject.current(err);
@@ -159,7 +156,6 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 
 			if (resolve.current) resolve.current(1);
@@ -187,13 +183,11 @@ describe('useAsync', () => {
 		const { result } = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 		});
 		const resolve1 = resolve.current;
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 		});
 		const resolve2 = resolve.current;
@@ -215,13 +209,11 @@ describe('useAsync', () => {
 		const { result } = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 		});
 		const reject1 = reject.current;
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute();
 		});
 		const resolve2 = resolve.current;

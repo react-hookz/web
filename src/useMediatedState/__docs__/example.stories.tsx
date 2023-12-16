@@ -1,5 +1,4 @@
-import React from 'react';
-import { useMediatedState } from '../..';
+import { useMediatedState } from '../../index.js';
 
 export function Example() {
 	const nonLetterRe = /[^a-z]+/gi;

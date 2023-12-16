@@ -1,5 +1,5 @@
 import { DocsContext, Source } from '@storybook/addon-docs';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 export type ImportPathProps = {
 	readonly isRoot?: boolean;

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { type KeyboardEventFilter, useKeyboardEvent } from '../..';
+import { type KeyboardEventFilter, useKeyboardEvent } from '../../index.js';
 
 describe('useKeyboardEvent', () => {
 	it('should be defined', () => {

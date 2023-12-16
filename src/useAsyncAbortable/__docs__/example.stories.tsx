@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAsyncAbortable, useMountEffect } from '../..';
+import { useAsyncAbortable, useMountEffect } from '../../index.js';
 
 export function Example() {
 	const [state, actions, meta] = useAsyncAbortable(

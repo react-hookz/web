@@ -1,5 +1,4 @@
-import React from 'react';
-import { useThrottledState } from '../..';
+import { useThrottledState } from '../../index.js';
 
 export function Example() {
 	const [state, setState] = useThrottledState('', 500);

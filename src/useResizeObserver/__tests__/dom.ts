@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useResizeObserver } from '../..';
+import { useResizeObserver } from '../../index.js';
 import Mock = jest.Mock;
 
 describe('useResizeObserver', () => {

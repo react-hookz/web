@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useStorageValue } from '..';
-import { newStorage } from './misc';
+import { useStorageValue } from '../index.js';
+import { newStorage } from './misc.js';
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {
@@ -24,9 +24,9 @@ describe('useStorageValue', () => {
 
 		type ResultType = typeof result.current;
 
-		expect((result.all[0] as ResultType).set).toBe(result.current.set);
-		expect((result.all[0] as ResultType).fetch).toBe(result.current.fetch);
-		expect((result.all[0] as ResultType).remove).toBe(result.current.remove);
+		expect(result.all[0].set).toBe(result.current.set);
+		expect(result.all[0].fetch).toBe(result.current.fetch);
+		expect(result.all[0].remove).toBe(result.current.remove);
 	});
 
 	it('should fetch value from storage only on init', () => {

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useDocumentVisibility } from '../..';
+import { useDocumentVisibility } from '../../index.js';
 
 describe('useDocumentVisibility', () => {
 	it('should be defined', () => {

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useMountEffect } from '../..';
+import { useMountEffect } from '../../index.js';
 
 describe('useMountEffect', () => {
 	it('should call effector only on first render', () => {

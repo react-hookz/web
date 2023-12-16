@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsyncAbortable } from '../..';
+import { useAsyncAbortable } from '../../index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
 	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
@@ -46,7 +46,6 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute(123);
 		});
 
@@ -66,7 +65,6 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute(123);
 		});
 
@@ -86,7 +84,6 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute(123);
 		});
 
@@ -114,14 +111,12 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute(123);
 		});
 
 		const resolve1 = resolve.current;
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			result.current[1].execute(1234);
 		});
 

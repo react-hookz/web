@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useRerender } from '../useRerender';
+import { useRerender } from '../useRerender/index.js';
 
 const proto = Map.prototype;
 

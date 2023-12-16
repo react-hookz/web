@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 import { type Dispatch, useCallback, useEffect, useState } from 'react';
-import { useFirstMountState } from '../useFirstMountState';
-import { useMountEffect } from '../useMountEffect';
-import { useSyncedRef } from '../useSyncedRef';
-import { isBrowser } from '../util/const';
+import { useFirstMountState } from '../useFirstMountState/index.js';
+import { useMountEffect } from '../useMountEffect/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { isBrowser } from '../util/const.js';
 
 const cookiesSetters = new Map<string, Set<Dispatch<string | null>>>();
 
@@ -61,10 +61,10 @@ export type UseCookieValueOptions<
 				 * @default true
 				 */
 				initializeWithValue?: InitializeWithValue;
-		  }
+			}
 		: {
 				initializeWithValue: InitializeWithValue;
-		  });
+			});
 
 export type UseCookieValueReturn<V extends undefined | null | string = undefined | null | string> =
 	[value: V, set: (value: string) => void, remove: () => void, fetch: () => void];

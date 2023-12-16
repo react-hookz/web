@@ -21,20 +21,16 @@
 		"access": "public"
 	},
 	"files": [
-		"cjs",
-		"esm"
+		"dist"
 	],
-	"main": "./cjs/index.js",
-	"types": "./cjs/index.d.ts",
-	"module": "./esm/index.js",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"sideEffects": false,
 	"scripts": {
 		"prepare": "husky install",
 		"commit": "git-cz",
-		"build": "yarn build:cleanup && concurrently yarn:build:cjs yarn:build:esm",
-		"build:cleanup": "rimraf ./dist",
-		"build:cjs": "ttsc -p ./tsconfig.build.json --module CommonJS --outDir ./cjs",
-		"build:esm": "ttsc -p ./tsconfig.build.json --module ESNext --outDir ./esm",
+		"build": "yarn rimraf ./dist && tsc --version && tsc",
 		"new-hook": "node ./utility/add-new-hook.js",
 		"test": "jest --selectProjects dom ssr",
 		"test:coverage": "yarn test --coverage",
@@ -107,21 +103,20 @@
 		"commitizen": "^4.3.0",
 		"commitlint": "^18.4.3",
 		"concurrently": "^8.2.2",
-		"eslint": "^8.55.0",
+		"eslint": "^8.56.0",
 		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
 		"jest": "^29.7.0",
 		"jest-environment-jsdom": "^29.7.0",
 		"js-cookie": "^3.0.5",
 		"lint-staged": "^15.2.0",
-		"prettier": "^3.1.0",
+		"prettier": "^3.1.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"rimraf": "^5.0.5",
 		"semantic-release": "^22.0.12",
 		"ts-node": "^10.9.2",
-		"ttypescript": "^1.5.15",
-		"typescript": "^4.9.5",
+		"typescript": "^5.3.3",
 		"yarn": "^1.22.21"
 	}
 }

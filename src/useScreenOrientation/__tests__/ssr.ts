@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useScreenOrientation } from '../..';
+import { useScreenOrientation } from '../../index.js';
 
 describe('useScreenOrientation', () => {
 	it('should be defined', () => {

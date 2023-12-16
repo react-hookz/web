@@ -1,7 +1,7 @@
 import { type SetStateAction, useMemo } from 'react';
-import { useMediatedState } from '../useMediatedState';
-import { useSyncedRef } from '../useSyncedRef';
-import { type InitialState, resolveHookState } from '../util/resolveHookState';
+import { useMediatedState } from '../useMediatedState/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { type InitialState, resolveHookState } from '../util/resolveHookState.js';
 
 export type CounterActions = {
 	/**

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
+import { useSyncedRef } from '../useSyncedRef/index.js';
 
 type TimeoutID = ReturnType<typeof setTimeout> | null;
 

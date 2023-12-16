@@ -1,12 +1,12 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
+import { Example } from './example.stories.js';
+import { ImportPath } from '../../__docs__/ImportPath.js';
 
 <Meta title="Callback/useDebouncedCallback" component={Example} />
 
 # useDebouncedCallback
 
-Makes passed function debounced, otherwise acts like `useCallback`.  
+Makes passed function debounced, otherwise acts like `useCallback`.
 [What is debouncing?](https://css-tricks.com/debouncing-throttling-explained-examples/#debounce)
 
 The third argument is dependencies list on `useCallback` manner, passed function will be re-wrapped

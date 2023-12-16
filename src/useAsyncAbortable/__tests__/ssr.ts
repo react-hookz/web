@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useAsyncAbortable } from '../..';
+import { useAsyncAbortable } from '../../index.js';
 
 describe('useAsyncAbortable', () => {
 	it('should be defined', () => {

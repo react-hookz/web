@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
+import { useSyncedRef } from '../useSyncedRef/index.js';
 
 export function useFunctionalState<S>(
 	initialState: S | (() => S)
