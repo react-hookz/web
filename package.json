@@ -30,6 +30,11 @@
 	"imports": {
 		"#root/*": "./src/*"
 	},
+	"exports": {
+		".": "./dist/index.js",
+		"./*/": "./dist/*/index.js",
+		"./*": "./dist/*"
+	},
 	"scripts": {
 		"prepare": "husky install",
 		"commit": "git-cz",
