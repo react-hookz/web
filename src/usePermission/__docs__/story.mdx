@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Navigator/usePermission" component={Example} />
-
 # usePermission
 
 Tracks a permission state.
@@ -13,10 +7,6 @@ Tracks a permission state.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -25,16 +15,15 @@ export function usePermission(descriptor: AnyPermissionDescriptor): UsePermissio
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 #### Return
 
 0. **state** - Permission state, can be one of the following strings:
-   - **`not-requested`** - State not requested yet, yielded only on mount, before permission state
-     requested.
-   - **`requested`** - State requested, but request promise is pending yet.
-   - **`prompt`** - Permission not requested from user, and can be requested via target API.
-   - **`denied`** - User denied permission.
-   - **`granted`** - User granted permission.
+
+- **`not-requested`** - State not requested yet, yielded only on mount, before permission state
+  requested.
+- **`requested`** - State requested, but request promise is pending yet.
+- **`prompt`** - Permission not requested from user, and can be requested via target API.
+- **`denied`** - User denied permission.
+- **`granted`** - User granted permission.

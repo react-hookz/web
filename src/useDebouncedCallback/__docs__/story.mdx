@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Callback/useDebouncedCallback" component={Example} />
-
 # useDebouncedCallback
 
 Makes passed function debounced, otherwise acts like `useCallback`.
@@ -19,10 +13,6 @@ Deferred execution automatically cancelled on component unmount.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -35,8 +25,6 @@ export function useDebouncedCallback<Args extends any[], This>(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

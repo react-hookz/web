@@ -1,18 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Miscellaneous/useHookableRef" component={Example} />
-
 # useHookableRef
 
 Like `React.useRef` but it is possible to define get and set handlers.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -28,8 +18,6 @@ export function useHookableRef<T = undefined>(): React.MutableRefObject<T | unde
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

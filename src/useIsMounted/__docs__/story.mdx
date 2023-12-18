@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Lifecycle/useIsMounted" component={Example} />
-
 # useIsMounted
 
 Returns a function that returns the current mount state. This hook is useful when you have to detect
@@ -13,10 +7,6 @@ component mount state within async effects.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -24,8 +14,6 @@ function useIsMounted(initialValue = false): () => boolean;
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

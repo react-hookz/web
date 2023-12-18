@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="DOM/useClickOutside" component={Example} />
-
 # useClickOutside
 
 Triggers a callback when the user clicks outside a targeted element.
@@ -14,10 +8,6 @@ Triggers a callback when the user clicks outside a targeted element.
 > By default, the `mousedown` and `touchstart` events are used, but any bubbling event can be used instead.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -32,8 +22,6 @@ export function useClickOutside<T extends HTMLElement>(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

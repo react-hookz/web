@@ -2,9 +2,7 @@
 node_modules
 dist
 coverage
-storybook-build
 CHANGELOG.md
 !.eslintrc.cjs
 !.prettierrc.cjs
-!.storybook
 !.github

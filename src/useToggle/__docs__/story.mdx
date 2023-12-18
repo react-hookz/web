@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="State/useToggle" component={Example} />
-
 # useToggle
 
 Like `useState`, but can only become `true` or `false`.
@@ -15,10 +9,6 @@ can be changed by setting 2nd parameter to `false`.
 > **_This hook provides stable API, meaning returned functions do not change between renders_**
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -35,8 +25,6 @@ export function useToggle(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

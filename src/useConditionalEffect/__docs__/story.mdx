@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Lifecycle/useConditionalEffect" component={Example} />
-
 # useConditionalEffect
 
 Like `useEffect` but its callback is invoked only if all given conditions match a given predicate.
@@ -14,10 +8,6 @@ conditional by passing the effect hook as an argument to the `effectHook` parame
 other effect hooks this way, you can implement almost any effect logic.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -39,8 +29,6 @@ export function useConditionalEffect<
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

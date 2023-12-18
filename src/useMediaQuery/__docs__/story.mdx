@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Sensor/useMediaQuery" component={Example} />
-
 # useMediaQuery
 
 Tracks the state of CSS media query.
@@ -14,10 +8,6 @@ Tracks the state of CSS media query.
 - SSR-friendly.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -31,15 +21,13 @@ export function useMediaQuery(query: string, options?: UseMediaQueryOptions): bo
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 - **query** _`string`_ - CSS media query to track.
 - **options** _`object`_ - Hook options:
-  - **initializeWithValue** _`boolean`_ _(default: true)_ - Determine media query match state on first
-    render. Setting this to false will make the hook yield `undefined` on first render. We suggest
-    setting this to `false` during SSR.
+- **initializeWithValue** _`boolean`_ _(default: true)_ - Determine media query match state on first
+  render. Setting this to false will make the hook yield `undefined` on first render. We suggest
+  setting this to `false` during SSR.
 
 #### Return
 

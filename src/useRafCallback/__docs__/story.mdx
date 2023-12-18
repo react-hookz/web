@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Callback/useRafCallback" component={Example} />
-
 # useRafCallback
 
 Makes passed function to be called within next animation frame.
@@ -16,10 +10,6 @@ Consequential calls, before the animation frame occurred, cancel previously sche
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -29,8 +19,6 @@ export function useRafCallback<T extends (...args: any[]) => any>(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

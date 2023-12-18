@@ -1,9 +1,3 @@
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
-
-<Meta title="Side-effect/useSessionStorageValue" component={Example} />
-
 # useSessionStorageValue
 
 Manages a single SessionStorage key.
@@ -27,16 +21,6 @@ Manages a single SessionStorage key.
 
 #### Example
 
-<Canvas isColumn>
-	<Story name="Example" story={Example} />
-	<hr />
-	It is also synchronised between hooks on the same page
-	<hr />
-	<Story name="Example2" story={Example} />
-</Canvas>
-
-<ArgsTable story="Example" />
-
 ## Reference
 
 ```ts
@@ -52,18 +36,16 @@ function useSessionStorageValue<
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 - **key** _`string`_ - SessionStorage key to manage.
 - **options** _`object`_ - Hook options:
-  - **defaultValue** _`T | null`_ - Value to return if `key` is not present in SessionStorage.
-  - **initializeWithValue** _`boolean`_ _(default: true)_ - Fetch storage value on first render. If
-    set to `false` will make the hook yield `undefined` on first render and defer fetching of the
-    value until effects are executed.
-  - **parse** _`(str: string | null, fallback: T | null) => T | null`_ - Custom parse function to use instead of JSON.parse
-  - **stringify** _`(data: unknown) => string | null`_ - Custom stringify function to use instead of JSON.stringify
+- **defaultValue** _`T | null`_ - Value to return if `key` is not present in SessionStorage.
+- **initializeWithValue** _`boolean`_ _(default: true)_ - Fetch storage value on first render. If
+  set to `false` will make the hook yield `undefined` on first render and defer fetching of the
+  value until effects are executed.
+- **parse** _`(str: string | null, fallback: T | null) => T | null`_ - Custom parse function to use instead of JSON.parse
+- **stringify** _`(data: unknown) => string | null`_ - Custom stringify function to use instead of JSON.stringify
 
 #### Return
 

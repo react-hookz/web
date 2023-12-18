@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Sensor/useScreenOrientation" component={Example} />
-
 # useScreenOrientation
 
 Checks if screen is in `portrait` or `landscape` orientation and automatically re-renders on
@@ -20,10 +14,6 @@ check screen orientation.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -34,14 +24,12 @@ function useScreenOrientation(): ScreenOrientation;
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 - **options** _`object`_ - Hook options:
-  - **initializeWithValue** _`boolean`_ _(default: true)_ - Determine the screen orientation on first
-    render. Setting this to `false` will make the hook yield `undefined` on first render. We suggest
-    setting this to `false` during SSR.
+- **initializeWithValue** _`boolean`_ _(default: true)_ - Determine the screen orientation on first
+  render. Setting this to `false` will make the hook yield `undefined` on first render. We suggest
+  setting this to `false` during SSR.
 
 #### Return
 

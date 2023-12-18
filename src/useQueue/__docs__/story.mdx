@@ -1,18 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="State/useQueue" component={Example} />
-
 # useQueue
 
 A state hook implementing FIFO queue.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -29,8 +19,6 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T>;
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

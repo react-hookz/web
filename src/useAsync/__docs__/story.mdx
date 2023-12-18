@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Side-effect/useAsync" component={Example} />
-
 # useAsync
 
 Tracks the result and errors of the provided async function and provides handles to control its execution.
@@ -16,10 +10,6 @@ Tracks the result and errors of the provided async function and provides handles
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -31,8 +21,6 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 - **asyncFn** _`(...params: Args) => Promise<Result>`_ - Function that returns a promise.
@@ -43,17 +31,17 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 
 1. **state**
 
-   - **status** _`'loading' | 'success' | 'error' | 'not-executed'`_ - The latest status of the returned promise.
-   - **result** _`Result | undefined`_ - Result of the promise if it was fulfilled.
-   - **error** _`Error | undefined`_ - Result of the promise if it was rejected.
+- **status** _`'loading' | 'success' | 'error' | 'not-executed'`_ - The latest status of the returned promise.
+- **result** _`Result | undefined`_ - Result of the promise if it was fulfilled.
+- **error** _`Error | undefined`_ - Result of the promise if it was rejected.
 
 2. **methods**
 
-   - **reset** _`() => void`_- Reset state to initial.
-   - **execute** _`(...args: Args) => Promise<Result>`_- Execute the async function manually.
+- **reset** _`() => void`_- Reset state to initial.
+- **execute** _`(...args: Args) => Promise<Result>`_- Execute the async function manually.
 
 3. **meta**
 
-   - **promise** _`Promise<Result> | undefined`_- Latest promise returned from the async function.
-   - **lastArgs** _`Args | undefined`_ - List of arguments applied to the latest async function
-     invocation.
+- **promise** _`Promise<Result> | undefined`_- Latest promise returned from the async function.
+- **lastArgs** _`Args | undefined`_ - List of arguments applied to the latest async function
+  invocation.

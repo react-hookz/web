@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Lifecycle/useIntervalEffect" component={Example} />
-
 # useIntervalEffect
 
 Like `setInterval` but in the form of a React hook.
@@ -15,10 +9,6 @@ Like `setInterval` but in the form of a React hook.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -26,8 +16,6 @@ export function useIntervalEffect(callback: () => void, ms?: number): void;
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

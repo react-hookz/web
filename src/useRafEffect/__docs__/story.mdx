@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories.js';
-import { ImportPath } from '#root/__docs__/ImportPath.js';
-
-<Meta title="Lifecycle/useRafEffect" component={Example} />
-
 # useRafEffect
 
 Like `React.useEffect`, but effect is only run within animation frame.
@@ -13,10 +7,6 @@ Like `React.useEffect`, but effect is only run within animation frame.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -24,8 +14,6 @@ export function useRafEffect(callback: (...args: any[]) => void, deps: Dependenc
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 
