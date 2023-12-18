@@ -114,7 +114,7 @@
 		"jest-environment-jsdom": "^29.7.0",
 		"js-cookie": "^3.0.5",
 		"lint-staged": "^15.2.0",
-		"prettier": "^3.1.0",
+		"prettier": "^3.1.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"rimraf": "^5.0.5",
