@@ -1,5 +1,4 @@
-import React from 'react';
-import { useLocalStorageValue } from '../..';
+import { useLocalStorageValue } from '#root/index.js';
 
 type ExampleProps = {
 	/**

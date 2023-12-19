@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useMediaQuery } from '../..';
+import { useMediaQuery } from '#root/index.js';
 
 describe('useMediaQuery', () => {
 	type MutableMediaQueryList = {

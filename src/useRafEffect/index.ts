@@ -1,5 +1,5 @@
 import { type DependencyList, useEffect } from 'react';
-import { useRafCallback } from '../useRafCallback';
+import { useRafCallback } from '#root/useRafCallback/index.js';
 
 /**
  * Like `React.useEffect`, but state is only updated within animation frame.

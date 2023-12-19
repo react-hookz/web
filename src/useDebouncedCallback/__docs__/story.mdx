@@ -1,12 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Callback/useDebouncedCallback" component={Example} />
-
 # useDebouncedCallback
 
-Makes passed function debounced, otherwise acts like `useCallback`.  
+Makes passed function debounced, otherwise acts like `useCallback`.
 [What is debouncing?](https://css-tricks.com/debouncing-throttling-explained-examples/#debounce)
 
 The third argument is dependencies list on `useCallback` manner, passed function will be re-wrapped
@@ -18,10 +12,6 @@ Debounced function is always a void function since original callback invoked lat
 Deferred execution automatically cancelled on component unmount.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -35,8 +25,6 @@ export function useDebouncedCallback<Args extends any[], This>(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

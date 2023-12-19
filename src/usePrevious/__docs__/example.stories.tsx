@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { usePrevious } from '../..';
+import { useState } from 'react';
+import { usePrevious } from '#root/index.js';
 
 export function Example() {
 	const [value, setValue] = useState(0);

@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
 
 export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 

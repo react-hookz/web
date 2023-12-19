@@ -1,5 +1,5 @@
-import React, { type ComponentProps, useState } from 'react';
-import { useThrottledCallback } from '../..';
+import { type ComponentProps, useState } from 'react';
+import { useThrottledCallback } from '#root/index.js';
 
 export function Example() {
 	const [state, setState] = useState('');

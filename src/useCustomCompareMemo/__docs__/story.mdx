@@ -1,18 +1,8 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Miscellaneous/useCustomCompareMemo" component={Example} />
-
 # useCustomCompareMemo
 
 Like useMemo but uses provided comparator function to validate dependency changes.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -30,8 +20,6 @@ function useCustomCompareMemo<T, Deps extends DependencyList>(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSessionStorageValue } from '../..';
+import { useSessionStorageValue } from '#root/index.js';
 
 type ExampleProps = {
 	/**

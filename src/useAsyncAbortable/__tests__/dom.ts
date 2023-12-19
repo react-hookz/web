@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsyncAbortable } from '../..';
+import { useAsyncAbortable } from '#root/index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
 	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
@@ -46,8 +46,7 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		expect(spy.mock.calls[0][0]).toBeInstanceOf(AbortSignal);
@@ -66,8 +65,7 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		result.current[1].abort();
@@ -86,8 +84,7 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		await act(async () => {
@@ -114,15 +111,13 @@ describe('useAsyncAbortable', () => {
 		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute(123);
+			void result.current[1].execute(123);
 		});
 
 		const resolve1 = resolve.current;
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute(1234);
+			void result.current[1].execute(1234);
 		});
 
 		expect(spy.mock.calls[0][1]).toBe(123);

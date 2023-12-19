@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import Cookies from 'js-cookie';
-import { type UseCookieValueReturn, useCookieValue } from '..';
+import { type UseCookieValueReturn, useCookieValue } from '../index.js';
 import SpyInstance = jest.SpyInstance;
 
 describe('useCookieValue', () => {

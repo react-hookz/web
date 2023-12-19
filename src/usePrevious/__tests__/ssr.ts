@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { usePrevious } from '../..';
+import { usePrevious } from '#root/index.js';
 
 describe('usePrevious', () => {
 	it('should be defined', () => {

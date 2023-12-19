@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks/server';
-import { useMap } from '../..';
+import { useMap } from '#root/index.js';
 
 describe('useMap', () => {
 	it('should be defined', () => {

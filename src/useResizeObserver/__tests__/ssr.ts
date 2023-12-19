@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useResizeObserver } from '../..';
+import { useResizeObserver } from '#root/index.js';
 
 describe('useResizeObserver', () => {
 	it('should be defined', () => {

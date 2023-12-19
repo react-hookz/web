@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useLifecycleLogger } from '../..';
+import { useLifecycleLogger } from '#root/index.js';
 
 describe('useLifecycleLogger', () => {
 	let logSpy: jest.SpyInstance;

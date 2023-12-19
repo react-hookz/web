@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useCustomCompareEffect } from '../..';
+import { useCustomCompareEffect } from '#root/index.js';
 
 describe('useCustomCompareEffect', () => {
 	it('should be defined', () => {

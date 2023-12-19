@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { type ValidatorDeferred, useDebouncedCallback, useValidator } from '../..';
+import { type ValidatorDeferred, useDebouncedCallback, useValidator } from '#root/index.js';
 
 export function Example() {
 	const [text, setText] = useState('');

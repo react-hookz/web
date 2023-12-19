@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useCustomCompareEffect, useUpdateEffect } from '../..';
+import { useCustomCompareEffect, useUpdateEffect } from '#root/index.js';
 
 /**
  * A little hash function to generate a random number used to identify a string.

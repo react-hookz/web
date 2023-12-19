@@ -5,7 +5,7 @@ import {
 	truthyOrArrayPredicate,
 	useConditionalEffect,
 	useUpdateEffect,
-} from '../..';
+} from '#root/index.js';
 
 describe('useConditionalEffect', () => {
 	it('should be defined', () => {

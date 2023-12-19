@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useMediatedState } from '../..';
+import { useMediatedState } from '#root/index.js';
 
 describe('useMediatedState', () => {
 	it('should be defined', () => {

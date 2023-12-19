@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useTimeoutEffect, useToggle } from '../..';
+import { useTimeoutEffect, useToggle } from '#root/index.js';
 
 export function Example() {
 	const [numberCalls, setNumberCalls] = useState<number>(0);

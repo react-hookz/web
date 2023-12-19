@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useEventListener } from '../useEventListener';
-import { useMountEffect } from '../useMountEffect';
-import { isBrowser } from '../util/const';
+import { useEventListener } from '#root/useEventListener/index.js';
+import { useMountEffect } from '#root/useMountEffect/index.js';
+import { isBrowser } from '#root/util/const.js';
 
 const isDocumentVisible = () => document.visibilityState === 'visible';
 

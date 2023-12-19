@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isBrowser, noop } from '../util/const';
+import { isBrowser, noop } from '#root/util/const.js';
 
 /**
  * Provides vibration feedback using the Vibration API.
@@ -36,4 +36,4 @@ export const useVibrate =
 						};
 					}
 				}, [loop, pattern, enabled]);
-		  };
+			};

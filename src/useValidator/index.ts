@@ -1,6 +1,6 @@
 import { type DependencyList, type Dispatch, useCallback, useEffect, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
-import { type InitialState, type NextState } from '../util/resolveHookState';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
+import { type InitialState, type NextState } from '#root/util/resolveHookState.js';
 
 export type ValidityState = {
 	isValid: boolean | undefined;

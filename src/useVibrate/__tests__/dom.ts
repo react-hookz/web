@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useVibrate } from '../..';
+import { useVibrate } from '#root/index.js';
 
 describe('useVibrate', () => {
 	const vibrateSpy = jest.spyOn(navigator, 'vibrate');
