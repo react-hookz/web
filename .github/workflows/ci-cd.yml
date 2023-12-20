@@ -55,8 +55,8 @@ jobs:
       - name: "Build"
         run: yarn build
 
-      - name: "Tests against build"
-        run: yarn jest --selectProjects dom-package
+      - name: "Tests against built package"
+        run: yarn test
 
   test:
     name: "Test"
@@ -77,7 +77,7 @@ jobs:
           install-command: yarn --frozen-lockfile
 
       - name: "Test"
-        run: yarn test:coverage --testLocationInResults --reporters=default --reporters=@jamesacarr/jest-reporter-github-actions
+        run: yarn build:clean && yarn test:coverage --testLocationInResults --reporters=default --reporters=@jamesacarr/jest-reporter-github-actions
 
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v3

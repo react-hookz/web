@@ -1,4 +1,5 @@
 /.idea
 node_modules
 /coverage
-/dist
+/src/**/*.js
+/src/**/*.d.ts

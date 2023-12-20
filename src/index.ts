@@ -76,4 +76,4 @@ export type { EffectCallback, EffectHook } from './util/misc.js';
 export { resolveHookState } from './util/resolveHookState.js';
 
 // Types
-export * from './types.js';
+export type * from './types.js';

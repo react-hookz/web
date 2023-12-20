@@ -30,22 +30,6 @@ export default {
 			testEnvironment: 'node',
 			testMatch: ['<rootDir>/src/**/__tests__/ssr.[jt]s?(x)'],
 		},
-
-		// Needed for output bundle testing
-		{
-			displayName: 'dom-package',
-			transformIgnorePatterns: [],
-			moduleNameMapper: {
-				'^((?:\\.{1,2}|#[^\\/]*)/.*)\\.js$': '$1',
-				'^#root/index.js$': '<rootDir>/index.js',
-			},
-			transform: {
-				'^.+\\.[tj]sx?$': '@swc/jest',
-			},
-			testEnvironment: 'jsdom',
-			testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
-			setupFiles: ['./src/__tests__/setup.ts'],
-		},
 	],
 	collectCoverage: false,
 	coverageDirectory: './coverage',

@@ -20,20 +20,17 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"files": [
-		"dist"
-	],
 	"type": "module",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"main": "./src/index.js",
+	"types": "./src/index.d.ts",
 	"sideEffects": false,
 	"imports": {
 		"#root/*": "./src/*"
 	},
 	"exports": {
-		".": "./dist/index.js",
-		"./*/": "./dist/*/index.js",
-		"./*": "./dist/*"
+		".": "./src/index.js",
+		"./*/": "./src/*/index.js",
+		"./*": "./src/*"
 	},
 	"engines": {
 		"node": ">=20.0.0"
@@ -41,7 +38,8 @@
 	"scripts": {
 		"prepare": "husky install",
 		"commit": "git-cz",
-		"build": "yarn rimraf ./dist && tsc --version && tsc",
+		"build": "yarn build:clean && tsc --version && tsc",
+		"build:clean": "yarn rimraf -g ./src/**/*.js ./src/**/*.d.ts",
 		"new-hook": "node ./utility/add-new-hook.js",
 		"test": "jest --selectProjects dom ssr",
 		"test:coverage": "yarn test --coverage",
@@ -81,7 +79,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.6",
-		"@commitlint/cli": "^17.7.1",
+		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
 		"@commitlint/cz-commitlint": "^18.4.3",
 		"@jamesacarr/jest-reporter-github-actions": "^0.0.4",

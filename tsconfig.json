@@ -9,7 +9,6 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"declaration": true,
-		"outDir": "./dist",
 		"removeComments": true,
 		"newLine": "lf",
 		"forceConsistentCasingInFileNames": true,
