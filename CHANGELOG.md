@@ -1,3 +1,28 @@
+# [24.0.0](https://github.com/react-hookz/web/compare/v23.1.0...v24.0.0) (2023-12-20)
+
+
+### Features
+
+* switch package to module type ([#1472](https://github.com/react-hookz/web/issues/1472)) ([50921ef](https://github.com/react-hookz/web/commit/50921efda58aefcd52d50bfff27c31755c9253d9))
+
+
+### BREAKING CHANGES
+
+* Hooks are now distrubutes as JS built form TS with target ESNext and ESM module resolution. There is no more sense to distribute CJS version as package is ESM-only.
+
+Consequent of above - no more esm and cjs subfolders - hooks are importable from index.js or its own directory which don't have a prefix anymore, thanks to exports directive. All of below examples will lead to same result, choose any on your taste:
+
+import { useFirstMountState } from '@react-hookz/web';
+import { useFirstMountState } from '@react-hookz/web/';
+import { useFirstMountState } from '@react-hookz/web/useFirstMountState/';
+import { useFirstMountState } from '@react-hookz/web/useFirstMountState/index.js';
+Thought is seems not to have subfolder, it is only due to exports directive, in real it is
+@react-hookz/web/dist/useFirstMountState/index.js.
+
+Pakage uses imports directive to define path alias #root - it stays so even in distributed code, thus, some may be affected in case their bundler configured to somehow handle such alias. Those developer shoud configure import rewriter not to handle node_modules or @react-hookz/web package exclusively.
+
+Side-effect for current PR - documentation is broken, as storybook 6 is not working within ESM packages and I'm planning to switch to another domenting engine anyway.
+
 # [23.1.0](https://github.com/react-hookz/web/compare/v23.0.1...v23.1.0) (2023-06-30)
 
 
