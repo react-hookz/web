@@ -1,3 +1,10 @@
+## [24.0.1](https://github.com/react-hookz/web/compare/v24.0.0...v24.0.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* change build so development and distributed imports match ([6383cdd](https://github.com/react-hookz/web/commit/6383cdd5581d60aac3c0000686ebd4139eac6e65))
+
 # [24.0.0](https://github.com/react-hookz/web/compare/v23.1.0...v24.0.0) (2023-12-20)
 
 
