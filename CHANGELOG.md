@@ -1,3 +1,10 @@
+## [24.0.2](https://github.com/react-hookz/web/compare/v24.0.1...v24.0.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* lower engines requirements to ease usage for consumers ([8bd29f7](https://github.com/react-hookz/web/commit/8bd29f74340c9684160aaa445d24b81f229976b8))
+
 ## [24.0.1](https://github.com/react-hookz/web/compare/v24.0.0...v24.0.1) (2023-12-20)
 
 
