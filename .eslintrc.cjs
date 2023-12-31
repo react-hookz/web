@@ -3,9 +3,11 @@ const commonJSRules = {
 	'unicorn/prevent-abbreviations': 'off',
 	'unicorn/no-null': 'off',
 	'unicorn/no-array-for-each': 'off',
+
+	'@typescript-eslint/no-meaningless-void-operator': 'off',
+	'@typescript-eslint/no-confusing-void-expression': 'off',
 };
 
-// eslint-disable-next-line unicorn/prefer-module
 module.exports = {
 	root: true,
 

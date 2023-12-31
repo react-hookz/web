@@ -1,5 +1,5 @@
-import React, { useReducer, useMemo, useRef } from 'react';
-import { useCustomCompareMemo } from '../..';
+import { useReducer, useMemo, useRef } from 'react';
+import { useCustomCompareMemo } from '#root/index.js';
 
 // Data
 const keys = ['firstname', 'name'];

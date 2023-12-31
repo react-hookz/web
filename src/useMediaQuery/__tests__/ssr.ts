@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useMediaQuery } from '../..';
+import { useMediaQuery } from '#root/index.js';
 
 describe('useMediaQuery', () => {
 	it('should be defined', () => {

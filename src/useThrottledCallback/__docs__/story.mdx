@@ -1,12 +1,6 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Callback/useThrottledCallback" component={Example} />
-
 # useThrottledCallback
 
-Makes passed function throttled, otherwise acts like `useCallback`.  
+Makes passed function throttled, otherwise acts like `useCallback`.
 [What is throttling?](https://css-tricks.com/debouncing-throttling-explained-examples/#throttle)
 
 The third argument is dependencies list in `useCallback` manner, passed function will be re-wrapped
@@ -16,10 +10,6 @@ that calling new throttled function will abort previously scheduled invocation.
 Throttled function is always a void function since original callback invoked later.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -33,8 +23,6 @@ export function useThrottledCallback<Args extends any[], This>(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

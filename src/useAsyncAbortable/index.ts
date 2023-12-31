@@ -1,5 +1,10 @@
 import { useMemo, useRef } from 'react';
-import { type AsyncState, useAsync, type UseAsyncActions, type UseAsyncMeta } from '../useAsync';
+import {
+	type AsyncState,
+	useAsync,
+	type UseAsyncActions,
+	type UseAsyncMeta,
+} from '#root/useAsync/index.js';
 
 export type UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]> = {
 	/**

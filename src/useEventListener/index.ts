@@ -1,7 +1,7 @@
 import { type RefObject, useEffect, useMemo } from 'react';
-import { useIsMounted } from '../useIsMounted';
-import { useSyncedRef } from '../useSyncedRef';
-import { hasOwnProperty, off, on } from '../util/misc';
+import { useIsMounted } from '#root/useIsMounted/index.js';
+import { useSyncedRef } from '#root/useSyncedRef/index.js';
+import { hasOwnProperty, off, on } from '#root/util/misc.js';
 
 /**
  *  An HTML element or ref object containing an HTML element.
@@ -46,8 +46,7 @@ export function useEventListener<T extends EventTarget>(
 	);
 
 	useEffect(() => {
-		const tgt =
-			target && hasOwnProperty(target, 'current') ? (target as RefObject<T>).current : target;
+		const tgt = isRefObject(target) ? target.current : target;
 		if (!tgt) return;
 
 		const restParams: unknown[] = params.slice(2);
@@ -59,4 +58,8 @@ export function useEventListener<T extends EventTarget>(
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [target, params[0]]);
+}
+
+function isRefObject<T>(target: RefObject<T> | T | null): target is RefObject<T> {
+	return target !== null && typeof target === 'object' && hasOwnProperty(target, 'current');
 }

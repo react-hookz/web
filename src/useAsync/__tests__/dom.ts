@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsync } from '../..';
+import { useAsync } from '#root/index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
 	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
@@ -41,7 +41,7 @@ describe('useAsync', () => {
 			const [spy, resolve] = getControllableAsync<number, []>();
 			const { result } = renderHook(() => useAsync(spy, 3));
 
-			expect((result.all[0] as ReturnType<typeof useAsync>)[0]).toStrictEqual({
+			expect(result.all[0][0]).toStrictEqual({
 				status: 'not-executed',
 				error: undefined,
 				result: 3,
@@ -81,8 +81,7 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 
 		expect(result.current[0]).toStrictEqual({
@@ -109,8 +108,7 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 
 			if (resolve.current) resolve.current(123);
 		});
@@ -135,8 +133,7 @@ describe('useAsync', () => {
 		const err = new Error('some error');
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 
 			if (reject.current) reject.current(err);
 		});
@@ -159,8 +156,7 @@ describe('useAsync', () => {
 		});
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 
 			if (resolve.current) resolve.current(1);
 		});
@@ -187,14 +183,12 @@ describe('useAsync', () => {
 		const { result } = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const resolve1 = resolve.current;
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const resolve2 = resolve.current;
 
@@ -215,14 +209,12 @@ describe('useAsync', () => {
 		const { result } = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const reject1 = reject.current;
 
 		await act(async () => {
-			// eslint-disable-next-line @typescript-eslint/no-floating-promises
-			result.current[1].execute();
+			void result.current[1].execute();
 		});
 		const resolve2 = resolve.current;
 

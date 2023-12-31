@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMountEffect, useRafState } from '../..';
+import { useMountEffect, useRafState } from '#root/index.js';
 
 export function Example() {
 	const [state, setState] = useRafState({ x: 0, y: 0 });

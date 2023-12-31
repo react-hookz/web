@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useRef, useState } from 'react';
-import { type UseResizeObserverCallback, useDebouncedCallback, useResizeObserver } from '../..';
+import {
+	type UseResizeObserverCallback,
+	useDebouncedCallback,
+	useResizeObserver,
+} from '#root/index.js';
 
 export function Example() {
 	const ref = useRef<HTMLDivElement | null>(null);

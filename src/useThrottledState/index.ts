@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useThrottledCallback } from '../useThrottledCallback';
+import { useThrottledCallback } from '#root/useThrottledCallback/index.js';
 
 /**
  * Like `useState` but its state setter is throttled.

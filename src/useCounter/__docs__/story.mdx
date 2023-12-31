@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="State/useCounter" component={Example} />
-
 # useCounter
 
 Tracks a numeric value and offers functions for manipulating it.
@@ -11,10 +5,6 @@ Tracks a numeric value and offers functions for manipulating it.
 > **_This hook provides stable API, meaning returned functions do not change between renders_**
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -27,8 +17,6 @@ export function useCounter(
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 
@@ -43,13 +31,13 @@ export function useCounter(
 
 2. **methods**
 
-   - **get** - Returns the current value of the counter.
-   - **inc** - Increments the counter by the given delta (by default, 1).
-   - **dec** - Decrements the counter by the given delta (by default, 1).
-   - **set** - Sets the counter to the given value.
-   - **reset** - Resets the counter to its initial value. If a value is given, it
-     is set as the new initial value and any future calls to `reset`
-     without arguments will reset the counter to the given value.
+- **get** - Returns the current value of the counter.
+- **inc** - Increments the counter by the given delta (by default, 1).
+- **dec** - Decrements the counter by the given delta (by default, 1).
+- **set** - Sets the counter to the given value.
+- **reset** - Resets the counter to its initial value. If a value is given, it
+  is set as the new initial value and any future calls to `reset`
+  without arguments will reset the counter to the given value.
 
-   All methods respect the `max` and `min` parameters. Instead of numerical
-   arguments, they also accept functions returning numbers.
+All methods respect the `max` and `min` parameters. Instead of numerical
+arguments, they also accept functions returning numbers.

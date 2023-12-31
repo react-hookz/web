@@ -1,6 +1,6 @@
 /* eslint-disable max-nested-callbacks */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useList } from '../..';
+import { useList } from '#root/index.js';
 
 describe('useList', () => {
 	it('should be defined', () => {

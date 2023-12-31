@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useList } from '../..';
+import { useList } from '#root/index.js';
 
 describe('useList', () => {
 	it('should be defined', () => {

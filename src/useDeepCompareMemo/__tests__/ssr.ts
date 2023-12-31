@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useDeepCompareMemo } from '../..';
+import { useDeepCompareMemo } from '#root/index.js';
 
 describe('useDeepCompareMemo', () => {
 	it('should be defined', () => {

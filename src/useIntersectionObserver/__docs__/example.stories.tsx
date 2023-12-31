@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRef } from 'react';
-import { useIntersectionObserver } from '../..';
+import { useIntersectionObserver } from '#root/index.js';
 
 export function Example() {
 	const rootRef = useRef<HTMLDivElement>(null);

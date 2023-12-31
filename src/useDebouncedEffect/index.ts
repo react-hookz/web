@@ -1,5 +1,5 @@
 import { type DependencyList, useEffect } from 'react';
-import { useDebouncedCallback } from '../useDebouncedCallback';
+import { useDebouncedCallback } from '#root/useDebouncedCallback/index.js';
 
 /**
  * Like `useEffect`, but the passed function is debounced.

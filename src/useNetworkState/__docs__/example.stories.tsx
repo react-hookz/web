@@ -1,5 +1,4 @@
-import React from 'react';
-import { useNetworkState } from '../..';
+import { useNetworkState } from '#root/index.js';
 
 export function Example() {
 	const onlineState = useNetworkState();

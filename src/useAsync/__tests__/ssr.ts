@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useAsync } from '../..';
+import { useAsync } from '#root/index.js';
 
 describe('useAsync', () => {
 	it('should be defined', () => {

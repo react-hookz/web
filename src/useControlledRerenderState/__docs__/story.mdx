@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="State/useControlledRerenderState" component={Example} />
-
 # useControlledRerenderState
 
 Like `React.useState`, but its state setter accepts extra argument, that allows to cancel rerender.
@@ -11,10 +5,6 @@ Like `React.useState`, but its state setter accepts extra argument, that allows 
 - Allows to avoid rerender during state set.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -31,8 +21,6 @@ export function useControlledRerenderState<S = undefined>(): [
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

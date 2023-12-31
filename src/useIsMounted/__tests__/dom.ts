@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useIsMounted } from '../..';
+import { useIsMounted } from '#root/index.js';
 
 describe('useIsMounted', () => {
 	it('should be defined', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRerender, useLifecycleLogger } from '../..';
+import { useRerender, useLifecycleLogger } from '#root/index.js';
 
 export function Example() {
 	const rerender = useRerender();

@@ -22,9 +22,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -43,9 +43,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -55,8 +55,8 @@ jobs:
       - name: "Build"
         run: yarn build
 
-      - name: "Tests against build"
-        run: yarn jest --selectProjects dom-package
+      - name: "Tests against built package"
+        run: yarn test
 
   test:
     name: "Test"
@@ -67,9 +67,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -77,7 +77,7 @@ jobs:
           install-command: yarn --frozen-lockfile
 
       - name: "Test"
-        run: yarn test:coverage --testLocationInResults --reporters=default --reporters=@jamesacarr/jest-reporter-github-actions
+        run: yarn build:clean && yarn test:coverage --testLocationInResults --reporters=default --reporters=@jamesacarr/jest-reporter-github-actions
 
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v3
@@ -113,9 +113,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - uses: bahmutov/npm-install@v1
         with:
@@ -127,7 +127,7 @@ jobs:
 
       - name: "Release"
         id: "release"
-        uses: codfish/semantic-release-action@v2.2.0
+        uses: codfish/semantic-release-action@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsMounted, useMountEffect, useToggle } from '../..';
+import { useIsMounted, useMountEffect, useToggle } from '#root/index.js';
 
 export function Example() {
 	const [isToggled, toggle] = useToggle(false);
