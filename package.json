@@ -81,7 +81,7 @@
 		"@babel/core": "^7.23.7",
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.4",
-		"@commitlint/cz-commitlint": "^18.4.3",
+		"@commitlint/cz-commitlint": "^18.4.4",
 		"@jamesacarr/jest-reporter-github-actions": "^0.0.4",
 		"@react-hookz/eslint-config": "^2.1.4",
 		"@react-hookz/eslint-formatter-gha": "^1.0.1",
