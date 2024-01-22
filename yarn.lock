@@ -1538,10 +1538,10 @@
   resolved "https://registry.yarnpkg.com/@swc/counter/-/counter-0.1.2.tgz#bf06d0770e47c6f1102270b744e17b934586985e"
   integrity sha512-9F4ys4C74eSTEUNndnER3VJ15oru2NumfQxS8geE+f3eB5xvfxpWyqE5XlVnxb/R14uoXi6SLbBwwiDSkv+XEw==
 
-"@swc/jest@^0.2.30":
-  version "0.2.30"
-  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.30.tgz#ad561bf90d1090ec0b71d54878f85a82d3af781f"
-  integrity sha512-80KKC6GYvgrpX1/7yKsRbu88V6OAJIcMGzOLCt0pPSg1nEwJg/lLAodVy2hCD8OcYApmY5gSwD4SnwgA5Y7Q7A==
+"@swc/jest@^0.2.31":
+  version "0.2.31"
+  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.31.tgz#eb791d917326c24cad84c4d357d0b01de23c6dfd"
+  integrity sha512-Gh0Ste380O8KUY1IqsKr+aOvqqs2Loa+WcWWVNwl+lhXqOWK1iTFAP1K0IDfLqAuFP68+D/PxcpBJn21e6Quvw==
   dependencies:
     "@jest/create-cache-key-function" "^29.7.0"
     jsonc-parser "^3.2.0"
