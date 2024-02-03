@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useHookableRef } from '#root/index.js';
+import { useHookableRef } from '../../index.js';
 
 describe('useHookableRef', () => {
 	it('should be defined', () => {

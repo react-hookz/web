@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useDebouncedEffect } from '#root/index.js';
+import { useDebouncedEffect } from '../../index.js';
 
 const HAS_DIGIT_REGEX = /\d/g;
 

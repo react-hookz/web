@@ -1,5 +1,5 @@
 import { type MutableRefObject, useEffect, useState } from 'react';
-import { off, on } from '#root/util/misc.js';
+import { off, on } from '../util/misc.js';
 
 export type UsePermissionState = PermissionState | 'not-requested' | 'requested';
 

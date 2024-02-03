@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useThrottledCallback } from '#root/index.js';
+import { useThrottledCallback } from '../../index.js';
 
 function testFn(_a: any, _b: any, _c: any) {}
 

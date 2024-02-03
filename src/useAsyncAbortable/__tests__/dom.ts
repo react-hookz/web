@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsyncAbortable } from '#root/index.js';
+import { useAsyncAbortable } from '../../index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
 	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useCustomCompareMemo } from '#root/index.js';
+import { useCustomCompareMemo } from '../../index.js';
 
 describe('useCustomCompareMemo', () => {
 	it('should be defined', () => {

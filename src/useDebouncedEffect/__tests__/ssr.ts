@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useDebouncedEffect } from '#root/index.js';
+import { useDebouncedEffect } from '../../index.js';
 
 describe('useDebouncedEffect', () => {
 	beforeAll(() => {

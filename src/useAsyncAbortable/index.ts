@@ -4,7 +4,7 @@ import {
 	useAsync,
 	type UseAsyncActions,
 	type UseAsyncMeta,
-} from '#root/useAsync/index.js';
+} from '../useAsync/index.js';
 
 export type UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]> = {
 	/**

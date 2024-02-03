@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useWindowSize } from '#root/index.js';
+import { useWindowSize } from '../../index.js';
 
 export function Example() {
 	const size = useWindowSize();

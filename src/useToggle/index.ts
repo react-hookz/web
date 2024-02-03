@@ -1,10 +1,6 @@
 import { type BaseSyntheticEvent, useCallback, useState } from 'react';
-import { useSyncedRef } from '#root/useSyncedRef/index.js';
-import {
-	type InitialState,
-	type NextState,
-	resolveHookState,
-} from '#root/util/resolveHookState.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { type InitialState, type NextState, resolveHookState } from '../util/resolveHookState.js';
 
 export function useToggle(
 	initialState: InitialState<boolean>,

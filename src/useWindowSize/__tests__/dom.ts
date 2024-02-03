@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useState } from 'react';
-import { useWindowSize, type WindowSize } from '#root/index.js';
+import { useWindowSize, type WindowSize } from '../../index.js';
 
 const triggerResize = (dimension: 'width' | 'height', value: number) => {
 	if (dimension === 'width') {

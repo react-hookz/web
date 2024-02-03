@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToggle, useVibrate } from '#root/index.js';
+import { useToggle, useVibrate } from '../../index.js';
 
 export function Example() {
 	const [doVibrate, setDoVibrate] = useToggle(false);

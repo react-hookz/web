@@ -24,9 +24,6 @@
 	"main": "./src/index.js",
 	"types": "./src/index.d.ts",
 	"sideEffects": false,
-	"imports": {
-		"#root/*": "./src/*"
-	},
 	"exports": {
 		".": "./src/index.js",
 		"./*/": "./src/*/index.js",

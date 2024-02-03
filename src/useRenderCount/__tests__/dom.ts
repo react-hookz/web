@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useRenderCount } from '#root/index.js';
+import { useRenderCount } from '../../index.js';
 
 describe('useRendersCount', () => {
 	it('should be defined', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToggle } from '#root/index.js';
+import { useToggle } from '../../index.js';
 
 export function Example() {
 	const [isToggled, toggle] = useToggle(true);

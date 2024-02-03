@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { isBrowser } from '#root/util/const.js';
-import { off, on } from '#root/util/misc.js';
-import { type InitialState } from '#root/util/resolveHookState.js';
+import { isBrowser } from '../util/const.js';
+import { off, on } from '../util/misc.js';
+import { type InitialState } from '../util/resolveHookState.js';
 
 export type NetworkInformation = {
 	readonly downlink: number;

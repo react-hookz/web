@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useEventListener, useToggle } from '#root/index.js';
+import { useEventListener, useToggle } from '../../index.js';
 
 export function Example() {
 	const [state, setState] = useState<Date>();

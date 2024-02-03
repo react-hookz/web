@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAsync, useMountEffect } from '#root/index.js';
+import { useAsync, useMountEffect } from '../../index.js';
 
 export function Example() {
 	const [state, actions] = useAsync(
