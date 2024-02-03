@@ -1,3 +1,10 @@
+## [24.0.3](https://github.com/react-hookz/web/compare/v24.0.2...v24.0.3) (2024-02-03)
+
+
+### Bug Fixes
+
+* get rid of import alias as it still breaks everything around ([#1509](https://github.com/react-hookz/web/issues/1509)) ([90e4f9d](https://github.com/react-hookz/web/commit/90e4f9d2b62677b9da412c6787c0b201d2ee6931))
+
 ## [24.0.2](https://github.com/react-hookz/web/compare/v24.0.1...v24.0.2) (2023-12-21)
 
 
