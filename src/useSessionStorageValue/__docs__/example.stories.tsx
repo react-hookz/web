@@ -1,4 +1,4 @@
-import { useSessionStorageValue } from '#root/index.js';
+import { useSessionStorageValue } from '../../index.js';
 
 type ExampleProps = {
 	/**

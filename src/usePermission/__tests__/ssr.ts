@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { usePermission } from '#root/index.js';
+import { usePermission } from '../../index.js';
 
 describe('usePermission', () => {
 	it('should be defined', () => {

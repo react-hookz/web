@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useIntervalEffect } from '#root/index.js';
+import { useIntervalEffect } from '../../index.js';
 
 describe('useIntervalEffect', () => {
 	it('should be defined', () => {

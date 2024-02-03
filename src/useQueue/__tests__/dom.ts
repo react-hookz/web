@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useQueue } from '#root/index.js';
+import { useQueue } from '../../index.js';
 
 describe('useQueue', () => {
 	it('should be defined', () => {

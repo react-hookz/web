@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useConditionalEffect, useUpdateEffect } from '#root/index.js';
+import { useConditionalEffect, useUpdateEffect } from '../../index.js';
 
 export function Example() {
 	const [state1, setState1] = useState(2);

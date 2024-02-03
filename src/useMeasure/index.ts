@@ -1,10 +1,7 @@
 import { type MutableRefObject, useState } from 'react';
-import { useHookableRef } from '#root/useHookableRef/index.js';
-import { useRafCallback } from '#root/useRafCallback/index.js';
-import {
-	useResizeObserver,
-	type UseResizeObserverCallback,
-} from '#root/useResizeObserver/index.js';
+import { useHookableRef } from '../useHookableRef/index.js';
+import { useRafCallback } from '../useRafCallback/index.js';
+import { useResizeObserver, type UseResizeObserverCallback } from '../useResizeObserver/index.js';
 
 export type Measures = {
 	width: number;

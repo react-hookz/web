@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useWindowSize } from '#root/index.js';
+import { useWindowSize } from '../../index.js';
 
 describe('useWindowSize', () => {
 	it('should be defined', () => {

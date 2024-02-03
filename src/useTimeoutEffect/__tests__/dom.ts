@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useTimeoutEffect } from '#root/index.js';
+import { useTimeoutEffect } from '../../index.js';
 
 describe('useTimeoutEffect', () => {
 	beforeAll(() => {

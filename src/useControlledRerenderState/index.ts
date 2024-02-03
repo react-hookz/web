@@ -1,7 +1,7 @@
 import { type SetStateAction, useCallback, useRef } from 'react';
-import { useFirstMountState } from '#root/useFirstMountState/index.js';
-import { useRerender } from '#root/useRerender/index.js';
-import { resolveHookState } from '#root/util/resolveHookState.js';
+import { useFirstMountState } from '../useFirstMountState/index.js';
+import { useRerender } from '../useRerender/index.js';
+import { resolveHookState } from '../util/resolveHookState.js';
 
 export type ControlledRerenderDispatch<A> = (value: A, rerender?: boolean) => void;
 

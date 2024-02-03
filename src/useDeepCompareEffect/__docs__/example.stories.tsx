@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { useDeepCompareEffect, useRerender } from '#root/index.js';
+import { useDeepCompareEffect, useRerender } from '../../index.js';
 
 export function Example() {
 	const rerender = useRerender();

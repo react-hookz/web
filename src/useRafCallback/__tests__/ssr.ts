@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useRafCallback } from '#root/index.js';
+import { useRafCallback } from '../../index.js';
 
 describe('useRafCallback', () => {
 	it('should be defined', () => {

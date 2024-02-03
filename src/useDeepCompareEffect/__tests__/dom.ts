@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDeepCompareEffect } from '#root/index.js';
+import { useDeepCompareEffect } from '../../index.js';
 
 describe('useDeepCompareEffect', () => {
 	it('should be defined', () => {

@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 import { type Dispatch, useCallback, useEffect, useState } from 'react';
-import { useFirstMountState } from '#root/useFirstMountState/index.js';
-import { useMountEffect } from '#root/useMountEffect/index.js';
-import { useSyncedRef } from '#root/useSyncedRef/index.js';
-import { isBrowser } from '#root/util/const.js';
+import { useFirstMountState } from '../useFirstMountState/index.js';
+import { useMountEffect } from '../useMountEffect/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { isBrowser } from '../util/const.js';
 
 const cookiesSetters = new Map<string, Set<Dispatch<string | null>>>();
 

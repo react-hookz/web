@@ -1,4 +1,4 @@
-import { useCounter } from '#root/index.js';
+import { useCounter } from '../../index.js';
 
 export function Example() {
 	const [min, { inc: incMin, dec: decMin }] = useCounter(1);
