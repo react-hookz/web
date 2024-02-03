@@ -240,10 +240,10 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/AndreasNel">
-            <img src="https://avatars.githubusercontent.com/u/17763359?v=4" width="100;" alt="AndreasNel"/>
+        <a href="https://github.com/wesgro">
+            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
             <br />
-            <sub><b>Andreas Nel</b></sub>
+            <sub><b>Jake Ketcheson</b></sub>
         </a>
     </td>
     <td align="center">
@@ -254,89 +254,25 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/wesgro">
-            <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
+        <a href="https://github.com/AndreasNel">
+            <img src="https://avatars.githubusercontent.com/u/17763359?v=4" width="100;" alt="AndreasNel"/>
             <br />
-            <sub><b>Jake Ketcheson</b></sub>
+            <sub><b>Andreas Nel</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/akd-io">
-            <img src="https://avatars.githubusercontent.com/u/30059155?v=4" width="100;" alt="akd-io"/>
+        <a href="https://github.com/fengkx">
+            <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
             <br />
-            <sub><b>Anders Kjær Damgaard</b></sub>
+            <sub><b>Fengkx</b></sub>
         </a>
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/axelboc">
-            <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="100;" alt="axelboc"/>
+        <a href="https://github.com/paul-sachs">
+            <img src="https://avatars.githubusercontent.com/u/11449728?v=4" width="100;" alt="paul-sachs"/>
             <br />
-            <sub><b>Axel Bocciarelli</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/lensbart">
-            <img src="https://avatars.githubusercontent.com/u/20876627?v=4" width="100;" alt="lensbart"/>
-            <br />
-            <sub><b>Bart Lens</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/birant">
-            <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="100;" alt="birant"/>
-            <br />
-            <sub><b>Birant İyigün</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/punkle">
-            <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="100;" alt="punkle"/>
-            <br />
-            <sub><b>Brian Fletcher</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/ChloeMouret">
-            <img src="https://avatars.githubusercontent.com/u/63965373?v=4" width="100;" alt="ChloeMouret"/>
-            <br />
-            <sub><b>Null</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/dantman">
-            <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
-            <br />
-            <sub><b>Daniel Friesen</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/JoshuaStewartEntelect">
-            <img src="https://avatars.githubusercontent.com/u/92043787?v=4" width="100;" alt="JoshuaStewartEntelect"/>
-            <br />
-            <sub><b>Joshua Stewart</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/jpwallace22">
-            <img src="https://avatars.githubusercontent.com/u/93415734?v=4" width="100;" alt="jpwallace22"/>
-            <br />
-            <sub><b>Justin Wallace</b></sub>
-        </a>
-    </td></tr>
-<tr>
-    <td align="center">
-        <a href="https://github.com/KonradLinkowski">
-            <img src="https://avatars.githubusercontent.com/u/26126510?v=4" width="100;" alt="KonradLinkowski"/>
-            <br />
-            <sub><b>Konrad Linkowski</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/MichalTarasiuk">
-            <img src="https://avatars.githubusercontent.com/u/69385846?v=4" width="100;" alt="MichalTarasiuk"/>
-            <br />
-            <sub><b>Michał Tarasiuk</b></sub>
+            <sub><b>Paul Sachs</b></sub>
         </a>
     </td>
     <td align="center">
@@ -347,17 +283,81 @@ Coming from `react-use`? Check out our
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/paul-sachs">
-            <img src="https://avatars.githubusercontent.com/u/11449728?v=4" width="100;" alt="paul-sachs"/>
+        <a href="https://github.com/MichalTarasiuk">
+            <img src="https://avatars.githubusercontent.com/u/69385846?v=4" width="100;" alt="MichalTarasiuk"/>
             <br />
-            <sub><b>Paul Sachs</b></sub>
+            <sub><b>Michał Tarasiuk</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/fengkx">
-            <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
+        <a href="https://github.com/KonradLinkowski">
+            <img src="https://avatars.githubusercontent.com/u/26126510?v=4" width="100;" alt="KonradLinkowski"/>
             <br />
-            <sub><b>Fengkx</b></sub>
+            <sub><b>Konrad Linkowski</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jpwallace22">
+            <img src="https://avatars.githubusercontent.com/u/93415734?v=4" width="100;" alt="jpwallace22"/>
+            <br />
+            <sub><b>Justin Wallace</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/JoshuaStewartEntelect">
+            <img src="https://avatars.githubusercontent.com/u/92043787?v=4" width="100;" alt="JoshuaStewartEntelect"/>
+            <br />
+            <sub><b>Joshua Stewart</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/dantman">
+            <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
+            <br />
+            <sub><b>Daniel Friesen</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/ChloeMouret">
+            <img src="https://avatars.githubusercontent.com/u/63965373?v=4" width="100;" alt="ChloeMouret"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/punkle">
+            <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="100;" alt="punkle"/>
+            <br />
+            <sub><b>Brian Fletcher</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/birant">
+            <img src="https://avatars.githubusercontent.com/u/29652801?v=4" width="100;" alt="birant"/>
+            <br />
+            <sub><b>Birant İyigün</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/lensbart">
+            <img src="https://avatars.githubusercontent.com/u/20876627?v=4" width="100;" alt="lensbart"/>
+            <br />
+            <sub><b>Bart Lens</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/axelboc">
+            <img src="https://avatars.githubusercontent.com/u/2936402?v=4" width="100;" alt="axelboc"/>
+            <br />
+            <sub><b>Axel Bocciarelli</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/akd-io">
+            <img src="https://avatars.githubusercontent.com/u/30059155?v=4" width="100;" alt="akd-io"/>
+            <br />
+            <sub><b>Anders Kjær Damgaard</b></sub>
         </a>
     </td></tr>
 </table>
