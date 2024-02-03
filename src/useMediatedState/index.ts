@@ -30,11 +30,10 @@ export function useMediatedState<State, RawState = State>(
 		state as State,
 		useCallback((value) => {
 			if (mediatorRef.current) {
-				setState(
-					(previousState) =>
-						mediatorRef.current?.(
-							resolveHookState<RawState, State | undefined>(value, previousState as State)
-						)
+				setState((previousState) =>
+					mediatorRef.current?.(
+						resolveHookState<RawState, State | undefined>(value, previousState as State)
+					)
 				);
 			} else {
 				setState(value as unknown as State);
