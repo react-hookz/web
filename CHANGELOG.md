@@ -1,3 +1,10 @@
+## [24.0.4](https://github.com/react-hookz/web/compare/v24.0.3...v24.0.4) (2024-02-04)
+
+
+### Bug Fixes
+
+* **useDebouncedCallback:** make invoked function to be updated with deps ([#1510](https://github.com/react-hookz/web/issues/1510)) ([12658ee](https://github.com/react-hookz/web/commit/12658ee8176fca60b212af6a1f935f9975239ed1)), closes [#1357](https://github.com/react-hookz/web/issues/1357)
+
 ## [24.0.3](https://github.com/react-hookz/web/compare/v24.0.2...v24.0.3) (2024-02-03)
 
 
