@@ -152,4 +152,32 @@ describe('useDebouncedCallback', () => {
 		jest.advanceTimersByTime(200);
 		expect(cb).toHaveBeenCalledTimes(1);
 	});
+
+	it('should call updated function only when deps changed', () => {
+		const cb = jest.fn();
+
+		const { result, rerender } = renderHook(
+			({ cb, deps }: { cb: () => void; deps: any[] }) => useDebouncedCallback(cb, deps, 200, 200),
+			{
+				initialProps: {
+					cb() {},
+					deps: [0],
+				},
+			}
+		);
+
+		result.current();
+
+		rerender({ cb, deps: [0] });
+
+		jest.advanceTimersByTime(200);
+		expect(cb).toHaveBeenCalledTimes(0);
+
+		result.current();
+
+		rerender({ cb, deps: [1] });
+
+		jest.advanceTimersByTime(200);
+		expect(cb).toHaveBeenCalledTimes(1);
+	});
 });
