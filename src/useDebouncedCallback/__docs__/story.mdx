@@ -29,7 +29,8 @@ export function useDebouncedCallback<Args extends any[], This>(
 #### Arguments
 
 - **callback** _`(...args: T) => unknown`_ - function that will be debounced.
-- **deps** _`React.DependencyList`_ - dependencies list when to update callback.
+- **deps** _`React.DependencyList`_ - dependencies list when to update callback. It also replaces
+  invoked callback for scheduled debounced invocations.
 - **delay** _`number`_ - debounce delay.
 - **maxWait** _`number`_ _(default: `0`)_ - The maximum time `callback` is allowed to be delayed
   before it's invoked. `0` means no max wait.
