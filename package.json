@@ -86,7 +86,7 @@
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/github": "^9.2.6",
 		"@swc/core": "^1.4.1",
-		"@swc/jest": "^0.2.34",
+		"@swc/jest": "^0.2.36",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/jest": "^29.5.12",
 		"@types/js-cookie": "^3.0.6",
