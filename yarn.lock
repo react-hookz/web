@@ -7,7 +7,7 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@actions/core@^1.2.6", "@actions/core@^1.9.1":
+"@actions/core@^1.10.1", "@actions/core@^1.2.6":
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.10.1.tgz#61108e7ac40acae95ee36da074fa5850ca4ced8a"
   integrity sha512-3lBR9EDAY+iYIpTnTIXmWcNbX3T2kCkAEQGIQx4NVQ0575nk2k3GRZDTPQG+vVtS2izSLmINlxXf0uLtnrTP+g==
@@ -1301,12 +1301,12 @@
     eslint-plugin-react-hooks "^4.6.0"
     eslint-plugin-unicorn "^50.0.1"
 
-"@react-hookz/eslint-formatter-gha@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-formatter-gha/-/eslint-formatter-gha-1.0.1.tgz#1cbd0a398a8b6b738388af430933e699ad29c6fc"
-  integrity sha512-3fQWSevZuFDExH276MnSW0Q+OZU/tArOlSJhM2nYm81ALn1horXXAsDjVdFX5WQVn5+oF1D95VBUwEW6ABs5DQ==
+"@react-hookz/eslint-formatter-gha@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-formatter-gha/-/eslint-formatter-gha-2.0.1.tgz#6402cda92f0f0197fd33bfb9c381a0ec98228869"
+  integrity sha512-39Aofq3MhvvVYVkCj2Oo6VlKH2MvuZJ9eHnuDS5dJKu2HbEi7Nt4oVniDLIXmzq27kXFKlN/6l0yf80i4PhGsA==
   dependencies:
-    "@actions/core" "^1.9.1"
+    "@actions/core" "^1.10.1"
 
 "@semantic-release/changelog@^6.0.3":
   version "6.0.3"
