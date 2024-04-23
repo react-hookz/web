@@ -1,5 +1,5 @@
 import { type DependencyList, useEffect } from 'react';
-import { useThrottledCallback } from '../useThrottledCallback';
+import { useThrottledCallback } from '../useThrottledCallback/index.js';
 
 /**
  * Like `useEffect`, but passed function is throttled.

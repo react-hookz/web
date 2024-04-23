@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useRafState } from '../..';
+import { useRafState } from '../../index.js';
 
 describe('useRafState', () => {
 	it('should be defined', () => {

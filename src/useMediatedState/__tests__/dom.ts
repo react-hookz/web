@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useMediatedState } from '../..';
+import { useMediatedState } from '../../index.js';
 
 describe('useMediatedState', () => {
 	it('should be defined', () => {
@@ -22,7 +22,7 @@ describe('useMediatedState', () => {
 	});
 
 	it('should pass received sate through mediator', () => {
-		const spy = jest.fn((val: string) => Number.parseInt(val, 10));
+		const spy = jest.fn((value: string) => Number.parseInt(value, 10));
 		const { result } = renderHook(() => useMediatedState(123, spy));
 
 		expect(result.current[0]).toBe(123);
@@ -36,7 +36,7 @@ describe('useMediatedState', () => {
 
 	it('should pass initial sate through mediator', () => {
 		const { result } = renderHook(() =>
-			useMediatedState('a123', (val: string) => val.replaceAll(/[^a-z]+/gi, ''))
+			useMediatedState('a123', (value: string) => value.replaceAll(/[^a-z]+/gi, ''))
 		);
 
 		expect(result.current[0]).toBe('a');
@@ -44,7 +44,7 @@ describe('useMediatedState', () => {
 
 	it('should return same setState method each render even if callback is changed', () => {
 		const { result, rerender } = renderHook(() =>
-			useMediatedState(123, (val: string) => Number.parseInt(val, 10))
+			useMediatedState(123, (value: string) => Number.parseInt(value, 10))
 		);
 
 		const f1 = result.current[1];

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
-import { useUnmountEffect } from '../useUnmountEffect';
-import { isBrowser } from '../util/const';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { useUnmountEffect } from '../useUnmountEffect/index.js';
+import { isBrowser } from '../util/const.js';
 
 /**
  * Makes passed function to be called within next animation frame.

@@ -1,5 +1,5 @@
 import { type Dispatch, useEffect, useState } from 'react';
-import { isBrowser } from '../util/const';
+import { isBrowser } from '../util/const.js';
 
 const queriesMap = new Map<
 	string,
@@ -12,9 +12,9 @@ const createQueryEntry = (query: string) => {
 	const mql = matchMedia(query);
 	const dispatchers = new Set<QueryStateSetter>();
 	const listener = () => {
-		dispatchers.forEach((d) => {
+		for (const d of dispatchers) {
 			d(mql.matches);
-		});
+		}
 	};
 
 	if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
@@ -48,7 +48,7 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
 		const { mql, dispatchers, listener } = entry;
 		dispatchers.delete(setState);
 
-		if (!dispatchers.size) {
+		if (dispatchers.size === 0) {
 			queriesMap.delete(query);
 
 			if (mql.removeEventListener) mql.removeEventListener('change', listener);

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useUnmountEffect } from '../..';
+import { useUnmountEffect } from '../../index.js';
 
 describe('useUnmountEffect', () => {
 	it('should call effector only when component unmounted', () => {

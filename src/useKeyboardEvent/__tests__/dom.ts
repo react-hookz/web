@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { type KeyboardEventFilter, useKeyboardEvent } from '../..';
+import { type KeyboardEventFilter, useKeyboardEvent } from '../../index.js';
 
 describe('useKeyboardEvent', () => {
 	it('should be defined', () => {
@@ -71,7 +71,7 @@ describe('useKeyboardEvent', () => {
 		const div = document.createElement('div');
 		let context: any;
 		const spy = jest.fn(function (this: any) {
-			// eslint-disable-next-line @typescript-eslint/no-this-alias
+			// eslint-disable-next-line @typescript-eslint/no-this-alias,@typescript-eslint/no-unsafe-assignment,unicorn/no-this-assignment
 			context = this;
 		});
 
@@ -96,7 +96,7 @@ describe('useKeyboardEvent', () => {
 		const div = document.createElement('div');
 		let context: any;
 		const spy = jest.fn(function (this: any) {
-			// eslint-disable-next-line @typescript-eslint/no-this-alias
+			// eslint-disable-next-line @typescript-eslint/no-this-alias,@typescript-eslint/no-unsafe-assignment,unicorn/no-this-assignment
 			context = this;
 		});
 
@@ -121,7 +121,7 @@ describe('useKeyboardEvent', () => {
 		const div = document.createElement('div');
 		let context: any;
 		const spy = jest.fn(function (this: any) {
-			// eslint-disable-next-line @typescript-eslint/no-this-alias
+			// eslint-disable-next-line @typescript-eslint/no-this-alias,@typescript-eslint/no-unsafe-assignment,unicorn/no-this-assignment
 			context = this;
 		});
 

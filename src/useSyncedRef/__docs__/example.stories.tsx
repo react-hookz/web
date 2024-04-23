@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { useRerender, useSyncedRef } from '../..';
+import { useRef } from 'react';
+import { useRerender, useSyncedRef } from '../../index.js';
 
 export function Example() {
 	const ref = useRef(0);

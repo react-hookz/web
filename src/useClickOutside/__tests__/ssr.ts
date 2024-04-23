@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useClickOutside } from '../..';
+import { useClickOutside } from '../../index.js';
 
 describe('useClickOutside', () => {
 	it('should be defined', () => {

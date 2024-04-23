@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { newStorage } from './misc';
-import { useStorageValue } from '..';
+import { useStorageValue } from '../index.js';
+import { newStorage } from './misc.js';
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {
@@ -22,11 +22,11 @@ describe('useStorageValue', () => {
 		});
 		rerender();
 
-		type ResultType = typeof result.current;
+		const firstResult = result.all[0] as ReturnType<typeof useStorageValue>;
 
-		expect((result.all[0] as ResultType).set).toBe(result.current.set);
-		expect((result.all[0] as ResultType).fetch).toBe(result.current.fetch);
-		expect((result.all[0] as ResultType).remove).toBe(result.current.remove);
+		expect(firstResult.set).toBe(result.current.set);
+		expect(firstResult.fetch).toBe(result.current.fetch);
+		expect(firstResult.remove).toBe(result.current.remove);
 	});
 
 	it('should fetch value from storage only on init', () => {
@@ -216,14 +216,14 @@ describe('useStorageValue', () => {
 		const { result } = renderHook(() =>
 			useStorageValue<number[]>(storage, 'foo', {
 				stringify(data) {
-					return data.map((num) => num.toString(16)).join(':');
+					return data.map((number_) => number_.toString(16)).join(':');
 				},
 				parse(str, fallback) {
 					if (str === null) return fallback;
 
 					if (str === '') return [];
 
-					return str.split(':').map((num) => Number.parseInt(num, 16));
+					return str.split(':').map((number_) => Number.parseInt(number_, 16));
 				},
 			})
 		);
@@ -241,14 +241,14 @@ describe('useStorageValue', () => {
 		const { result } = renderHook(() =>
 			useStorageValue<number[]>(storage, 'foo', {
 				stringify(data) {
-					return data.map((num) => num.toString(16)).join(':');
+					return data.map((number_) => number_.toString(16)).join(':');
 				},
 				parse(str, fallback) {
 					if (str === null) return fallback;
 
 					if (str === '') return [];
 
-					return str.split(':').map((num) => Number.parseInt(num, 16));
+					return str.split(':').map((number_) => Number.parseInt(number_, 16));
 				},
 			})
 		);

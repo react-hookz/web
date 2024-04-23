@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useConditionalEffect } from '../..';
+import { useConditionalEffect } from '../../index.js';
 
 describe('useConditionalEffect', () => {
 	it('should be defined', () => {
@@ -15,7 +15,7 @@ describe('useConditionalEffect', () => {
 
 	it('should not invoke nor effect nor predicate', () => {
 		const spy = jest.fn();
-		const predicateSpy = jest.fn((arr: unknown[]) => arr.some(Boolean));
+		const predicateSpy = jest.fn((array: unknown[]) => array.some(Boolean));
 		renderHook(() => {
 			useConditionalEffect(spy, undefined, [true], predicateSpy);
 		});

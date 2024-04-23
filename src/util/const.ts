@@ -1,4 +1,4 @@
-import type { Predicate, ConditionsPredicate } from '../types';
+import { type Predicate, type ConditionsPredicate } from '../types.js';
 
 export const noop = (): void => {};
 
@@ -12,7 +12,7 @@ export const isBrowser =
  * redefinitions of the same function. In-place strict equality checks are more performant.
  */
 
-export const isStrictEqual: Predicate = (prev: any, next: any): boolean => prev === next;
+export const isStrictEqual: Predicate = (previous: any, next: any): boolean => previous === next;
 
 export const truthyAndArrayPredicate: ConditionsPredicate = (conditions): boolean =>
 	conditions.every(Boolean);

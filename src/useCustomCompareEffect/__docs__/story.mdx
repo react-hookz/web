@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Lifecycle/useCustomCompareEffect" component={Example} />
-
 # useCustomCompareEffect
 
 Like `useEffect` but uses provided comparator function to validate dependency changes.
@@ -13,10 +7,6 @@ Like `useEffect` but uses provided comparator function to validate dependency ch
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -24,7 +14,7 @@ export function useCustomCompareEffect<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList = DependencyList,
 	HookRestArgs extends any[] = any[],
-	R extends HookRestArgs = HookRestArgs
+	R extends HookRestArgs = HookRestArgs,
 >(
 	callback: Callback,
 	deps: Deps,
@@ -35,8 +25,6 @@ export function useCustomCompareEffect<
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

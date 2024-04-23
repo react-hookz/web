@@ -1,5 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDebouncedCallback } from '../..';
+import { useDebouncedCallback } from '../../index.js';
+
+function testFn(_a: any, _b: any, _c: any) {}
 
 describe('useDebouncedCallback', () => {
 	beforeAll(() => {
@@ -32,8 +34,6 @@ describe('useDebouncedCallback', () => {
 
 		expect(result.current.length).toBe(3);
 		expect(result.current.name).toBe(`anonymous__debounced__200`);
-
-		function testFn(_a: any, _b: any, _c: any) {}
 
 		result = renderHook(() => useDebouncedCallback(testFn, [], 100)).result;
 
@@ -149,6 +149,34 @@ describe('useDebouncedCallback', () => {
 
 		result.current();
 		expect(cb).not.toHaveBeenCalled();
+		jest.advanceTimersByTime(200);
+		expect(cb).toHaveBeenCalledTimes(1);
+	});
+
+	it('should call updated function only when deps changed', () => {
+		const cb = jest.fn();
+
+		const { result, rerender } = renderHook(
+			({ cb, deps }: { cb: () => void; deps: any[] }) => useDebouncedCallback(cb, deps, 200, 200),
+			{
+				initialProps: {
+					cb() {},
+					deps: [0],
+				},
+			}
+		);
+
+		result.current();
+
+		rerender({ cb, deps: [0] });
+
+		jest.advanceTimersByTime(200);
+		expect(cb).toHaveBeenCalledTimes(0);
+
+		result.current();
+
+		rerender({ cb, deps: [1] });
+
 		jest.advanceTimersByTime(200);
 		expect(cb).toHaveBeenCalledTimes(1);
 	});

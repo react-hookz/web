@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useScreenOrientation } from '../..';
+import { useScreenOrientation } from '../../index.js';
 
 export function Example() {
 	const orientation = useScreenOrientation();

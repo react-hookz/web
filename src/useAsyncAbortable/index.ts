@@ -1,5 +1,10 @@
 import { useMemo, useRef } from 'react';
-import { type AsyncState, useAsync, type UseAsyncActions, type UseAsyncMeta } from '../useAsync';
+import {
+	type AsyncState,
+	useAsync,
+	type UseAsyncActions,
+	type UseAsyncMeta,
+} from '../useAsync/index.js';
 
 export type UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]> = {
 	/**
@@ -28,7 +33,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ];
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
@@ -36,7 +41,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result | undefined>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ];
 
 /**
@@ -52,7 +57,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result | undefined>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ] {
 	const abortController = useRef<AbortController>();
 

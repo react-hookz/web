@@ -1,24 +1,14 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="State/useMap" component={Example} />
-
 # useMap
 
 Tracks the state of a `Map`.
 
 - Returned map does not change between renders.
 - 1-to-1 signature with the native `Map` object, but its methods are wrapped to cause components to
-  rerender with changes.  
+  rerender with changes.
   Otherwise, it is the JavaScript native `Map` object.
 - SSR-friendly.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -27,8 +17,6 @@ export function useMap<K = any, V = any>(entries?: readonly (readonly [K, V])[] 
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

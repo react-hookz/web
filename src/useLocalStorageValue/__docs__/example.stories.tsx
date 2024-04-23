@@ -1,22 +1,21 @@
-import React from 'react';
-import { useLocalStorageValue } from '../..';
+import { useLocalStorageValue } from '../../index.js';
 
 type ExampleProps = {
 	/**
 	 * Default value to return in case key not presented in LocalStorage.
 	 */
-	defaultValue: string;
+	readonly defaultValue: string;
 	/**
 	 * LocalStorage key to manage.
 	 */
-	key: string;
+	readonly key: string;
 };
 
 export function Example({
 	key = 'react-hookz-ls-test',
 	defaultValue = '@react-hookz is awesome',
 }: ExampleProps) {
-	const lsVal = useLocalStorageValue(key, {
+	const lsValue = useLocalStorageValue(key, {
 		defaultValue,
 	});
 
@@ -29,12 +28,12 @@ export function Example({
 			<br />
 			<input
 				type="text"
-				value={lsVal.value}
+				value={lsValue.value}
 				onChange={(ev) => {
-					lsVal.set(ev.currentTarget.value);
+					lsValue.set(ev.currentTarget.value);
 				}}
 			/>
-			<button type="button" onClick={lsVal.remove}>
+			<button type="button" onClick={lsValue.remove}>
 				remove storage value
 			</button>
 		</div>

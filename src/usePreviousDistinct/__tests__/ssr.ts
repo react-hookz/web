@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { usePreviousDistinct } from '../..';
-import { isStrictEqual } from '../../util/const';
+import { usePreviousDistinct } from '../../index.js';
+import { isStrictEqual } from '../../util/const.js';
 
 describe('usePreviousDistinct', () => {
 	it('should be defined', () => {

@@ -1,5 +1,6 @@
+/* eslint-disable max-nested-callbacks */
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useList } from '../..';
+import { useList } from '../../index.js';
 
 describe('useList', () => {
 	it('should be defined', () => {
@@ -347,5 +348,6 @@ function mockFunctionCallArgument(
 	callIndex: number,
 	argumentIndex: number
 ) {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 	return mockFunction.mock.calls[callIndex][argumentIndex];
 }

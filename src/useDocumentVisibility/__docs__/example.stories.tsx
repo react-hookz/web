@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { useDocumentVisibility } from '../..';
+import { useDocumentVisibility } from '../../index.js';
 
 export function Example() {
 	const isVisible = useDocumentVisibility();

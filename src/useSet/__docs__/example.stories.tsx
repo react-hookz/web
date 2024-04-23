@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as React from 'react';
-import { useSet } from '../..';
+import { useSet } from '../../index.js';
 
 export function Example() {
 	const set = useSet(['@react-hooks', 'is awesome']);

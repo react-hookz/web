@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePermission } from '../..';
+import { usePermission } from '../../index.js';
 
 export function Example() {
 	const status = usePermission({ name: 'notifications' });

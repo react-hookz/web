@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useEffect } from 'react';
-import { useMeasure } from '../..';
+import { useMeasure } from '../../index.js';
 import Mock = jest.Mock;
 
 describe('useMeasure', () => {
@@ -95,6 +95,7 @@ describe('useMeasure', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 		expect(result.current[0]).toBeUndefined();
 

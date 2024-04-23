@@ -1,5 +1,5 @@
-import { type DependencyList, useMemo, useRef } from 'react';
-import { useUnmountEffect } from '../useUnmountEffect';
+import { type DependencyList, useEffect, useMemo, useRef } from 'react';
+import { useUnmountEffect } from '../useUnmountEffect/index.js';
 
 export type DebouncedFunction<Fn extends (...args: any[]) => any> = (
 	this: ThisParameterType<Fn>,
@@ -10,7 +10,8 @@ export type DebouncedFunction<Fn extends (...args: any[]) => any> = (
  * Makes passed function debounced, otherwise acts like `useCallback`.
  *
  * @param callback Function that will be debounced.
- * @param deps Dependencies list when to update callback.
+ * @param deps Dependencies list when to update callback. It also replaces invoked
+ * 	callback for scheduled debounced invocations.
  * @param delay Debounce delay.
  * @param maxWait The maximum time `callback` is allowed to be delayed before
  * it's invoked. 0 means no max wait.
@@ -23,6 +24,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 ): DebouncedFunction<Fn> {
 	const timeout = useRef<ReturnType<typeof setTimeout>>();
 	const waitTimeout = useRef<ReturnType<typeof setTimeout>>();
+	const cb = useRef(callback);
 	const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
 
 	const clear = () => {
@@ -40,8 +42,15 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 	// Cancel scheduled execution on unmount
 	useUnmountEffect(clear);
 
+	useEffect(() => {
+		cb.current = callback;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, deps);
+
 	return useMemo(() => {
 		const execute = () => {
+			clear();
+
 			// Barely possible to test this line
 			/* istanbul ignore next */
 			if (!lastCall.current) return;
@@ -49,9 +58,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 			const context = lastCall.current;
 			lastCall.current = undefined;
 
-			callback.apply(context.this, context.args);
-
-			clear();
+			cb.current.apply(context.this, context.args);
 		};
 
 		const wrapped = function (this, ...args) {

@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Side-effect/useAsyncAbortable" component={Example} />
-
 # useAsyncAbortable
 
 Like `useAsync`, but also provides `AbortSignal` as the first argument to the async function.
@@ -14,10 +8,6 @@ Like `useAsync`, but also provides `AbortSignal` as the first argument to the as
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -27,13 +17,11 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 ): [
 	AsyncState<Result | undefined>,
 	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>
+	UseAsyncAbortableMeta<Result, Args>,
 ];
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 
@@ -46,20 +34,20 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 
 1. **state**
 
-   - **status** _`'loading' | 'success' | 'error' | 'not-executed'`_ - The latest status of the returned promise.
-   - **result** _`Result | undefined`_ - Result of the promise if it was fulfilled.
-   - **error** _`Error | undefined`_ - Result of the promise if it was rejected.
+- **status** _`'loading' | 'success' | 'error' | 'not-executed'`_ - The latest status of the returned promise.
+- **result** _`Result | undefined`_ - Result of the promise if it was fulfilled.
+- **error** _`Error | undefined`_ - Result of the promise if it was rejected.
 
 2. **methods**
 
-   - **reset** _`() => void`_- Abort the currently running async function invocation and reset state to initial.
-   - **execute** _`(...args: Args) => Promise<Result>`_- Execute the async function manually.
-   - **abort** _`() => void`_- Abort the currently running async function invocation.
+- **reset** _`() => void`_- Abort the currently running async function invocation and reset state to initial.
+- **execute** _`(...args: Args) => Promise<Result>`_- Execute the async function manually.
+- **abort** _`() => void`_- Abort the currently running async function invocation.
 
 3. **meta**
 
-   - **promise** _`Promise<Result> | undefined`_- Latest promise returned from the async function.
-   - **lastArgs** _`Args | undefined`_ - List of arguments applied to the latest async function
-     invocation.
-   - **abortController** _`AbortController | undefined`_ - Currently used `AbortController`. New one
-     is created on each execution of the async function.
+- **promise** _`Promise<Result> | undefined`_- Latest promise returned from the async function.
+- **lastArgs** _`Args | undefined`_ - List of arguments applied to the latest async function
+  invocation.
+- **abortController** _`AbortController | undefined`_ - Currently used `AbortController`. New one
+  is created on each execution of the async function.

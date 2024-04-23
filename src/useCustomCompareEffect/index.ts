@@ -1,7 +1,7 @@
 import { type DependencyList, useEffect, useRef } from 'react';
-import type { DependenciesComparator } from '../types';
-import { isBrowser } from '../util/const';
-import { basicDepsComparator, type EffectCallback, type EffectHook } from '../util/misc';
+import { type DependenciesComparator } from '../types.js';
+import { isBrowser } from '../util/const.js';
+import { basicDepsComparator, type EffectCallback, type EffectHook } from '../util/misc.js';
 
 /**
  * Like `useEffect` but uses provided comparator function to validate dependency changes.
@@ -21,7 +21,7 @@ export function useCustomCompareEffect<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList = DependencyList,
 	HookRestArgs extends any[] = any[],
-	R extends HookRestArgs = HookRestArgs
+	R extends HookRestArgs = HookRestArgs,
 >(
 	callback: Callback,
 	deps: Deps,

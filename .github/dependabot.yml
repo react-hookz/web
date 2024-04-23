@@ -15,3 +15,6 @@ updates:
       timezone: "Etc/UTC"
     rebase-strategy: auto
     versioning-strategy: increase
+    commit-message:
+      prefix: "fix(deps)"
+      prefix-development: "chore(deps)"

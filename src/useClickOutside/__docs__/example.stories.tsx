@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRef } from 'react';
-import { useClickOutside, useToggle } from '../..';
+import { useClickOutside, useToggle } from '../../index.js';
 
 export function Example() {
 	const [toggled, toggle] = useToggle();
