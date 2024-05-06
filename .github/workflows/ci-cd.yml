@@ -141,7 +141,7 @@ jobs:
       contents: write
     steps:
       - name: Contribute List
-        uses: akhilmhdh/contributors-readme-action@v2.3.6
+        uses: akhilmhdh/contributors-readme-action@v2.3.10
         with:
           image_size: 100
           columns_per_row: 8
