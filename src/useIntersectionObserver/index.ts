@@ -74,9 +74,9 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 						if (callbacks.size === 0) {
 							observer.disconnect();
 
-							rootObservers!.delete(opt);
+							rootObservers.delete(opt);
 
-							if (rootObservers!.size === 0) {
+							if (rootObservers.size === 0) {
 								observers.delete(root);
 							}
 						}
