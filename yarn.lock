@@ -361,15 +361,15 @@
     "@commitlint/types" "^19.5.0"
     ajv "^8.11.0"
 
-"@commitlint/cz-commitlint@^18.6.1":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-18.6.1.tgz#b566be129306107d92d33b76da405513487464eb"
-  integrity sha512-ctU/Nti6GMr1p7jWDwN6wveFg73ma1EagcQHz0bL0kd4MWA+7FG1cs5pZX5Bql1YTEqDy3YS6ou8EclUVCfzIg==
+"@commitlint/cz-commitlint@^19.5.0":
+  version "19.5.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/cz-commitlint/-/cz-commitlint-19.5.0.tgz#3ebf0aca0727d49581c378076606663603e74ce9"
+  integrity sha512-PNfIC54J3lDVIBJTo7A1RMp1kdOYkGcUz27VG0NP/DzFKLspXcQm13RnKc16BjFNCJGLC7iaXjucrfrKHOqorQ==
   dependencies:
-    "@commitlint/ensure" "^18.6.1"
-    "@commitlint/load" "^18.6.1"
-    "@commitlint/types" "^18.6.1"
-    chalk "^4.1.0"
+    "@commitlint/ensure" "^19.5.0"
+    "@commitlint/load" "^19.5.0"
+    "@commitlint/types" "^19.5.0"
+    chalk "^5.3.0"
     lodash.isplainobject "^4.0.6"
     word-wrap "^1.2.5"
 
@@ -379,6 +379,18 @@
   integrity sha512-BPm6+SspyxQ7ZTsZwXc7TRQL5kh5YWt3euKmEIBZnocMFkJevqs3fbLRb8+8I/cfbVcAo4mxRlpTPfz8zX7SnQ==
   dependencies:
     "@commitlint/types" "^18.6.1"
+    lodash.camelcase "^4.3.0"
+    lodash.kebabcase "^4.1.1"
+    lodash.snakecase "^4.1.1"
+    lodash.startcase "^4.4.0"
+    lodash.upperfirst "^4.3.1"
+
+"@commitlint/ensure@^19.5.0":
+  version "19.5.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/ensure/-/ensure-19.5.0.tgz#b087374a6a0a0140e5925a82901d234885d9f6dd"
+  integrity sha512-Kv0pYZeMrdg48bHFEU5KKcccRfKmISSm9MvgIgkpI6m+ohFTB55qZlBW6eYqh/XDfRuIO0x4zSmvBjmOwWTwkg==
+  dependencies:
+    "@commitlint/types" "^19.5.0"
     lodash.camelcase "^4.3.0"
     lodash.kebabcase "^4.1.1"
     lodash.snakecase "^4.1.1"
@@ -421,7 +433,7 @@
     "@commitlint/rules" "^18.6.1"
     "@commitlint/types" "^18.6.1"
 
-"@commitlint/load@>6.1.1":
+"@commitlint/load@>6.1.1", "@commitlint/load@^19.5.0":
   version "19.5.0"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-19.5.0.tgz#67f90a294894d1f99b930b6152bed2df44a81794"
   integrity sha512-INOUhkL/qaKqwcTUvCE8iIUf5XHsEPCLY9looJ/ipzi7jtGhgmtH7OOFiNvwYgH7mA8osUWOUDV8t4E2HAi4xA==
