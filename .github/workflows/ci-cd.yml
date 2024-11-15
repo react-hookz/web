@@ -80,7 +80,7 @@ jobs:
         run: yarn build:clean && yarn test:coverage --testLocationInResults --reporters=default --reporters=@jamesacarr/jest-reporter-github-actions
 
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/lcov.info
