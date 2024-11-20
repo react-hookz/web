@@ -1,7 +1,5 @@
-// eslint-disable-next-line unicorn/prefer-module
-const fs = require('node:fs/promises');
-// eslint-disable-next-line unicorn/prefer-module
-const path = require('node:path');
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 // eslint-disable-next-line no-void,unicorn/prefer-top-level-await
 void (async () => {
