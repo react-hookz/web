@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@actions/core@^1.2.6", "@actions/core@^1.9.1":
+"@actions/core@^1.11.1", "@actions/core@^1.2.6":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.11.1.tgz#ae683aac5112438021588030efb53b1adb86f172"
   integrity sha512-hXJCSrkwfA46Vd9Z3q4cpEpHB1rL5NG04+/rbqW9d3+CSvtB1tYe8UTpAlixa1vj0m/ULglfEK2UKxMGxCxv5A==
@@ -1350,12 +1350,12 @@
     eslint-plugin-react-hooks "^4.6.0"
     eslint-plugin-unicorn "^50.0.1"
 
-"@react-hookz/eslint-formatter-gha@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-formatter-gha/-/eslint-formatter-gha-1.0.1.tgz#1cbd0a398a8b6b738388af430933e699ad29c6fc"
-  integrity sha512-3fQWSevZuFDExH276MnSW0Q+OZU/tArOlSJhM2nYm81ALn1horXXAsDjVdFX5WQVn5+oF1D95VBUwEW6ABs5DQ==
+"@react-hookz/eslint-formatter-gha@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@react-hookz/eslint-formatter-gha/-/eslint-formatter-gha-3.0.0.tgz#8a9f30defddef15abf082584fed4585f5a470706"
+  integrity sha512-zFeb3wLbX7AcM4bAkXt1lZ32Jg0oCI8YdezsUh+OWPB6ZcZ7X0jQeqyphGC1tr7Dr6bp+xXND9P8oNAqKFB7hA==
   dependencies:
-    "@actions/core" "^1.9.1"
+    "@actions/core" "^1.11.1"
 
 "@rtsao/scc@^1.1.0":
   version "1.1.0"
