@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useRafState } from '../..';
+import { useRafState } from '../../index.js';
 
 describe('useRafState', () => {
 	const raf = global.requestAnimationFrame;

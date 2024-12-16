@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="DOM/useWindowSize" component={Example} />
-
 # useWindowSize
 
 Tracks inner dimensions of the browser window.
@@ -13,10 +7,6 @@ Tracks inner dimensions of the browser window.
 - Performant - uses a single passive event listener for all instances.
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -31,8 +21,6 @@ export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean)
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 - **stateHook** `<S>(initialState?: S | (() => S)): [S | undefined, Dispatch<SetStateAction<S>>]` -
@@ -44,5 +32,5 @@ export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean)
 #### Return
 
 - `object`
-  - **width** `number` - Window's `innerWidth`
-  - **height** `number` - Window's `innerHeight`
+- **width** `number` - Window's `innerWidth`
+- **height** `number` - Window's `innerHeight`

@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 import { type Dispatch, useCallback, useEffect, useState } from 'react';
-import { useFirstMountState } from '../useFirstMountState';
-import { useMountEffect } from '../useMountEffect';
-import { useSyncedRef } from '../useSyncedRef';
-import { isBrowser } from '../util/const';
+import { useFirstMountState } from '../useFirstMountState/index.js';
+import { useMountEffect } from '../useMountEffect/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { isBrowser } from '../util/const.js';
 
 const cookiesSetters = new Map<string, Set<Dispatch<string | null>>>();
 
@@ -27,7 +27,7 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
 
 	setters.delete(setter);
 
-	if (!setters.size) {
+	if (setters.size === 0) {
 		cookiesSetters.delete(key);
 	}
 };
@@ -43,13 +43,13 @@ const invokeRegisteredSetters = (
 	/* istanbul ignore next */
 	if (!setters) return;
 
-	setters.forEach((s) => {
+	for (const s of setters) {
 		if (s !== skipSetter) s(value);
-	});
+	}
 };
 
 export type UseCookieValueOptions<
-	InitializeWithValue extends boolean | undefined = boolean | undefined
+	InitializeWithValue extends boolean | undefined = boolean | undefined,
 > = Cookies.CookieAttributes &
 	(InitializeWithValue extends undefined
 		? {
@@ -61,10 +61,10 @@ export type UseCookieValueOptions<
 				 * @default true
 				 */
 				initializeWithValue?: InitializeWithValue;
-		  }
+			}
 		: {
 				initializeWithValue: InitializeWithValue;
-		  });
+			});
 
 export type UseCookieValueReturn<V extends undefined | null | string = undefined | null | string> =
 	[value: V, set: (value: string) => void, remove: () => void, fetch: () => void];
@@ -112,9 +112,9 @@ export function useCookieValue(
 		},
 		fetchVal: () => Cookies.get(key) ?? null,
 		fetch() {
-			const val = methods.current.fetchVal();
-			setState(val);
-			invokeRegisteredSetters(key, val, setState);
+			const value = methods.current.fetchVal();
+			setState(value);
+			invokeRegisteredSetters(key, value, setState);
 		},
 	});
 

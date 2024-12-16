@@ -1,5 +1,6 @@
-import { resolveHookState } from '../..';
-import { basicDepsComparator, off, on } from '../misc';
+/* eslint-disable max-nested-callbacks */
+import { resolveHookState } from '../../index.js';
+import { basicDepsComparator, off, on } from '../misc.js';
 
 describe('resolveHookState', () => {
 	it('should be defined', () => {
@@ -9,22 +10,22 @@ describe('resolveHookState', () => {
 	it('should return value itself if it is not function', () => {
 		expect(resolveHookState(123)).toBe(123);
 
-		const obj = { foo: 'bar' };
-		expect(resolveHookState(obj)).toBe(obj);
+		const object = { foo: 'bar' };
+		expect(resolveHookState(object)).toBe(object);
 	});
 
 	it('should return call result in case function received', () => {
 		expect(resolveHookState(() => 123)).toBe(123);
 
-		const obj = { foo: 'bar' };
-		expect(resolveHookState(() => obj)).toBe(obj);
+		const object = { foo: 'bar' };
+		expect(resolveHookState(() => object)).toBe(object);
 	});
 
 	it('should pass second parameter to received function', () => {
 		expect(resolveHookState((state) => state, 123)).toBe(123);
 
-		const obj = { foo: 'bar' };
-		expect(resolveHookState((state) => state, obj)).toBe(obj);
+		const object = { foo: 'bar' };
+		expect(resolveHookState((state) => state, object)).toBe(object);
 	});
 });
 
@@ -33,11 +34,11 @@ const cb = () => {};
 describe('misc', () => {
 	describe('on', () => {
 		it("should call object's `addEventListener` with passed parameters", () => {
-			const obj = {
+			const object = {
 				addEventListener: jest.fn(),
 			};
-			on(obj as unknown as EventTarget, 'evtName', cb);
-			expect(obj.addEventListener).toHaveBeenCalledWith('evtName', cb);
+			on(object as unknown as EventTarget, 'evtName', cb);
+			expect(object.addEventListener).toHaveBeenCalledWith('evtName', cb);
 		});
 		it("should not throw in case 'undefined' element passed", () => {
 			expect(() => {
@@ -49,12 +50,12 @@ describe('misc', () => {
 
 	describe('off', () => {
 		it("should call object's `removeEventListener` with passed parameters", () => {
-			const obj = {
+			const object = {
 				removeEventListener: jest.fn(),
 			};
 
-			off(obj as unknown as EventTarget, 'evtName', cb);
-			expect(obj.removeEventListener).toHaveBeenCalledWith('evtName', cb);
+			off(object as unknown as EventTarget, 'evtName', cb);
+			expect(object.removeEventListener).toHaveBeenCalledWith('evtName', cb);
 		});
 
 		it("should not throw in case 'undefined' element passed", () => {

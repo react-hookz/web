@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAsyncAbortable, useMountEffect } from '../..';
+import { useAsyncAbortable, useMountEffect } from '../../index.js';
 
 export function Example() {
 	const [state, actions, meta] = useAsyncAbortable(
@@ -38,17 +38,16 @@ export function Example() {
 				<button
 					type="button"
 					onClick={() => {
-						actions.reset();
-						// eslint-disable-next-line @typescript-eslint/no-floating-promises
-						actions.execute();
+						void actions.reset();
+
+						void actions.execute();
 					}}>
 					reset & execute
 				</button>{' '}
 				<button
 					type="button"
 					onClick={() => {
-						// eslint-disable-next-line @typescript-eslint/no-floating-promises
-						actions.execute();
+						void actions.execute();
 					}}>
 					execute
 				</button>

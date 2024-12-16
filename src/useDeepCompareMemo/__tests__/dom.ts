@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDeepCompareMemo } from '../..';
+import { useDeepCompareMemo } from '../../index.js';
 
 describe('useDeepCompareMemo', () => {
 	it('should be defined', () => {
@@ -15,6 +15,7 @@ describe('useDeepCompareMemo', () => {
 
 	it('should run only if dependencies change, defined by deep comparison', () => {
 		const spy = jest.fn();
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 		const { rerender } = renderHook(({ deps }) => useDeepCompareMemo(spy, deps), {
 			initialProps: { deps: [{ foo: 'bar' }] },
 		});

@@ -1,24 +1,30 @@
 {
-  "compilerOptions": {
-    "noEmit": true,
-    "strict": true,
-    "alwaysStrict": true,
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "Node16",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "jsx": "react",
-		"allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "ts-node": {
-    "swc": true
-  }
+	"compilerOptions": {
+		"target": "ESNext",
+		"jsx": "react-jsx",
+		"lib": [
+			"ESNext",
+			"DOM"
+		],
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"declaration": true,
+		"removeComments": true,
+		"newLine": "lf",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"rootDir": "./src"
+	},
+	"include": [
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"src/**/__tests__/**",
+		"src/**/__docs__/**"
+	],
+	"ts-node": {
+		"esm": true,
+		"swc": true
+	}
 }

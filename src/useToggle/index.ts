@@ -1,6 +1,6 @@
 import { type BaseSyntheticEvent, useCallback, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
-import { type InitialState, type NextState, resolveHookState } from '../util/resolveHookState';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { type InitialState, type NextState, resolveHookState } from '../util/resolveHookState.js';
 
 export function useToggle(
 	initialState: InitialState<boolean>,
@@ -32,18 +32,19 @@ export function useToggle(
 	return [
 		state,
 		useCallback((nextState) => {
-			setState((prevState) => {
+			setState((previousState) => {
 				if (
 					nextState === undefined ||
 					(ignoreReactEventsRef.current &&
 						typeof nextState === 'object' &&
 						(nextState.constructor.name === 'SyntheticBaseEvent' ||
-							typeof (nextState as any)._reactName === 'string'))
+							// @ts-expect-error React internals
+							typeof nextState._reactName === 'string'))
 				) {
-					return !prevState;
+					return !previousState;
 				}
 
-				return Boolean(resolveHookState(nextState, prevState));
+				return Boolean(resolveHookState(nextState, previousState));
 			});
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),

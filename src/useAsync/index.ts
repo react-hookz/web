@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
+import { useSyncedRef } from '../useSyncedRef/index.js';
 
 export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 
@@ -88,7 +88,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 				(result) => {
 					// We dont want to handle result/error of non-latest function
 					// this approach helps to avoid race conditions
-					// eslint-disable-next-line promise/always-return
+
 					if (promise === promiseRef.current) {
 						setState((s) => ({ ...s, status: 'success', error: undefined, result }));
 					}

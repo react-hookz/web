@@ -31,13 +31,12 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 		const callbacks = new Map<Element, Set<IntersectionEntryCallback>>();
 
 		const observer = new IntersectionObserver((entries) => {
-			entries.forEach((e) =>
+			for (const e of entries)
 				callbacks.get(e.target)?.forEach((cb) =>
 					setTimeout(() => {
 						cb(e);
 					}, 0)
-				)
-			);
+				);
 		}, options);
 
 		entry = {
@@ -66,18 +65,18 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 					// Remove current observer
 					cbs.delete(callback);
 
-					if (!cbs.size) {
+					if (cbs.size === 0) {
 						// If no observers left unregister target completely
 						callbacks.delete(target);
 						observer.unobserve(target);
 
 						// If not tracked elements left - disconnect observer
-						if (!callbacks.size) {
+						if (callbacks.size === 0) {
 							observer.disconnect();
 
-							rootObservers!.delete(opt);
+							rootObservers.delete(opt);
 
-							if (!rootObservers!.size) {
+							if (rootObservers.size === 0) {
 								observers.delete(root);
 							}
 						}

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
+import { useSyncedRef } from '../useSyncedRef/index.js';
 
 /**
  * Run effect only when component is unmounted.

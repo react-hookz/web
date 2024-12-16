@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Lifecycle/useDeepCompareEffect" component={Example} />
-
 # useDeepCompareEffect
 
 Like `useEffect`, but uses `@react-hookz/deep-equal` comparator function to validate deep dependency
@@ -15,10 +9,6 @@ changes.
 
 #### Example
 
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -26,7 +16,7 @@ export function useCustomCompareEffect<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList = DependencyList,
 	HookRestArgs extends any[] = any[],
-	R extends HookRestArgs = HookRestArgs
+	R extends HookRestArgs = HookRestArgs,
 >(
 	callback: Callback,
 	deps: Deps,
@@ -36,8 +26,6 @@ export function useCustomCompareEffect<
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

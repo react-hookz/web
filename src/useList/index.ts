@@ -1,7 +1,7 @@
 import { type SetStateAction, useMemo, useRef } from 'react';
-import { type InitialState, resolveHookState } from '../util/resolveHookState';
-import { useRerender } from '../useRerender';
-import { useSyncedRef } from '../useSyncedRef';
+import { useRerender } from '../useRerender/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { type InitialState, resolveHookState } from '../util/resolveHookState.js';
 
 export type ListActions<T> = {
 	/**
@@ -143,6 +143,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
 			},
 
 			filter(callbackFn: (value: T, index: number, array: T[]) => boolean, thisArg?: never) {
+				// eslint-disable-next-line unicorn/no-array-callback-reference,unicorn/no-array-method-this-argument
 				actions.set((currentList: T[]) => [...currentList].filter(callbackFn, thisArg));
 			},
 

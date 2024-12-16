@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { Example } from './example';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="State/useValidator" component={Example} />
-
 # useValidator
 
 Performs validation when any of provided dependencies has changed.
@@ -15,10 +9,6 @@ Performs validation when any of provided dependencies has changed.
 > **_This hook provides stable API, meaning returned methods does not change between renders_**
 
 #### Example
-
-<Canvas>
-	<Story story={Example} inline />
-</Canvas>
 
 ## Reference
 
@@ -38,17 +28,15 @@ function useValidator<V extends ValidityState>(
 
 #### Importing
 
-<ImportPath />
-
 #### Arguments
 
 - **validator** _`Validator<V>`_ - the function that performs validation, it can be of two types:
-  - _immediate validator_ - performs validation on the go and returns validity state as a function
-    result, expects 0 arguments.
-  - _deferred validator_ - performs any kind of asynchronous validation, expects 1 argument which is
-    the validity state setter.
-    > TypeScript warning: deferred validators are unable to infer the validity type, therefore it
-    > requires explicit validity state type definition, as it is shown in example.
+- _immediate validator_ - performs validation on the go and returns validity state as a function
+  result, expects 0 arguments.
+- _deferred validator_ - performs any kind of asynchronous validation, expects 1 argument which is
+  the validity state setter.
+  > TypeScript warning: deferred validators are unable to infer the validity type, therefore it
+  > requires explicit validity state type definition, as it is shown in example.
 - **deps** _`DependencyList`_ - dependencies list that will trigger automatic revalidation, as for
   `useEffect` hook.
 - **initialValidity** _`InitialState<V>`_ _(default: `{ isValid: undefined }`)_ - initial validity

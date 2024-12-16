@@ -1,6 +1,6 @@
-import { type DependencyList } from 'react';
 import { isEqual } from '@react-hookz/deep-equal';
-import { useCustomCompareMemo } from '../useCustomCompareMemo';
+import { type DependencyList } from 'react';
+import { useCustomCompareMemo } from '../useCustomCompareMemo/index.js';
 
 /**
  * Like useMemo but validates dependency changes using deep equality check instead of reference check.

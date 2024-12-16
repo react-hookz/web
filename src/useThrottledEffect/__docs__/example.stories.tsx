@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useThrottledEffect } from '../..';
+import { useThrottledEffect } from '../../index.js';
 
 const HAS_DIGIT_REGEX = /\d/g;
 

@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useControlledRerenderState } from '../..';
+import { useControlledRerenderState } from '../../index.js';
 
 describe('useControlledRerenderState', () => {
 	it('should be defined', () => {

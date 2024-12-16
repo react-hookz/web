@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useQueue } from '../..';
+import { useQueue } from '../../index.js';
 
 export function Example() {
 	const { add, remove, first, last, size, items } = useQueue<number>([1, 2, 3]);
@@ -14,7 +14,7 @@ export function Example() {
 			<button
 				type="button"
 				onClick={() => {
-					add((last || 0) + 1);
+					add((last ?? 0) + 1);
 				}}>
 				Add
 			</button>

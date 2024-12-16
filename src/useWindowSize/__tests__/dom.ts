@@ -1,24 +1,24 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useState } from 'react';
-import { useWindowSize, type WindowSize } from '../..';
+import { useWindowSize, type WindowSize } from '../../index.js';
+
+const triggerResize = (dimension: 'width' | 'height', value: number) => {
+	if (dimension === 'width') {
+		window.innerWidth = value;
+	} else if (dimension === 'height') {
+		window.innerHeight = value;
+	}
+
+	act(() => {
+		window.dispatchEvent(new Event('resize'));
+	});
+};
 
 describe('useWindowSize', () => {
 	beforeEach(() => {
 		window.innerWidth = 100;
 		window.innerHeight = 100;
 	});
-
-	const triggerResize = (dimension: 'width' | 'height', value: number) => {
-		if (dimension === 'width') {
-			window.innerWidth = value;
-		} else if (dimension === 'height') {
-			window.innerHeight = value;
-		}
-
-		act(() => {
-			window.dispatchEvent(new Event('resize'));
-		});
-	};
 
 	it('should be defined', () => {
 		expect(useWindowSize).toBeDefined();

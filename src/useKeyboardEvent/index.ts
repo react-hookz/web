@@ -1,8 +1,8 @@
 import { type DependencyList, type RefObject, useMemo } from 'react';
-import { useSyncedRef } from '../useSyncedRef';
-import { useEventListener } from '../useEventListener';
-import { isBrowser } from '../util/const';
-import { yieldFalse, yieldTrue } from '../util/misc';
+import { useEventListener } from '../useEventListener/index.js';
+import { useSyncedRef } from '../useSyncedRef/index.js';
+import { isBrowser } from '../util/const.js';
+import { yieldFalse, yieldTrue } from '../util/misc.js';
 
 export type KeyboardEventPredicate = (event: KeyboardEvent) => boolean;
 export type KeyboardEventFilter = null | string | boolean | KeyboardEventPredicate;
@@ -44,7 +44,7 @@ const WINDOW_OR_NULL = isBrowser ? window : null;
 export function useKeyboardEvent<T extends EventTarget>(
 	keyOrPredicate: KeyboardEventFilter,
 	callback: KeyboardEventHandler<T>,
-	deps?: DependencyList,
+	deps: DependencyList = [],
 	options: UseKeyboardEventOptions<T> = {}
 ): void {
 	const { event = 'keydown', target = WINDOW_OR_NULL, eventOptions } = options;

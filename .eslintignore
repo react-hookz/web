@@ -1,11 +1,8 @@
 .idea
 node_modules
-esm
-cjs
+dist
 coverage
-storybook-build
 CHANGELOG.md
-!.eslintrc.js
-!.prettierrc.js
-!.storybook
+!.eslintrc.cjs
+!.prettierrc.cjs
 !.github

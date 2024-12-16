@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useMediatedState } from '../..';
+import { useMediatedState } from '../../index.js';
 
 describe('useMediatedState', () => {
 	it('should be defined', () => {
@@ -17,7 +17,7 @@ describe('useMediatedState', () => {
 		expect(result.current[0]).toBe(123);
 
 		const { result: result2 } = renderHook(() =>
-			useMediatedState(123, (val: string) => Number.parseInt(val, 10))
+			useMediatedState(123, (value: string) => Number.parseInt(value, 10))
 		);
 
 		expect(result2.current[0]).toBe(123);

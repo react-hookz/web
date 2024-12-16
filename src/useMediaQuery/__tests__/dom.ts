@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useMediaQuery } from '../..';
+import { useMediaQuery } from '../../index.js';
 
 describe('useMediaQuery', () => {
 	type MutableMediaQueryList = {
@@ -29,7 +29,7 @@ describe('useMediaQuery', () => {
 	});
 
 	beforeEach(() => {
-		matchMediaMock.mockImplementation((query) => ({
+		matchMediaMock.mockImplementation((query: string) => ({
 			matches: false,
 			media: query,
 			onchange: null,
@@ -84,6 +84,7 @@ describe('useMediaQuery', () => {
 		mql.matches = true;
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			mql.addEventListener.mock.calls[0][1]();
 		});
 		expect(result.current).toBe(true);
@@ -101,6 +102,7 @@ describe('useMediaQuery', () => {
 		mql.matches = true;
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			mql.addEventListener.mock.calls[0][1]();
 		});
 		expect(result1.current).toBe(true);
@@ -129,6 +131,7 @@ describe('useMediaQuery', () => {
 		mql.matches = true;
 
 		act(() => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			mql.addEventListener.mock.calls[0][1]();
 		});
 		expect(result1.current).toBe(true);
@@ -152,7 +155,7 @@ describe('useMediaQuery', () => {
 	});
 
 	it('should use addListener and removeListener in case of absence of modern methods', () => {
-		matchMediaMock.mockImplementation((query) => ({
+		matchMediaMock.mockImplementation((query: string) => ({
 			matches: false,
 			media: query,
 			onchange: null,

@@ -1,10 +1,9 @@
-import React from 'react';
-import { useMediatedState } from '../..';
+import { useMediatedState } from '../../index.js';
 
 export function Example() {
 	const nonLetterRe = /[^a-z]+/gi;
-	const [state, setState] = useMediatedState('123', (val: string) =>
-		val.replaceAll(nonLetterRe, '')
+	const [state, setState] = useMediatedState('123', (value: string) =>
+		value.replaceAll(nonLetterRe, '')
 	);
 
 	return (

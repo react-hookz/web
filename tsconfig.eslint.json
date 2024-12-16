@@ -1,19 +1,22 @@
 {
-  "extends": "./tsconfig.json",
-  "exclude": [
-    "./cjs",
-    "./coverage",
-    "./esm",
-    "./node_modules"
-  ],
-  "include": [
-    ".**/*.js",
-
-    "**/.*.js",
-    "**/*.js",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.md",
-    "**/*.mdx",
-  ]
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"noEmit": true
+	},
+	"exclude": [
+		"./dist",
+		"./node_modules",
+		"./coverage"
+	],
+	"include": [
+		".**/*.js",
+		".**/*.cjs",
+		"**/.*.js",
+		"**/.*.cjs",
+		"**/*.js",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.md",
+		"**/*.mdx"
+	]
 }

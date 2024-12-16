@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
 import { useRef } from 'react';
-import { useNetworkState } from '../..';
+import { useNetworkState } from '../../index.js';
 
 describe(`useNetworkState`, () => {
 	it('should be defined', () => {
@@ -39,12 +39,12 @@ describe(`useNetworkState`, () => {
 		);
 
 		expect(hook.result.current[1]).toBe(1);
-		const prevNWState = hook.result.current[0];
+		const previousNWState = hook.result.current[0];
 
 		act(() => {
 			window.dispatchEvent(new Event('online'));
 		});
 		expect(hook.result.current[1]).toBe(2);
-		expect(hook.result.current[0]).not.toBe(prevNWState);
+		expect(hook.result.current[0]).not.toBe(previousNWState);
 	});
 });

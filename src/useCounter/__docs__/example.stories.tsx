@@ -1,5 +1,4 @@
-import React from 'react';
-import { useCounter } from '../..';
+import { useCounter } from '../../index.js';
 
 export function Example() {
 	const [min, { inc: incMin, dec: decMin }] = useCounter(1);

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/server';
-import { useLifecycleLogger } from '../..';
+import { useLifecycleLogger } from '../../index.js';
 
 describe('useLifecycleLogger', () => {
 	it('should be defined', () => {

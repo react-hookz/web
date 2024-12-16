@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useCustomCompareEffect, useUpdateEffect } from '../..';
+import { useCustomCompareEffect, useUpdateEffect } from '../../index.js';
 
 /**
  * A little hash function to generate a random number used to identify a string.
@@ -29,15 +29,15 @@ export function Example() {
 	const [irrelevantValue, setIrrelevantValue] = React.useState(0);
 
 	const incrementValueA = () => {
-		setValueA((prev) => prev + 1);
+		setValueA((previous) => previous + 1);
 	};
 
 	const incrementValueB = () => {
-		setValueB((prev) => prev + 1);
+		setValueB((previous) => previous + 1);
 	};
 
 	const incrementIrrelevantValue = () => {
-		setIrrelevantValue((prev) => prev + 1);
+		setIrrelevantValue((previous) => previous + 1);
 	};
 
 	const objectA = { key: valueA };

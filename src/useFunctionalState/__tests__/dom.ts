@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useFunctionalState } from '../..';
+import { useFunctionalState } from '../../index.js';
 
 describe('useFunctionalState', () => {
 	it('should be defined', () => {

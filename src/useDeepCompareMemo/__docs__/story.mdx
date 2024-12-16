@@ -1,9 +1,3 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { Example } from './example.stories';
-import { ImportPath } from '../../__docs__/ImportPath';
-
-<Meta title="Miscellaneous/useDeepCompareMemo" component={Example} />
-
 # useDeepCompareMemo
 
 Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validate deep dependency changes.
@@ -13,10 +7,6 @@ Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validat
 
 #### Example
 
-<Canvas>
-	<Story story={Example} />
-</Canvas>
-
 ## Reference
 
 ```ts
@@ -24,8 +14,6 @@ export function useDeepCompareMemo<T, Deps extends DependencyList>(factory: () =
 ```
 
 #### Importing
-
-<ImportPath />
 
 #### Arguments
 

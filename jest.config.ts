@@ -1,12 +1,24 @@
 import { type Config } from 'jest';
 
-const cfg: Config = {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const __esModule = true;
+
+const moduleNameMapper: Config['moduleNameMapper'] = {
+	'^((?:\\.{1,2}|#[^\\/]*)/.*)\\.[tj]sx?$': '$1',
+};
+
+const transform: Config['transform'] = {
+	'^.+\\.[tj]sx?$': ['@swc/jest', { module: { type: 'commonjs' } }],
+};
+
+export default {
+	extensionsToTreatAsEsm: ['.ts'],
+	testEnvironment: 'node',
 	projects: [
 		{
 			displayName: 'dom',
-			transform: {
-				'\\.[jt]sx?$': '@swc/jest',
-			},
+			moduleNameMapper,
+			transform,
 			testEnvironment: 'jsdom',
 			testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
 			setupFiles: ['./src/__tests__/setup.ts'],
@@ -14,31 +26,13 @@ const cfg: Config = {
 
 		{
 			displayName: 'ssr',
-			transform: {
-				'\\.[jt]sx?$': '@swc/jest',
-			},
+			moduleNameMapper,
+			transform,
 			testEnvironment: 'node',
 			testMatch: ['<rootDir>/src/**/__tests__/ssr.[jt]s?(x)'],
-		},
-
-		// Needed for output bundle testing
-		{
-			displayName: 'dom-package',
-			transformIgnorePatterns: [],
-			transform: {
-				'\\.[jt]sx?$': '@swc/jest',
-			},
-			testEnvironment: 'jsdom',
-			testMatch: ['<rootDir>/src/**/__tests__/dom.[jt]s?(x)'],
-			setupFiles: ['./src/__tests__/setup.ts'],
-			moduleNameMapper: {
-				'^../..$': '<rootDir>',
-			},
 		},
 	],
 	collectCoverage: false,
 	coverageDirectory: './coverage',
 	collectCoverageFrom: ['./src/**/*.{ts,js,tsx,jsx}', '!**/__tests__/**', '!**/__docs__/**'],
-};
-
-export default cfg;
+} satisfies Config;

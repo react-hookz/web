@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { useMountEffect, useRafState } from '../..';
+import { useMountEffect, useRafState } from '../../index.js';
 
 export function Example() {
 	const [state, setState] = useRafState({ x: 0, y: 0 });
 
 	useMountEffect(() => {
+		// eslint-disable-next-line unicorn/consistent-function-scoping
 		const onMouseMove = (event: MouseEvent) => {
 			setState({ x: event.clientX, y: event.clientY });
 		};
 
+		// eslint-disable-next-line unicorn/consistent-function-scoping
 		const onTouchMove = (event: TouchEvent) => {
 			setState({ x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY });
 		};

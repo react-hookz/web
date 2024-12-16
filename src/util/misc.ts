@@ -1,31 +1,31 @@
 import { type DependencyList } from 'react';
-import type { DependenciesComparator } from '../types';
+import { type DependenciesComparator } from '../types.js';
 
 export function on<T extends EventTarget>(
-	obj: T | null,
+	object: T | null,
 	...args:
 		| Parameters<T['addEventListener']>
 		| [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
-	obj?.addEventListener?.(...(args as Parameters<HTMLElement['addEventListener']>));
+	object?.addEventListener?.(...(args as Parameters<HTMLElement['addEventListener']>));
 }
 
 export function off<T extends EventTarget>(
-	obj: T | null,
+	object: T | null,
 	...args:
 		| Parameters<T['removeEventListener']>
 		| [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
-	obj?.removeEventListener?.(...(args as Parameters<HTMLElement['removeEventListener']>));
+	object?.removeEventListener?.(...(args as Parameters<HTMLElement['removeEventListener']>));
 }
 
 export const hasOwnProperty = <
 	T extends Record<string | number | symbol, any>,
-	K extends string | number | symbol
+	K extends string | number | symbol,
 >(
-	obj: T,
+	object: T,
 	property: K
-): obj is T & Record<K, unknown> => Object.prototype.hasOwnProperty.call(obj, property);
+): object is T & Record<K, unknown> => Object.prototype.hasOwnProperty.call(object, property);
 
 export const yieldTrue = () => true as const;
 export const yieldFalse = () => false as const;
@@ -35,8 +35,8 @@ export const basicDepsComparator: DependenciesComparator = (d1, d2) => {
 
 	if (d1.length !== d2.length) return false;
 
-	for (let i = 0; i < d1.length; i++) {
-		if (d1[i] !== d2[i]) {
+	for (const [i, element] of d1.entries()) {
+		if (element !== d2[i]) {
 			return false;
 		}
 	}
@@ -49,5 +49,5 @@ export type EffectCallback = (...args: any[]) => any;
 export type EffectHook<
 	Callback extends EffectCallback = EffectCallback,
 	Deps extends DependencyList | undefined = DependencyList | undefined,
-	RestArgs extends any[] = any[]
+	RestArgs extends any[] = any[],
 > = ((...args: [Callback, Deps, ...RestArgs]) => void) | ((...args: [Callback, Deps]) => void);
