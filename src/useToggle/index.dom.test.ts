@@ -1,6 +1,7 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { type BaseSyntheticEvent, useRef } from 'react';
-import { useToggle } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {type BaseSyntheticEvent, useRef} from 'react';
+import {describe, expect, it} from 'vitest';
+import {useToggle} from '../index.js';
 
 describe('useToggle', () => {
 	it('should be defined', () => {
@@ -8,13 +9,13 @@ describe('useToggle', () => {
 	});
 
 	it('should default to false', () => {
-		const { result } = renderHook(() => useToggle());
+		const {result} = renderHook(() => useToggle());
 
 		expect(result.current[0]).toBe(false);
 	});
 
 	it('should be instantiatable with value', () => {
-		let { result } = renderHook(() => useToggle(true));
+		let {result} = renderHook(() => useToggle(true));
 		expect(result.current[0]).toBe(true);
 
 		result = renderHook(() => useToggle(() => true)).result;
@@ -25,7 +26,7 @@ describe('useToggle', () => {
 	});
 
 	it('should change state to the opposite when toggler called without args or undefined', () => {
-		const { result } = renderHook(() => useToggle());
+		const {result} = renderHook(() => useToggle());
 		act(() => {
 			result.current[1]();
 		});
@@ -38,7 +39,7 @@ describe('useToggle', () => {
 	});
 
 	it('should not rerender when toggler called with same value', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			const cnt = useRef(0);
 
 			return [...useToggle(), ++cnt.current] as const;
@@ -58,7 +59,7 @@ describe('useToggle', () => {
 	});
 
 	it('should change state to one that passed to toggler', () => {
-		const { result } = renderHook(() => useToggle(false, false));
+		const {result} = renderHook(() => useToggle(false, false));
 		act(() => {
 			result.current[1](false);
 		});
@@ -81,12 +82,12 @@ describe('useToggle', () => {
 	});
 
 	it('should not account react events', () => {
-		const { result } = renderHook(() => useToggle());
+		const {result} = renderHook(() => useToggle());
 
 		act(() => {
-			result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
+			result.current[1]({_reactName: 'abcdef'} as unknown as BaseSyntheticEvent);
 
-			result.current[1]({ _reactName: 'abcdef' } as unknown as BaseSyntheticEvent);
+			result.current[1]({_reactName: 'abcdef'} as unknown as BaseSyntheticEvent);
 		});
 		expect(result.current[0]).toBe(false);
 

@@ -1,17 +1,18 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useTimeoutEffect} from '../../index.js';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {useTimeoutEffect} from '../index.js';
 
 describe('useTimeoutEffect', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	beforeEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {
@@ -24,10 +25,10 @@ describe('useTimeoutEffect', () => {
 	});
 
 	it('should not invoke callback after timeout', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		renderHook(() => useTimeoutEffect(spy, 100));
 
-		jest.advanceTimersByTime(100);
+		vi.advanceTimersByTime(100);
 		expect(spy).not.toHaveBeenCalled();
 	});
 });

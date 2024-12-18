@@ -1,5 +1,6 @@
 import {act, renderHook} from '@testing-library/react-hooks/server';
-import {useToggle} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useToggle} from '../index.js';
 
 describe('useToggle', () => {
 	it('should be defined', () => {

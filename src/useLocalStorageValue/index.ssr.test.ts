@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useLocalStorageValue} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useLocalStorageValue} from '../index.js';
 
 describe('useLocalStorageValue', () => {
 	it('should be defined', () => {

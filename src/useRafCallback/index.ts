@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useRef } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { useUnmountEffect } from '../useUnmountEffect/index.js';
-import { isBrowser } from '../util/const.js';
+import {useCallback, useMemo, useRef} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {useUnmountEffect} from '../useUnmountEffect/index.js';
+import {isBrowser} from '../util/const.js';
 
 /**
  * Makes passed function to be called within next animation frame.
@@ -12,13 +12,15 @@ import { isBrowser } from '../util/const.js';
  */
 
 export function useRafCallback<T extends (...args: any[]) => any>(
-	cb: T
+	cb: T,
 ): [(...args: Parameters<T>) => void, () => void] {
 	const cbRef = useSyncedRef(cb);
 	const frame = useRef<number>(0);
 
 	const cancel = useCallback(() => {
-		if (!isBrowser) return;
+		if (!isBrowser) {
+			return;
+		}
 
 		if (frame.current) {
 			cancelAnimationFrame(frame.current);
@@ -31,7 +33,9 @@ export function useRafCallback<T extends (...args: any[]) => any>(
 	return [
 		useMemo(() => {
 			const wrapped = (...args: Parameters<T>) => {
-				if (!isBrowser) return;
+				if (!isBrowser) {
+					return;
+				}
 
 				cancel();
 
@@ -42,8 +46,8 @@ export function useRafCallback<T extends (...args: any[]) => any>(
 			};
 
 			Object.defineProperties(wrapped, {
-				length: { value: cb.length },
-				name: { value: `${cb.name || 'anonymous'}__raf` },
+				length: {value: cb.length},
+				name: {value: `${cb.name || 'anonymous'}__raf`},
 			});
 
 			return wrapped;

@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
-import { type Predicate } from '../types.js';
-import { useUpdateEffect } from '../useUpdateEffect/index.js';
-import { isStrictEqual } from '../util/const.js';
+import {useRef, useState} from 'react';
+import {type Predicate} from '../types.js';
+import {useUpdateEffect} from '../useUpdateEffect/index.js';
+import {isStrictEqual} from '../util/const.js';
 
 /**
  * Returns the most recent _distinct_ value passed to the hook on previous render. Distinct here
@@ -16,7 +16,7 @@ import { isStrictEqual } from '../util/const.js';
  */
 export function usePreviousDistinct<T>(
 	value: T,
-	predicate: Predicate = isStrictEqual
+	predicate: Predicate = isStrictEqual,
 ): T | undefined {
 	const [previousState, setPreviousState] = useState<T>();
 	const currentRef = useRef<T>(value);

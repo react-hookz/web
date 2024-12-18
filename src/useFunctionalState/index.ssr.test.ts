@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useFunctionalState} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useFunctionalState} from '../index.js';
 
 describe('useFunctionalState', () => {
 	it('should be defined', () => {

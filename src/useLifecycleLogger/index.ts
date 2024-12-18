@@ -1,4 +1,4 @@
-import { type DependencyList, useEffect, useRef } from 'react';
+import {type DependencyList, useEffect, useRef} from 'react';
 
 /**
  * This hook provides a console log when the component mounts, updates and unmounts.

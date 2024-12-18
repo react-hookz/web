@@ -1,4 +1,4 @@
-import { type RefObject, useEffect, useState } from 'react';
+import {type RefObject, useEffect, useState} from 'react';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';
@@ -31,12 +31,12 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 		const callbacks = new Map<Element, Set<IntersectionEntryCallback>>();
 
 		const observer = new IntersectionObserver((entries) => {
-			for (const e of entries)
-				callbacks.get(e.target)?.forEach((cb) =>
+			for (const e of entries) {
+				callbacks.get(e.target)?.forEach(cb =>
 					setTimeout(() => {
 						cb(e);
-					}, 0)
-				);
+					}, 0));
+			}
 		}, options);
 
 		entry = {
@@ -130,13 +130,15 @@ export function useIntersectionObserver<T extends Element>(
 		threshold = DEFAULT_THRESHOLD,
 		root: r,
 		rootMargin = DEFAULT_ROOT_MARGIN,
-	}: UseIntersectionObserverOptions = {}
+	}: UseIntersectionObserverOptions = {},
 ): IntersectionObserverEntry | undefined {
 	const [state, setState] = useState<IntersectionObserverEntry>();
 
 	useEffect(() => {
 		const tgt = target && 'current' in target ? target.current : target;
-		if (!tgt) return;
+		if (!tgt) {
+			return;
+		}
 
 		let subscribed = true;
 		const observerEntry = getObserverEntry({

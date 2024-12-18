@@ -10,10 +10,11 @@ export function resolveHookState<State, PreviousState = State>(
 ): State;
 export function resolveHookState<State, PreviousState = State>(
 	nextState: InitialState<State> | NextState<State, PreviousState>,
-	previousState?: PreviousState
+	previousState?: PreviousState,
 ): State {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-	if (typeof nextState === 'function') return (nextState as CallableFunction)(previousState);
+	if (typeof nextState === 'function') {
+		return (nextState as CallableFunction)(previousState);
+	}
 
 	return nextState;
 }

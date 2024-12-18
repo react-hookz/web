@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useIntervalEffect} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useIntervalEffect} from '../index.js';
 
 describe('useIntervalEffect', () => {
 	it('should be defined', () => {

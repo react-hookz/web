@@ -1,24 +1,24 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useIntersectionObserver } from '../../index.js';
-import Mock = jest.Mock;
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, type Mock, vi} from 'vitest';
+import {useIntersectionObserver} from '../index.js';
 
 describe('useIntersectionObserver', () => {
 	let IntersectionObserverSpy: Mock<IntersectionObserver>;
-	const initialRO = global.ResizeObserver;
+	const initialRO = globalThis.ResizeObserver;
 
 	beforeAll(() => {
-		IntersectionObserverSpy = jest.fn(() => ({
-			observe: jest.fn(),
-			unobserve: jest.fn(),
-			disconnect: jest.fn(),
+		IntersectionObserverSpy = vi.fn(() => ({
+			observe: vi.fn(),
+			unobserve: vi.fn(),
+			disconnect: vi.fn(),
 			takeRecords: () => [],
 			root: document,
 			rootMargin: '0px',
 			thresholds: [0],
 		}));
 
-		global.IntersectionObserver = IntersectionObserverSpy;
-		jest.useFakeTimers();
+		globalThis.IntersectionObserver = IntersectionObserverSpy;
+		vi.useFakeTimers();
 	});
 
 	beforeEach(() => {
@@ -26,8 +26,8 @@ describe('useIntersectionObserver', () => {
 	});
 
 	afterAll(() => {
-		global.ResizeObserver = initialRO;
-		jest.useRealTimers();
+		globalThis.ResizeObserver = initialRO;
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {
@@ -35,13 +35,13 @@ describe('useIntersectionObserver', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useIntersectionObserver(null));
+		const {result} = renderHook(() => useIntersectionObserver(null));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return undefined on first render', () => {
 		const div1 = document.createElement('div');
-		const { result } = renderHook(() => useIntersectionObserver(div1));
+		const {result} = renderHook(() => useIntersectionObserver(div1));
 		expect(result.current).toBeUndefined();
 	});
 
@@ -58,26 +58,24 @@ describe('useIntersectionObserver', () => {
 
 	it('should return intersection entry', () => {
 		const div1 = document.createElement('div');
-		const div1Ref = { current: div1 };
+		const div1Ref = {current: div1};
 		const div2 = document.createElement('div');
 
-		const { result: res1 } = renderHook(() => useIntersectionObserver(div1Ref));
-		const { result: res2, unmount } = renderHook(() =>
-			useIntersectionObserver(div2, { threshold: [0, 1] })
-		);
+		const {result: res1} = renderHook(() => useIntersectionObserver(div1Ref));
+		const {result: res2, unmount} = renderHook(() =>
+			useIntersectionObserver(div2, {threshold: [0, 1]}));
 
 		expect(res1.current).toBeUndefined();
 		expect(res2.current).toBeUndefined();
 
-		const entry1 = { target: div1 };
-		const entry2 = { target: div2 };
+		const entry1 = {target: div1};
+		const entry2 = {target: div2};
 
 		act(() => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
 			IntersectionObserverSpy.mock.calls[1][0]([entry2]);
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 
 		expect(res1.current).toBe(entry1);
@@ -85,11 +83,10 @@ describe('useIntersectionObserver', () => {
 
 		unmount();
 
-		const entry3 = { target: div1 };
+		const entry3 = {target: div1};
 		act(() => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry3]);
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 
 		expect(res1.current).toBe(entry3);
@@ -99,22 +96,19 @@ describe('useIntersectionObserver', () => {
 		const div1 = document.createElement('div');
 		const div2 = document.createElement('div');
 
-		const { result: res1 } = renderHook(() =>
-			useIntersectionObserver(div1, { root: { current: div2 } })
-		);
-		const { result: res2 } = renderHook(() =>
-			useIntersectionObserver(div1, { root: { current: div2 } })
-		);
+		const {result: res1} = renderHook(() =>
+			useIntersectionObserver(div1, {root: {current: div2}}));
+		const {result: res2} = renderHook(() =>
+			useIntersectionObserver(div1, {root: {current: div2}}));
 
 		expect(res1.current).toBeUndefined();
 		expect(res2.current).toBeUndefined();
 
-		const entry1 = { target: div1 };
+		const entry1 = {target: div1};
 
 		act(() => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 
 		expect(res1.current).toBe(entry1);
@@ -124,13 +118,12 @@ describe('useIntersectionObserver', () => {
 	it('should disconnect observer if last hook unmounted', () => {
 		const div1 = document.createElement('div');
 
-		const { result, unmount } = renderHook(() => useIntersectionObserver(div1));
-		const entry1 = { target: div1 };
+		const {result, unmount} = renderHook(() => useIntersectionObserver(div1));
+		const entry1 = {target: div1};
 
 		act(() => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 
 		expect(result.current).toBe(entry1);

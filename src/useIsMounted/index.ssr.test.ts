@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useIsMounted} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useIsMounted} from '../index.js';
 
 describe('useIsMounted', () => {
 	it('should be defined', () => {

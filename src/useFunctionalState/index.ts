@@ -1,5 +1,5 @@
-import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
+import {type Dispatch, type SetStateAction, useCallback, useState} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
 
 export function useFunctionalState<S>(
 	initialState: S | (() => S)
@@ -13,7 +13,7 @@ export function useFunctionalState<S = undefined>(): [
  * Like `useState` but instead of raw state, state getter returned.
  */
 export function useFunctionalState<S>(
-	initialState?: S | (() => S)
+	initialState?: S | (() => S),
 ): [() => S | undefined, Dispatch<SetStateAction<S | undefined>>] {
 	const [state, setState] = useState(initialState);
 	const stateRef = useSyncedRef(state);

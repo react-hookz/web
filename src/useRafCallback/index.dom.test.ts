@@ -1,30 +1,31 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useRafCallback } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useRafCallback} from '../index.js';
 
 function testFn(_a: any, _b: any, _c: any) {}
 
 describe('useRafCallback', () => {
-	const raf = global.requestAnimationFrame;
-	const caf = global.cancelAnimationFrame;
+	const raf = globalThis.requestAnimationFrame;
+	const caf = globalThis.cancelAnimationFrame;
 
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 
-		global.requestAnimationFrame = (cb) => setTimeout(cb);
-		global.cancelAnimationFrame = (cb) => {
+		globalThis.requestAnimationFrame = cb => setTimeout(cb);
+		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 
-		global.requestAnimationFrame = raf;
-		global.cancelAnimationFrame = caf;
+		globalThis.requestAnimationFrame = raf;
+		globalThis.cancelAnimationFrame = caf;
 	});
 
 	it('should be defined', () => {
@@ -32,24 +33,24 @@ describe('useRafCallback', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useRafCallback(() => {}));
+		const {result} = renderHook(() => useRafCallback(() => {}));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return function same length and wrapped name', () => {
-		let { result } = renderHook(() => useRafCallback((_a: any, _b: any, _c: any) => {}));
+		let {result} = renderHook(() => useRafCallback((_a: any, _b: any, _c: any) => {}));
 
 		expect(result.current[0].length).toBe(3);
-		expect(result.current[0].name).toBe(`anonymous__raf`);
+		expect(result.current[0].name).toBe('anonymous__raf');
 
 		result = renderHook(() => useRafCallback(testFn)).result;
 
 		expect(result.current[0].length).toBe(3);
-		expect(result.current[0].name).toBe(`testFn__raf`);
+		expect(result.current[0].name).toBe('testFn__raf');
 	});
 
 	it('should return array of functions', () => {
-		const { result } = renderHook(() => useRafCallback(() => {}));
+		const {result} = renderHook(() => useRafCallback(() => {}));
 
 		expect(result.current).toBeInstanceOf(Array);
 		expect(result.current[0]).toBeInstanceOf(Function);
@@ -57,21 +58,21 @@ describe('useRafCallback', () => {
 	});
 
 	it('should invoke passed function only on next raf', () => {
-		const spy = jest.fn();
-		const { result } = renderHook(() => useRafCallback(spy));
+		const spy = vi.fn();
+		const {result} = renderHook(() => useRafCallback(spy));
 
 		result.current[0]();
 
 		expect(spy).not.toHaveBeenCalled();
 
-		jest.advanceTimersToNextTimer();
+		vi.advanceTimersToNextTimer();
 
 		expect(spy).toHaveBeenCalled();
 	});
 
 	it('should auto-cancel scheduled invocation on consequential calls', () => {
-		const spy = jest.fn();
-		const { result } = renderHook(() => useRafCallback(spy));
+		const spy = vi.fn();
+		const {result} = renderHook(() => useRafCallback(spy));
 
 		result.current[0]();
 		result.current[0]();
@@ -80,33 +81,33 @@ describe('useRafCallback', () => {
 
 		expect(spy).not.toHaveBeenCalled();
 
-		jest.advanceTimersToNextTimer(5);
+		vi.advanceTimersToNextTimer(5);
 
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
 	it('should cancel scheduled invocation on second function call', () => {
-		const spy = jest.fn();
-		const { result } = renderHook(() => useRafCallback(spy));
+		const spy = vi.fn();
+		const {result} = renderHook(() => useRafCallback(spy));
 
 		result.current[0]();
 
 		result.current[1]();
 
-		jest.advanceTimersToNextTimer(5);
+		vi.advanceTimersToNextTimer(5);
 
 		expect(spy).not.toHaveBeenCalled();
 	});
 
 	it('should auto-cancel scheduled invocation on component unmount', () => {
-		const spy = jest.fn();
-		const { result, unmount } = renderHook(() => useRafCallback(spy));
+		const spy = vi.fn();
+		const {result, unmount} = renderHook(() => useRafCallback(spy));
 
 		result.current[0]();
 
 		unmount();
 
-		jest.advanceTimersToNextTimer(5);
+		vi.advanceTimersToNextTimer(5);
 
 		expect(spy).not.toHaveBeenCalled();
 	});

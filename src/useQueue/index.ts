@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
-import { useList } from '../useList/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
+import {useMemo} from 'react';
+import {useList} from '../useList/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
 
 export type QueueMethods<T> = {
 	/**
@@ -36,7 +36,7 @@ export type QueueMethods<T> = {
  * @param initialValue The initial value. Defaults to an empty array.
  */
 export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
-	const [list, { removeAt, push }] = useList(initialValue);
+	const [list, {removeAt, push}] = useList(initialValue);
 	const listRef = useSyncedRef(list);
 
 	return useMemo(
@@ -65,6 +65,6 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 			},
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[]
+		[],
 	);
 }

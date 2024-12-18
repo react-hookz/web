@@ -1,6 +1,6 @@
-import { type DependencyList, type Dispatch, useCallback, useEffect, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { type InitialState, type NextState } from '../util/resolveHookState.js';
+import {type DependencyList, type Dispatch, useCallback, useEffect, useState} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {type InitialState, type NextState} from '../util/resolveHookState.js';
 
 export type ValidityState = {
 	isValid: boolean | undefined;
@@ -27,7 +27,7 @@ export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 export function useValidator<V extends ValidityState>(
 	validator: Validator<V>,
 	deps: DependencyList,
-	initialValidity: InitialState<V> = { isValid: undefined } as V
+	initialValidity: InitialState<V> = {isValid: undefined} as V,
 ): UseValidatorReturn<V> {
 	const [validity, setValidity] = useState(initialValidity);
 	const validatorRef = useSyncedRef(() => {

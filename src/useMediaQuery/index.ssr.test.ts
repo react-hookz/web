@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useMediaQuery} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useMediaQuery} from '../index.js';
 
 describe('useMediaQuery', () => {
 	it('should be defined', () => {

@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useRafCallback} from '../../index.js';
+import {describe, expect, it, vi} from 'vitest';
+import {useRafCallback} from '../index.js';
 
 describe('useRafCallback', () => {
 	it('should be defined', () => {
@@ -20,7 +21,7 @@ describe('useRafCallback', () => {
 	});
 
 	it('should not do anything on returned functions invocation', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		const {result} = renderHook(() => useRafCallback(spy));
 
 		result.current[0]();

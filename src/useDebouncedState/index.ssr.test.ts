@@ -1,17 +1,18 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useDebouncedState} from '../../index.js';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useDebouncedState} from '../index.js';
 
 describe('useDebouncedState', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {

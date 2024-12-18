@@ -1,9 +1,10 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useUpdateEffect} from '../../index.js';
+import {describe, expect, it, vi} from 'vitest';
+import {useUpdateEffect} from '../index.js';
 
 describe('useUpdateEffect', () => {
 	it('should not call effector on mount', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 
 		renderHook(() => {
 			useUpdateEffect(spy);

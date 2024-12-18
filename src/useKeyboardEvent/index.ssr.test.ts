@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useKeyboardEvent} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useKeyboardEvent} from '../index.js';
 
 describe('useKeyboardEvent', () => {
 	it('should be defined', () => {

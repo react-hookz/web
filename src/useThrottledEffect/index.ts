@@ -1,5 +1,5 @@
-import { type DependencyList, useEffect } from 'react';
-import { useThrottledCallback } from '../useThrottledCallback/index.js';
+import {type DependencyList, useEffect} from 'react';
+import {useThrottledCallback} from '../useThrottledCallback/index.js';
 
 /**
  * Like `useEffect`, but passed function is throttled.
@@ -17,7 +17,7 @@ export function useThrottledEffect(
 	callback: (...args: any[]) => void,
 	deps: DependencyList,
 	delay: number,
-	noTrailing = false
+	noTrailing = false,
 ): void {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(useThrottledCallback(callback, deps, delay, noTrailing), deps);

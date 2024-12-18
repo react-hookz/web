@@ -71,9 +71,9 @@ export * from './useEventListener/index.js';
 export * from './useWindowSize/index.js';
 
 // Utils
-export { isStrictEqual, truthyAndArrayPredicate, truthyOrArrayPredicate } from './util/const.js';
-export type { EffectCallback, EffectHook } from './util/misc.js';
-export { resolveHookState } from './util/resolveHookState.js';
+export {isStrictEqual, truthyAndArrayPredicate, truthyOrArrayPredicate} from './util/const.js';
+export type {EffectCallback, EffectHook} from './util/misc.js';
+export {resolveHookState} from './util/resolveHookState.js';
 
 // Types
 export type * from './types.js';

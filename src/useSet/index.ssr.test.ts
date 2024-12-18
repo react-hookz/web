@@ -1,6 +1,7 @@
-import { act } from '@testing-library/react-hooks/dom';
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useSet } from '../../index.js';
+import {act} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {describe, expect, it, vi} from 'vitest';
+import {useSet} from '../index.js';
 
 describe('useSet', () => {
 	it('should be defined', () => {
@@ -8,12 +9,12 @@ describe('useSet', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useSet());
+		const {result} = renderHook(() => useSet());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return a Set instance with altered add, clear and delete methods', () => {
-		const { result } = renderHook(() => useSet());
+		const {result} = renderHook(() => useSet());
 		expect(result.current).toBeInstanceOf(Set);
 		expect(result.current.add).not.toBe(Set.prototype.add);
 		expect(result.current.clear).not.toBe(Set.prototype.clear);
@@ -21,7 +22,7 @@ describe('useSet', () => {
 	});
 
 	it('should accept initial values', () => {
-		const { result } = renderHook(() => useSet([1, 2, 3]));
+		const {result} = renderHook(() => useSet([1, 2, 3]));
 		expect(result.current.has(1)).toBe(true);
 		expect(result.current.has(2)).toBe(true);
 		expect(result.current.has(3)).toBe(true);
@@ -29,9 +30,9 @@ describe('useSet', () => {
 	});
 
 	it('`add` should invoke original method and rerender component', () => {
-		const spy = jest.spyOn(Set.prototype, 'add');
+		const spy = vi.spyOn(Set.prototype, 'add');
 		let i = 0;
-		const { result } = renderHook(() => [++i, useSet()] as const);
+		const {result} = renderHook(() => [++i, useSet()] as const);
 
 		act(() => {
 			expect(result.current[1].add(1)).toBe(result.current[1]);
@@ -44,9 +45,9 @@ describe('useSet', () => {
 	});
 
 	it('`clear` should invoke original method and rerender component', () => {
-		const spy = jest.spyOn(Set.prototype, 'clear');
+		const spy = vi.spyOn(Set.prototype, 'clear');
 		let i = 0;
-		const { result } = renderHook(() => [++i, useSet()] as const);
+		const {result} = renderHook(() => [++i, useSet()] as const);
 
 		act(() => {
 			result.current[1].clear();
@@ -58,9 +59,9 @@ describe('useSet', () => {
 	});
 
 	it('`delete` should invoke original method and rerender component', () => {
-		const spy = jest.spyOn(Set.prototype, 'delete');
+		const spy = vi.spyOn(Set.prototype, 'delete');
 		let i = 0;
-		const { result } = renderHook(() => [++i, useSet([1])] as const);
+		const {result} = renderHook(() => [++i, useSet([1])] as const);
 
 		act(() => {
 			expect(result.current[1].delete(1)).toBe(true);

@@ -1,18 +1,19 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useAsyncAbortable } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {describe, expect, it, vi} from 'vitest';
+import {useAsyncAbortable} from '../index.js';
 
 function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
-	const resolve: { current: undefined | ((result: Res) => void) } = { current: undefined };
-	const reject: { current: undefined | ((err: Error) => void) } = { current: undefined };
+	const resolve: {current: undefined | ((result: Res) => void)} = {current: undefined};
+	const reject: {current: undefined | ((err: Error) => void)} = {current: undefined};
 
 	return [
-		jest.fn(
+		vi.fn(
 			(..._args: Args) =>
 				// eslint-disable-next-line promise/param-names
 				new Promise<Res>((res, rej) => {
 					resolve.current = res;
 					reject.current = rej;
-				})
+				}),
 		),
 		resolve,
 		reject,
@@ -25,13 +26,13 @@ describe('useAsyncAbortable', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useAsyncAbortable(async (_) => {}));
+		const {result} = renderHook(() => useAsyncAbortable(async (_) => {}));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should not change methods between renders', () => {
-		const spy = jest.fn(async () => {});
-		const { rerender, result } = renderHook(() => useAsyncAbortable(spy));
+		const spy = vi.fn(async () => {});
+		const {rerender, result} = renderHook(() => useAsyncAbortable(spy));
 
 		const res1 = result.current;
 		rerender();
@@ -42,8 +43,8 @@ describe('useAsyncAbortable', () => {
 	});
 
 	it('should pass abort signal as first argument', async () => {
-		const spy = jest.fn(async (s: AbortSignal, n: number) => n);
-		const { result } = renderHook(() => useAsyncAbortable(spy));
+		const spy = vi.fn(async (s: AbortSignal, n: number) => n);
+		const {result} = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
 			void result.current[1].execute(123);
@@ -62,7 +63,7 @@ describe('useAsyncAbortable', () => {
 
 	it('should abort signal in case of actions.abort call', async () => {
 		const [spy, resolve] = getControllableAsync<number, [AbortSignal, number]>();
-		const { result } = renderHook(() => useAsyncAbortable(spy));
+		const {result} = renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
 			void result.current[1].execute(123);
@@ -81,7 +82,7 @@ describe('useAsyncAbortable', () => {
 
 	it('should also abort signal in case of actions.reset call', async () => {
 		const [spy, resolve] = getControllableAsync<number, [AbortSignal, number]>();
-		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
+		const {result} = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
 			void result.current[1].execute(123);
@@ -108,7 +109,7 @@ describe('useAsyncAbortable', () => {
 
 	it('should abort previous async in case new one executed before first resolution', async () => {
 		const [spy, resolve] = getControllableAsync<number, [AbortSignal, number]>();
-		const { result } = renderHook(() => useAsyncAbortable(spy, 321));
+		const {result} = renderHook(() => useAsyncAbortable(spy, 321));
 
 		await act(async () => {
 			void result.current[1].execute(123);

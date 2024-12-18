@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useAsyncAbortable} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useAsyncAbortable} from '../index.js';
 
 describe('useAsyncAbortable', () => {
 	it('should be defined', () => {

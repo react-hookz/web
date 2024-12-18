@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useSyncedRef} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useSyncedRef} from '../index.js';
 
 describe('useSyncedRef', () => {
 	it('should be defined', () => {

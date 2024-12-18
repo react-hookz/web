@@ -1,5 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useMediatedState } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {describe, expect, it, vi} from 'vitest';
+import {useMediatedState} from '../index.js';
 
 describe('useMediatedState', () => {
 	it('should be defined', () => {
@@ -7,12 +8,12 @@ describe('useMediatedState', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useMediatedState());
+		const {result} = renderHook(() => useMediatedState());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should act like useState if mediator not passed', () => {
-		const { result } = renderHook(() => useMediatedState(123));
+		const {result} = renderHook(() => useMediatedState(123));
 
 		expect(result.current[0]).toBe(123);
 		act(() => {
@@ -22,8 +23,8 @@ describe('useMediatedState', () => {
 	});
 
 	it('should pass received sate through mediator', () => {
-		const spy = jest.fn((value: string) => Number.parseInt(value, 10));
-		const { result } = renderHook(() => useMediatedState(123, spy));
+		const spy = vi.fn((value: string) => Number.parseInt(value, 10));
+		const {result} = renderHook(() => useMediatedState(123, spy));
 
 		expect(result.current[0]).toBe(123);
 		act(() => {
@@ -35,17 +36,15 @@ describe('useMediatedState', () => {
 	});
 
 	it('should pass initial sate through mediator', () => {
-		const { result } = renderHook(() =>
-			useMediatedState('a123', (value: string) => value.replaceAll(/[^a-z]+/gi, ''))
-		);
+		const {result} = renderHook(() =>
+			useMediatedState('a123', (value: string) => value.replaceAll(/[^a-z]+/gi, '')));
 
 		expect(result.current[0]).toBe('a');
 	});
 
 	it('should return same setState method each render even if callback is changed', () => {
-		const { result, rerender } = renderHook(() =>
-			useMediatedState(123, (value: string) => Number.parseInt(value, 10))
-		);
+		const {result, rerender} = renderHook(() =>
+			useMediatedState(123, (value: string) => Number.parseInt(value, 10)));
 
 		const f1 = result.current[1];
 		rerender();

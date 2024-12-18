@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useRenderCount} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useRenderCount} from '../index.js';
 
 describe('useRendersCount', () => {
 	it('should be defined', () => {

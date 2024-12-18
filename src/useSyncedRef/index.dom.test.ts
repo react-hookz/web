@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useSyncedRef } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {describe, expect, it} from 'vitest';
+import {useSyncedRef} from '../index.js';
 
 describe('useSyncedRef', () => {
 	it('should be defined', () => {
@@ -7,18 +8,18 @@ describe('useSyncedRef', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useSyncedRef(1));
+		const {result} = renderHook(() => useSyncedRef(1));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return ref object', () => {
-		const { result } = renderHook(() => useSyncedRef(1));
+		const {result} = renderHook(() => useSyncedRef(1));
 
-		expect(result.current).toEqual({ current: 1 });
+		expect(result.current).toEqual({current: 1});
 	});
 
 	it('should return same ref between renders', () => {
-		const { result, rerender } = renderHook(() => useSyncedRef(1));
+		const {result, rerender} = renderHook(() => useSyncedRef(1));
 
 		const ref = result.current;
 		rerender();
@@ -30,22 +31,22 @@ describe('useSyncedRef', () => {
 	});
 
 	it('should contain actual value on each render', () => {
-		const { result, rerender } = renderHook(({ val }) => useSyncedRef<any>(val), {
+		const {result, rerender} = renderHook(({val}) => useSyncedRef<any>(val), {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-			initialProps: { val: 1 as any },
+			initialProps: {val: 1 as any},
 		});
 
 		expect(result.current.current).toBe(1);
-		const value1 = { foo: 'bar' };
-		rerender({ val: value1 });
+		const value1 = {foo: 'bar'};
+		rerender({val: value1});
 		expect(result.current.current).toBe(value1);
 		const value2 = ['a', 'b', 'c'];
-		rerender({ val: value2 });
+		rerender({val: value2});
 		expect(result.current.current).toBe(value2);
 	});
 
 	it('should throw on attempt to change ref', () => {
-		const { result } = renderHook(() => useSyncedRef(1));
+		const {result} = renderHook(() => useSyncedRef(1));
 
 		expect(() => {
 			// @ts-expect-error testing irrelevant usage

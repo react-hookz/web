@@ -1,5 +1,5 @@
-import { type DependencyList, useMemo, useRef } from 'react';
-import { useUnmountEffect } from '../useUnmountEffect/index.js';
+import {type DependencyList, useMemo, useRef} from 'react';
+import {useUnmountEffect} from '../useUnmountEffect/index.js';
 
 export type ThrottledFunction<Fn extends (...args: any[]) => any> = (
 	this: ThisParameterType<Fn>,
@@ -20,10 +20,10 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
 	callback: Fn,
 	deps: DependencyList,
 	delay: number,
-	noTrailing = false
+	noTrailing = false,
 ): ThrottledFunction<Fn> {
 	const timeout = useRef<ReturnType<typeof setTimeout>>();
-	const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
+	const lastCall = useRef<{args: Parameters<Fn>; this: ThisParameterType<Fn>}>();
 
 	useUnmountEffect(() => {
 		if (timeout.current) {
@@ -54,7 +54,7 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
 			if (timeout.current) {
 				// If we cant execute callback immediately - save its arguments and
 				// context to execute it when delay is passed
-				lastCall.current = { args, this: this };
+				lastCall.current = {args, this: this};
 
 				return;
 			}
@@ -63,8 +63,8 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
 		} as ThrottledFunction<Fn>;
 
 		Object.defineProperties(wrapped, {
-			length: { value: callback.length },
-			name: { value: `${callback.name || 'anonymous'}__throttled__${delay}` },
+			length: {value: callback.length},
+			name: {value: `${callback.name || 'anonymous'}__throttled__${delay}`},
 		});
 
 		return wrapped;

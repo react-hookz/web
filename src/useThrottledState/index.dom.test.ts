@@ -1,17 +1,18 @@
-import {renderHook, act} from '@testing-library/react-hooks/dom';
-import {useThrottledState} from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useThrottledState} from '../index.js';
 
 describe('useThrottledState', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {
@@ -35,7 +36,7 @@ describe('useThrottledState', () => {
 		result.current[1]('foo');
 		result.current[1]('bar');
 		expect(result.current[0]).toBe('hello world!');
-		jest.advanceTimersByTime(200);
+		vi.advanceTimersByTime(200);
 		act(() => {
 			result.current[1]('baz');
 		});

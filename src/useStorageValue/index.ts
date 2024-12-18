@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useFirstMountState } from '../useFirstMountState/index.js';
-import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { useUpdateEffect } from '../useUpdateEffect/index.js';
-import { isBrowser } from '../util/const.js';
-import { off, on } from '../util/misc.js';
-import { type NextState, resolveHookState } from '../util/resolveHookState.js';
+import {useEffect, useMemo, useState} from 'react';
+import {useFirstMountState} from '../useFirstMountState/index.js';
+import {useIsomorphicLayoutEffect} from '../useIsomorphicLayoutEffect/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {useUpdateEffect} from '../useUpdateEffect/index.js';
+import {isBrowser} from '../util/const.js';
+import {off, on} from '../util/misc.js';
+import {type NextState, resolveHookState} from '../util/resolveHookState.js';
 
 const storageListeners = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
@@ -13,7 +13,7 @@ const invokeStorageKeyListeners = (
 	s: Storage,
 	key: string,
 	value: string | null,
-	skipListener?: CallableFunction
+	skipListener?: CallableFunction,
 ) => {
 	storageListeners
 		.get(s)
@@ -35,7 +35,7 @@ const addStorageListener = (s: Storage, key: string, listener: CallableFunction)
 	// In case of first listener added within browser environment we
 	// want to bind single storage event handler
 	if (isBrowser && storageListeners.size === 0) {
-		on(window, 'storage', storageEventHandler, { passive: true });
+		on(globalThis, 'storage', storageEventHandler, {passive: true});
 	}
 
 	let keys = storageListeners.get(s);
@@ -79,7 +79,7 @@ const removeStorageListener = (s: Storage, key: string, listener: CallableFuncti
 	// Unbind storage event handler in browser environment in case there is no
 	// storage keys listeners left
 	if (isBrowser && storageListeners.size === 0) {
-		off(window, 'storage', storageEventHandler);
+		off(globalThis, 'storage', storageEventHandler);
 	}
 };
 
@@ -142,9 +142,9 @@ export function useStorageValue<
 >(
 	storage: Storage,
 	key: string,
-	options?: UseStorageValueOptions<Type, Initialize>
+	options?: UseStorageValueOptions<Type, Initialize>,
 ): UseStorageValueResult<Type, Default, Initialize> {
-	const optionsRef = useSyncedRef({ ...DEFAULT_OPTIONS, ...options });
+	const optionsRef = useSyncedRef({...DEFAULT_OPTIONS, ...options});
 	const parse = (str: string | null, fallback: Type | null): Type | null => {
 		const parseFunction = optionsRef.current.parse ?? defaultParse;
 		return parseFunction(str, fallback);
@@ -160,7 +160,7 @@ export function useStorageValue<
 		fetch: () =>
 			parse(
 				storageActions.current.fetchRaw(),
-				optionsRef.current.defaultValue as Required<Type> | null
+				optionsRef.current.defaultValue as Required<Type> | null,
 			),
 		remove() {
 			storage.removeItem(key);
@@ -178,9 +178,9 @@ export function useStorageValue<
 
 	const isFirstMount = useFirstMountState();
 	const [state, setState] = useState<Type | null | undefined>(
-		optionsRef.current?.initializeWithValue && isFirstMount
-			? storageActions.current.fetch()
-			: undefined
+		optionsRef.current?.initializeWithValue && isFirstMount ?
+				storageActions.current.fetch() :
+			undefined,
 	);
 	const stateRef = useSyncedRef(state);
 
@@ -216,11 +216,13 @@ export function useStorageValue<
 
 	const actions = useSyncedRef({
 		set(value: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) {
-			if (!isBrowser) return;
+			if (!isBrowser) {
+				return;
+			}
 
 			const s = resolveHookState(
 				value,
-				stateRef.current as UseStorageValueValue<Type, Default, Initialize>
+				stateRef.current as UseStorageValueValue<Type, Default, Initialize>,
 			);
 
 			const storeValue = storageActions.current.store(s);
@@ -229,13 +231,17 @@ export function useStorageValue<
 			}
 		},
 		delete() {
-			if (!isBrowser) return;
+			if (!isBrowser) {
+				return;
+			}
 
 			storageActions.current.remove();
 			invokeStorageKeyListeners(storage, key, null);
 		},
 		fetch() {
-			if (!isBrowser) return;
+			if (!isBrowser) {
+				return;
+			}
 
 			invokeStorageKeyListeners(storage, key, storageActions.current.fetchRaw());
 		},
@@ -255,7 +261,7 @@ export function useStorageValue<
 			},
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[]
+		[],
 	);
 
 	return useMemo(
@@ -264,7 +270,7 @@ export function useStorageValue<
 			...staticActions,
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[state]
+		[state],
 	);
 }
 
@@ -273,7 +279,7 @@ const defaultStringify = (data: unknown): string | null => {
 		/* istanbul ignore next */
 		if (process.env.NODE_ENV === 'development') {
 			console.warn(
-				`'null' is not a valid data for useStorageValue hook, this operation will take no effect`
+				'\'null\' is not a valid data for useStorageValue hook, this operation will take no effect',
 			);
 		}
 
@@ -292,7 +298,9 @@ const defaultStringify = (data: unknown): string | null => {
 };
 
 const defaultParse = <T>(str: string | null, fallback: T | null): T | null => {
-	if (str === null) return fallback;
+	if (str === null) {
+		return fallback;
+	}
 
 	try {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-return

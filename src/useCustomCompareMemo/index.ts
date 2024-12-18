@@ -1,5 +1,5 @@
-import { useMemo, useRef, type DependencyList } from 'react';
-import { type DependenciesComparator } from '../types.js';
+import {type DependencyList, useMemo, useRef} from 'react';
+import {type DependenciesComparator} from '../types.js';
 
 /**
  * Like useMemo but uses provided comparator function to validate dependency changes.
@@ -12,7 +12,7 @@ import { type DependenciesComparator } from '../types.js';
 export const useCustomCompareMemo = <T, Deps extends DependencyList>(
 	factory: () => T,
 	deps: Deps,
-	comparator: DependenciesComparator<Deps>
+	comparator: DependenciesComparator<Deps>,
 ): T => {
 	const dependencies = useRef<Deps>();
 

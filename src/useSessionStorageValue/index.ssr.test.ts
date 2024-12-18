@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useSessionStorageValue} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useSessionStorageValue} from '../index.js';
 
 describe('useSessionStorageValue', () => {
 	it('should be defined', () => {

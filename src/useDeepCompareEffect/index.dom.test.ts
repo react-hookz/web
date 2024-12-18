@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {useDeepCompareEffect} from '../../index.js';
+import {describe, expect, it, vi} from 'vitest';
+import {useDeepCompareEffect} from '../index.js';
 
 describe('useDeepCompareEffect', () => {
 	it('should be defined', () => {
@@ -14,7 +15,7 @@ describe('useDeepCompareEffect', () => {
 	});
 
 	it('should run only in case deps are changed', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		const {rerender} = renderHook(
 			({deps}) => {
 				useDeepCompareEffect(spy, deps);

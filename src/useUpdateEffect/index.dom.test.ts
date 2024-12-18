@@ -1,9 +1,10 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {useUpdateEffect} from '../../index.js';
+import {describe, expect, it, vi} from 'vitest';
+import {useUpdateEffect} from '../index.js';
 
 describe('useUpdateEffect', () => {
 	it('should call effector only on updates (after first render)', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 
 		const {rerender, unmount} = renderHook(() => {
 			useUpdateEffect(spy);
@@ -22,7 +23,7 @@ describe('useUpdateEffect', () => {
 	});
 
 	it('should accept dependencies as useEffect', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 
 		const {rerender, unmount} = renderHook(
 			({deps}) => {

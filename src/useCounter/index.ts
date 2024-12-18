@@ -1,7 +1,7 @@
-import { type SetStateAction, useMemo } from 'react';
-import { useMediatedState } from '../useMediatedState/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { type InitialState, resolveHookState } from '../util/resolveHookState.js';
+import {type SetStateAction, useMemo} from 'react';
+import {useMediatedState} from '../useMediatedState/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {type InitialState, resolveHookState} from '../util/resolveHookState.js';
 
 export type CounterActions = {
 	/**
@@ -49,7 +49,7 @@ export type CounterActions = {
 export function useCounter(
 	initialValue: InitialState<number> = 0,
 	max?: number,
-	min?: number
+	min?: number,
 ): [number, CounterActions] {
 	const [state, setState] = useMediatedState(initialValue, (v: number): number => {
 		if (max !== undefined) {
@@ -71,16 +71,16 @@ export function useCounter(
 				get: () => stateRef.current,
 				set: setState,
 				dec(delta = 1) {
-					setState((value) => value - resolveHookState(delta, value));
+					setState(value => value - resolveHookState(delta, value));
 				},
 				inc(delta = 1) {
-					setState((value) => value + resolveHookState(delta, value));
+					setState(value => value + resolveHookState(delta, value));
 				},
 				reset(value = initialValue) {
-					setState((v) => resolveHookState(value, v));
+					setState(v => resolveHookState(value, v));
 				},
 			}),
-			[initialValue, setState, stateRef]
+			[initialValue, setState, stateRef],
 		),
 	];
 }

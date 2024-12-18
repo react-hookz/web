@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { useFirstMountState } from '../useFirstMountState/index.js';
-import { useMountEffect } from '../useMountEffect/index.js';
-import { useRafState } from '../useRafState/index.js';
-import { isBrowser } from '../util/const.js';
+import {useEffect} from 'react';
+import {useFirstMountState} from '../useFirstMountState/index.js';
+import {useMountEffect} from '../useMountEffect/index.js';
+import {useRafState} from '../useRafState/index.js';
+import {isBrowser} from '../util/const.js';
 
 export type WindowSize = {
 	width: number;
@@ -46,7 +46,7 @@ export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean)
 
 	useEffect(() => {
 		if (listeners.size === 0) {
-			window.addEventListener('resize', callAllListeners, { passive: true });
+			window.addEventListener('resize', callAllListeners, {passive: true});
 		}
 
 		listeners.add(setSize);

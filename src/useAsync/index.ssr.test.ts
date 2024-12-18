@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useAsync} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useAsync} from '../index.js';
 
 describe('useAsync', () => {
 	it('should be defined', () => {

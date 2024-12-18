@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useDeepCompareEffect} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useDeepCompareEffect} from '../index.js';
 
 describe('useDeepCompareEffect', () => {
 	it('should be defined', () => {

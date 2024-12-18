@@ -1,17 +1,18 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {useDebouncedEffect} from '../../index.js';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useDebouncedEffect} from '../index.js';
 
 describe('useDebouncedEffect', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {
@@ -26,17 +27,17 @@ describe('useDebouncedEffect', () => {
 	});
 
 	it('should call effect only after delay', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 
 		renderHook(() => {
 			useDebouncedEffect(spy, [], 200);
 		});
 		expect(spy).not.toHaveBeenCalled();
 
-		jest.advanceTimersByTime(199);
+		vi.advanceTimersByTime(199);
 		expect(spy).not.toHaveBeenCalled();
 
-		jest.advanceTimersByTime(1);
+		vi.advanceTimersByTime(1);
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 });

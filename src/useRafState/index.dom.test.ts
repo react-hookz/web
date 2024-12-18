@@ -1,28 +1,29 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useRafState } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useRafState} from '../index.js';
 
 describe('useRafState', () => {
-	const raf = global.requestAnimationFrame;
-	const caf = global.cancelAnimationFrame;
+	const raf = globalThis.requestAnimationFrame;
+	const caf = globalThis.cancelAnimationFrame;
 
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 
-		global.requestAnimationFrame = (cb) => setTimeout(cb);
-		global.cancelAnimationFrame = (cb) => {
+		globalThis.requestAnimationFrame = cb => setTimeout(cb);
+		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 
-		global.requestAnimationFrame = raf;
-		global.cancelAnimationFrame = caf;
+		globalThis.requestAnimationFrame = raf;
+		globalThis.cancelAnimationFrame = caf;
 	});
 
 	it('should be defined', () => {
@@ -30,12 +31,12 @@ describe('useRafState', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useRafState());
+		const {result} = renderHook(() => useRafState());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should not update state unless animation frame', () => {
-		const { result } = renderHook(() => useRafState<number>());
+		const {result} = renderHook(() => useRafState<number>());
 
 		act(() => {
 			result.current[1](1);
@@ -46,7 +47,7 @@ describe('useRafState', () => {
 		expect(result.current[0]).toBeUndefined();
 
 		act(() => {
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 		});
 
 		expect(result.current[0]).toBe(3);
@@ -54,7 +55,7 @@ describe('useRafState', () => {
 	});
 
 	it('should cancel animation frame on unmount', () => {
-		const { result, unmount } = renderHook(() => useRafState<number>());
+		const {result, unmount} = renderHook(() => useRafState<number>());
 
 		act(() => {
 			result.current[1](1);

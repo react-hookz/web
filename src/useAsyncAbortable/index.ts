@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import {useMemo, useRef} from 'react';
 import {
 	type AsyncState,
 	useAsync,
@@ -53,12 +53,12 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
  */
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
-	initialValue?: Result
+	initialValue?: Result,
 ): [
-	AsyncState<Result | undefined>,
-	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>,
-] {
+		AsyncState<Result | undefined>,
+		UseAsyncAbortableActions<Result, Args>,
+		UseAsyncAbortableMeta<Result, Args>,
+	] {
 	const abortController = useRef<AbortController>();
 
 	const fn = async (...args: Args): Promise<Result> => {
@@ -99,6 +99,6 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 			};
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, []),
-		{ ...asyncMeta, abortController: abortController.current },
+		{...asyncMeta, abortController: abortController.current},
 	];
 }

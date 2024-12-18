@@ -1,17 +1,18 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useThrottledState} from '../../index.js';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useThrottledState} from '../index.js';
 
 describe('useThrottledState', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {

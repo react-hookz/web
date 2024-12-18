@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useRafState} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useRafState} from '../index.js';
 
 describe('useRafState', () => {
 	it('should be defined', () => {

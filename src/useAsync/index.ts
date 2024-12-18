@@ -1,29 +1,29 @@
-import { useMemo, useRef, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
+import {useMemo, useRef, useState} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
 
 export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 
 export type AsyncState<Result> =
 	| {
-			status: 'not-executed';
-			error: undefined;
-			result: Result;
-	  }
+		status: 'not-executed';
+		error: undefined;
+		result: Result;
+	}
 	| {
-			status: 'success';
-			error: undefined;
-			result: Result;
-	  }
+		status: 'success';
+		error: undefined;
+		result: Result;
+	}
 	| {
-			status: 'error';
-			error: Error;
-			result: Result;
-	  }
+		status: 'error';
+		error: Error;
+		result: Result;
+	}
 	| {
-			status: AsyncStatus;
-			error: Error | undefined;
-			result: Result;
-	  };
+		status: AsyncStatus;
+		error: Error | undefined;
+		result: Result;
+	};
 
 export type UseAsyncActions<Result, Args extends unknown[] = unknown[]> = {
 	/**
@@ -65,7 +65,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
  */
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: Args) => Promise<Result>,
-	initialValue?: Result
+	initialValue?: Result,
 ): [AsyncState<Result | undefined>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>] {
 	const [state, setState] = useState<AsyncState<Result | undefined>>({
 		status: 'not-executed',
@@ -81,7 +81,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 			const promise = asyncFn(...params);
 			promiseRef.current = promise;
 
-			setState((s) => ({ ...s, status: 'loading' }));
+			setState(s => ({...s, status: 'loading'}));
 
 			// eslint-disable-next-line promise/catch-or-return
 			promise.then(
@@ -90,16 +90,16 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 					// this approach helps to avoid race conditions
 
 					if (promise === promiseRef.current) {
-						setState((s) => ({ ...s, status: 'success', error: undefined, result }));
+						setState(s => ({...s, status: 'success', error: undefined, result}));
 					}
 				},
 				(error: Error) => {
 					// We dont want to handle result/error of non-latest function
 					// this approach helps to avoid race conditions
 					if (promise === promiseRef.current) {
-						setState((s) => ({ ...s, status: 'error', error }));
+						setState(s => ({...s, status: 'error', error}));
 					}
-				}
+				},
 			);
 
 			return promise;
@@ -125,8 +125,8 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 				execute: (...params: Args) => methods.current.execute(...params),
 			}),
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-			[]
+			[],
 		),
-		{ promise: promiseRef.current, lastArgs: argsRef.current },
+		{promise: promiseRef.current, lastArgs: argsRef.current},
 	];
 }

@@ -1,23 +1,24 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useMeasure } from '../../index.js';
-import Mock = jest.Mock;
+import {renderHook} from '@testing-library/react-hooks/server';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {useMeasure} from '../index.js';
+import Mock = vi.Mock;
 
 describe('useMeasure', () => {
-	const observeSpy = jest.fn();
-	const unobserveSpy = jest.fn();
-	const disconnectSpy = jest.fn();
+	const observeSpy = vi.fn();
+	const unobserveSpy = vi.fn();
+	const disconnectSpy = vi.fn();
 
 	let ResizeObserverSpy: Mock<ResizeObserver>;
-	const initialRO = global.ResizeObserver;
+	const initialRO = globalThis.ResizeObserver;
 
 	beforeAll(() => {
-		ResizeObserverSpy = jest.fn(() => ({
+		ResizeObserverSpy = vi.fn(() => ({
 			observe: observeSpy,
 			unobserve: unobserveSpy,
 			disconnect: disconnectSpy,
 		}));
 
-		global.ResizeObserver = ResizeObserverSpy;
+		globalThis.ResizeObserver = ResizeObserverSpy;
 	});
 
 	beforeEach(() => {
@@ -27,7 +28,7 @@ describe('useMeasure', () => {
 	});
 
 	afterAll(() => {
-		global.ResizeObserver = initialRO;
+		globalThis.ResizeObserver = initialRO;
 	});
 
 	it('should be defined', () => {
@@ -35,20 +36,20 @@ describe('useMeasure', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useMeasure());
+		const {result} = renderHook(() => useMeasure());
 
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return undefined sate on initial render', () => {
-		const { result } = renderHook(() => useMeasure());
+		const {result} = renderHook(() => useMeasure());
 
 		expect(result.current[0]).toBeUndefined();
 	});
 
 	it('should return reference as a second array element', () => {
-		const { result } = renderHook(() => useMeasure());
+		const {result} = renderHook(() => useMeasure());
 
-		expect(result.current[1]).toStrictEqual({ current: null });
+		expect(result.current[1]).toStrictEqual({current: null});
 	});
 });

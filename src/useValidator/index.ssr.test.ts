@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useValidator} from '../../index.js';
+import {describe, expect, it, vi} from 'vitest';
+import {useValidator} from '../index.js';
 
 describe('useValidator', () => {
 	it('should be defined', () => {
@@ -17,7 +18,7 @@ describe('useValidator', () => {
 	});
 
 	it('should not call validator on first render', () => {
-		const spy = jest.fn(() => ({isValid: true}));
+		const spy = vi.fn(() => ({isValid: true}));
 		renderHook(() => useValidator(spy, []));
 		expect(spy).not.toHaveBeenCalled();
 	});

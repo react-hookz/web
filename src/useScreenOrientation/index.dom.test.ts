@@ -1,5 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useScreenOrientation } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {useScreenOrientation} from '../index.js';
 
 describe('useScreenOrientation', () => {
 	// Have to copy implementation as jsdom lacks of it
@@ -7,26 +8,26 @@ describe('useScreenOrientation', () => {
 		matches: boolean;
 		media: string;
 		onchange: null;
-		addListener: jest.Mock; // Deprecated
-		removeListener: jest.Mock; // Deprecated
-		addEventListener: jest.Mock;
-		removeEventListener: jest.Mock;
-		dispatchEvent: jest.Mock;
+		addListener: vi.Mock; // Deprecated
+		removeListener: vi.Mock; // Deprecated
+		addEventListener: vi.Mock;
+		removeEventListener: vi.Mock;
+		dispatchEvent: vi.Mock;
 	};
 
-	const matchMediaMock = jest.fn();
-	let initialMatchMedia: typeof window.matchMedia;
+	const matchMediaMock = vi.fn();
+	let initialMatchMedia: typeof globalThis.matchMedia;
 
 	beforeAll(() => {
-		initialMatchMedia = window.matchMedia;
-		Object.defineProperty(window, 'matchMedia', {
+		initialMatchMedia = globalThis.matchMedia;
+		Object.defineProperty(globalThis, 'matchMedia', {
 			writable: true,
 			value: matchMediaMock,
 		});
 	});
 
 	afterAll(() => {
-		window.matchMedia = initialMatchMedia;
+		globalThis.matchMedia = initialMatchMedia;
 	});
 
 	beforeEach(() => {
@@ -34,11 +35,11 @@ describe('useScreenOrientation', () => {
 			matches: false,
 			media: query,
 			onchange: null,
-			addListener: jest.fn(), // Deprecated
-			removeListener: jest.fn(), // Deprecated
-			addEventListener: jest.fn(),
-			removeEventListener: jest.fn(),
-			dispatchEvent: jest.fn(),
+			addListener: vi.fn(), // Deprecated
+			removeListener: vi.fn(), // Deprecated
+			addEventListener: vi.fn(),
+			removeEventListener: vi.fn(),
+			dispatchEvent: vi.fn(),
 		}));
 	});
 
@@ -51,18 +52,18 @@ describe('useScreenOrientation', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useScreenOrientation());
+		const {result} = renderHook(() => useScreenOrientation());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should initialize without value if initializeWithValue option is set to false', () => {
-		const { result } = renderHook(() => useScreenOrientation({ initializeWithValue: false }));
+		const {result} = renderHook(() => useScreenOrientation({initializeWithValue: false}));
 		expect(result.all[0]).toBeUndefined();
 		expect(result.all[1]).toBe('landscape');
 	});
 
 	it('should return `portrait` in case media query matches and `landscape` otherwise', () => {
-		const { result } = renderHook(() => useScreenOrientation());
+		const {result} = renderHook(() => useScreenOrientation());
 		expect(result.current).toBe('landscape');
 
 		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;

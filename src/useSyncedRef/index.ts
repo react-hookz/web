@@ -1,11 +1,11 @@
-import { useMemo, useRef } from 'react';
+import {useMemo, useRef} from 'react';
 
 /**
  * Like `useRef`, but it returns immutable ref that contains actual value.
  *
  * @param value
  */
-export function useSyncedRef<T>(value: T): { readonly current: T } {
+export function useSyncedRef<T>(value: T): {readonly current: T} {
 	const ref = useRef(value);
 
 	ref.current = value;
@@ -17,6 +17,6 @@ export function useSyncedRef<T>(value: T): { readonly current: T } {
 					return ref.current;
 				},
 			}),
-		[]
+		[],
 	);
 }

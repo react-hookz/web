@@ -1,5 +1,6 @@
-import { renderHook, act } from '@testing-library/react-hooks/server';
-import { useMap } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/server';
+import {describe, expect, it, vi} from 'vitest';
+import {useMap} from '../index.js';
 
 describe('useMap', () => {
 	it('should be defined', () => {
@@ -7,12 +8,12 @@ describe('useMap', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useMap());
+		const {result} = renderHook(() => useMap());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return a Map instance with altered set, clear and delete methods', () => {
-		const { result } = renderHook(() => useMap());
+		const {result} = renderHook(() => useMap());
 		expect(result.current).toBeInstanceOf(Map);
 		expect(result.current.set).not.toBe(Map.prototype.set);
 		expect(result.current.clear).not.toBe(Map.prototype.clear);
@@ -20,13 +21,12 @@ describe('useMap', () => {
 	});
 
 	it('should accept initial values', () => {
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useMap([
 				['foo', 1],
 				['bar', 2],
 				['baz', 3],
-			])
-		);
+			]));
 		expect(result.current.get('foo')).toBe(1);
 		expect(result.current.get('bar')).toBe(2);
 		expect(result.current.get('baz')).toBe(3);
@@ -34,9 +34,9 @@ describe('useMap', () => {
 	});
 
 	it('`set` should invoke original method and not rerender component', () => {
-		const spy = jest.spyOn(Map.prototype, 'set');
+		const spy = vi.spyOn(Map.prototype, 'set');
 		let i = 0;
-		const { result } = renderHook(() => [++i, useMap()] as const);
+		const {result} = renderHook(() => [++i, useMap()] as const);
 
 		act(() => {
 			expect(result.current[1].set('foo', 'bar')).toBe(result.current[1]);
@@ -49,9 +49,9 @@ describe('useMap', () => {
 	});
 
 	it('`clear` should invoke original method and not rerender component', () => {
-		const spy = jest.spyOn(Map.prototype, 'clear');
+		const spy = vi.spyOn(Map.prototype, 'clear');
 		let i = 0;
-		const { result } = renderHook(() => [++i, useMap()] as const);
+		const {result} = renderHook(() => [++i, useMap()] as const);
 
 		act(() => {
 			result.current[1].clear();
@@ -63,9 +63,9 @@ describe('useMap', () => {
 	});
 
 	it('`delete` should invoke original method and not rerender component', () => {
-		const spy = jest.spyOn(Map.prototype, 'delete');
+		const spy = vi.spyOn(Map.prototype, 'delete');
 		let i = 0;
-		const { result } = renderHook(() => [++i, useMap([['foo', 1]])] as const);
+		const {result} = renderHook(() => [++i, useMap([['foo', 1]])] as const);
 
 		act(() => {
 			expect(result.current[1].delete('foo')).toBe(true);

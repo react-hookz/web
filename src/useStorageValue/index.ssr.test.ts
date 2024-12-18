@@ -1,6 +1,7 @@
 import {act, renderHook} from '@testing-library/react-hooks/server';
-import {useStorageValue} from '../index.js';
-import {newStorage} from './misc.js';
+import {describe, expect, it} from 'vitest';
+import {newStorage} from './index.dom.test.js';
+import {useStorageValue} from './index.js';
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {
@@ -38,7 +39,7 @@ describe('useStorageValue', () => {
 		it('should not set storage value on .set() call', () => {
 			const storage = newStorage();
 			const {result} = renderHook(() =>
-				useStorageValue < string > (storage, 'foo', {initializeWithValue: false}));
+				useStorageValue<string>(storage, 'foo', {initializeWithValue: false}));
 
 			expect(result.current.value).toBe(undefined);
 			act(() => {
@@ -51,7 +52,7 @@ describe('useStorageValue', () => {
 		it('should not call storage`s removeItem on .remove() call', () => {
 			const storage = newStorage();
 			const {result} = renderHook(() =>
-				useStorageValue < string > (storage, 'foo', {initializeWithValue: false}));
+				useStorageValue<string>(storage, 'foo', {initializeWithValue: false}));
 
 			act(() => {
 				result.current.remove();
@@ -62,7 +63,7 @@ describe('useStorageValue', () => {
 		it('should not set state to default value on item remove', () => {
 			const storage = newStorage(() => '"bar"');
 			const {result} = renderHook(() =>
-				useStorageValue < string > (storage, 'foo', {
+				useStorageValue<string>(storage, 'foo', {
 					defaultValue: 'default value',
 					initializeWithValue: false,
 				}));

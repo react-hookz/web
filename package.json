@@ -37,14 +37,12 @@
 	},
 	"scripts": {
 		"postinstall": "husky",
-		"prepack": "pinst --disable",
-		"postpack": "pinst --enable",
 		"build": "yarn build:clean && tsc --version && tsc --project ./tsconfig.build.json",
 		"build:clean": "yarn rimraf ./dist",
-		"test": "jest --selectProjects dom ssr",
-		"test:coverage": "yarn test --coverage",
 		"lint": "eslint",
-		"lint:fix": "yarn lint --fix"
+		"lint:fix": "eslint --fix",
+		"test": "vitest --run",
+		"test:coverage": "vitest --run --coverage"
 	},
 	"dependencies": {
 		"@react-hookz/deep-equal": "^3.0.1"
@@ -64,7 +62,6 @@
 		"@commitlint/config-conventional": "^19.5.0",
 		"@react-hookz/eslint-config": "^4.1.6",
 		"@react-hookz/eslint-formatter-gha": "^3.0.2",
-		"@semantic-release/exec": "^6.0.3",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/js-cookie": "^3.0.6",
 		"@types/react": "^18.2.52",
@@ -73,6 +70,7 @@
 		"eslint": "^9.17.0",
 		"husky": "^9.1.7",
 		"js-cookie": "^3.0.5",
+		"jsdom": "^25.0.1",
 		"lint-staged": "^15.2.2",
 		"pinst": "^3.0.0",
 		"react": "^17.0.2",

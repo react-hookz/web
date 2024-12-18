@@ -1,12 +1,13 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {useRafEffect} from '../../index.js';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useRafEffect} from '../index.js';
 
 describe('useRafEffect', () => {
 	const raf = globalThis.requestAnimationFrame;
 	const caf = globalThis.cancelAnimationFrame;
 
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 
 		globalThis.requestAnimationFrame = cb => setTimeout(cb);
 		globalThis.cancelAnimationFrame = (cb) => {
@@ -15,11 +16,11 @@ describe('useRafEffect', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 
 		globalThis.requestAnimationFrame = raf;
 		globalThis.cancelAnimationFrame = caf;
@@ -37,7 +38,7 @@ describe('useRafEffect', () => {
 	});
 
 	it('should not run unless animation frame', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		const {rerender} = renderHook(
 			(dep) => {
 				useRafEffect(spy, [dep]);
@@ -54,14 +55,14 @@ describe('useRafEffect', () => {
 		expect(spy).toHaveBeenCalledTimes(0);
 
 		act(() => {
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 		});
 
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
 	it('should cancel animation frame on unmount', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		const {rerender, unmount} = renderHook(
 			(dep) => {
 				useRafEffect(spy, [dep]);
@@ -80,7 +81,7 @@ describe('useRafEffect', () => {
 		unmount();
 
 		act(() => {
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 		});
 
 		expect(spy).toHaveBeenCalledTimes(0);

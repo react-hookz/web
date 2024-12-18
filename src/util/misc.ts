@@ -1,5 +1,5 @@
-import { type DependencyList } from 'react';
-import { type DependenciesComparator } from '../types.js';
+import {type DependencyList} from 'react';
+import {type DependenciesComparator} from '../types.js';
 
 export function on<T extends EventTarget>(
 	object: T | null,
@@ -24,16 +24,20 @@ export const hasOwnProperty = <
 	K extends string | number | symbol,
 >(
 	object: T,
-	property: K
-): object is T & Record<K, unknown> => Object.prototype.hasOwnProperty.call(object, property);
+	property: K,
+): object is T & Record<K, unknown> => Object.hasOwn(object, property);
 
 export const yieldTrue = () => true as const;
 export const yieldFalse = () => false as const;
 
 export const basicDepsComparator: DependenciesComparator = (d1, d2) => {
-	if (d1 === d2) return true;
+	if (d1 === d2) {
+		return true;
+	}
 
-	if (d1.length !== d2.length) return false;
+	if (d1.length !== d2.length) {
+		return false;
+	}
 
 	for (const [i, element] of d1.entries()) {
 		if (element !== d2[i]) {

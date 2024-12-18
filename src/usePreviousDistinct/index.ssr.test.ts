@@ -1,6 +1,7 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {usePreviousDistinct} from '../../index.js';
-import {isStrictEqual} from '../../util/const.js';
+import {describe, expect, it} from 'vitest';
+import {usePreviousDistinct} from '../index.js';
+import {isStrictEqual} from '../util/const.js';
 
 describe('usePreviousDistinct', () => {
 	it('should be defined', () => {

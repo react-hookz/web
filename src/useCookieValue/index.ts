@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
-import { type Dispatch, useCallback, useEffect, useState } from 'react';
-import { useFirstMountState } from '../useFirstMountState/index.js';
-import { useMountEffect } from '../useMountEffect/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { isBrowser } from '../util/const.js';
+import {type Dispatch, useCallback, useEffect, useState} from 'react';
+import {useFirstMountState} from '../useFirstMountState/index.js';
+import {useMountEffect} from '../useMountEffect/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {isBrowser} from '../util/const.js';
 
 const cookiesSetters = new Map<string, Set<Dispatch<string | null>>>();
 
@@ -23,7 +23,9 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
 
 	// Almost impossible to test in normal situation
 	/* istanbul ignore next */
-	if (!setters) return;
+	if (!setters) {
+		return;
+	}
 
 	setters.delete(setter);
 
@@ -35,36 +37,40 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
 const invokeRegisteredSetters = (
 	key: string,
 	value: string | null,
-	skipSetter?: Dispatch<string | null>
+	skipSetter?: Dispatch<string | null>,
 ) => {
 	const setters = cookiesSetters.get(key);
 
 	// Almost impossible to test in normal situation
 	/* istanbul ignore next */
-	if (!setters) return;
+	if (!setters) {
+		return;
+	}
 
 	for (const s of setters) {
-		if (s !== skipSetter) s(value);
+		if (s !== skipSetter) {
+			s(value);
+		}
 	}
 };
 
 export type UseCookieValueOptions<
 	InitializeWithValue extends boolean | undefined = boolean | undefined,
 > = Cookies.CookieAttributes &
-	(InitializeWithValue extends undefined
-		? {
-				/**
-				 * Whether to initialize state with the cookie value or `undefined`.
-				 *
-				 * _We suggest setting this to `false` during SSR._
-				 *
-				 * @default true
-				 */
-				initializeWithValue?: InitializeWithValue;
-			}
-		: {
-				initializeWithValue: InitializeWithValue;
-			});
+(InitializeWithValue extends undefined
+	? {
+			/**
+			 * Whether to initialize state with the cookie value or `undefined`.
+			 *
+			 * _We suggest setting this to `false` during SSR._
+			 *
+			 * @default true
+			 */
+			initializeWithValue?: InitializeWithValue;
+		}
+	: {
+			initializeWithValue: InitializeWithValue;
+		});
 
 export type UseCookieValueReturn<V extends undefined | null | string = undefined | null | string> =
 	[value: V, set: (value: string) => void, remove: () => void, fetch: () => void];
@@ -82,17 +88,17 @@ export function useCookieValue(key: string, options?: UseCookieValueOptions): Us
  */
 export function useCookieValue(
 	key: string,
-	options: UseCookieValueOptions = {}
+	options: UseCookieValueOptions = {},
 ): UseCookieValueReturn {
 	// No need to test it, dev-only notification about 3rd party library requirement
 	/* istanbul ignore next */
 	if (process.env.NODE_ENV === 'development' && Cookies === undefined) {
 		throw new ReferenceError(
-			'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.'
+			'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.',
 		);
 	}
 
-	let { initializeWithValue = true, ...cookiesOptions } = options;
+	let {initializeWithValue = true, ...cookiesOptions} = options;
 
 	if (!isBrowser) {
 		initializeWithValue = false;
@@ -120,7 +126,7 @@ export function useCookieValue(
 
 	const isFirstMount = useFirstMountState();
 	const [state, setState] = useState<string | null | undefined>(
-		isFirstMount && initializeWithValue ? methods.current.fetchVal() : undefined
+		isFirstMount && initializeWithValue ? methods.current.fetchVal() : undefined,
 	);
 
 	useMountEffect(() => {

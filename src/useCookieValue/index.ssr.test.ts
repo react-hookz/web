@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useCookieValue} from '../index.js';
+import {describe, expect, it} from 'vitest';
+import {useCookieValue} from './index.js';
 
 describe('useCookieValue', () => {
 	it('should be defined', () => {

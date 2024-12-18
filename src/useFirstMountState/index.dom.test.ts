@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {useFirstMountState} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useFirstMountState} from '../index.js';
 
 describe('useFirstMountState', () => {
 	it('should return true on first render', () => {

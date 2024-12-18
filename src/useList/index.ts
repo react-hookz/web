@@ -1,7 +1,7 @@
-import { type SetStateAction, useMemo, useRef } from 'react';
-import { useRerender } from '../useRerender/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { type InitialState, resolveHookState } from '../util/resolveHookState.js';
+import {type SetStateAction, useMemo, useRef} from 'react';
+import {useRerender} from '../useRerender/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {type InitialState, resolveHookState} from '../util/resolveHookState.js';
 
 export type ListActions<T> = {
 	/**
@@ -114,8 +114,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
 
 			update(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
 				actions.set((currentList: T[]) =>
-					currentList.map((item: T) => (predicate(item, newItem) ? newItem : item))
-				);
+					currentList.map((item: T) => (predicate(item, newItem) ? newItem : item)));
 			},
 
 			updateFirst(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
@@ -166,7 +165,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
 				actions.set([...resolveHookState(initial.current)]);
 			},
 		}),
-		[initial, rerender]
+		[initial, rerender],
 	);
 
 	return [list.current, actions];

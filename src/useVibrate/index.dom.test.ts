@@ -1,8 +1,9 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {useVibrate} from '../../index.js';
+import {afterAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {useVibrate} from '../index.js';
 
 describe('useVibrate', () => {
-	const vibrateSpy = jest.spyOn(navigator, 'vibrate');
+	const vibrateSpy = vi.spyOn(navigator, 'vibrate');
 
 	beforeEach(() => {
 		vibrateSpy.mockReset();
@@ -41,7 +42,7 @@ describe('useVibrate', () => {
 	});
 
 	it('should vibrate constantly using interval', () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		renderHook(() => {
 			useVibrate(true, 300, true);
 		});
@@ -49,17 +50,17 @@ describe('useVibrate', () => {
 		expect(vibrateSpy).toHaveBeenCalledTimes(1);
 		expect(vibrateSpy.mock.calls[0][0]).toEqual(300);
 
-		jest.advanceTimersByTime(299);
+		vi.advanceTimersByTime(299);
 		expect(vibrateSpy).toHaveBeenCalledTimes(1);
 
-		jest.advanceTimersByTime(1);
+		vi.advanceTimersByTime(1);
 		expect(vibrateSpy).toHaveBeenCalledTimes(2);
 		expect(vibrateSpy.mock.calls[1][0]).toEqual(300);
 
-		jest.advanceTimersByTime(300);
+		vi.advanceTimersByTime(300);
 		expect(vibrateSpy).toHaveBeenCalledTimes(3);
 		expect(vibrateSpy.mock.calls[2][0]).toEqual(300);
 
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 });

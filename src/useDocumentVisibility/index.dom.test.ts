@@ -1,5 +1,6 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {useDocumentVisibility} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useDocumentVisibility} from '../index.js';
 
 describe('useDocumentVisibility', () => {
 	it('should be defined', () => {

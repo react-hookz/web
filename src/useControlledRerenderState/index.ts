@@ -1,7 +1,7 @@
-import { type SetStateAction, useCallback, useRef } from 'react';
-import { useFirstMountState } from '../useFirstMountState/index.js';
-import { useRerender } from '../useRerender/index.js';
-import { resolveHookState } from '../util/resolveHookState.js';
+import {type SetStateAction, useCallback, useRef} from 'react';
+import {useFirstMountState} from '../useFirstMountState/index.js';
+import {useRerender} from '../useRerender/index.js';
+import {resolveHookState} from '../util/resolveHookState.js';
 
 export type ControlledRerenderDispatch<A> = (value: A, rerender?: boolean) => void;
 
@@ -9,8 +9,8 @@ export function useControlledRerenderState<S>(
 	initialState: S | (() => S)
 ): [S, ControlledRerenderDispatch<SetStateAction<S>>];
 export function useControlledRerenderState<S = undefined>(): [
-	S | undefined,
-	ControlledRerenderDispatch<SetStateAction<S | undefined>>,
+		S | undefined,
+		ControlledRerenderDispatch<SetStateAction<S | undefined>>,
 ];
 
 /**
@@ -18,10 +18,10 @@ export function useControlledRerenderState<S = undefined>(): [
  * rerender.
  */
 export function useControlledRerenderState<S>(
-	initialState?: S | (() => S)
+	initialState?: S | (() => S),
 ): [S | undefined, ControlledRerenderDispatch<SetStateAction<S | undefined>>] {
 	const state = useRef<S | undefined>(
-		useFirstMountState() ? resolveHookState(initialState) : undefined
+		useFirstMountState() ? resolveHookState(initialState) : undefined,
 	);
 	const rr = useRerender();
 

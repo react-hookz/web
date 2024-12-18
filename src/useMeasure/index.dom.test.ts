@@ -1,33 +1,34 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useEffect } from 'react';
-import { useMeasure } from '../../index.js';
-import Mock = jest.Mock;
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {useEffect} from 'react';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {useMeasure} from '../index.js';
+import Mock = vi.Mock;
 
 describe('useMeasure', () => {
-	const raf = global.requestAnimationFrame;
-	const caf = global.cancelAnimationFrame;
-	const observeSpy = jest.fn();
-	const unobserveSpy = jest.fn();
-	const disconnectSpy = jest.fn();
+	const raf = globalThis.requestAnimationFrame;
+	const caf = globalThis.cancelAnimationFrame;
+	const observeSpy = vi.fn();
+	const unobserveSpy = vi.fn();
+	const disconnectSpy = vi.fn();
 
 	let ResizeObserverSpy: Mock<ResizeObserver>;
-	const initialRO = global.ResizeObserver;
+	const initialRO = globalThis.ResizeObserver;
 
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 
-		global.requestAnimationFrame = (cb) => setTimeout(cb, 1);
-		global.cancelAnimationFrame = (cb) => {
+		globalThis.requestAnimationFrame = cb => setTimeout(cb, 1);
+		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
 
-		ResizeObserverSpy = jest.fn(() => ({
+		ResizeObserverSpy = vi.fn(() => ({
 			observe: observeSpy,
 			unobserve: unobserveSpy,
 			disconnect: disconnectSpy,
 		}));
 
-		global.ResizeObserver = ResizeObserverSpy;
+		globalThis.ResizeObserver = ResizeObserverSpy;
 	});
 
 	beforeEach(() => {
@@ -37,16 +38,16 @@ describe('useMeasure', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 
-		global.ResizeObserver = initialRO;
+		globalThis.ResizeObserver = initialRO;
 
-		global.requestAnimationFrame = raf;
-		global.cancelAnimationFrame = caf;
+		globalThis.requestAnimationFrame = raf;
+		globalThis.cancelAnimationFrame = caf;
 	});
 
 	it('should be defined', () => {
@@ -54,26 +55,26 @@ describe('useMeasure', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useMeasure());
+		const {result} = renderHook(() => useMeasure());
 
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return undefined sate on initial render', () => {
-		const { result } = renderHook(() => useMeasure());
+		const {result} = renderHook(() => useMeasure());
 
 		expect(result.current[0]).toBeUndefined();
 	});
 
 	it('should return reference as a second array element', () => {
-		const { result } = renderHook(() => useMeasure());
+		const {result} = renderHook(() => useMeasure());
 
-		expect(result.current[1]).toStrictEqual({ current: null });
+		expect(result.current[1]).toStrictEqual({current: null});
 	});
 
 	it('should only set state within animation frame', () => {
 		const div = document.createElement('div');
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			const res = useMeasure<HTMLDivElement>();
 
 			useEffect(() => {
@@ -90,7 +91,7 @@ describe('useMeasure', () => {
 
 		const entry = {
 			target: div,
-			contentRect: { width: 0, height: 0 },
+			contentRect: {width: 0, height: 0},
 			borderBoxSize: {},
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
@@ -100,10 +101,10 @@ describe('useMeasure', () => {
 		expect(result.current[0]).toBeUndefined();
 
 		act(() => {
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 
-		expect(result.current[1]).toStrictEqual({ current: div });
+		expect(result.current[1]).toStrictEqual({current: div});
 		expect(result.current[0]).toStrictEqual(measures);
 	});
 });

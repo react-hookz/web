@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useScreenOrientation} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useScreenOrientation} from '../index.js';
 
 describe('useScreenOrientation', () => {
 	it('should be defined', () => {

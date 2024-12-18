@@ -1,6 +1,6 @@
-/* eslint-disable max-nested-callbacks */
-import { resolveHookState } from '../../index.js';
-import { basicDepsComparator, off, on } from '../misc.js';
+import {describe, expect, it, vi} from 'vitest';
+import {resolveHookState} from '../index.js';
+import {basicDepsComparator, off, on} from './misc.js';
 
 describe('resolveHookState', () => {
 	it('should be defined', () => {
@@ -10,22 +10,22 @@ describe('resolveHookState', () => {
 	it('should return value itself if it is not function', () => {
 		expect(resolveHookState(123)).toBe(123);
 
-		const object = { foo: 'bar' };
+		const object = {foo: 'bar'};
 		expect(resolveHookState(object)).toBe(object);
 	});
 
 	it('should return call result in case function received', () => {
 		expect(resolveHookState(() => 123)).toBe(123);
 
-		const object = { foo: 'bar' };
+		const object = {foo: 'bar'};
 		expect(resolveHookState(() => object)).toBe(object);
 	});
 
 	it('should pass second parameter to received function', () => {
-		expect(resolveHookState((state) => state, 123)).toBe(123);
+		expect(resolveHookState(state => state, 123)).toBe(123);
 
-		const object = { foo: 'bar' };
-		expect(resolveHookState((state) => state, object)).toBe(object);
+		const object = {foo: 'bar'};
+		expect(resolveHookState(state => state, object)).toBe(object);
 	});
 });
 
@@ -35,7 +35,7 @@ describe('misc', () => {
 	describe('on', () => {
 		it("should call object's `addEventListener` with passed parameters", () => {
 			const object = {
-				addEventListener: jest.fn(),
+				addEventListener: vi.fn(),
 			};
 			on(object as unknown as EventTarget, 'evtName', cb);
 			expect(object.addEventListener).toHaveBeenCalledWith('evtName', cb);
@@ -51,7 +51,7 @@ describe('misc', () => {
 	describe('off', () => {
 		it("should call object's `removeEventListener` with passed parameters", () => {
 			const object = {
-				removeEventListener: jest.fn(),
+				removeEventListener: vi.fn(),
 			};
 
 			off(object as unknown as EventTarget, 'evtName', cb);

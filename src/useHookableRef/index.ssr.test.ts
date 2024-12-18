@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useHookableRef} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useHookableRef} from '../index.js';
 
 describe('useHookableRef', () => {
 	it('should be defined', () => {

@@ -1,6 +1,6 @@
-import { type RefObject, useEffect } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { isBrowser } from '../util/const.js';
+import {type RefObject, useEffect} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {isBrowser} from '../util/const.js';
 
 export type UseResizeObserverCallback = (entry: ResizeObserverEntry) => void;
 
@@ -13,19 +13,23 @@ type ResizeObserverSingleton = {
 let observerSingleton: ResizeObserverSingleton;
 
 function getResizeObserver(): ResizeObserverSingleton | undefined {
-	if (!isBrowser) return undefined;
+	if (!isBrowser) {
+		return undefined;
+	}
 
-	if (observerSingleton) return observerSingleton;
+	if (observerSingleton) {
+		return observerSingleton;
+	}
 
 	const callbacks = new Map<Element, Set<UseResizeObserverCallback>>();
 
 	const observer = new ResizeObserver((entries) => {
-		for (const entry of entries)
-			callbacks.get(entry.target)?.forEach((cb) =>
+		for (const entry of entries) {
+			callbacks.get(entry.target)?.forEach(cb =>
 				setTimeout(() => {
 					cb(entry);
-				}, 0)
-			);
+				}, 0));
+		}
 	});
 
 	observerSingleton = {
@@ -76,7 +80,7 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 export function useResizeObserver<T extends Element>(
 	target: RefObject<T> | T | null,
 	callback: UseResizeObserverCallback,
-	enabled = true
+	enabled = true,
 ): void {
 	const ro = enabled && getResizeObserver();
 	const cb = useSyncedRef(callback);
@@ -90,7 +94,9 @@ export function useResizeObserver<T extends Element>(
 
 		const tgt = target && 'current' in target ? target.current : target;
 
-		if (!ro || !tgt) return;
+		if (!ro || !tgt) {
+			return;
+		}
 
 		// As unsubscription in internals of our ResizeObserver abstraction can
 		// happen a bit later than effect cleanup invocation - we need a marker,

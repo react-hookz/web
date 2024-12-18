@@ -1,5 +1,6 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {useQueue} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useQueue} from '../index.js';
 
 describe('useQueue', () => {
 	it('should be defined', () => {

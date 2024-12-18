@@ -1,9 +1,9 @@
-import { type Dispatch, useEffect, useState } from 'react';
-import { isBrowser } from '../util/const.js';
+import {type Dispatch, useEffect, useState} from 'react';
+import {isBrowser} from '../util/const.js';
 
 const queriesMap = new Map<
 	string,
-	{ mql: MediaQueryList; dispatchers: Set<Dispatch<boolean>>; listener: () => void }
+	{mql: MediaQueryList; dispatchers: Set<Dispatch<boolean>>; listener: () => void}
 >();
 
 type QueryStateSetter = (matches: boolean) => void;
@@ -17,8 +17,11 @@ const createQueryEntry = (query: string) => {
 		}
 	};
 
-	if (mql.addEventListener) mql.addEventListener('change', listener, { passive: true });
-	else mql.addListener(listener);
+	if (mql.addEventListener) {
+		mql.addEventListener('change', listener, {passive: true});
+	} else {
+		mql.addListener(listener);
+	}
 
 	return {
 		mql,
@@ -45,14 +48,17 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
 	// Else path is impossible to test in normal situation
 	/* istanbul ignore else */
 	if (entry) {
-		const { mql, dispatchers, listener } = entry;
+		const {mql, dispatchers, listener} = entry;
 		dispatchers.delete(setState);
 
 		if (dispatchers.size === 0) {
 			queriesMap.delete(query);
 
-			if (mql.removeEventListener) mql.removeEventListener('change', listener);
-			else mql.removeListener(listener);
+			if (mql.removeEventListener) {
+				mql.removeEventListener('change', listener);
+			} else {
+				mql.removeListener(listener);
+			}
 		}
 	}
 };
@@ -71,9 +77,9 @@ type UseMediaQueryOptions = {
  */
 export function useMediaQuery(
 	query: string,
-	options: UseMediaQueryOptions = {}
+	options: UseMediaQueryOptions = {},
 ): boolean | undefined {
-	let { initializeWithValue = true } = options;
+	let {initializeWithValue = true} = options;
 
 	if (!isBrowser) {
 		initializeWithValue = false;

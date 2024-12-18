@@ -1,6 +1,7 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useRef } from 'react';
-import { useRerender } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {useRef} from 'react';
+import {describe, expect, it} from 'vitest';
+import {useRerender} from '../index.js';
 
 describe('useRerender', () => {
 	it('should be defined', () => {
@@ -8,7 +9,7 @@ describe('useRerender', () => {
 	});
 
 	it('should return same function on each re-render', () => {
-		const { result, rerender } = renderHook(() => useRerender());
+		const {result, rerender} = renderHook(() => useRerender());
 		const fn1 = result.current;
 		rerender();
 		const fn2 = result.current;
@@ -21,7 +22,7 @@ describe('useRerender', () => {
 	});
 
 	it('should rerender component on returned function invocation', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			const cnt = useRef(0);
 			const rerender = useRerender();
 

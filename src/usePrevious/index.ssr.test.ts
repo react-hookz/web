@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {usePrevious} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {usePrevious} from '../index.js';
 
 describe('usePrevious', () => {
 	it('should be defined', () => {

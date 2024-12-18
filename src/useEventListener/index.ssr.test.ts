@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useEventListener} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useEventListener} from '../index.js';
 
 describe('useEventListener', () => {
 	it('should be defined', () => {

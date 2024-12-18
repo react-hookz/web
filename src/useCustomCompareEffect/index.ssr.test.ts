@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useCustomCompareEffect} from '../../index.js';
+import {describe, expect, it, vi} from 'vitest';
+import {useCustomCompareEffect} from '../index.js';
 
 describe('useCustomCompareEffect', () => {
 	it('should be defined', () => {
@@ -14,7 +15,7 @@ describe('useCustomCompareEffect', () => {
 	});
 
 	it('should not invoke comparator', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		renderHook(() => {
 			useCustomCompareEffect(() => {}, [], spy);
 		});

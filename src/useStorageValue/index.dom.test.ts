@@ -1,6 +1,16 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useStorageValue } from '../index.js';
-import { newStorage } from './misc.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {describe, expect, it, type Mocked, vi} from 'vitest';
+import {useStorageValue} from './index.js';
+
+export const newStorage = (
+	get: Storage['getItem'] = () => null,
+	set: Storage['setItem'] = () => {},
+	remove: Storage['removeItem'] = () => {},
+) => ({
+	getItem: vi.fn(get),
+	setItem: vi.fn(set),
+	removeItem: vi.fn(remove),
+} as Mocked<Storage>);
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {
@@ -8,13 +18,13 @@ describe('useStorageValue', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useStorageValue(newStorage(), 'foo'));
+		const {result} = renderHook(() => useStorageValue(newStorage(), 'foo'));
 
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should action methods should be stable between renders', () => {
-		const { result, rerender } = renderHook(() => useStorageValue(newStorage(), 'foo'));
+		const {result, rerender} = renderHook(() => useStorageValue(newStorage(), 'foo'));
 
 		rerender();
 		act(() => {
@@ -22,7 +32,7 @@ describe('useStorageValue', () => {
 		});
 		rerender();
 
-		const firstResult = result.all[0] as ReturnType<typeof useStorageValue>;
+		const firstResult = result.all[0];
 
 		expect(firstResult.set).toBe(result.current.set);
 		expect(firstResult.fetch).toBe(result.current.fetch);
@@ -30,8 +40,8 @@ describe('useStorageValue', () => {
 	});
 
 	it('should fetch value from storage only on init', () => {
-		const storage = newStorage((key) => `"${key}"`);
-		const { result, rerender } = renderHook(() => useStorageValue(storage, 'foo'));
+		const storage = newStorage(key => `"${key}"`);
+		const {result, rerender} = renderHook(() => useStorageValue(storage, 'foo'));
 
 		expect(result.current.value).toBe('foo');
 		expect(storage.getItem).toHaveBeenCalledWith('foo');
@@ -44,9 +54,9 @@ describe('useStorageValue', () => {
 	});
 
 	it('should pass value through JSON.parse during fetch', () => {
-		const JSONParseSpy = jest.spyOn(JSON, 'parse');
-		const storage = newStorage((key) => `"${key}"`);
-		const { result } = renderHook(() => useStorageValue(storage, 'foo'));
+		const JSONParseSpy = vi.spyOn(JSON, 'parse');
+		const storage = newStorage(key => `"${key}"`);
+		const {result} = renderHook(() => useStorageValue(storage, 'foo'));
 
 		expect(result.current.value).toBe('foo');
 		expect(JSONParseSpy).toHaveBeenCalledWith('"foo"');
@@ -55,22 +65,20 @@ describe('useStorageValue', () => {
 	});
 
 	it('should yield default value in case storage returned null during fetch', () => {
-		const { result } = renderHook(() =>
-			useStorageValue(newStorage(), 'foo', { defaultValue: 'defaultValue' })
-		);
+		const {result} = renderHook(() =>
+			useStorageValue(newStorage(), 'foo', {defaultValue: 'defaultValue'}));
 
 		expect(result.current.value).toBe('defaultValue');
 	});
 
 	it('should yield default value and console.warn in case storage returned corrupted JSON', () => {
-		const warnSpy = jest.spyOn(console, 'warn').mockImplementationOnce(() => {});
-		const { result } = renderHook(() =>
+		const warnSpy = vi.spyOn(console, 'warn').mockImplementationOnce(() => {});
+		const {result} = renderHook(() =>
 			useStorageValue(
 				newStorage(() => 'corrupted JSON'),
 				'foo',
-				{ defaultValue: 'defaultValue' }
-			)
-		);
+				{defaultValue: 'defaultValue'},
+			));
 
 		expect(result.current.value).toBe('defaultValue');
 		expect(warnSpy.mock.calls[0][0]).toBeInstanceOf(SyntaxError);
@@ -79,13 +87,12 @@ describe('useStorageValue', () => {
 	});
 
 	it('should not fetch value on first render in case `initializeWithValue` options is set to false', () => {
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useStorageValue<string>(
 				newStorage(() => '"bar"'),
 				'foo',
-				{ initializeWithValue: false }
-			)
-		);
+				{initializeWithValue: false},
+			));
 
 		// @ts-expect-error invalid typings of testing library
 		expect(result.all[0].value).toBe(undefined);
@@ -94,19 +101,18 @@ describe('useStorageValue', () => {
 	});
 
 	it('should fetch value on first render in case `initializeWithValue` options is set to true', () => {
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useStorageValue<string>(
 				newStorage(() => '"bar"'),
 				'foo',
-				{ initializeWithValue: true }
-			)
-		);
+				{initializeWithValue: true},
+			));
 		// @ts-expect-error invalid typings of testing library
 		expect(result.all[0].value).toBe('bar');
 	});
 
 	it('should set storage value on .set() call', () => {
-		const { result } = renderHook(() => useStorageValue<string>(newStorage(), 'foo'));
+		const {result} = renderHook(() => useStorageValue<string>(newStorage(), 'foo'));
 
 		expect(result.current.value).toBe(null);
 		act(() => {
@@ -114,7 +120,7 @@ describe('useStorageValue', () => {
 		});
 		expect(result.current.value).toBe('bar');
 
-		const spySetter = jest.fn(() => 'baz');
+		const spySetter = vi.fn(() => 'baz');
 		act(() => {
 			result.current.set(spySetter);
 		});
@@ -123,8 +129,8 @@ describe('useStorageValue', () => {
 	});
 
 	it('should call JSON.stringify on setState call', () => {
-		const JSONStringifySpy = jest.spyOn(JSON, 'stringify');
-		const { result } = renderHook(() => useStorageValue<string>(newStorage(), 'foo'));
+		const JSONStringifySpy = vi.spyOn(JSON, 'stringify');
+		const {result} = renderHook(() => useStorageValue<string>(newStorage(), 'foo'));
 
 		expect(result.current.value).toBe(null);
 		act(() => {
@@ -136,16 +142,15 @@ describe('useStorageValue', () => {
 	});
 
 	it('should not store null or data that cannot be processed by JSON serializer', () => {
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useStorageValue<string>(
 				newStorage(() => '"bar"'),
 				'foo',
-				{ defaultValue: 'default value' }
-			)
-		);
+				{defaultValue: 'default value'},
+			));
 
-		const invalidData: { a?: unknown } = {};
-		invalidData.a = { b: invalidData };
+		const invalidData: {a?: unknown} = {};
+		invalidData.a = {b: invalidData};
 
 		expect(result.current.value).toBe('bar');
 		act(() => {
@@ -157,7 +162,7 @@ describe('useStorageValue', () => {
 
 	it('should call storage`s removeItem on .remove() call', () => {
 		const storage = newStorage();
-		const { result } = renderHook(() => useStorageValue<string>(storage, 'foo'));
+		const {result} = renderHook(() => useStorageValue<string>(storage, 'foo'));
 
 		act(() => {
 			result.current.remove();
@@ -166,13 +171,12 @@ describe('useStorageValue', () => {
 	});
 
 	it('should set state to default value on item remove', () => {
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useStorageValue<string>(
 				newStorage(() => '"bar"'),
 				'foo',
-				{ defaultValue: 'default value' }
-			)
-		);
+				{defaultValue: 'default value'},
+			));
 
 		expect(result.current.value).toBe('bar');
 		act(() => {
@@ -183,9 +187,8 @@ describe('useStorageValue', () => {
 
 	it('should refetch value from store on .fetch() call', () => {
 		const storage = newStorage(() => '"bar"');
-		const { result } = renderHook(() =>
-			useStorageValue<string>(storage, 'foo', { defaultValue: 'default value' })
-		);
+		const {result} = renderHook(() =>
+			useStorageValue<string>(storage, 'foo', {defaultValue: 'default value'}));
 
 		expect(storage.getItem).toHaveBeenCalledTimes(1);
 		expect(result.current.value).toBe('bar');
@@ -200,33 +203,36 @@ describe('useStorageValue', () => {
 	});
 
 	it('should refetch value on key change', () => {
-		const storage = newStorage((k) => `"${k}"`);
-		const { result, rerender } = renderHook(
-			({ key }) => useStorageValue<string>(storage, key, { defaultValue: 'default value' }),
-			{ initialProps: { key: 'foo' } }
+		const storage = newStorage(k => `"${k}"`);
+		const {result, rerender} = renderHook(
+			({key}) => useStorageValue<string>(storage, key, {defaultValue: 'default value'}),
+			{initialProps: {key: 'foo'}},
 		);
 
 		expect(result.current.value).toBe('foo');
-		rerender({ key: 'bar' });
+		rerender({key: 'bar'});
 		expect(result.current.value).toBe('bar');
 	});
 
 	it('should use custom stringify option', () => {
 		const storage = newStorage();
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useStorageValue<number[]>(storage, 'foo', {
 				stringify(data) {
-					return data.map((number_) => number_.toString(16)).join(':');
+					return data.map(number_ => number_.toString(16)).join(':');
 				},
 				parse(str, fallback) {
-					if (str === null) return fallback;
+					if (str === null) {
+						return fallback;
+					}
 
-					if (str === '') return [];
+					if (str === '') {
+						return [];
+					}
 
-					return str.split(':').map((number_) => Number.parseInt(number_, 16));
+					return str.split(':').map(number_ => Number.parseInt(number_, 16));
 				},
-			})
-		);
+			}));
 
 		expect(result.current.value).toBe(null);
 		act(() => {
@@ -238,32 +244,35 @@ describe('useStorageValue', () => {
 	it('should use custom parse option', () => {
 		const storage = newStorage();
 		storage.getItem.mockImplementationOnce(() => '1:2:3');
-		const { result } = renderHook(() =>
+		const {result} = renderHook(() =>
 			useStorageValue<number[]>(storage, 'foo', {
 				stringify(data) {
-					return data.map((number_) => number_.toString(16)).join(':');
+					return data.map(number_ => number_.toString(16)).join(':');
 				},
 				parse(str, fallback) {
-					if (str === null) return fallback;
+					if (str === null) {
+						return fallback;
+					}
 
-					if (str === '') return [];
+					if (str === '') {
+						return [];
+					}
 
-					return str.split(':').map((number_) => Number.parseInt(number_, 16));
+					return str.split(':').map(number_ => Number.parseInt(number_, 16));
 				},
-			})
-		);
+			}));
 		expect(result.current.value).toEqual([1, 2, 3]);
 	});
 
 	describe('should handle window`s `storage` event', () => {
 		it('should update state if tracked key is updated', () => {
-			const { result } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const {result} = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
 			expect(result.current.value).toBe(null);
 
 			localStorage.setItem('foo', 'bar');
 			act(() => {
-				window.dispatchEvent(
-					new StorageEvent('storage', { key: 'foo', storageArea: localStorage, newValue: '"foo"' })
+				globalThis.dispatchEvent(
+					new StorageEvent('storage', {key: 'foo', storageArea: localStorage, newValue: '"foo"'}),
 				);
 			});
 
@@ -272,27 +281,27 @@ describe('useStorageValue', () => {
 		});
 
 		it('should not update data on event storage or key mismatch', () => {
-			const { result } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const {result} = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
 			expect(result.current.value).toBe(null);
 
 			act(() => {
-				window.dispatchEvent(
+				globalThis.dispatchEvent(
 					new StorageEvent('storage', {
 						key: 'foo',
 						storageArea: sessionStorage,
 						newValue: '"foo"',
-					})
+					}),
 				);
 			});
 			expect(result.current.value).toBe(null);
 
 			act(() => {
-				window.dispatchEvent(
+				globalThis.dispatchEvent(
 					new StorageEvent('storage', {
 						key: 'bar',
 						storageArea: localStorage,
 						newValue: 'foo',
-					})
+					}),
 				);
 			});
 			expect(result.current.value).toBe(null);
@@ -303,8 +312,8 @@ describe('useStorageValue', () => {
 
 	describe('synchronisation', () => {
 		it('should update state of all hooks with the same key in same storage', () => {
-			const { result: res } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
-			const { result: res1 } = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const {result: res} = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const {result: res1} = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
 
 			expect(res.current.value).toBe(null);
 			expect(res1.current.value).toBe(null);

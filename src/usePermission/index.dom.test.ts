@@ -1,33 +1,34 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { usePermission } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {usePermission} from '../index.js';
 
 describe('usePermission', () => {
-	let querySpy: jest.SpyInstance;
+	let querySpy: vi.SpyInstance;
 	const initialPermissions = navigator.permissions;
 
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 
-		querySpy = jest.fn(
+		querySpy = vi.fn(
 			() =>
 				new Promise((resolve) => {
 					setTimeout(() => {
-						resolve({ state: 'prompt' } as PermissionStatus);
+						resolve({state: 'prompt'} as PermissionStatus);
 					}, 1);
-				})
+				}),
 		);
 
-		(global.navigator.permissions as any) = { query: querySpy };
+		(globalThis.navigator.permissions as any) = {query: querySpy};
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 		querySpy.mockClear();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
-		(global.navigator.permissions as any) = initialPermissions;
+		vi.useRealTimers();
+		(globalThis.navigator.permissions as any) = initialPermissions;
 	});
 
 	it('should be defined', () => {
@@ -35,30 +36,30 @@ describe('usePermission', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => usePermission({ name: 'geolocation' }));
+		const {result} = renderHook(() => usePermission({name: 'geolocation'}));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should have `not-requested` state initially', () => {
-		const { result } = renderHook(() => usePermission({ name: 'geolocation' }));
+		const {result} = renderHook(() => usePermission({name: 'geolocation'}));
 		expect(result.all[0]).toBe('not-requested');
 	});
 
 	it('should have `requested` state initially', () => {
-		const { result } = renderHook(() => usePermission({ name: 'geolocation' }));
+		const {result} = renderHook(() => usePermission({name: 'geolocation'}));
 		expect(result.current).toBe('requested');
 	});
 
 	it('should request permission state from `navigator.permissions.query`', () => {
-		renderHook(() => usePermission({ name: 'geolocation' }));
-		expect(querySpy).toHaveBeenCalledWith({ name: 'geolocation' });
+		renderHook(() => usePermission({name: 'geolocation'}));
+		expect(querySpy).toHaveBeenCalledWith({name: 'geolocation'});
 	});
 
 	it('should have permission state on promise resolve', async () => {
-		const { result, waitForNextUpdate } = renderHook(() => usePermission({ name: 'geolocation' }));
+		const {result, waitForNextUpdate} = renderHook(() => usePermission({name: 'geolocation'}));
 
 		act(() => {
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 
 		await waitForNextUpdate();
@@ -81,18 +82,18 @@ describe('usePermission', () => {
 
 						resolve(status);
 					}, 1);
-				})
+				}),
 		);
-		const { result, waitForNextUpdate } = renderHook(() => usePermission({ name: 'geolocation' }));
+		const {result, waitForNextUpdate} = renderHook(() => usePermission({name: 'geolocation'}));
 
 		act(() => {
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 		await waitForNextUpdate();
 		expect(result.current).toBe('prompt');
 
 		act(() => {
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 		expect(result.current).toBe('granted');
 	});

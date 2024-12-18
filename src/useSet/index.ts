@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { useRerender } from '../useRerender/index.js';
+import {useRef} from 'react';
+import {useRerender} from '../useRerender/index.js';
 
 const proto = Set.prototype;
 

@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useLifecycleLogger} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useLifecycleLogger} from '../index.js';
 
 describe('useLifecycleLogger', () => {
 	it('should be defined', () => {

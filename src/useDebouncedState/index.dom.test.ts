@@ -1,17 +1,18 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {useDebouncedState} from '../../index.js';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useDebouncedState} from '../index.js';
 
 describe('useDebouncedState', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {
@@ -24,18 +25,18 @@ describe('useDebouncedState', () => {
 	});
 
 	it('should debounce state set', () => {
-		const {result} = renderHook(() => useDebouncedState < string | undefined > (undefined, 200));
+		const {result} = renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
 
 		expect(result.current[0]).toBe(undefined);
 		result.current[1]('Hello world!');
 
 		act(() => {
-			jest.advanceTimersByTime(199);
+			vi.advanceTimersByTime(199);
 		});
 		expect(result.current[0]).toBe(undefined);
 
 		act(() => {
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 		});
 		expect(result.current[0]).toBe('Hello world!');
 	});

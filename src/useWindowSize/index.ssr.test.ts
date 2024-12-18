@@ -1,5 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/server';
-import {useWindowSize} from '../../index.js';
+import {describe, expect, it} from 'vitest';
+import {useWindowSize} from '../index.js';
 
 describe('useWindowSize', () => {
 	it('should be defined', () => {

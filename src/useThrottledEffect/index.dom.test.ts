@@ -1,17 +1,18 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {useThrottledEffect} from '../../index.js';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {useThrottledEffect} from '../index.js';
 
 describe('useThrottledEffect', () => {
 	beforeAll(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	afterAll(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be defined', () => {
@@ -26,7 +27,7 @@ describe('useThrottledEffect', () => {
 	});
 
 	it('should throttle passed callback', () => {
-		const spy = jest.fn();
+		const spy = vi.fn();
 		const {rerender} = renderHook(
 			(dep) => {
 				useThrottledEffect(spy, [dep], 200, true);
@@ -42,7 +43,7 @@ describe('useThrottledEffect', () => {
 		rerender(4);
 		expect(spy).toHaveBeenCalledTimes(1);
 
-		jest.advanceTimersByTime(200);
+		vi.advanceTimersByTime(200);
 		expect(spy).toHaveBeenCalledTimes(1);
 		rerender(5);
 		expect(spy).toHaveBeenCalledTimes(2);
