@@ -1,11 +1,11 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useUpdateEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {useUpdateEffect} from '../../index.js';
 
 describe('useUpdateEffect', () => {
 	it('should call effector only on updates (after first render)', () => {
 		const spy = jest.fn();
 
-		const { rerender, unmount } = renderHook(() => {
+		const {rerender, unmount} = renderHook(() => {
 			useUpdateEffect(spy);
 		});
 
@@ -24,13 +24,13 @@ describe('useUpdateEffect', () => {
 	it('should accept dependencies as useEffect', () => {
 		const spy = jest.fn();
 
-		const { rerender, unmount } = renderHook(
-			({ deps }) => {
+		const {rerender, unmount} = renderHook(
+			({deps}) => {
 				useUpdateEffect(spy, deps);
 			},
 			{
-				initialProps: { deps: [1, 2, 3] },
-			}
+				initialProps: {deps: [1, 2, 3]},
+			},
 		);
 
 		expect(spy).toHaveBeenCalledTimes(0);
@@ -38,10 +38,10 @@ describe('useUpdateEffect', () => {
 		rerender();
 		expect(spy).toHaveBeenCalledTimes(0);
 
-		rerender({ deps: [1, 2, 4] });
+		rerender({deps: [1, 2, 4]});
 		expect(spy).toHaveBeenCalledTimes(1);
 
-		rerender({ deps: [1, 2, 4] });
+		rerender({deps: [1, 2, 4]});
 		expect(spy).toHaveBeenCalledTimes(1);
 
 		unmount();

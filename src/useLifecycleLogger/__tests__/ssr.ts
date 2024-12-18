@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useLifecycleLogger } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useLifecycleLogger} from '../../index.js';
 
 describe('useLifecycleLogger', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useLifecycleLogger', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useLifecycleLogger('TestComponent');
 		});
 		expect(result.error).toBeUndefined();

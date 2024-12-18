@@ -1,12 +1,12 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useNetworkState } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useNetworkState} from '../../index.js';
 
-describe(`useNetworkState`, () => {
+describe('useNetworkState', () => {
 	it('should be defined', () => {
 		expect(useNetworkState).toBeDefined();
 	});
 	it('should render', () => {
-		const { result } = renderHook(() => useNetworkState());
+		const {result} = renderHook(() => useNetworkState());
 		expect(result.error).toBeUndefined();
 	});
 

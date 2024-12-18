@@ -1,5 +1,5 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useDocumentVisibility } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {useDocumentVisibility} from '../../index.js';
 
 describe('useDocumentVisibility', () => {
 	it('should be defined', () => {
@@ -27,7 +27,7 @@ describe('useDocumentVisibility', () => {
 		});
 
 		{
-			const { result } = renderHook(() => useDocumentVisibility(false));
+			const {result} = renderHook(() => useDocumentVisibility(false));
 
 			expect(result.current).toBe(false);
 			expect(result.all[0]).toBe(undefined);
@@ -39,7 +39,7 @@ describe('useDocumentVisibility', () => {
 		});
 
 		{
-			const { result } = renderHook(() => useDocumentVisibility(false));
+			const {result} = renderHook(() => useDocumentVisibility(false));
 
 			expect(result.current).toBe(true);
 			expect(result.all[0]).toBe(undefined);
@@ -52,7 +52,7 @@ describe('useDocumentVisibility', () => {
 			value: 'hidden',
 		});
 
-		const { result } = renderHook(() => useDocumentVisibility());
+		const {result} = renderHook(() => useDocumentVisibility());
 
 		expect(result.current).toBe(false);
 

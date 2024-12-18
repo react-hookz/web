@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useRenderCount } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useRenderCount} from '../../index.js';
 
 describe('useRendersCount', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useRendersCount', () => {
 	});
 
 	it('should return proper amount of renders performed', () => {
-		const { result } = renderHook(useRenderCount);
+		const {result} = renderHook(useRenderCount);
 
 		expect(result.current).toBe(1);
 	});

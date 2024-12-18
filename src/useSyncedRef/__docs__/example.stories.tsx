@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { useRerender, useSyncedRef } from '../../index.js';
+import {useRef} from 'react';
+import {useRerender, useSyncedRef} from '../../index.js';
 
 export function Example() {
 	const ref = useRef(0);
@@ -9,9 +9,10 @@ export function Example() {
 	return (
 		<div>
 			<div>As you may see in source code, ref value updated automatically</div>
-			<button type="button" onClick={rerender}>
+			<button type='button' onClick={rerender}>
 				Rerender outer component
-			</button>{' '}
+			</button>
+			{' '}
 			<span>renders: {syncedRef.current}</span>
 		</div>
 	);

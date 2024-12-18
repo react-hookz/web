@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useCounter } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useCounter} from '../../index.js';
 
 describe('useCounter', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useCounter', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useCounter());
+		const {result} = renderHook(() => useCounter());
 		expect(result.error).toBeUndefined();
 	});
 });

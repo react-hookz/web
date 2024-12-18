@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useThrottledEffect } from '../../index.js';
+import {useState} from 'react';
+import {useThrottledEffect} from '../../index.js';
 
 const HAS_DIGIT_REGEX = /\d/g;
 
@@ -13,7 +13,7 @@ export function Example() {
 			setHasNumbers(HAS_DIGIT_REGEX.test(state));
 		},
 		[state],
-		200
+		200,
 	);
 
 	return (
@@ -22,12 +22,11 @@ export function Example() {
 			<br />
 			<div>{hasNumbers ? 'Input has digits' : 'No digits found in input'}</div>
 			<input
-				type="text"
+				type='text'
 				value={state}
 				onChange={(ev) => {
 					setState(ev.target.value);
-				}}
-			/>
+				}} />
 		</div>
 	);
 }

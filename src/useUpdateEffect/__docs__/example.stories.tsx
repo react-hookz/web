@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useRerender, useUpdateEffect } from '../../index.js';
+import {useState} from 'react';
+import {useRerender, useUpdateEffect} from '../../index.js';
 
 export function Example() {
 	const [count, setCount] = useState(1);
@@ -18,14 +18,15 @@ export function Example() {
 				{isUpdated ? 'yes' : 'no'}
 			</div>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
-					setCount((i) => i + 1);
+					setCount(i => i + 1);
 				}}>
 				Increment counter [{count}]
-			</button>{' '}
+			</button>
+			{' '}
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					rerender();
 				}}>

@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { usePermission } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {usePermission} from '../../index.js';
 
 describe('usePermission', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('usePermission', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => usePermission({ name: 'geolocation' }));
+		const {result} = renderHook(() => usePermission({name: 'geolocation'}));
 		expect(result.error).toBeUndefined();
 	});
 });

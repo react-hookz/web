@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDebouncedEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {useDebouncedEffect} from '../../index.js';
 
 describe('useDebouncedEffect', () => {
 	beforeAll(() => {
@@ -19,7 +19,7 @@ describe('useDebouncedEffect', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useDebouncedEffect(() => {}, [], 200);
 		});
 		expect(result.error).toBeUndefined();

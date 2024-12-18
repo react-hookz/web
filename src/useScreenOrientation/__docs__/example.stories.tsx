@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useScreenOrientation } from '../../index.js';
+import {useScreenOrientation} from '../../index.js';
 
 export function Example() {
 	const orientation = useScreenOrientation();
@@ -7,10 +7,14 @@ export function Example() {
 	return (
 		<div>
 			<div>
-				Orientation: <code>{orientation}</code>
+				Orientation:
+				{' '}
+				<code>{orientation}</code>
 			</div>
 			<div>
-				Render time: <code>{new Date().toLocaleString()}</code>
+				Render time:
+				{' '}
+				<code>{new Date().toLocaleString()}</code>
 			</div>
 		</div>
 	);

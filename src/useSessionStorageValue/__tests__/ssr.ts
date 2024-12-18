@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useSessionStorageValue } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useSessionStorageValue} from '../../index.js';
 
 describe('useSessionStorageValue', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useSessionStorageValue', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useSessionStorageValue('foo');
 		});
 		expect(result.error).toBeUndefined();

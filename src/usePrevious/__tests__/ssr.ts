@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { usePrevious } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {usePrevious} from '../../index.js';
 
 describe('usePrevious', () => {
 	it('should be defined', () => {
@@ -7,12 +7,12 @@ describe('usePrevious', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => usePrevious());
+		const {result} = renderHook(() => usePrevious());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return undefined on first render', () => {
-		const { result } = renderHook(() => usePrevious());
+		const {result} = renderHook(() => usePrevious());
 
 		expect(result.current).toBeUndefined();
 	});

@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useControlledRerenderState } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useControlledRerenderState} from '../../index.js';
 
 describe('useControlledRerenderState', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useControlledRerenderState', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useControlledRerenderState());
+		const {result} = renderHook(() => useControlledRerenderState());
 		expect(result.error).toBeUndefined();
 	});
 });

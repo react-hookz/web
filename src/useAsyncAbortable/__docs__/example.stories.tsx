@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useAsyncAbortable, useMountEffect } from '../../index.js';
+import {useAsyncAbortable, useMountEffect} from '../../index.js';
 
 export function Example() {
 	const [state, actions, meta] = useAsyncAbortable(
-		(signal) =>
-			new Promise<string>((resolve, reject) => {
+		signal =>
+			new Promise() < string > ((resolve, reject) => {
 				setTimeout(() => {
 					if (signal.aborted) {
 						reject(new Error('Aborted!'));
@@ -13,7 +13,7 @@ export function Example() {
 					}
 				}, 5000);
 			}),
-		'react-hookz is'
+		'react-hookz is',
 	);
 
 	useMountEffect(actions.execute);
@@ -32,20 +32,22 @@ export function Example() {
 			<div>error: {state.error ? state.error.message : 'undefined'}</div>
 			<br />
 			<div>
-				<button type="button" disabled={!meta.abortController} onClick={actions.abort}>
+				<button type='button' disabled={!meta.abortController} onClick={actions.abort}>
 					abort
-				</button>{' '}
+				</button>
+				{' '}
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
 						void actions.reset();
 
 						void actions.execute();
 					}}>
 					reset & execute
-				</button>{' '}
+				</button>
+				{' '}
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
 						void actions.execute();
 					}}>

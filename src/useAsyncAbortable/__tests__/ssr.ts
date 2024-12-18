@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useAsyncAbortable } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useAsyncAbortable} from '../../index.js';
 
 describe('useAsyncAbortable', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useAsyncAbortable', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useAsyncAbortable(async (_) => {}));
+		const {result} = renderHook(() => useAsyncAbortable(async (_) => {}));
 		expect(result.error).toBeUndefined();
 	});
 });

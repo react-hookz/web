@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useKeyboardEvent } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useKeyboardEvent} from '../../index.js';
 
 describe('useKeyboardEvent', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useKeyboardEvent', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useKeyboardEvent('a', () => {});
 		});
 		expect(result.error).toBeUndefined();

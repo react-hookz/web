@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useAsync } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useAsync} from '../../index.js';
 
 describe('useAsync', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useAsync', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useAsync(async () => {}));
+		const {result} = renderHook(() => useAsync(async () => {}));
 		expect(result.error).toBeUndefined();
 	});
 });

@@ -1,5 +1,5 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useQueue } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {useQueue} from '../../index.js';
 
 describe('useQueue', () => {
 	it('should be defined', () => {
@@ -7,17 +7,17 @@ describe('useQueue', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useQueue());
+		const {result} = renderHook(() => useQueue());
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should accept an initial value', () => {
-		const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
+		const {result} = renderHook(() => useQueue([0, 1, 2, 3]));
 		expect(result.current.items).toStrictEqual([0, 1, 2, 3]);
 	});
 
 	it('should remove the first value', () => {
-		const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
+		const {result} = renderHook(() => useQueue([0, 1, 2, 3]));
 
 		act(() => {
 			const removed = result.current.remove();
@@ -28,12 +28,12 @@ describe('useQueue', () => {
 	});
 
 	it('should return the length', () => {
-		const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
+		const {result} = renderHook(() => useQueue([0, 1, 2, 3]));
 		expect(result.current.size).toBe(4);
 	});
 
 	it('should add a value to the end', () => {
-		const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
+		const {result} = renderHook(() => useQueue([0, 1, 2, 3]));
 
 		act(() => {
 			result.current.add(4);
@@ -43,7 +43,7 @@ describe('useQueue', () => {
 	});
 
 	it('should return referentially stable functions', () => {
-		const { result } = renderHook(() => useQueue([0, 1, 2, 3]));
+		const {result} = renderHook(() => useQueue([0, 1, 2, 3]));
 
 		const remove1 = result.current.remove;
 		const add1 = result.current.add;

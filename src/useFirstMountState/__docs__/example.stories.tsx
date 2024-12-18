@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useFirstMountState, useRerender } from '../../index.js';
+import {useFirstMountState, useRerender} from '../../index.js';
 
 export function Example() {
 	const isFirstMount = useFirstMountState();
@@ -9,7 +9,7 @@ export function Example() {
 		<div>
 			<div>{isFirstMount ? 'This is the first render.' : 'This is not the first render.'}</div>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					rerender();
 				}}>

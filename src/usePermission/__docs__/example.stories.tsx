@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { usePermission } from '../../index.js';
+import {usePermission} from '../../index.js';
 
 export function Example() {
-	const status = usePermission({ name: 'notifications' });
+	const status = usePermission({name: 'notifications'});
 
 	return (
 		<div>
@@ -14,12 +14,14 @@ export function Example() {
 			</div>
 			<br />
 			<div>
-				Notifications status: <code>{status}</code>
+				Notifications status:
+				{' '}
+				<code>{status}</code>
 			</div>
 			<div>
 				{status === 'prompt' && (
 					<button
-						type="button"
+						type='button'
 						onClick={() => {
 							// eslint-disable-next-line @typescript-eslint/no-floating-promises
 							Notification.requestPermission();

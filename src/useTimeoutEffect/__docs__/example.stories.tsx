@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useTimeoutEffect, useToggle } from '../../index.js';
+import {useState} from 'react';
+import {useTimeoutEffect, useToggle} from '../../index.js';
 
 export function Example() {
-	const [numberCalls, setNumberCalls] = useState<number>(0);
+	const [numberCalls, setNumberCalls] = useState < number > (0);
 	const [enabled, toggleEnabled] = useToggle();
-	const [timeoutValue, setTimeoutValue] = useState<number>(1000);
+	const [timeoutValue, setTimeoutValue] = useState < number > (1000);
 	const [cancelled, toggleCancelled] = useToggle();
 
 	let status;
@@ -17,9 +17,9 @@ export function Example() {
 
 	const [cancel, reset] = useTimeoutEffect(
 		() => {
-			setNumberCalls((n) => n + 1);
+			setNumberCalls(n => n + 1);
 		},
-		enabled ? timeoutValue : undefined
+		enabled ? timeoutValue : undefined,
 	);
 
 	React.useEffect(() => {
@@ -28,21 +28,24 @@ export function Example() {
 
 	return (
 		<div>
-			Has fired: {numberCalls.toString()}
+			Has fired:
+			{' '}
+			{numberCalls.toString()}
 			<br />
-			Status: {status}
+			Status:
+			{' '}
+			{status}
 			<br />
 			<input
-				placeholder="Timeout value"
-				type="number"
+				placeholder='Timeout value'
+				type='number'
 				min={0}
 				value={timeoutValue}
 				onChange={(e) => {
 					setTimeoutValue(Number(e.target.value));
-				}}
-			/>
+				}} />
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					toggleEnabled();
 					toggleCancelled(false);
@@ -50,7 +53,7 @@ export function Example() {
 				{enabled ? 'Disable' : 'Enable'} timeout
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					reset();
 					toggleCancelled(false);
@@ -58,7 +61,7 @@ export function Example() {
 				Reset
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					cancel();
 					toggleCancelled(enabled && true);

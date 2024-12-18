@@ -1,30 +1,33 @@
 import * as React from 'react';
-import { useCookieValue } from '../index.js';
+import {useCookieValue} from '../index.js';
 
 export function Example() {
-	const [cookie, set, remove] = useCookieValue('react-hookz', { expires: 3600 });
+	const [cookie, set, remove] = useCookieValue('react-hookz', {expires: 3600});
 
 	return (
 		<div>
 			<div>
-				<em>Cookie name:</em> react-hookz
+				<em>Cookie name:</em>
+				{' '}
+				react-hookz
 			</div>
 			<div>
-				<em>Cookie value:</em> {cookie}
+				<em>Cookie value:</em>
+				{' '}
+				{cookie}
 			</div>
 			<br />
 			<input
-				type="text"
+				type='text'
 				value={cookie ?? ''}
-				placeholder="Enter cookie value here"
+				placeholder='Enter cookie value here'
 				onChange={(ev) => {
 					set(ev.target.value);
-				}}
-			/>
+				}} />
 			<br />
 			<br />
 			<div>
-				<button type="button" onClick={remove}>
+				<button type='button' onClick={remove}>
 					remove cookie
 				</button>
 			</div>

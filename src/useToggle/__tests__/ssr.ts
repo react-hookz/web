@@ -1,5 +1,5 @@
-import { act, renderHook } from '@testing-library/react-hooks/server';
-import { useToggle } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/server';
+import {useToggle} from '../../index.js';
 
 describe('useToggle', () => {
 	it('should be defined', () => {
@@ -7,13 +7,13 @@ describe('useToggle', () => {
 	});
 
 	it('should default to false', () => {
-		const { result } = renderHook(() => useToggle());
+		const {result} = renderHook(() => useToggle());
 
 		expect(result.current[0]).toBe(false);
 	});
 
 	it('should be instantiatable with value', () => {
-		let { result } = renderHook(() => useToggle(true));
+		let {result} = renderHook(() => useToggle(true));
 		expect(result.current[0]).toBe(true);
 
 		result = renderHook(() => useToggle(() => true)).result;
@@ -24,7 +24,7 @@ describe('useToggle', () => {
 	});
 
 	it('should not change if toggler called', () => {
-		const { result } = renderHook(() => useToggle());
+		const {result} = renderHook(() => useToggle());
 		act(() => {
 			result.current[1]();
 		});

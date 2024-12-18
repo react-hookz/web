@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import { useDeepCompareEffect, useRerender } from '../../index.js';
+import {useEffect} from 'react';
+import {useDeepCompareEffect, useRerender} from '../../index.js';
 
 export function Example() {
 	const rerender = useRerender();
@@ -26,7 +26,7 @@ export function Example() {
 				useDeepCompareEffect does not. This is because useDeepCompareEffect determines dependency
 				changes by deep comparison instead of by reference like useEffect.
 			</p>
-			<button type="button" onClick={rerender}>
+			<button type='button' onClick={rerender}>
 				Rerender
 			</button>
 		</>

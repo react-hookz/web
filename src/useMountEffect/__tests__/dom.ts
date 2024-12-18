@@ -1,11 +1,11 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useMountEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {useMountEffect} from '../../index.js';
 
 describe('useMountEffect', () => {
 	it('should call effector only on first render', () => {
 		const spy = jest.fn();
 
-		const { result, rerender, unmount } = renderHook(() => {
+		const {result, rerender, unmount} = renderHook(() => {
 			useMountEffect(spy);
 		});
 

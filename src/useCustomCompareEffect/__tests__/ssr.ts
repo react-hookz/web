@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useCustomCompareEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useCustomCompareEffect} from '../../index.js';
 
 describe('useCustomCompareEffect', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useCustomCompareEffect', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useCustomCompareEffect(() => {}, []);
 		});
 		expect(result.error).toBeUndefined();

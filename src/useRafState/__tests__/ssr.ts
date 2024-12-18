@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useRafState } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useRafState} from '../../index.js';
 
 describe('useRafState', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useRafState', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useRafState());
+		const {result} = renderHook(() => useRafState());
 		expect(result.error).toBeUndefined();
 	});
 });

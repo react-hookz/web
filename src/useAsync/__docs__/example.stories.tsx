@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useAsync, useMountEffect } from '../../index.js';
+import {useAsync, useMountEffect} from '../../index.js';
 
 export function Example() {
 	const [state, actions] = useAsync(
 		() =>
-			new Promise<string>((resolve) => {
+			new Promise() < string > ((resolve) => {
 				setTimeout(() => {
 					resolve('react-hookz is awesome!');
 				}, 3000);
 			}),
-		'react-hookz is'
+		'react-hookz is',
 	);
 
 	useMountEffect(actions.execute);
@@ -25,16 +25,17 @@ export function Example() {
 			<br />
 			<div>
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
 						void actions.reset();
 
 						void actions.execute();
 					}}>
 					reset
-				</button>{' '}
+				</button>
+				{' '}
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
 						void actions.execute();
 					}}>

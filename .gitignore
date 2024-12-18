@@ -1,8 +1,4 @@
-/.idea
-node_modules
-/coverage
-/src/**/*.js
-/src/**/*.d.ts
+.idea
 
 yarn-error.log
 .yarn/*
@@ -12,3 +8,7 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+/coverage
+/node_modules
+/dist

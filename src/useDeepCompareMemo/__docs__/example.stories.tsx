@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useMemo } from 'react';
-import { useRerender, useDeepCompareMemo } from '../../index.js';
+import {useMemo} from 'react';
+import {useRerender, useDeepCompareMemo} from '../../index.js';
 
 export function Example() {
-	const newOnEveryRender = { value: 'Foo' };
+	const newOnEveryRender = {value: 'Foo'};
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const unstable = useMemo(() => Math.floor(Math.random() * 10), [newOnEveryRender]);
 
@@ -12,9 +12,9 @@ export function Example() {
 	const rerender = useRerender();
 	return (
 		<>
-			<div style={{ display: 'flex', gap: '0.5rem' }}>
+			<div style={{display: 'flex', gap: '0.5rem'}}>
 				<p>When you click this button:</p>
-				<button type="button" onClick={rerender}>
+				<button type='button' onClick={rerender}>
 					Rerender
 				</button>
 				<p>, you notice, that the useDeepCompareMemo value does not change at all,</p>

@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useThrottledEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {useThrottledEffect} from '../../index.js';
 
 describe('useThrottledEffect', () => {
 	beforeAll(() => {
@@ -19,7 +19,7 @@ describe('useThrottledEffect', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useThrottledEffect(() => {}, [], 200);
 		});
 		expect(result.error).toBeUndefined();
@@ -27,13 +27,13 @@ describe('useThrottledEffect', () => {
 
 	it('should throttle passed callback', () => {
 		const spy = jest.fn();
-		const { rerender } = renderHook(
+		const {rerender} = renderHook(
 			(dep) => {
 				useThrottledEffect(spy, [dep], 200, true);
 			},
 			{
 				initialProps: 1,
-			}
+			},
 		);
 
 		expect(spy).toHaveBeenCalledTimes(1);

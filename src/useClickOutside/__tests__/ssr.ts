@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useClickOutside } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useClickOutside} from '../../index.js';
 
 describe('useClickOutside', () => {
 	it('should be defined', () => {
@@ -7,8 +7,8 @@ describe('useClickOutside', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
-			useClickOutside({ current: null }, () => {});
+		const {result} = renderHook(() => {
+			useClickOutside({current: null}, () => {});
 		});
 		expect(result.error).toBeUndefined();
 	});

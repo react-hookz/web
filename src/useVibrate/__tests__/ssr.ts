@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useVibrate } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useVibrate} from '../../index.js';
 
 describe('useVibrate', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useVibrate', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useVibrate(true, 100);
 		});
 		expect(result.error).toBeUndefined();

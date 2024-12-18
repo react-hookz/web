@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useTimeoutEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useTimeoutEffect} from '../../index.js';
 
 describe('useTimeoutEffect', () => {
 	beforeAll(() => {
@@ -19,7 +19,7 @@ describe('useTimeoutEffect', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useTimeoutEffect(() => {}, 123));
+		const {result} = renderHook(() => useTimeoutEffect(() => {}, 123));
 		expect(result.error).toBeUndefined();
 	});
 

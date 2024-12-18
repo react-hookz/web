@@ -1,5 +1,5 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom';
-import { useDebouncedState } from '../../index.js';
+import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {useDebouncedState} from '../../index.js';
 
 describe('useDebouncedState', () => {
 	beforeAll(() => {
@@ -19,12 +19,12 @@ describe('useDebouncedState', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useDebouncedState(undefined, 200));
+		const {result} = renderHook(() => useDebouncedState(undefined, 200));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should debounce state set', () => {
-		const { result } = renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
+		const {result} = renderHook(() => useDebouncedState < string | undefined > (undefined, 200));
 
 		expect(result.current[0]).toBe(undefined);
 		result.current[1]('Hello world!');

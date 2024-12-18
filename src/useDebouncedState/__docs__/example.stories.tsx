@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDebouncedState } from '../../index.js';
+import {useDebouncedState} from '../../index.js';
 
 export function Example() {
 	const [state, setState] = useDebouncedState('', 300, 500);
@@ -10,11 +10,10 @@ export function Example() {
 			<br />
 			<div>The input`s value is: {state}</div>
 			<input
-				type="text"
+				type='text'
 				onChange={(ev) => {
 					setState(ev.target.value);
-				}}
-			/>
+				}} />
 		</div>
 	);
 }

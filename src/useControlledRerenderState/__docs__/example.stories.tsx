@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControlledRerenderState, useToggle } from '../../index.js';
+import {useControlledRerenderState, useToggle} from '../../index.js';
 
 export function Example() {
 	const [state, setState] = useControlledRerenderState(0);
@@ -10,14 +10,15 @@ export function Example() {
 			<div>State: {state}</div>
 			<p>
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
-						setState((s) => s + 1, doRerender);
+						setState(s => s + 1, doRerender);
 					}}>
 					Increment (+1)
-				</button>{' '}
+				</button>
+				{' '}
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
 						toggleDoRerender();
 					}}>

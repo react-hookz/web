@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useThrottledEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useThrottledEffect} from '../../index.js';
 
 describe('useThrottledEffect', () => {
 	beforeAll(() => {
@@ -19,7 +19,7 @@ describe('useThrottledEffect', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useThrottledEffect(() => {}, [], 200);
 		});
 		expect(result.error).toBeUndefined();

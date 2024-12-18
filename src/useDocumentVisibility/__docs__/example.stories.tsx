@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import { useDocumentVisibility } from '../../index.js';
+import {useEffect} from 'react';
+import {useDocumentVisibility} from '../../index.js';
 
 export function Example() {
 	const isVisible = useDocumentVisibility();
@@ -15,7 +15,9 @@ export function Example() {
 	return (
 		<div>
 			<p>
-				The document is <strong>{isVisible ? 'visible' : 'hidden'}</strong>
+				The document is
+				{' '}
+				<strong>{isVisible ? 'visible' : 'hidden'}</strong>
 			</p>
 		</div>
 	);

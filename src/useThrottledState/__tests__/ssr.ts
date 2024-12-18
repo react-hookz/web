@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useThrottledState } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useThrottledState} from '../../index.js';
 
 describe('useThrottledState', () => {
 	beforeAll(() => {
@@ -19,7 +19,7 @@ describe('useThrottledState', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useThrottledState('', 200));
+		const {result} = renderHook(() => useThrottledState('', 200));
 		expect(result.error).toBeUndefined();
 	});
 });

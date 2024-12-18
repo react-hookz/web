@@ -1,8 +1,0 @@
-.idea
-node_modules
-dist
-coverage
-CHANGELOG.md
-!.eslintrc.cjs
-!.prettierrc.cjs
-!.github

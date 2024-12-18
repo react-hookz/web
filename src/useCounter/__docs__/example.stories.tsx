@@ -1,9 +1,9 @@
-import { useCounter } from '../../index.js';
+import {useCounter} from '../../index.js';
 
 export function Example() {
-	const [min, { inc: incMin, dec: decMin }] = useCounter(1);
-	const [max, { inc: incMax, dec: decMax }] = useCounter(10);
-	const [value, { inc, dec, set, reset }] = useCounter(5, max, min);
+	const [min, {inc: incMin, dec: decMin}] = useCounter(1);
+	const [max, {inc: incMax, dec: decMax}] = useCounter(10);
+	const [value, {inc, dec, set, reset}] = useCounter(5, max, min);
 
 	return (
 		<div>
@@ -13,49 +13,49 @@ export function Example() {
 			<br />
 			Current value:
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					inc();
 				}}>
 				Increment
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					dec();
 				}}>
 				Decrement
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					inc(5);
 				}}>
 				Increment (+5)
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					dec(5);
 				}}>
 				Decrement (-5)
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					set(100);
 				}}>
 				Set 100
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					reset();
 				}}>
 				Reset
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					reset(25);
 				}}>
@@ -65,14 +65,14 @@ export function Example() {
 			<br />
 			Min value:
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					incMin();
 				}}>
 				Increment
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					decMin();
 				}}>
@@ -82,14 +82,14 @@ export function Example() {
 			<br />
 			Max value:
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					incMax();
 				}}>
 				Increment
 			</button>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					decMax();
 				}}>

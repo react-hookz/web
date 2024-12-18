@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as React from 'react';
-import { useSet } from '../../index.js';
+import {useSet} from '../../index.js';
 
 export function Example() {
 	const set = useSet(['@react-hooks', 'is awesome']);
@@ -8,22 +8,22 @@ export function Example() {
 	return (
 		<div>
 			<button
-				type="button"
+				type='button'
 				disabled={set.has('@react-hooks')}
 				onClick={() => set.add('@react-hooks')}>
 				add '@react-hooks'
 			</button>
 			<button
-				type="button"
+				type='button'
 				disabled={!set.has('@react-hooks')}
 				onClick={() => set.delete('@react-hooks')}>
 				remove '@react-hooks'
 			</button>
-			<button type="button" disabled={set.has('is awesome')} onClick={() => set.add('is awesome')}>
+			<button type='button' disabled={set.has('is awesome')} onClick={() => set.add('is awesome')}>
 				add 'is awesome'
 			</button>
 			<button
-				type="button"
+				type='button'
 				disabled={!set.has('is awesome')}
 				onClick={() => set.delete('is awesome')}>
 				remove 'is awesome'

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useDebouncedEffect } from '../../index.js';
+import {useState} from 'react';
+import {useDebouncedEffect} from '../../index.js';
 
 const HAS_DIGIT_REGEX = /\d/g;
 
@@ -14,7 +14,7 @@ export function Example() {
 		},
 		[state],
 		200,
-		500
+		500,
 	);
 
 	return (
@@ -25,12 +25,11 @@ export function Example() {
 			<br />
 			<div>{hasNumbers ? 'Input has digits' : 'No digits found in input'}</div>
 			<input
-				type="text"
+				type='text'
 				value={state}
 				onChange={(ev) => {
 					setState(ev.target.value);
-				}}
-			/>
+				}} />
 		</div>
 	);
 }

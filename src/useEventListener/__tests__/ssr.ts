@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useEventListener } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useEventListener} from '../../index.js';
 
 describe('useEventListener', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useEventListener', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useEventListener(null, 'random name', () => {});
 		});
 		expect(result.error).toBeUndefined();

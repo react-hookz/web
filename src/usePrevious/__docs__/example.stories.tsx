@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { usePrevious } from '../../index.js';
+import {useState} from 'react';
+import {usePrevious} from '../../index.js';
 
 export function Example() {
 	const [value, setValue] = useState(0);
@@ -7,32 +7,32 @@ export function Example() {
 	const previousValue = usePrevious(value);
 
 	const increment = () => {
-		setValue((v) => v + 1);
+		setValue(v => v + 1);
 	};
 
 	const decrement = () => {
-		setValue((v) => v - 1);
+		setValue(v => v - 1);
 	};
 
 	const triggerUnrelatedRerender = () => {
-		setUnrelatedValue((v) => v + 1);
+		setUnrelatedValue(v => v + 1);
 	};
 
 	return (
 		<div>
 			<span>Current value: {value}</span>
 
-			<div style={{ margin: '1rem 0' }}>
-				<div style={{ marginBottom: '0.5rem' }}>
-					<button type="button" onClick={increment}>
+			<div style={{margin: '1rem 0'}}>
+				<div style={{marginBottom: '0.5rem'}}>
+					<button type='button' onClick={increment}>
 						increment
 					</button>
-					<button type="button" onClick={decrement}>
+					<button type='button' onClick={decrement}>
 						decrement
 					</button>
 				</div>
 
-				<button type="button" onClick={triggerUnrelatedRerender}>
+				<button type='button' onClick={triggerUnrelatedRerender}>
 					trigger unrelated rerender - {unrelatedValue}
 				</button>
 			</div>

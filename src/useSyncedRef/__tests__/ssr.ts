@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useSyncedRef } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useSyncedRef} from '../../index.js';
 
 describe('useSyncedRef', () => {
 	it('should be defined', () => {
@@ -7,13 +7,13 @@ describe('useSyncedRef', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => useSyncedRef(1));
+		const {result} = renderHook(() => useSyncedRef(1));
 		expect(result.error).toBeUndefined();
 	});
 
 	it('should return ref object', () => {
-		const { result } = renderHook(() => useSyncedRef(1));
+		const {result} = renderHook(() => useSyncedRef(1));
 
-		expect(result.current).toEqual({ current: 1 });
+		expect(result.current).toEqual({current: 1});
 	});
 });

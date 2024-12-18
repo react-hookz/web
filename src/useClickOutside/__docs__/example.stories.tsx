@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useRef } from 'react';
-import { useClickOutside, useToggle } from '../../index.js';
+import {useRef} from 'react';
+import {useClickOutside, useToggle} from '../../index.js';
 
 export function Example() {
 	const [toggled, toggle] = useToggle();
@@ -10,7 +10,7 @@ export function Example() {
 
 		useClickOutside(ref, () => {
 			// eslint-disable-next-line no-alert
-			window.alert('told ya!');
+			globalThis.alert('told ya!');
 			toggle();
 		});
 
@@ -43,7 +43,7 @@ export function Example() {
 
 			{!toggled && (
 				<button
-					type="button"
+					type='button'
 					onClick={() => {
 						toggle();
 					}}>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useToggle, useUnmountEffect } from '../../index.js';
+import {useToggle, useUnmountEffect} from '../../index.js';
 
 export function Example() {
 	const [isToggled, toggle] = useToggle(false);
@@ -16,12 +16,13 @@ export function Example() {
 	return (
 		<div>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					toggle();
 				}}>
 				Toggle component {isToggled ? 'off' : 'on'}
-			</button>{' '}
+			</button>
+			{' '}
 			{isToggled && <ToggledComponent />}
 		</div>
 	);

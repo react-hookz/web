@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRenderCount, useRerender } from '../../index.js';
+import {useRenderCount, useRerender} from '../../index.js';
 
 export function Example() {
 	const renders = useRenderCount();
@@ -9,7 +9,7 @@ export function Example() {
 		<div>
 			<div>This component has rendered {renders} time(s)</div>
 			<br />
-			<button type="button" onClick={rerender}>
+			<button type='button' onClick={rerender}>
 				Rerender
 			</button>
 		</div>

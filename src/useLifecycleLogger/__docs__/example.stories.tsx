@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRerender, useLifecycleLogger } from '../../index.js';
+import {useRerender, useLifecycleLogger} from '../../index.js';
 
 export function Example() {
 	const rerender = useRerender();
@@ -10,7 +10,7 @@ export function Example() {
 		<div>
 			<div>Check your console for useLifecycleLogger logs</div>
 			<button
-				type="button"
+				type='button'
 				onClick={() => {
 					rerender();
 				}}>

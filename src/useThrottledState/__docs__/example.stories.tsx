@@ -1,4 +1,4 @@
-import { useThrottledState } from '../../index.js';
+import {useThrottledState} from '../../index.js';
 
 export function Example() {
 	const [state, setState] = useThrottledState('', 500);
@@ -9,11 +9,10 @@ export function Example() {
 			<br />
 			<div>The input`s value is: {state}</div>
 			<input
-				type="text"
+				type='text'
 				onChange={(ev) => {
 					setState(ev.target.value);
-				}}
-			/>
+				}} />
 		</div>
 	);
 }

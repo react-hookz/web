@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useVibrate } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {useVibrate} from '../../index.js';
 
 describe('useVibrate', () => {
 	const vibrateSpy = jest.spyOn(navigator, 'vibrate');
@@ -17,7 +17,7 @@ describe('useVibrate', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useVibrate(true, 100);
 		});
 		expect(result.error).toBeUndefined();
@@ -32,7 +32,7 @@ describe('useVibrate', () => {
 	});
 
 	it('should call navigator.vibrate(0) on unmount', () => {
-		const { unmount } = renderHook(() => {
+		const {unmount} = renderHook(() => {
 			useVibrate(true, [100, 200], true);
 		});
 		unmount();

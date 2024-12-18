@@ -1,4 +1,4 @@
-import { useRerender, useRenderCount } from '../../index.js';
+import {useRerender, useRenderCount} from '../../index.js';
 
 export function Example() {
 	const renders = useRenderCount();
@@ -8,7 +8,7 @@ export function Example() {
 		<div>
 			<div>This component has rendered {renders} time(s)</div>
 			<br />
-			<button type="button" onClick={rerender}>
+			<button type='button' onClick={rerender}>
 				Rerender
 			</button>
 		</div>

@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/server';
-import { useLocalStorageValue } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/server';
+import {useLocalStorageValue} from '../../index.js';
 
 describe('useLocalStorageValue', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useLocalStorageValue', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useLocalStorageValue('foo');
 		});
 		expect(result.error).toBeUndefined();

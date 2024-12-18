@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks/dom';
-import { useDeepCompareEffect } from '../../index.js';
+import {renderHook} from '@testing-library/react-hooks/dom';
+import {useDeepCompareEffect} from '../../index.js';
 
 describe('useDeepCompareEffect', () => {
 	it('should be defined', () => {
@@ -7,7 +7,7 @@ describe('useDeepCompareEffect', () => {
 	});
 
 	it('should render', () => {
-		const { result } = renderHook(() => {
+		const {result} = renderHook(() => {
 			useDeepCompareEffect(() => {}, []);
 		});
 		expect(result.error).toBeUndefined();
@@ -15,24 +15,24 @@ describe('useDeepCompareEffect', () => {
 
 	it('should run only in case deps are changed', () => {
 		const spy = jest.fn();
-		const { rerender } = renderHook(
-			({ deps }) => {
+		const {rerender} = renderHook(
+			({deps}) => {
 				useDeepCompareEffect(spy, deps);
 			},
 			{
-				initialProps: { deps: [{ foo: 'bar' }] },
-			}
+				initialProps: {deps: [{foo: 'bar'}]},
+			},
 		);
 
 		expect(spy).toHaveBeenCalledTimes(1);
 
-		rerender({ deps: [{ foo: 'bar' }] });
+		rerender({deps: [{foo: 'bar'}]});
 		expect(spy).toHaveBeenCalledTimes(1);
 
-		rerender({ deps: [{ foo: 'baz' }] });
+		rerender({deps: [{foo: 'baz'}]});
 		expect(spy).toHaveBeenCalledTimes(2);
 
-		rerender({ deps: [{ foo: 'baz' }] });
+		rerender({deps: [{foo: 'baz'}]});
 		expect(spy).toHaveBeenCalledTimes(2);
 	});
 });
