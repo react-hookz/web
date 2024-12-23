@@ -1,47 +1,22 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useMediaQuery} from '../index.js';
 
 describe('useMediaQuery', () => {
-	type MutableMediaQueryList = {
-		matches: boolean;
-		media: string;
-		onchange: null;
-		addListener: vi.Mock; // Deprecated
-		removeListener: vi.Mock; // Deprecated
-		addEventListener: vi.Mock;
-		removeEventListener: vi.Mock;
-		dispatchEvent: vi.Mock;
-	};
+	const matchMediaMock = vi.fn((query: string) => ({
+		matches: false,
+		media: query,
+		onchange: null,
+		addEventListener: vi.fn(),
+		removeEventListener: vi.fn(),
+		dispatchEvent: vi.fn(),
+	}));
 
-	const matchMediaMock = vi.fn();
-	let initialMatchMedia: typeof globalThis.matchMedia;
-
-	beforeAll(() => {
-		initialMatchMedia = globalThis.matchMedia;
-		Object.defineProperty(globalThis, 'matchMedia', {
-			writable: true,
-			value: matchMediaMock,
-		});
-	});
-
-	afterAll(() => {
-		globalThis.matchMedia = initialMatchMedia;
-	});
+	vi.stubGlobal('matchMedia', matchMediaMock);
 
 	beforeEach(() => {
-		matchMediaMock.mockImplementation((query: string) => ({
-			matches: false,
-			media: query,
-			onchange: null,
-			addListener: vi.fn(), // Deprecated
-			removeListener: vi.fn(), // Deprecated
-			addEventListener: vi.fn(),
-			removeEventListener: vi.fn(),
-			dispatchEvent: vi.fn(),
-		}));
+		matchMediaMock.mockClear();
 	});
-
 	afterEach(() => {
 		matchMediaMock.mockClear();
 	});
@@ -79,7 +54,7 @@ describe('useMediaQuery', () => {
 		const {result} = renderHook(() => useMediaQuery('max-width : 768px'));
 		expect(result.current).toBe(false);
 
-		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
+		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 
 		act(() => {
@@ -97,7 +72,7 @@ describe('useMediaQuery', () => {
 		expect(result2.current).toBe(false);
 		expect(result3.current).toBe(false);
 
-		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
+		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 
 		act(() => {
@@ -126,7 +101,7 @@ describe('useMediaQuery', () => {
 
 		expect(matchMediaMock).toHaveBeenCalledTimes(2);
 
-		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
+		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 
 		act(() => {
@@ -143,7 +118,7 @@ describe('useMediaQuery', () => {
 		const {unmount: unmount2} = renderHook(() => useMediaQuery('max-width : 768px'));
 		const {unmount: unmount3} = renderHook(() => useMediaQuery('max-width : 768px'));
 
-		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
+		const mql = matchMediaMock.mock.results[0].value;
 		expect(mql.removeEventListener).not.toHaveBeenCalled();
 		unmount3();
 		expect(mql.removeEventListener).not.toHaveBeenCalled();
@@ -151,24 +126,5 @@ describe('useMediaQuery', () => {
 		expect(mql.removeEventListener).not.toHaveBeenCalled();
 		unmount1();
 		expect(mql.removeEventListener).toHaveBeenCalledTimes(1);
-	});
-
-	it('should use addListener and removeListener in case of absence of modern methods', () => {
-		matchMediaMock.mockImplementation((query: string) => ({
-			matches: false,
-			media: query,
-			onchange: null,
-			addListener: vi.fn(),
-			removeListener: vi.fn(),
-			dispatchEvent: vi.fn(),
-		}));
-
-		const {unmount} = renderHook(() => useMediaQuery('max-width : 1024px'));
-
-		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
-		expect(mql.addListener).toHaveBeenCalledTimes(1);
-
-		unmount();
-		expect(mql.removeListener).toHaveBeenCalledTimes(1);
 	});
 });

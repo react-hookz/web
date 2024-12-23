@@ -1,6 +1,6 @@
 import {act, renderHook} from '@testing-library/react-hooks/server';
 import {describe, expect, it} from 'vitest';
-import {newStorage} from './index.dom.test.js';
+import {newStorage} from './misc.test.js';
 import {useStorageValue} from './index.js';
 
 describe('useStorageValue', () => {

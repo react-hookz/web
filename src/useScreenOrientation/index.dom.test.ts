@@ -1,48 +1,22 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useScreenOrientation} from '../index.js';
 
 describe('useScreenOrientation', () => {
-	// Have to copy implementation as jsdom lacks of it
-	type MutableMediaQueryList = {
-		matches: boolean;
-		media: string;
-		onchange: null;
-		addListener: vi.Mock; // Deprecated
-		removeListener: vi.Mock; // Deprecated
-		addEventListener: vi.Mock;
-		removeEventListener: vi.Mock;
-		dispatchEvent: vi.Mock;
-	};
+	const matchMediaMock = vi.fn((query: string) => ({
+		matches: false,
+		media: query,
+		onchange: null,
+		addEventListener: vi.fn(),
+		removeEventListener: vi.fn(),
+		dispatchEvent: vi.fn(),
+	}));
 
-	const matchMediaMock = vi.fn();
-	let initialMatchMedia: typeof globalThis.matchMedia;
-
-	beforeAll(() => {
-		initialMatchMedia = globalThis.matchMedia;
-		Object.defineProperty(globalThis, 'matchMedia', {
-			writable: true,
-			value: matchMediaMock,
-		});
-	});
-
-	afterAll(() => {
-		globalThis.matchMedia = initialMatchMedia;
-	});
+	vi.stubGlobal('matchMedia', matchMediaMock);
 
 	beforeEach(() => {
-		matchMediaMock.mockImplementation((query: string) => ({
-			matches: false,
-			media: query,
-			onchange: null,
-			addListener: vi.fn(), // Deprecated
-			removeListener: vi.fn(), // Deprecated
-			addEventListener: vi.fn(),
-			removeEventListener: vi.fn(),
-			dispatchEvent: vi.fn(),
-		}));
+		matchMediaMock.mockClear();
 	});
-
 	afterEach(() => {
 		matchMediaMock.mockClear();
 	});
@@ -66,7 +40,7 @@ describe('useScreenOrientation', () => {
 		const {result} = renderHook(() => useScreenOrientation());
 		expect(result.current).toBe('landscape');
 
-		const mql = matchMediaMock.mock.results[0].value as MutableMediaQueryList;
+		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 
 		act(() => {

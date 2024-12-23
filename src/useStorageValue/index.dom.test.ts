@@ -1,16 +1,7 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {describe, expect, it, type Mocked, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vitest';
+import {newStorage} from './misc.test.js';
 import {useStorageValue} from './index.js';
-
-export const newStorage = (
-	get: Storage['getItem'] = () => null,
-	set: Storage['setItem'] = () => {},
-	remove: Storage['removeItem'] = () => {},
-) => ({
-	getItem: vi.fn(get),
-	setItem: vi.fn(set),
-	removeItem: vi.fn(remove),
-} as Mocked<Storage>);
 
 describe('useStorageValue', () => {
 	it('should be defined', () => {
@@ -32,7 +23,7 @@ describe('useStorageValue', () => {
 		});
 		rerender();
 
-		const firstResult = result.all[0];
+		const firstResult = result.all[0] as ReturnType<typeof useStorageValue>;
 
 		expect(firstResult.set).toBe(result.current.set);
 		expect(firstResult.fetch).toBe(result.current.fetch);
@@ -312,30 +303,30 @@ describe('useStorageValue', () => {
 
 	describe('synchronisation', () => {
 		it('should update state of all hooks with the same key in same storage', () => {
-			const {result: res} = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
-			const {result: res1} = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const hook1 = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const hook2 = renderHook(() => useStorageValue<string>(localStorage, 'foo'));
 
-			expect(res.current.value).toBe(null);
-			expect(res1.current.value).toBe(null);
-
-			act(() => {
-				res.current.set('bar');
-			});
-			expect(res.current.value).toBe('bar');
-			expect(res1.current.value).toBe('bar');
+			expect(hook1.result.current.value).toBe(null);
+			expect(hook2.result.current.value).toBe(null);
 
 			act(() => {
-				res.current.remove();
+				hook1.result.current.set('bar');
 			});
-			expect(res.current.value).toBe(null);
-			expect(res1.current.value).toBe(null);
+			expect(hook1.result.current.value).toBe('bar');
+			expect(hook2.result.current.value).toBe('bar');
+
+			act(() => {
+				hook1.result.current.remove();
+			});
+			expect(hook1.result.current.value).toBe(null);
+			expect(hook2.result.current.value).toBe(null);
 
 			localStorage.setItem('foo', '"123"');
 			act(() => {
-				res.current.fetch();
+				hook1.result.current.fetch();
 			});
-			expect(res.current.value).toBe('123');
-			expect(res1.current.value).toBe('123');
+			expect(hook1.result.current.value).toBe('123');
+			expect(hook2.result.current.value).toBe('123');
 			localStorage.removeItem('foo');
 		});
 	});

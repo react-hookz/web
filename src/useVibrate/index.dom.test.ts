@@ -3,14 +3,16 @@ import {afterAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useVibrate} from '../index.js';
 
 describe('useVibrate', () => {
-	const vibrateSpy = vi.spyOn(navigator, 'vibrate');
+	const vibrateMock = vi.fn<typeof navigator.vibrate>(() => true);
+
+	globalThis.navigator.vibrate = (vibrateMock) as typeof navigator.vibrate;
 
 	beforeEach(() => {
-		vibrateSpy.mockReset();
+		vibrateMock.mockReset();
 	});
 
 	afterAll(() => {
-		vibrateSpy.mockRestore();
+		vibrateMock.mockRestore();
 	});
 
 	it('should be defined', () => {
@@ -28,8 +30,8 @@ describe('useVibrate', () => {
 		renderHook(() => {
 			useVibrate(true, [100, 200]);
 		});
-		expect(vibrateSpy).toHaveBeenCalledTimes(1);
-		expect(vibrateSpy.mock.calls[0][0]).toEqual([100, 200]);
+		expect(vibrateMock).toHaveBeenCalledTimes(1);
+		expect(vibrateMock.mock.calls[0][0]).toEqual([100, 200]);
 	});
 
 	it('should call navigator.vibrate(0) on unmount', () => {
@@ -38,7 +40,7 @@ describe('useVibrate', () => {
 		});
 		unmount();
 
-		expect(vibrateSpy.mock.calls[1][0]).toEqual(0);
+		expect(vibrateMock.mock.calls[1][0]).toEqual(0);
 	});
 
 	it('should vibrate constantly using interval', () => {
@@ -47,19 +49,19 @@ describe('useVibrate', () => {
 			useVibrate(true, 300, true);
 		});
 
-		expect(vibrateSpy).toHaveBeenCalledTimes(1);
-		expect(vibrateSpy.mock.calls[0][0]).toEqual(300);
+		expect(vibrateMock).toHaveBeenCalledTimes(1);
+		expect(vibrateMock.mock.calls[0][0]).toEqual(300);
 
 		vi.advanceTimersByTime(299);
-		expect(vibrateSpy).toHaveBeenCalledTimes(1);
+		expect(vibrateMock).toHaveBeenCalledTimes(1);
 
 		vi.advanceTimersByTime(1);
-		expect(vibrateSpy).toHaveBeenCalledTimes(2);
-		expect(vibrateSpy.mock.calls[1][0]).toEqual(300);
+		expect(vibrateMock).toHaveBeenCalledTimes(2);
+		expect(vibrateMock.mock.calls[1][0]).toEqual(300);
 
 		vi.advanceTimersByTime(300);
-		expect(vibrateSpy).toHaveBeenCalledTimes(3);
-		expect(vibrateSpy.mock.calls[2][0]).toEqual(300);
+		expect(vibrateMock).toHaveBeenCalledTimes(3);
+		expect(vibrateMock.mock.calls[2][0]).toEqual(300);
 
 		vi.useRealTimers();
 	});

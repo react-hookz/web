@@ -9,7 +9,7 @@ import {isBrowser, noop} from '../util/const.js';
  * @param loop If true - vibration will be looped using `setInterval`.
  */
 export const useVibrate =
-	!isBrowser || navigator.vibrate === undefined ?
+	(!isBrowser || navigator.vibrate === undefined) ?
 		noop :
 			(enabled: boolean, pattern: VibratePattern, loop?: boolean): void => {
 				useEffect(() => {

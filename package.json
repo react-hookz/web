@@ -39,7 +39,7 @@
 		"postinstall": "husky",
 		"build": "yarn build:clean && tsc --version && tsc --project ./tsconfig.build.json",
 		"build:clean": "yarn rimraf ./dist",
-		"lint": "eslint",
+		"lint": "eslint --version && eslint",
 		"lint:fix": "eslint --fix",
 		"test": "vitest --run",
 		"test:coverage": "vitest --run --coverage"
@@ -49,8 +49,8 @@
 	},
 	"peerDependencies": {
 		"js-cookie": "^3.0.5",
-		"react": "^16.8 || ^17 || ^18",
-		"react-dom": "^16.8 || ^17 || ^18"
+		"react": "^16.8 || ^17 || ^18 || ^19",
+		"react-dom": "^16.8 || ^17 || ^18 || ^19"
 	},
 	"peerDependenciesMeta": {
 		"js-cookie": {
@@ -64,8 +64,8 @@
 		"@react-hookz/eslint-formatter-gha": "^3.0.2",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/js-cookie": "^3.0.6",
-		"@types/react": "^18.2.52",
-		"@types/react-dom": "^18.2.6",
+		"@types/react": "^17.0.83",
+		"@types/react-dom": "^17.0.26",
 		"@vitest/coverage-v8": "^2.1.8",
 		"commitlint": "^19.5.0",
 		"eslint": "^9.17.0",

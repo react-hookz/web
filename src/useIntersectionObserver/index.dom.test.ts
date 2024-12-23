@@ -1,32 +1,28 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {afterAll, beforeAll, beforeEach, describe, expect, it, type Mock, vi} from 'vitest';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useIntersectionObserver} from '../index.js';
 
 describe('useIntersectionObserver', () => {
-	let IntersectionObserverSpy: Mock<IntersectionObserver>;
-	const initialRO = globalThis.ResizeObserver;
+	const IntersectionObserverMock = vi.fn((_cb: (entries: IntersectionObserverEntry[]) => void) => ({
+		observe: vi.fn(),
+		unobserve: vi.fn(),
+		disconnect: vi.fn(),
+		takeRecords: () => [],
+		root: document,
+		rootMargin: '0px',
+		thresholds: [0],
+	}));
+	vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+
+	beforeEach(() => {
+		IntersectionObserverMock.mockClear();
+	});
 
 	beforeAll(() => {
-		IntersectionObserverSpy = vi.fn(() => ({
-			observe: vi.fn(),
-			unobserve: vi.fn(),
-			disconnect: vi.fn(),
-			takeRecords: () => [],
-			root: document,
-			rootMargin: '0px',
-			thresholds: [0],
-		}));
-
-		globalThis.IntersectionObserver = IntersectionObserverSpy;
 		vi.useFakeTimers();
 	});
 
-	beforeEach(() => {
-		IntersectionObserverSpy.mockClear();
-	});
-
 	afterAll(() => {
-		globalThis.ResizeObserver = initialRO;
 		vi.useRealTimers();
 	});
 
@@ -45,15 +41,13 @@ describe('useIntersectionObserver', () => {
 		expect(result.current).toBeUndefined();
 	});
 
-	it('should create IntersectionObserver instance only for unique set of options', () => {
-		expect(IntersectionObserverSpy).toHaveBeenCalledTimes(0);
-		const div1 = document.createElement('div');
-		const div2 = document.createElement('div');
+	it('should create IntersectionObserver instance only for unique set of options', async () => {
+		expect(IntersectionObserverMock).toHaveBeenCalledTimes(0);
 
-		renderHook(() => useIntersectionObserver(div1));
-		renderHook(() => useIntersectionObserver(div2));
+		renderHook(() => useIntersectionObserver(document.createElement('div')));
+		renderHook(() => useIntersectionObserver(document.createElement('div')));
 
-		expect(IntersectionObserverSpy).toHaveBeenCalledTimes(1);
+		expect(IntersectionObserverMock).toHaveBeenCalledTimes(1);
 	});
 
 	it('should return intersection entry', () => {
@@ -61,74 +55,73 @@ describe('useIntersectionObserver', () => {
 		const div1Ref = {current: div1};
 		const div2 = document.createElement('div');
 
-		const {result: res1} = renderHook(() => useIntersectionObserver(div1Ref));
-		const {result: res2, unmount} = renderHook(() =>
+		const hook1 = renderHook(() => useIntersectionObserver(div1Ref));
+		const hook2 = renderHook(() =>
 			useIntersectionObserver(div2, {threshold: [0, 1]}));
 
-		expect(res1.current).toBeUndefined();
-		expect(res2.current).toBeUndefined();
+		expect(hook1.result.current).toBeUndefined();
+		expect(hook2.result.current).toBeUndefined();
 
-		const entry1 = {target: div1};
-		const entry2 = {target: div2};
+		const entry1 = {target: div1} as unknown as IntersectionObserverEntry;
+		const entry2 = {target: div2} as unknown as IntersectionObserverEntry;
 
 		act(() => {
-			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
-
-			IntersectionObserverSpy.mock.calls[1][0]([entry2]);
+			IntersectionObserverMock.mock.calls[0][0]([entry1]);
+			IntersectionObserverMock.mock.calls[1][0]([entry2]);
 			vi.advanceTimersByTime(1);
 		});
 
-		expect(res1.current).toBe(entry1);
-		expect(res2.current).toBe(entry2);
+		expect(hook1.result.current).toBe(entry1);
+		expect(hook2.result.current).toBe(entry2);
 
-		unmount();
+		hook2.unmount();
 
-		const entry3 = {target: div1};
+		const entry3 = {target: div1} as unknown as IntersectionObserverEntry;
 		act(() => {
-			IntersectionObserverSpy.mock.calls[0][0]([entry3]);
+			IntersectionObserverMock.mock.calls[0][0]([entry3]);
 			vi.advanceTimersByTime(1);
 		});
 
-		expect(res1.current).toBe(entry3);
+		expect(hook1.result.current).toBe(entry3);
 	});
 
 	it('two hooks observing same target should use single observer', () => {
 		const div1 = document.createElement('div');
 		const div2 = document.createElement('div');
 
-		const {result: res1} = renderHook(() =>
+		const hook1 = renderHook(() =>
 			useIntersectionObserver(div1, {root: {current: div2}}));
-		const {result: res2} = renderHook(() =>
+		const hook2 = renderHook(() =>
 			useIntersectionObserver(div1, {root: {current: div2}}));
 
-		expect(res1.current).toBeUndefined();
-		expect(res2.current).toBeUndefined();
+		expect(hook1.result.current).toBeUndefined();
+		expect(hook2.result.current).toBeUndefined();
 
-		const entry1 = {target: div1};
+		const entry1 = {target: div1} as unknown as IntersectionObserverEntry;
 
 		act(() => {
-			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
+			IntersectionObserverMock.mock.calls[0][0]([entry1]);
 			vi.advanceTimersByTime(1);
 		});
 
-		expect(res1.current).toBe(entry1);
-		expect(res2.current).toBe(entry1);
+		expect(hook1.result.current).toBe(entry1);
+		expect(hook1.result.current).toBe(entry1);
 	});
 
 	it('should disconnect observer if last hook unmounted', () => {
 		const div1 = document.createElement('div');
 
 		const {result, unmount} = renderHook(() => useIntersectionObserver(div1));
-		const entry1 = {target: div1};
+		const entry1 = {target: div1} as unknown as IntersectionObserverEntry;
 
 		act(() => {
-			IntersectionObserverSpy.mock.calls[0][0]([entry1]);
+			IntersectionObserverMock.mock.calls[0][0]([entry1]);
 			vi.advanceTimersByTime(1);
 		});
 
 		expect(result.current).toBe(entry1);
 
 		unmount();
-		expect(IntersectionObserverSpy.mock.results[0].value.disconnect).toHaveBeenCalled();
+		expect(IntersectionObserverMock.mock.results[0].value.disconnect).toHaveBeenCalled();
 	});
 });
