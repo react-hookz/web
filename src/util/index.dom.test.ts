@@ -1,33 +1,5 @@
 import {describe, expect, it, vi} from 'vitest';
-import {resolveHookState} from '../index.js';
 import {basicDepsComparator, off, on} from './misc.js';
-
-describe('resolveHookState', () => {
-	it('should be defined', () => {
-		expect(resolveHookState).toBeDefined();
-	});
-
-	it('should return value itself if it is not function', () => {
-		expect(resolveHookState(123)).toBe(123);
-
-		const object = {foo: 'bar'};
-		expect(resolveHookState(object)).toBe(object);
-	});
-
-	it('should return call result in case function received', () => {
-		expect(resolveHookState(() => 123)).toBe(123);
-
-		const object = {foo: 'bar'};
-		expect(resolveHookState(() => object)).toBe(object);
-	});
-
-	it('should pass second parameter to received function', () => {
-		expect(resolveHookState(state => state, 123)).toBe(123);
-
-		const object = {foo: 'bar'};
-		expect(resolveHookState(state => state, object)).toBe(object);
-	});
-});
 
 const cb = () => {};
 

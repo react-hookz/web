@@ -1,7 +1,7 @@
 import {type SetStateAction, useMemo, useRef} from 'react';
 import {useRerender} from '../useRerender/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
-import {type InitialState, resolveHookState} from '../util/resolveHookState.js';
+import {type InitialState, resolveHookState} from '../util/resolve-hook-state.js';
 
 export type ListActions<T> = {
 	/**

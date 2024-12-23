@@ -5,7 +5,7 @@ import {useSyncedRef} from '../useSyncedRef/index.js';
 import {useUpdateEffect} from '../useUpdateEffect/index.js';
 import {isBrowser} from '../util/const.js';
 import {off, on} from '../util/misc.js';
-import {type NextState, resolveHookState} from '../util/resolveHookState.js';
+import {type NextState, resolveHookState} from '../util/resolve-hook-state.js';
 
 const storageListeners = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
