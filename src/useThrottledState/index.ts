@@ -1,5 +1,5 @@
-import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useThrottledCallback } from '../useThrottledCallback/index.js';
+import {type Dispatch, type SetStateAction, useState} from 'react';
+import {useThrottledCallback} from '../useThrottledCallback/index.js';
 
 /**
  * Like `useState` but its state setter is throttled.
@@ -13,7 +13,7 @@ import { useThrottledCallback } from '../useThrottledCallback/index.js';
 export function useThrottledState<S>(
 	initialState: S | (() => S),
 	delay: number,
-	noTrailing = false
+	noTrailing = false,
 ): [S, Dispatch<SetStateAction<S>>] {
 	const [state, setState] = useState(initialState);
 

@@ -1,4 +1,4 @@
-import { type RefObject, useEffect, useState } from 'react';
+import {type RefObject, useEffect, useState} from 'react';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';
@@ -25,21 +25,27 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 
 	const opt = JSON.stringify([options.rootMargin, options.threshold]);
 
-	let entry = rootObservers.get(opt);
+	let observerEntry = rootObservers.get(opt);
 
-	if (!entry) {
+	if (!observerEntry) {
 		const callbacks = new Map<Element, Set<IntersectionEntryCallback>>();
 
 		const observer = new IntersectionObserver((entries) => {
-			for (const e of entries)
-				callbacks.get(e.target)?.forEach((cb) =>
+			for (const entry of entries) {
+				const cbs = callbacks.get(entry.target);
+				if (cbs === undefined || cbs.size === 0) {
+					continue;
+				}
+
+				for (const cb of cbs) {
 					setTimeout(() => {
-						cb(e);
-					}, 0)
-				);
+						cb(entry);
+					}, 0);
+				}
+			}
 		}, options);
 
-		entry = {
+		observerEntry = {
 			observer,
 			observe(target, callback) {
 				let cbs = callbacks.get(target);
@@ -60,7 +66,6 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 				// Else branch should never occur in case of normal execution
 				// because callbacks map is hidden in closure - it is impossible to
 				// simulate situation with non-existent `cbs` Set
-				/* istanbul ignore else */
 				if (cbs) {
 					// Remove current observer
 					cbs.delete(callback);
@@ -85,10 +90,10 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 			},
 		};
 
-		rootObservers.set(opt, entry);
+		rootObservers.set(opt, observerEntry);
 	}
 
-	return entry;
+	return observerEntry;
 };
 
 export type UseIntersectionObserverOptions = {
@@ -130,13 +135,15 @@ export function useIntersectionObserver<T extends Element>(
 		threshold = DEFAULT_THRESHOLD,
 		root: r,
 		rootMargin = DEFAULT_ROOT_MARGIN,
-	}: UseIntersectionObserverOptions = {}
+	}: UseIntersectionObserverOptions = {},
 ): IntersectionObserverEntry | undefined {
 	const [state, setState] = useState<IntersectionObserverEntry>();
 
 	useEffect(() => {
 		const tgt = target && 'current' in target ? target.current : target;
-		if (!tgt) return;
+		if (!tgt) {
+			return;
+		}
 
 		let subscribed = true;
 		const observerEntry = getObserverEntry({
@@ -148,7 +155,6 @@ export function useIntersectionObserver<T extends Element>(
 		const handler: IntersectionEntryCallback = (entry) => {
 			// It is reinsurance for the highly asynchronous invocations, almost
 			// impossible to achieve in tests, thus excluding from LOC
-			/* istanbul ignore else */
 			if (subscribed) {
 				setState(entry);
 			}

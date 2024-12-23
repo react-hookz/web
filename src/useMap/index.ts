@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { useRerender } from '../useRerender/index.js';
+import {useRef} from 'react';
+import {useRerender} from '../useRerender/index.js';
 
 const proto = Map.prototype;
 
@@ -10,7 +10,7 @@ const proto = Map.prototype;
  */
 
 export function useMap<K = any, V = any>(
-	entries?: ReadonlyArray<readonly [K, V]> | null
+	entries?: ReadonlyArray<readonly [K, V]> | null,
 ): Map<K, V> {
 	const mapRef = useRef<Map<K, V>>();
 	const rerender = useRerender();
@@ -32,10 +32,10 @@ export function useMap<K = any, V = any>(
 		};
 
 		map.delete = (...args) => {
-			const res = proto.delete.apply(map, args);
+			const existed = proto.delete.apply(map, args);
 			rerender();
 
-			return res;
+			return existed;
 		};
 	}
 

@@ -1,9 +1,9 @@
-import { type Predicate, type ConditionsPredicate } from '../types.js';
+import {type ConditionsPredicate, type Predicate} from '../types.js';
 
 export const noop = (): void => {};
 
 export const isBrowser =
-	typeof window !== 'undefined' &&
+	typeof globalThis !== 'undefined' &&
 	typeof navigator !== 'undefined' &&
 	typeof document !== 'undefined';
 

@@ -1,6 +1,6 @@
-import { type BaseSyntheticEvent, useCallback, useState } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { type InitialState, type NextState, resolveHookState } from '../util/resolveHookState.js';
+import {type BaseSyntheticEvent, useCallback, useState} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {type InitialState, type NextState, resolveHookState} from '../util/resolve-hook-state.js';
 
 export function useToggle(
 	initialState: InitialState<boolean>,
@@ -20,7 +20,7 @@ export function useToggle(
  */
 export function useToggle(
 	initialState: InitialState<boolean> = false,
-	ignoreReactEvents = true
+	ignoreReactEvents = true,
 ): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void] {
 	// We don't use useReducer (which would end up with less code), because exposed
 	// action does not provide functional updates feature.

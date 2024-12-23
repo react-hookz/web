@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
+import {useCallback, useEffect, useRef} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
 
 type TimeoutID = ReturnType<typeof setTimeout> | null;
 
@@ -20,7 +20,7 @@ const cancelTimeout = (id: TimeoutID) => {
  */
 export function useTimeoutEffect(
 	callback: () => void,
-	ms?: number
+	ms?: number,
 ): [cancel: () => void, reset: () => void] {
 	const cbRef = useSyncedRef(callback);
 	const msRef = useSyncedRef(ms);
@@ -31,7 +31,9 @@ export function useTimeoutEffect(
 	}, []);
 
 	const reset = useCallback(() => {
-		if (msRef.current === undefined) return;
+		if (msRef.current === undefined) {
+			return;
+		}
 
 		cancel();
 		timeoutIdRef.current = setTimeout(() => {

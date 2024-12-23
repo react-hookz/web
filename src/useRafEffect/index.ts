@@ -1,5 +1,5 @@
-import { type DependencyList, useEffect } from 'react';
-import { useRafCallback } from '../useRafCallback/index.js';
+import {type DependencyList, useEffect} from 'react';
+import {useRafCallback} from '../useRafCallback/index.js';
 
 /**
  * Like `React.useEffect`, but state is only updated within animation frame.
@@ -18,6 +18,6 @@ export function useRafEffect(callback: (...args: any[]) => void, deps: Dependenc
 			return cancelRaf;
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		deps
+		deps,
 	);
 }

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useEventListener } from '../useEventListener/index.js';
-import { useMountEffect } from '../useMountEffect/index.js';
-import { isBrowser } from '../util/const.js';
+import {useState} from 'react';
+import {useEventListener} from '../useEventListener/index.js';
+import {useMountEffect} from '../useMountEffect/index.js';
+import {isBrowser} from '../util/const.js';
 
 const isDocumentVisible = () => document.visibilityState === 'visible';
 
@@ -15,7 +15,7 @@ export function useDocumentVisibility(initializeWithValue?: true): boolean;
  */
 export function useDocumentVisibility(initializeWithValue = true): boolean | undefined {
 	const [isVisible, setIsVisible] = useState(
-		isBrowser && initializeWithValue ? isDocumentVisible() : undefined
+		isBrowser && initializeWithValue ? isDocumentVisible() : undefined,
 	);
 
 	useMountEffect(() => {

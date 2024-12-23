@@ -1,5 +1,5 @@
-import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useDebouncedCallback } from '../useDebouncedCallback/index.js';
+import {type Dispatch, type SetStateAction, useState} from 'react';
+import {useDebouncedCallback} from '../useDebouncedCallback/index.js';
 
 /**
  * Like `useState` but its state setter is debounced.
@@ -12,7 +12,7 @@ import { useDebouncedCallback } from '../useDebouncedCallback/index.js';
 export function useDebouncedState<S>(
 	initialState: S | (() => S),
 	delay: number,
-	maxWait = 0
+	maxWait = 0,
 ): [S, Dispatch<SetStateAction<S>>] {
 	const [state, setState] = useState(initialState);
 

@@ -1,5 +1,5 @@
-import { type DependencyList, useEffect, useMemo, useRef } from 'react';
-import { useUnmountEffect } from '../useUnmountEffect/index.js';
+import {type DependencyList, useEffect, useMemo, useRef} from 'react';
+import {useUnmountEffect} from '../useUnmountEffect/index.js';
 
 export type DebouncedFunction<Fn extends (...args: any[]) => any> = (
 	this: ThisParameterType<Fn>,
@@ -20,12 +20,12 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 	callback: Fn,
 	deps: DependencyList,
 	delay: number,
-	maxWait = 0
+	maxWait = 0,
 ): DebouncedFunction<Fn> {
 	const timeout = useRef<ReturnType<typeof setTimeout>>();
 	const waitTimeout = useRef<ReturnType<typeof setTimeout>>();
 	const cb = useRef(callback);
-	const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
+	const lastCall = useRef<{args: Parameters<Fn>; this: ThisParameterType<Fn>}>();
 
 	const clear = () => {
 		if (timeout.current) {
@@ -51,9 +51,9 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 		const execute = () => {
 			clear();
 
-			// Barely possible to test this line
-			/* istanbul ignore next */
-			if (!lastCall.current) return;
+			if (!lastCall.current) {
+				return;
+			}
 
 			const context = lastCall.current;
 			lastCall.current = undefined;
@@ -66,7 +66,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 				clearTimeout(timeout.current);
 			}
 
-			lastCall.current = { args, this: this };
+			lastCall.current = {args, this: this};
 
 			// Plan regular execution
 			timeout.current = setTimeout(execute, delay);
@@ -78,11 +78,11 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 		} as DebouncedFunction<Fn>;
 
 		Object.defineProperties(wrapped, {
-			length: { value: callback.length },
-			name: { value: `${callback.name || 'anonymous'}__debounced__${delay}` },
+			length: {value: callback.length},
+			name: {value: `${callback.name || 'anonymous'}__debounced__${delay}`},
 		});
 
 		return wrapped;
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
 	}, [delay, maxWait, ...deps]);
 }

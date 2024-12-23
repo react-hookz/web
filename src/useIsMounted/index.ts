@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 
 /**
  * Returns a function that returns the current mount state. This hook is useful when you have to

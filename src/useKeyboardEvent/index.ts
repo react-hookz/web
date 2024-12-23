@@ -1,8 +1,8 @@
-import { type DependencyList, type RefObject, useMemo } from 'react';
-import { useEventListener } from '../useEventListener/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { isBrowser } from '../util/const.js';
-import { yieldFalse, yieldTrue } from '../util/misc.js';
+import {type DependencyList, type RefObject, useMemo} from 'react';
+import {useEventListener} from '../useEventListener/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {isBrowser} from '../util/const.js';
+import {yieldFalse, yieldTrue} from '../util/misc.js';
 
 export type KeyboardEventPredicate = (event: KeyboardEvent) => boolean;
 export type KeyboardEventFilter = null | string | boolean | KeyboardEventPredicate;
@@ -26,12 +26,18 @@ export type UseKeyboardEventOptions<T extends EventTarget> = {
 };
 
 const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredicate => {
-	if (typeof keyFilter === 'function') return keyFilter;
-	if (typeof keyFilter === 'string') return (ev) => ev.key === keyFilter;
+	if (typeof keyFilter === 'function') {
+		return keyFilter;
+	}
+
+	if (typeof keyFilter === 'string') {
+		return ev => ev.key === keyFilter;
+	}
+
 	return keyFilter ? yieldTrue : yieldFalse;
 };
 
-const WINDOW_OR_NULL = isBrowser ? window : null;
+const WINDOW_OR_NULL = isBrowser ? globalThis : null;
 
 /**
  * Invokes a callback when a keyboard event occurs on the chosen target element.
@@ -45,9 +51,9 @@ export function useKeyboardEvent<T extends EventTarget>(
 	keyOrPredicate: KeyboardEventFilter,
 	callback: KeyboardEventHandler<T>,
 	deps: DependencyList = [],
-	options: UseKeyboardEventOptions<T> = {}
+	options: UseKeyboardEventOptions<T> = {},
 ): void {
-	const { event = 'keydown', target = WINDOW_OR_NULL, eventOptions } = options;
+	const {event = 'keydown', target = WINDOW_OR_NULL, eventOptions} = options;
 	const cbRef = useSyncedRef(callback);
 
 	const handler = useMemo<KeyboardEventHandler<T>>(() => {

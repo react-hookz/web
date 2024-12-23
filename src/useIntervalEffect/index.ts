@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
+import {useEffect} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
 
 /**
  * Like `setInterval` but in the form of a React hook.

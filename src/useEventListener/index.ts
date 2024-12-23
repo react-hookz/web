@@ -1,7 +1,7 @@
-import { type RefObject, useEffect, useMemo } from 'react';
-import { useIsMounted } from '../useIsMounted/index.js';
-import { useSyncedRef } from '../useSyncedRef/index.js';
-import { hasOwnProperty, off, on } from '../util/misc.js';
+import {type RefObject, useEffect, useMemo} from 'react';
+import {useIsMounted} from '../useIsMounted/index.js';
+import {useSyncedRef} from '../useSyncedRef/index.js';
+import {hasOwnProperty, off, on} from '../util/misc.js';
 
 /**
  *  An HTML element or ref object containing an HTML element.
@@ -22,18 +22,16 @@ export function useEventListener<T extends EventTarget>(
 	const listenerRef = useSyncedRef(params[1]);
 	const eventListener = useMemo<EventListener>(
 		() =>
-			// As some event listeners designed to be used through `this`
-			// it is better to make listener a conventional function as it
-			// infers call context
+		// As some event listeners designed to be used through `this`
+		// it is better to make listener a conventional function as it
+		// infers call context
 
 			function (this: T, ...args) {
-				// Normally, such situation should not happen, but better to
-				// have back covered
-				/* istanbul ignore next */
-				if (!isMounted()) return;
+				if (!isMounted()) {
+					return;
+				}
 
 				// We dont care if non-listener provided, simply dont do anything
-				/* istanbul ignore else */
 				if (typeof listenerRef.current === 'function') {
 					listenerRef.current.apply(this, args);
 				} else if (typeof listenerRef.current!.handleEvent === 'function') {
@@ -42,12 +40,14 @@ export function useEventListener<T extends EventTarget>(
 			},
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[]
+		[],
 	);
 
 	useEffect(() => {
 		const tgt = isRefObject(target) ? target.current : target;
-		if (!tgt) return;
+		if (!tgt) {
+			return;
+		}
 
 		const restParams: unknown[] = params.slice(2);
 

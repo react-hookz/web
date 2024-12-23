@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { isBrowser } from '../util/const.js';
-import { off, on } from '../util/misc.js';
-import { type InitialState } from '../util/resolveHookState.js';
+import {useEffect, useState} from 'react';
+import {isBrowser} from '../util/const.js';
+import {off, on} from '../util/misc.js';
+import {type InitialState} from '../util/resolve-hook-state.js';
 
 export type NetworkInformation = {
 	readonly downlink: number;
@@ -76,7 +76,7 @@ export type UseNetworkState = {
 
 type NavigatorWithConnection = Navigator &
 	Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', NetworkInformation>>;
-const navigator = isBrowser ? (window.navigator as NavigatorWithConnection) : undefined;
+const navigator = isBrowser ? (globalThis.navigator as NavigatorWithConnection) : undefined;
 
 const conn: NetworkInformation | undefined =
 	navigator && (navigator.connection ?? navigator.mozConnection ?? navigator.webkitConnection);
@@ -109,20 +109,17 @@ export function useNetworkState(initialState?: InitialState<UseNetworkState>): U
 			setState(getConnectionState);
 		};
 
-		on(window, 'online', handleStateChange, { passive: true });
-		on(window, 'offline', handleStateChange, { passive: true });
+		on(globalThis, 'online', handleStateChange, {passive: true});
+		on(globalThis, 'offline', handleStateChange, {passive: true});
 
-		// It is quite hard to test it in jsdom environment maybe will be improved in future
-		/* istanbul ignore next */
 		if (conn) {
-			on(conn, 'change', handleStateChange, { passive: true });
+			on(conn, 'change', handleStateChange, {passive: true});
 		}
 
 		return () => {
-			off(window, 'online', handleStateChange);
-			off(window, 'offline', handleStateChange);
+			off(globalThis, 'online', handleStateChange);
+			off(globalThis, 'offline', handleStateChange);
 
-			/* istanbul ignore next */
 			if (conn) {
 				off(conn, 'change', handleStateChange);
 			}

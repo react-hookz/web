@@ -1,5 +1,5 @@
-import { type MutableRefObject, useMemo } from 'react';
-import { useSyncedRef } from '../useSyncedRef/index.js';
+import {type MutableRefObject, useMemo} from 'react';
+import {useSyncedRef} from '../useSyncedRef/index.js';
 
 export type HookableRefHandler<T> = (v: T) => T;
 
@@ -22,7 +22,7 @@ export function useHookableRef<T = undefined>(): MutableRefObject<T | undefined>
 export function useHookableRef<T>(
 	initialValue?: T,
 	onSet?: HookableRefHandler<T>,
-	onGet?: HookableRefHandler<T>
+	onGet?: HookableRefHandler<T>,
 ): MutableRefObject<T | undefined> {
 	const onSetRef = useSyncedRef(onSet);
 	const onGetRef = useSyncedRef(onGet);
