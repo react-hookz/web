@@ -27,15 +27,11 @@ export function useEventListener<T extends EventTarget>(
 		// infers call context
 
 			function (this: T, ...args) {
-				// Normally, such situation should not happen, but better to
-				// have back covered
-				/* v8 ignore next */
 				if (!isMounted()) {
 					return;
 				}
 
 				// We dont care if non-listener provided, simply dont do anything
-				/* istanbul ignore else */
 				if (typeof listenerRef.current === 'function') {
 					listenerRef.current.apply(this, args);
 				} else if (typeof listenerRef.current!.handleEvent === 'function') {

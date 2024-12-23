@@ -58,13 +58,13 @@ const addStorageListener = (s: Storage, key: string, listener: CallableFunction)
 
 const removeStorageListener = (s: Storage, key: string, listener: CallableFunction) => {
 	const keys = storageListeners.get(s);
-	/* v8 ignore next */
+
 	if (!keys) {
 		return;
 	}
 
 	const listeners = keys.get(key);
-	/* v8 ignore next */
+
 	if (!listeners) {
 		return;
 	}
@@ -279,7 +279,6 @@ export function useStorageValue<
 
 const defaultStringify = (data: unknown): string | null => {
 	if (data === null) {
-		/* v8 ignore next */
 		if (process.env.NODE_ENV === 'development') {
 			console.warn(
 				'\'null\' is not a valid data for useStorageValue hook, this operation will take no effect',

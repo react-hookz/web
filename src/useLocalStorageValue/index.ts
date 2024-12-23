@@ -10,8 +10,6 @@ let IS_LOCAL_STORAGE_AVAILABLE: boolean;
 try {
 	IS_LOCAL_STORAGE_AVAILABLE = isBrowser && Boolean(globalThis.localStorage);
 } catch {
-	// No need to test this flag leads to noop behaviour
-	/* v8 ignore next */
 	IS_LOCAL_STORAGE_AVAILABLE = false;
 }
 

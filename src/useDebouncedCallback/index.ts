@@ -51,8 +51,6 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 		const execute = () => {
 			clear();
 
-			// Barely possible to test this line
-			/* v8 ignore next */
 			if (!lastCall.current) {
 				return;
 			}

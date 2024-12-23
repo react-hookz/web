@@ -42,7 +42,6 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
 	const entry = queriesMap.get(query);
 
 	// Else path is impossible to test in normal situation
-	/* istanbul ignore else */
 	if (entry) {
 		const {mql, dispatchers, listener} = entry;
 		dispatchers.delete(setState);

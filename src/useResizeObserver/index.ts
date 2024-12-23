@@ -59,7 +59,6 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 			// Else branch should never occur in case of normal execution
 			// because callbacks map is hidden in closure - it is impossible to
 			// simulate situation with non-existent `cbs` Set
-			/* istanbul ignore else */
 			if (cbs) {
 				// Remove current observer
 				cbs.delete(callback);
@@ -112,7 +111,6 @@ export function useResizeObserver<T extends Element>(
 		const handler: UseResizeObserverCallback = (...args) => {
 			// It is reinsurance for the highly asynchronous invocations, almost
 			// impossible to achieve in tests, thus excluding from LOC
-			/* istanbul ignore else */
 			if (subscribed) {
 				cb.current(...args);
 			}
