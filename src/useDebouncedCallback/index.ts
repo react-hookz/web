@@ -52,7 +52,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 			clear();
 
 			// Barely possible to test this line
-			/* istanbul ignore next */
+			/* v8 ignore next */
 			if (!lastCall.current) {
 				return;
 			}

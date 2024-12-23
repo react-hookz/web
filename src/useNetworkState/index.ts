@@ -113,7 +113,7 @@ export function useNetworkState(initialState?: InitialState<UseNetworkState>): U
 		on(globalThis, 'offline', handleStateChange, {passive: true});
 
 		// It is quite hard to test it in jsdom environment maybe will be improved in future
-		/* istanbul ignore next */
+		/* v8 ignore next */
 		if (conn) {
 			on(conn, 'change', handleStateChange, {passive: true});
 		}
@@ -122,7 +122,7 @@ export function useNetworkState(initialState?: InitialState<UseNetworkState>): U
 			off(globalThis, 'online', handleStateChange);
 			off(globalThis, 'offline', handleStateChange);
 
-			/* istanbul ignore next */
+			/* v8 ignore next */
 			if (conn) {
 				off(conn, 'change', handleStateChange);
 			}

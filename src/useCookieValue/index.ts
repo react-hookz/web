@@ -22,7 +22,7 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
 	const setters = cookiesSetters.get(key);
 
 	// Almost impossible to test in normal situation
-	/* istanbul ignore next */
+	/* v8 ignore next */
 	if (!setters) {
 		return;
 	}
@@ -42,7 +42,7 @@ const invokeRegisteredSetters = (
 	const setters = cookiesSetters.get(key);
 
 	// Almost impossible to test in normal situation
-	/* istanbul ignore next */
+	/* v8 ignore next */
 	if (!setters) {
 		return;
 	}
@@ -91,7 +91,7 @@ export function useCookieValue(
 	options: UseCookieValueOptions = {},
 ): UseCookieValueReturn {
 	// No need to test it, dev-only notification about 3rd party library requirement
-	/* istanbul ignore next */
+	/* v8 ignore next */
 	if (process.env.NODE_ENV === 'development' && Cookies === undefined) {
 		throw new ReferenceError(
 			'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.',

@@ -58,13 +58,13 @@ const addStorageListener = (s: Storage, key: string, listener: CallableFunction)
 
 const removeStorageListener = (s: Storage, key: string, listener: CallableFunction) => {
 	const keys = storageListeners.get(s);
-	/* istanbul ignore next */
+	/* v8 ignore next */
 	if (!keys) {
 		return;
 	}
 
 	const listeners = keys.get(key);
-	/* istanbul ignore next */
+	/* v8 ignore next */
 	if (!listeners) {
 		return;
 	}
@@ -279,7 +279,7 @@ export function useStorageValue<
 
 const defaultStringify = (data: unknown): string | null => {
 	if (data === null) {
-		/* istanbul ignore next */
+		/* v8 ignore next */
 		if (process.env.NODE_ENV === 'development') {
 			console.warn(
 				'\'null\' is not a valid data for useStorageValue hook, this operation will take no effect',
@@ -291,7 +291,7 @@ const defaultStringify = (data: unknown): string | null => {
 
 	try {
 		return JSON.stringify(data);
-	} catch (error) /* istanbul ignore next */ {
+	} catch (error) /* v8 ignore next */ {
 		// I have absolutely no idea how to cover this, since modern JSON.stringify does not throw on
 		// cyclic references anymore
 

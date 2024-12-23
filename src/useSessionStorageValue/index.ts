@@ -11,7 +11,7 @@ try {
 	IS_SESSION_STORAGE_AVAILABLE = isBrowser && Boolean(globalThis.sessionStorage);
 } catch {
 	// No need to test as this flag leads to noop behaviour
-	/* istanbul ignore next */
+	/* v8 ignore next */
 	IS_SESSION_STORAGE_AVAILABLE = false;
 }
 

@@ -29,7 +29,7 @@ export function useEventListener<T extends EventTarget>(
 			function (this: T, ...args) {
 				// Normally, such situation should not happen, but better to
 				// have back covered
-				/* istanbul ignore next */
+				/* v8 ignore next */
 				if (!isMounted()) {
 					return;
 				}
