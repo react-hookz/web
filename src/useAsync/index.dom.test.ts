@@ -39,8 +39,12 @@ describe('useAsync', () => {
 
 	it('should apply `initialValue` arg', async () => {
 		await act(async () => {
-			const [spy, resolve] = getControllableAsync<number, []>();
+			const [spy, resolve] = getControllableAsync<number>();
 			const {result} = renderHook(() => useAsync(spy, 3));
+
+			if (result.all[0] instanceof Error) {
+				throw result.all[0];
+			}
 
 			expect(result.all[0][0]).toStrictEqual({
 				status: 'not-executed',
@@ -56,7 +60,7 @@ describe('useAsync', () => {
 
 	it('should have `not-executed` status initially', async () => {
 		await act(async () => {
-			const [spy, resolve] = getControllableAsync<void, []>();
+			const [spy, resolve] = getControllableAsync<void>();
 			const {result} = renderHook(() => useAsync(spy));
 
 			expect(result.current[0]).toStrictEqual({
@@ -72,7 +76,7 @@ describe('useAsync', () => {
 	});
 
 	it('should have `loading` status while promise invoked but not resolved', async () => {
-		const [spy, resolve] = getControllableAsync<void, []>();
+		const [spy, resolve] = getControllableAsync<void>();
 		const {result} = renderHook(() => useAsync(spy));
 
 		expect(result.current[0]).toStrictEqual({
@@ -99,7 +103,7 @@ describe('useAsync', () => {
 	});
 
 	it('should set `success` status and store `result` state field on fulfill', async () => {
-		const [spy, resolve] = getControllableAsync<number, []>();
+		const [spy, resolve] = getControllableAsync<number>();
 		const {result} = renderHook(() => useAsync(spy));
 
 		expect(result.current[0]).toStrictEqual({
@@ -124,7 +128,7 @@ describe('useAsync', () => {
 	});
 
 	it('should set `error` status and store `error` state field on reject', async () => {
-		const [spy, , reject] = getControllableAsync<number, []>();
+		const [spy, , reject] = getControllableAsync<number>();
 		const {result} = renderHook(() => useAsync(spy));
 
 		expect(result.current[0]).toStrictEqual({
@@ -151,7 +155,7 @@ describe('useAsync', () => {
 	});
 
 	it('should rollback state to initial on `reset` method call', async () => {
-		const [spy, resolve] = getControllableAsync<number, []>();
+		const [spy, resolve] = getControllableAsync<number>();
 		const {result} = renderHook(() => useAsync(spy, 42));
 
 		expect(result.current[0]).toStrictEqual({
@@ -186,7 +190,7 @@ describe('useAsync', () => {
 	});
 
 	it('should not process results of promise if another was executed', async () => {
-		const [spy, resolve] = getControllableAsync<number, []>();
+		const [spy, resolve] = getControllableAsync<number>();
 		const {result} = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {
@@ -217,7 +221,7 @@ describe('useAsync', () => {
 	});
 
 	it('should not process error of promise if another was executed', async () => {
-		const [spy, resolve, reject] = getControllableAsync<number, []>();
+		const [spy, resolve, reject] = getControllableAsync<number>();
 		const {result} = renderHook(() => useAsync(spy, 42));
 
 		await act(async () => {

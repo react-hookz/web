@@ -15,10 +15,6 @@ const config = [
 	...mdConfig,
 	...typescriptConfig,
 	...vitestConfig,
-	{
-		files: ['*.js', '*.ts'],
-		rules: {},
-	},
 ];
 
 export default config;

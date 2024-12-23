@@ -25,10 +25,16 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 
 	const observer = new ResizeObserver((entries) => {
 		for (const entry of entries) {
-			callbacks.get(entry.target)?.forEach(cb =>
+			const cbs = callbacks.get(entry.target);
+			if (cbs === undefined || cbs.size === 0) {
+				continue;
+			}
+
+			for (const cb of cbs) {
 				setTimeout(() => {
 					cb(entry);
-				}, 0));
+				}, 0);
+			}
 		}
 	});
 

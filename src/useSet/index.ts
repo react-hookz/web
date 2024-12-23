@@ -30,10 +30,10 @@ export function useSet<T = any>(values?: readonly T[] | null): Set<T> {
 		};
 
 		set.delete = (...args) => {
-			const res = proto.delete.apply(set, args);
+			const result = proto.delete.apply(set, args);
 			rerender();
 
-			return res;
+			return result;
 		};
 	}
 

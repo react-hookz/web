@@ -32,10 +32,10 @@ export function useMap<K = any, V = any>(
 		};
 
 		map.delete = (...args) => {
-			const res = proto.delete.apply(map, args);
+			const existed = proto.delete.apply(map, args);
 			rerender();
 
-			return res;
+			return existed;
 		};
 	}
 

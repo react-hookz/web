@@ -2,17 +2,21 @@ import {act, renderHook} from '@testing-library/react-hooks/dom';
 import {useEffect} from 'react';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useMeasure} from '../index.js';
-import Mock = vi.Mock;
 
 describe('useMeasure', () => {
-	const raf = globalThis.requestAnimationFrame;
-	const caf = globalThis.cancelAnimationFrame;
 	const observeSpy = vi.fn();
 	const unobserveSpy = vi.fn();
 	const disconnectSpy = vi.fn();
 
-	let ResizeObserverSpy: Mock<ResizeObserver>;
+	const ResizeObserverSpy = vi.fn((_cb: (entries: ResizeObserverEntry[]) => void) => ({
+		observe: observeSpy,
+		unobserve: unobserveSpy,
+		disconnect: disconnectSpy,
+	}));
 	const initialRO = globalThis.ResizeObserver;
+
+	const raf = globalThis.requestAnimationFrame;
+	const caf = globalThis.cancelAnimationFrame;
 
 	beforeAll(() => {
 		vi.useFakeTimers();
@@ -22,13 +26,7 @@ describe('useMeasure', () => {
 			clearTimeout(cb);
 		};
 
-		ResizeObserverSpy = vi.fn(() => ({
-			observe: observeSpy,
-			unobserve: unobserveSpy,
-			disconnect: disconnectSpy,
-		}));
-
-		globalThis.ResizeObserver = ResizeObserverSpy;
+		vi.stubGlobal('ResizeObserver', ResizeObserverSpy);
 	});
 
 	beforeEach(() => {
@@ -75,13 +73,13 @@ describe('useMeasure', () => {
 	it('should only set state within animation frame', () => {
 		const div = document.createElement('div');
 		const {result} = renderHook(() => {
-			const res = useMeasure<HTMLDivElement>();
+			const measure = useMeasure<HTMLDivElement>();
 
 			useEffect(() => {
-				res[1].current = div;
+				measure[1].current = div;
 			});
 
-			return res;
+			return measure;
 		});
 
 		const measures = {
@@ -96,7 +94,6 @@ describe('useMeasure', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 		expect(result.current[0]).toBeUndefined();
 

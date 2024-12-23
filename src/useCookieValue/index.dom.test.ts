@@ -2,16 +2,11 @@ import {act, renderHook} from '@testing-library/react-hooks/dom';
 import Cookies from 'js-cookie';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useCookieValue, type UseCookieValueReturn} from './index.js';
-import SpyInstance = vi.SpyInstance;
 
 describe('useCookieValue', () => {
-	type CookiesGet = typeof Cookies.get;
-	type CookiesSet = typeof Cookies.set;
-	type CookiesRemove = typeof Cookies.remove;
-
-	let getSpy: SpyInstance<ReturnType<CookiesGet>, Parameters<CookiesGet>>;
-	let setSpy: SpyInstance<ReturnType<CookiesSet>, Parameters<CookiesSet>>;
-	let removeSpy: SpyInstance<ReturnType<CookiesRemove>, Parameters<CookiesRemove>>;
+	let getSpy = vi.spyOn(Cookies, 'get');
+	let setSpy = vi.spyOn(Cookies, 'set');
+	let removeSpy = vi.spyOn(Cookies, 'remove');
 
 	beforeAll(() => {
 		getSpy = vi.spyOn(Cookies, 'get');
@@ -104,36 +99,36 @@ describe('useCookieValue', () => {
 	});
 
 	it('should be synchronized between several hooks with the same key', () => {
-		const {result: res1} = renderHook(() => useCookieValue('react-hookz'));
-		const {result: res2} = renderHook(() => useCookieValue('react-hookz'));
+		const {result: result1} = renderHook(() => useCookieValue('react-hookz'));
+		const {result: result2} = renderHook(() => useCookieValue('react-hookz'));
 
-		expect(res1.current[0]).toBe(null);
-		expect(res2.current[0]).toBe(null);
-
-		act(() => {
-			res1.current[1]('awesome');
-		});
-
-		expect(res1.current[0]).toBe('awesome');
-		expect(res2.current[0]).toBe('awesome');
+		expect(result1.current[0]).toBe(null);
+		expect(result2.current[0]).toBe(null);
 
 		act(() => {
-			res2.current[2]();
+			result1.current[1]('awesome');
 		});
 
-		expect(res1.current[0]).toBe(null);
-		expect(res2.current[0]).toBe(null);
+		expect(result1.current[0]).toBe('awesome');
+		expect(result2.current[0]).toBe('awesome');
+
+		act(() => {
+			result2.current[2]();
+		});
+
+		expect(result1.current[0]).toBe(null);
+		expect(result2.current[0]).toBe(null);
 	});
 
 	it('should return stable methods', () => {
 		const {result, rerender} = renderHook(() => useCookieValue('react-hookz'));
 
-		const res1 = result.current;
+		const result1 = result.current;
 
 		rerender();
 
-		expect(res1[1]).toBe(result.current[1]);
-		expect(res1[2]).toBe(result.current[2]);
-		expect(res1[3]).toBe(result.current[3]);
+		expect(result1[1]).toBe(result.current[1]);
+		expect(result1[2]).toBe(result.current[2]);
+		expect(result1[3]).toBe(result.current[3]);
 	});
 });

@@ -68,6 +68,6 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
 		});
 
 		return wrapped;
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
 	}, [delay, noTrailing, ...deps]);
 }

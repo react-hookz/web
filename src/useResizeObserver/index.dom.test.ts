@@ -1,24 +1,21 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useResizeObserver} from '../index.js';
-import Mock = vi.Mock;
 
 describe('useResizeObserver', () => {
 	const observeSpy = vi.fn();
 	const unobserveSpy = vi.fn();
 	const disconnectSpy = vi.fn();
 
-	let ResizeObserverSpy: Mock<ResizeObserver>;
+	const ResizeObserverSpy = vi.fn((_cb: (entries: ResizeObserverEntry[]) => void) => ({
+		observe: observeSpy,
+		unobserve: unobserveSpy,
+		disconnect: disconnectSpy,
+	}));
 	const initialRO = globalThis.ResizeObserver;
 
 	beforeAll(() => {
-		ResizeObserverSpy = vi.fn(() => ({
-			observe: observeSpy,
-			unobserve: unobserveSpy,
-			disconnect: disconnectSpy,
-		}));
-
-		globalThis.ResizeObserver = ResizeObserverSpy;
+		vi.stubGlobal('ResizeObserver', ResizeObserverSpy);
 		vi.useFakeTimers();
 	});
 
@@ -86,7 +83,6 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 
 		expect(spy).not.toHaveBeenCalledWith(entry);
@@ -117,7 +113,6 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
 
 		expect(spy1).not.toHaveBeenCalledWith(entry);
@@ -157,7 +152,6 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 		ResizeObserverSpy.mock.calls[0][0]([entry1, entry2]);
 
 		expect(spy1).not.toHaveBeenCalledWith(entry1);

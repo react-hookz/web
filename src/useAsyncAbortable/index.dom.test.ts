@@ -2,17 +2,17 @@ import {act, renderHook} from '@testing-library/react-hooks/dom';
 import {describe, expect, it, vi} from 'vitest';
 import {useAsyncAbortable} from '../index.js';
 
-function getControllableAsync<Res, Args extends unknown[] = unknown[]>() {
-	const resolve: {current: undefined | ((result: Res) => void)} = {current: undefined};
+function getControllableAsync<Response, Args extends unknown[] = unknown[]>() {
+	const resolve: {current: undefined | ((result: Response) => void)} = {current: undefined};
 	const reject: {current: undefined | ((err: Error) => void)} = {current: undefined};
 
 	return [
 		vi.fn(
 			(..._args: Args) =>
 				// eslint-disable-next-line promise/param-names
-				new Promise<Res>((res, rej) => {
-					resolve.current = res;
-					reject.current = rej;
+				new Promise<Response>((reslv, rejct) => {
+					resolve.current = reslv;
+					reject.current = rejct;
 				}),
 		),
 		resolve,
@@ -34,12 +34,12 @@ describe('useAsyncAbortable', () => {
 		const spy = vi.fn(async () => {});
 		const {rerender, result} = renderHook(() => useAsyncAbortable(spy));
 
-		const res1 = result.current;
+		const result1 = result.current;
 		rerender();
 
-		expect(res1[1].execute).toBe(result.current[1].execute);
-		expect(res1[1].reset).toBe(result.current[1].reset);
-		expect(res1[1].abort).toBe(result.current[1].abort);
+		expect(result1[1].execute).toBe(result.current[1].execute);
+		expect(result1[1].reset).toBe(result.current[1].reset);
+		expect(result1[1].abort).toBe(result.current[1].abort);
 	});
 
 	it('should pass abort signal as first argument', async () => {

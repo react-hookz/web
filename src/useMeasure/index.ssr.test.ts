@@ -1,24 +1,22 @@
 import {renderHook} from '@testing-library/react-hooks/server';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useMeasure} from '../index.js';
-import Mock = vi.Mock;
 
 describe('useMeasure', () => {
 	const observeSpy = vi.fn();
 	const unobserveSpy = vi.fn();
 	const disconnectSpy = vi.fn();
 
-	let ResizeObserverSpy: Mock<ResizeObserver>;
+	const ResizeObserverSpy = vi.fn((_cb: (entries: ResizeObserverEntry[]) => void) => ({
+		observe: observeSpy,
+		unobserve: unobserveSpy,
+		disconnect: disconnectSpy,
+	}));
 	const initialRO = globalThis.ResizeObserver;
 
 	beforeAll(() => {
-		ResizeObserverSpy = vi.fn(() => ({
-			observe: observeSpy,
-			unobserve: unobserveSpy,
-			disconnect: disconnectSpy,
-		}));
-
-		globalThis.ResizeObserver = ResizeObserverSpy;
+		vi.stubGlobal('ResizeObserver', ResizeObserverSpy);
+		vi.useFakeTimers();
 	});
 
 	beforeEach(() => {

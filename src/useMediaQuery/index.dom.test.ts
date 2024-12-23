@@ -54,6 +54,11 @@ describe('useMediaQuery', () => {
 		const {result} = renderHook(() => useMediaQuery('max-width : 768px'));
 		expect(result.current).toBe(false);
 
+		expect(matchMediaMock.mock.results[0].type).toEqual('return');
+		if (matchMediaMock.mock.results[0].type !== 'return') {
+			return;
+		}
+
 		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 
@@ -71,6 +76,11 @@ describe('useMediaQuery', () => {
 		expect(result1.current).toBe(false);
 		expect(result2.current).toBe(false);
 		expect(result3.current).toBe(false);
+
+		expect(matchMediaMock.mock.results[0].type).toEqual('return');
+		if (matchMediaMock.mock.results[0].type !== 'return') {
+			return;
+		}
 
 		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
@@ -101,6 +111,11 @@ describe('useMediaQuery', () => {
 
 		expect(matchMediaMock).toHaveBeenCalledTimes(2);
 
+		expect(matchMediaMock.mock.results[0].type).toEqual('return');
+		if (matchMediaMock.mock.results[0].type !== 'return') {
+			return;
+		}
+
 		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 
@@ -117,6 +132,11 @@ describe('useMediaQuery', () => {
 		const {unmount: unmount1} = renderHook(() => useMediaQuery('max-width : 768px'));
 		const {unmount: unmount2} = renderHook(() => useMediaQuery('max-width : 768px'));
 		const {unmount: unmount3} = renderHook(() => useMediaQuery('max-width : 768px'));
+
+		expect(matchMediaMock.mock.results[0].type).toEqual('return');
+		if (matchMediaMock.mock.results[0].type !== 'return') {
+			return;
+		}
 
 		const mql = matchMediaMock.mock.results[0].value;
 		expect(mql.removeEventListener).not.toHaveBeenCalled();

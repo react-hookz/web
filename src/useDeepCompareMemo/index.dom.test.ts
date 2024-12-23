@@ -15,7 +15,7 @@ describe('useDeepCompareMemo', () => {
 	});
 
 	it('should run only if dependencies change, defined by deep comparison', () => {
-		const spy = vi.fn();
+		const spy = vi.fn(() => 1);
 
 		const {rerender} = renderHook(({deps}) => useDeepCompareMemo(spy, deps), {
 			initialProps: {deps: [{foo: 'bar'}]},

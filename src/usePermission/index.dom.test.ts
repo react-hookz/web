@@ -3,20 +3,18 @@ import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {usePermission} from '../index.js';
 
 describe('usePermission', () => {
-	let querySpy: vi.SpyInstance;
+	const querySpy = vi.fn(
+		() =>
+			new Promise((resolve) => {
+				setTimeout(() => {
+					resolve({state: 'prompt'} as PermissionStatus);
+				}, 1);
+			}),
+	);
 	const initialPermissions = navigator.permissions;
 
 	beforeAll(() => {
 		vi.useFakeTimers();
-
-		querySpy = vi.fn(
-			() =>
-				new Promise((resolve) => {
-					setTimeout(() => {
-						resolve({state: 'prompt'} as PermissionStatus);
-					}, 1);
-				}),
-		);
 
 		(globalThis.navigator.permissions as any) = {query: querySpy};
 	});

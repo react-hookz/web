@@ -11,6 +11,7 @@ export function useUnmountEffect(effect: CallableFunction): void {
 
 	useEffect(
 		() => () => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			effectRef.current();
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps

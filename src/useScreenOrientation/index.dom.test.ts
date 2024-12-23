@@ -40,6 +40,11 @@ describe('useScreenOrientation', () => {
 		const {result} = renderHook(() => useScreenOrientation());
 		expect(result.current).toBe('landscape');
 
+		expect(matchMediaMock.mock.results[0].type).toEqual('return');
+		if (matchMediaMock.mock.results[0].type !== 'return') {
+			return;
+		}
+
 		const mql = matchMediaMock.mock.results[0].value;
 		mql.matches = true;
 

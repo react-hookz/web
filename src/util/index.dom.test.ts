@@ -15,6 +15,7 @@ describe('misc', () => {
 		it("should not throw in case 'undefined' element passed", () => {
 			expect(() => {
 				// @ts-expect-error testing inappropriate usage
+				// eslint-disable-next-line max-nested-callbacks
 				on(undefined, 'evtName', () => {});
 			}).not.toThrow();
 		});
@@ -33,6 +34,7 @@ describe('misc', () => {
 		it("should not throw in case 'undefined' element passed", () => {
 			expect(() => {
 				// @ts-expect-error testing inappropriate usage
+				// eslint-disable-next-line max-nested-callbacks
 				off(undefined, 'evtName', () => {});
 			}).not.toThrow();
 		});

@@ -15,14 +15,17 @@ const invokeStorageKeyListeners = (
 	value: string | null,
 	skipListener?: CallableFunction,
 ) => {
-	storageListeners
-		.get(s)
-		?.get(key)
-		?.forEach((listener) => {
-			if (listener !== skipListener) {
-				listener(value);
-			}
-		});
+	const listeners = storageListeners.get(s)?.get(key);
+	if (listeners === undefined || listeners.size === 0) {
+		return;
+	}
+
+	for (const listener of listeners) {
+		if (listener !== skipListener) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+			listener(value);
+		}
+	}
 };
 
 const storageEventHandler = (evt: StorageEvent) => {

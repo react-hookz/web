@@ -1,7 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useIntervalEffect} from '../index.js';
-import advanceTimersByTime = vi.advanceTimersByTime;
 
 describe('useIntervalEffect', () => {
 	beforeAll(() => {
@@ -57,11 +56,11 @@ describe('useIntervalEffect', () => {
 			},
 		);
 
-		advanceTimersByTime(99);
+		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
 		rerender({delay: 50});
-		advanceTimersByTime(49);
+		vi.advanceTimersByTime(49);
 		expect(spy).not.toHaveBeenCalled();
 
 		vi.advanceTimersByTime(1);
@@ -79,11 +78,11 @@ describe('useIntervalEffect', () => {
 			},
 		);
 
-		advanceTimersByTime(99);
+		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
 		rerender({delay: undefined});
-		advanceTimersByTime(2000);
+		vi.advanceTimersByTime(2000);
 		expect(spy).not.toHaveBeenCalled();
 	});
 });

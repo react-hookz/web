@@ -1,6 +1,6 @@
 /* eslint-disable max-nested-callbacks */
 import {act, renderHook} from '@testing-library/react-hooks/dom';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, type Mock, vi} from 'vitest';
 import {useList} from '../index.js';
 
 describe('useList', () => {
@@ -340,12 +340,12 @@ describe('useList', () => {
 	});
 });
 
-function numberOfMockFunctionCalls(mockFunction: vi.Mock) {
+function numberOfMockFunctionCalls(mockFunction: Mock): number {
 	return mockFunction.mock.calls.length;
 }
 
 function mockFunctionCallArgument(
-	mockFunction: vi.Mock,
+	mockFunction: Mock,
 	callIndex: number,
 	argumentIndex: number,
 ) {

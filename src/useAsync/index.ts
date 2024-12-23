@@ -93,11 +93,12 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 						setState(s => ({...s, status: 'success', error: undefined, result}));
 					}
 				},
+				// eslint-disable-next-line @typescript-eslint/use-unknown-in-catch-callback-variable
 				(error: Error) => {
-					// We dont want to handle result/error of non-latest function
+					// We don't want to handle result/error of non-latest function
 					// this approach helps to avoid race conditions
 					if (promise === promiseRef.current) {
-						setState(s => ({...s, status: 'error', error}));
+						setState(previousState => ({...previousState, status: 'error', error}));
 					}
 				},
 			);

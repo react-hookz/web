@@ -25,21 +25,27 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 
 	const opt = JSON.stringify([options.rootMargin, options.threshold]);
 
-	let entry = rootObservers.get(opt);
+	let observerEntry = rootObservers.get(opt);
 
-	if (!entry) {
+	if (!observerEntry) {
 		const callbacks = new Map<Element, Set<IntersectionEntryCallback>>();
 
 		const observer = new IntersectionObserver((entries) => {
-			for (const e of entries) {
-				callbacks.get(e.target)?.forEach(cb =>
+			for (const entry of entries) {
+				const cbs = callbacks.get(entry.target);
+				if (cbs === undefined || cbs.size === 0) {
+					continue;
+				}
+
+				for (const cb of cbs) {
 					setTimeout(() => {
-						cb(e);
-					}, 0));
+						cb(entry);
+					}, 0);
+				}
 			}
 		}, options);
 
-		entry = {
+		observerEntry = {
 			observer,
 			observe(target, callback) {
 				let cbs = callbacks.get(target);
@@ -85,10 +91,10 @@ const getObserverEntry = (options: IntersectionObserverInit): ObserverEntry => {
 			},
 		};
 
-		rootObservers.set(opt, entry);
+		rootObservers.set(opt, observerEntry);
 	}
 
-	return entry;
+	return observerEntry;
 };
 
 export type UseIntersectionObserverOptions = {

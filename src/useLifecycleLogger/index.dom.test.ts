@@ -1,13 +1,9 @@
 import {renderHook} from '@testing-library/react-hooks/dom';
-import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useLifecycleLogger} from '../index.js';
 
 describe('useLifecycleLogger', () => {
-	let logSpy: vi.SpyInstance;
-
-	beforeAll(() => {
-		logSpy = vi.spyOn(console, 'log');
-	});
+	const logSpy = vi.spyOn(console, 'log');
 
 	afterAll(() => {
 		logSpy.mockRestore();
