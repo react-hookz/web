@@ -10,8 +10,8 @@
 [![Types](https://flat.badgen.net/npm/types/@react-hookz/web)](https://www.npmjs.com/package/@react-hookz/web)
 [![Tree Shaking](https://flat.badgen.net/bundlephobia/tree-shaking/@react-hookz/web)](https://bundlephobia.com/result?p=@react-hookz/web)
 
-× **[DOCS](https://react-hookz.github.io/web/)** × **[DISCORD](https://discord.gg/Fjwphtu65f)** ×
-**[CHANGELOG](https://github.com/react-hookz/web/blob/master/CHANGELOG.md)** ×
+× **[DISCORD](https://discord.gg/Fjwphtu65f)** ×
+**[RELEASES](https://github.com/react-hookz/web/releases)** ×
 
 </div>
 
@@ -45,9 +45,9 @@ You can import hooks two ways:
 
 ```ts
 // from the root of package
-import { useMountEffect } from '@react-hookz/web';
+import {useMountEffect} from '@react-hookz/web';
 // or single hook directly
-import { useMountEffect } from '@react-hookz/web/useMountEffect/index.js';
+import {useMountEffect} from '@react-hookz/web/useMountEffect/index.js';
 ```
 
 In case your bundler supports tree-shaking (most of modern does) - both variants are equal and only
@@ -55,156 +55,156 @@ necessary code will get into your bundle. Direct hook imports should be consider
 
 ## Migrating from react-use
 
-`@react-hookz/web` was built as a [spiritual successor](https://github.com/streamich/react-use/issues/1974)
-of `react-use` by one of its former maintainers.
-
-Coming from `react-use`? Check out our
-[migration guide](https://react-hookz.github.io/web/?path=/docs/migrating-from-react-use--page).
+`@react-hookz/web` was built as
+a [spiritual successor](https://github.com/streamich/react-use/issues/1974) of `react-use` by one of
+its former maintainers.
 
 ## Hooks list
 
 - #### Callback
 
-  - [**`useDebouncedCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-usedebouncedcallback--example)
-    — Makes passed function debounced, otherwise acts like `useCallback`.
-  - [**`useRafCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-userafcallback--example)
-    — Makes passed function to be called within next animation frame.
-  - [**`useThrottledCallback`**](https://react-hookz.github.io/web/?path=/docs/callback-usethrottledcallback--example)
-    — Makes passed function throttled, otherwise acts like `useCallback`.
+	- [**`useDebouncedCallback`**](./src/useDebouncedCallback/index.ts)
+		— Makes passed function debounced, otherwise acts like `useCallback`.
+	- [**`useRafCallback`**](./src/useRafCallback/index.ts)
+		— Makes passed function to be called within next animation frame.
+	- [**`useThrottledCallback`**](./src/useThrottledCallback/index.ts)
+		— Makes passed function throttled, otherwise acts like `useCallback`.
 
 - #### Lifecycle
 
-  - [**`useConditionalEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useconditionaleffect--example)
-    — Like `useEffect` but callback invoked only if given conditions match a given predicate.
-  - [**`useCustomCompareEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usecustomcompareeffect--example)
-    — Like `useEffect` but uses a provided comparator function to validate dependency changes.
-  - [**`useDebouncedEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedebouncedeffect--example)
-    — Like `useEffect`, but passed function is debounced.
-  - [**`useDeepCompareEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usedeepcompareeffect--example)
-    — Like `useEffect` but uses `@react-hookz/deep-equal` comparator function to validate deep
-    dependency changes.
-  - [**`useFirstMountState`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usefirstmountstate--example)
-    — Returns a boolean that is `true` only on first render.
-  - [**`useIntervalEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useintervaleffect--example)
-    — Like `setInterval` but in the form of a React hook.
-  - [**`useIsMounted`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useismounted--example)
-    — Returns a function that yields current mount state.
-  - [**`useIsomorphicLayoutEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useisomorphiclayouteffect--page)
-    — Like `useLayoutEffect` but falls back to `useEffect` during SSR.
-  - [**`useMountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usemounteffect--example)
-    — Run an effect only when a component mounts.
-  - [**`useRafEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useRafEffect--example)
-    — Like `useEffect`, but the effect is only run within an animation frame.
-  - [**`useRerender`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usererender--example)
-    — Returns a callback that re-renders the component.
-  - [**`useThrottledEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usethrottledeffect--example)
-    — Like `useEffect`, but the passed function is throttled.
-  - [**`useTimeoutEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-usetimeouteffect--example)
-    — Like `setTimeout`, but in the form of a React hook.
-  - [**`useUnmountEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useunmounteffect--example)
-    — Run an effect only when a component unmounts.
-  - [**`useUpdateEffect`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-useupdateeffect--example)
-    — An effect hook that ignores the first render (not invoked on mount).
-  - [**`useLifecycleLogger`**](https://react-hookz.github.io/web/?path=/docs/lifecycle-uselifecycleLogger--example)
-    — This hook provides logging when the component mounts, updates and unmounts.
+	- [**`useConditionalEffect`**](./src/useConditionalEffect/index.ts)
+		— Like `useEffect` but callback invoked only if given conditions match a given predicate.
+	- [**`useCustomCompareEffect`**](./src/useCustomCompareEffect/index.ts)
+		— Like `useEffect` but uses a provided comparator function to validate dependency changes.
+	- [**`useDebouncedEffect`**](./src/useDebouncedEffect/index.ts)
+		— Like `useEffect`, but passed function is debounced.
+	- [**`useDeepCompareEffect`**](./src/useDeepCompareEffect/index.ts)
+		— Like `useEffect` but uses `@react-hookz/deep-equal` comparator function to validate deep
+		dependency changes.
+	- [**`useFirstMountState`**](./src/useFirstMountState/index.ts)
+		— Returns a boolean that is `true` only on first render.
+	- [**`useIntervalEffect`**](./src/useIntervalEffect/index.ts)
+		— Like `setInterval` but in the form of a React hook.
+	- [**`useIsMounted`**](./src/useIsMounted/index.ts)
+		— Returns a function that yields current mount state.
+	- [**`useIsomorphicLayoutEffect`**](./src/useIsomorphicLayoutEffect/index.ts)
+		— Like `useLayoutEffect` but falls back to `useEffect` during SSR.
+	- [**`useMountEffect`**](./src/useMountEffect/index.ts)
+		— Run an effect only when a component mounts.
+	- [**`useRafEffect`**](./src/useRafEffect/index.ts)
+		— Like `useEffect`, but the effect is only run within an animation frame.
+	- [**`useRerender`**](./src/useRerender/index.ts)
+		— Returns a callback that re-renders the component.
+	- [**`useThrottledEffect`**](./src/useThrottledEffect/index.ts)
+		— Like `useEffect`, but the passed function is throttled.
+	- [**`useTimeoutEffect`**](./src/useTimeoutEffect/index.ts)
+		— Like `setTimeout`, but in the form of a React hook.
+	- [**`useUnmountEffect`**](./src/useUnmountEffect/index.ts)
+		— Run an effect only when a component unmounts.
+	- [**`useUpdateEffect`**](./src/useUpdateEffect/index.ts)
+		— An effect hook that ignores the first render (not invoked on mount).
+	- [**`useLifecycleLogger`**](./src/useLifecycleLogger/index.ts)
+		— This hook provides logging when the component mounts, updates and unmounts.
 
 - #### State
 
-  - [**`useControlledRerenderState`**](https://react-hookz.github.io/web/?path=/docs/state-usecontrolledrerenderstate--example)
-    — Like `useState`, but its state setter accepts an extra argument, that allows cancelling
-    renders.
-  - [**`useCounter`**](https://react-hookz.github.io/web/?path=/docs/state-usecounter--example)
-    — Tracks a numeric value and offers functions for manipulating it.
-  - [**`useDebouncedState`**](https://react-hookz.github.io/web/?path=/docs/state-usedebouncedstate--example)
-    — Like `useState` but its state setter is debounced.
-  - [**`useFunctionalState`**](https://react-hookz.github.io/web/?path=/docs/state-usefunctionalstate--page)
-    — Like `useState` but instead of raw state, a state getter function is returned.
-  - [**`useList`**](https://react-hookz.github.io/web/?path=/docs/state-uselist--example)
-    — Tracks a list and offers functions for manipulating it.
-  - [**`useMap`**](https://react-hookz.github.io/web/?path=/docs/state-usemap--example) — Tracks the
-    state of a `Map`.
-  - [**`useMediatedState`**](https://react-hookz.github.io/web/?path=/docs/state-usemediatedstate--example)
-    — Like `useState`, but every value set is passed through a mediator function.
-  - [**`usePrevious`**](https://react-hookz.github.io/web/?path=/docs/state-useprevious--example) —
-    Returns the value passed to the hook on previous render.
-  - [**`usePreviousDistinct`**](https://react-hookz.github.io/web/?path=/docs/state-usepreviousdistinct--example) —
-    Returns the most recent distinct value passed to the hook on previous renders.
-  - [**`useQueue`**](https://react-hookz.github.io/web/?path=/docs/state-usequeue--example) —
-    A state hook implementing FIFO queue.
-  - [**`useRafState`**](https://react-hookz.github.io/web/?path=/docs/state-userafstate--example) —
-    Like `React.useState`, but state is only updated within animation frame.
-  - [**`useRenderCount`**](https://react-hookz.github.io/web/?path=/docs/state-userendercount--example) —
-    Tracks component's render count including first render.
-  - [**`useSet`**](https://react-hookz.github.io/web/?path=/docs/state-useset--example) — Tracks the
-    state of a `Set`.
-  - [**`useToggle`**](https://react-hookz.github.io/web/?path=/docs/state-usetoggle--example) — Like
-    `useState`, but can only be `true` or `false`.
-  - [**`useThrottledState`**](https://react-hookz.github.io/web/?path=/docs/state-usethrottledstate--example)
-    — Like `useState` but its state setter is throttled.
-  - [**`useValidator`**](https://react-hookz.github.io/web/?path=/docs/state-usevalidator--example)
-    — Performs validation when any of the provided dependencies change.
+	- [**`useControlledRerenderState`**](./src/useControlledRerenderState/index.ts)
+		— Like `useState`, but its state setter accepts an extra argument, that allows cancelling
+		renders.
+	- [**`useCounter`**](./src/useCounter/index.ts)
+		— Tracks a numeric value and offers functions for manipulating it.
+	- [**`useDebouncedState`**](./src/useDebouncedState/index.ts)
+		— Like `useState` but its state setter is debounced.
+	- [**`useFunctionalState`**](./src/useFunctionalState/index.ts)
+		— Like `useState` but instead of raw state, a state getter function is returned.
+	- [**`useList`**](./src/useList/index.ts)
+		— Tracks a list and offers functions for manipulating it.
+	- [**`useMap`**](./src/useMap/index.ts) — Tracks the
+		state of a `Map`.
+	- [**`useMediatedState`**](./src/useMediatedState/index.ts)
+		— Like `useState`, but every value set is passed through a mediator function.
+	- [**`usePrevious`**](./src/usePrevious/index.ts) —
+		Returns the value passed to the hook on previous render.
+	- [**`usePreviousDistinct`**](./src/usePreviousDistinct/index.ts) —
+		Returns the most recent distinct value passed to the hook on previous renders.
+	- [**`useQueue`**](./src/useQueue/index.ts) —
+		A state hook implementing FIFO queue.
+	- [**`useRafState`**](./src/useRafState/index.ts) —
+		Like `React.useState`, but state is only updated within animation frame.
+	- [**`useRenderCount`**](./src/useRenderCount/index.ts) —
+		Tracks component's render count including first render.
+	- [**`useSet`**](./src/useSet/index.ts) — Tracks the
+		state of a `Set`.
+	- [**`useToggle`**](./src/useToggle/index.ts) — Like
+		`useState`, but can only be `true` or `false`.
+	- [**`useThrottledState`**](./src/useThrottledState/index.ts)
+		— Like `useState` but its state setter is throttled.
+	- [**`useValidator`**](./src/useValidator/index.ts)
+		— Performs validation when any of the provided dependencies change.
 
 - #### Navigator
 
-  - [**`useNetworkState`**](https://react-hookz.github.io/web/?path=/docs/navigator-usenetworkstate--example)
-    — Tracks the state of the browser's network connection.
-  - [**`useVibrate`**](https://react-hookz.github.io/web/?path=/docs/navigator-usevibrate--example)
-    — Provides vibration feedback using the Vibration API.
-  - [**`usePermission`**](https://react-hookz.github.io/web/?path=/docs/navigator-usepermission--example)
-    — Tracks the state of a permission.
+	- [**`useNetworkState`**](./src/useNetworkState/index.ts)
+		— Tracks the state of the browser's network connection.
+	- [**`useVibrate`**](./src/useVibrate/index.ts)
+		— Provides vibration feedback using the Vibration API.
+	- [**`usePermission`**](./src/usePermission/index.ts)
+		— Tracks the state of a permission.
 
 - #### Miscellaneous
 
-  - [**`useSyncedRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usesyncedref--example)
-    — Like `useRef`, but it returns an immutable ref that contains the actual value.
-  - [**`useCustomCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useCustomCompareMemo--example)
-    — Like `useMemo` but uses provided comparator function to validate dependency changes.
-  - [**`useDeepCompareMemo`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-useDeepCompareMemo--example)
-    — Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validate deep
-    dependency changes.
-  - [**`useHookableRef`**](https://react-hookz.github.io/web/?path=/docs/miscellaneous-usehookableref--example)
-    — Like `useRef` but it is possible to define handlers for getting and setting the value.
+	- [**`useSyncedRef`**](./src/useSyncedRef/index.ts)
+		— Like `useRef`, but it returns an immutable ref that contains the actual value.
+	- [**`useCustomCompareMemo`**](./src/useCustomCompareMemo/index.ts)
+		— Like `useMemo` but uses provided comparator function to validate dependency changes.
+	- [**`useDeepCompareMemo`**](./src/useDeepCompareMemo/index.ts)
+		— Like `useMemo` but uses `@react-hookz/deep-equal` comparator function to validate deep
+		dependency changes.
+	- [**`useHookableRef`**](./src/useHookableRef/index.ts)
+		— Like `useRef` but it is possible to define handlers for getting and setting the value.
 
 - #### Side-effect
 
-  - [**`useAsync`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasync--example) —
-    Executes provided async function and tracks its results and errors.
-  - [**`useAsyncAbortable`**](https://react-hookz.github.io/web/?path=/docs/side-effect-useasyncabortable--example)
-    — Like `useAsync`, but also provides `AbortSignal` as first function argument to the async function.
-  - [**`useCookieValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usecookievalue--example)
-    — Manages a single cookie.
-  - [**`useLocalStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-uselocalstoragevalue--example)
-    — Manages a single LocalStorage key.
-  - [**`useSessionStorageValue`**](https://react-hookz.github.io/web/?path=/docs/side-effect-usesessionstoragevalue--example)
-    — Manages a single SessionStorage key.
+	- [**`useAsync`**](./src/useAsync/index.ts)
+		— Executes provided async function and tracks its results and errors.
+	- [**`useAsyncAbortable`**](./src/useAsyncAbortable/index.ts)
+		— Like `useAsync`, but also provides `AbortSignal` as first function argument to the async
+		function.
+	- [**`useCookieValue`**](./src/useCookieValue/index.ts)
+		— Manages a single cookie.
+	- [**`useLocalStorageValue`**](./src/useLocalStorageValue/index.ts)
+		— Manages a single LocalStorage key.
+	- [**`useSessionStorageValue`**](./src/useSessionStorageValue/index.ts)
+		— Manages a single SessionStorage key.
 
 - #### Sensor
 
-  - [**`useIntersectionObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useintersectionobserver--example)
-    — Observe changes in the intersection of a target element with an ancestor element or with the
-    viewport.
-  - [**`useMeasure`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemeasure--example) —
-    Uses `ResizeObserver` to track an element's dimensions and to re-render the component when they change.
-  - [**`useMediaQuery`**](https://react-hookz.github.io/web/?path=/docs/sensor-usemediaquery--example)
-    — Tracks the state of a CSS media query.
-  - [**`useResizeObserver`**](https://react-hookz.github.io/web/?path=/docs/sensor-useresizeobserver--example)
-    — Invokes a callback whenever `ResizeObserver` detects a change to the target's size.
-  - [**`useScreenOrientation`**](https://react-hookz.github.io/web/?path=/docs/sensor-usescreenorientation--example)
-    — Checks if the screen is in `portrait` or `landscape` orientation and automatically re-renders on
-    orientation change.
-  - [**`useDocumentVisibility`**](https://react-hookz.github.io/web/?path=/docs/sensor-usedocumentvisibility--example)
-    — Tracks document visibility state.
+	- [**`useIntersectionObserver`**](./src/useIntersectionObserver/index.ts)
+		— Observe changes in the intersection of a target element with an ancestor element or with the
+		viewport.
+	- [**`useMeasure`**](./src/useMeasure/index.ts) —
+		Uses `ResizeObserver` to track an element's dimensions and to re-render the component when they
+		change.
+	- [**`useMediaQuery`**](./src/useMediaQuery/index.ts)
+		— Tracks the state of a CSS media query.
+	- [**`useResizeObserver`**](./src/useResizeObserver/index.ts)
+		— Invokes a callback whenever `ResizeObserver` detects a change to the target's size.
+	- [**`useScreenOrientation`**](./src/useScreenOrientation/index.ts)
+		— Checks if the screen is in `portrait` or `landscape` orientation and automatically re-renders
+		on orientation change.
+	- [**`useDocumentVisibility`**](./src/useDocumentVisibility/index.ts)
+		— Tracks document visibility state.
 
 - #### Dom
 
-  - [**`useClickOutside`**](https://react-hookz.github.io/web/?path=/docs/dom-useclickoutside--example)
-    — Triggers a callback when the user clicks outside a target element.
-  - [**`useEventListener`**](https://react-hookz.github.io/web/?path=/docs/dom-useeventlistener--example)
-    — Subscribes an event listener to a target element.
-  - [**`useKeyboardEvent`**](https://react-hookz.github.io/web/?path=/docs/dom-usekeyboardevent--example)
-    — Invokes a callback when a keyboard event occurs on the chosen target.
-  - [**`useWindowSize`**](https://react-hookz.github.io/web/?path=/docs/dom-usewindowsize--example)
-    — Tracks the inner dimensions of the browser window.
+	- [**`useClickOutside`**](./src/useClickOutside/index.ts)
+		— Triggers a callback when the user clicks outside a target element.
+	- [**`useEventListener`**](./src/useEventListener/index.ts)
+		— Subscribes an event listener to a target element.
+	- [**`useKeyboardEvent`**](./src/useKeyboardEvent/index.ts)
+		— Invokes a callback when a keyboard event occurs on the chosen target.
+	- [**`useWindowSize`**](./src/useWindowSize/index.ts)
+		— Tracks the inner dimensions of the browser window.
 
 ## Contributors
 
