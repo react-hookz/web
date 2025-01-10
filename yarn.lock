@@ -1261,7 +1261,7 @@ __metadata:
     "@react-hookz/eslint-formatter-gha": "npm:^3.0.2"
     "@testing-library/react-hooks": "npm:^8.0.1"
     "@types/js-cookie": "npm:^3.0.6"
-    "@types/react": "npm:^17.0.83"
+    "@types/react": "npm:^19.0.4"
     "@types/react-dom": "npm:^17.0.26"
     "@vitest/coverage-v8": "npm:^2.1.8"
     commitlint: "npm:^19.5.0"
@@ -1271,7 +1271,7 @@ __metadata:
     jsdom: "npm:^26.0.0"
     lint-staged: "npm:^15.3.0"
     pinst: "npm:^3.0.0"
-    react: "npm:^17.0.2"
+    react: "npm:^19.0.0"
     react-dom: "npm:^17.0.2"
     rimraf: "npm:^6.0.1"
     semantic-release: "npm:^24.2.1"
@@ -1791,13 +1791,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.14
-  resolution: "@types/prop-types@npm:15.7.14"
-  checksum: 10c0/1ec775160bfab90b67a782d735952158c7e702ca4502968aa82565bd8e452c2de8601c8dfe349733073c31179116cf7340710160d3836aa8a1ef76d1532893b1
-  languageName: node
-  linkType: hard
-
 "@types/react-dom@npm:^17.0.26":
   version: 17.0.26
   resolution: "@types/react-dom@npm:17.0.26"
@@ -1807,21 +1800,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.83":
-  version: 17.0.83
-  resolution: "@types/react@npm:17.0.83"
+"@types/react@npm:^19.0.4":
+  version: 19.0.4
+  resolution: "@types/react@npm:19.0.4"
   dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:^0.16"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/c8f76790190a9df42099f5f78d08dd4095f2da3bd97ff7cce0001d5a97ff3ffb31f703575acf2c457606e0d0b229ca8d1ba0ff459b77a4e44c5ea5154fe3fb4b
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:^0.16":
-  version: 0.16.8
-  resolution: "@types/scheduler@npm:0.16.8"
-  checksum: 10c0/f86de504945b8fc41b1f391f847444d542e2e4067cf7e5d9bfeb5d2d2393d3203b1161bc0ef3b1e104d828dabfb60baf06e8d2c27e27ff7e8258e6e618d8c4ec
+  checksum: 10c0/96ecd1a73af57fd7b7facf5b36ec069b131c7608a98a0f1098183023bfb21c60a26a0dc09004fbe0ac70c436ef887bbec5690882cfb77c6e0c679f7e45987722
   languageName: node
   linkType: hard
 
@@ -8321,13 +8305,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10c0/07ae8959acf1596f0550685102fd6097d461a54a4fd46a50f88a0cd7daaa97fdd6415de1dcb4bfe0da6aa43221a6746ce380410fa848acc60f8ac41f6649c148
+"react@npm:^19.0.0":
+  version: 19.0.0
+  resolution: "react@npm:19.0.0"
+  checksum: 10c0/9cad8f103e8e3a16d15cb18a0d8115d8bd9f9e1ce3420310aea381eb42aa0a4f812cf047bb5441349257a05fba8a291515691e3cb51267279b2d2c3253f38471
   languageName: node
   linkType: hard
 
