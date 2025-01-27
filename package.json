@@ -68,7 +68,7 @@
 		"@types/react-dom": "^17.0.26",
 		"@vitest/coverage-v8": "^3.0.4",
 		"commitlint": "^19.5.0",
-		"eslint": "^9.18.0",
+		"eslint": "^9.19.0",
 		"husky": "^9.1.7",
 		"js-cookie": "^3.0.5",
 		"jsdom": "^26.0.0",
