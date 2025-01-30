@@ -39,7 +39,7 @@ export function useMeasure<T extends Element>(
 			return;
 		}
 
-		setMeasures({width: entry.contentRect.width, height: entry.contentRect.height});
+		setMeasures(defaultMeasures);
 	});
 
 	useResizeObserver(element, observerHandler, enabled);
