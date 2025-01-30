@@ -104,4 +104,51 @@ describe('useMeasure', () => {
 		expect(result.current[1]).toStrictEqual({current: div});
 		expect(result.current[0]).toStrictEqual(measures);
 	});
+
+	it('should set state by observerEntryMatcher parameter', () => {
+		const div = document.createElement('div');
+		const {result} = renderHook(() => {
+			const measure = useMeasure<HTMLDivElement>(true, (entry) => {
+				if (!entry.borderBoxSize?.length) {
+					return null;
+				}
+
+				return {
+					height: entry.borderBoxSize[0].blockSize,
+					width: entry.borderBoxSize[0].inlineSize,
+				};
+			});
+
+			useEffect(() => {
+				measure[1].current = div;
+			});
+
+			return measure;
+		});
+
+		const measures = {
+			width: 9,
+			height: 9,
+		};
+
+		const entry = {
+			target: div,
+			contentRect: {width: 5, height: 5},
+			borderBoxSize: [{
+				blockSize: 9,
+				inlineSize: 9,
+			}],
+			contentBoxSize: {},
+		} as unknown as ResizeObserverEntry;
+
+		ResizeObserverSpy.mock.calls[0][0]([entry]);
+		expect(result.current[0]).toBeUndefined();
+
+		act(() => {
+			vi.advanceTimersByTime(1);
+		});
+
+		expect(result.current[1]).toStrictEqual({current: div});
+		expect(result.current[0]).toStrictEqual(measures);
+	});
 });
