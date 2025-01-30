@@ -1,7 +1,7 @@
 import {act, renderHook} from '@testing-library/react-hooks/dom';
 import {useEffect} from 'react';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
-import {useMeasure} from '../index.js';
+import {useMeasure, borderBoxMeasurer} from '../index.js';
 
 describe('useMeasure', () => {
 	const observeSpy = vi.fn();
@@ -105,19 +105,10 @@ describe('useMeasure', () => {
 		expect(result.current[0]).toStrictEqual(measures);
 	});
 
-	it('should set state by observerEntryMatcher parameter', () => {
+	it('should set state by border-box sizing model', () => {
 		const div = document.createElement('div');
 		const {result} = renderHook(() => {
-			const measure = useMeasure<HTMLDivElement>(true, (entry) => {
-				if (!entry.borderBoxSize?.length) {
-					return null;
-				}
-
-				return {
-					height: entry.borderBoxSize[0].blockSize,
-					width: entry.borderBoxSize[0].inlineSize,
-				};
-			});
+			const measure = useMeasure<HTMLDivElement>(true, borderBoxMeasurer);
 
 			useEffect(() => {
 				measure[1].current = div;
@@ -134,10 +125,12 @@ describe('useMeasure', () => {
 		const entry = {
 			target: div,
 			contentRect: {width: 5, height: 5},
-			borderBoxSize: [{
-				blockSize: 9,
-				inlineSize: 9,
-			}],
+			borderBoxSize: [
+				{
+					blockSize: 9,
+					inlineSize: 9,
+				},
+			],
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
