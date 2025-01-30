@@ -1,0 +1,49 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Example } from './example.stories'
+import { ImportPath } from '../../__docs__/ImportPath'
+
+<Meta title="Sensor/useMeasure" />
+
+# useMeasure
+
+Uses ResizeObserver to track element dimensions and re-render component when they change.
+
+- Its ResizeObserver callback uses RAF debouncing, therefore it is pretty performant.
+- SSR friendly, returns `undefined` on initial mount.
+- Automatically creates ref for you, that you can easily pass to needed element.
+- Allows to dynamically enable and disable observation.
+- Allows to define the measures by custom `ResizeObserverEntry` matcher
+
+#### Example
+
+<Canvas isColumn>
+  <Story name="Example" story={Example} />
+</Canvas>
+
+## Reference
+
+```ts
+interface Measures {
+  width: number;
+  height: number;
+}
+
+function useMeasure<T extends Element>(enabled = true, observerEntryMatcher?: (entry: ResizeObserverEntry) => Measures | null): [Measures | undefined, React.RefObject<T>];
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **enabled** _`boolean`_ _(default: `true`)_ - Whether resize observer is enabled or not.
+- **observerEntryMatcher** _`((entry: ResizeObserverEntry) => Measures | null) | undefined`_ _(default: `undefined`)_ - A custom matcher function to define the measures.
+	- If returns `null` - default `contentRect` measures are applied
+
+#### Return
+
+Array of two elements:
+
+- **0** _`Measures | undefined`_ - Width and height of the tracked element's `contentRect`
+- **1** _`RefObject<T>`_ - Ref object that should be passed to tracked element
