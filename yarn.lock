@@ -133,23 +133,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^19.6.1":
-  version: 19.6.1
-  resolution: "@commitlint/cli@npm:19.6.1"
-  dependencies:
-    "@commitlint/format": "npm:^19.5.0"
-    "@commitlint/lint": "npm:^19.6.0"
-    "@commitlint/load": "npm:^19.6.1"
-    "@commitlint/read": "npm:^19.5.0"
-    "@commitlint/types": "npm:^19.5.0"
-    tinyexec: "npm:^0.3.0"
-    yargs: "npm:^17.0.0"
-  bin:
-    commitlint: cli.js
-  checksum: 10c0/fa7a344292f1d25533b195b061bcae0a80434490fae843ad28593c09668f48e9a74906b69f95d26df4152c56c71ab31a0bc169d333e22c6ca53dc54646a2ff19
-  languageName: node
-  linkType: hard
-
 "@commitlint/cli@npm:^19.7.1":
   version: 19.7.1
   resolution: "@commitlint/cli@npm:19.7.1"
@@ -218,16 +201,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/is-ignored@npm:^19.6.0":
-  version: 19.6.0
-  resolution: "@commitlint/is-ignored@npm:19.6.0"
-  dependencies:
-    "@commitlint/types": "npm:^19.5.0"
-    semver: "npm:^7.6.0"
-  checksum: 10c0/64e3522598f131aefab72e78f2b0d5d78228041fbe14fd9785611bd5a4ff7dfae38288ff87b171ab2ff722342983387b6e568ab4d758f3c97866eb924252e6c5
-  languageName: node
-  linkType: hard
-
 "@commitlint/is-ignored@npm:^19.7.1":
   version: 19.7.1
   resolution: "@commitlint/is-ignored@npm:19.7.1"
@@ -235,18 +208,6 @@ __metadata:
     "@commitlint/types": "npm:^19.5.0"
     semver: "npm:^7.6.0"
   checksum: 10c0/8c238002c6c7bb0a50cca2dfc001af2cec2926056e090b840e73c25f8d246ac5d8ff862d51a63900a195479869edca7889fc4c7923ffa2bb85a1475f8c469c43
-  languageName: node
-  linkType: hard
-
-"@commitlint/lint@npm:^19.6.0":
-  version: 19.6.0
-  resolution: "@commitlint/lint@npm:19.6.0"
-  dependencies:
-    "@commitlint/is-ignored": "npm:^19.6.0"
-    "@commitlint/parse": "npm:^19.5.0"
-    "@commitlint/rules": "npm:^19.6.0"
-    "@commitlint/types": "npm:^19.5.0"
-  checksum: 10c0/d7e3c6a43d89b2196362dce5abef6665869844455176103f311cab7a92f6b7be60edec4f03d27b946a65ee2ceb8ff16f5955cba1da6ecdeb9efe9f215b16f47f
   languageName: node
   linkType: hard
 
@@ -1325,7 +1286,7 @@ __metadata:
     "@types/react": "npm:^17.0.83"
     "@types/react-dom": "npm:^17.0.26"
     "@vitest/coverage-v8": "npm:^3.0.4"
-    commitlint: "npm:^19.5.0"
+    commitlint: "npm:^19.7.1"
     eslint: "npm:^9.19.0"
     husky: "npm:^9.1.7"
     js-cookie: "npm:^3.0.5"
@@ -2947,15 +2908,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commitlint@npm:^19.5.0":
-  version: 19.6.1
-  resolution: "commitlint@npm:19.6.1"
+"commitlint@npm:^19.7.1":
+  version: 19.7.1
+  resolution: "commitlint@npm:19.7.1"
   dependencies:
-    "@commitlint/cli": "npm:^19.6.1"
+    "@commitlint/cli": "npm:^19.7.1"
     "@commitlint/types": "npm:^19.5.0"
   bin:
     commitlint: cli.js
-  checksum: 10c0/cbb6d1f16bd32fcf40fafedd90b1f85bb2a631ff14028debb4d365629e4a9ba6abb9a4150cdef0abce36fc4cb147891ec856e2529f36a6c0ba56eba52bd5861b
+  checksum: 10c0/27549895b9327404193b95ddba2c71d278aeba1e5ded01c93cefacf6e122f45930f3ff1dac067626eeb66ac9ab001139b7526254661f330236e9b3ccd799ff9d
   languageName: node
   linkType: hard
 
