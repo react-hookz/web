@@ -1298,7 +1298,7 @@ __metadata:
     react: "npm:^17.0.2"
     react-dom: "npm:^17.0.2"
     rimraf: "npm:^6.0.1"
-    semantic-release: "npm:^24.2.2"
+    semantic-release: "npm:^24.2.3"
     typescript: "npm:^5.7.3"
     vitest: "npm:^3.0.5"
   peerDependencies:
@@ -8981,9 +8981,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^24.2.2":
-  version: 24.2.2
-  resolution: "semantic-release@npm:24.2.2"
+"semantic-release@npm:^24.2.3":
+  version: 24.2.3
+  resolution: "semantic-release@npm:24.2.3"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:^13.0.0-beta.1"
     "@semantic-release/error": "npm:^4.0.0"
@@ -9016,7 +9016,7 @@ __metadata:
     yargs: "npm:^17.5.1"
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 10c0/82b3f4654badbb80bf20be563ab232531aa721b1aeb17b9e24edf68dc0a6d1c7e10eddb38b6d2eb059ae5c09b6026787743a2f41eaccf0febb7bedebffa7c479
+  checksum: 10c0/75c6657429bbd31c60e2a4982a9081de0d840dce7d0910b5f93e45bf717c921847d1cbc1f1c9e40a10ae20b6b8a61e9fc6d837623832f113c05468eb15ebb8f8
   languageName: node
   linkType: hard
 
