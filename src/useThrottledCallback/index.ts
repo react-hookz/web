@@ -22,8 +22,8 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
 	delay: number,
 	noTrailing = false,
 ): ThrottledFunction<Fn> {
-	const timeout = useRef<ReturnType<typeof setTimeout>>();
-	const lastCall = useRef<{args: Parameters<Fn>; this: ThisParameterType<Fn>}>();
+	const timeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+	const lastCall = useRef<{args: Parameters<Fn>; this: ThisParameterType<Fn>}>(undefined);
 
 	useUnmountEffect(() => {
 		if (timeout.current) {
@@ -68,6 +68,6 @@ export function useThrottledCallback<Fn extends (...args: any[]) => any>(
 		});
 
 		return wrapped;
-		// eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [delay, noTrailing, ...deps]);
 }

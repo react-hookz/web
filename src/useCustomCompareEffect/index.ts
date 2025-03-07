@@ -29,7 +29,7 @@ export function useCustomCompareEffect<
 	effectHook: EffectHook<Callback, Deps, HookRestArgs> = useEffect,
 	...effectHookRestArgs: R
 ): void {
-	const dependencies = useRef<Deps>();
+	const dependencies = useRef<Deps>(undefined);
 
 	// Effects are not run during SSR, therefore, it makes no sense to invoke the comparator
 	if (

@@ -11,7 +11,6 @@ export function useLifecycleLogger(componentName: string, deps?: DependencyList)
 
 	useEffect(() => {
 		if (mountedRef.current) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			console.log(`${componentName} updated`, deps && [...deps]);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,7 +18,6 @@ export function useLifecycleLogger(componentName: string, deps?: DependencyList)
 
 	useEffect(() => {
 		mountedRef.current = true;
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		console.log(`${componentName} mounted`, deps && [...deps]);
 
 		return () => {

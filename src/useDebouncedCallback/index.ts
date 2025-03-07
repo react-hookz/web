@@ -22,10 +22,10 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 	delay: number,
 	maxWait = 0,
 ): DebouncedFunction<Fn> {
-	const timeout = useRef<ReturnType<typeof setTimeout>>();
-	const waitTimeout = useRef<ReturnType<typeof setTimeout>>();
+	const timeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+	const waitTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
 	const cb = useRef(callback);
-	const lastCall = useRef<{args: Parameters<Fn>; this: ThisParameterType<Fn>}>();
+	const lastCall = useRef<{args: Parameters<Fn>; this: ThisParameterType<Fn>}>(undefined);
 
 	const clear = () => {
 		if (timeout.current) {
@@ -83,6 +83,6 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 		});
 
 		return wrapped;
-		// eslint-disable-next-line react-hooks/exhaustive-deps,@typescript-eslint/no-unsafe-assignment
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [delay, maxWait, ...deps]);
 }

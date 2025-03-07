@@ -10,7 +10,7 @@ const proto = Set.prototype;
  */
 
 export function useSet<T = any>(values?: readonly T[] | null): Set<T> {
-	const setRef = useRef<Set<T>>();
+	const setRef = useRef<Set<T>>(undefined);
 	const rerender = useRerender();
 
 	if (!setRef.current) {

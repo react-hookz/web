@@ -52,7 +52,6 @@ const queryUnsubscribe = (query: string, setState: QueryStateSetter): void => {
 			if (mql.removeEventListener) {
 				mql.removeEventListener('change', listener);
 			} else {
-				// eslint-disable-next-line @typescript-eslint/no-deprecated
 				mql.removeListener(listener);
 			}
 		}

@@ -11,7 +11,7 @@ import {hasOwnProperty, off, on} from '../util/misc.js';
  * something like `[eventName, listener, options]`.
  */
 export function useEventListener<T extends EventTarget>(
-	target: RefObject<T> | T | null,
+	target: RefObject<T | null> | T | null,
 	...params:
 		| Parameters<T['addEventListener']>
 		| [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
@@ -60,6 +60,6 @@ export function useEventListener<T extends EventTarget>(
 	}, [target, params[0]]);
 }
 
-function isRefObject<T>(target: RefObject<T> | T | null): target is RefObject<T> {
+function isRefObject<T>(target: RefObject<T | null> | T | null): target is RefObject<T | null> {
 	return target !== null && typeof target === 'object' && hasOwnProperty(target, 'current');
 }
