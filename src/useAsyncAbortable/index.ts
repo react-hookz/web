@@ -59,7 +59,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 		UseAsyncAbortableActions<Result, Args>,
 		UseAsyncAbortableMeta<Result, Args>,
 	] {
-	const abortController = useRef<AbortController>();
+	const abortController = useRef<AbortController>(undefined);
 
 	const fn = async (...args: Args): Promise<Result> => {
 		// Abort previous async

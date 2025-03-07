@@ -15,6 +15,12 @@ const config = [
 	...mdConfig,
 	...typescriptConfig,
 	...vitestConfig,
+	{
+		files: ['**/*.ts'],
+		rules: {
+			'@typescript-eslint/no-deprecated': 'off',
+		},
+	},
 ];
 
 export default config;

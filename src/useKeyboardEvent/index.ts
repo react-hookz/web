@@ -18,7 +18,7 @@ export type UseKeyboardEventOptions<T extends EventTarget> = {
 	 * Target element that emits `event`.
 	 * @default window
 	 */
-	target?: RefObject<T> | T | null;
+	target?: RefObject<T | null> | T | null;
 	/**
 	 * Options passed to the underlying `useEventListener` hook.
 	 */

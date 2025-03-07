@@ -49,8 +49,8 @@
 	},
 	"peerDependencies": {
 		"js-cookie": "^3.0.5",
-		"react": "^16.8 || ^17 || ^18",
-		"react-dom": "^16.8 || ^17 || ^18"
+		"react": "^16.8 || ^17 || ^18 || ^19",
+		"react-dom": "^16.8 || ^17 || ^18 || ^19"
 	},
 	"peerDependenciesMeta": {
 		"js-cookie": {
@@ -64,8 +64,8 @@
 		"@react-hookz/eslint-formatter-gha": "^3.0.4",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/js-cookie": "^3.0.6",
-		"@types/react": "^17.0.83",
-		"@types/react-dom": "^17.0.26",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
 		"@vitest/coverage-v8": "^3.0.8",
 		"commitlint": "^19.7.1",
 		"eslint": "^9.21.0",

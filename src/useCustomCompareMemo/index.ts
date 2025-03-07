@@ -14,7 +14,7 @@ export const useCustomCompareMemo = <T, Deps extends DependencyList>(
 	deps: Deps,
 	comparator: DependenciesComparator<Deps>,
 ): T => {
-	const dependencies = useRef<Deps>();
+	const dependencies = useRef<Deps>(undefined);
 
 	if (dependencies.current === undefined || !comparator(dependencies.current, deps)) {
 		dependencies.current = deps;

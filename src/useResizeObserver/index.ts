@@ -83,7 +83,7 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
  * @param enabled Whether resize observer is enabled or not.
  */
 export function useResizeObserver<T extends Element>(
-	target: RefObject<T> | T | null,
+	target: RefObject<T | null> | T | null,
 	callback: UseResizeObserverCallback,
 	enabled = true,
 ): void {
