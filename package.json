@@ -45,7 +45,7 @@
 		"test:coverage": "vitest --run --coverage"
 	},
 	"dependencies": {
-		"@react-hookz/deep-equal": "^3.0.1"
+		"@ver0/deep-equal": "^1.0.0"
 	},
 	"peerDependencies": {
 		"js-cookie": "^3.0.5",
@@ -81,5 +81,5 @@
 		"typescript": "^5.7.3",
 		"vitest": "^3.1.1"
 	},
-	"packageManager": "yarn@4.5.3"
+	"packageManager": "yarn@4.9.0"
 }
