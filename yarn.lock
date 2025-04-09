@@ -1227,13 +1227,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-hookz/deep-equal@npm:^3.0.1":
-  version: 3.0.3
-  resolution: "@react-hookz/deep-equal@npm:3.0.3"
-  checksum: 10c0/4ef12e7caaa3a17564bcc9f107ce167ae72e95d057614ff4a675e2ac2f64489c69a7d06f0f146de74c657dbc4d06234177fbc4d8b5af183b274ba888d5b44319
-  languageName: node
-  linkType: hard
-
 "@react-hookz/eslint-config@npm:^4.1.7":
   version: 4.1.7
   resolution: "@react-hookz/eslint-config@npm:4.1.7"
@@ -1285,13 +1278,13 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:^19.8.0"
     "@commitlint/config-conventional": "npm:^19.8.0"
-    "@react-hookz/deep-equal": "npm:^3.0.1"
     "@react-hookz/eslint-config": "npm:^4.1.7"
     "@react-hookz/eslint-formatter-gha": "npm:^3.0.4"
     "@testing-library/react-hooks": "npm:^8.0.1"
     "@types/js-cookie": "npm:^3.0.6"
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
+    "@ver0/deep-equal": "npm:^1.0.0"
     "@vitest/coverage-v8": "npm:^3.0.9"
     commitlint: "npm:^19.8.0"
     eslint: "npm:^9.23.0"
@@ -2087,6 +2080,13 @@ __metadata:
     "@typescript-eslint/types": "npm:8.23.0"
     eslint-visitor-keys: "npm:^4.2.0"
   checksum: 10c0/a406f78aa18b4efb2adf26e3a6ca48c9a6f2cc9545e083b50efaaf90f0a80d2bea79ceda51da1f109706d4138756b0978a323b9176c9a6a519e87168851e7e16
+  languageName: node
+  linkType: hard
+
+"@ver0/deep-equal@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@ver0/deep-equal@npm:1.0.0"
+  checksum: 10c0/027a83b454a3f4790e0230537598104283745688c32155f4214526bc47d263ccb0f15f3e37d5663df7931e6542db6a999d128a8c4acf81101815386a5252813c
   languageName: node
   linkType: hard
 
