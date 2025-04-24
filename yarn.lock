@@ -1282,7 +1282,7 @@ __metadata:
     "@react-hookz/eslint-formatter-gha": "npm:^3.0.4"
     "@testing-library/react-hooks": "npm:^8.0.1"
     "@types/js-cookie": "npm:^3.0.6"
-    "@types/react": "npm:^19.0.10"
+    "@types/react": "npm:^19.1.2"
     "@types/react-dom": "npm:^19.0.4"
     "@ver0/deep-equal": "npm:^1.0.0"
     "@vitest/coverage-v8": "npm:^3.1.2"
@@ -1293,7 +1293,7 @@ __metadata:
     jsdom: "npm:^26.1.0"
     lint-staged: "npm:^15.5.1"
     pinst: "npm:^3.0.0"
-    react: "npm:^17.0.2"
+    react: "npm:^19.1.0"
     react-dom: "npm:^17.0.2"
     rimraf: "npm:^6.0.1"
     semantic-release: "npm:^24.2.3"
@@ -1822,12 +1822,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.0.10":
-  version: 19.0.10
-  resolution: "@types/react@npm:19.0.10"
+"@types/react@npm:^19.1.2":
+  version: 19.1.2
+  resolution: "@types/react@npm:19.1.2"
   dependencies:
     csstype: "npm:^3.0.2"
-  checksum: 10c0/41884cca21850c8b2d6578b172ca0ca4fff6021251a68532b19f2031ac23dc5a9222470208065f8d9985d367376047df2f49ece8d927f7d04cdc94922b1eb34b
+  checksum: 10c0/76ffe71395c713d4adc3c759465012d3c956db00af35ab7c6d0d91bd07b274b7ce69caa0478c0760311587bd1e38c78ffc9688ebc629f2b266682a19d8750947
   languageName: node
   linkType: hard
 
@@ -8421,13 +8421,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10c0/07ae8959acf1596f0550685102fd6097d461a54a4fd46a50f88a0cd7daaa97fdd6415de1dcb4bfe0da6aa43221a6746ce380410fa848acc60f8ac41f6649c148
+"react@npm:^19.1.0":
+  version: 19.1.0
+  resolution: "react@npm:19.1.0"
+  checksum: 10c0/530fb9a62237d54137a13d2cfb67a7db6a2156faed43eecc423f4713d9b20c6f2728b026b45e28fcd72e8eadb9e9ed4b089e99f5e295d2f0ad3134251bdd3698
   languageName: node
   linkType: hard
 
