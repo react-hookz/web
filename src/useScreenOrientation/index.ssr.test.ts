@@ -11,4 +11,11 @@ describe('useScreenOrientation', () => {
 		const {result} = renderHook(() => useScreenOrientation({initializeWithValue: false}));
 		expect(result.error).toBeUndefined();
 	});
+
+	it('should return undefined on first render, when not enabled and initializeWithValue is set to true', () => {
+		const {result} = renderHook(() =>
+			useScreenOrientation({initializeWithValue: true, enabled: false}));
+		expect(result.error).toBeUndefined();
+		expect(result.current).toBeUndefined();
+	});
 });
