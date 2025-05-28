@@ -18,4 +18,11 @@ describe('useMediaQuery', () => {
 			useMediaQuery('max-width : 768px', {initializeWithValue: false}));
 		expect(result.current).toBeUndefined();
 	});
+
+	it('should return undefined on first render, when not enabled and initializeWithValue is set to true', () => {
+		const {result} = renderHook(() =>
+			useMediaQuery('max-width : 768px', {initializeWithValue: true, enabled: false}));
+		expect(result.error).toBeUndefined();
+		expect(result.current).toBeUndefined();
+	});
 });
