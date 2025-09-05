@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: 'yarn'
@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: 'yarn'
@@ -62,7 +62,7 @@ jobs:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: 'yarn'
@@ -115,7 +115,7 @@ jobs:
           ref: "master"
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: 'yarn'
