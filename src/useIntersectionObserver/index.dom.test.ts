@@ -105,7 +105,7 @@ describe('useIntersectionObserver', () => {
 		});
 
 		expect(hook1.result.current).toBe(entry1);
-		expect(hook1.result.current).toBe(entry1);
+		expect(hook2.result.current).toBe(entry1);
 	});
 
 	it('should disconnect observer if last hook unmounted', () => {
