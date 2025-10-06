@@ -1,46 +1,57 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useControlledRerenderState} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useControlledRerenderState', () => {
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useControlledRerenderState).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useControlledRerenderState());
-		expect(result.error).toBeUndefined();
+	it('should render', async () => {
+		const {result} = await renderHook(() => useControlledRerenderState());
+		expectResultValue(result);
 	});
 
-	it('should behave as `useState` by default', () => {
-		const {result} = renderHook(() => useControlledRerenderState(() => 0));
+	it('should behave as `useState` by default', async () => {
+		const {result} = await renderHook(() => useControlledRerenderState(() => 0));
 
-		expect(result.current[0]).toBe(0);
+		let value = expectResultValue(result);
+		expect(value[0]).toBe(0);
 
-		act(() => {
-			result.current[1](1);
+		await act(async () => {
+			value = expectResultValue(result);
+			value[1](1);
 		});
-		expect(result.current[0]).toBe(1);
+		value = expectResultValue(result);
+		expect(value[0]).toBe(1);
 
-		act(() => {
-			result.current[1](i => i + 3);
+		await act(async () => {
+			value = expectResultValue(result);
+			value[1]((i) => i + 3);
 		});
-		expect(result.current[0]).toBe(4);
+		value = expectResultValue(result);
+		expect(value[0]).toBe(4);
 	});
 
-	it('should not re-render in case setter extra-argument set to false', () => {
-		const {result} = renderHook(() => useControlledRerenderState(() => 0));
+	it('should not re-render in case setter extra-argument set to false', async () => {
+		const {result} = await renderHook(() => useControlledRerenderState(() => 0));
 
-		expect(result.current[0]).toBe(0);
+		let value = expectResultValue(result);
+		expect(value[0]).toBe(0);
 
-		act(() => {
-			result.current[1](1, false);
+		await act(async () => {
+			value = expectResultValue(result);
+			value[1](1, false);
 		});
-		expect(result.current[0]).toBe(0);
+		value = expectResultValue(result);
+		expect(value[0]).toBe(0);
 
-		act(() => {
-			result.current[1](i => i + 3);
+		await act(async () => {
+			value = expectResultValue(result);
+			value[1]((i) => i + 3);
 		});
-		expect(result.current[0]).toBe(4);
+		value = expectResultValue(result);
+		expect(value[0]).toBe(4);
 	});
 });

@@ -1,4 +1,4 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useRafEffect} from '../index.js';
 
@@ -9,7 +9,7 @@ describe('useRafEffect', () => {
 	beforeAll(() => {
 		vi.useFakeTimers();
 
-		globalThis.requestAnimationFrame = cb => setTimeout(cb);
+		globalThis.requestAnimationFrame = (cb) => setTimeout(cb);
 		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
@@ -26,20 +26,20 @@ describe('useRafEffect', () => {
 		globalThis.cancelAnimationFrame = caf;
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useRafEffect).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useRafEffect(() => {}, []);
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should not run unless animation frame', () => {
+	it('should not run unless animation frame', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook(
+		const {rerender} = await renderHook(
 			(dep) => {
 				useRafEffect(spy, [dep]);
 			},
@@ -50,20 +50,20 @@ describe('useRafEffect', () => {
 
 		expect(spy).toHaveBeenCalledTimes(0);
 
-		rerender(2);
+		await rerender(2);
 
 		expect(spy).toHaveBeenCalledTimes(0);
 
-		act(() => {
+		await act(async () => {
 			vi.advanceTimersToNextTimer();
 		});
 
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should cancel animation frame on unmount', () => {
+	it('should cancel animation frame on unmount', async () => {
 		const spy = vi.fn();
-		const {rerender, unmount} = renderHook(
+		const {rerender, unmount} = await renderHook(
 			(dep) => {
 				useRafEffect(spy, [dep]);
 			},
@@ -74,13 +74,13 @@ describe('useRafEffect', () => {
 
 		expect(spy).toHaveBeenCalledTimes(0);
 
-		rerender(2);
+		await rerender(2);
 
 		expect(spy).toHaveBeenCalledTimes(0);
 
-		unmount();
+		await unmount();
 
-		act(() => {
+		await act(async () => {
 			vi.advanceTimersToNextTimer();
 		});
 

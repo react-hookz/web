@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useCounter} from '../index.js';
 
@@ -7,8 +7,8 @@ describe('useCounter', () => {
 		expect(useCounter).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useCounter());
+	it('should render', async () => {
+		const {result} = await renderHook(() => useCounter());
 		expect(result.error).toBeUndefined();
 	});
 });

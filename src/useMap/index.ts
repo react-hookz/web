@@ -9,9 +9,7 @@ const proto = Map.prototype;
  * @param entries Initial entries iterator for underlying `Map` constructor.
  */
 
-export function useMap<K = any, V = any>(
-	entries?: ReadonlyArray<readonly [K, V]> | null,
-): Map<K, V> {
+export function useMap<K = any, V = any>(entries?: ReadonlyArray<readonly [K, V]> | null): Map<K, V> {
 	const mapRef = useRef<Map<K, V>>(undefined);
 	const rerender = useRerender();
 

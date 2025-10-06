@@ -19,6 +19,24 @@ const config = [
 		files: ['**/*.test.ts'],
 		rules: {
 			'@typescript-eslint/no-empty-function': 'off',
+			'vitest/expect-expect': [
+				'error',
+				{
+					assertFunctionNames: ['expect', 'expectResultValue'],
+				},
+			],
+		},
+	},
+	{
+		files: ['**/*.md'],
+		rules: {
+			'markdown/no-missing-label-refs': 'off',
+		},
+	},
+	{
+		files: ['README.md'],
+		rules: {
+			'markdown/heading-increment': 'off',
 		},
 	},
 	{

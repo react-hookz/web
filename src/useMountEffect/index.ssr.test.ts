@@ -1,12 +1,12 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it, vi} from 'vitest';
 import {useMountEffect} from '../index.js';
 
 describe('useMountEffect', () => {
-	it('should call effector only on first render', () => {
+	it('should call effector only on first render', async () => {
 		const spy = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useMountEffect(spy);
 		});
 

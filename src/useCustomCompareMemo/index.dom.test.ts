@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useCustomCompareMemo} from '../index.js';
 
@@ -7,24 +7,25 @@ const mockUser = {name: 'John'};
 type User = typeof mockUser;
 
 describe('useCustomCompareMemo', () => {
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useCustomCompareMemo).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() =>
+	it('should render', async () => {
+		const {result} = await renderHook(() =>
 			useCustomCompareMemo(
 				() => mockUser,
 				[],
 				() => true,
-			));
+			),
+		);
 
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should\'t invoke factory function on each rerender', () => {
+	it("should't invoke factory function on each rerender", async () => {
 		type Props = {user: User};
-		const {result, rerender} = renderHook(
+		const {result, rerender} = await renderHook(
 			({user}: Props) =>
 				useCustomCompareMemo(
 					() => user,
@@ -34,14 +35,14 @@ describe('useCustomCompareMemo', () => {
 			{initialProps: {user: mockUser}},
 		);
 
-		rerender({user: {name: 'Jack'}});
+		await rerender({user: {name: 'Jack'}});
 
-		expect(result.current).toBe(mockUser);
+		expect(result.value).toBe(mockUser);
 	});
 
-	it('should invoke factory function when user name is not the same', () => {
+	it('should invoke factory function when user name is not the same', async () => {
 		type Props = {user: User};
-		const {result, rerender} = renderHook(
+		const {result, rerender} = await renderHook(
 			({user}: Props) =>
 				useCustomCompareMemo(
 					() => user,
@@ -51,13 +52,13 @@ describe('useCustomCompareMemo', () => {
 			{initialProps: {user: mockUser}},
 		);
 
-		rerender({user: {name: 'John'}});
+		await rerender({user: {name: 'John'}});
 
-		expect(result.current).toBe(mockUser);
+		expect(result.value).toBe(mockUser);
 
 		const newUser = {name: 'Mike'};
-		rerender({user: newUser});
+		await rerender({user: newUser});
 
-		expect(result.current).toBe(newUser);
+		expect(result.value).toBe(newUser);
 	});
 });

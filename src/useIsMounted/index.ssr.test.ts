@@ -1,30 +1,34 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useIsMounted} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useIsMounted', () => {
 	it('should be defined', () => {
 		expect(useIsMounted).toBeDefined();
 	});
 
-	it('should return a function', () => {
-		const {result} = renderHook(() => useIsMounted());
+	it('should return a function', async () => {
+		const {result} = await renderHook(() => useIsMounted());
 
-		expect(result.current).toBeInstanceOf(Function);
+		const value = expectResultValue(result);
+		expect(value).toBeInstanceOf(Function);
 	});
 
-	it('should return false within first render', () => {
-		const {result} = renderHook(() => {
+	it('should return false within first render', async () => {
+		const {result} = await renderHook(() => {
 			const isMounted = useIsMounted();
 			return isMounted();
 		});
 
-		expect(result.current).toBe(false);
+		const value = expectResultValue(result);
+		expect(value).toBe(false);
 	});
 
-	it('should return false after mount', () => {
-		const {result} = renderHook(() => useIsMounted());
+	it('should return false after mount', async () => {
+		const {result} = await renderHook(() => useIsMounted());
 
-		expect(result.current()).toBe(false);
+		const value = expectResultValue(result);
+		expect(value()).toBe(false);
 	});
 });

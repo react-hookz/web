@@ -18,10 +18,7 @@ const cancelTimeout = (id: TimeoutID) => {
  * Keep in mind, that changing this parameter will re-set timeout, meaning
  * that it will be set as new after the change.
  */
-export function useTimeoutEffect(
-	callback: () => void,
-	ms?: number,
-): [cancel: () => void, reset: () => void] {
+export function useTimeoutEffect(callback: () => void, ms?: number): [cancel: () => void, reset: () => void] {
 	const cbRef = useSyncedRef(callback);
 	const msRef = useSyncedRef(ms);
 	const timeoutIdRef = useRef<TimeoutID>(null);

@@ -1,12 +1,12 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it, vi} from 'vitest';
 import {useUpdateEffect} from '../index.js';
 
 describe('useUpdateEffect', () => {
-	it('should not call effector on mount', () => {
+	it('should not call effector on mount', async () => {
 		const spy = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useUpdateEffect(spy);
 		});
 

@@ -1,6 +1,7 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useRafCallback} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 function testFn(_a: any, _b: any, _c: any) {}
 
@@ -11,7 +12,7 @@ describe('useRafCallback', () => {
 	beforeAll(() => {
 		vi.useFakeTimers();
 
-		globalThis.requestAnimationFrame = cb => setTimeout(cb);
+		globalThis.requestAnimationFrame = (cb) => setTimeout(cb);
 		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
@@ -28,40 +29,44 @@ describe('useRafCallback', () => {
 		globalThis.cancelAnimationFrame = caf;
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useRafCallback).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useRafCallback(() => {}));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useRafCallback(() => {}));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should return function same length and wrapped name', () => {
-		let {result} = renderHook(() => useRafCallback((_a: any, _b: any, _c: any) => {}));
+	it('should return function same length and wrapped name', async () => {
+		let {result} = await renderHook(() => useRafCallback((_a: any, _b: any, _c: any) => {}));
+		let value = expectResultValue(result);
 
-		expect(result.current[0].length).toBe(3);
-		expect(result.current[0].name).toBe('anonymous__raf');
+		expect(value[0].length).toBe(3);
+		expect(value[0].name).toBe('anonymous__raf');
 
-		result = renderHook(() => useRafCallback(testFn)).result;
+		({result} = await renderHook(() => useRafCallback(testFn)));
+		value = expectResultValue(result);
 
-		expect(result.current[0].length).toBe(3);
-		expect(result.current[0].name).toBe('testFn__raf');
+		expect(value[0].length).toBe(3);
+		expect(value[0].name).toBe('testFn__raf');
 	});
 
-	it('should return array of functions', () => {
-		const {result} = renderHook(() => useRafCallback(() => {}));
+	it('should return array of functions', async () => {
+		const {result} = await renderHook(() => useRafCallback(() => {}));
+		const value = expectResultValue(result);
 
-		expect(result.current).toBeInstanceOf(Array);
-		expect(result.current[0]).toBeInstanceOf(Function);
-		expect(result.current[1]).toBeInstanceOf(Function);
+		expect(value).toBeInstanceOf(Array);
+		expect(value[0]).toBeInstanceOf(Function);
+		expect(value[1]).toBeInstanceOf(Function);
 	});
 
-	it('should invoke passed function only on next raf', () => {
+	it('should invoke passed function only on next raf', async () => {
 		const spy = vi.fn();
-		const {result} = renderHook(() => useRafCallback(spy));
+		const {result} = await renderHook(() => useRafCallback(spy));
+		const value = expectResultValue(result);
 
-		result.current[0]();
+		value[0]();
 
 		expect(spy).not.toHaveBeenCalled();
 
@@ -70,44 +75,47 @@ describe('useRafCallback', () => {
 		expect(spy).toHaveBeenCalled();
 	});
 
-	it('should auto-cancel scheduled invocation on consequential calls', () => {
+	it('should auto-cancel scheduled invocation on consequential calls', async () => {
 		const spy = vi.fn();
-		const {result} = renderHook(() => useRafCallback(spy));
+		const {result} = await renderHook(() => useRafCallback(spy));
+		const value = expectResultValue(result);
 
-		result.current[0]();
-		result.current[0]();
-		result.current[0]();
-		result.current[0]();
+		value[0]();
+		value[0]();
+		value[0]();
+		value[0]();
 
 		expect(spy).not.toHaveBeenCalled();
 
-		vi.advanceTimersToNextTimer(5);
+		vi.advanceTimersToNextTimer();
 
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should cancel scheduled invocation on second function call', () => {
+	it('should cancel scheduled invocation on second function call', async () => {
 		const spy = vi.fn();
-		const {result} = renderHook(() => useRafCallback(spy));
+		const {result} = await renderHook(() => useRafCallback(spy));
+		const value = expectResultValue(result);
 
-		result.current[0]();
+		value[0]();
 
-		result.current[1]();
+		value[1]();
 
-		vi.advanceTimersToNextTimer(5);
+		vi.advanceTimersToNextTimer();
 
 		expect(spy).not.toHaveBeenCalled();
 	});
 
-	it('should auto-cancel scheduled invocation on component unmount', () => {
+	it('should auto-cancel scheduled invocation on component unmount', async () => {
 		const spy = vi.fn();
-		const {result, unmount} = renderHook(() => useRafCallback(spy));
+		const {result, unmount} = await renderHook(() => useRafCallback(spy));
+		const value = expectResultValue(result);
 
-		result.current[0]();
+		value[0]();
 
-		unmount();
+		await unmount();
 
-		vi.advanceTimersToNextTimer(5);
+		vi.advanceTimersToNextTimer();
 
 		expect(spy).not.toHaveBeenCalled();
 	});

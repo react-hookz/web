@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {usePreviousDistinct} from '../index.js';
 import {isStrictEqual} from '../util/const.js';
@@ -8,20 +8,20 @@ describe('usePreviousDistinct', () => {
 		expect(usePreviousDistinct).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => usePreviousDistinct(0));
+	it('should render', async () => {
+		const {result} = await renderHook(() => usePreviousDistinct(0));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should return undefined on first render', () => {
-		const {result} = renderHook(() => usePreviousDistinct(0));
+	it('should return undefined on first render', async () => {
+		const {result} = await renderHook(() => usePreviousDistinct(0));
 
-		expect(result.current).toBeUndefined();
+		expect(result.value).toBeUndefined();
 	});
 
-	it('should return undefined on first render with compare function passed', () => {
-		const {result} = renderHook(() => usePreviousDistinct(0, isStrictEqual));
+	it('should return undefined on first render with compare function passed', async () => {
+		const {result} = await renderHook(() => usePreviousDistinct(0, isStrictEqual));
 
-		expect(result.current).toBeUndefined();
+		expect(result.value).toBeUndefined();
 	});
 });

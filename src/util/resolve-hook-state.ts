@@ -6,6 +6,7 @@ export type NextState<State, PreviousState = State> = State | StateUpdaterFN<Sta
 
 function initState<State>(initialState: InitialState<State>): State {
 	if (typeof initialState === 'function') {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		initialState = (initialState as StateInitializerFN<State>)();
 	}
 
@@ -17,6 +18,7 @@ function updateState<State, PreviousState = State>(
 	previousState: PreviousState,
 ): State {
 	if (typeof nextState === 'function') {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		return (nextState as StateUpdaterFN<State, PreviousState>)(previousState);
 	}
 
@@ -24,9 +26,7 @@ function updateState<State, PreviousState = State>(
 }
 
 export function resolveHookState<State, PreviousState = State>(
-	...args:
-		| Parameters<typeof initState<State>>
-		| Parameters<typeof updateState<State, PreviousState>>
+	...args: Parameters<typeof initState<State>> | Parameters<typeof updateState<State, PreviousState>>
 ) {
 	if (args.length === 1) {
 		return initState(args[0]);

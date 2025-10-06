@@ -1,4 +1,5 @@
-import {type RefObject, useEffect, useState} from 'react';
+import type {RefObject} from 'react';
+import {useEffect, useState} from 'react';
 
 const DEFAULT_THRESHOLD = [0];
 const DEFAULT_ROOT_MARGIN = '0px';
@@ -131,11 +132,7 @@ export type UseIntersectionObserverOptions = {
  */
 export function useIntersectionObserver<T extends Element>(
 	target: RefObject<T | null> | T | null,
-	{
-		threshold = DEFAULT_THRESHOLD,
-		root: r,
-		rootMargin = DEFAULT_ROOT_MARGIN,
-	}: UseIntersectionObserverOptions = {},
+	{threshold = DEFAULT_THRESHOLD, root: r, rootMargin = DEFAULT_ROOT_MARGIN}: UseIntersectionObserverOptions = {},
 ): IntersectionObserverEntry | undefined {
 	const [state, setState] = useState<IntersectionObserverEntry>();
 

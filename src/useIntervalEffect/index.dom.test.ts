@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useIntervalEffect} from '../index.js';
 
@@ -15,20 +15,20 @@ describe('useIntervalEffect', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useIntervalEffect).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useIntervalEffect(() => {}, 123);
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should set interval and cancel it on unmount', () => {
+	it('should set interval and cancel it on unmount', async () => {
 		const spy = vi.fn();
-		const {unmount} = renderHook(() => {
+		const {unmount} = await renderHook(() => {
 			useIntervalEffect(spy, 100);
 		});
 
@@ -41,13 +41,13 @@ describe('useIntervalEffect', () => {
 		vi.advanceTimersByTime(300);
 		expect(spy).toHaveBeenCalledTimes(4);
 
-		unmount();
+		await unmount();
 		expect(spy).toHaveBeenCalledTimes(4);
 	});
 
-	it('should reset interval in delay change', () => {
+	it('should reset interval in delay change', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook(
+		const {rerender} = await renderHook(
 			({delay}) => {
 				useIntervalEffect(spy, delay);
 			},
@@ -59,7 +59,7 @@ describe('useIntervalEffect', () => {
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
-		rerender({delay: 50});
+		await rerender({delay: 50});
 		vi.advanceTimersByTime(49);
 		expect(spy).not.toHaveBeenCalled();
 
@@ -67,9 +67,9 @@ describe('useIntervalEffect', () => {
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should cancel interval if delay is undefined', () => {
+	it('should cancel interval if delay is undefined', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook<{delay: number | undefined}, void>(
+		const {rerender} = await renderHook<{delay: number | undefined}, void>(
 			({delay}) => {
 				useIntervalEffect(spy, delay);
 			},
@@ -81,7 +81,7 @@ describe('useIntervalEffect', () => {
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
-		rerender({delay: undefined});
+		await rerender({delay: undefined});
 		vi.advanceTimersByTime(2000);
 		expect(spy).not.toHaveBeenCalled();
 	});

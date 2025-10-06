@@ -1,5 +1,6 @@
-import {type DependencyList, useMemo, useRef} from 'react';
-import {type DependenciesComparator} from '../types.js';
+import type {DependencyList} from 'react';
+import {useMemo, useRef} from 'react';
+import type {DependenciesComparator} from '../types.js';
 
 /**
  * Like useMemo but uses provided comparator function to validate dependency changes.

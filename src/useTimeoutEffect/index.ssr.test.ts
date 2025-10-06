@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useTimeoutEffect} from '../index.js';
 
@@ -15,18 +15,18 @@ describe('useTimeoutEffect', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useTimeoutEffect).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useTimeoutEffect(() => {}, 123));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useTimeoutEffect(() => {}, 123));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should not invoke callback after timeout', () => {
+	it('should not invoke callback after timeout', async () => {
 		const spy = vi.fn();
-		renderHook(() => useTimeoutEffect(spy, 100));
+		await renderHook(() => useTimeoutEffect(spy, 100));
 
 		vi.advanceTimersByTime(100);
 		expect(spy).not.toHaveBeenCalled();

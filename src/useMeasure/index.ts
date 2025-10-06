@@ -1,7 +1,9 @@
-import {type MutableRefObject, useState} from 'react';
+import type {RefObject} from 'react';
+import {useState} from 'react';
 import {useHookableRef} from '../useHookableRef/index.js';
 import {useRafCallback} from '../useRafCallback/index.js';
-import {useResizeObserver, type UseResizeObserverCallback} from '../useResizeObserver/index.js';
+import type {UseResizeObserverCallback} from '../useResizeObserver/index.js';
+import {useResizeObserver} from '../useResizeObserver/index.js';
 
 export type Measures = {
 	width: number;
@@ -13,9 +15,7 @@ export type Measures = {
  *
  * @param enabled Whether resize observer is enabled or not.
  */
-export function useMeasure<T extends Element>(
-	enabled = true,
-): [Measures | undefined, MutableRefObject<T | null>] {
+export function useMeasure<T extends Element>(enabled = true): [Measures | undefined, RefObject<T | null>] {
 	const [element, setElement] = useState<T | null>(null);
 	const elementRef = useHookableRef<T | null>(null, (v) => {
 		setElement(v);

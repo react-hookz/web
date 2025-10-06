@@ -1,4 +1,5 @@
-import {type DependencyList, type EffectCallback, useEffect} from 'react';
+import type {DependencyList, EffectCallback} from 'react';
+import {useEffect} from 'react';
 import {useFirstMountState} from '../useFirstMountState/index.js';
 import {noop} from '../util/const.js';
 

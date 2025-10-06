@@ -1,4 +1,5 @@
-import {type DependencyList, type RefObject, useMemo} from 'react';
+import type {DependencyList, RefObject} from 'react';
+import {useMemo} from 'react';
 import {useEventListener} from '../useEventListener/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
 import {isBrowser} from '../util/const.js';
@@ -31,7 +32,7 @@ const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredic
 	}
 
 	if (typeof keyFilter === 'string') {
-		return ev => ev.key === keyFilter;
+		return (ev) => ev.key === keyFilter;
 	}
 
 	return keyFilter ? yieldTrue : yieldFalse;

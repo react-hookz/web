@@ -1,10 +1,8 @@
-import {type Dispatch, useEffect, useState} from 'react';
+import type {Dispatch} from 'react';
+import {useEffect, useState} from 'react';
 import {isBrowser} from '../util/const.js';
 
-const queriesMap = new Map<
-	string,
-	{mql: MediaQueryList; dispatchers: Set<Dispatch<boolean>>; listener: () => void}
->();
+const queriesMap = new Map<string, {mql: MediaQueryList; dispatchers: Set<Dispatch<boolean>>; listener: () => void}>();
 
 type QueryStateSetter = (matches: boolean) => void;
 
@@ -70,10 +68,7 @@ type UseMediaQueryOptions = {
  * `initializeWithValue` (default: `true`) - Determine media query match state on first render. Setting
  * this to false will make the hook yield `undefined` on first render.
  */
-export function useMediaQuery(
-	query: string,
-	options: UseMediaQueryOptions = {},
-): boolean | undefined {
+export function useMediaQuery(query: string, options: UseMediaQueryOptions = {}): boolean | undefined {
 	let {initializeWithValue = true} = options;
 
 	if (!isBrowser) {

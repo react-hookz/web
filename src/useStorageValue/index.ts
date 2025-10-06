@@ -5,16 +5,12 @@ import {useSyncedRef} from '../useSyncedRef/index.js';
 import {useUpdateEffect} from '../useUpdateEffect/index.js';
 import {isBrowser} from '../util/const.js';
 import {off, on} from '../util/misc.js';
-import {type NextState, resolveHookState} from '../util/resolve-hook-state.js';
+import type {NextState} from '../util/resolve-hook-state.js';
+import {resolveHookState} from '../util/resolve-hook-state.js';
 
 const storageListeners = new Map<Storage, Map<string, Set<CallableFunction>>>();
 
-const invokeStorageKeyListeners = (
-	s: Storage,
-	key: string,
-	value: string | null,
-	skipListener?: CallableFunction,
-) => {
+const invokeStorageKeyListeners = (s: Storage, key: string, value: string | null, skipListener?: CallableFunction) => {
 	const listeners = storageListeners.get(s)?.get(key);
 	if (listeners === undefined || listeners.size === 0) {
 		return;
@@ -160,11 +156,8 @@ export function useStorageValue<
 
 	const storageActions = useSyncedRef({
 		fetchRaw: () => storage.getItem(key),
-		fetch: () =>
-			parse(
-				storageActions.current.fetchRaw(),
-				optionsRef.current.defaultValue as Required<Type> | null,
-			),
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+		fetch: () => parse(storageActions.current.fetchRaw(), optionsRef.current.defaultValue as Required<Type> | null),
 		remove() {
 			storage.removeItem(key);
 		},
@@ -181,9 +174,7 @@ export function useStorageValue<
 
 	const isFirstMount = useFirstMountState();
 	const [state, setState] = useState<Type | null | undefined>(
-		optionsRef.current?.initializeWithValue && isFirstMount ?
-				storageActions.current.fetch() :
-			undefined,
+		optionsRef.current?.initializeWithValue && isFirstMount ? storageActions.current.fetch() : undefined,
 	);
 	const stateRef = useSyncedRef(state);
 
@@ -223,10 +214,8 @@ export function useStorageValue<
 				return;
 			}
 
-			const s = resolveHookState(
-				value,
-				stateRef.current as UseStorageValueValue<Type, Default, Initialize>,
-			);
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+			const s = resolveHookState(value, stateRef.current as UseStorageValueValue<Type, Default, Initialize>);
 
 			const storeValue = storageActions.current.store(s);
 			if (storeValue !== null) {
@@ -269,6 +258,7 @@ export function useStorageValue<
 
 	return useMemo(
 		() => ({
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 			value: state as UseStorageValueValue<Type, Default, Initialize>,
 			...staticActions,
 		}),
@@ -280,9 +270,7 @@ export function useStorageValue<
 const defaultStringify = (data: unknown): string | null => {
 	if (data === null) {
 		if (process.env.NODE_ENV === 'development') {
-			console.warn(
-				'\'null\' is not a valid data for useStorageValue hook, this operation will take no effect',
-			);
+			console.warn("'null' is not a valid data for useStorageValue hook, this operation will take no effect");
 		}
 
 		return null;

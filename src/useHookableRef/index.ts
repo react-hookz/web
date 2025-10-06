@@ -1,4 +1,5 @@
-import {type MutableRefObject, useMemo} from 'react';
+import type {MutableRefObject} from 'react';
+import {useMemo} from 'react';
 import {useSyncedRef} from '../useSyncedRef/index.js';
 
 export type HookableRefHandler<T> = (v: T) => T;
@@ -6,7 +7,7 @@ export type HookableRefHandler<T> = (v: T) => T;
 export function useHookableRef<T>(
 	initialValue: T,
 	onSet?: HookableRefHandler<T>,
-	onGet?: HookableRefHandler<T>
+	onGet?: HookableRefHandler<T>,
 ): MutableRefObject<T>;
 export function useHookableRef<T = undefined>(): MutableRefObject<T | null | undefined>;
 
@@ -32,10 +33,12 @@ export function useHookableRef<T>(
 
 		return {
 			get current() {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 				return onGetRef.current === undefined ? v : onGetRef.current(v as T);
 			},
 
 			set current(value) {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 				v = onSetRef.current === undefined ? value : onSetRef.current(value as T);
 			},
 		};

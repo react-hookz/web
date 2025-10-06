@@ -1,7 +1,9 @@
-import {type SetStateAction, useMemo, useRef} from 'react';
+import type {SetStateAction} from 'react';
+import {useMemo, useRef} from 'react';
 import {useRerender} from '../useRerender/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
-import {type InitialState, resolveHookState} from '../util/resolve-hook-state.js';
+import type {InitialState} from '../util/resolve-hook-state.js';
+import {resolveHookState} from '../util/resolve-hook-state.js';
 
 export type ListActions<T> = {
 	/**
@@ -113,8 +115,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
 			},
 
 			update(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
-				actions.set((currentList: T[]) =>
-					currentList.map((item: T) => (predicate(item, newItem) ? newItem : item)));
+				actions.set((currentList: T[]) => currentList.map((item: T) => (predicate(item, newItem) ? newItem : item)));
 			},
 
 			updateFirst(predicate: (iteratedItem: T, newItem: T) => boolean, newItem: T) {
@@ -138,7 +139,7 @@ export function useList<T>(initialList: InitialState<T[]>): [T[], ListActions<T>
 			},
 
 			sort(compareFn?: (a: T, b: T) => number) {
-				actions.set((currentList: T[]) => [...currentList].sort(compareFn));
+				actions.set((currentList: T[]) => currentList.toSorted(compareFn));
 			},
 
 			filter(callbackFn: (value: T, index: number, array: T[]) => boolean, thisArg?: never) {

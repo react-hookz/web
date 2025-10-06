@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useThrottledState} from '../index.js';
 
@@ -15,12 +15,12 @@ describe('useThrottledState', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useThrottledState).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useThrottledState('', 200));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useThrottledState('', 200));
 		expect(result.error).toBeUndefined();
 	});
 });

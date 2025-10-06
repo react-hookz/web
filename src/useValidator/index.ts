@@ -1,19 +1,16 @@
-import {type DependencyList, type Dispatch, useCallback, useEffect, useState} from 'react';
+import type {DependencyList, Dispatch} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useSyncedRef} from '../useSyncedRef/index.js';
-import {type InitialState, type NextState} from '../util/resolve-hook-state.js';
+import type {InitialState, NextState} from '../util/resolve-hook-state.js';
 
 export type ValidityState = {
 	isValid: boolean | undefined;
 } & Record<any, any>;
 
 export type ValidatorImmediate<V extends ValidityState = ValidityState> = () => V;
-export type ValidatorDeferred<V extends ValidityState = ValidityState> = (
-	done: Dispatch<NextState<V>>
-) => any;
+export type ValidatorDeferred<V extends ValidityState = ValidityState> = (done: Dispatch<NextState<V>>) => any;
 
-export type Validator<V extends ValidityState = ValidityState> =
-	| ValidatorImmediate<V>
-	| ValidatorDeferred<V>;
+export type Validator<V extends ValidityState = ValidityState> = ValidatorImmediate<V> | ValidatorDeferred<V>;
 
 export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 
@@ -27,6 +24,7 @@ export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 export function useValidator<V extends ValidityState>(
 	validator: Validator<V>,
 	deps: DependencyList,
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 	initialValidity: InitialState<V> = {isValid: undefined} as V,
 ): UseValidatorReturn<V> {
 	const [validity, setValidity] = useState(initialValidity);
@@ -34,6 +32,7 @@ export function useValidator<V extends ValidityState>(
 		if (validator.length > 0) {
 			validator(setValidity);
 		} else {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 			setValidity((validator as ValidatorImmediate<V>)());
 		}
 	});

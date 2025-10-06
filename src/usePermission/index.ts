@@ -1,4 +1,5 @@
-import {type MutableRefObject, useEffect, useState} from 'react';
+import type {MutableRefObject} from 'react';
+import {useEffect, useState} from 'react';
 import {off, on} from '../util/misc.js';
 
 export type UsePermissionState = PermissionState | 'not-requested' | 'requested';
@@ -19,7 +20,7 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises,promise/catch-or-return
 		navigator.permissions
 			.query(descriptor)
-
+			// eslint-disable-next-line promise/prefer-await-to-then,promise/always-return
 			.then((status): void => {
 				const handleChange = () => {
 					setState(status.state);

@@ -1,6 +1,7 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useThrottledState} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useThrottledState', () => {
 	beforeAll(() => {
@@ -15,31 +16,34 @@ describe('useThrottledState', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useThrottledState).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useThrottledState('', 200));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useThrottledState('', 200));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should throttle set state', () => {
-		const {result} = renderHook(() => useThrottledState('', 200, true));
+	it('should throttle set state', async () => {
+		const {result} = await renderHook(() => useThrottledState('', 200, true));
+		let value = expectResultValue(result);
 
-		expect(result.current[0]).toBe('');
-		act(() => {
-			result.current[1]('hello world!');
+		expect(value[0]).toBe('');
+		await act(async () => {
+			value[1]('hello world!');
 		});
-		expect(result.current[0]).toBe('hello world!');
+		value = expectResultValue(result);
+		expect(value[0]).toBe('hello world!');
 
-		result.current[1]('foo');
-		result.current[1]('bar');
-		expect(result.current[0]).toBe('hello world!');
+		value[1]('foo');
+		value[1]('bar');
+		expect(value[0]).toBe('hello world!');
 		vi.advanceTimersByTime(200);
-		act(() => {
-			result.current[1]('baz');
+		await act(async () => {
+			value[1]('baz');
 		});
-		expect(result.current[0]).toBe('baz');
+		value = expectResultValue(result);
+		expect(value[0]).toBe('baz');
 	});
 });

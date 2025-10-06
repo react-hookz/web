@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useMediaQuery} from '../index.js';
 
@@ -7,15 +7,13 @@ describe('useMediaQuery', () => {
 		expect(useMediaQuery).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() =>
-			useMediaQuery('max-width : 768px', {initializeWithValue: false}));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useMediaQuery('max-width : 768px', {initializeWithValue: false}));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should return undefined on first render, if initializeWithValue is set to false', () => {
-		const {result} = renderHook(() =>
-			useMediaQuery('max-width : 768px', {initializeWithValue: false}));
-		expect(result.current).toBeUndefined();
+	it('should return undefined on first render, if initializeWithValue is set to false', async () => {
+		const {result} = await renderHook(() => useMediaQuery('max-width : 768px', {initializeWithValue: false}));
+		expect(result.value).toBeUndefined();
 	});
 });

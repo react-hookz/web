@@ -1,6 +1,7 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useThrottledCallback} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useThrottledCallback', () => {
 	beforeAll(() => {
@@ -15,30 +16,32 @@ describe('useThrottledCallback', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useThrottledCallback).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useThrottledCallback(() => {}, [], 200);
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should invoke given callback immediately', () => {
+	it('should invoke given callback immediately', async () => {
 		const cb = vi.fn();
-		const {result} = renderHook(() => useThrottledCallback(cb, [], 200));
+		const {result} = await renderHook(() => useThrottledCallback(cb, [], 200));
+		const throttledCb = expectResultValue(result);
 
-		result.current();
+		throttledCb();
 		expect(cb).toHaveBeenCalledTimes(1);
 	});
 
-	it('should pass parameters to callback', () => {
+	it('should pass parameters to callback', async () => {
 		const cb = vi.fn((_a: number, _c: string) => {});
-		const {result} = renderHook(() => useThrottledCallback(cb, [], 200));
+		const {result} = await renderHook(() => useThrottledCallback(cb, [], 200));
+		const throttledCb = expectResultValue(result);
 
-		result.current(1, 'abc');
+		throttledCb(1, 'abc');
 		vi.advanceTimersByTime(200);
 		expect(cb).toHaveBeenCalledWith(1, 'abc');
 	});
