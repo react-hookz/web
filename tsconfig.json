@@ -5,10 +5,7 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"jsx": "react-jsx",
-		"lib": [
-			"ESNext",
-			"DOM"
-		],
+		"lib": ["ESNext", "DOM"],
 		"declaration": true,
 		"newLine": "lf",
 		"forceConsistentCasingInFileNames": true,

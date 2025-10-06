@@ -29,7 +29,7 @@ jobs:
         run: yarn install --immutable
 
       - name: "Lint"
-        run: yarn lint -f @react-hookz/gha
+        run: yarn lint -f @ver0/gha
 
   build:
     name: "Build"
@@ -122,9 +122,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: "disable postinstall"
-        run: yarn pinst --disable
 
       - name: "Build"
         run: yarn build
