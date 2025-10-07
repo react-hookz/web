@@ -1,4 +1,4 @@
-import type {MutableRefObject} from 'react';
+import type {RefObject} from 'react';
 import {useEffect, useState} from 'react';
 import {off, on} from '../util/misc.js';
 
@@ -13,7 +13,7 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 	const [state, setState] = useState<UsePermissionState>('not-requested');
 
 	useEffect(() => {
-		const unmount: MutableRefObject<(() => void) | null> = {current: null};
+		const unmount: RefObject<(() => void) | null> = {current: null};
 
 		setState('requested');
 

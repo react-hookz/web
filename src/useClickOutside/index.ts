@@ -1,4 +1,4 @@
-import type {MutableRefObject, RefObject} from 'react';
+import type {RefObject} from 'react';
 import {useEffect} from 'react';
 import {useSyncedRef} from '../useSyncedRef/index.js';
 import {off, on} from '../util/misc.js';
@@ -14,7 +14,7 @@ const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
  * 'mousedown', 'touchstart'
  */
 export function useClickOutside<T extends HTMLElement>(
-	ref: RefObject<T | null> | MutableRefObject<T | null>,
+	ref: RefObject<T | null>,
 	callback: EventListener,
 	events: string[] = DEFAULT_EVENTS,
 ): void {

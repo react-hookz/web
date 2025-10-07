@@ -1,3 +1,4 @@
+import type {RefObject} from 'react';
 import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useResizeObserver} from '../index.js';
@@ -57,7 +58,7 @@ describe('useResizeObserver', () => {
 
 	it('should subscribe in case ref first was empty but then gained element', async () => {
 		const div = document.createElement('div');
-		const ref: React.MutableRefObject<Element | null> = {current: null};
+		const ref: RefObject<Element | null> = {current: null};
 		const spy = vi.fn();
 
 		const {rerender} = await renderHook(
