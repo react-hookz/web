@@ -17,7 +17,11 @@ const createQueryEntry = (query: string) => {
 		}
 	};
 
-	mql.addEventListener('change', listener, {passive: true});
+	if (mql.addEventListener) {
+		mql.addEventListener('change', listener, {passive: true});
+	} else {
+		mql.addListener(listener);
+	}
 
 	return {
 		mql,
