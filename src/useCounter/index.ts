@@ -1,7 +1,9 @@
-import {type SetStateAction, useMemo} from 'react';
+import type {SetStateAction} from 'react';
+import {useMemo} from 'react';
 import {useMediatedState} from '../useMediatedState/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
-import {type InitialState, resolveHookState} from '../util/resolve-hook-state.js';
+import type {InitialState} from '../util/resolve-hook-state.js';
+import {resolveHookState} from '../util/resolve-hook-state.js';
 
 export type CounterActions = {
 	/**
@@ -71,13 +73,13 @@ export function useCounter(
 				get: () => stateRef.current,
 				set: setState,
 				dec(delta = 1) {
-					setState(value => value - resolveHookState(delta, value));
+					setState((value) => value - resolveHookState(delta, value));
 				},
 				inc(delta = 1) {
-					setState(value => value + resolveHookState(delta, value));
+					setState((value) => value + resolveHookState(delta, value));
 				},
 				reset(value = initialValue) {
-					setState(v => resolveHookState(value, v));
+					setState((v) => resolveHookState(value, v));
 				},
 			}),
 			[initialValue, setState, stateRef],

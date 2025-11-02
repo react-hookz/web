@@ -1,12 +1,11 @@
-import {type DependencyList} from 'react';
-import {type DependenciesComparator} from '../types.js';
+import type {DependencyList} from 'react';
+import type {DependenciesComparator} from '../types.js';
 
 export function on<T extends EventTarget>(
 	object: T | null,
-	...args:
-		| Parameters<T['addEventListener']>
-		| [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
+	...args: Parameters<T['addEventListener']> | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 	object?.addEventListener?.(...(args as Parameters<HTMLElement['addEventListener']>));
 }
 
@@ -16,13 +15,11 @@ export function off<T extends EventTarget>(
 		| Parameters<T['removeEventListener']>
 		| [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 	object?.removeEventListener?.(...(args as Parameters<HTMLElement['removeEventListener']>));
 }
 
-export const hasOwnProperty = <
-	T extends Record<string | number | symbol, any>,
-	K extends string | number | symbol,
->(
+export const hasOwnProperty = <T extends Record<string | number | symbol, any>, K extends string | number | symbol>(
 	object: T,
 	property: K,
 ): object is T & Record<K, unknown> => Object.hasOwn(object, property);

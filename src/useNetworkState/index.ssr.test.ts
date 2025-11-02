@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useNetworkState} from '../index.js';
 
@@ -6,15 +6,15 @@ describe('useNetworkState', () => {
 	it('should be defined', () => {
 		expect(useNetworkState).toBeDefined();
 	});
-	it('should render', () => {
-		const {result} = renderHook(() => useNetworkState());
+	it('should render', async () => {
+		const {result} = await renderHook(() => useNetworkState());
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should have undefined state', () => {
-		const hook = renderHook(() => useNetworkState());
+	it('should have undefined state', async () => {
+		const hook = await renderHook(() => useNetworkState());
 
-		expect(hook.result.current).toStrictEqual({
+		expect(hook.result.value).toStrictEqual({
 			downlink: undefined,
 			downlinkMax: undefined,
 			effectiveType: undefined,

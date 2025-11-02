@@ -1,14 +1,16 @@
-import {type BaseSyntheticEvent, useCallback, useState} from 'react';
+import type {BaseSyntheticEvent} from 'react';
+import {useCallback, useState} from 'react';
 import {useSyncedRef} from '../useSyncedRef/index.js';
-import {type InitialState, type NextState, resolveHookState} from '../util/resolve-hook-state.js';
+import type {InitialState, NextState} from '../util/resolve-hook-state.js';
+import {resolveHookState} from '../util/resolve-hook-state.js';
 
 export function useToggle(
 	initialState: InitialState<boolean>,
-	ignoreReactEvents: false
+	ignoreReactEvents: false,
 ): [boolean, (nextState?: NextState<boolean>) => void];
 export function useToggle(
 	initialState?: InitialState<boolean>,
-	ignoreReactEvents?: true
+	ignoreReactEvents?: true,
 ): [boolean, (nextState?: NextState<boolean> | BaseSyntheticEvent) => void];
 
 /**

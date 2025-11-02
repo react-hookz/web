@@ -1,4 +1,5 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import type {RefObject} from 'react';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useResizeObserver} from '../index.js';
 
@@ -30,37 +31,37 @@ describe('useResizeObserver', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useResizeObserver).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useResizeObserver(null, () => {});
 		});
 
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should create ResizeObserver instance only on first hook render', () => {
+	it('should create ResizeObserver instance only on first hook render', async () => {
 		expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
 
-		renderHook(() => {
+		await renderHook(() => {
 			useResizeObserver(null, () => {});
 		});
-		renderHook(() => {
+		await renderHook(() => {
 			useResizeObserver(null, () => {});
 		});
 
 		expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should subscribe in case ref first was empty but then gained element', () => {
+	it('should subscribe in case ref first was empty but then gained element', async () => {
 		const div = document.createElement('div');
-		const ref: React.MutableRefObject<Element | null> = {current: null};
+		const ref: RefObject<Element | null> = {current: null};
 		const spy = vi.fn();
 
-		const {rerender} = renderHook(
+		const {rerender} = await renderHook(
 			({ref}) => {
 				useResizeObserver(ref, spy);
 			},
@@ -72,10 +73,11 @@ describe('useResizeObserver', () => {
 		expect(observeSpy).toHaveBeenCalledTimes(0);
 
 		ref.current = div;
-		rerender({ref});
+		await rerender({ref});
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {},
@@ -92,20 +94,21 @@ describe('useResizeObserver', () => {
 		expect(spy).toHaveBeenCalledWith(entry);
 	});
 
-	it('should invoke each callback listening same element asynchronously using setTimeout0', () => {
+	it('should invoke each callback listening same element asynchronously using setTimeout0', async () => {
 		const div = document.createElement('div');
 		const spy1 = vi.fn();
 		const spy2 = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useResizeObserver(div, spy1);
 		});
-		renderHook(() => {
+		await renderHook(() => {
 			useResizeObserver(div, spy2);
 		});
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {},
@@ -124,27 +127,29 @@ describe('useResizeObserver', () => {
 		expect(spy2).toHaveBeenCalledWith(entry);
 	});
 
-	it('should invoke each callback listening different element', () => {
+	it('should invoke each callback listening different element', async () => {
 		const div = document.createElement('div');
 		const div2 = document.createElement('div');
 		const spy1 = vi.fn();
 		const spy2 = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useResizeObserver(div, spy1);
 		});
-		renderHook(() => {
+		await renderHook(() => {
 			useResizeObserver({current: div2}, spy2);
 		});
 
 		expect(observeSpy).toHaveBeenCalledTimes(2);
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry1 = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry2 = {
 			target: div2,
 			contentRect: {},
@@ -163,10 +168,10 @@ describe('useResizeObserver', () => {
 		expect(spy2).toHaveBeenCalledWith(entry2);
 	});
 
-	it('should unsubscribe on component unmount', () => {
+	it('should unsubscribe on component unmount', async () => {
 		const div = document.createElement('div');
 		const spy = vi.fn();
-		const {unmount} = renderHook(() => {
+		const {unmount} = await renderHook(() => {
 			useResizeObserver(div, spy);
 		});
 
@@ -174,7 +179,7 @@ describe('useResizeObserver', () => {
 		expect(observeSpy).toHaveBeenCalledWith(div);
 		expect(unobserveSpy).toHaveBeenCalledTimes(0);
 
-		unmount();
+		await unmount();
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 		expect(unobserveSpy).toHaveBeenCalledTimes(1);
@@ -182,27 +187,27 @@ describe('useResizeObserver', () => {
 	});
 
 	describe('disabled observer', () => {
-		it('should not subscribe in case observer is disabled', () => {
+		it('should not subscribe in case observer is disabled', async () => {
 			const div = document.createElement('div');
 			const div2 = document.createElement('div');
 			const spy1 = vi.fn();
 			const spy2 = vi.fn();
 
-			renderHook(() => {
+			await renderHook(() => {
 				useResizeObserver(div, spy1);
 			});
-			renderHook(() => {
+			await renderHook(() => {
 				useResizeObserver({current: div2}, spy2, false);
 			});
 
 			expect(observeSpy).toHaveBeenCalledTimes(1);
 		});
 
-		it('should unsubscribe and resubscribe in case of observer toggling', () => {
+		it('should unsubscribe and resubscribe in case of observer toggling', async () => {
 			const div = document.createElement('div');
 			const spy1 = vi.fn();
 
-			const {rerender} = renderHook(
+			const {rerender} = await renderHook(
 				({enabled}) => {
 					useResizeObserver(div, spy1, enabled);
 				},
@@ -214,12 +219,12 @@ describe('useResizeObserver', () => {
 			expect(observeSpy).toHaveBeenCalledTimes(0);
 			expect(unobserveSpy).toHaveBeenCalledTimes(0);
 
-			rerender({enabled: true});
+			await rerender({enabled: true});
 
 			expect(observeSpy).toHaveBeenCalledTimes(1);
 			expect(unobserveSpy).toHaveBeenCalledTimes(0);
 
-			rerender({enabled: false});
+			await rerender({enabled: false});
 
 			expect(observeSpy).toHaveBeenCalledTimes(1);
 			expect(unobserveSpy).toHaveBeenCalledTimes(1);

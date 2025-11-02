@@ -1,4 +1,5 @@
-import {type Dispatch, type SetStateAction, useState} from 'react';
+import type {Dispatch, SetStateAction} from 'react';
+import {useState} from 'react';
 import {useDebouncedCallback} from '../useDebouncedCallback/index.js';
 
 /**

@@ -1,7 +1,8 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useEffect} from 'react';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useMeasure} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useMeasure', () => {
 	const observeSpy = vi.fn();
@@ -21,7 +22,7 @@ describe('useMeasure', () => {
 	beforeAll(() => {
 		vi.useFakeTimers();
 
-		globalThis.requestAnimationFrame = cb => setTimeout(cb, 1);
+		globalThis.requestAnimationFrame = (cb) => setTimeout(cb, 1);
 		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
@@ -48,31 +49,33 @@ describe('useMeasure', () => {
 		globalThis.cancelAnimationFrame = caf;
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useMeasure).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useMeasure());
+	it('should render', async () => {
+		const {result} = await renderHook(() => useMeasure());
 
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should return undefined sate on initial render', () => {
-		const {result} = renderHook(() => useMeasure());
+	it('should return undefined sate on initial render', async () => {
+		const {result} = await renderHook(() => useMeasure());
 
-		expect(result.current[0]).toBeUndefined();
+		const value = expectResultValue(result);
+		expect(value[0]).toBeUndefined();
 	});
 
-	it('should return reference as a second array element', () => {
-		const {result} = renderHook(() => useMeasure());
+	it('should return reference as a second array element', async () => {
+		const {result} = await renderHook(() => useMeasure());
 
-		expect(result.current[1]).toStrictEqual({current: null});
+		const value = expectResultValue(result);
+		expect(value[1]).toStrictEqual({current: null});
 	});
 
-	it('should only set state within animation frame', () => {
+	it('should only set state within animation frame', async () => {
 		const div = document.createElement('div');
-		const {result} = renderHook(() => {
+		const {result} = await renderHook(() => {
 			const measure = useMeasure<HTMLDivElement>();
 
 			useEffect(() => {
@@ -87,6 +90,7 @@ describe('useMeasure', () => {
 			height: 0,
 		};
 
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {width: 0, height: 0},
@@ -95,13 +99,15 @@ describe('useMeasure', () => {
 		} as unknown as ResizeObserverEntry;
 
 		ResizeObserverSpy.mock.calls[0][0]([entry]);
-		expect(result.current[0]).toBeUndefined();
+		let value = expectResultValue(result);
+		expect(value[0]).toBeUndefined();
 
-		act(() => {
+		await act(async () => {
 			vi.advanceTimersByTime(1);
 		});
 
-		expect(result.current[1]).toStrictEqual({current: div});
-		expect(result.current[0]).toStrictEqual(measures);
+		value = expectResultValue(result);
+		expect(value[1]).toStrictEqual({current: div});
+		expect(value[0]).toStrictEqual(measures);
 	});
 });

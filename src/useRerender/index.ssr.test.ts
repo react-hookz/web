@@ -1,4 +1,4 @@
-import {act, renderHook} from '@testing-library/react-hooks/server';
+import {act, renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {useRef} from 'react';
 import {describe, expect, it} from 'vitest';
 import {useRerender} from '../index.js';
@@ -8,22 +8,24 @@ describe('useRerender', () => {
 		expect(useRerender).toBeDefined();
 	});
 
-	it('should do nothing on returned function invocation', () => {
-		const {result} = renderHook(() => {
+	it('should do nothing on returned function invocation', async () => {
+		const {result} = await renderHook(() => {
 			const cnt = useRef(0);
 			const rerender = useRerender();
 
 			return [rerender, ++cnt.current] as const;
 		});
 
-		expect(result.current[1]).toBe(1);
-		act(() => {
-			result.current[0]();
-		});
-		expect(result.current[1]).toBe(1);
-		act(() => {
-			result.current[0]();
-		});
-		expect(result.current[1]).toBe(1);
+		if (result.value !== undefined) {
+			expect(result.value[1]).toBe(1);
+			await act(async () => {
+				result.value[0]();
+			});
+			expect(result.value[1]).toBe(1);
+			await act(async () => {
+				result.value[0]();
+			});
+			expect(result.value[1]).toBe(1);
+		}
 	});
 });

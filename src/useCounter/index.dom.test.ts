@@ -1,233 +1,271 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useCounter} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useCounter', () => {
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useCounter).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useCounter());
+	it('should render', async () => {
+		const {result} = await renderHook(() => useCounter());
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should have default initial value of 0', () => {
-		const {result} = renderHook(() => useCounter());
-		const counter = result.current[0];
+	it('should have default initial value of 0', async () => {
+		const {result} = await renderHook(() => useCounter());
+		const value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(0);
 	});
 
-	it('should accept custom initial value', () => {
-		const {result} = renderHook(() => useCounter(5));
-		const counter = result.current[0];
+	it('should accept custom initial value', async () => {
+		const {result} = await renderHook(() => useCounter(5));
+		const value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(5);
 	});
 
-	it('should accept function returning a number as initial value', () => {
-		const {result} = renderHook(() => useCounter(() => 5));
-		const counter = result.current[0];
+	it('should accept function returning a number as initial value', async () => {
+		const {result} = await renderHook(() => useCounter(() => 5));
+		const value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(5);
 	});
 
-	it('should force initial value to be at least the given minimum value', () => {
-		const {result} = renderHook(() => useCounter(0, 10, 5));
-		const counter = result.current[0];
+	it('should force initial value to be at least the given minimum value', async () => {
+		const {result} = await renderHook(() => useCounter(0, 10, 5));
+		const value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(5);
 	});
 
-	it('should force initial value to be at most the given maximum value', () => {
-		const {result} = renderHook(() => useCounter(10, 5));
-		const counter = result.current[0];
+	it('should force initial value to be at most the given maximum value', async () => {
+		const {result} = await renderHook(() => useCounter(10, 5));
+		const value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(5);
 	});
 
-	it('get returns the current counter value', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {get} = result.current[1];
+	it('get returns the current counter value', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		const value = expectResultValue(result);
+		const {get} = value[1];
 
-		act(() => {
-			expect(get()).toEqual(result.current[0]);
+		await act(async () => {
+			expect(get()).toEqual(value[0]);
 		});
 	});
 
-	it('set sets the counter to any value', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {set} = result.current[1];
+	it('set sets the counter to any value', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {set} = value[1];
 
-		act(() => {
+		await act(async () => {
 			set(2);
 		});
 
-		expect(result.current[0]).toEqual(2);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(2);
 
-		act(() => {
+		await act(async () => {
 			set((current: number) => current + 5);
 		});
 
-		expect(result.current[0]).toEqual(7);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(7);
 
-		act(() => {
+		await act(async () => {
 			set(12);
 		});
 
-		expect(result.current[0]).toEqual(12);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(12);
 	});
 
-	it('set respects min and max parameters', () => {
-		const {result} = renderHook(() => useCounter(0, 10, 0));
-		const {set} = result.current[1];
+	it('set respects min and max parameters', async () => {
+		const {result} = await renderHook(() => useCounter(0, 10, 0));
+		let value = expectResultValue(result);
+		const {set} = value[1];
 
-		act(() => {
+		await act(async () => {
 			set(-2);
 		});
 
-		expect(result.current[0]).toEqual(0);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(0);
 
-		act(() => {
+		await act(async () => {
 			set(12);
 		});
 
-		expect(result.current[0]).toEqual(10);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(10);
 	});
 
-	it('inc increments the counter by 1 if no delta given', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {inc} = result.current[1];
+	it('inc increments the counter by 1 if no delta given', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {inc} = value[1];
 
-		act(() => {
+		await act(async () => {
 			inc();
 		});
 
-		const counter = result.current[0];
+		value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(1);
 	});
 
-	it('inc increments the counter by the given delta', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {inc} = result.current[1];
+	it('inc increments the counter by the given delta', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {inc} = value[1];
 
-		act(() => {
+		await act(async () => {
 			inc(2);
 		});
 
-		expect(result.current[0]).toEqual(2);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(2);
 
-		act(() => {
-			inc(current => current + 1);
+		await act(async () => {
+			inc((current) => current + 1);
 		});
 
-		expect(result.current[0]).toEqual(5);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(5);
 	});
 
-	it('inc respects min and max parameters', () => {
-		const {result} = renderHook(() => useCounter(0, 5, 0));
-		const {inc} = result.current[1];
+	it('inc respects min and max parameters', async () => {
+		const {result} = await renderHook(() => useCounter(0, 5, 0));
+		let value = expectResultValue(result);
+		const {inc} = value[1];
 
-		act(() => {
+		await act(async () => {
 			inc(-2);
 		});
 
-		expect(result.current[0]).toEqual(0);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(0);
 
-		act(() => {
+		await act(async () => {
 			inc(12);
 		});
 
-		expect(result.current[0]).toEqual(5);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(5);
 	});
 
-	it('dec decrements the counter by 1 if no delta given', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {dec} = result.current[1];
+	it('dec decrements the counter by 1 if no delta given', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {dec} = value[1];
 
-		act(() => {
+		await act(async () => {
 			dec();
 		});
 
-		const counter = result.current[0];
+		value = expectResultValue(result);
+		const counter = value[0];
 		expect(counter).toEqual(-1);
 	});
 
-	it('dec decrements the counter by the given delta', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {dec} = result.current[1];
+	it('dec decrements the counter by the given delta', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {dec} = value[1];
 
-		act(() => {
+		await act(async () => {
 			dec(2);
 		});
 
-		expect(result.current[0]).toEqual(-2);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(-2);
 
-		act(() => {
-			dec(current => current + 1);
+		await act(async () => {
+			dec((current) => current + 1);
 		});
 
-		expect(result.current[0]).toEqual(-1);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(-1);
 	});
 
-	it('dec respects min and max parameters', () => {
-		const {result} = renderHook(() => useCounter(0, 5, 0));
-		const {dec} = result.current[1];
+	it('dec respects min and max parameters', async () => {
+		const {result} = await renderHook(() => useCounter(0, 5, 0));
+		let value = expectResultValue(result);
+		const {dec} = value[1];
 
-		act(() => {
+		await act(async () => {
 			dec(2);
 		});
 
-		expect(result.current[0]).toEqual(0);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(0);
 
-		act(() => {
+		await act(async () => {
 			dec(-12);
 		});
 
-		expect(result.current[0]).toEqual(5);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(5);
 	});
 
-	it('reset without arguments sets the counter to its initial value', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {reset, inc} = result.current[1];
+	it('reset without arguments sets the counter to its initial value', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {reset, inc} = value[1];
 
-		act(() => {
+		await act(async () => {
 			inc();
 			reset();
 		});
 
-		expect(result.current[0]).toEqual(0);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(0);
 	});
 
-	it('reset with argument sets the counter to its new initial value', () => {
-		const {result} = renderHook(() => useCounter(0));
-		const {reset, inc} = result.current[1];
+	it('reset with argument sets the counter to its new initial value', async () => {
+		const {result} = await renderHook(() => useCounter(0));
+		let value = expectResultValue(result);
+		const {reset, inc} = value[1];
 
-		act(() => {
+		await act(async () => {
 			inc();
 			reset(5);
 		});
 
-		expect(result.current[0]).toEqual(5);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(5);
 
-		act(() => {
+		await act(async () => {
 			inc();
 			reset();
 		});
 
-		expect(result.current[0]).toEqual(0);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(0);
 	});
 
-	it('reset respects min and max parameters', () => {
-		const {result} = renderHook(() => useCounter(0, 10, 0));
-		const {reset} = result.current[1];
+	it('reset respects min and max parameters', async () => {
+		const {result} = await renderHook(() => useCounter(0, 10, 0));
+		let value = expectResultValue(result);
+		const {reset} = value[1];
 
-		act(() => {
+		await act(async () => {
 			reset(25);
 		});
 
-		expect(result.current[0]).toEqual(10);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(10);
 
-		act(() => {
+		await act(async () => {
 			reset(-10);
 		});
 
-		expect(result.current[0]).toEqual(0);
+		value = expectResultValue(result);
+		expect(value[0]).toEqual(0);
 	});
 });

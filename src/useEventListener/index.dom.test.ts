@@ -1,64 +1,62 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it, vi} from 'vitest';
 import {useEventListener} from '../index.js';
 
 describe('useEventListener', () => {
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useEventListener).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useEventListener(null, '', () => {});
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should bind listener on mount and unbind on unmount', () => {
+	it('should bind listener on mount and unbind on unmount', async () => {
 		const div = document.createElement('div');
 		const addSpy = vi.spyOn(div, 'addEventListener');
 		const removeSpy = vi.spyOn(div, 'removeEventListener');
 
-		const {rerender, unmount} = renderHook(() => {
+		const {rerender, unmount} = await renderHook(() => {
 			useEventListener(div, 'resize', () => {}, {passive: true});
 		});
 
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(0);
-
-		rerender();
+		await rerender();
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(0);
 
-		unmount();
+		await unmount();
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should work with react refs', () => {
+	it('should work with react refs', async () => {
 		const div = document.createElement('div');
 		const addSpy = vi.spyOn(div, 'addEventListener');
 		const removeSpy = vi.spyOn(div, 'removeEventListener');
 
 		const ref = {current: div};
-		const {rerender, unmount} = renderHook(() => {
+		const {rerender, unmount} = await renderHook(() => {
 			useEventListener(ref, 'resize', () => {}, {passive: true});
 		});
 
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(addSpy.mock.calls[0][2]).toStrictEqual({passive: true});
 		expect(removeSpy).toHaveBeenCalledTimes(0);
-
-		rerender();
+		await rerender();
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(0);
 
-		unmount();
+		await unmount();
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should invoke provided function on event trigger with proper context', () => {
+	it('should invoke provided function on event trigger with proper context', async () => {
 		const div = document.createElement('div');
 		let context: any;
 		const spy = vi.fn(function (this: any) {
@@ -66,7 +64,7 @@ describe('useEventListener', () => {
 			context = this;
 		});
 
-		renderHook(() => {
+		await renderHook(() => {
 			useEventListener(div, 'resize', spy, {passive: true});
 		});
 
@@ -77,7 +75,7 @@ describe('useEventListener', () => {
 		expect(context).toBe(div);
 	});
 
-	it('should properly handle event listener objects', () => {
+	it('should properly handle event listener objects', async () => {
 		const div = document.createElement('div');
 		let context: any;
 		const spy = vi.fn(function (this: any) {
@@ -85,7 +83,7 @@ describe('useEventListener', () => {
 			context = this;
 		});
 
-		renderHook(() => {
+		await renderHook(() => {
 			useEventListener(div, 'resize', {handleEvent: spy}, {passive: true});
 		});
 

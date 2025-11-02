@@ -1,6 +1,7 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useThrottledEffect} from '../index.js';
+import {noop} from '../util/const.js';
 
 describe('useThrottledEffect', () => {
 	beforeAll(() => {
@@ -15,20 +16,20 @@ describe('useThrottledEffect', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useThrottledEffect).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
-			useThrottledEffect(() => {}, [], 200);
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
+			useThrottledEffect(noop, [], 200);
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should throttle passed callback', () => {
+	it('should throttle passed callback', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook(
+		const {rerender} = await renderHook(
 			(dep) => {
 				useThrottledEffect(spy, [dep], 200, true);
 			},
@@ -38,14 +39,14 @@ describe('useThrottledEffect', () => {
 		);
 
 		expect(spy).toHaveBeenCalledTimes(1);
-		rerender(2);
-		rerender(3);
-		rerender(4);
+		await rerender(2);
+		await rerender(3);
+		await rerender(4);
 		expect(spy).toHaveBeenCalledTimes(1);
 
 		vi.advanceTimersByTime(200);
 		expect(spy).toHaveBeenCalledTimes(1);
-		rerender(5);
+		await rerender(5);
 		expect(spy).toHaveBeenCalledTimes(2);
 	});
 });

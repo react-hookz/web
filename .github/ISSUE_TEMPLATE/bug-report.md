@@ -22,7 +22,8 @@ What does `@react-hookz/web` do right now.
 
 ### Steps to Reproduce
 
-If the current behavior is a bug, please provide the steps to reproduce and if possible a minimal demo of the problem via https://codesandbox.io or similar.
+If the current behavior is a bug, please provide the steps to reproduce and if possible a minimal demo of the problem
+via https://codesandbox.io or similar.
 
 ### What is the expected behavior?
 

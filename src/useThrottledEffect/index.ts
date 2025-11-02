@@ -1,4 +1,5 @@
-import {type DependencyList, useEffect} from 'react';
+import type {DependencyList} from 'react';
+import {useEffect} from 'react';
 import {useThrottledCallback} from '../useThrottledCallback/index.js';
 
 /**

@@ -1,6 +1,7 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useRafState} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useRafState', () => {
 	const raf = globalThis.requestAnimationFrame;
@@ -9,7 +10,7 @@ describe('useRafState', () => {
 	beforeAll(() => {
 		vi.useFakeTimers();
 
-		globalThis.requestAnimationFrame = cb => setTimeout(cb);
+		globalThis.requestAnimationFrame = (cb) => setTimeout(cb);
 		globalThis.cancelAnimationFrame = (cb) => {
 			clearTimeout(cb);
 		};
@@ -26,45 +27,50 @@ describe('useRafState', () => {
 		globalThis.cancelAnimationFrame = caf;
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useRafState).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useRafState());
+	it('should render', async () => {
+		const {result} = await renderHook(() => useRafState());
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should not update state unless animation frame', () => {
-		const {result} = renderHook(() => useRafState<number>());
+	it('should not update state unless animation frame', async () => {
+		const {result} = await renderHook(() => useRafState<number>());
+		let value = expectResultValue(result);
 
-		act(() => {
-			result.current[1](1);
-			result.current[1](2);
-			result.current[1](3);
+		await act(async () => {
+			value[1](1);
+			value[1](2);
+			value[1](3);
 		});
 
-		expect(result.current[0]).toBeUndefined();
+		value = expectResultValue(result);
+		expect(value[0]).toBeUndefined();
 
-		act(() => {
+		await act(async () => {
 			vi.advanceTimersToNextTimer();
 		});
 
-		expect(result.current[0]).toBe(3);
+		value = expectResultValue(result);
+		expect(value[0]).toBe(3);
 		expect(result.all.length).toBe(2);
 	});
 
-	it('should cancel animation frame on unmount', () => {
-		const {result, unmount} = renderHook(() => useRafState<number>());
+	it('should cancel animation frame on unmount', async () => {
+		const {result, unmount} = await renderHook(() => useRafState<number>());
+		let value = expectResultValue(result);
 
-		act(() => {
-			result.current[1](1);
-			result.current[1](2);
-			result.current[1](3);
+		await act(async () => {
+			value[1](1);
+			value[1](2);
+			value[1](3);
 		});
 
-		unmount();
+		await unmount();
 
-		expect(result.current[0]).toBeUndefined();
+		value = expectResultValue(result);
+		expect(value[0]).toBeUndefined();
 	});
 });

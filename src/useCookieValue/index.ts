@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
-import {type Dispatch, useCallback, useEffect, useState} from 'react';
+import type {Dispatch} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useFirstMountState} from '../useFirstMountState/index.js';
 import {useMountEffect} from '../useMountEffect/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
@@ -32,11 +33,7 @@ const unregisterSetter = (key: string, setter: Dispatch<string | null>): void =>
 	}
 };
 
-const invokeRegisteredSetters = (
-	key: string,
-	value: string | null,
-	skipSetter?: Dispatch<string | null>,
-) => {
+const invokeRegisteredSetters = (key: string, value: string | null, skipSetter?: Dispatch<string | null>) => {
 	const setters = cookiesSetters.get(key);
 
 	if (!setters) {
@@ -50,31 +47,31 @@ const invokeRegisteredSetters = (
 	}
 };
 
-export type UseCookieValueOptions<
-	InitializeWithValue extends boolean | undefined = boolean | undefined,
-> = Cookies.CookieAttributes &
-(InitializeWithValue extends undefined
-	? {
-			/**
-			 * Whether to initialize state with the cookie value or `undefined`.
-			 *
-			 * _We suggest setting this to `false` during SSR._
-			 *
-			 * @default true
-			 */
-			initializeWithValue?: InitializeWithValue;
-		}
-	: {
-			initializeWithValue: InitializeWithValue;
-		});
+export type UseCookieValueOptions<InitializeWithValue extends boolean | undefined = boolean | undefined> =
+	Cookies.CookieAttributes &
+		(InitializeWithValue extends undefined
+			? {
+					/**
+					 * Whether to initialize state with the cookie value or `undefined`.
+					 *
+					 * _We suggest setting this to `false` during SSR._
+					 *
+					 * @default true
+					 */
+					initializeWithValue?: InitializeWithValue;
+				}
+			: {
+					initializeWithValue: InitializeWithValue;
+				});
 
-export type UseCookieValueReturn<V extends undefined | null | string = undefined | null | string> =
-	[value: V, set: (value: string) => void, remove: () => void, fetch: () => void];
+export type UseCookieValueReturn<V extends undefined | null | string = undefined | null | string> = [
+	value: V,
+	set: (value: string) => void,
+	remove: () => void,
+	fetch: () => void,
+];
 
-export function useCookieValue(
-	key: string,
-	options: UseCookieValueOptions<false>
-): UseCookieValueReturn;
+export function useCookieValue(key: string, options: UseCookieValueOptions<false>): UseCookieValueReturn;
 export function useCookieValue(key: string, options?: UseCookieValueOptions): UseCookieValueReturn;
 /**
  * Manages a single cookie.
@@ -82,14 +79,9 @@ export function useCookieValue(key: string, options?: UseCookieValueOptions): Us
  * @param key Name of the cookie to manage.
  * @param options Cookie options that will be used during setting and deleting the cookie.
  */
-export function useCookieValue(
-	key: string,
-	options: UseCookieValueOptions = {},
-): UseCookieValueReturn {
+export function useCookieValue(key: string, options: UseCookieValueOptions = {}): UseCookieValueReturn {
 	if (process.env.NODE_ENV === 'development' && Cookies === undefined) {
-		throw new ReferenceError(
-			'Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.',
-		);
+		throw new ReferenceError('Dependency `js-cookies` is not installed, it is required for `useCookieValue` work.');
 	}
 
 	let {initializeWithValue = true, ...cookiesOptions} = options;

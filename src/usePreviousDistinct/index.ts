@@ -1,5 +1,5 @@
 import {useRef, useState} from 'react';
-import {type Predicate} from '../types.js';
+import type {Predicate} from '../types.js';
 import {useUpdateEffect} from '../useUpdateEffect/index.js';
 import {isStrictEqual} from '../util/const.js';
 
@@ -14,10 +14,7 @@ import {isStrictEqual} from '../util/const.js';
  * @param predicate Optional predicate to determine if the value is distinct. If not provided,
  * the value will be updated if it is strictly equal (`===`) to the previous value.
  */
-export function usePreviousDistinct<T>(
-	value: T,
-	predicate: Predicate = isStrictEqual,
-): T | undefined {
+export function usePreviousDistinct<T>(value: T, predicate: Predicate = isStrictEqual): T | undefined {
 	const [previousState, setPreviousState] = useState<T>();
 	const currentRef = useRef<T>(value);
 

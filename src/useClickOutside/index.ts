@@ -1,4 +1,5 @@
-import {type MutableRefObject, type RefObject, useEffect} from 'react';
+import type {RefObject} from 'react';
+import {useEffect} from 'react';
 import {useSyncedRef} from '../useSyncedRef/index.js';
 import {off, on} from '../util/misc.js';
 
@@ -13,7 +14,7 @@ const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
  * 'mousedown', 'touchstart'
  */
 export function useClickOutside<T extends HTMLElement>(
-	ref: RefObject<T | null> | MutableRefObject<T | null>,
+	ref: RefObject<T | null>,
 	callback: EventListener,
 	events: string[] = DEFAULT_EVENTS,
 ): void {
@@ -29,10 +30,8 @@ export function useClickOutside<T extends HTMLElement>(
 			const {target: evtTarget} = event;
 			const cb = cbRef.current;
 
-			if (
-				!evtTarget ||
-				(Boolean(evtTarget) && !refRef.current.current.contains(evtTarget as Node))
-			) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+			if (!evtTarget || (Boolean(evtTarget) && !refRef.current.current.contains(evtTarget as Node))) {
 				cb.call(this, event);
 			}
 		}

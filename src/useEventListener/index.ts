@@ -1,4 +1,5 @@
-import {type RefObject, useEffect, useMemo} from 'react';
+import type {RefObject} from 'react';
+import {useEffect, useMemo} from 'react';
 import {useIsMounted} from '../useIsMounted/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
 import {hasOwnProperty, off, on} from '../util/misc.js';
@@ -22,9 +23,9 @@ export function useEventListener<T extends EventTarget>(
 	const listenerRef = useSyncedRef(params[1]);
 	const eventListener = useMemo<EventListener>(
 		() =>
-		// As some event listeners designed to be used through `this`
-		// it is better to make listener a conventional function as it
-		// infers call context
+			// As some event listeners designed to be used through `this`
+			// it is better to make listener a conventional function as it
+			// infers call context
 
 			function (this: T, ...args) {
 				if (!isMounted()) {

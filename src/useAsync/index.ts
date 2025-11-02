@@ -5,25 +5,25 @@ export type AsyncStatus = 'loading' | 'success' | 'error' | 'not-executed';
 
 export type AsyncState<Result> =
 	| {
-		status: 'not-executed';
-		error: undefined;
-		result: Result;
-	}
+			status: 'not-executed';
+			error: undefined;
+			result: Result;
+	  }
 	| {
-		status: 'success';
-		error: undefined;
-		result: Result;
-	}
+			status: 'success';
+			error: undefined;
+			result: Result;
+	  }
 	| {
-		status: 'error';
-		error: Error;
-		result: Result;
-	}
+			status: 'error';
+			error: Error;
+			result: Result;
+	  }
 	| {
-		status: AsyncStatus;
-		error: Error | undefined;
-		result: Result;
-	};
+			status: AsyncStatus;
+			error: Error | undefined;
+			result: Result;
+	  };
 
 export type UseAsyncActions<Result, Args extends unknown[] = unknown[]> = {
 	/**
@@ -49,11 +49,11 @@ export type UseAsyncMeta<Result, Args extends unknown[] = unknown[]> = {
 
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: Args) => Promise<Result>,
-	initialValue: Result
+	initialValue: Result,
 ): [AsyncState<Result>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 export function useAsync<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: Args) => Promise<Result>,
-	initialValue?: Result
+	initialValue?: Result,
 ): [AsyncState<Result | undefined>, UseAsyncActions<Result, Args>, UseAsyncMeta<Result, Args>];
 
 /**
@@ -76,21 +76,22 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 	const argsRef = useRef<Args>(undefined);
 
 	const methods = useSyncedRef({
-		execute(...params: Args) {
+		async execute(...params: Args) {
 			argsRef.current = params;
 			const promise = asyncFn(...params);
 			promiseRef.current = promise;
 
-			setState(s => ({...s, status: 'loading'}));
+			setState((s) => ({...s, status: 'loading'}));
 
-			// eslint-disable-next-line promise/catch-or-return
+			// eslint-disable-next-line promise/catch-or-return, promise/prefer-await-to-then
 			promise.then(
 				(result) => {
 					// We dont want to handle result/error of non-latest function
 					// this approach helps to avoid race conditions
 
+					// eslint-disable-next-line promise/always-return
 					if (promise === promiseRef.current) {
-						setState(s => ({...s, status: 'success', error: undefined, result}));
+						setState((s) => ({...s, status: 'success', error: undefined, result}));
 					}
 				},
 				// eslint-disable-next-line @typescript-eslint/use-unknown-in-catch-callback-variable
@@ -98,7 +99,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 					// We don't want to handle result/error of non-latest function
 					// this approach helps to avoid race conditions
 					if (promise === promiseRef.current) {
-						setState(previousState => ({...previousState, status: 'error', error}));
+						setState((previousState) => ({...previousState, status: 'error', error}));
 					}
 				},
 			);
@@ -123,7 +124,7 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 				reset() {
 					methods.current.reset();
 				},
-				execute: (...params: Args) => methods.current.execute(...params),
+				execute: async (...params: Args) => methods.current.execute(...params),
 			}),
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			[],

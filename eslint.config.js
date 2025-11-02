@@ -1,8 +1,4 @@
-import baseConfig from '@react-hookz/eslint-config/base.js';
-import mdConfig from '@react-hookz/eslint-config/md.js';
-import reactConfig from '@react-hookz/eslint-config/react.js';
-import typescriptConfig from '@react-hookz/eslint-config/typescript.js';
-import vitestConfig from '@react-hookz/eslint-config/vitest.js';
+import {buildConfig} from '@ver0/eslint-config';
 
 /** @typedef {import('eslint').Linter} Linter */
 /** @type {Linter.Config[]} */
@@ -10,11 +6,39 @@ const config = [
 	{
 		ignores: ['.idea', 'node_modules', 'dist', 'coverage', 'CHANGELOG.md'],
 	},
-	...baseConfig,
-	...reactConfig,
-	...mdConfig,
-	...typescriptConfig,
-	...vitestConfig,
+	...buildConfig({
+		globals: 'browser',
+		prettier: true,
+		typescript: true,
+		json: true,
+		markdown: true,
+		react: true,
+		vitest: true,
+	}),
+	{
+		files: ['**/*.test.ts'],
+		rules: {
+			'@typescript-eslint/no-empty-function': 'off',
+			'vitest/expect-expect': [
+				'error',
+				{
+					assertFunctionNames: ['expect', 'expectResultValue'],
+				},
+			],
+		},
+	},
+	{
+		files: ['**/*.md'],
+		rules: {
+			'markdown/no-missing-label-refs': 'off',
+		},
+	},
+	{
+		files: ['README.md'],
+		rules: {
+			'markdown/heading-increment': 'off',
+		},
+	},
 	{
 		files: ['**/*.ts'],
 		rules: {

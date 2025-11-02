@@ -15,35 +15,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: 'yarn'
 
       - name: "Install dependencies"
         run: yarn install --immutable
 
       - name: "Lint"
-        run: yarn lint -f @react-hookz/gha
+        run: yarn lint -f @ver0/gha
 
   build:
     name: "Build"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: 'yarn'
 
       - name: "Install dependencies"
@@ -57,14 +57,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: 'yarn'
 
       - name: "Install dependencies"
@@ -110,21 +110,18 @@ jobs:
       new-release-published: ${{ steps.release.outputs.new-release-published }}
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: "master"
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: "disable postinstall"
-        run: yarn pinst --disable
 
       - name: "Build"
         run: yarn build

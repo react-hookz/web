@@ -1,4 +1,5 @@
-import {type RefObject, useEffect} from 'react';
+import type {RefObject} from 'react';
+import {useEffect} from 'react';
 import {useSyncedRef} from '../useSyncedRef/index.js';
 import {isBrowser} from '../util/const.js';
 

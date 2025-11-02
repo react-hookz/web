@@ -9,8 +9,9 @@
 ## Checklist
 
 - [ ] Have you read the [contribution guidelines](../../CONTRIBUTING.md)?
-- [ ] If you are porting a hook from `react-use`, have you checked #33 and the [migration guide](../../src/__docs__/migrating-from-react-use.story.mdx)
-      to confirm that the hook has been approved for porting?
+- [ ] If you are porting a hook from `react-use`, have you checked #33 and the
+      [migration guide](../../src/__docs__/migrating-from-react-use.story.mdx) to confirm that the hook has been
+      approved for porting?
 - [ ] Does the code have comments in hard-to-understand areas?
 - [ ] Is there an existing issue for this PR?
   - _link issue here_

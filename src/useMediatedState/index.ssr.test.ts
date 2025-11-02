@@ -1,25 +1,31 @@
-import {renderHook} from '@testing-library/react-hooks/server';
+import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useMediatedState} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useMediatedState', () => {
 	it('should be defined', () => {
 		expect(useMediatedState).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useMediatedState());
+	it('should render', async () => {
+		const {result} = await renderHook(() => useMediatedState());
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should return initial state on first mount', () => {
-		const {result} = renderHook(() => useMediatedState(123));
+	it('should return initial state on first mount', async () => {
+		const {result} = await renderHook(() => useMediatedState(123));
+		expect(result.error).toBeUndefined();
 
-		expect(result.current[0]).toBe(123);
+		const value = expectResultValue(result);
+		expect(value[0]).toBe(123);
 
-		const {result: result2} = renderHook(() =>
-			useMediatedState(123, (value: string) => Number.parseInt(value, 10)));
+		const {result: result2} = await renderHook(() =>
+			useMediatedState(123, (value: string) => Number.parseInt(value, 10)),
+		);
+		expect(result2.error).toBeUndefined();
 
-		expect(result2.current[0]).toBe(123);
+		const value2 = expectResultValue(result2);
+		expect(value2[0]).toBe(123);
 	});
 });

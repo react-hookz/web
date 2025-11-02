@@ -1,6 +1,7 @@
-import {act, renderHook} from '@testing-library/react-hooks/dom';
+import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useDebouncedState} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useDebouncedState', () => {
 	beforeAll(() => {
@@ -15,29 +16,32 @@ describe('useDebouncedState', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useDebouncedState).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useDebouncedState(undefined, 200));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useDebouncedState(undefined, 200));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should debounce state set', () => {
-		const {result} = renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
+	it('should debounce state set', async () => {
+		const {result} = await renderHook(() => useDebouncedState<string | undefined>(undefined, 200));
+		let value = expectResultValue(result);
 
-		expect(result.current[0]).toBe(undefined);
-		result.current[1]('Hello world!');
+		expect(value[0]).toBe(undefined);
+		value[1]('Hello world!');
 
-		act(() => {
+		await act(async () => {
 			vi.advanceTimersByTime(199);
 		});
-		expect(result.current[0]).toBe(undefined);
+		value = expectResultValue(result);
+		expect(value[0]).toBe(undefined);
 
-		act(() => {
+		await act(async () => {
 			vi.advanceTimersByTime(1);
 		});
-		expect(result.current[0]).toBe('Hello world!');
+		value = expectResultValue(result);
+		expect(value[0]).toBe('Hello world!');
 	});
 });

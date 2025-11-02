@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
 import {useDebouncedEffect} from '../index.js';
 
@@ -15,21 +15,21 @@ describe('useDebouncedEffect', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useDebouncedEffect).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useDebouncedEffect(() => {}, [], 200);
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should call effect only after delay', () => {
+	it('should call effect only after delay', async () => {
 		const spy = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useDebouncedEffect(spy, [], 200);
 		});
 		expect(spy).not.toHaveBeenCalled();

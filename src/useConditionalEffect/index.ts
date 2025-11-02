@@ -1,7 +1,8 @@
-import {type DependencyList, useEffect} from 'react';
-import {type ConditionsList, type ConditionsPredicate} from '../types.js';
+import type {DependencyList} from 'react';
+import {useEffect} from 'react';
+import type {ConditionsList, ConditionsPredicate} from '../types.js';
 import {truthyAndArrayPredicate} from '../util/const.js';
-import {type EffectCallback, type EffectHook} from '../util/misc.js';
+import type {EffectCallback, EffectHook} from '../util/misc.js';
 
 /**
  * Like `useEffect` but its callback is invoked only if all given conditions match a given predicate.
@@ -35,6 +36,7 @@ export function useConditionalEffect<
 	...effectHookRestArgs: R
 ): void {
 	effectHook(
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		(() => {
 			if (predicate(conditions)) {
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-return

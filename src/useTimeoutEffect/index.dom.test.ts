@@ -1,6 +1,8 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
+import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useTimeoutEffect} from '../index.js';
+import {noop} from '../util/const.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useTimeoutEffect', () => {
 	beforeAll(() => {
@@ -15,18 +17,18 @@ describe('useTimeoutEffect', () => {
 		vi.useRealTimers();
 	});
 
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useTimeoutEffect).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => useTimeoutEffect(() => {}, 123));
+	it('should render', async () => {
+		const {result} = await renderHook(() => useTimeoutEffect(() => {}, 123));
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should set and call function after timeout', () => {
+	it('should set and call function after timeout', async () => {
 		const spy = vi.fn();
-		renderHook(() => useTimeoutEffect(spy, 100));
+		await renderHook(() => useTimeoutEffect(spy, 100));
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
@@ -35,27 +37,27 @@ describe('useTimeoutEffect', () => {
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should set timeout and cancel on unmount', () => {
+	it('should set timeout and cancel on unmount', async () => {
 		const spy = vi.fn();
-		const {unmount} = renderHook(() => useTimeoutEffect(spy, 100));
+		const {unmount} = await renderHook(() => useTimeoutEffect(spy, 100));
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
-		unmount();
+		await unmount();
 		vi.advanceTimersByTime(1);
 		expect(spy).not.toHaveBeenCalled();
 	});
 
-	it('should reset timeout in delay change', () => {
+	it('should reset timeout in delay change', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook(({delay}) => useTimeoutEffect(spy, delay), {
+		const {rerender} = await renderHook(({delay}) => useTimeoutEffect(spy, delay), {
 			initialProps: {delay: 100},
 		});
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
-		rerender({delay: 50});
+		await rerender({delay: 50});
 		vi.advanceTimersByTime(49);
 		expect(spy).not.toHaveBeenCalled();
 
@@ -63,71 +65,67 @@ describe('useTimeoutEffect', () => {
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should not reset timeout in callback change', () => {
+	it('should not reset timeout in callback change', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook<{callback: () => void}, void>(
-			({callback}) => useTimeoutEffect(callback, 100),
-		{
+		const {rerender} = await renderHook<{callback: () => void}, void>(({callback}) => useTimeoutEffect(callback, 100), {
 			initialProps: {
-				callback() {},
+				callback: noop,
 			},
-		},
-		);
+		});
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-		rerender({callback: () => spy()});
+		await rerender({callback: () => spy()});
 		vi.advanceTimersByTime(1);
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should cancel timeout if delay is undefined', () => {
+	it('should cancel timeout if delay is undefined', async () => {
 		const spy = vi.fn();
-		const {rerender} = renderHook<{delay: number | undefined}, void>(
-			({delay}) => useTimeoutEffect(spy, delay),
-			{
-				initialProps: {delay: 100},
-			},
-		);
+		const {rerender} = await renderHook<{delay: number | undefined}, void>(({delay}) => useTimeoutEffect(spy, delay), {
+			initialProps: {delay: 100},
+		});
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
-		rerender({delay: undefined});
+		await rerender({delay: undefined});
 		vi.advanceTimersByTime(2000);
 		expect(spy).not.toHaveBeenCalled();
 	});
 
-	it('should not cancel timeout if delay is 0', () => {
+	it('should not cancel timeout if delay is 0', async () => {
 		const spy = vi.fn();
-		renderHook(() => useTimeoutEffect(spy, 0));
+		await renderHook(() => useTimeoutEffect(spy, 0));
 
 		vi.advanceTimersByTime(1);
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should cancel timeout if cancel method is called', () => {
+	it('should cancel timeout if cancel method is called', async () => {
 		const spy = vi.fn();
-		const {result} = renderHook(() => useTimeoutEffect(spy, 100));
+		const {result} = await renderHook(() => useTimeoutEffect(spy, 100));
+		const value = expectResultValue(result);
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
-		result.current[0]();
+		value[0]();
 		vi.advanceTimersByTime(1);
 		expect(spy).not.toHaveBeenCalled();
 	});
 
-	it('should reset timeout if reset method is called', () => {
+	it('should reset timeout if reset method is called', async () => {
 		const spy = vi.fn();
-		const {result} = renderHook(() => useTimeoutEffect(spy, 100));
+		const {result} = await renderHook(() => useTimeoutEffect(spy, 100));
+		const value = expectResultValue(result);
 
 		vi.advanceTimersByTime(99);
 		expect(spy).not.toHaveBeenCalled();
 
-		result.current[1]();
+		value[1]();
 		vi.advanceTimersByTime(1);
 		expect(spy).not.toHaveBeenCalled();
 

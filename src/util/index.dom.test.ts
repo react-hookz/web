@@ -9,6 +9,7 @@ describe('misc', () => {
 			const object = {
 				addEventListener: vi.fn(),
 			};
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 			on(object as unknown as EventTarget, 'evtName', cb);
 			expect(object.addEventListener).toHaveBeenCalledWith('evtName', cb);
 		});
@@ -27,6 +28,7 @@ describe('misc', () => {
 				removeEventListener: vi.fn(),
 			};
 
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 			off(object as unknown as EventTarget, 'evtName', cb);
 			expect(object.removeEventListener).toHaveBeenCalledWith('evtName', cb);
 		});

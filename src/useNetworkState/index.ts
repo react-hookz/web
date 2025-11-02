@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {isBrowser} from '../util/const.js';
 import {off, on} from '../util/misc.js';
-import {type InitialState} from '../util/resolve-hook-state.js';
+import type {InitialState} from '../util/resolve-hook-state.js';
 
 export type NetworkInformation = {
 	readonly downlink: number;
@@ -9,15 +9,7 @@ export type NetworkInformation = {
 	readonly effectiveType: 'slow-2g' | '2g' | '3g' | '4g';
 	readonly rtt: number;
 	readonly saveData: boolean;
-	readonly type:
-		| 'bluetooth'
-		| 'cellular'
-		| 'ethernet'
-		| 'none'
-		| 'wifi'
-		| 'wimax'
-		| 'other'
-		| 'unknown';
+	readonly type: 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown';
 } & EventTarget;
 
 export type UseNetworkState = {

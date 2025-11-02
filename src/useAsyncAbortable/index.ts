@@ -1,10 +1,6 @@
 import {useMemo, useRef} from 'react';
-import {
-	type AsyncState,
-	useAsync,
-	type UseAsyncActions,
-	type UseAsyncMeta,
-} from '../useAsync/index.js';
+import type {AsyncState, UseAsyncActions, UseAsyncMeta} from '../useAsync/index.js';
+import {useAsync} from '../useAsync/index.js';
 
 export type UseAsyncAbortableActions<Result, Args extends unknown[] = unknown[]> = {
 	/**
@@ -29,20 +25,12 @@ export type ArgsWithAbortSignal<Args extends unknown[] = unknown[]> = [AbortSign
 
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
-	initialValue: Result
-): [
-	AsyncState<Result>,
-	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>,
-];
+	initialValue: Result,
+): [AsyncState<Result>, UseAsyncAbortableActions<Result, Args>, UseAsyncAbortableMeta<Result, Args>];
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
-	initialValue?: Result
-): [
-	AsyncState<Result | undefined>,
-	UseAsyncAbortableActions<Result, Args>,
-	UseAsyncAbortableMeta<Result, Args>,
-];
+	initialValue?: Result,
+): [AsyncState<Result | undefined>, UseAsyncAbortableActions<Result, Args>, UseAsyncAbortableMeta<Result, Args>];
 
 /**
  * Like `useAsync`, but also provides `AbortSignal` as the first argument to the async function.
@@ -54,11 +42,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 	asyncFn: (...params: ArgsWithAbortSignal<Args>) => Promise<Result>,
 	initialValue?: Result,
-): [
-		AsyncState<Result | undefined>,
-		UseAsyncAbortableActions<Result, Args>,
-		UseAsyncAbortableMeta<Result, Args>,
-	] {
+): [AsyncState<Result | undefined>, UseAsyncAbortableActions<Result, Args>, UseAsyncAbortableMeta<Result, Args>] {
 	const abortController = useRef<AbortController>(undefined);
 
 	const fn = async (...args: Args): Promise<Result> => {
@@ -70,6 +54,7 @@ export function useAsyncAbortable<Result, Args extends unknown[] = unknown[]>(
 		abortController.current = ac;
 
 		// Pass down abort signal and received arguments
+		// eslint-disable-next-line promise/prefer-await-to-then
 		return asyncFn(ac.signal, ...args).finally(() => {
 			// Unset ref uf the call is last
 			if (abortController.current === ac) {

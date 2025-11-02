@@ -1,37 +1,36 @@
-import {renderHook} from '@testing-library/react-hooks/dom';
-import {type MutableRefObject} from 'react';
+import {renderHook} from '@ver0/react-hooks-testing';
+import type {RefObject} from 'react';
 import {describe, expect, it, vi} from 'vitest';
 import {useClickOutside} from '../index.js';
 
 describe('useClickOutside', () => {
-	it('should be defined', () => {
+	it('should be defined', async () => {
 		expect(useClickOutside).toBeDefined();
 	});
 
-	it('should render', () => {
-		const {result} = renderHook(() => {
+	it('should render', async () => {
+		const {result} = await renderHook(() => {
 			useClickOutside({current: null}, () => {});
 		});
 		expect(result.error).toBeUndefined();
 	});
 
-	it('should bind document listener on mount and unbind on unmount', () => {
+	it('should bind document listener on mount and unbind on unmount', async () => {
 		const div = document.createElement('div');
 		const addSpy = vi.spyOn(document, 'addEventListener');
 		const removeSpy = vi.spyOn(document, 'removeEventListener');
 
-		const {rerender, unmount} = renderHook(() => {
+		const {rerender, unmount} = await renderHook(() => {
 			useClickOutside({current: div}, () => {});
 		});
 
 		expect(addSpy).toHaveBeenCalledTimes(2);
 		expect(removeSpy).toHaveBeenCalledTimes(0);
-
-		rerender();
+		await rerender();
 		expect(addSpy).toHaveBeenCalledTimes(2);
 		expect(removeSpy).toHaveBeenCalledTimes(0);
 
-		unmount();
+		await unmount();
 		expect(addSpy).toHaveBeenCalledTimes(2);
 		expect(removeSpy).toHaveBeenCalledTimes(2);
 
@@ -39,19 +38,19 @@ describe('useClickOutside', () => {
 		removeSpy.mockRestore();
 	});
 
-	it('should bind any events passed as 3rd parameter', () => {
+	it('should bind any events passed as 3rd parameter', async () => {
 		const div = document.createElement('div');
 		const addSpy = vi.spyOn(document, 'addEventListener');
 		const removeSpy = vi.spyOn(document, 'removeEventListener');
 
-		const {unmount} = renderHook(() => {
+		const {unmount} = await renderHook(() => {
 			useClickOutside({current: div}, () => {}, ['click']);
 		});
 
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(0);
 
-		unmount();
+		await unmount();
 		expect(addSpy).toHaveBeenCalledTimes(1);
 		expect(removeSpy).toHaveBeenCalledTimes(1);
 
@@ -59,12 +58,12 @@ describe('useClickOutside', () => {
 		removeSpy.mockRestore();
 	});
 
-	it('should invoke callback if event target is not a child of target', () => {
+	it('should invoke callback if event target is not a child of target', async () => {
 		const div = document.createElement('div');
 		const div2 = document.createElement('div2');
 		const spy = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useClickOutside({current: div}, spy);
 		});
 
@@ -74,12 +73,12 @@ describe('useClickOutside', () => {
 		expect(spy).toHaveBeenCalledTimes(1);
 	});
 
-	it('should not execute callback if event target is a child of target', () => {
+	it('should not execute callback if event target is a child of target', async () => {
 		const div = document.createElement('div');
 		const div2 = document.createElement('div2');
 		const spy = vi.fn();
 
-		renderHook(() => {
+		await renderHook(() => {
 			useClickOutside({current: div}, spy);
 		});
 
@@ -90,13 +89,13 @@ describe('useClickOutside', () => {
 		expect(spy).not.toHaveBeenCalled();
 	});
 
-	it('should not execute callback if target is unmounted', () => {
+	it('should not execute callback if target is unmounted', async () => {
 		const div = document.createElement('div');
 		const div2 = document.createElement('div2');
 		const spy = vi.fn();
-		const ref: MutableRefObject<HTMLDivElement | null> = {current: div};
+		const ref: RefObject<HTMLDivElement | null> = {current: div};
 
-		const {rerender} = renderHook(() => {
+		const {rerender} = await renderHook(() => {
 			useClickOutside(ref, spy);
 		});
 
@@ -104,7 +103,7 @@ describe('useClickOutside', () => {
 		div.append(div2);
 
 		ref.current = null;
-		rerender();
+		await rerender();
 
 		div2.dispatchEvent(new Event('mousedown', {bubbles: true}));
 		expect(spy).not.toHaveBeenCalled();
