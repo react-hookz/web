@@ -27,7 +27,7 @@ export type UseBatteryState = BatteryState & {
 	 */
 	isSupported: boolean;
 	/**
-	 * Whether the battery state is currently being fetched.
+	 * Whether the battery state has been fetched.
 	 */
 	fetched: boolean;
 };
@@ -96,25 +96,43 @@ export function useBattery(): UseBatteryState {
 		}
 
 		let battery: BatteryManager | null = null;
+		let mounted = true;
 
 		const handleChange = () => {
-			if (battery) {
+			if (battery && mounted) {
 				setState(getBatteryState(battery));
 			}
 		};
 
-		// eslint-disable-next-line @typescript-eslint/no-floating-promises,promise/catch-or-return,promise/prefer-await-to-then,promise/always-return
-		nav.getBattery().then((b) => {
-			battery = b;
-			setState(getBatteryState(battery));
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises,promise/prefer-await-to-then,promise/always-return
+		nav
+			.getBattery()
+			.then((b) => {
+				if (!mounted) {
+					return;
+				}
 
-			on(battery, 'chargingchange', handleChange);
-			on(battery, 'chargingtimechange', handleChange);
-			on(battery, 'dischargingtimechange', handleChange);
-			on(battery, 'levelchange', handleChange);
-		});
+				battery = b;
+				setState(getBatteryState(battery));
+
+				on(battery, 'chargingchange', handleChange);
+				on(battery, 'chargingtimechange', handleChange);
+				on(battery, 'dischargingtimechange', handleChange);
+				on(battery, 'levelchange', handleChange);
+			})
+			.catch((error) => {
+				// Gracefully handle getBattery() rejections to avoid unhandled promise rejections
+				if (process.env.NODE_ENV !== 'production') {
+					// eslint-disable-next-line no-console
+					console.error('Failed to get battery status:', error);
+				}
+				if (mounted) {
+					setState(getBatteryState(null));
+				}
+			});
 
 		return () => {
+			mounted = false;
 			if (battery) {
 				off(battery, 'chargingchange', handleChange);
 				off(battery, 'chargingtimechange', handleChange);
