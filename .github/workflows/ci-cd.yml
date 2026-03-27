@@ -74,7 +74,7 @@ jobs:
         run:  yarn test:coverage --reporter='github-actions' --reporter='junit' --outputFile='./coverage/test-report.junit.xml' --reporter=default
 
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/test-report.junit.xml
