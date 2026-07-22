@@ -6,7 +6,7 @@ export function on<T extends EventTarget>(
 	...args: Parameters<T['addEventListener']> | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-	object?.addEventListener?.(...(args as Parameters<HTMLElement['addEventListener']>));
+	object?.addEventListener(...(args as Parameters<HTMLElement['addEventListener']>));
 }
 
 export function off<T extends EventTarget>(
@@ -16,7 +16,7 @@ export function off<T extends EventTarget>(
 		| [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-	object?.removeEventListener?.(...(args as Parameters<HTMLElement['removeEventListener']>));
+	object?.removeEventListener(...(args as Parameters<HTMLElement['removeEventListener']>));
 }
 
 export const hasOwnProperty = <T extends Record<string | number | symbol, any>, K extends string | number | symbol>(
