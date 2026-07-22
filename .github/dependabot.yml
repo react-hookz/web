@@ -6,6 +6,12 @@ updates:
       interval: daily
       time: "00:00"
       timezone: "Etc/UTC"
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   - package-ecosystem: npm
     directory: /
@@ -15,6 +21,14 @@ updates:
       timezone: "Etc/UTC"
     rebase-strategy: auto
     versioning-strategy: increase
+    cooldown:
+      default-days: 3
     commit-message:
       prefix: "fix(deps)"
       prefix-development: "chore(deps)"
+    groups:
+      dev-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
