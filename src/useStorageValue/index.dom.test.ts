@@ -282,24 +282,24 @@ describe('useStorageValue', () => {
 
 	describe('should handle window`s `storage` event', () => {
 		it('should update state if tracked key is updated', async () => {
-			const {result} = await renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const {result} = await renderHook(() => useStorageValue<string>(globalThis.localStorage, 'foo'));
 			let value = expectResultValue(result);
 			expect(value.value).toBe(null);
 
-			localStorage.setItem('foo', 'bar');
+			globalThis.localStorage.setItem('foo', 'bar');
 			await act(async () => {
 				globalThis.dispatchEvent(
-					new StorageEvent('storage', {key: 'foo', storageArea: localStorage, newValue: '"foo"'}),
+					new StorageEvent('storage', {key: 'foo', storageArea: globalThis.localStorage, newValue: '"foo"'}),
 				);
 			});
 
 			value = expectResultValue(result);
 			expect(value.value).toBe('foo');
-			localStorage.removeItem('foo');
+			globalThis.localStorage.removeItem('foo');
 		});
 
 		it('should not update data on event storage or key mismatch', async () => {
-			const {result} = await renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const {result} = await renderHook(() => useStorageValue<string>(globalThis.localStorage, 'foo'));
 			let value = expectResultValue(result);
 			expect(value.value).toBe(null);
 
@@ -307,7 +307,7 @@ describe('useStorageValue', () => {
 				globalThis.dispatchEvent(
 					new StorageEvent('storage', {
 						key: 'foo',
-						storageArea: sessionStorage,
+						storageArea: globalThis.sessionStorage,
 						newValue: '"foo"',
 					}),
 				);
@@ -319,7 +319,7 @@ describe('useStorageValue', () => {
 				globalThis.dispatchEvent(
 					new StorageEvent('storage', {
 						key: 'bar',
-						storageArea: localStorage,
+						storageArea: globalThis.localStorage,
 						newValue: 'foo',
 					}),
 				);
@@ -327,14 +327,14 @@ describe('useStorageValue', () => {
 			value = expectResultValue(result);
 			expect(value.value).toBe(null);
 
-			localStorage.removeItem('foo');
+			globalThis.localStorage.removeItem('foo');
 		});
 	});
 
 	describe('synchronisation', () => {
 		it('should update state of all hooks with the same key in same storage', async () => {
-			const hook1 = await renderHook(() => useStorageValue<string>(localStorage, 'foo'));
-			const hook2 = await renderHook(() => useStorageValue<string>(localStorage, 'foo'));
+			const hook1 = await renderHook(() => useStorageValue<string>(globalThis.localStorage, 'foo'));
+			const hook2 = await renderHook(() => useStorageValue<string>(globalThis.localStorage, 'foo'));
 
 			let value1 = expectResultValue(hook1.result);
 			let value2 = expectResultValue(hook2.result);
@@ -357,7 +357,7 @@ describe('useStorageValue', () => {
 			expect(value1.value).toBe(null);
 			expect(value2.value).toBe(null);
 
-			localStorage.setItem('foo', '"123"');
+			globalThis.localStorage.setItem('foo', '"123"');
 			await act(async () => {
 				value1.fetch();
 			});
@@ -365,7 +365,7 @@ describe('useStorageValue', () => {
 			value2 = expectResultValue(hook2.result);
 			expect(value1.value).toBe('123');
 			expect(value2.value).toBe('123');
-			localStorage.removeItem('foo');
+			globalThis.localStorage.removeItem('foo');
 		});
 	});
 });
