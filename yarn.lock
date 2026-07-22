@@ -1230,7 +1230,7 @@ __metadata:
     "@types/node": "npm:^25.6.0"
     "@types/react": "npm:^19.2.0"
     "@types/react-dom": "npm:^19.2.0"
-    "@ver0/deep-equal": "npm:^1.0.0"
+    "@ver0/deep-equal": "npm:^2.0.1"
     "@ver0/eslint-config": "npm:^1.3.6"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
     "@ver0/react-hooks-testing": "npm:^1.0.3"
@@ -1869,10 +1869,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ver0/deep-equal@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@ver0/deep-equal@npm:1.0.0"
-  checksum: 10c0/027a83b454a3f4790e0230537598104283745688c32155f4214526bc47d263ccb0f15f3e37d5663df7931e6542db6a999d128a8c4acf81101815386a5252813c
+"@ver0/deep-equal@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@ver0/deep-equal@npm:2.0.1"
+  checksum: 10c0/facef07505868c12a357fb4f9a73595426b9ba554ffb9a19d03e5cf6fd9560c8956683aadbee5e8e7a02116d7c329ca8144a44337a4818af9a7d5ad6cb7e568a
   languageName: node
   linkType: hard
 
