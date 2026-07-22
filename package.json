@@ -44,7 +44,7 @@
 		"test:coverage": "vitest --run --coverage"
 	},
 	"dependencies": {
-		"@ver0/deep-equal": "^1.0.0"
+		"@ver0/deep-equal": "^2.0.1"
 	},
 	"peerDependencies": {
 		"js-cookie": "^3.0.5",
