@@ -9,7 +9,7 @@ describe('usePermission', () => {
 			new Promise((resolve) => {
 				setTimeout(() => {
 					// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-					resolve({state: 'prompt'} as PermissionStatus);
+					resolve({state: 'prompt', addEventListener() {}, removeEventListener() {}} as PermissionStatus);
 				}, 1);
 			}),
 	);
@@ -79,6 +79,7 @@ describe('usePermission', () => {
 								// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
 								setTimeout(() => listener(), 1);
 							},
+							removeEventListener() {},
 						};
 
 						resolve(status);
