@@ -4,15 +4,21 @@ import {useIntersectionObserver} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useIntersectionObserver', () => {
-	const IntersectionObserverMock = vi.fn((_cb: (entries: IntersectionObserverEntry[]) => void) => ({
-		observe: vi.fn(),
-		unobserve: vi.fn(),
-		disconnect: vi.fn(),
-		takeRecords: () => [],
-		root: document,
-		rootMargin: '0px',
-		thresholds: [0],
-	}));
+	// A function declaration keeps the mock constructable -- vitest 4 mocks
+	// with arrow implementations cannot be called with `new`.
+	function intersectionObserverMock(_cb: (entries: IntersectionObserverEntry[]) => void) {
+		return {
+			observe: vi.fn(),
+			unobserve: vi.fn(),
+			disconnect: vi.fn(),
+			takeRecords: () => [],
+			root: document,
+			rootMargin: '0px',
+			thresholds: [0],
+		};
+	}
+
+	const IntersectionObserverMock = vi.fn(intersectionObserverMock);
 	vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 
 	beforeEach(() => {
