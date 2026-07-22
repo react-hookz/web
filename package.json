@@ -67,7 +67,7 @@
 		"@ver0/eslint-formatter-gha": "^1.0.1",
 		"@ver0/react-hooks-testing": "^1.0.3",
 		"@vitest/coverage-v8": "^4.1.10",
-		"eslint": "^9.37.0",
+		"eslint": "^10.7.0",
 		"js-cookie": "^3.0.8",
 		"jsdom": "^29.1.1",
 		"react": "^19.2.8",
