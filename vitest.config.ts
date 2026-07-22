@@ -3,7 +3,11 @@ import {defineConfig} from 'vitest/config';
 export default defineConfig({
 	test: {
 		dir: './src',
-		setupFiles: ['./src/util/testing/setup/react-hooks.test.ts', './src/util/testing/setup/vibrate.test.ts'],
+		setupFiles: [
+			'./src/util/testing/setup/react-hooks.test.ts',
+			'./src/util/testing/setup/vibrate.test.ts',
+			'./src/util/testing/setup/battery.test.ts',
+		],
 		passWithNoTests: true,
 		projects: [
 			{

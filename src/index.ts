@@ -41,6 +41,7 @@ export * from './useThrottledState/index.js';
 export * from './useValidator/index.js';
 
 // Navigator
+export * from './useBattery/index.js';
 export * from './useNetworkState/index.js';
 export * from './usePermission/index.js';
 export * from './useVibrate/index.js';
