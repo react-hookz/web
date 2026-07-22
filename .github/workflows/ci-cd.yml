@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: 'yarn'
@@ -36,12 +36,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: 'yarn'
@@ -57,12 +57,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: 'yarn'
@@ -74,7 +74,7 @@ jobs:
         run:  yarn test:coverage --reporter='github-actions' --reporter='junit' --outputFile='./coverage/test-report.junit.xml' --reporter=default
 
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/test-report.junit.xml
@@ -82,7 +82,7 @@ jobs:
 
       - name: "Upload test results to Codecov"
         if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/test-results-action@0fa95f0e1eeaafde2c782583b36b28ad0d8c77d3 # v1.2.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/test-report.junit.xml
@@ -97,7 +97,7 @@ jobs:
     needs: [ "test", "build", "lint" ]
     if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3
+      - uses: fastify/github-action-merge-dependabot@73ec4cbb5e56df5591eae286972d5b2201ffe90f # v3.15.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -110,12 +110,12 @@ jobs:
       new-release-published: ${{ steps.release.outputs.new-release-published }}
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: "master"
       - name: 'Enable corepack'
         run: corepack enable
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: 'yarn'
@@ -141,7 +141,7 @@ jobs:
       contents: write
     steps:
       - name: Contribute List
-        uses: akhilmhdh/contributors-readme-action@v2.3.11
+        uses: akhilmhdh/contributors-readme-action@83ea0b4f1ac928fbfe88b9e8460a932a528eb79f # v2.3.11
         with:
           image_size: 100
           columns_per_row: 8
