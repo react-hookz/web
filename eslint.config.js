@@ -4,7 +4,7 @@ import {buildConfig} from '@ver0/eslint-config';
 /** @type {Linter.Config[]} */
 const config = [
 	{
-		ignores: ['.idea', 'node_modules', 'dist', 'coverage', 'CHANGELOG.md'],
+		ignores: ['.claude', '.idea', 'node_modules', 'dist', 'coverage', 'CHANGELOG.md'],
 	},
 	...buildConfig({
 		globals: 'browser',
