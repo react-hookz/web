@@ -66,12 +66,10 @@ export type UseNetworkState = {
 	type: NetworkInformation['type'] | undefined;
 };
 
-type NavigatorWithConnection = Navigator &
-	Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', NetworkInformation>>;
+type NavigatorWithConnection = Navigator & {connection?: NetworkInformation};
 const navigator = isBrowser ? (globalThis.navigator as NavigatorWithConnection) : undefined;
 
-const conn: NetworkInformation | undefined =
-	navigator && (navigator.connection ?? navigator.mozConnection ?? navigator.webkitConnection);
+const conn: NetworkInformation | undefined = navigator?.connection;
 
 function getConnectionState(previousState?: UseNetworkState): UseNetworkState {
 	const online = navigator?.onLine;
