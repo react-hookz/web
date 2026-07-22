@@ -242,9 +242,9 @@ export function useStorageValue<
 	// Make actions static so developers can pass methods further
 	const staticActions = useMemo(
 		() => ({
-			set: ((v) => {
+			set(v: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) {
 				actions.current.set(v);
-			}) as typeof actions.current.set,
+			},
 			remove() {
 				actions.current.delete();
 			},

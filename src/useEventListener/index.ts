@@ -14,8 +14,7 @@ import {hasOwnProperty, off, on} from '../util/misc.js';
 export function useEventListener<T extends EventTarget>(
 	target: RefObject<T | null> | T | null,
 	...params:
-		| Parameters<T['addEventListener']>
-		| [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
+		Parameters<T['addEventListener']> | [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
 ): void {
 	const isMounted = useIsMounted();
 

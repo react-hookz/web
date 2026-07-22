@@ -8,8 +8,7 @@ describe('usePermission', () => {
 		async () =>
 			new Promise((resolve) => {
 				setTimeout(() => {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-					resolve({state: 'prompt', addEventListener() {}, removeEventListener() {}} as PermissionStatus);
+					resolve({state: 'prompt', addEventListener() {}, removeEventListener() {}});
 				}, 1);
 			}),
 	);
@@ -68,21 +67,25 @@ describe('usePermission', () => {
 	});
 
 	it('should update hook state on permission state change', async () => {
+		const createStatus = () => {
+			const status = {
+				state: 'prompt',
+				addEventListener(_n: any, listener: any) {
+					status.state = 'granted';
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
+					setTimeout(() => listener(), 1);
+				},
+				removeEventListener() {},
+			};
+
+			return status;
+		};
+
 		querySpy.mockImplementation(
 			async () =>
 				new Promise((resolve) => {
 					setTimeout(() => {
-						const status = {
-							state: 'prompt',
-							addEventListener(_n: any, listener: any) {
-								status.state = 'granted';
-								// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return
-								setTimeout(() => listener(), 1);
-							},
-							removeEventListener() {},
-						};
-
-						resolve(status);
+						resolve(createStatus());
 					}, 1);
 				}),
 		);
