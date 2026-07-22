@@ -1,6 +1,7 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useQueue} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useQueue', () => {
 	it('should be defined', () => {
@@ -14,8 +15,6 @@ describe('useQueue', () => {
 
 	it('should return an object', async () => {
 		const {result} = await renderHook(() => useQueue());
-		if (result.value !== undefined) {
-			expect(result.value).toBeInstanceOf(Object);
-		}
+		expect(expectResultValue(result)).toBeInstanceOf(Object);
 	});
 });

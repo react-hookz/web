@@ -15,10 +15,8 @@ describe('useValidator', () => {
 
 	it('should return undefined validity on first render', async () => {
 		const {result} = await renderHook(() => useValidator(() => ({isValid: true}), []));
-		if (result.value !== undefined) {
-			const value = expectResultValue(result);
-			expect(value[0].isValid).toBeUndefined();
-		}
+		const value = expectResultValue(result);
+		expect(value[0].isValid).toBeUndefined();
 	});
 
 	it('should not call validator on first render', async () => {

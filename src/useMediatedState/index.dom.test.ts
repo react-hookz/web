@@ -42,7 +42,7 @@ describe('useMediatedState', () => {
 
 	it('should pass initial sate through mediator', async () => {
 		const {result} = await renderHook(() =>
-			useMediatedState('a123', (value: string) => value.replaceAll(/[^a-z]+/gi, '')),
+			useMediatedState('a123', (value: string) => value.replaceAll(/[^a-z]+/giv, '')),
 		);
 		const value = expectResultValue(result);
 

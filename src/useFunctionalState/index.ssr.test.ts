@@ -1,6 +1,7 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it} from 'vitest';
 import {useFunctionalState} from '../index.js';
+import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useFunctionalState', () => {
 	it('should be defined', () => {
@@ -14,9 +15,8 @@ describe('useFunctionalState', () => {
 
 	it('should return proper values', async () => {
 		const {result} = await renderHook(() => useFunctionalState(1));
-		if (result.value !== undefined) {
-			expect(result.value[1]).toBeInstanceOf(Function);
-			expect(result.value[0]).toBeInstanceOf(Function);
-		}
+		const value = expectResultValue(result);
+		expect(value[1]).toBeInstanceOf(Function);
+		expect(value[0]).toBeInstanceOf(Function);
 	});
 });

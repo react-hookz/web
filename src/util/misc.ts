@@ -12,8 +12,7 @@ export function on<T extends EventTarget>(
 export function off<T extends EventTarget>(
 	object: T | null,
 	...args:
-		| Parameters<T['removeEventListener']>
-		| [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
+		Parameters<T['removeEventListener']> | [string, EventListenerOrEventListenerObject | CallableFunction, ...any]
 ): void {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 	object?.removeEventListener(...(args as Parameters<HTMLElement['removeEventListener']>));

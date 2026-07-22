@@ -15,6 +15,9 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 	useEffect(() => {
 		const unmount: RefObject<(() => void) | null> = {current: null};
 
+		// Synchronous set is deliberate -- 'requested' must be observable before
+		// the permissions query resolves.
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setState('requested');
 
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises,promise/catch-or-return
