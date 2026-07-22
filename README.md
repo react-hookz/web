@@ -211,14 +211,21 @@ get into your bundle. Direct hook imports should be considered otherwise.
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/lennondotw">
+                    <img src="https://avatars.githubusercontent.com/u/26853900?v=4" width="100;" alt="lennondotw"/>
+                    <br />
+                    <sub><b>Lennon Wang</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
                 <a href="https://github.com/fengkx">
                     <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
                     <br />
                     <sub><b>Fengkx</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/paul-sachs">
                     <img src="https://avatars.githubusercontent.com/u/11449728?v=4" width="100;" alt="paul-sachs"/>
@@ -268,6 +275,8 @@ get into your bundle. Direct hook imports should be considered otherwise.
                     <sub><b>Daniel Friesen</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/ChloeMouret">
                     <img src="https://avatars.githubusercontent.com/u/63965373?v=4" width="100;" alt="ChloeMouret"/>
@@ -275,8 +284,6 @@ get into your bundle. Direct hook imports should be considered otherwise.
                     <sub><b>Null</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/punkle">
                     <img src="https://avatars.githubusercontent.com/u/553697?v=4" width="100;" alt="punkle"/>
