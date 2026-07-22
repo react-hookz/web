@@ -9,11 +9,17 @@ describe('useMeasure', () => {
 	const unobserveSpy = vi.fn();
 	const disconnectSpy = vi.fn();
 
-	const ResizeObserverSpy = vi.fn((_cb: (entries: ResizeObserverEntry[]) => void) => ({
-		observe: observeSpy,
-		unobserve: unobserveSpy,
-		disconnect: disconnectSpy,
-	}));
+	// A function declaration keeps the mock constructable -- vitest 4 mocks
+	// with arrow implementations cannot be called with `new`.
+	function resizeObserverMock(_cb: (entries: ResizeObserverEntry[]) => void) {
+		return {
+			observe: observeSpy,
+			unobserve: unobserveSpy,
+			disconnect: disconnectSpy,
+		};
+	}
+
+	const ResizeObserverSpy = vi.fn(resizeObserverMock);
 	const initialRO = globalThis.ResizeObserver;
 
 	const raf = globalThis.requestAnimationFrame;
