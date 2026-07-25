@@ -41,7 +41,8 @@
 		"lint": "vp lint",
 		"lint:fix": "vp lint --fix",
 		"test": "vp test --run",
-		"test:coverage": "vp test --run --coverage"
+		"test:coverage": "vp test --run --coverage",
+		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@ver0/deep-equal": "^2.0.1"
