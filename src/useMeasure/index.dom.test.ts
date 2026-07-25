@@ -146,4 +146,19 @@ describe('useMeasure', () => {
 		const value = expectResultValue(result);
 		expect(value[0]).toStrictEqual({width: 9, height: 7});
 	});
+
+	it('should observe the requested box model', async () => {
+		const div = document.createElement('div');
+		await renderHook(() => {
+			const measure = useMeasure<HTMLDivElement>(true, borderBoxMeasurer, 'border-box');
+
+			useEffect(() => {
+				measure[1].current = div;
+			});
+
+			return measure;
+		});
+
+		expect(observeSpy).toHaveBeenCalledWith(div, {box: 'border-box'});
+	});
 });
