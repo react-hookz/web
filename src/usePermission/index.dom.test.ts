@@ -8,8 +8,7 @@ describe('usePermission', () => {
 		async () =>
 			new Promise((resolve) => {
 				setTimeout(() => {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
-					resolve({state: 'prompt', addEventListener() {}, removeEventListener() {}} as PermissionStatus);
+					resolve({state: 'prompt', addEventListener() {}, removeEventListener() {}});
 				}, 1);
 			}),
 	);

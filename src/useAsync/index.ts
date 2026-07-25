@@ -85,11 +85,10 @@ export function useAsync<Result, Args extends unknown[] = unknown[]>(
 
 			// eslint-disable-next-line promise/catch-or-return, promise/prefer-await-to-then
 			promise.then(
+				// eslint-disable-next-line promise/always-return
 				(result) => {
 					// We dont want to handle result/error of non-latest function
 					// this approach helps to avoid race conditions
-
-					// eslint-disable-next-line promise/always-return
 					if (promise === promiseRef.current) {
 						setState((s) => ({...s, status: 'success', error: undefined, result}));
 					}

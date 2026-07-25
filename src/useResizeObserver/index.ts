@@ -11,7 +11,7 @@ type ResizeObserverSingleton = {
 	unsubscribe: (target: Element, callback: UseResizeObserverCallback) => void;
 };
 
-let observerSingleton: ResizeObserverSingleton;
+let observerSingleton: ResizeObserverSingleton | undefined;
 
 function getResizeObserver(): ResizeObserverSingleton | undefined {
 	if (!isBrowser) {
@@ -98,10 +98,10 @@ export function useResizeObserver<T extends Element>(
 		// likely, contains null during render stage, but already populated with element during
 		// effect stage.
 
-		const tgt = target && 'current' in target ? target.current : target;
+		const element = target && 'current' in target ? target.current : target;
 
-		if (!ro || !tgt) {
-			return;
+		if (ro === false || ro === undefined || element === null || element === undefined) {
+			return undefined;
 		}
 
 		// As unsubscription in internals of our ResizeObserver abstraction can
@@ -117,11 +117,11 @@ export function useResizeObserver<T extends Element>(
 			}
 		};
 
-		ro.subscribe(tgt, handler);
+		ro.subscribe(element, handler);
 
 		return () => {
 			subscribed = false;
-			ro.unsubscribe(tgt, handler);
+			ro.unsubscribe(element, handler);
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [tgt, ro]);

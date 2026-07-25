@@ -12,8 +12,8 @@ export function useIntervalEffect(callback: () => void, ms?: number): void {
 	const cbRef = useSyncedRef(callback);
 
 	useEffect(() => {
-		if (!ms && ms !== 0) {
-			return;
+		if (ms === undefined || Number.isNaN(ms)) {
+			return undefined;
 		}
 
 		const id = setInterval(() => {

@@ -163,7 +163,7 @@ describe('useDebouncedCallback', () => {
 		const cb = vi.fn();
 
 		const {result, rerender} = await renderHook(
-			({cb, deps}: {cb: () => void; deps: any[]}) => useDebouncedCallback(cb, deps, 200, 200),
+			({cb: callback, deps}: {cb: () => void; deps: any[]}) => useDebouncedCallback(callback, deps, 200, 200),
 			{
 				initialProps: {
 					cb() {},

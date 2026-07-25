@@ -21,7 +21,7 @@ describe('useMediatedState', () => {
 		expect(value[0]).toBe(123);
 
 		const {result: result2} = await renderHook(() =>
-			useMediatedState(123, (value: string) => Number.parseInt(value, 10)),
+			useMediatedState(123, (input: string) => Math.trunc(Number(input))),
 		);
 		expect(result2.error).toBeUndefined();
 

@@ -139,7 +139,7 @@ export function useIntersectionObserver<T extends Element>(
 	useEffect(() => {
 		const tgt = target && 'current' in target ? target.current : target;
 		if (!tgt) {
-			return;
+			return undefined;
 		}
 
 		let subscribed = true;

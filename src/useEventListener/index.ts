@@ -47,7 +47,7 @@ export function useEventListener<T extends EventTarget>(
 	useEffect(() => {
 		const tgt = isRefObject(target) ? target.current : target;
 		if (!tgt) {
-			return;
+			return undefined;
 		}
 
 		const restParams: unknown[] = params.slice(2);

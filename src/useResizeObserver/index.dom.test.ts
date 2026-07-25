@@ -68,8 +68,8 @@ describe('useResizeObserver', () => {
 		const spy = vi.fn();
 
 		const {rerender} = await renderHook(
-			({ref}) => {
-				useResizeObserver(ref, spy);
+			(props) => {
+				useResizeObserver(props.ref, spy);
 			},
 			{
 				initialProps: {ref},

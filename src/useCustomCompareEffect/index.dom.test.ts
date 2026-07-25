@@ -18,7 +18,7 @@ describe('useCustomCompareEffect', () => {
 
 	it('should not call provided comparator on render', async () => {
 		const spy = vi.fn();
-		const {rerender} = await renderHook(() => {
+		await renderHook(() => {
 			useCustomCompareEffect(() => {}, [], spy, useUpdateEffect);
 		});
 		expect(spy).toHaveBeenCalledTimes(0);
