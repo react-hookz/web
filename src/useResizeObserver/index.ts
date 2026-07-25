@@ -11,12 +11,16 @@ type ResizeObserverSingleton = {
 	unsubscribe: (target: Element, callback: UseResizeObserverCallback) => void;
 };
 
-let observerSingleton: ResizeObserverSingleton | undefined;
+// One observer per box model: a ResizeObserver only notifies on changes of the
+// box it was asked to observe, so boxes cannot share an instance.
+const observerSingletons = new Map<ResizeObserverBoxOptions, ResizeObserverSingleton>();
 
-function getResizeObserver(): ResizeObserverSingleton | undefined {
+function getResizeObserver(box: ResizeObserverBoxOptions): ResizeObserverSingleton | undefined {
 	if (!isBrowser) {
 		return undefined;
 	}
+
+	const observerSingleton = observerSingletons.get(box);
 
 	if (observerSingleton) {
 		return observerSingleton;
@@ -39,7 +43,7 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 		}
 	});
 
-	observerSingleton = {
+	const singleton: ResizeObserverSingleton = {
 		observer,
 		subscribe(target, callback) {
 			let cbs = callbacks.get(target);
@@ -48,7 +52,7 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 				// If target has no observers yet - register it
 				cbs = new Set<UseResizeObserverCallback>();
 				callbacks.set(target, cbs);
-				observer.observe(target);
+				observer.observe(target, {box});
 			}
 
 			// As Set is duplicate-safe - simply add callback on each call
@@ -73,7 +77,9 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
 		},
 	};
 
-	return observerSingleton;
+	observerSingletons.set(box, singleton);
+
+	return singleton;
 }
 
 /**
@@ -82,13 +88,16 @@ function getResizeObserver(): ResizeObserverSingleton | undefined {
  * @param target React reference or Element to track.
  * @param callback Callback that will be invoked on resize.
  * @param enabled Whether resize observer is enabled or not.
+ * @param box Box model whose changes trigger the callback. A `content-box` observer stays silent
+ * when padding or border grow around an unchanged content box, and vice versa.
  */
 export function useResizeObserver<T extends Element>(
 	target: RefObject<T | null> | T | null,
 	callback: UseResizeObserverCallback,
 	enabled = true,
+	box: ResizeObserverBoxOptions = 'content-box',
 ): void {
-	const ro = enabled && getResizeObserver();
+	const ro = enabled && getResizeObserver(box);
 	const cb = useSyncedRef(callback);
 
 	const tgt = target && 'current' in target ? target.current : target;

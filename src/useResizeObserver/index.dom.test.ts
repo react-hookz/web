@@ -183,7 +183,7 @@ describe('useResizeObserver', () => {
 		});
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
-		expect(observeSpy).toHaveBeenCalledWith(div);
+		expect(observeSpy).toHaveBeenCalledWith(div, {box: 'content-box'});
 		expect(unobserveSpy).toHaveBeenCalledTimes(0);
 
 		await unmount();
@@ -191,6 +191,29 @@ describe('useResizeObserver', () => {
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 		expect(unobserveSpy).toHaveBeenCalledTimes(1);
 		expect(unobserveSpy).toHaveBeenCalledWith(div);
+	});
+
+	it('should observe the requested box model', async () => {
+		const div = document.createElement('div');
+		await renderHook(() => {
+			useResizeObserver(div, vi.fn(), true, 'border-box');
+		});
+
+		expect(observeSpy).toHaveBeenCalledWith(div, {box: 'border-box'});
+	});
+
+	it('should keep a separate observer per box model', async () => {
+		const div = document.createElement('div');
+		const observersBefore = ResizeObserverSpy.mock.calls.length;
+
+		await renderHook(() => {
+			useResizeObserver(div, vi.fn(), true, 'device-pixel-content-box');
+		});
+
+		// A ResizeObserver only reports changes of the box it observes, so the
+		// singleton for a box model cannot be reused for another one.
+		expect(ResizeObserverSpy.mock.calls.length).toBe(observersBefore + 1);
+		expect(observeSpy).toHaveBeenCalledWith(div, {box: 'device-pixel-content-box'});
 	});
 
 	describe('disabled observer', () => {
