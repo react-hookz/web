@@ -91,4 +91,3 @@ CI runs Lint, Build and Test (Node LTS) on every PR and master push.
 - Changes to `exports`, `files` or a hook's signature alter the published contract. Verify by packing (`npm pack`) and
   resolving the specifiers from a scratch consumer, not by reading `dist`.
 - A hook missing from `src/index.ts` or from the README list ships invisible — the README list is the documentation.
-- `CONTRIBUTING.md` still describes the pre-2026 layout (`__tests__/dom.ts`, Storybook docs). Follow this file instead.
