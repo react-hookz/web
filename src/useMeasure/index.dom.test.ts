@@ -1,7 +1,7 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useEffect} from 'react';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
-import {useMeasure} from '../index.js';
+import {borderBoxMeasurer, useMeasure} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useMeasure', () => {
@@ -115,5 +115,35 @@ describe('useMeasure', () => {
 		value = expectResultValue(result);
 		expect(value[1]).toStrictEqual({current: div});
 		expect(value[0]).toStrictEqual(measures);
+	});
+
+	it('should set state by the given measurer', async () => {
+		const div = document.createElement('div');
+		const {result} = await renderHook(() => {
+			const measure = useMeasure<HTMLDivElement>(true, borderBoxMeasurer);
+
+			useEffect(() => {
+				measure[1].current = div;
+			});
+
+			return measure;
+		});
+
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+		const entry = {
+			target: div,
+			contentRect: {width: 5, height: 3},
+			borderBoxSize: [{inlineSize: 9, blockSize: 7}],
+			contentBoxSize: {},
+		} as unknown as ResizeObserverEntry;
+
+		ResizeObserverSpy.mock.calls[0][0]([entry]);
+
+		await act(async () => {
+			vi.advanceTimersByTime(1);
+		});
+
+		const value = expectResultValue(result);
+		expect(value[0]).toStrictEqual({width: 9, height: 7});
 	});
 });
