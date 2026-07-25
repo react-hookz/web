@@ -71,6 +71,7 @@ export default defineConfig({
 		],
 	},
 	lint: {
+		options: {typeCheck: true},
 		extends: [javascript, typescript, react, browser, vitest, repoOverrides],
 		ignorePatterns: ['.claude', '.idea', 'dist', 'coverage', 'CHANGELOG.md'],
 	},
