@@ -1,12 +1,12 @@
-name: "Discord"
+name: 'Discord'
 
 on:
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
   notify:
-    name: "Notify"
+    name: 'Notify'
     runs-on: ubuntu-latest
     steps:
       - name: Discord notification

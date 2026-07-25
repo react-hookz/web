@@ -1,28 +1,30 @@
-name: "Release"
+name: 'Release'
 
 on:
   workflow_run:
-    workflows: [ "CI/CD" ]
-    types: [ completed ]
-    branches: [ master ]
+    workflows: ['CI/CD']
+    types: [completed]
+    branches: [master]
   workflow_dispatch:
 
-permissions: { }
+permissions: {}
 
 jobs:
   semantic-release:
-    name: "Release"
+    name: 'Release'
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    if:
+      github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push')
     permissions:
       contents: read
       # required for npm trusted publishing (OIDC)
       id-token: write
     steps:
-      - name: "Checkout"
+      - name: 'Checkout'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: "master"
+          ref: 'master'
           # the job token is read-only; git push must use the GH_TOKEN PAT from env
           persist-credentials: false
       - name: 'Enable corepack'
@@ -32,22 +34,22 @@ jobs:
           node-version: 24
           cache: 'yarn'
 
-      - name: "Install dependencies"
+      - name: 'Install dependencies'
         run: yarn install --immutable
 
-      - name: "Build"
+      - name: 'Build'
         run: yarn build
 
-      - name: "Release"
+      - name: 'Release'
         env:
           # PAT instead of GITHUB_TOKEN so the published release triggers the Discord workflow
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: yarn semantic-release
 
   gen-contributors:
-    name: "Generate Contributors List"
+    name: 'Generate Contributors List'
     runs-on: ubuntu-latest
-    needs: [ "semantic-release" ]
+    needs: ['semantic-release']
     permissions:
       contents: write
     steps:
