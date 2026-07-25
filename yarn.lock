@@ -1096,7 +1096,7 @@ __metadata:
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"
     "@ver0/deep-equal": "npm:^2.0.1"
-    "@ver0/oxlint-config": "npm:^2.0.0"
+    "@ver0/oxlint-config": "npm:^2.0.2"
     "@ver0/react-hooks-testing": "npm:^1.0.3"
     "@vitest/coverage-v8": "npm:^4.1.10"
     js-cookie: "npm:^3.0.8"
@@ -1686,15 +1686,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ver0/oxlint-config@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@ver0/oxlint-config@npm:2.0.0"
+"@ver0/oxlint-config@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@ver0/oxlint-config@npm:2.0.2"
   peerDependencies:
     oxlint: ^1.75.0
   peerDependenciesMeta:
     oxlint:
       optional: true
-  checksum: 10c0/9d10a276cf44c9ff4f70ddfb8c2ce76f7a5538ccf43e1d9179f57a2bb04415b0e436c858799697bc0f8662227937b5d9e74e0a75cf4ddf57a56237a98cc148da
+  checksum: 10c0/d6e8b981ef1fdc269251dfff76ab98a842d2e6c20a542330d98559a5406b208d1656435da1330928b9a6df3cb3a2e4fa4c7450a7d6a77f64c39326ee0d4adfdf
   languageName: node
   linkType: hard
 
