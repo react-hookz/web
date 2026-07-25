@@ -40,7 +40,7 @@ You can import hooks two ways:
 // from the root of package
 import {useMountEffect} from '@react-hookz/web';
 // or single hook directly
-import {useMountEffect} from '@react-hookz/web/useMountEffect/index.js';
+import {useMountEffect} from '@react-hookz/web/useMountEffect';
 ```
 
 In case your bundler supports tree-shaking (most of modern does) - both variants are equal and only necessary code will
