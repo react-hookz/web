@@ -144,7 +144,9 @@ export function useIntersectionObserver<T extends Element>(
 
 		let subscribed = true;
 		const observerEntry = getObserverEntry({
-			root: r && 'current' in r ? r.current : r,
+			// `root` is optional, but under `exactOptionalPropertyTypes` it cannot
+			// receive an explicit `undefined` -- null selects the viewport just the same.
+			root: (r && 'current' in r ? r.current : r) ?? null,
 			rootMargin,
 			threshold,
 		});
