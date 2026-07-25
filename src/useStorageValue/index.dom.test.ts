@@ -1,6 +1,6 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it, vi} from 'vitest';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 import {newStorage} from './misc.test.js';
 import {useStorageValue} from './index.js';
 
@@ -79,7 +79,7 @@ describe('useStorageValue', () => {
 
 		const value = expectResultValue(result);
 		expect(value.value).toBe('defaultValue');
-		expect(warnSpy.mock.calls[0][0]).toBeInstanceOf(SyntaxError);
+		expect(expectCallArgs(warnSpy, 0)[0]).toBeInstanceOf(SyntaxError);
 
 		warnSpy.mockRestore();
 	});

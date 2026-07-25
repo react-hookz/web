@@ -1,7 +1,7 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useIntersectionObserver} from '../index.js';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useIntersectionObserver', () => {
 	// A function declaration keeps the mock constructable -- vitest 4 mocks
@@ -76,8 +76,8 @@ describe('useIntersectionObserver', () => {
 		const entry2 = {target: div2} as unknown as IntersectionObserverEntry;
 
 		await act(async () => {
-			IntersectionObserverMock.mock.calls[0][0]([entry1]);
-			IntersectionObserverMock.mock.calls[1][0]([entry2]);
+			expectCallArgs(IntersectionObserverMock, 0)[0]([entry1]);
+			expectCallArgs(IntersectionObserverMock, 1)[0]([entry2]);
 			vi.runAllTimers();
 		});
 
@@ -91,7 +91,7 @@ describe('useIntersectionObserver', () => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry3 = {target: div1} as unknown as IntersectionObserverEntry;
 		await act(async () => {
-			IntersectionObserverMock.mock.calls[0][0]([entry3]);
+			expectCallArgs(IntersectionObserverMock, 0)[0]([entry3]);
 			vi.runAllTimers();
 		});
 
@@ -122,7 +122,7 @@ describe('useIntersectionObserver', () => {
 		await act(async () => {
 			const lastCallIndex = IntersectionObserverMock.mock.calls.length - 1;
 			if (lastCallIndex >= 0) {
-				IntersectionObserverMock.mock.calls[lastCallIndex][0]([entry1]);
+				expectCallArgs(IntersectionObserverMock, lastCallIndex)[0]([entry1]);
 				await vi.runAllTimersAsync();
 			}
 		});

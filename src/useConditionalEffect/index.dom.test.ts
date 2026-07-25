@@ -2,6 +2,7 @@ import {renderHook} from '@ver0/react-hooks-testing';
 import type {DependencyList, EffectCallback} from 'react';
 import {describe, expect, it, vi} from 'vitest';
 import {truthyAndArrayPredicate, truthyOrArrayPredicate, useConditionalEffect, useUpdateEffect} from '../index.js';
+import {expectCallArgs} from '../util/testing/test-helpers.js';
 
 describe('useConditionalEffect', () => {
 	it('should be defined', async () => {
@@ -119,7 +120,7 @@ describe('useConditionalEffect', () => {
 
 		expect(callbackSpy).not.toHaveBeenCalled();
 		expect(effectSpy).toHaveBeenCalledTimes(1);
-		expect(effectSpy.mock.calls[0][2]).toBe(123);
+		expect(expectCallArgs(effectSpy, 0)[2]).toBe(123);
 		await rerender();
 
 		expect(callbackSpy).toHaveBeenCalledTimes(1);

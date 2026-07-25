@@ -1,6 +1,7 @@
 import {renderHook} from '@ver0/react-hooks-testing';
 import {beforeEach, describe, expect, it, vi} from 'vitest';
 import {useVibrate} from '../index.js';
+import {expectCallArgs} from '../util/testing/test-helpers.js';
 
 describe('useVibrate', () => {
 	// Use the global vibrate mock that's already set up in the test environment
@@ -27,7 +28,7 @@ describe('useVibrate', () => {
 			useVibrate(true, [100, 200]);
 		});
 		expect(vibrateMock).toHaveBeenCalledTimes(1);
-		expect(vibrateMock.mock.calls[0][0]).toEqual([100, 200]);
+		expect(expectCallArgs(vibrateMock, 0)[0]).toEqual([100, 200]);
 	});
 
 	it('should call navigator.vibrate(0) on unmount', async () => {
@@ -37,7 +38,7 @@ describe('useVibrate', () => {
 
 		await unmount();
 
-		expect(vibrateMock.mock.calls[1][0]).toEqual(0);
+		expect(expectCallArgs(vibrateMock, 1)[0]).toEqual(0);
 	});
 
 	it('should vibrate constantly using interval', async () => {
@@ -48,18 +49,18 @@ describe('useVibrate', () => {
 		});
 
 		expect(vibrateMock).toHaveBeenCalledTimes(1);
-		expect(vibrateMock.mock.calls[0][0]).toEqual(300);
+		expect(expectCallArgs(vibrateMock, 0)[0]).toEqual(300);
 
 		vi.advanceTimersByTime(299);
 		expect(vibrateMock).toHaveBeenCalledTimes(1);
 
 		vi.advanceTimersByTime(1);
 		expect(vibrateMock).toHaveBeenCalledTimes(2);
-		expect(vibrateMock.mock.calls[1][0]).toEqual(300);
+		expect(expectCallArgs(vibrateMock, 1)[0]).toEqual(300);
 
 		vi.advanceTimersByTime(300);
 		expect(vibrateMock).toHaveBeenCalledTimes(3);
-		expect(vibrateMock.mock.calls[2][0]).toEqual(300);
+		expect(expectCallArgs(vibrateMock, 2)[0]).toEqual(300);
 
 		vi.useRealTimers();
 	});

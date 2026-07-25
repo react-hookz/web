@@ -1,7 +1,7 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useScreenOrientation} from '../index.js';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectCallResult, expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useScreenOrientation', () => {
 	const matchMediaMock = vi.fn((query: string) => ({
@@ -41,17 +41,18 @@ describe('useScreenOrientation', () => {
 		const {result} = await renderHook(() => useScreenOrientation());
 		expect(result.value).toBe('landscape');
 
-		expect(matchMediaMock.mock.results[0].type).toEqual('return');
-		if (matchMediaMock.mock.results[0].type !== 'return') {
+		const mockResult = expectCallResult(matchMediaMock, 0);
+		expect(mockResult.type).toEqual('return');
+		if (mockResult.type !== 'return') {
 			return;
 		}
 
-		const mql = matchMediaMock.mock.results[0].value;
+		const mql = mockResult.value;
 		mql.matches = true;
 
 		await act(async () => {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-			mql.addEventListener.mock.calls[0][1]();
+			expectCallArgs(mql.addEventListener, 0)[1]();
 		});
 
 		expect(result.value).toBe('portrait');

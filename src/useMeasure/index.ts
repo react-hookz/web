@@ -28,10 +28,13 @@ export const contentBoxMeasurer: Measurer = (entry) => ({
  * Border box sizes are writing-mode relative, so `inlineSize` maps to width and `blockSize` to
  * height only in horizontal writing modes.
  */
-export const borderBoxMeasurer: Measurer = (entry) => ({
-	width: entry.borderBoxSize[0].inlineSize,
-	height: entry.borderBoxSize[0].blockSize,
-});
+export const borderBoxMeasurer: Measurer = (entry) => {
+	// The array exists for future multi-fragment support; observing an element
+	// always reports exactly one border box size.
+	const size = entry.borderBoxSize[0]!;
+
+	return {width: size.inlineSize, height: size.blockSize};
+};
 
 /**
  * Uses ResizeObserver to track element dimensions and re-render component when they change.

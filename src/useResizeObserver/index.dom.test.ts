@@ -2,6 +2,7 @@ import type {RefObject} from 'react';
 import {renderHook} from '@ver0/react-hooks-testing';
 import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useResizeObserver} from '../index.js';
+import {expectCallArgs} from '../util/testing/test-helpers.js';
 
 describe('useResizeObserver', () => {
 	const observeSpy = vi.fn();
@@ -91,7 +92,7 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		ResizeObserverSpy.mock.calls[0][0]([entry]);
+		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 
 		expect(spy).not.toHaveBeenCalledWith(entry);
 
@@ -122,7 +123,7 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		ResizeObserverSpy.mock.calls[0][0]([entry]);
+		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 
 		expect(spy1).not.toHaveBeenCalledWith(entry);
 		expect(spy2).not.toHaveBeenCalledWith(entry);
@@ -163,7 +164,7 @@ describe('useResizeObserver', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		ResizeObserverSpy.mock.calls[0][0]([entry1, entry2]);
+		expectCallArgs(ResizeObserverSpy, 0)[0]([entry1, entry2]);
 
 		expect(spy1).not.toHaveBeenCalledWith(entry1);
 		expect(spy2).not.toHaveBeenCalledWith(entry2);

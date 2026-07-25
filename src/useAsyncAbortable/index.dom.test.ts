@@ -1,7 +1,7 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it, vi} from 'vitest';
 import {useAsyncAbortable} from '../index.js';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 
 function getControllableAsync<Response, Args extends unknown[] = unknown[]>() {
 	const resolve: {current: undefined | ((result: Response) => void)} = {current: undefined};
@@ -53,9 +53,9 @@ describe('useAsyncAbortable', () => {
 			void hookValue[1].execute(123);
 		});
 
-		expect(spy.mock.calls[0][0]).toBeInstanceOf(AbortSignal);
-		expect(spy.mock.calls[0][0].aborted).toBe(false);
-		expect(spy.mock.calls[0][1]).toBe(123);
+		expect(expectCallArgs(spy, 0)[0]).toBeInstanceOf(AbortSignal);
+		expect(expectCallArgs(spy, 0)[0].aborted).toBe(false);
+		expect(expectCallArgs(spy, 0)[1]).toBe(123);
 
 		const finalValue = expectResultValue(result);
 		expect(finalValue[0]).toStrictEqual({
@@ -77,7 +77,7 @@ describe('useAsyncAbortable', () => {
 		const value = expectResultValue(result);
 		value[1].abort();
 
-		expect(spy.mock.calls[0][0].aborted).toBe(true);
+		expect(expectCallArgs(spy, 0)[0].aborted).toBe(true);
 
 		await act(async () => {
 			if (resolve.current) {
@@ -100,7 +100,7 @@ describe('useAsyncAbortable', () => {
 			value[1].reset();
 		});
 
-		expect(spy.mock.calls[0][0].aborted).toBe(true);
+		expect(expectCallArgs(spy, 0)[0].aborted).toBe(true);
 
 		const value = expectResultValue(result);
 		expect(value[0]).toStrictEqual({
@@ -132,11 +132,11 @@ describe('useAsyncAbortable', () => {
 			void value[1].execute(1234);
 		});
 
-		expect(spy.mock.calls[0][1]).toBe(123);
-		expect(spy.mock.calls[0][0].aborted).toBe(true);
+		expect(expectCallArgs(spy, 0)[1]).toBe(123);
+		expect(expectCallArgs(spy, 0)[0].aborted).toBe(true);
 
-		expect(spy.mock.calls[1][1]).toBe(1234);
-		expect(spy.mock.calls[1][0].aborted).toBe(false);
+		expect(expectCallArgs(spy, 1)[1]).toBe(1234);
+		expect(expectCallArgs(spy, 1)[0].aborted).toBe(false);
 
 		await act(async () => {
 			if (resolve1) {
