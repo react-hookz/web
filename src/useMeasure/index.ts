@@ -41,10 +41,14 @@ export const borderBoxMeasurer: Measurer = (entry) => {
  *
  * @param enabled Whether resize observer is enabled or not.
  * @param measurer Derives measures from the observer entry, `contentBoxMeasurer` by default.
+ * @param box Box model whose changes trigger a re-measurement. Pair it with the measurer:
+ * `borderBoxMeasurer` under the default `content-box` observation misses padding and border
+ * changes that leave the content box intact.
  */
 export function useMeasure<T extends Element>(
 	enabled = true,
 	measurer: Measurer = contentBoxMeasurer,
+	box: ResizeObserverBoxOptions = 'content-box',
 ): [Measures | undefined, RefObject<T | null>] {
 	const [element, setElement] = useState<T | null>(null);
 	const elementRef = useHookableRef<T | null>(null, (v) => {
@@ -58,7 +62,7 @@ export function useMeasure<T extends Element>(
 		setMeasures(measurer(entry));
 	});
 
-	useResizeObserver(element, observerHandler, enabled);
+	useResizeObserver(element, observerHandler, enabled, box);
 
 	return [measures, elementRef];
 }
