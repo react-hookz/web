@@ -1,3 +1,4 @@
+import type {OxlintConfig} from 'oxlint';
 import {defineConfig} from 'vite-plus';
 import javascript from '@ver0/oxlint-config/javascript.js';
 import typescript from '@ver0/oxlint-config/typescript.js';
@@ -6,7 +7,7 @@ import browser from '@ver0/oxlint-config/browser.js';
 import vitest from '@ver0/oxlint-config/vitest.js';
 
 // Composed via extends after the presets so these overrides apply last.
-const repoOverrides = {
+const repoOverrides: OxlintConfig = {
 	rules: {
 		// Hook parameters are inherently mutable platform types
 		// (DOM elements, React refs, dependency lists).
