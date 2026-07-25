@@ -27,8 +27,9 @@
 	"exports": {
 		".": "./dist/index.js",
 		"./package.json": "./package.json",
-		"./*/": "./dist/*/index.js",
-		"./*": "./dist/*"
+		"./*.js": "./dist/*.js",
+		"./*": "./dist/*/index.js",
+		"./*/": "./dist/*/index.js"
 	},
 	"publishConfig": {
 		"access": "public"
