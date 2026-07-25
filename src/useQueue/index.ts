@@ -21,9 +21,9 @@ export type QueueMethods<T> = {
 	 */
 	add: (item: T) => void;
 	/**
-	 * Removes and returns the head of the queue.
+	 * Removes and returns the head of the queue, or `undefined` if it is empty.
 	 */
-	remove: () => T;
+	remove: () => T | undefined;
 	/**
 	 * The current size of the queue.
 	 */
@@ -45,9 +45,7 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 				push(value);
 			},
 			remove() {
-				// `QueueMethods.remove` promises `T`, yet an empty queue has always
-				// returned `undefined` here -- the public type hides that.
-				const value = listRef.current[0]!;
+				const value = listRef.current[0];
 
 				removeAt(0);
 
