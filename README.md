@@ -190,10 +190,10 @@ get into your bundle. Direct hook imports should be considered otherwise.
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/wesgro">
-                    <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
+                <a href="https://github.com/AndreasNel">
+                    <img src="https://avatars.githubusercontent.com/u/17763359?v=4" width="100;" alt="AndreasNel"/>
                     <br />
-                    <sub><b>Jake Ketcheson</b></sub>
+                    <sub><b>Andreas Nel</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -204,10 +204,68 @@ get into your bundle. Direct hook imports should be considered otherwise.
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/AndreasNel">
-                    <img src="https://avatars.githubusercontent.com/u/17763359?v=4" width="100;" alt="AndreasNel"/>
+                <a href="https://github.com/wesgro">
+                    <img src="https://avatars.githubusercontent.com/u/595567?v=4" width="100;" alt="wesgro"/>
                     <br />
-                    <sub><b>Andreas Nel</b></sub>
+                    <sub><b>Jake Ketcheson</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/JoshuaStewartEntelect">
+                    <img src="https://avatars.githubusercontent.com/u/92043787?v=4" width="100;" alt="JoshuaStewartEntelect"/>
+                    <br />
+                    <sub><b>Joshua Stewart</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/jpwallace22">
+                    <img src="https://avatars.githubusercontent.com/u/93415734?v=4" width="100;" alt="jpwallace22"/>
+                    <br />
+                    <sub><b>Justin Wallace</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/KonradLinkowski">
+                    <img src="https://avatars.githubusercontent.com/u/26126510?v=4" width="100;" alt="KonradLinkowski"/>
+                    <br />
+                    <sub><b>Konrad Linkowski</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/michaltarasiuk">
+                    <img src="https://avatars.githubusercontent.com/u/69385846?v=4" width="100;" alt="michaltarasiuk"/>
+                    <br />
+                    <sub><b>Null</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/m-kolomoyets">
+                    <img src="https://avatars.githubusercontent.com/u/127953991?v=4" width="100;" alt="m-kolomoyets"/>
+                    <br />
+                    <sub><b>Mykola Kolomoyets</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Myzel394">
+                    <img src="https://avatars.githubusercontent.com/u/50424412?v=4" width="100;" alt="Myzel394"/>
+                    <br />
+                    <sub><b>Null</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/paul-sachs">
+                    <img src="https://avatars.githubusercontent.com/u/11449728?v=4" width="100;" alt="paul-sachs"/>
+                    <br />
+                    <sub><b>Paul Sachs</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/fengkx">
+                    <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
+                    <br />
+                    <sub><b>Fengkx</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -220,63 +278,19 @@ get into your bundle. Direct hook imports should be considered otherwise.
 		</tr>
 		<tr>
             <td align="center">
-                <a href="https://github.com/fengkx">
-                    <img src="https://avatars.githubusercontent.com/u/16515468?v=4" width="100;" alt="fengkx"/>
-                    <br />
-                    <sub><b>Fengkx</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/paul-sachs">
-                    <img src="https://avatars.githubusercontent.com/u/11449728?v=4" width="100;" alt="paul-sachs"/>
-                    <br />
-                    <sub><b>Paul Sachs</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Myzel394">
-                    <img src="https://avatars.githubusercontent.com/u/50424412?v=4" width="100;" alt="Myzel394"/>
-                    <br />
-                    <sub><b>Null</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/michaltarasiuk">
-                    <img src="https://avatars.githubusercontent.com/u/69385846?v=4" width="100;" alt="michaltarasiuk"/>
-                    <br />
-                    <sub><b>Null</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/KonradLinkowski">
-                    <img src="https://avatars.githubusercontent.com/u/26126510?v=4" width="100;" alt="KonradLinkowski"/>
-                    <br />
-                    <sub><b>Konrad Linkowski</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/jpwallace22">
-                    <img src="https://avatars.githubusercontent.com/u/93415734?v=4" width="100;" alt="jpwallace22"/>
-                    <br />
-                    <sub><b>Justin Wallace</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/JoshuaStewartEntelect">
-                    <img src="https://avatars.githubusercontent.com/u/92043787?v=4" width="100;" alt="JoshuaStewartEntelect"/>
-                    <br />
-                    <sub><b>Joshua Stewart</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/dantman">
                     <img src="https://avatars.githubusercontent.com/u/53399?v=4" width="100;" alt="dantman"/>
                     <br />
                     <sub><b>Daniel Friesen</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
+            <td align="center">
+                <a href="https://github.com/clementprevot">
+                    <img src="https://avatars.githubusercontent.com/u/6450505?v=4" width="100;" alt="clementprevot"/>
+                    <br />
+                    <sub><b>Clément P.</b></sub>
+                </a>
+            </td>
             <td align="center">
                 <a href="https://github.com/ChloeMouret">
                     <img src="https://avatars.githubusercontent.com/u/63965373?v=4" width="100;" alt="ChloeMouret"/>
