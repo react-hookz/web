@@ -25,7 +25,7 @@ const invokeStorageKeyListeners = (s: Storage, key: string, value: string | null
 };
 
 const storageEventHandler = (evt: StorageEvent) => {
-	if (evt.storageArea && evt.key && evt.newValue) {
+	if (evt.storageArea && evt.key !== null && evt.key !== '' && evt.newValue !== null && evt.newValue !== '') {
 		invokeStorageKeyListeners(evt.storageArea, evt.key, evt.newValue);
 	}
 };
@@ -174,7 +174,7 @@ export function useStorageValue<
 
 	const isFirstMount = useFirstMountState();
 	const [state, setState] = useState<Type | null | undefined>(
-		optionsRef.current?.initializeWithValue && isFirstMount ? storageActions.current.fetch() : undefined,
+		optionsRef.current?.initializeWithValue === true && isFirstMount ? storageActions.current.fetch() : undefined,
 	);
 	const stateRef = useSyncedRef(state);
 
@@ -182,7 +182,7 @@ export function useStorageValue<
 		fetch() {
 			setState(storageActions.current.fetch());
 		},
-		setRawVal(value: string | null) {
+		setRawVal(this: void, value: string | null) {
 			setState(parse(value, optionsRef.current.defaultValue));
 		},
 	});
@@ -192,7 +192,7 @@ export function useStorageValue<
 	}, [key]);
 
 	useEffect(() => {
-		if (!optionsRef.current.initializeWithValue) {
+		if (optionsRef.current.initializeWithValue !== true) {
 			stateActions.current.fetch();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -242,9 +242,9 @@ export function useStorageValue<
 	// Make actions static so developers can pass methods further
 	const staticActions = useMemo(
 		() => ({
-			set: ((v) => {
+			set(v: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) {
 				actions.current.set(v);
-			}) as typeof actions.current.set,
+			},
 			remove() {
 				actions.current.delete();
 			},

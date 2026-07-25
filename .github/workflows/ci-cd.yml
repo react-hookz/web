@@ -1,4 +1,4 @@
-name: "CI/CD"
+name: 'CI/CD'
 
 on:
   push:
@@ -11,10 +11,10 @@ on:
 
 jobs:
   lint:
-    name: "Lint"
+    name: 'Lint'
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout"
+      - name: 'Checkout'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
@@ -25,17 +25,20 @@ jobs:
           node-version: 24
           cache: 'yarn'
 
-      - name: "Install dependencies"
+      - name: 'Install dependencies'
         run: yarn install --immutable
 
-      - name: "Lint"
-        run: yarn lint -f @ver0/gha
+      - name: 'Format check'
+        run: yarn fmt:check
+
+      - name: 'Lint'
+        run: yarn lint
 
   build:
-    name: "Build"
+    name: 'Build'
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout"
+      - name: 'Checkout'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
@@ -46,21 +49,21 @@ jobs:
           node-version: 24
           cache: 'yarn'
 
-      - name: "Install dependencies"
+      - name: 'Install dependencies'
         run: yarn install --immutable
 
-      - name: "Build"
+      - name: 'Build'
         run: yarn build
 
   test:
-    name: "Test (Node ${{ matrix.node-version }})"
+    name: 'Test (Node ${{ matrix.node-version }})'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        node-version: [ "lts/*" ]
+        node-version: ['lts/*']
     steps:
-      - name: "Checkout"
+      - name: 'Checkout'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
@@ -71,13 +74,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: "Install dependencies"
+      - name: 'Install dependencies'
         run: yarn install --immutable
 
-      - name: "Test"
-        run:  yarn test:coverage --reporter='github-actions' --reporter='junit' --outputFile='./coverage/test-report.junit.xml' --reporter=default
+      - name: 'Test'
+        run:
+          yarn test:coverage --reporter='github-actions' --reporter='junit'
+          --outputFile='./coverage/test-report.junit.xml' --reporter=default
 
-      - name: "Upload coverage to Codecov"
+      - name: 'Upload coverage to Codecov'
         if: ${{ matrix.node-version == 'lts/*' }}
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
@@ -85,7 +90,7 @@ jobs:
           files: coverage/test-report.junit.xml
           fail_ci_if_error: true
 
-      - name: "Upload test results to Codecov"
+      - name: 'Upload test results to Codecov'
         if: ${{ !cancelled() && matrix.node-version == 'lts/*' }}
         uses: codecov/test-results-action@0fa95f0e1eeaafde2c782583b36b28ad0d8c77d3 # v1.2.1
         with:
@@ -94,12 +99,12 @@ jobs:
           fail_ci_if_error: true
 
   dependabot-merge:
-    name: "Dependabot automerge"
+    name: 'Dependabot automerge'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
       contents: write
-    needs: [ "test", "build", "lint" ]
+    needs: ['test', 'build', 'lint']
     if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
     steps:
       - uses: fastify/github-action-merge-dependabot@73ec4cbb5e56df5591eae286972d5b2201ffe90f # v3.15.0

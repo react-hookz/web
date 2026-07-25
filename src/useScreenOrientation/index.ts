@@ -17,5 +17,9 @@ export function useScreenOrientation(options?: UseScreenOrientationOptions): Scr
 		initializeWithValue: options?.initializeWithValue ?? true,
 	});
 
-	return matches === undefined ? undefined : matches ? 'portrait' : 'landscape';
+	if (matches === undefined) {
+		return undefined;
+	}
+
+	return matches ? 'portrait' : 'landscape';
 }

@@ -26,7 +26,7 @@ describe('useMediatedState', () => {
 	});
 
 	it('should pass received sate through mediator', async () => {
-		const spy = vi.fn((value: string) => Number.parseInt(value, 10));
+		const spy = vi.fn((value: string) => Math.trunc(Number(value)));
 		const {result} = await renderHook(() => useMediatedState(123, spy));
 		let value = expectResultValue(result);
 
@@ -51,7 +51,7 @@ describe('useMediatedState', () => {
 
 	it('should return same setState method each render even if callback is changed', async () => {
 		const {result, rerender} = await renderHook(() =>
-			useMediatedState(123, (value: string) => Number.parseInt(value, 10)),
+			useMediatedState(123, (value: string) => Math.trunc(Number(value))),
 		);
 		let value = expectResultValue(result);
 

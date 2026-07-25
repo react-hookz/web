@@ -41,7 +41,7 @@ export function useToggle(
 						typeof nextState === 'object' &&
 						(nextState.constructor.name === 'SyntheticBaseEvent' ||
 							// @ts-expect-error React internals
-							typeof nextState._reactName === 'string'))
+							typeof nextState._reactName === 'string')) // eslint-disable-line no-underscore-dangle
 				) {
 					return !previousState;
 				}

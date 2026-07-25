@@ -81,6 +81,8 @@ export function useMediaQuery(query: string, options: UseMediaQueryOptions = {})
 
 			return entry.mql.matches;
 		}
+
+		return undefined;
 	});
 
 	useEffect(() => {

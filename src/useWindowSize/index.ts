@@ -31,12 +31,12 @@ const callAllListeners = () => {
 export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean): WindowSize {
 	const isFirstMount = useFirstMountState();
 	const [size, setSize] = stateHook<WindowSize>({
-		width: isFirstMount && isBrowser && !measureOnMount ? window.innerWidth : 0,
-		height: isFirstMount && isBrowser && !measureOnMount ? window.innerHeight : 0,
+		width: isFirstMount && isBrowser && measureOnMount !== true ? window.innerWidth : 0,
+		height: isFirstMount && isBrowser && measureOnMount !== true ? window.innerHeight : 0,
 	});
 
 	useMountEffect(() => {
-		if (measureOnMount) {
+		if (measureOnMount === true) {
 			setSize({
 				width: window.innerWidth,
 				height: window.innerHeight,

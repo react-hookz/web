@@ -35,7 +35,7 @@ const createKeyPredicate = (keyFilter: KeyboardEventFilter): KeyboardEventPredic
 		return (ev) => ev.key === keyFilter;
 	}
 
-	return keyFilter ? yieldTrue : yieldFalse;
+	return (keyFilter ?? false) ? yieldTrue : yieldFalse;
 };
 
 const WINDOW_OR_NULL = isBrowser ? globalThis : null;

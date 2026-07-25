@@ -3,49 +3,67 @@
 	"version": "24.0.4",
 	"description": "React hooks done right, for browser and SSR.",
 	"keywords": [
-		"react",
-		"hook",
-		"react-hook",
 		"browser",
+		"hook",
+		"react",
+		"react-hook",
 		"ssr"
 	],
+	"bugs": {
+		"url": "https://github.com/react-hookz/web/issues"
+	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/react-hookz/web.git"
 	},
-	"bugs": {
-		"url": "https://github.com/react-hookz/web/issues"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
+	"files": [
+		"./dist"
+	],
 	"type": "module",
+	"sideEffects": false,
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"sideEffects": false,
 	"exports": {
 		".": "./dist/index.js",
 		"./*/": "./dist/*/index.js",
 		"./*": "./dist/*"
 	},
-	"files": [
-		"./dist"
-	],
-	"engines": {
-		"node": ">=18.0.0"
+	"publishConfig": {
+		"access": "public"
 	},
 	"scripts": {
-		"build": "yarn build:clean && yarn tsc:native --version && yarn tsc:native --project ./tsconfig.build.json",
+		"build": "yarn build:clean && tsc --version && tsc --project ./tsconfig.build.json",
 		"build:clean": "yarn rimraf ./dist",
-		"tsc:native": "node ./node_modules/@typescript/native/bin/tsc",
-		"lint": "eslint --version && eslint",
-		"lint:fix": "eslint --fix",
-		"test": "vitest --run",
-		"test:coverage": "vitest --run --coverage"
+		"fmt": "vp fmt --write",
+		"fmt:check": "vp fmt --check",
+		"lint": "vp lint",
+		"lint:fix": "vp lint --fix",
+		"test": "vp test --run",
+		"test:coverage": "vp test --run --coverage"
 	},
 	"dependencies": {
 		"@ver0/deep-equal": "^2.0.1"
+	},
+	"devDependencies": {
+		"@types/js-cookie": "^3.0.6",
+		"@types/node": "^26.1.1",
+		"@types/react": "^19.2.17",
+		"@types/react-dom": "^19.2.3",
+		"@ver0/oxlint-config": "^2.0.0",
+		"@ver0/react-hooks-testing": "^1.0.3",
+		"@vitest/coverage-v8": "^4.1.10",
+		"js-cookie": "^3.0.8",
+		"jsdom": "^29.1.1",
+		"oxlint": "^1.75.0",
+		"oxlint-tsgolint": "^7.0.2001",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
+		"rimraf": "^6.1.3",
+		"semantic-release": "^25.0.8",
+		"typescript": "^7.0.2",
+		"vite-plus": "^0.2.6",
+		"vitest": "^4.1.10"
 	},
 	"peerDependencies": {
 		"js-cookie": "^3.0.5",
@@ -57,25 +75,8 @@
 			"optional": true
 		}
 	},
-	"devDependencies": {
-		"@types/js-cookie": "^3.0.6",
-		"@types/node": "^26.1.1",
-		"@types/react": "^19.2.17",
-		"@types/react-dom": "^19.2.3",
-		"@typescript/native": "npm:typescript@^7.0.2",
-		"@ver0/eslint-config": "^1.3.6",
-		"@ver0/eslint-formatter-gha": "^1.0.1",
-		"@ver0/react-hooks-testing": "^1.0.3",
-		"@vitest/coverage-v8": "^4.1.10",
-		"eslint": "^9.37.0",
-		"js-cookie": "^3.0.8",
-		"jsdom": "^29.1.1",
-		"react": "^19.2.8",
-		"react-dom": "^19.2.8",
-		"rimraf": "^6.1.3",
-		"semantic-release": "^25.0.8",
-		"typescript": "^6.0.3",
-		"vitest": "^4.1.10"
+	"engines": {
+		"node": ">=18.0.0"
 	},
 	"packageManager": "yarn@4.17.1"
 }

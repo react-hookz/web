@@ -24,7 +24,7 @@ export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
 export function useValidator<V extends ValidityState>(
 	validator: Validator<V>,
 	deps: DependencyList,
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion, unicorn/no-object-as-default-parameter
 	initialValidity: InitialState<V> = {isValid: undefined} as V,
 ): UseValidatorReturn<V> {
 	const [validity, setValidity] = useState(initialValidity);

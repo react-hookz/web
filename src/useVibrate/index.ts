@@ -18,7 +18,7 @@ export const useVibrate =
 					if (enabled) {
 						navigator.vibrate(pattern);
 
-						if (loop) {
+						if (loop === true) {
 							interval = setInterval(
 								() => {
 									navigator.vibrate(pattern);
@@ -35,5 +35,7 @@ export const useVibrate =
 							}
 						};
 					}
+
+					return undefined;
 				}, [loop, pattern, enabled]);
 			};
