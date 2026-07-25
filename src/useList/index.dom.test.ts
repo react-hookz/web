@@ -3,7 +3,7 @@ import {act, renderHook} from '@ver0/react-hooks-testing';
 import type {Mock} from 'vitest';
 import {describe, expect, it, vi} from 'vitest';
 import {useList} from '../index.js';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useList', () => {
 	it('should be defined', async () => {
@@ -414,5 +414,5 @@ function numberOfMockFunctionCalls(mockFunction: Mock): number {
 
 function mockFunctionCallArgument(mockFunction: Mock, callIndex: number, argumentIndex: number) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-	return mockFunction.mock.calls[callIndex][argumentIndex];
+	return expectCallArgs(mockFunction, callIndex)[argumentIndex];
 }

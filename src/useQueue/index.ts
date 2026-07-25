@@ -45,7 +45,9 @@ export function useQueue<T>(initialValue: T[] = []): QueueMethods<T> {
 				push(value);
 			},
 			remove() {
-				const value = listRef.current[0];
+				// `QueueMethods.remove` promises `T`, yet an empty queue has always
+				// returned `undefined` here -- the public type hides that.
+				const value = listRef.current[0]!;
 
 				removeAt(0);
 

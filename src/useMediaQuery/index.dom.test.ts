@@ -1,7 +1,7 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import {useMediaQuery} from '../index.js';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectCallResult, expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useMediaQuery', () => {
 	const matchMediaMock = vi.fn((query: string) => ({
@@ -53,17 +53,18 @@ describe('useMediaQuery', () => {
 		const {result} = await renderHook(() => useMediaQuery('max-width : 768px'));
 		expect(result.value).toBe(false);
 
-		expect(matchMediaMock.mock.results[0].type).toEqual('return');
-		if (matchMediaMock.mock.results[0].type !== 'return') {
+		const mockResult = expectCallResult(matchMediaMock, 0);
+		expect(mockResult.type).toEqual('return');
+		if (mockResult.type !== 'return') {
 			return;
 		}
 
-		const mql = matchMediaMock.mock.results[0].value;
+		const mql = mockResult.value;
 		mql.matches = true;
 
 		await act(async () => {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-			mql.addEventListener.mock.calls[0][1]();
+			expectCallArgs(mql.addEventListener, 0)[1]();
 		});
 		expect(result.value).toBe(true);
 	});
@@ -76,17 +77,18 @@ describe('useMediaQuery', () => {
 		expect(result2.value).toBe(false);
 		expect(result3.value).toBe(false);
 
-		expect(matchMediaMock.mock.results[0].type).toEqual('return');
-		if (matchMediaMock.mock.results[0].type !== 'return') {
+		const mockResult = expectCallResult(matchMediaMock, 0);
+		expect(mockResult.type).toEqual('return');
+		if (mockResult.type !== 'return') {
 			return;
 		}
 
-		const mql = matchMediaMock.mock.results[0].value;
+		const mql = mockResult.value;
 		mql.matches = true;
 
 		await act(async () => {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-			mql.addEventListener.mock.calls[0][1]();
+			expectCallArgs(mql.addEventListener, 0)[1]();
 		});
 		expect(result1.value).toBe(true);
 		expect(result2.value).toBe(true);
@@ -107,17 +109,18 @@ describe('useMediaQuery', () => {
 
 		expect(matchMediaMock).toHaveBeenCalledTimes(2);
 
-		expect(matchMediaMock.mock.results[0].type).toEqual('return');
-		if (matchMediaMock.mock.results[0].type !== 'return') {
+		const mockResult = expectCallResult(matchMediaMock, 0);
+		expect(mockResult.type).toEqual('return');
+		if (mockResult.type !== 'return') {
 			return;
 		}
 
-		const mql = matchMediaMock.mock.results[0].value;
+		const mql = mockResult.value;
 		mql.matches = true;
 
 		await act(async () => {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-			mql.addEventListener.mock.calls[0][1]();
+			expectCallArgs(mql.addEventListener, 0)[1]();
 		});
 		expect(result1.value).toBe(true);
 		expect(result2.value).toBe(true);
@@ -129,12 +132,13 @@ describe('useMediaQuery', () => {
 		const {unmount: unmount2} = await renderHook(() => useMediaQuery('max-width : 768px'));
 		const {unmount: unmount3} = await renderHook(() => useMediaQuery('max-width : 768px'));
 
-		expect(matchMediaMock.mock.results[0].type).toEqual('return');
-		if (matchMediaMock.mock.results[0].type !== 'return') {
+		const mockResult = expectCallResult(matchMediaMock, 0);
+		expect(mockResult.type).toEqual('return');
+		if (mockResult.type !== 'return') {
 			return;
 		}
 
-		const mql = matchMediaMock.mock.results[0].value;
+		const mql = mockResult.value;
 		expect(mql.removeEventListener).not.toHaveBeenCalled();
 		await unmount3();
 		expect(mql.removeEventListener).not.toHaveBeenCalled();

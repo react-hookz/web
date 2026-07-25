@@ -1,6 +1,7 @@
 import {renderHook} from '@ver0/react-hooks-testing';
 import {describe, expect, it, vi} from 'vitest';
 import {useEventListener} from '../index.js';
+import {expectCallArgs} from '../util/testing/test-helpers.js';
 
 describe('useEventListener', () => {
 	it('should be defined', async () => {
@@ -45,7 +46,7 @@ describe('useEventListener', () => {
 		});
 
 		expect(addSpy).toHaveBeenCalledTimes(1);
-		expect(addSpy.mock.calls[0][2]).toStrictEqual({passive: true});
+		expect(expectCallArgs(addSpy, 0)[2]).toStrictEqual({passive: true});
 		expect(removeSpy).toHaveBeenCalledTimes(0);
 		await rerender();
 		expect(addSpy).toHaveBeenCalledTimes(1);

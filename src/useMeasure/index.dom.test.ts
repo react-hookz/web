@@ -2,7 +2,7 @@ import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useEffect} from 'react';
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {borderBoxMeasurer, useMeasure} from '../index.js';
-import {expectResultValue} from '../util/testing/test-helpers.js';
+import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 
 describe('useMeasure', () => {
 	const observeSpy = vi.fn();
@@ -104,7 +104,7 @@ describe('useMeasure', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		ResizeObserverSpy.mock.calls[0][0]([entry]);
+		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 		let value = expectResultValue(result);
 		expect(value[0]).toBeUndefined();
 
@@ -137,7 +137,7 @@ describe('useMeasure', () => {
 			contentBoxSize: {},
 		} as unknown as ResizeObserverEntry;
 
-		ResizeObserverSpy.mock.calls[0][0]([entry]);
+		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 
 		await act(async () => {
 			vi.advanceTimersByTime(1);

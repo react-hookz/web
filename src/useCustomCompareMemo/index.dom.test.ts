@@ -47,7 +47,7 @@ describe('useCustomCompareMemo', () => {
 				useCustomCompareMemo(
 					() => user,
 					[user],
-					(savedDeps, deps) => savedDeps[0].name === deps[0].name,
+					(savedDeps, deps) => savedDeps[0]?.name === deps[0]?.name,
 				),
 			{initialProps: {user: mockUser}},
 		);
