@@ -10,6 +10,6 @@ import {useCustomCompareMemo} from '../useCustomCompareMemo/index.js';
  * @returns Initially returns the result of calling `factory`. On subsequent renders, it will return
  * the same value, if dependencies haven't changed, or the result of calling `factory` again, if they have changed.
  */
-export function useDeepCompareMemo<T, Deps extends DependencyList>(factory: () => T, deps: Deps) {
+export function useDeepCompareMemo<T, Deps extends DependencyList>(factory: () => T, deps: Deps): T {
 	return useCustomCompareMemo(factory, deps, isEqual);
 }
