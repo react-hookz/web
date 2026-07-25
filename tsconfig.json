@@ -4,13 +4,21 @@
 		"target": "ESNext",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
+		"moduleDetection": "force",
 		"jsx": "react-jsx",
 		"lib": ["ESNext", "DOM"],
 		"types": [],
-		"declaration": true,
-		"newLine": "lf",
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true,
 		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
 		"strict": true,
-		"skipLibCheck": true
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"exactOptionalPropertyTypes": true
 	}
 }

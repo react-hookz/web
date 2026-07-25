@@ -45,7 +45,7 @@ describe('useAsyncAbortable', () => {
 	});
 
 	it('should pass abort signal as first argument', async () => {
-		const spy = vi.fn(async (s: AbortSignal, n: number) => n);
+		const spy = vi.fn(async (_s: AbortSignal, n: number) => n);
 		const {result} = await renderHook(() => useAsyncAbortable(spy));
 
 		await act(async () => {
