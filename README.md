@@ -278,6 +278,13 @@ get into your bundle. Direct hook imports should be considered otherwise.
 		</tr>
 		<tr>
             <td align="center">
+                <a href="https://github.com/clementprevot">
+                    <img src="https://avatars.githubusercontent.com/u/6450505?v=4" width="100;" alt="clementprevot"/>
+                    <br />
+                    <sub><b>Clément P.</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/ChloeMouret">
                     <img src="https://avatars.githubusercontent.com/u/63965373?v=4" width="100;" alt="ChloeMouret"/>
                     <br />
