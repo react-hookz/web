@@ -32,6 +32,17 @@ describe('useQueue', () => {
 		expect(value.first).toBe(1);
 	});
 
+	it('should return undefined removing from an empty queue', async () => {
+		const {result} = await renderHook(() => useQueue<number>());
+		const value = expectResultValue(result);
+
+		await act(async () => {
+			expect(value.remove()).toBeUndefined();
+		});
+
+		expect(expectResultValue(result).items).toStrictEqual([]);
+	});
+
 	it('should return the length', async () => {
 		const {result} = await renderHook(() => useQueue([0, 1, 2, 3]));
 		const value = expectResultValue(result);
