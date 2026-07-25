@@ -4,7 +4,7 @@ export const noop = (): void => {
 	/* noop */
 };
 
-export const isBrowser =
+export const isBrowser: boolean =
 	typeof globalThis !== 'undefined' && typeof navigator !== 'undefined' && typeof document !== 'undefined';
 
 /**

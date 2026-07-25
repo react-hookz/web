@@ -28,7 +28,7 @@ const callAllListeners = () => {
   stage, after the component has mounted. If `false`, the window size is measured synchronously during
   the component render. Set this to `true` during SSR.
  */
-export function useWindowSize(stateHook = useRafState, measureOnMount?: boolean): WindowSize {
+export function useWindowSize(stateHook: typeof useRafState = useRafState, measureOnMount?: boolean): WindowSize {
 	const isFirstMount = useFirstMountState();
 	const [size, setSize] = stateHook<WindowSize>({
 		width: isFirstMount && isBrowser && measureOnMount !== true ? window.innerWidth : 0,

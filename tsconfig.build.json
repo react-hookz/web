@@ -3,6 +3,7 @@
 	"compilerOptions": {
 		"noEmit": false,
 		"declaration": true,
+		"isolatedDeclarations": true,
 		"newLine": "lf",
 		"rootDir": "./src",
 		"outDir": "./dist"
