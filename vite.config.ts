@@ -15,11 +15,6 @@ const repoOverrides: OxlintConfig = {
 		// Single-use type parameters in exported hooks are public API --
 		// removing one changes the generic arity and breaks explicit callers.
 		'typescript/no-unnecessary-type-parameters': 'off',
-		// The base rule lacks typescript/require-await's exemption for async
-		// functions that return a promise, which promise-function-async and
-		// typescript/return-await force into exactly that shape. The
-		// type-aware variant stays on.
-		'require-await': 'off',
 	},
 	overrides: [
 		{
