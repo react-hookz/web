@@ -7,6 +7,12 @@ on:
     branches: [master]
   workflow_dispatch:
 
+# Two master pushes in quick succession queue two release runs against the same
+# HEAD; serialising them keeps semantic-release from racing on the tag push.
+concurrency:
+  group: 'release'
+  cancel-in-progress: false
+
 permissions: {}
 
 jobs:

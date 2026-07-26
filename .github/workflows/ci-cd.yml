@@ -9,6 +9,12 @@ on:
       - master
   workflow_dispatch:
 
+# Superseded PR runs are pointless; master runs must finish, since Release
+# triggers on their completion.
+concurrency:
+  group: '${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   lint:
     name: 'Lint'
