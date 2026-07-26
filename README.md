@@ -4,7 +4,7 @@
 
 [![NPM Downloads](https://img.shields.io/npm/dm/%40react-hookz%2Fweb?style=flat-square)](https://www.npmjs.com/package/@react-hookz/web)
 [![Dependents](https://img.shields.io/librariesio/dependents/npm/%40react-hookz%2Fweb?style=flat-square)](https://www.npmjs.com/package/@react-hookz/web)
-[![Build](https://img.shields.io/github/actions/workflow/status/react-hookz/web/ci-cd.yml?branch=master&style=flat-square)](https://github.com/react-hookz/web/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/react-hookz/web/ci.yml?branch=master&style=flat-square)](https://github.com/react-hookz/web/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/react-hookz/web?style=flat-square)](https://app.codecov.io/gh/react-hookz/web)
 
 × **[DISCORD](https://discord.gg/Fjwphtu65f)** × **[RELEASES](https://github.com/react-hookz/web/releases)** ×

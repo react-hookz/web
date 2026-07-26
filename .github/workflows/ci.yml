@@ -1,4 +1,4 @@
-name: 'CI/CD'
+name: 'CI'
 
 on:
   push:
@@ -24,21 +24,25 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - name: 'Enable corepack'
-        run: corepack enable
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+
+      # setup-vp replaces corepack + setup-node + dependency cache: it installs
+      # vp (version resolved from the vite-plus range via yarn.lock), sets up
+      # Node and the pinned yarn, and caches the yarn store.
+      - name: 'Setup Vite+'
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1.15.0
         with:
-          node-version: 24
-          cache: 'yarn'
+          node-version: '24'
+          cache: true
+          run-install: false
 
       - name: 'Install dependencies'
-        run: yarn install --immutable
+        run: vp install --frozen-lockfile
 
       - name: 'Format check'
-        run: yarn fmt:check
+        run: vp fmt --check
 
       - name: 'Lint'
-        run: yarn lint
+        run: vp lint
 
   build:
     name: 'Build'
@@ -48,18 +52,19 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - name: 'Enable corepack'
-        run: corepack enable
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+
+      - name: 'Setup Vite+'
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1.15.0
         with:
-          node-version: 24
-          cache: 'yarn'
+          node-version: '24'
+          cache: true
+          run-install: false
 
       - name: 'Install dependencies'
-        run: yarn install --immutable
+        run: vp install --frozen-lockfile
 
       - name: 'Build'
-        run: yarn build
+        run: vp run build
 
   test:
     name: 'Test (Node ${{ matrix.node-version }})'
@@ -67,29 +72,30 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: ['lts/*']
+        node-version: ['lts']
     steps:
       - name: 'Checkout'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - name: 'Enable corepack'
-        run: corepack enable
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+
+      - name: 'Setup Vite+'
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1.15.0
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: true
+          run-install: false
 
       - name: 'Install dependencies'
-        run: yarn install --immutable
+        run: vp install --frozen-lockfile
 
       - name: 'Test'
         run:
-          yarn test:coverage --reporter='github-actions' --reporter='junit'
+          vp test --run --coverage --reporter='github-actions' --reporter='junit'
           --outputFile='./coverage/test-report.junit.xml' --reporter=default
 
       - name: 'Upload coverage to Codecov'
-        if: ${{ matrix.node-version == 'lts/*' }}
+        if: ${{ matrix.node-version == 'lts' }}
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -98,7 +104,7 @@ jobs:
           fail_ci_if_error: true
 
       - name: 'Upload test results to Codecov'
-        if: ${{ !cancelled() && matrix.node-version == 'lts/*' }}
+        if: ${{ !cancelled() && matrix.node-version == 'lts' }}
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
