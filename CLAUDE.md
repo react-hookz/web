@@ -32,6 +32,8 @@ vite.config.ts              # test, lint and format config, all three
 - Vitest 4, two projects split by filename: `*.dom.test.ts` runs in jsdom, `*.ssr.test.ts` in node.
 - yarn 4 via corepack, for dependency work only (`yarn up <pkg>`, `yarn install --immutable`).
 - semantic-release publishes from `master`; GitHub Actions are SHA-pinned via `pinact`.
+- CI goes through `vp` only: `voidzero-dev/setup-vp` provides Node, yarn, the dependency cache and the install, so no
+  `corepack enable`, no `actions/setup-node` and no direct `yarn` call belongs in a workflow.
 
 ## Conventions
 
