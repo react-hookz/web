@@ -114,7 +114,7 @@ type UseStorageValueValue<
 	Default extends Type = Type,
 	Initialize extends boolean | undefined = boolean | undefined,
 	N = Default extends null | undefined ? null | Type : Type,
-	U = Initialize extends false ? undefined | N : N,
+	U = false extends Initialize ? undefined | N : N,
 > = U;
 
 export type UseStorageValueResult<
