@@ -129,11 +129,6 @@ export type UseStorageValueResult<
 	fetch: () => void;
 };
 
-const DEFAULT_OPTIONS = {
-	defaultValue: null,
-	initializeWithValue: true,
-};
-
 export function useStorageValue<
 	Type,
 	Default extends Type = Type,
@@ -143,7 +138,13 @@ export function useStorageValue<
 	key: string,
 	options?: UseStorageValueOptions<Type, Initialize>,
 ): UseStorageValueResult<Type, Default, Initialize> {
-	const optionsRef = useSyncedRef({...DEFAULT_OPTIONS, ...options});
+	const optionsRef = useSyncedRef({
+		...options,
+		// An explicitly passed `undefined` must fall back to the documented
+		// default instead of overriding it, the way a spread over defaults would.
+		defaultValue: options?.defaultValue ?? null,
+		initializeWithValue: options?.initializeWithValue ?? true,
+	});
 	const parse = (str: string | null, fallback: Type | null): Type | null => {
 		const parseFunction = optionsRef.current.parse ?? defaultParse;
 		return parseFunction(str, fallback);
