@@ -109,6 +109,17 @@ export type UseStorageValueOptions<T, InitializeWithValue extends boolean | unde
 	stringify?: (data: T) => string | null;
 };
 
+/**
+ * Options of a hook that defers the first storage read until effects run.
+ *
+ * `initializeWithValue` is required so that an options object that omits it
+ * cannot match the deferred overload -- matching it would put `undefined` back
+ * into the result type of a hook that does read the value on the first render.
+ */
+export type UseStorageValueDeferredOptions<T> = UseStorageValueOptions<T, false> & {
+	initializeWithValue: false;
+};
+
 type UseStorageValueValue<
 	Type,
 	Default extends Type = Type,
@@ -129,6 +140,29 @@ export type UseStorageValueResult<
 	fetch: () => void;
 };
 
+export function useStorageValue<Type, Default extends Type = Type>(
+	storage: Storage,
+	key: string,
+	options: UseStorageValueDeferredOptions<Type>,
+): UseStorageValueResult<Type, Default, false>;
+export function useStorageValue<Type, Default extends Type = Type>(
+	storage: Storage,
+	key: string,
+	options?: UseStorageValueOptions<Type, true | undefined>,
+): UseStorageValueResult<Type, Default, true>;
+export function useStorageValue<
+	Type,
+	Default extends Type = Type,
+	Initialize extends boolean | undefined = boolean | undefined,
+>(
+	storage: Storage,
+	key: string,
+	options?: UseStorageValueOptions<Type, Initialize>,
+): UseStorageValueResult<Type, Default, Initialize>;
+
+/**
+ * Manages a single storage key.
+ */
 export function useStorageValue<
 	Type,
 	Default extends Type = Type,
