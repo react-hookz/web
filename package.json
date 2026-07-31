@@ -57,7 +57,7 @@
 		"@ver0/react-hooks-testing": "^1.0.3",
 		"@vitest/coverage-v8": "^4.1.10",
 		"js-cookie": "^3.0.8",
-		"jsdom": "^29.1.1",
+		"jsdom": "^30.0.0",
 		"oxlint": "^1.76.0",
 		"oxlint-tsgolint": "^7.0.2001",
 		"react": "^19.2.8",
