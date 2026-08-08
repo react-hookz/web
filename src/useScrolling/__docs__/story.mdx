@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Example } from './example.stories';
+import { ImportPath } from '../../__docs__/ImportPath';
+
+<Meta title="Sensor/useScrolling" component={Example} />
+
+# useScrolling
+
+#### Example
+
+<Canvas>
+	<Story story={Example} inline />
+</Canvas>
+
+## Reference
+
+```ts
+function useScrolling(ref: RefObject<HTMLElement>, time = 150): boolean;
+```
+
+#### Importing
+
+<ImportPath />
+
+#### Arguments
+
+- **ref** - a ref object which you want to know whether is is scrolling
+- **time** - debonce time(default 150)
+
+#### Return
+
+- **isScrolling** - a boolean shows whether the element is being scrolled
