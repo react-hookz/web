@@ -50,7 +50,7 @@
 	},
 	"devDependencies": {
 		"@types/js-cookie": "^3.0.6",
-		"@types/node": "^26.1.2",
+		"@types/node": "^26.2.0",
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.4",
 		"@ver0/oxlint-config": "^2.0.2",
