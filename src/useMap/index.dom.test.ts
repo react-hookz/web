@@ -86,4 +86,50 @@ describe('useMap', () => {
 
 		spy.mockRestore();
 	});
+
+	it.each([0, Number.NaN, undefined, {count: 0}])('does not rerender when setting the same value %s', async (value) => {
+		let renders = 0;
+		const {result} = await renderHook(() => [++renders, useMap<string, unknown>([['key', value]])] as const);
+		const [, map] = expectResultValue(result);
+
+		await act(async () => {
+			expect(map.set('key', value)).toBe(map);
+		});
+
+		expect(expectResultValue(result)[0]).toBe(1);
+		expect(map.has('key')).toBe(true);
+		expect(map.get('key')).toBe(value);
+	});
+
+	it.each([
+		[0, 1],
+		[0, -0],
+		[-0, 0],
+		[{count: 0}, {count: 0}],
+	])('rerenders when changing a value from %s to %s', async (before, after) => {
+		let renders = 0;
+		const {result} = await renderHook(() => [++renders, useMap<string, unknown>([['key', before]])] as const);
+		const [, map] = expectResultValue(result);
+
+		await act(async () => {
+			expect(map.set('key', after)).toBe(map);
+		});
+
+		expect(expectResultValue(result)[0]).toBe(2);
+		expect(map.get('key')).toBe(after);
+	});
+
+	it('inserts a missing key with an undefined value and rerenders', async () => {
+		let renders = 0;
+		const {result} = await renderHook(() => [++renders, useMap<string, undefined>()] as const);
+		const [, map] = expectResultValue(result);
+
+		await act(async () => {
+			expect(map.set('key', undefined)).toBe(map);
+		});
+
+		expect(expectResultValue(result)[0]).toBe(2);
+		expect(map.has('key')).toBe(true);
+		expect(map.size).toBe(1);
+	});
 });
