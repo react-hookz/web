@@ -29,7 +29,7 @@ jobs:
       # vp (version resolved from the vite-plus range via yarn.lock), sets up
       # Node and the pinned yarn, and caches the yarn store.
       - name: 'Setup Vite+'
-        uses: voidzero-dev/setup-vp@9fd26ff49f9b5e6276c2b493da4454ad4527f7f4 # v1.20.0
+        uses: voidzero-dev/setup-vp@24d870228786dc83ae73482406bdd1e7befaec14 # v1.21.0
         with:
           node-version: '24'
           cache: true
@@ -54,7 +54,7 @@ jobs:
           fetch-depth: 0
 
       - name: 'Setup Vite+'
-        uses: voidzero-dev/setup-vp@9fd26ff49f9b5e6276c2b493da4454ad4527f7f4 # v1.20.0
+        uses: voidzero-dev/setup-vp@24d870228786dc83ae73482406bdd1e7befaec14 # v1.21.0
         with:
           node-version: '24'
           cache: true
@@ -80,7 +80,7 @@ jobs:
           fetch-depth: 0
 
       - name: 'Setup Vite+'
-        uses: voidzero-dev/setup-vp@9fd26ff49f9b5e6276c2b493da4454ad4527f7f4 # v1.20.0
+        uses: voidzero-dev/setup-vp@24d870228786dc83ae73482406bdd1e7befaec14 # v1.21.0
         with:
           node-version: ${{ matrix.node-version }}
           cache: true
@@ -96,7 +96,7 @@ jobs:
 
       - name: 'Upload coverage to Codecov'
         if: ${{ matrix.node-version == 'lts' }}
-        uses: codecov/codecov-action@0b35c9ecc4f0529d0eb674914510c22f85b196b4 # v7.1.0
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/clover.xml
@@ -105,7 +105,7 @@ jobs:
 
       - name: 'Upload test results to Codecov'
         if: ${{ !cancelled() && matrix.node-version == 'lts' }}
-        uses: codecov/codecov-action@0b35c9ecc4f0529d0eb674914510c22f85b196b4 # v7.1.0
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           report_type: 'test_results'
