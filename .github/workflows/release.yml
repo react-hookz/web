@@ -34,7 +34,7 @@ jobs:
           # the job token is read-only; git push must use the GH_TOKEN PAT from env
           persist-credentials: false
       - name: 'Setup Vite+'
-        uses: voidzero-dev/setup-vp@24d870228786dc83ae73482406bdd1e7befaec14 # v1.21.0
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
         with:
           node-version: '24'
           cache: true
