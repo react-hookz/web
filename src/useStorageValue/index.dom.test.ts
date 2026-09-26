@@ -108,6 +108,29 @@ describe('useStorageValue', () => {
 		expect(expectResultValue(result.all[0]).value).toBe('bar');
 	});
 
+	it('should fetch value on first render in case `initializeWithValue` option is set to undefined', async () => {
+		const {result} = await renderHook(() =>
+			useStorageValue<string>(
+				newStorage(() => '"bar"'),
+				'foo',
+				{initializeWithValue: undefined},
+			),
+		);
+
+		expect(expectResultValue(result.all[0]).value).toBe('bar');
+	});
+
+	it('should yield null in case `defaultValue` option is set to undefined', async () => {
+		const {result} = await renderHook(() =>
+			// `exactOptionalPropertyTypes` rejects the explicit `undefined` here, but
+			// consumers without it -- and every JS consumer -- can still pass one.
+			// @ts-expect-error -- deliberately passing what the option type forbids
+			useStorageValue<string>(newStorage(), 'foo', {defaultValue: undefined}),
+		);
+
+		expect(expectResultValue(result).value).toBe(null);
+	});
+
 	it('should set storage value on .set() call', async () => {
 		const {result} = await renderHook(() => useStorageValue<string>(newStorage(), 'foo'));
 
