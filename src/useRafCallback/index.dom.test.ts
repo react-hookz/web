@@ -119,4 +119,37 @@ describe('useRafCallback', () => {
 
 		expect(spy).not.toHaveBeenCalled();
 	});
+	it('should cancel a frame scheduled from inside the callback', async () => {
+		const spy = vi.fn(() => {
+			if (spy.mock.calls.length === 1) {
+				value[0]();
+			}
+		});
+		const {result} = await renderHook(() => useRafCallback(spy));
+		const value = expectResultValue(result);
+
+		value[0]();
+		vi.advanceTimersToNextTimer();
+		expect(spy).toHaveBeenCalledTimes(1);
+
+		value[1]();
+		vi.runAllTimers();
+		expect(spy).toHaveBeenCalledTimes(1);
+	});
+
+	it('should cancel a reentrant frame on unmount', async () => {
+		const spy = vi.fn(() => {
+			if (spy.mock.calls.length === 1) {
+				value[0]();
+			}
+		});
+		const {result, unmount} = await renderHook(() => useRafCallback(spy));
+		const value = expectResultValue(result);
+
+		value[0]();
+		vi.advanceTimersToNextTimer();
+		await unmount();
+		vi.runAllTimers();
+		expect(spy).toHaveBeenCalledTimes(1);
+	});
 });
