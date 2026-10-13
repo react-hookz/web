@@ -1,6 +1,6 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useRef} from 'react';
-import {describe, expect, it} from 'vitest';
+import {describe, expect, it} from 'vite-plus/test';
 import {useNetworkState} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 

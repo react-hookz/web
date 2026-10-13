@@ -1,5 +1,5 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vite-plus/test';
 import {useThrottledState} from '../index.js';
 
 describe('useThrottledState', () => {
