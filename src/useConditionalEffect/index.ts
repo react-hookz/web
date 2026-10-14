@@ -36,7 +36,6 @@ export function useConditionalEffect<
 	...effectHookRestArgs: R
 ): void {
 	effectHook(
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		(() => {
 			if (predicate(conditions)) {
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-return
@@ -44,7 +43,7 @@ export function useConditionalEffect<
 			}
 
 			return undefined;
-		}) as Callback,
+		}) as Callback, // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 		deps,
 		...effectHookRestArgs,
 	);

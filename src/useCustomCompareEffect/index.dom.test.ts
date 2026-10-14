@@ -1,6 +1,6 @@
 import {renderHook} from '@ver0/react-hooks-testing';
 import type {DependencyList} from 'react';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import type {EffectCallback} from '../index.js';
 import {useCustomCompareEffect, useUpdateEffect} from '../index.js';
 import {expectCallArgs} from '../util/testing/test-helpers.js';

@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {afterAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {useLifecycleLogger} from '../index.js';
 
 describe('useLifecycleLogger', () => {

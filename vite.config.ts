@@ -1,4 +1,4 @@
-import type {OxlintConfig} from 'oxlint';
+import type {OxlintConfig} from 'vite-plus/lint';
 import {defineConfig} from 'vite-plus';
 import javascript from '@ver0/oxlint-config/javascript.js';
 import typescript from '@ver0/oxlint-config/typescript.js';
@@ -17,6 +17,42 @@ const repoOverrides: OxlintConfig = {
 		'typescript/no-unnecessary-type-parameters': 'off',
 	},
 	overrides: [
+		{
+			files: [
+				'src/useCustomCompareEffect/index.ts',
+				'src/useFirstMountState/index.ts',
+				'src/useList/index.ts',
+				'src/useMap/index.ts',
+				'src/usePrevious/index.ts',
+				'src/useRenderCount/index.ts',
+				'src/useSet/index.ts',
+				'src/useSyncedRef/index.ts',
+			],
+			plugins: ['react'],
+			rules: {
+				// These hooks expose render-time ref state as part of their public API.
+				// Moving those reads or writes into effects changes their behavior.
+				'react/refs': 'off',
+			},
+		},
+		{
+			files: ['src/useCustomCompareEffect/index.ts', 'src/useWindowSize/index.ts'],
+			plugins: ['react'],
+			rules: {
+				// These public APIs accept a hook and invoke it unconditionally.
+				// Keep react/rules-of-hooks; opt out of the new compiler restriction.
+				'react/hooks': 'off',
+			},
+		},
+		{
+			files: ['src/useList/index.ts'],
+			plugins: ['react'],
+			rules: {
+				// The memoized actions call other methods on the same object.
+				// That self-reference cannot be an input to its own initialization.
+				'react/memo-dependencies': 'off',
+			},
+		},
 		{
 			files: ['**/*.test.ts'],
 			plugins: ['vitest'],
