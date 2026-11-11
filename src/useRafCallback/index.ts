@@ -40,8 +40,8 @@ export function useRafCallback<T extends (...args: any[]) => any>(
 				cancel();
 
 				frame.current = requestAnimationFrame(() => {
-					cbRef.current(...args);
 					frame.current = 0;
+					cbRef.current(...args);
 				});
 			};
 
