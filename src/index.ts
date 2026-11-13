@@ -74,6 +74,7 @@ export * from './useWindowSize/index.js';
 export {isStrictEqual, truthyAndArrayPredicate, truthyOrArrayPredicate} from './util/const.js';
 export type {EffectCallback, EffectHook} from './util/misc.js';
 export {resolveHookState} from './util/resolve-hook-state.js';
+export type {InitialState, NextState} from './util/resolve-hook-state.js';
 
 // Types
 export type * from './types.js';
