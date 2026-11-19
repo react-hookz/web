@@ -46,7 +46,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@ver0/deep-equal": "^2.0.1"
+		"@ver0/deep-equal": "^2.1.0"
 	},
 	"devDependencies": {
 		"@types/js-cookie": "^3.0.6",
