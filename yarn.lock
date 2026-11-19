@@ -1225,7 +1225,7 @@ __metadata:
     "@types/node": "npm:^26.2.0"
     "@types/react": "npm:^19.2.18"
     "@types/react-dom": "npm:^19.2.4"
-    "@ver0/deep-equal": "npm:^2.0.1"
+    "@ver0/deep-equal": "npm:^2.1.0"
     "@ver0/oxlint-config": "npm:^2.0.2"
     "@ver0/react-hooks-testing": "npm:^1.0.3"
     "@vitest/coverage-v8": "npm:^4.1.10"
@@ -1809,10 +1809,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ver0/deep-equal@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@ver0/deep-equal@npm:2.0.1"
-  checksum: 10c0/facef07505868c12a357fb4f9a73595426b9ba554ffb9a19d03e5cf6fd9560c8956683aadbee5e8e7a02116d7c329ca8144a44337a4818af9a7d5ad6cb7e568a
+"@ver0/deep-equal@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@ver0/deep-equal@npm:2.1.0"
+  checksum: 10c0/a27cbc1d4c5c460e45dcdfb0120233783844dc74d87dcd78c9d8551ec3ca86df7a301f3bfbbcec5afb515bf52e65538a8246fa6f08a4ccf39a8592df15811080
   languageName: node
   linkType: hard
 
