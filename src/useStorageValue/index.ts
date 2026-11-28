@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {useFirstMountState} from '../useFirstMountState/index.js';
 import {useIsomorphicLayoutEffect} from '../useIsomorphicLayoutEffect/index.js';
 import {useSyncedRef} from '../useSyncedRef/index.js';
@@ -124,6 +124,10 @@ export type UseStorageValueResult<
 > = {
 	value: UseStorageValueValue<Type, Default, Initialize>;
 
+	/**
+	 * Stores a value. Functional updates receive the latest accepted value, including
+	 * updates from other hooks sharing this storage key before React renders.
+	 */
 	set: (value: NextState<Type, UseStorageValueValue<Type, Default, Initialize>>) => void;
 	remove: () => void;
 	fetch: () => void;
@@ -176,14 +180,18 @@ export function useStorageValue<
 	const [state, setState] = useState<Type | null | undefined>(
 		optionsRef.current?.initializeWithValue === true && isFirstMount ? storageActions.current.fetch() : undefined,
 	);
-	const stateRef = useSyncedRef(state);
+	const stateRef = useRef(state);
+	const updateState = (value: Type | null | undefined): void => {
+		stateRef.current = value;
+		setState(value);
+	};
 
 	const stateActions = useSyncedRef({
 		fetch() {
-			setState(storageActions.current.fetch());
+			updateState(storageActions.current.fetch());
 		},
 		setRawVal(this: void, value: string | null) {
-			setState(parse(value, optionsRef.current.defaultValue));
+			updateState(parse(value, optionsRef.current.defaultValue));
 		},
 	});
 
