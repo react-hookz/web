@@ -25,7 +25,7 @@ const invokeStorageKeyListeners = (s: Storage, key: string, value: string | null
 };
 
 const storageEventHandler = (evt: StorageEvent) => {
-	if (evt.storageArea && evt.key !== null && evt.key !== '' && evt.newValue !== null && evt.newValue !== '') {
+	if (evt.storageArea && evt.key !== null && evt.key !== '') {
 		invokeStorageKeyListeners(evt.storageArea, evt.key, evt.newValue);
 	}
 };

@@ -298,6 +298,25 @@ describe('useStorageValue', () => {
 			globalThis.localStorage.removeItem('foo');
 		});
 
+		it('should reset state if tracked key is removed', async () => {
+			globalThis.localStorage.setItem('foo', '"bar"');
+			const {result} = await renderHook(() =>
+				useStorageValue<string>(globalThis.localStorage, 'foo', {defaultValue: 'default value'}),
+			);
+			let value = expectResultValue(result);
+			expect(value.value).toBe('bar');
+
+			await act(async () => {
+				globalThis.dispatchEvent(
+					new StorageEvent('storage', {key: 'foo', storageArea: globalThis.localStorage, newValue: null}),
+				);
+			});
+
+			value = expectResultValue(result);
+			globalThis.localStorage.removeItem('foo');
+			expect(value.value).toBe('default value');
+		});
+
 		it('should not update data on event storage or key mismatch', async () => {
 			const {result} = await renderHook(() => useStorageValue<string>(globalThis.localStorage, 'foo'));
 			let value = expectResultValue(result);
