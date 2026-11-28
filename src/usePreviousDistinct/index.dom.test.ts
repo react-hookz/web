@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {usePreviousDistinct} from '../index.js';
 import type {Predicate} from '../types.js';
 import {isStrictEqual} from '../util/const.js';

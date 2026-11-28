@@ -1,8 +1,9 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useEffect} from 'react';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
-import {borderBoxMeasurer, useMeasure} from '../index.js';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
+
+let {borderBoxMeasurer, useMeasure} = await import('../index.js');
 
 describe('useMeasure', () => {
 	const observeSpy = vi.fn();
@@ -36,7 +37,10 @@ describe('useMeasure', () => {
 		vi.stubGlobal('ResizeObserver', ResizeObserverSpy);
 	});
 
-	beforeEach(() => {
+	beforeEach(async () => {
+		// Recreate the module's observer cache so each test records its own constructor calls.
+		vi.resetModules();
+		({borderBoxMeasurer, useMeasure} = await import('../index.js'));
 		observeSpy.mockClear();
 		unobserveSpy.mockClear();
 		disconnectSpy.mockClear();
@@ -96,13 +100,12 @@ describe('useMeasure', () => {
 			height: 0,
 		};
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {width: 0, height: 0},
 			borderBoxSize: {},
 			contentBoxSize: {},
-		} as unknown as ResizeObserverEntry;
+		} as unknown as ResizeObserverEntry; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 		let value = expectResultValue(result);
@@ -129,13 +132,12 @@ describe('useMeasure', () => {
 			return measure;
 		});
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {width: 5, height: 3},
 			borderBoxSize: [{inlineSize: 9, blockSize: 7}],
 			contentBoxSize: {},
-		} as unknown as ResizeObserverEntry;
+		} as unknown as ResizeObserverEntry; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 

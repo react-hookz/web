@@ -1,5 +1,5 @@
 import type {ResultValue} from '@ver0/react-hooks-testing';
-import {expect} from 'vitest';
+import {expect} from 'vite-plus/test';
 
 /**
  * Helper to assert that a hook result is successful and extract its value.

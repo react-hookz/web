@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it} from 'vitest';
+import {describe, expect, it} from 'vite-plus/test';
 import {useSyncedRef} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 

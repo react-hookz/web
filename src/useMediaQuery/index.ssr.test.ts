@@ -1,5 +1,5 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it} from 'vitest';
+import {describe, expect, it} from 'vite-plus/test';
 import {useMediaQuery} from '../index.js';
 
 describe('useMediaQuery', () => {

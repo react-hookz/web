@@ -1,5 +1,5 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {useMountEffect} from '../index.js';
 
 describe('useMountEffect', () => {

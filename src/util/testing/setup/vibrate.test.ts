@@ -1,4 +1,4 @@
-import {vi} from 'vitest';
+import {vi} from 'vite-plus/test';
 
 const vibrateMock = vi.fn<typeof navigator.vibrate>(() => true);
 

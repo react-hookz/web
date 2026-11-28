@@ -1,5 +1,5 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {useTimeoutEffect} from '../index.js';
 
 describe('useTimeoutEffect', () => {

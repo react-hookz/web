@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {beforeEach, describe, expect, it, vi} from 'vitest';
+import {beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {useVibrate} from '../index.js';
 import {expectCallArgs} from '../util/testing/test-helpers.js';
 

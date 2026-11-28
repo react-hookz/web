@@ -1,5 +1,5 @@
 import {renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {useConditionalEffect} from '../index.js';
 
 describe('useConditionalEffect', () => {

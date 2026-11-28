@@ -1,7 +1,7 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import type {BaseSyntheticEvent} from 'react';
 import {useRef} from 'react';
-import {describe, expect, it} from 'vitest';
+import {describe, expect, it} from 'vite-plus/test';
 import {useToggle} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 

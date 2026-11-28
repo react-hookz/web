@@ -1,8 +1,9 @@
 import type {RefObject} from 'react';
 import {renderHook} from '@ver0/react-hooks-testing';
-import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
-import {useResizeObserver} from '../index.js';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {expectCallArgs} from '../util/testing/test-helpers.js';
+
+let {useResizeObserver} = await import('../index.js');
 
 describe('useResizeObserver', () => {
 	const observeSpy = vi.fn();
@@ -27,7 +28,10 @@ describe('useResizeObserver', () => {
 		vi.useFakeTimers();
 	});
 
-	beforeEach(() => {
+	beforeEach(async () => {
+		// Recreate the module's observer cache so each test records its own constructor calls.
+		vi.resetModules();
+		({useResizeObserver} = await import('../index.js'));
 		observeSpy.mockClear();
 		unobserveSpy.mockClear();
 		disconnectSpy.mockClear();
@@ -51,11 +55,13 @@ describe('useResizeObserver', () => {
 	});
 
 	it('should create ResizeObserver instance only on first hook render', async () => {
-		expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
+		expect(ResizeObserverSpy).toHaveBeenCalledTimes(0);
 
 		await renderHook(() => {
 			useResizeObserver(null, () => {});
 		});
+		expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
+
 		await renderHook(() => {
 			useResizeObserver(null, () => {});
 		});
@@ -84,13 +90,12 @@ describe('useResizeObserver', () => {
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
-		} as unknown as ResizeObserverEntry;
+		} as unknown as ResizeObserverEntry; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 
@@ -115,13 +120,12 @@ describe('useResizeObserver', () => {
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
-		} as unknown as ResizeObserverEntry;
+		} as unknown as ResizeObserverEntry; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
 
@@ -149,20 +153,18 @@ describe('useResizeObserver', () => {
 
 		expect(observeSpy).toHaveBeenCalledTimes(2);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry1 = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
-		} as unknown as ResizeObserverEntry;
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+		} as unknown as ResizeObserverEntry; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 		const entry2 = {
 			target: div2,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
-		} as unknown as ResizeObserverEntry;
+		} as unknown as ResizeObserverEntry; // eslint-disable-line @typescript-eslint/no-unsafe-type-assertion
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry1, entry2]);
 
@@ -204,6 +206,12 @@ describe('useResizeObserver', () => {
 
 	it('should keep a separate observer per box model', async () => {
 		const div = document.createElement('div');
+		await renderHook(() => {
+			useResizeObserver(div, vi.fn());
+		});
+		expect(ResizeObserverSpy).toHaveBeenCalledTimes(1);
+		expect(observeSpy).toHaveBeenCalledWith(div, {box: 'content-box'});
+
 		const observersBefore = ResizeObserverSpy.mock.calls.length;
 
 		await renderHook(() => {

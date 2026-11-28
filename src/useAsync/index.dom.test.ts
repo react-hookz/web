@@ -1,5 +1,5 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {useAsync} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 

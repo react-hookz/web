@@ -1,6 +1,6 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useState} from 'react';
-import {beforeEach, describe, expect, it} from 'vitest';
+import {beforeEach, describe, expect, it} from 'vite-plus/test';
 import {useWindowSize} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 

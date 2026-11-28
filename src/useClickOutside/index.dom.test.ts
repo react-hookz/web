@@ -1,6 +1,6 @@
 import {renderHook} from '@ver0/react-hooks-testing';
 import type {RefObject} from 'react';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {useClickOutside} from '../index.js';
 
 describe('useClickOutside', () => {

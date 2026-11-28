@@ -1,5 +1,5 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {useAsyncAbortable} from '../index.js';
 import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 
@@ -27,7 +27,7 @@ describe('useAsyncAbortable', () => {
 	});
 
 	it('should render', async () => {
-		const {result} = await renderHook(() => useAsyncAbortable(async (_) => {}));
+		const {result} = await renderHook(() => useAsyncAbortable(async () => {}));
 		expect(result.error).toBeUndefined();
 	});
 

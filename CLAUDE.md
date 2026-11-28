@@ -29,7 +29,8 @@ vite.config.ts              # test, lint and format config, all three
 - Vite+ is the toolchain: `vp fmt`, `vp lint`, `vp test`. All three configured in `vite.config.ts`, nowhere else.
 - oxlint with `@ver0/oxlint-config` presets plus `oxlint-tsgolint` type-aware rules; oxfmt for formatting.
 - TypeScript 7 native compiler builds `dist` from `tsconfig.build.json`. No bundler.
-- Vitest 4, two projects split by filename: `*.dom.test.ts` runs in jsdom, `*.ssr.test.ts` in node.
+- Vitest 5 through `vite-plus/test`, two projects split by filename: `*.dom.test.ts` runs in jsdom, `*.ssr.test.ts` in
+  node.
 - yarn 4 via corepack, for dependency work only (`yarn up <pkg>`, `yarn install --immutable`).
 - semantic-release publishes from `master`; GitHub Actions are SHA-pinned via `pinact`.
 - CI goes through `vp` only: `voidzero-dev/setup-vp` provides Node, yarn, the dependency cache and the install, so no

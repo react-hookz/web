@@ -1,6 +1,6 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import Cookies from 'js-cookie';
-import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 import {useCookieValue} from './index.js';
 

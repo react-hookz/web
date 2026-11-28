@@ -1,5 +1,5 @@
 import {act, renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it} from 'vitest';
+import {describe, expect, it} from 'vite-plus/test';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 import {newStorage} from './misc.test.js';
 import {useStorageValue} from './index.js';

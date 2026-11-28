@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it} from 'vitest';
+import {describe, expect, it} from 'vite-plus/test';
 import {useLocalStorageValue} from '../index.js';
 
 describe('useLocalStorageValue', () => {

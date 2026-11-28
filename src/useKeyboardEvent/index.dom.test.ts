@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import type {KeyboardEventFilter} from '../index.js';
 import {useKeyboardEvent} from '../index.js';
 import {expectCallArgs} from '../util/testing/test-helpers.js';

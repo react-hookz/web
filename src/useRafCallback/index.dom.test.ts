@@ -1,5 +1,5 @@
 import {renderHook} from '@ver0/react-hooks-testing';
-import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vitest';
+import {afterAll, afterEach, beforeAll, describe, expect, it, vi} from 'vite-plus/test';
 import {useRafCallback} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 

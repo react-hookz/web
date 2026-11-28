@@ -1,5 +1,5 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
-import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterEach, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {useScreenOrientation} from '../index.js';
 import {expectCallArgs, expectCallResult, expectResultValue} from '../util/testing/test-helpers.js';
 

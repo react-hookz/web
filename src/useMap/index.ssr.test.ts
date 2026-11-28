@@ -1,5 +1,5 @@
 import {act, renderHookServer as renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vite-plus/test';
 import {useMap} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 
