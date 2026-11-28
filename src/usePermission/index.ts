@@ -5,7 +5,8 @@ import {off, on} from '../util/misc.js';
 export type UsePermissionState = PermissionState | 'not-requested' | 'requested';
 
 /**
- * Tracks a permission state.
+ * Tracks a permission state. Query results are ignored after unmount or when
+ * the permission name changes.
  *
  * @param descriptor Permission request descriptor that passed to `navigator.permissions.query`
  */
@@ -13,6 +14,7 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 	const [state, setState] = useState<UsePermissionState>('not-requested');
 
 	useEffect(() => {
+		let active = true;
 		const unmount: RefObject<(() => void) | null> = {current: null};
 
 		setState('requested');
@@ -22,6 +24,10 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 			.query(descriptor)
 			// eslint-disable-next-line promise/prefer-await-to-then,promise/always-return
 			.then((status): void => {
+				if (!active) {
+					return;
+				}
+
 				const handleChange = () => {
 					setState(status.state);
 				};
@@ -35,6 +41,7 @@ export function usePermission(descriptor: PermissionDescriptor): UsePermissionSt
 			});
 
 		return () => {
+			active = false;
 			if (unmount.current) {
 				unmount.current();
 			}
