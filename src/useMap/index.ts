@@ -6,6 +6,9 @@ const proto = Map.prototype;
 /**
  * Tracks the state of a `Map`.
  *
+ * `set` rerenders when adding a key or changing its value (compared with `Object.is`).
+ * Replace object values rather than mutating and setting the same reference.
+ *
  * @param entries Initial entries iterator for underlying `Map` constructor.
  */
 
@@ -19,8 +22,12 @@ export function useMap<K = any, V = any>(entries?: ReadonlyArray<readonly [K, V]
 		mapRef.current = map;
 
 		map.set = (...args) => {
+			const [key, value] = args;
+			const changed = !map.has(key) || !Object.is(map.get(key), value);
 			proto.set.apply(map, args);
-			rerender();
+			if (changed) {
+				rerender();
+			}
 			return map;
 		};
 
