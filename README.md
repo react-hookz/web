@@ -116,6 +116,7 @@ get into your bundle. Direct hook imports should be considered otherwise.
   - [**`useNetworkState`**](./src/useNetworkState/index.ts) — Tracks the state of the browser's network connection.
   - [**`useVibrate`**](./src/useVibrate/index.ts) — Provides vibration feedback using the Vibration API.
   - [**`usePermission`**](./src/usePermission/index.ts) — Tracks the state of a permission.
+  - [**`useBattery`**](./src/useBattery/index.ts) — Tracks the state of the device's battery.
 
 - #### Miscellaneous
   - [**`useSyncedRef`**](./src/useSyncedRef/index.ts) — Like `useRef`, but it returns an immutable ref that contains the
